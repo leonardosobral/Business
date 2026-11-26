@@ -1,0 +1,13 @@
+{
+  "counts": {
+    "status0_concluinte": 4573104,
+    "homologado_false": 0,
+    "approved_null_sex": 0,
+    "approved_sex_length_not_one": 0,
+    "homologado_null": 0,
+    "approved": 4573104,
+    "approved_null_distance": 0
+  },
+  "capturado_em": "2026-11-09T16:11:25.463706-03:00",
+  "read_only": "on"
+}

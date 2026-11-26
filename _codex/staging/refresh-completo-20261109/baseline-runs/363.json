@@ -1,0 +1,142 @@
+{
+  "truncated": false,
+  "status": "ok",
+  "started_at": "2026-10-05T15:02:49.32799-03:00",
+  "cell_id": 363,
+  "cell_version": 1,
+  "id": 173,
+  "frozen": true,
+  "result": {
+    "columns": [
+      "payload"
+    ],
+    "rows": [
+      {
+        "payload": {
+          "regra": "Cada ID uma vez. Resultado bruto; url_resultado/url_wiclax com trim; situação conhecida normalizada: Sem Resultado, Kids, Treino, Cancelado, Adiado, Repetido, Adiado/Cancelado. Não encontrado e códigos não interpretados continuam pendentes.",
+          "linhas": [
+            {
+              "ano": 2025,
+              "contagem": 5121,
+              "denominador": 9414,
+              "valor": "54.3977055449330784",
+              "categoria": "Com resultado coletado"
+            },
+            {
+              "ano": 2025,
+              "contagem": 7511,
+              "denominador": 9414,
+              "valor": "79.7854259613341831",
+              "categoria": "Provas mapeadas"
+            },
+            {
+              "ano": 2025,
+              "contagem": 2061,
+              "denominador": 9414,
+              "valor": "21.8929254302103250",
+              "categoria": "Sem coleta, com link"
+            },
+            {
+              "ano": 2025,
+              "contagem": 329,
+              "denominador": 9414,
+              "valor": "3.4947949861907797",
+              "categoria": "Sem coleta/link, situação conhecida"
+            },
+            {
+              "ano": 2025,
+              "contagem": 1903,
+              "denominador": 9414,
+              "valor": "20.2145740386658169",
+              "categoria": "Sem resultado, link ou situação conhecida"
+            },
+            {
+              "ano": 2026,
+              "contagem": 4790,
+              "denominador": 7847,
+              "valor": "61.0424365999745126",
+              "categoria": "Com resultado coletado"
+            },
+            {
+              "ano": 2026,
+              "contagem": 6340,
+              "denominador": 7847,
+              "valor": "80.7952083598827577",
+              "categoria": "Provas mapeadas"
+            },
+            {
+              "ano": 2026,
+              "contagem": 1281,
+              "denominador": 7847,
+              "valor": "16.3247100802854594",
+              "categoria": "Sem coleta, com link"
+            },
+            {
+              "ano": 2026,
+              "contagem": 269,
+              "denominador": 7847,
+              "valor": "3.4280616796227858",
+              "categoria": "Sem coleta/link, situação conhecida"
+            },
+            {
+              "ano": 2026,
+              "contagem": 1507,
+              "denominador": 7847,
+              "valor": "19.2047916401172423",
+              "categoria": "Sem resultado, link ou situação conhecida"
+            }
+          ],
+          "corte_2026": "2026-09-30",
+          "coletado_em": "2026-10-05T15:02:49.330689-03:00",
+          "pendencias": [
+            {
+              "ano": 2025,
+              "provas": 1534,
+              "observacao": "Não encontrado"
+            },
+            {
+              "ano": 2025,
+              "provas": 175,
+              "observacao": "Modalidade"
+            },
+            {
+              "ano": 2025,
+              "provas": 144,
+              "observacao": ""
+            },
+            {
+              "ano": 2025,
+              "provas": 43,
+              "observacao": "TF"
+            },
+            {
+              "ano": 2025,
+              "provas": 6,
+              "observacao": "PNC"
+            },
+            {
+              "ano": 2025,
+              "provas": 1,
+              "observacao": "Formato"
+            },
+            {
+              "ano": 2026,
+              "provas": 1233,
+              "observacao": "Não encontrado"
+            },
+            {
+              "ano": 2026,
+              "provas": 147,
+              "observacao": "Modalidade"
+            },
+            {
+              "ano": 2026,
+              "provas": 127,
+              "observacao": "TF"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "ids": {
+    "publication_id": 42,
+    "publication_run": 351,
+    "public_run": 352,
+    "public_revision": 7,
+    "paired_run": 329,
+    "paired_revision": 3,
+    "annual_run": 353,
+    "annual_revision": 3
+  },
+  "previous": {
+    "product_id": 1,
+    "publication_id": 41,
+    "publication_run": 233,
+    "public_run": 239,
+    "public_revision": 5
+  },
+  "runtime_files": {
+    "business/estudos/includes/StudyAccess.cfc": {
+      "before_sha256": "4d88f7df60ba1eac4d226b4409577d65da23583a66e6a09188ccb67192d16fe7",
+      "candidate_sha256": "a1359b27528a42c701a03a3627c380e23aa24699e39b79d0c0c268c0d7c87d05"
+    },
+    "business/estudos/leitor/parcial.js": {
+      "before_sha256": "7e8cff726dcacb519f83bce925671bfc7e4d8e4267dafe65ebda659ba726a6b9",
+      "candidate_sha256": "0f65dc3dbc968ace743055f8dea82317a0067d2973417008d297ce9be14aec65"
+    },
+    "business/estudos/leitor/index.cfm": {
+      "before_sha256": "46f538e45f32cdde7dd0b896c1ce3054c1da764d4ebac59c7a2b616282bebac2",
+      "candidate_sha256": "08f7b395a6afcece4da83fb6cf3aa1734d9bb69376e285aa76e4f69e5d4f2387"
+    },
+    "business/estudo/anual/index.cfm": {
+      "before_sha256": "be6a2c42476d0ffec6198cd309e6df86934553883b3dff743ae883f2a821687d",
+      "candidate_sha256": "a65e048869e5575fc469a2e85671c3fcafd71d246421bfd0bdc9a777c3a94910"
+    },
+    "portal/brasilquecorreprovas/imprensa/principal/index.cfm": {
+      "before_sha256": "c7c751fb35741fd7323bba93219369a0168163891f7eb87f45ce56a70a1fe922",
+      "candidate_sha256": "aaadf2ba236b1dfedff8b71c9a33e52500613ed9de281edcc5ac06a8e2bb996f"
+    },
+    "portal/brasilquecorreprovas/imprensa/principal/dados.cfm": {
+      "before_sha256": "b8f3e3620696d617a958b08ab4178e2025f6b30f3f4a1ffd29512f53c88c0bfc",
+      "candidate_sha256": "20c46eaf2ee14cb39aab8fe18961948332bdbcc85326a1c84d8b0b66b6650a5e"
+    },
+    "portal/brasilquecorreprovas/imprensa/principal/parcial-2026.js": {
+      "before_sha256": "bbd3ac298bd143a7a3ad03eff675802ba91601fe1ee553b5ff7d952c3fe0dccc",
+      "candidate_sha256": "b2274887debd9510ec1be7205e4183291b4e2a01996861b620739cc347d9161a"
+    },
+    "portal/brasilquecorreprovas/imprensa/principal/estudo-2026.css": {
+      "before_sha256": "cb989651b463ac15c50cd9c56afd1c7ae01e102ea96bd1f016113f0baee707ad",
+      "candidate_sha256": "cb989651b463ac15c50cd9c56afd1c7ae01e102ea96bd1f016113f0baee707ad"
+    }
+  },
+  "generator_sha256": "e5de4438e320f6b66433058487d6d1fe70af0a360611de43ce16b742c1d0ac82",
+  "source_hashes": {
+    "portal/brasilquecorreprovas/web/pagina.html": "583dae94c168deb218a1431bfe04a0a50f0cf2e949b1c3d1f7154462fa8fcabf",
+    "portal/brasilquecorreprovas/web/estudo.css": "8654f347f385f7f719c7596f2765500318a3f08c9e05931b17d81a9d0ec40371",
+    "portal/brasilquecorreprovas/web/dados.js": "82477b26c45e604953d7d81a285ca744a356e5c63bb8c71e1cf6773aeeb366e3",
+    "portal/brasilquecorreprovas/web/graficos.js": "5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b",
+    "portal/brasilquecorreprovas/web/parcial.js": "fb2b355717b25d7a538bfc486c5e344284310e3ae8f538c60b7bed57b0984db9",
+    "portal/brasilquecorreprovas/web/estudo.js": "00f8476db9ed5b9510925d64d2a39a5d2b5d98de48f405841c621d1602742141",
+    "portal/brasilquecorreprovas/web/navegacao.js": "9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533",
+    "business/estudos/leitor/pagina.html": "7d578434059ba9186544fadde9862090a12fcdd90708965c0c877aed82d6e787",
+    "business/estudos/leitor/estudo.css": "727edacc1f80c820caed7b14980c187ce246e240c98fb8fc5175fbfae53abc89",
+    "business/estudos/leitor/dados.js": "f85ccb100c95e77cabffd7c299cbdd88636480b90f25329cb0eb241d83697c21",
+    "business/estudos/leitor/graficos.js": "5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b",
+    "business/estudos/leitor/parcial.js": "0f65dc3dbc968ace743055f8dea82317a0067d2973417008d297ce9be14aec65",
+    "business/estudos/leitor/estudo.js": "7b0e006e7b07c97ec61610522e313cfd585907e89dbea8a56c77b58dc24ee5e6",
+    "business/estudos/leitor/navegacao.js": "9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533",
+    "business/estudos/includes/StudyAccess.cfc": "a1359b27528a42c701a03a3627c380e23aa24699e39b79d0c0c268c0d7c87d05"
+  },
+  "projection_before_sha256": "434f208c769c34b4dfeffe46b59648a52766888535169ccee8fb05b623a3fa0e",
+  "projection_candidate_sha256": "6ff056c0e78fccc26f32f7c54d80025637e9bc367ba23d81efd9735cdaf27a09",
+  "changes": "Source IDs and presentation cache versions only; metrics and auth untouched.",
+  "validation_only_files": [
+    "portal/atleta/index.cfm",
+    "portal/atleta/parts/configuracoes.cfm",
+    "portal/configuracoes/perfil/index.cfm",
+    "portal/includes/estrutura/header.cfm",
+    "portal/includes/backend/backend_profile_settings.cfm",
+    "portal/api/profile/teams.cfm",
+    "portal/teams/includes/start.cfm",
+    "portal/.rsync-filter"
+  ],
+  "transfer_allowlist": "Only runtime_files; validation templates are never routine transfer targets. RR transfers must use the root .rsync-filter (-F).",
+  "teams_hold": {
+    "checkout": true,
+    "candidate": true
+  },
+  "annual": {
+    "mode": "latest-frozen, unchanged",
+    "target_run": 353,
+    "source_cell": 418,
+    "product_activation": false
+  },
+  "technical_destination": {
+    "before": {
+      "ano": 2026,
+      "publicacao_id": 41,
+      "cell_id": 251,
+      "versao": 22
+    },
+    "after": {
+      "ano": 2026,
+      "publicacao_id": 42,
+      "cell_id": 251,
+      "versao": 23
+    },
+    "2025_preserved": {
+      "ano": 2025,
+      "publicacao_id": 37,
+      "cell_id": 249,
+      "versao": 19
+    }
+  },
+  "contract_transition": {
+    "before": 17,
+    "after": 18
+  },
+  "database_execution": false,
+  "production_verification": "Pending live recapture, DBA transaction, compile and HTTP checks.",
+  "mode": "new-approved-pair-after-DataGrip",
+  "baseline_origin": "expected compatible release; recapture/confirm these production hashes after DataGrip before transfer",
+  "approved_pairs": [
+    {
+      "publication_id": 42,
+      "public_run": 352,
+      "revision": 7
+    }
+  ]
+}

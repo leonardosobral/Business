@@ -1,0 +1,111 @@
+{
+  "values": {
+    "pareadas": "-4,8%",
+    "provas": "+18,6%",
+    "resultados": "-12,7%",
+    "women_previous": "44,4%",
+    "women_current": "46,8%",
+    "distance": "62,3%",
+    "interior": "48,6%"
+  },
+  "raw": {
+    "pareadas": -4.8,
+    "provas": 18.6,
+    "resultados": -12.7,
+    "women_previous": 44.4,
+    "women_current": 46.8,
+    "distance": 62.3,
+    "interior": 48.6
+  },
+  "collection": "09/11/2026",
+  "collection_iso": "2026-11-09",
+  "source": "Célula 420 / congelamento 9001",
+  "origin": "Origem: publicação 9002 / congelamento 9003",
+  "status": "candidate",
+  "status_label": "Material candidato; renovação e publicação ainda não confirmadas.",
+  "pitches": [
+    {
+      "slug": "provas-cadastradas",
+      "kind": "comparison",
+      "accent": "#B6DDCB",
+      "title": "Calendário e mesmas provas: duas leituras.",
+      "question": "Como comparar calendário e participação com contexto?",
+      "number": "-4,8%",
+      "secondary": "+18,6%",
+      "detail": "concluintes nas edições pareadas",
+      "secondary_detail": "provas no calendário cadastrado",
+      "note": "Recortes diferentes, sujeitos à coleta. Cadastros incluem inativos e cancelados e não comprovam realização.",
+      "caption": "Nas edições pareadas, a variação dos concluintes foi de -4,8%. No calendário cadastrado, foi de +18,6%. Janeiro a setembro de 2025 e 2026. Participações, não pessoas únicas. A captura dos resultados pode variar.",
+      "angle": "Compare o calendário conhecido com as edições pareadas. Ouça organizadores sobre continuidade e distribuição de público; os números não isolam crescimento real do mercado.",
+      "source": "Célula 420 / congelamento 9001",
+      "alt": "Nas edições pareadas, a variação dos concluintes foi de -4,8%. No calendário cadastrado, foi de +18,6%. Janeiro a setembro de 2025 e 2026. Participações, não pessoas únicas. A captura dos resultados pode variar. Recortes diferentes, sujeitos à coleta. Cadastros incluem inativos e cancelados e não comprovam realização."
+    },
+    {
+      "slug": "participacao-feminina",
+      "kind": "pair",
+      "accent": "#D8C8F2",
+      "title": "Participação feminina em dois períodos.",
+      "question": "Como esse retrato aparece na sua comunidade?",
+      "number": "46,8%",
+      "previous": "44,4%",
+      "detail": "das participações elegíveis em 2026 são femininas.",
+      "note": "Base: todas as participações elegíveis. Uma pessoa pode concluir várias provas; os dados não explicam causas.",
+      "caption": "A participação feminina foi de 44,4% em 2025 e 46,8% em 2026. Janeiro a setembro de 2025 e 2026. Participações, não pessoas únicas. A captura dos resultados pode variar.",
+      "angle": "Ouça corredoras e organizadores e investigue diferenças por distância e região, sem atribuir causas apenas aos percentuais.",
+      "source": "Célula 420 / congelamento 9001",
+      "alt": "A participação feminina foi de 44,4% em 2025 e 46,8% em 2026. Janeiro a setembro de 2025 e 2026. Participações, não pessoas únicas. A captura dos resultados pode variar. Base: todas as participações elegíveis. Uma pessoa pode concluir várias provas; os dados não explicam causas."
+    },
+    {
+      "slug": "resultados-comparativo",
+      "kind": "single",
+      "accent": "#F6BD30",
+      "title": "O que mudou nos resultados registrados?",
+      "question": "Mudança nas provas ou na cobertura da coleta?",
+      "number": "-12,7%",
+      "detail": "de variação nos resultados registrados: Jan-Set 2026 versus Jan-Set 2025.",
+      "note": "Variação na base pode refletir captura e importações. Não mede, sozinha, crescimento real do mercado.",
+      "caption": "A variação dos resultados registrados foi de -12,7%. Janeiro a setembro de 2025 e 2026. Participações, não pessoas únicas. A captura dos resultados pode variar.",
+      "angle": "Diferencie provas cadastradas, provas com resultados coletados e participações elegíveis. Apure como a cobertura mudou entre os períodos.",
+      "source": "Célula 420 / congelamento 9001",
+      "alt": "A variação dos resultados registrados foi de -12,7%. Janeiro a setembro de 2025 e 2026. Participações, não pessoas únicas. A captura dos resultados pode variar. Variação na base pode refletir captura e importações. Não mede, sozinha, crescimento real do mercado."
+    },
+    {
+      "slug": "distancias-curtas",
+      "kind": "bar",
+      "accent": "#D8C8F2",
+      "title": "Percursos curtos na base observada.",
+      "question": "O que as provas curtas representam na sua comunidade?",
+      "number": "62,3%",
+      "value": 62.3,
+      "detail": "das participações de rua com distância elegível estão em percursos abaixo de 6 km.",
+      "note": "Percursos positivos cadastrados abaixo de 6 km. Não é uma pesquisa de preferência.",
+      "caption": "62,3% das participações de rua com distância elegível estão em percursos positivos inferiores a 6 km. Janeiro a setembro de 2026.",
+      "angle": "Investigue os percursos disponíveis e a experiência de quem participa, distinguindo a oferta observada de preferência declarada.",
+      "source": "Célula 420 / congelamento 9001",
+      "alt": "62,3% das participações de rua com distância elegível estão em percursos positivos inferiores a 6 km. Janeiro a setembro de 2026. Percursos positivos cadastrados abaixo de 6 km. Não é uma pesquisa de preferência."
+    },
+    {
+      "slug": "fora-das-capitais",
+      "kind": "bar",
+      "accent": "#B6DDCB",
+      "title": "A corrida além das capitais.",
+      "question": "Quais cidades merecem entrar na conversa?",
+      "number": "48,6%",
+      "value": 48.6,
+      "detail": "das participações no recorte de rua ocorreram fora das capitais.",
+      "note": "Localização da prova, não residência do atleta. Registros sem classificação permanecem no denominador.",
+      "caption": "48,6% das participações do recorte de rua ocorreram fora das capitais. Janeiro a setembro de 2026; considera o local da prova.",
+      "angle": "Mostre a realidade das provas locais, preservando a distinção entre localização do evento e residência de seus participantes.",
+      "source": "Célula 420 / congelamento 9001",
+      "alt": "48,6% das participações do recorte de rua ocorreram fora das capitais. Janeiro a setembro de 2026; considera o local da prova. Localização da prova, não residência do atleta. Registros sem classificação permanecem no denominador."
+    }
+  ],
+  "provenance": {
+    "public_cell": "420",
+    "public_run": "9001",
+    "publication_id": "9002",
+    "publication_run": "9003"
+  },
+  "launch": "13/11/2026",
+  "methodology": "Janeiro a setembro de 2025 e 2026. Participações, não pessoas únicas. A captura dos resultados pode variar."
+}

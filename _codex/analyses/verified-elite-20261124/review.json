@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-24",
+  "mode": "read_only",
+  "pending_profiles_at_query": 120,
+  "startlist_events": 6,
+  "startlist_entries": 258,
+  "pending_startlist_matches_by_id_or_exact_normalized_name": 0,
+  "active_badge_startlist_matches_by_user_id": 0,
+  "legacy_leaderboard_matches": 0,
+  "elite_participation_candidate": [
+    {
+      "event_date": "2022-11-06",
+      "tempo_bruto": "",
+      "user_id": 49983,
+      "cbat": "",
+      "account_name": "Guilherme Neto Sousa Ferreira",
+      "nome_evento": "Bsb City Half Marathon",
+      "profile_name": "GUILHERME NETO",
+      "category": "nao_informado",
+      "result_user_id": 49983,
+      "num_peito": 7,
+      "tempo_total": "01:11:38.332",
+      "profile_id": 28882,
+      "homologado": 1,
+      "id_resultado": 1831949,
+      "classificacao_sexo": 4,
+      "nome_categoria": "ELITEM",
+      "percurso": 21,
+      "classificacao_total": 4,
+      "concluinte": 1,
+      "status_final": 0,
+      "tag": "gneto25",
+      "result_name": "GUILHERME NETO DE SOUSA FERREIRA",
+      "permanent": 1,
+      "event_tag": "2022-bsb-city-half-marathon"
+    }
+  ],
+  "external_corroboration": {
+    "url": "https://cbat.org.br/atletas/24936/guilherme-neto-de-sousa-ferreira",
+    "registration": "24936",
+    "matched_full_name": "Guilherme Neto de Sousa Ferreira",
+    "matching_race": "BSB City Half Marathon, 06/11/2022",
+    "note": "CBAt registra 1:11:40; a base interna tem 1:11:38.332. Não afirmar que os tempos são idênticos."
+  },
+  "excluded_false_positives": {
+    "profile_id": 11721,
+    "profile_name": "RunnerHub Club",
+    "linked_user_id": 0,
+    "reason": "Conta institucional e ID zero compartilhado por resultados de nomes diferentes; não representa um atleta individual."
+  },
+  "limits": [
+    "Participação em categoria elite não comprova motivo histórico da concessão do selo.",
+    "Ausência das seis start lists não exclui condição de elite.",
+    "Classificação não inferida apenas de tempo, posição ou campo profissional."
+  ],
+  "writes": {
+    "classifications": 0,
+    "entitlements": 0,
+    "payments": 0,
+    "runtime_files": 0
+  },
+  "cleanup": "Operadores remotos temporários removidos em finally; subprocessos encerrados. Nenhum navegador ou servidor de teste iniciado."
+}

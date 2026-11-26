@@ -1,0 +1,112 @@
+{
+  "files": {
+    "ads-network/.htaccess": {
+      "exists": false,
+      "sha256": null
+    },
+    "ads-network/Application.cfc": {
+      "exists": false,
+      "sha256": null
+    },
+    "ads-network/includes/request.cfm": {
+      "exists": false,
+      "sha256": null
+    },
+    "ads-network/v1/serve.cfm": {
+      "exists": false,
+      "sha256": null
+    },
+    "ads-network/v1/viewable.cfm": {
+      "exists": false,
+      "sha256": null
+    },
+    "ads-network/v1/click.cfm": {
+      "exists": false,
+      "sha256": null
+    },
+    "ads-network/sdk/v1.js": {
+      "exists": false,
+      "sha256": null
+    },
+    "portal/includes/publisher_inventory_helpers.cfm": {
+      "exists": false,
+      "sha256": null
+    },
+    "portal/includes/paid_banner_helpers.cfm": {
+      "exists": true,
+      "sha256": "a4b123955dbab20863ea115890a2e7282d218f4860c2da2a5380b356a3a1090d",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/paid_banner_queries.cfm": {
+      "exists": true,
+      "sha256": "6bbc2d7c4c87b9753fa2420057b8e234d8a201a59c8406a138ff3c8cc5108f41",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/paid_banner_form.cfm": {
+      "exists": true,
+      "sha256": "187190cdfbae72fb7007241edd297c61c5aa7a4177ba1d0cde9161c2ca61d478",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/paid_banner_list.cfm": {
+      "exists": true,
+      "sha256": "780ac213efc144556f80351ca099252197376553779c397345ec64af5111d76b",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/paid_banner_home.cfm": {
+      "exists": true,
+      "sha256": "e7ef1cd4159534561ee3f556fbc489ad4dfd2fdbae2b8282fd087f6e9ef25278",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/banner_management_backend.cfm": {
+      "exists": true,
+      "sha256": "351127888339b6ec9a652f09b10f0a4099e24f623e463057901ba314b3a11e48",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "portal/includes/banner_dashboard_backend.cfm": {
+      "exists": true,
+      "sha256": "d8c338628aad4d62be90189c278054bd17d7e8bcc08c4547003fbc3bd353207d",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/banner_form.cfm": {
+      "exists": true,
+      "sha256": "150cb3951a14303a31b84529ac2e39d7d2ba21cc18c9fbb6c12cda74ea574549",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/banners/sites/backend.cfm": {
+      "exists": false,
+      "sha256": null
+    },
+    "portal/banners/sites/home.cfm": {
+      "exists": false,
+      "sha256": null
+    },
+    "portal/banners/sites/index.cfm": {
+      "exists": false,
+      "sha256": null
+    },
+    "portal/banners/home.cfm": {
+      "exists": true,
+      "sha256": "e40b91a2b0f938308144d465a31684698262d51408c875dfdf1d712bc2c185f9",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "watch": {}
+}

@@ -1,0 +1,29 @@
+{
+  "anonymous_and_method_guards": [
+    {
+      "path": "/estudos/lancamento/",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "path": "/estudos/lancamento/checklist.cfm",
+      "method": "GET",
+      "status": 405
+    },
+    {
+      "path": "/estudos/lancamento/checklist.cfm",
+      "method": "POST",
+      "status": 401
+    },
+    {
+      "path": "/estudos/lancamento/checklist.js",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/estudos/lancamento/lancamento.css",
+      "method": "GET",
+      "status": 200
+    }
+  ]
+}

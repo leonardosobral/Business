@@ -1,0 +1,8 @@
+{
+  "manifest_sha256": "cfa3a019a426b2d125c6d72c1d353747189f478c6fdf07cafb927e106dbd834a",
+  "compiled_templates": 2,
+  "compiler": "/opt/coldfusion2025/cfusion/bin/cfcompile.sh",
+  "runtime_user": "coldfusion",
+  "stage": "/var/backups/ads-network-20261104-wnotoc_g",
+  "runtime_files_changed": false
+}

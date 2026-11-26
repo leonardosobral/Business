@@ -1,0 +1,113 @@
+{
+  "capturado_em": "2026-11-09T15:38:45.878568-03:00",
+  "columns": [
+    {
+      "table": "tb_evento_corridas",
+      "column": "data_inicial",
+      "type": "date"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "data_final",
+      "type": "date"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "data_processamento",
+      "type": "timestamp without time zone"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "data_inclusao",
+      "type": "timestamp without time zone"
+    },
+    {
+      "table": "tb_resultados",
+      "column": "data_nascimento",
+      "type": "date"
+    }
+  ],
+  "timeout": "45s",
+  "fact": {
+    "eventos": 4789,
+    "max_resultado": 31190231,
+    "primeira_data": "2026-01-02",
+    "ultima_data": "2026-09-30",
+    "min_resultado": 23085895,
+    "ids": 4502542,
+    "sem_localidade": 150159,
+    "n": 4502542,
+    "fora_jan_set": 0
+  },
+  "read_only": "on",
+  "indexes": [
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CREATE UNIQUE INDEX tb_evento_corridas_pk ON public.tb_evento_corridas USING btree (id_evento)"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CREATE INDEX tb_evento_corridas_nome_evento_full_text_idx ON public.tb_evento_corridas USING gin (nome_evento_full_text)"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CREATE INDEX tb_evento_corridas_nome_evento_index ON public.tb_evento_corridas USING btree (nome_evento)"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CREATE UNIQUE INDEX tb_evento_corridas_tag_uindex ON public.tb_evento_corridas USING btree (tag)"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CREATE INDEX tb_evento_corridas_agenda_lookup_idx ON public.tb_evento_corridas USING btree (ativo, data_final, estado, cidade, tipo_corrida)"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CREATE INDEX tb_evento_corridas_agenda_agregador_idx ON public.tb_evento_corridas USING btree (id_agrega_evento)"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CREATE INDEX idx_tb_evento_corridas_radar_coordinates ON public.tb_evento_corridas USING btree (longitude, latitude, data_inicial, lower((nome_evento)::text), id_evento) WHERE ((latitude IS NOT NULL) AND (longitude IS NOT NULL) AND (ativo = true))"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_idade_range_gist ON public.tb_resultados USING gist (idade_range)"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE UNIQUE INDEX tb_resultados_nova_pkey ON public.tb_resultados USING btree (id_resultado)"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_id_evento_num_peito_index ON public.tb_resultados USING btree (id_evento, num_peito)"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_id_evento_percurso_modalidade_index ON public.tb_resultados USING btree (id_evento, percurso, modalidade)"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE UNIQUE INDEX tb_resultados_id_evento_percurso_num_peito_sexo_nome_uindex ON public.tb_resultados USING btree (id_evento, percurso, num_peito, sexo, nome)"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE UNIQUE INDEX tb_resultados_id_evento_percurso_num_peito_uindex ON public.tb_resultados USING btree (id_evento, percurso, num_peito)"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_id_usuario_index ON public.tb_resultados USING btree (id_usuario)"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_nome_concluinte_index ON public.tb_resultados USING btree (nome, concluinte)"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_nome_full_text_idx ON public.tb_resultados USING gin (nome_full_text)"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX idx_result_nome_norm_trgm ON public.tb_resultados USING gin (nome_normalizado gin_trgm_ops)"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "source_url": "https://resultados.racetag.com.br/mycrono/data/BC13UF/event.json",
+  "name": null,
+  "source_athletes": 1981,
+  "routes": [
+    {
+      "name": "10KM GERAL",
+      "distance_m": 10000,
+      "expected_import": 504
+    },
+    {
+      "name": "10KM PCD",
+      "distance_m": 10000,
+      "expected_import": 26
+    },
+    {
+      "name": "5KM GERAL",
+      "distance_m": 5000,
+      "expected_import": 1392
+    },
+    {
+      "name": "5KM PCD",
+      "distance_m": 5000,
+      "expected_import": 22
+    }
+  ],
+  "expected_import": 1944,
+  "form_http": "200 0.836680"
+}

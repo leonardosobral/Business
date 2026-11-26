@@ -1,0 +1,243 @@
+{
+  "TRIGGERS": [],
+  "CONSTRAINTS": [
+    {
+      "definition": "FOREIGN KEY (actor_id) REFERENCES tb_usuarios(id)",
+      "conname": "audit_actor_id_fkey",
+      "relation": "crm_interno.audit"
+    },
+    {
+      "definition": "PRIMARY KEY (id)",
+      "conname": "audit_pkey",
+      "relation": "crm_interno.audit"
+    },
+    {
+      "definition": "CHECK ((current_version >= 0))",
+      "conname": "conversion_order_state_current_version_check",
+      "relation": "crm_interno.conversion_order_state"
+    },
+    {
+      "definition": "CHECK ((net_amount_minor >= 0))",
+      "conname": "conversion_order_state_net_amount_minor_check",
+      "relation": "crm_interno.conversion_order_state"
+    },
+    {
+      "definition": "PRIMARY KEY (id)",
+      "conname": "conversion_order_state_pkey",
+      "relation": "crm_interno.conversion_order_state"
+    },
+    {
+      "definition": "UNIQUE (source, account_scope, order_key)",
+      "conname": "conversion_order_state_source_account_scope_order_key_key",
+      "relation": "crm_interno.conversion_order_state"
+    },
+    {
+      "definition": "CHECK (((status)::text = ANY ((ARRAY['unverified'::character varying, 'confirmed'::character varying, 'refunded'::character varying, 'cancelled'::character varying])::text[])))",
+      "conname": "conversion_order_state_status_check",
+      "relation": "crm_interno.conversion_order_state"
+    },
+    {
+      "definition": "FOREIGN KEY (user_id) REFERENCES tb_usuarios(id)",
+      "conname": "conversion_order_state_user_id_fkey",
+      "relation": "crm_interno.conversion_order_state"
+    },
+    {
+      "definition": "CHECK (((((status)::text = 'unverified'::text) AND (net_amount_minor = 0)) OR (((status)::text = 'confirmed'::text) AND (net_amount_minor > 0)) OR ((status)::text = 'refunded'::text) OR (((status)::text = 'cancelled'::text) AND (net_amount_minor = 0))))",
+      "conname": "crm_conversion_order_balance",
+      "relation": "crm_interno.conversion_order_state"
+    },
+    {
+      "definition": "CHECK ((((user_id IS NULL) AND ((match_basis)::text = 'unmatched'::text)) OR ((user_id IS NOT NULL) AND ((match_basis)::text = 'checkout_authenticated'::text))))",
+      "conname": "crm_conversion_order_identity",
+      "relation": "crm_interno.conversion_order_state"
+    },
+    {
+      "definition": "CHECK (((classification IS NULL) OR (classification = ANY (ARRAY['pending'::text, 'confirmed'::text, 'refunded'::text]))))",
+      "conname": "crm_order_classification",
+      "relation": "crm_interno.conversion_order_state"
+    },
+    {
+      "definition": "CHECK (((coverage_kind IS NULL) OR (coverage_kind = ANY (ARRAY['linked_future'::text, 'provider_historical'::text]))))",
+      "conname": "crm_order_coverage_kind",
+      "relation": "crm_interno.conversion_order_state"
+    },
+    {
+      "definition": "CHECK (((product_code IS NULL) OR (product_code = ANY (ARRAY['todosantodia'::text, 'todosantodiavip'::text, 'todosantodiaupg'::text]))))",
+      "conname": "crm_order_product_code",
+      "relation": "crm_interno.conversion_order_state"
+    },
+    {
+      "definition": "CHECK ((amount_minor >= 0))",
+      "conname": "conversion_events_amount_minor_check",
+      "relation": "crm_interno.conversion_events"
+    },
+    {
+      "definition": "PRIMARY KEY (id)",
+      "conname": "conversion_events_pkey",
+      "relation": "crm_interno.conversion_events"
+    },
+    {
+      "definition": "UNIQUE (source, account_scope, event_key)",
+      "conname": "conversion_events_source_account_scope_event_key_key",
+      "relation": "crm_interno.conversion_events"
+    },
+    {
+      "definition": "FOREIGN KEY (source, account_scope, order_key) REFERENCES crm_interno.conversion_order_state(source, account_scope, order_key)",
+      "conname": "conversion_events_source_account_scope_order_key_fkey",
+      "relation": "crm_interno.conversion_events"
+    },
+    {
+      "definition": "UNIQUE (source, account_scope, order_key, source_version)",
+      "conname": "conversion_events_source_account_scope_order_key_source_ver_key",
+      "relation": "crm_interno.conversion_events"
+    },
+    {
+      "definition": "CHECK ((source_version > 0))",
+      "conname": "conversion_events_source_version_check",
+      "relation": "crm_interno.conversion_events"
+    },
+    {
+      "definition": "CHECK (((status)::text = ANY ((ARRAY['confirmed'::character varying, 'refunded'::character varying, 'cancelled'::character varying])::text[])))",
+      "conname": "conversion_events_status_check",
+      "relation": "crm_interno.conversion_events"
+    },
+    {
+      "definition": "FOREIGN KEY (user_id) REFERENCES tb_usuarios(id)",
+      "conname": "conversion_events_user_id_fkey",
+      "relation": "crm_interno.conversion_events"
+    },
+    {
+      "definition": "CHECK ((((user_id IS NULL) AND ((match_basis)::text = 'unmatched'::text)) OR ((user_id IS NOT NULL) AND ((match_basis)::text = 'checkout_authenticated'::text))))",
+      "conname": "crm_conversion_event_identity",
+      "relation": "crm_interno.conversion_events"
+    },
+    {
+      "definition": "FOREIGN KEY (legacy_grant_id) REFERENCES rr_verified.grants(id)",
+      "conname": "legacy_reclassifications_legacy_grant_id_fkey",
+      "relation": "rr_verified.legacy_reclassifications"
+    },
+    {
+      "definition": "UNIQUE (legacy_grant_id)",
+      "conname": "legacy_reclassifications_legacy_grant_id_key",
+      "relation": "rr_verified.legacy_reclassifications"
+    },
+    {
+      "definition": "PRIMARY KEY (profile_id)",
+      "conname": "legacy_reclassifications_pkey",
+      "relation": "rr_verified.legacy_reclassifications"
+    },
+    {
+      "definition": "FOREIGN KEY (profile_id) REFERENCES tb_paginas(id_pagina)",
+      "conname": "legacy_reclassifications_profile_id_fkey",
+      "relation": "rr_verified.legacy_reclassifications"
+    },
+    {
+      "definition": "CHECK ((amount_cents > 0))",
+      "conname": "challenge_orders_amount_cents_check",
+      "relation": "rr_verified.challenge_orders"
+    },
+    {
+      "definition": "CHECK ((ends_at > paid_at))",
+      "conname": "challenge_orders_check",
+      "relation": "rr_verified.challenge_orders"
+    },
+    {
+      "definition": "PRIMARY KEY (provider_order_id)",
+      "conname": "challenge_orders_pkey",
+      "relation": "rr_verified.challenge_orders"
+    },
+    {
+      "definition": "CHECK ((product_code = ANY (ARRAY['todosantodiavip'::text, 'todosantodiaupg'::text])))",
+      "conname": "challenge_orders_product_code_check",
+      "relation": "rr_verified.challenge_orders"
+    },
+    {
+      "definition": "FOREIGN KEY (profile_id) REFERENCES tb_paginas(id_pagina)",
+      "conname": "challenge_orders_profile_id_fkey",
+      "relation": "rr_verified.challenge_orders"
+    },
+    {
+      "definition": "CHECK ((provider_order_id ~ '^or_[A-Za-z0-9_-]+$'::text))",
+      "conname": "challenge_orders_provider_order_id_check",
+      "relation": "rr_verified.challenge_orders"
+    },
+    {
+      "definition": "CHECK ((state = ANY (ARRAY['paid'::text, 'refunded'::text, 'review'::text])))",
+      "conname": "challenge_orders_state_check",
+      "relation": "rr_verified.challenge_orders"
+    },
+    {
+      "definition": "FOREIGN KEY (user_id) REFERENCES tb_usuarios(id)",
+      "conname": "challenge_orders_user_id_fkey",
+      "relation": "rr_verified.challenge_orders"
+    }
+  ],
+  "COLUMNS": [
+    {
+      "table_name": "audit",
+      "data_type": "bigint",
+      "column_name": "id",
+      "column_default": "nextval('crm_interno.audit_id_seq'::regclass)"
+    },
+    {
+      "table_name": "audit",
+      "data_type": "integer",
+      "column_name": "actor_id",
+      "column_default": ""
+    },
+    {
+      "table_name": "audit",
+      "data_type": "text",
+      "column_name": "action",
+      "column_default": ""
+    },
+    {
+      "table_name": "audit",
+      "data_type": "text",
+      "column_name": "entity_id",
+      "column_default": ""
+    },
+    {
+      "table_name": "audit",
+      "data_type": "integer",
+      "column_name": "revision",
+      "column_default": ""
+    },
+    {
+      "table_name": "audit",
+      "data_type": "text",
+      "column_name": "request_id",
+      "column_default": ""
+    },
+    {
+      "table_name": "audit",
+      "data_type": "timestamp with time zone",
+      "column_name": "created_at",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "audit",
+      "data_type": "jsonb",
+      "column_name": "details",
+      "column_default": "'{}'::jsonb"
+    }
+  ],
+  "FUNCTIONS": [
+    {
+      "name": "rr_verified.challenge_end(timestamp with time zone)",
+      "hash": "17d687861f1309d547e9c353853bcc22"
+    },
+    {
+      "name": "rr_verified.profile_status(integer,timestamp with time zone)",
+      "hash": "3324835fe509551401ad420ed1d07c32"
+    },
+    {
+      "name": "rr_verified.reconcile_challenge(text,text,integer,timestamp with time zone,text)",
+      "hash": "c0650c2cd4140595e702ad3b9b23b074"
+    },
+    {
+      "name": "rr_verified.reflow_paid(integer)",
+      "hash": "9ad3b82027eae376da86543733b43e30"
+    }
+  ]
+}

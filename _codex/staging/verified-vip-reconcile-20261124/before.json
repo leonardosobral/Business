@@ -1,0 +1,675 @@
+{
+  "sources": [],
+  "counts": [
+    {
+      "profiles": 418,
+      "active": 418,
+      "permanent": 128
+    }
+  ],
+  "profiles": [
+    {
+      "profile_id": 2732,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 6014,
+      "tag": "amaequipeselva",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 9438,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 6603,
+      "tag": "profejefersonmenin",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 11469,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 166,
+      "tag": "renatbrazilian",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 12322,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 9967,
+      "tag": "weberson-martins-de-oliveira",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 13813,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 12719,
+      "tag": "leonardo-berguerand",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 15572,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 15696,
+      "tag": "joao_imildo",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 15644,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 15979,
+      "tag": "bastos",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 16236,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 17241,
+      "tag": "luciana-andrade",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 16431,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 17598,
+      "tag": "anderson-andrade",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 17465,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 19732,
+      "tag": "izabela-de-oliveira-bulhoes",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 17698,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 20084,
+      "tag": "rogerssoft",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 17888,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 20382,
+      "tag": "jose-xavier-junior",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 17923,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 20431,
+      "tag": "carina_pereira_ca",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 18537,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 21596,
+      "tag": "flavio-albuquerque",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 18542,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 21604,
+      "tag": "luciano-oliveira",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 18744,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 22013,
+      "tag": "dineuma",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 18803,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 22110,
+      "tag": "vivi10",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 18856,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 22193,
+      "tag": "israel-branco",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 18938,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 22325,
+      "tag": "katia-cilene",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 18996,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 22441,
+      "tag": "nelson-fonari-palma",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 19144,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 22775,
+      "tag": "ma-braga",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 19279,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 23166,
+      "tag": "anderson-cardoso-ferreira-",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 19288,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 23202,
+      "tag": "marcos-goncalves",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 19432,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 23893,
+      "tag": "debydanoli",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 21688,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 33932,
+      "tag": "silviokalifa",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 28882,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 49983,
+      "tag": "gneto25",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53015,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 105013,
+      "tag": "giselelima",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53025,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 105037,
+      "tag": "julio-anselmo",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53067,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 105127,
+      "tag": "paulo-dieter",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53134,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 105299,
+      "tag": "flavio-jimenez",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53296,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 105742,
+      "tag": "gabilarosa",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53618,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 106769,
+      "tag": "robert",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53742,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107204,
+      "tag": "wanessa-santos",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53754,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107255,
+      "tag": "franciene-lopes",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53789,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107350,
+      "tag": "keli-pieretti",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53794,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107370,
+      "tag": "rejane-gruntowski-mendes",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53798,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107382,
+      "tag": "willian-clarindo",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53812,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107420,
+      "tag": "simonetessari.psi",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53816,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107428,
+      "tag": "lizandra-peixoto",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53820,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107436,
+      "tag": "jhenyfer-monteiro-silva",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53823,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107445,
+      "tag": "vini_pegas",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53839,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107489,
+      "tag": "andre-roocha",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53848,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107516,
+      "tag": "pedro-vinicius-oliveira",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53850,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107521,
+      "tag": "fabriciodavila",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53854,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107531,
+      "tag": "angelica-sandes",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    },
+    {
+      "profile_id": 53857,
+      "status": "permanent",
+      "tag_prefix": "atleta",
+      "active": 1,
+      "user_id": 107537,
+      "tag": "debora-menezes-sa",
+      "valid_until": "",
+      "verificado": 1,
+      "permanent": 1
+    }
+  ],
+  "orders": [],
+  "reclassifications": [],
+  "guards": [
+    {
+      "legacy_records": 418,
+      "reclassified": 290,
+      "challenge_orders": 302
+    }
+  ],
+  "grants": [
+    {
+      "row": "{\"id\": 11, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.680244-03:00\", \"created_at\": \"2026-11-04T20:49:28.24656-03:00\", \"profile_id\": 19432, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 16, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.680589-03:00\", \"created_at\": \"2026-11-04T20:49:28.246586-03:00\", \"profile_id\": 18938, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 42, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.681754-03:00\", \"created_at\": \"2026-11-04T20:49:28.246737-03:00\", \"profile_id\": 53754, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 87, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.682721-03:00\", \"created_at\": \"2026-11-04T20:49:28.247124-03:00\", \"profile_id\": 19144, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 89, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.682745-03:00\", \"created_at\": \"2026-11-04T20:49:28.247135-03:00\", \"profile_id\": 11469, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 93, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.682778-03:00\", \"created_at\": \"2026-11-04T20:49:28.247156-03:00\", \"profile_id\": 15644, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 95, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.682801-03:00\", \"created_at\": \"2026-11-04T20:49:28.24717-03:00\", \"profile_id\": 16431, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 116, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.683017-03:00\", \"created_at\": \"2026-11-04T20:49:28.24729-03:00\", \"profile_id\": 53854, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 123, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.68308-03:00\", \"created_at\": \"2026-11-04T20:49:28.247333-03:00\", \"profile_id\": 21688, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 124, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.683121-03:00\", \"created_at\": \"2026-11-04T20:49:28.247357-03:00\", \"profile_id\": 53839, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 125, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.68315-03:00\", \"created_at\": \"2026-11-04T20:49:28.247361-03:00\", \"profile_id\": 28882, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 128, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.683198-03:00\", \"created_at\": \"2026-11-04T20:49:28.247373-03:00\", \"profile_id\": 53816, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 129, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.683207-03:00\", \"created_at\": \"2026-11-04T20:49:28.247377-03:00\", \"profile_id\": 18744, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 147, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.683468-03:00\", \"created_at\": \"2026-11-04T20:49:28.247468-03:00\", \"profile_id\": 53618, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 155, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.683909-03:00\", \"created_at\": \"2026-11-04T20:49:28.247504-03:00\", \"profile_id\": 17698, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 156, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.683917-03:00\", \"created_at\": \"2026-11-04T20:49:28.247508-03:00\", \"profile_id\": 13813, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 157, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.683936-03:00\", \"created_at\": \"2026-11-04T20:49:28.247512-03:00\", \"profile_id\": 18856, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 158, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.683949-03:00\", \"created_at\": \"2026-11-04T20:49:28.247516-03:00\", \"profile_id\": 16236, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 165, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.68403-03:00\", \"created_at\": \"2026-11-04T20:49:28.247546-03:00\", \"profile_id\": 53848, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 190, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.686563-03:00\", \"created_at\": \"2026-11-04T20:49:28.247678-03:00\", \"profile_id\": 19288, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 204, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.688407-03:00\", \"created_at\": \"2026-11-04T20:49:28.247736-03:00\", \"profile_id\": 17888, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 212, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.688668-03:00\", \"created_at\": \"2026-11-04T20:49:28.247779-03:00\", \"profile_id\": 17923, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 221, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.68966-03:00\", \"created_at\": \"2026-11-04T20:49:28.247824-03:00\", \"profile_id\": 2732, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 229, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.690711-03:00\", \"created_at\": \"2026-11-04T20:49:28.24786-03:00\", \"profile_id\": 53296, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 255, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.691495-03:00\", \"created_at\": \"2026-11-04T20:49:28.247994-03:00\", \"profile_id\": 53015, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 265, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.691678-03:00\", \"created_at\": \"2026-11-04T20:49:28.248039-03:00\", \"profile_id\": 53025, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 271, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.691781-03:00\", \"created_at\": \"2026-11-04T20:49:28.248066-03:00\", \"profile_id\": 53067, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 276, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.69191-03:00\", \"created_at\": \"2026-11-04T20:49:28.248089-03:00\", \"profile_id\": 53742, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 278, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.691936-03:00\", \"created_at\": \"2026-11-04T20:49:28.248097-03:00\", \"profile_id\": 53789, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 279, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.691948-03:00\", \"created_at\": \"2026-11-04T20:49:28.248101-03:00\", \"profile_id\": 18996, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 283, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.692037-03:00\", \"created_at\": \"2026-11-04T20:49:28.248117-03:00\", \"profile_id\": 53134, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 286, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.69208-03:00\", \"created_at\": \"2026-11-04T20:49:28.248132-03:00\", \"profile_id\": 53794, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 287, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.692088-03:00\", \"created_at\": \"2026-11-04T20:49:28.248136-03:00\", \"profile_id\": 53798, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 288, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.692095-03:00\", \"created_at\": \"2026-11-04T20:49:28.24814-03:00\", \"profile_id\": 53850, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 289, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.692101-03:00\", \"created_at\": \"2026-11-04T20:49:28.248144-03:00\", \"profile_id\": 53823, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 290, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.692108-03:00\", \"created_at\": \"2026-11-04T20:49:28.248148-03:00\", \"profile_id\": 53857, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 309, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.692482-03:00\", \"created_at\": \"2026-11-04T20:49:28.248346-03:00\", \"profile_id\": 12322, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 318, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.692623-03:00\", \"created_at\": \"2026-11-04T20:49:28.248385-03:00\", \"profile_id\": 18537, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 333, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.692956-03:00\", \"created_at\": \"2026-11-04T20:49:28.24853-03:00\", \"profile_id\": 15572, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 344, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.693058-03:00\", \"created_at\": \"2026-11-04T20:49:28.248576-03:00\", \"profile_id\": 18803, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 364, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.694688-03:00\", \"created_at\": \"2026-11-04T20:49:28.248675-03:00\", \"profile_id\": 19279, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 370, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.694845-03:00\", \"created_at\": \"2026-11-04T20:49:28.248723-03:00\", \"profile_id\": 18542, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 389, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.694999-03:00\", \"created_at\": \"2026-11-04T20:49:28.248802-03:00\", \"profile_id\": 9438, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 390, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.695005-03:00\", \"created_at\": \"2026-11-04T20:49:28.248809-03:00\", \"profile_id\": 53820, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 395, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.695034-03:00\", \"created_at\": \"2026-11-04T20:49:28.248828-03:00\", \"profile_id\": 53812, \"revoked_at\": null}"
+    },
+    {
+      "row": "{\"id\": 417, \"origin\": \"legacy\", \"reason\": \"Verificado anterior ao produto anual; sem vencimento\", \"ends_at\": null, \"order_id\": null, \"starts_at\": \"2026-11-04T19:09:04.695413-03:00\", \"created_at\": \"2026-11-04T20:49:28.249076-03:00\", \"profile_id\": 17465, \"revoked_at\": null}"
+    }
+  ],
+  "classifications": [
+    {
+      "profile_id": 28882,
+      "revision": 22,
+      "reason": "Atleta de elite \u2014 classifica\u00e7\u00e3o autorizada por Leonardo Sobral em 24/11/2026. Resultado vinculado ao usu\u00e1rio 49983: BSB City Half Marathon, 06/11/2022, 21 km, categoria ELITEM, 4\u00ba colocado (resultado 1831949). Ficha CBAt 24936: https://cbat.org.br/atletas/24936/guilherme-neto-de-sousa-ferreira.",
+      "category": "elite"
+    }
+  ]
+}

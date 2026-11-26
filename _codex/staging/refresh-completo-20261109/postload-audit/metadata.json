@@ -1,0 +1,298 @@
+{
+  "audit": {
+    "snapshot_id": "308969104:308969104:",
+    "activated_at": "2026-11-09T16:55:58.42464-03:00",
+    "status": "activated",
+    "quality": {
+      "null_pcd": 0,
+      "unresolved_timer": 4549136,
+      "null_event_homologated": 4504100,
+      "zero_time": 86,
+      "fact": 4574981,
+      "null_time": 0,
+      "eligible": 4574981,
+      "missing_date_dimension": 0,
+      "unresolved_locality": 160535,
+      "null_sex": 0,
+      "unresolved_organizer": 3102395,
+      "null_distance": 0
+    },
+    "loaded_at": "2026-11-09T16:55:27.872241-03:00",
+    "singleton": true,
+    "function_contract": {
+      "get_id_geracao(int4range,integer)": "4ceab31871e33e5eb841c16d6e37cd82",
+      "get_id_dim_faixa(numeric,time without time zone)": "547a306bfba2b1bd9fe072b76869608d",
+      "get_id_categoria_cbat(int4range)": "aa6fe20f75af7d049cc0cb1bb49fbfc5",
+      "get_id_geracao(int4range,integer,date,date)": "221972b658c5e11554e75a9b361da415"
+    },
+    "activated_views": {
+      "estudo.vwbi_perfil_br_2026": "5960d1f7eebb55b41f3211ea7e3d71c4",
+      "estudo.vw_resultados_2026": "5524665b7c60ed7455fceb7d36b56aca"
+    },
+    "source_script_sha256": "d9907382d2de1c9d396d4edb0d23c907c89aa0e74bca62cfa6783c99b34c6a08",
+    "monthly_rows": [
+      {
+        "month": "2026-01-01",
+        "rows": 158051
+      },
+      {
+        "month": "2026-02-01",
+        "rows": 165059
+      },
+      {
+        "month": "2026-03-01",
+        "rows": 566764
+      },
+      {
+        "month": "2026-04-01",
+        "rows": 459228
+      },
+      {
+        "month": "2026-05-01",
+        "rows": 719782
+      },
+      {
+        "month": "2026-06-01",
+        "rows": 529639
+      },
+      {
+        "month": "2026-07-01",
+        "rows": 509871
+      },
+      {
+        "month": "2026-08-01",
+        "rows": 742946
+      },
+      {
+        "month": "2026-09-01",
+        "rows": 723641
+      }
+    ]
+  },
+  "capturado_em": "2026-11-09T18:18:33.053861-03:00",
+  "view_dependencies": [
+    {
+      "source": "estudo.vwbi_perfil_br_2026_20261109",
+      "view": "estudo.vwbi_perfil_br_2026"
+    },
+    {
+      "source": "estudo.fat_perfil_br_2026_20261109",
+      "view": "estudo.vwbi_perfil_br_2026_20261109"
+    },
+    {
+      "source": "tbbi_dim_cbat_categorias",
+      "view": "estudo.vwbi_perfil_br_2026_20261109"
+    },
+    {
+      "source": "tbbi_dim_cronometragem",
+      "view": "estudo.vwbi_perfil_br_2026_20261109"
+    },
+    {
+      "source": "tbbi_dim_data",
+      "view": "estudo.vwbi_perfil_br_2026_20261109"
+    },
+    {
+      "source": "tbbi_dim_faixas",
+      "view": "estudo.vwbi_perfil_br_2026_20261109"
+    },
+    {
+      "source": "tbbi_dim_geracoes",
+      "view": "estudo.vwbi_perfil_br_2026_20261109"
+    },
+    {
+      "source": "tbbi_dim_localidade",
+      "view": "estudo.vwbi_perfil_br_2026_20261109"
+    },
+    {
+      "source": "tbbi_dim_organizacao_2026",
+      "view": "estudo.vwbi_perfil_br_2026_20261109"
+    },
+    {
+      "source": "estudo.vw_resultados_2026_20261109",
+      "view": "estudo.vw_resultados_2026"
+    },
+    {
+      "source": "estudo.vwbi_perfil_br_2026_20261109",
+      "view": "estudo.vw_resultados_2026_20261109"
+    },
+    {
+      "source": "tb_resultados",
+      "view": "estudo.vw_resultados_2026_20261109"
+    }
+  ],
+  "view_hashes": [
+    {
+      "definition": " SELECT v.id_resultado,\n    r.num_peito,\n    r.nome,\n    r.data_nascimento,\n    v.id_evento,\n    r.modalidade,\n    r.pace,\n    v.percurso,\n    v.sexo::character varying AS sexo,\n    r.tempo_bruto,\n    v.tempo_total,\n    r.classificacao_categoria,\n    r.classificacao_sexo,\n    r.classificacao_total,\n    r.velocidade_media,\n    r.equipe,\n    r.nome_categoria,\n    v.id_usuario,\n    r.id_categoria,\n    v.resultado_homologado AS homologado,\n    r.concluinte,\n    r.chave_processamento,\n    r.chave_verificacao,\n    r.nacionalidade,\n    r.status_final,\n    r.hora_largada,\n    r.tempo_f1_categoria,\n    r.tempo_f1_sexo,\n    r.tempo_f1_total,\n    r.posicao_ranking,\n    r.classificacao_pais,\n    v.pcd,\n    r.nome_full_text,\n    v.idade_range,\n    r.nome_normalizado,\n    r.origem_resultado\n   FROM estudo.vwbi_perfil_br_2026_20261109 v\n     LEFT JOIN tb_resultados r ON r.id_resultado = v.id_resultado\n  WHERE v.data_evento >= '2026-01-01'::date AND v.data_evento < '2026-10-01'::date;",
+      "md5": "8b7fa3a732975e640ab55cc6fda75110",
+      "name": "estudo.vw_resultados_2026_20261109"
+    },
+    {
+      "definition": " SELECT tbbi_fat_perfil_br_2026.id_fat_perfil_br_2026,\n    tbbi_fat_perfil_br_2026.id_evento,\n    tbbi_fat_perfil_br_2026.id_resultado,\n    tbbi_fat_perfil_br_2026.data_evento,\n    tbbi_fat_perfil_br_2026.percurso,\n    tbbi_fat_perfil_br_2026.sexo,\n    tbbi_fat_perfil_br_2026.tempo_total,\n    EXTRACT(epoch FROM tbbi_fat_perfil_br_2026.tempo_total)::integer AS tempo_total_segundos,\n    tbbi_fat_perfil_br_2026.idade_range,\n    tbbi_fat_perfil_br_2026.id_usuario,\n    tbbi_fat_perfil_br_2026.id_atleta_strava,\n    tbbi_fat_perfil_br_2026.pcd,\n    tbbi_fat_perfil_br_2026.evento_homologado,\n    tbbi_fat_perfil_br_2026.resultado_homologado,\n    dd.id_data,\n    dd.data_referencia,\n    dd.ano,\n    dd.mes,\n    dd.mes_extenso,\n    dd.dia,\n    dd.dia_do_ano,\n    dd.dia_da_semana,\n    dd.semana_calendario,\n    dd.data_formatada,\n    dd.trimestre,\n    dd.trimestre_ano,\n    dd.mes_ano,\n    dd.ano_semana_calendario,\n    dd.tipo_dia_semana,\n    dd.feriado_nacional,\n    dd.calendario_inicio_semana,\n    dd.calendario_final_semana,\n    tbbi_fat_perfil_br_2026.id_localidade,\n    dl.nome_pais,\n    dl.regiao,\n    dl.estado,\n    dl.nome_estado,\n    dl.nome_cidade,\n    dl.capital,\n    dl.id_paises_iso3166,\n    dg.id_geracao,\n    dg.nome_geracao,\n    df.id_faixa,\n    df.nome_faixa,\n    dfc.id_cbat_categoria,\n    dfc.nome_cbat_categoria,\n    ni.id_organizacao,\n    ni.agrupamento,\n    ni.nome_padrao,\n    ni.nome_original,\n    dc.id_cronometragem,\n    dc.nome_cronometragem\n   FROM estudo.fat_perfil_br_2026_20261109 tbbi_fat_perfil_br_2026\n     LEFT JOIN tbbi_dim_data dd ON dd.id_data = tbbi_fat_perfil_br_2026.id_data\n     LEFT JOIN tbbi_dim_localidade dl ON dl.id_localidade = tbbi_fat_perfil_br_2026.id_localidade\n     LEFT JOIN tbbi_dim_geracoes dg ON dg.id_geracao = tbbi_fat_perfil_br_2026.id_geracao\n     LEFT JOIN tbbi_dim_faixas df ON df.id_faixa = tbbi_fat_perfil_br_2026.id_faixa\n     LEFT JOIN tbbi_dim_cbat_categorias dfc ON dfc.id_cbat_categoria = tbbi_fat_perfil_br_2026.id_cbat_categoria\n     LEFT JOIN tbbi_dim_organizacao_2026 ni ON ni.id_organizacao = tbbi_fat_perfil_br_2026.id_organizador\n     LEFT JOIN tbbi_dim_cronometragem dc ON dc.id_cronometragem = tbbi_fat_perfil_br_2026.id_cronometrador;",
+      "md5": "9ea4fc9f63a66bc3ea503c7b6a333aab",
+      "name": "estudo.vwbi_perfil_br_2026_20261109"
+    },
+    {
+      "definition": " SELECT id_resultado,\n    num_peito,\n    nome,\n    data_nascimento,\n    id_evento,\n    modalidade,\n    pace,\n    percurso,\n    sexo,\n    tempo_bruto,\n    tempo_total,\n    classificacao_categoria,\n    classificacao_sexo,\n    classificacao_total,\n    velocidade_media,\n    equipe,\n    nome_categoria,\n    id_usuario,\n    id_categoria,\n    homologado,\n    concluinte,\n    chave_processamento,\n    chave_verificacao,\n    nacionalidade,\n    status_final,\n    hora_largada,\n    tempo_f1_categoria,\n    tempo_f1_sexo,\n    tempo_f1_total,\n    posicao_ranking,\n    classificacao_pais,\n    pcd,\n    nome_full_text,\n    idade_range,\n    nome_normalizado,\n    origem_resultado\n   FROM estudo.vw_resultados_2026_20261109;",
+      "md5": "5524665b7c60ed7455fceb7d36b56aca",
+      "name": "estudo.vw_resultados_2026"
+    },
+    {
+      "definition": " SELECT id_fat_perfil_br_2026,\n    id_evento,\n    id_resultado,\n    data_evento,\n    percurso,\n    sexo,\n    tempo_total,\n    tempo_total_segundos,\n    idade_range,\n    id_usuario,\n    id_atleta_strava,\n    pcd,\n    evento_homologado,\n    resultado_homologado,\n    id_data,\n    data_referencia,\n    ano,\n    mes,\n    mes_extenso,\n    dia,\n    dia_do_ano,\n    dia_da_semana,\n    semana_calendario,\n    data_formatada,\n    trimestre,\n    trimestre_ano,\n    mes_ano,\n    ano_semana_calendario,\n    tipo_dia_semana,\n    feriado_nacional,\n    calendario_inicio_semana,\n    calendario_final_semana,\n    id_localidade,\n    nome_pais,\n    regiao,\n    estado,\n    nome_estado,\n    nome_cidade,\n    capital,\n    id_paises_iso3166,\n    id_geracao,\n    nome_geracao,\n    id_faixa,\n    nome_faixa,\n    id_cbat_categoria,\n    nome_cbat_categoria,\n    id_organizacao,\n    agrupamento,\n    nome_padrao,\n    nome_original,\n    id_cronometragem,\n    nome_cronometragem\n   FROM estudo.vwbi_perfil_br_2026_20261109;",
+      "md5": "5960d1f7eebb55b41f3211ea7e3d71c4",
+      "name": "estudo.vwbi_perfil_br_2026"
+    },
+    {
+      "definition": " SELECT r.id_resultado,\n    r.num_peito,\n    r.nome,\n    r.data_nascimento,\n    r.id_evento,\n    r.modalidade,\n    r.pace,\n    r.percurso,\n    r.sexo,\n    r.tempo_bruto,\n    r.tempo_total,\n    r.classificacao_categoria,\n    r.classificacao_sexo,\n    r.classificacao_total,\n    r.velocidade_media,\n    r.equipe,\n    r.nome_categoria,\n    r.id_usuario,\n    r.id_categoria,\n    r.homologado,\n    r.concluinte,\n    r.chave_processamento,\n    r.chave_verificacao,\n    r.nacionalidade,\n    r.status_final,\n    r.hora_largada,\n    r.tempo_f1_categoria,\n    r.tempo_f1_sexo,\n    r.tempo_f1_total,\n    r.posicao_ranking,\n    r.classificacao_pais,\n    r.pcd,\n    r.nome_full_text,\n    r.idade_range,\n    r.nome_normalizado,\n    r.origem_resultado\n   FROM tb_resultados r\n     JOIN tb_evento_corridas e USING (id_evento)\n  WHERE e.pais::text = 'BR'::text AND e.data_final >= '2025-01-01'::date AND e.data_final < '2026-01-01'::date\nUNION ALL\n SELECT vw_resultados_2026.id_resultado,\n    vw_resultados_2026.num_peito,\n    vw_resultados_2026.nome,\n    vw_resultados_2026.data_nascimento,\n    vw_resultados_2026.id_evento,\n    vw_resultados_2026.modalidade,\n    vw_resultados_2026.pace,\n    vw_resultados_2026.percurso,\n    vw_resultados_2026.sexo,\n    vw_resultados_2026.tempo_bruto,\n    vw_resultados_2026.tempo_total,\n    vw_resultados_2026.classificacao_categoria,\n    vw_resultados_2026.classificacao_sexo,\n    vw_resultados_2026.classificacao_total,\n    vw_resultados_2026.velocidade_media,\n    vw_resultados_2026.equipe,\n    vw_resultados_2026.nome_categoria,\n    vw_resultados_2026.id_usuario,\n    vw_resultados_2026.id_categoria,\n    vw_resultados_2026.homologado,\n    vw_resultados_2026.concluinte,\n    vw_resultados_2026.chave_processamento,\n    vw_resultados_2026.chave_verificacao,\n    vw_resultados_2026.nacionalidade,\n    vw_resultados_2026.status_final,\n    vw_resultados_2026.hora_largada,\n    vw_resultados_2026.tempo_f1_categoria,\n    vw_resultados_2026.tempo_f1_sexo,\n    vw_resultados_2026.tempo_f1_total,\n    vw_resultados_2026.posicao_ranking,\n    vw_resultados_2026.classificacao_pais,\n    vw_resultados_2026.pcd,\n    vw_resultados_2026.nome_full_text,\n    vw_resultados_2026.idade_range,\n    vw_resultados_2026.nome_normalizado,\n    vw_resultados_2026.origem_resultado\n   FROM estudo.vw_resultados_2026;",
+      "md5": "5d6c7b6d81cbbe774e0963e6e8ab65fb",
+      "name": "estudo.vw_resultados_comparativo_2025_2026"
+    },
+    {
+      "definition": " SELECT tbbi_fat_perfil_br_2026.id_fat_perfil_br_2026,\n    tbbi_fat_perfil_br_2026.id_evento,\n    tbbi_fat_perfil_br_2026.id_resultado,\n    tbbi_fat_perfil_br_2026.data_evento,\n    tbbi_fat_perfil_br_2026.percurso,\n    tbbi_fat_perfil_br_2026.sexo,\n    tbbi_fat_perfil_br_2026.tempo_total,\n    EXTRACT(epoch FROM tbbi_fat_perfil_br_2026.tempo_total)::integer AS tempo_total_segundos,\n    tbbi_fat_perfil_br_2026.idade_range,\n    tbbi_fat_perfil_br_2026.id_usuario,\n    tbbi_fat_perfil_br_2026.id_atleta_strava,\n    tbbi_fat_perfil_br_2026.pcd,\n    tbbi_fat_perfil_br_2026.evento_homologado,\n    tbbi_fat_perfil_br_2026.resultado_homologado,\n    dd.id_data,\n    dd.data_referencia,\n    dd.ano,\n    dd.mes,\n    dd.mes_extenso,\n    dd.dia,\n    dd.dia_do_ano,\n    dd.dia_da_semana,\n    dd.semana_calendario,\n    dd.data_formatada,\n    dd.trimestre,\n    dd.trimestre_ano,\n    dd.mes_ano,\n    dd.ano_semana_calendario,\n    dd.tipo_dia_semana,\n    dd.feriado_nacional,\n    dd.calendario_inicio_semana,\n    dd.calendario_final_semana,\n    dl.id_localidade,\n    dl.nome_pais,\n    dl.regiao,\n    dl.estado,\n    dl.nome_estado,\n    dl.nome_cidade,\n    dl.capital,\n    dl.id_paises_iso3166,\n    dg.id_geracao,\n    dg.nome_geracao,\n    df.id_faixa,\n    df.nome_faixa,\n    dfc.id_cbat_categoria,\n    dfc.nome_cbat_categoria,\n    ni.id_organizacao,\n    ni.agrupamento,\n    ni.nome_padrao,\n    ni.nome_original,\n    dc.id_cronometragem,\n    dc.nome_cronometragem\n   FROM tbbi_fat_perfil_br_2026\n     JOIN tbbi_dim_data dd ON dd.id_data = tbbi_fat_perfil_br_2026.id_data\n     JOIN tbbi_dim_localidade dl ON dl.id_localidade = tbbi_fat_perfil_br_2026.id_localidade\n     JOIN tbbi_dim_geracoes dg ON dg.id_geracao = tbbi_fat_perfil_br_2026.id_geracao\n     JOIN tbbi_dim_faixas df ON df.id_faixa = tbbi_fat_perfil_br_2026.id_faixa\n     JOIN tbbi_dim_cbat_categorias dfc ON dfc.id_cbat_categoria = tbbi_fat_perfil_br_2026.id_cbat_categoria\n     JOIN tbbi_dim_organizacao_2026 ni ON ni.id_organizacao = tbbi_fat_perfil_br_2026.id_organizador\n     JOIN tbbi_dim_cronometragem dc ON dc.id_cronometragem = tbbi_fat_perfil_br_2026.id_cronometrador;",
+      "md5": "fddd821daa89826c4284eb5a81b954d0",
+      "name": "vwbi_fat_perfil_br_2026"
+    }
+  ],
+  "columns": [
+    {
+      "n": 20,
+      "name": "estudo.fat_perfil_br_2026_20261109"
+    },
+    {
+      "n": 36,
+      "name": "estudo.vw_resultados_2026"
+    },
+    {
+      "n": 36,
+      "name": "estudo.vw_resultados_2026_20261109"
+    },
+    {
+      "n": 52,
+      "name": "estudo.vwbi_perfil_br_2026"
+    },
+    {
+      "n": 52,
+      "name": "estudo.vwbi_perfil_br_2026_20261109"
+    }
+  ],
+  "objects": [
+    {
+      "owner": "runner_dba",
+      "kind": "r",
+      "size": 880648192,
+      "reader_select": true,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "name": "estudo.fat_perfil_br_2026_20261109"
+    },
+    {
+      "owner": "runner_dba",
+      "kind": "r",
+      "size": 49152,
+      "reader_select": true,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "name": "estudo.fat_perfil_br_2026_20261109_audit"
+    },
+    {
+      "owner": "runner_dba",
+      "kind": "v",
+      "size": 0,
+      "reader_select": true,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "name": "estudo.vw_resultados_2026"
+    },
+    {
+      "owner": "runner_dba",
+      "kind": "v",
+      "size": 0,
+      "reader_select": true,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "name": "estudo.vw_resultados_2026_20261109"
+    },
+    {
+      "owner": "runner_dba",
+      "kind": "v",
+      "size": 0,
+      "reader_select": true,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "name": "estudo.vwbi_perfil_br_2026"
+    },
+    {
+      "owner": "runner_dba",
+      "kind": "v",
+      "size": 0,
+      "reader_select": true,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "name": "estudo.vwbi_perfil_br_2026_20261109"
+    }
+  ],
+  "functions": [
+    {
+      "matches": true,
+      "actual": "aa6fe20f75af7d049cc0cb1bb49fbfc5",
+      "expected": "aa6fe20f75af7d049cc0cb1bb49fbfc5",
+      "signature": "get_id_categoria_cbat(int4range)"
+    },
+    {
+      "matches": true,
+      "actual": "4ceab31871e33e5eb841c16d6e37cd82",
+      "expected": "4ceab31871e33e5eb841c16d6e37cd82",
+      "signature": "get_id_geracao(int4range,integer)"
+    },
+    {
+      "matches": true,
+      "actual": "221972b658c5e11554e75a9b361da415",
+      "expected": "221972b658c5e11554e75a9b361da415",
+      "signature": "get_id_geracao(int4range,integer,date,date)"
+    },
+    {
+      "matches": true,
+      "actual": "547a306bfba2b1bd9fe072b76869608d",
+      "expected": "547a306bfba2b1bd9fe072b76869608d",
+      "signature": "get_id_dim_faixa(numeric,time without time zone)"
+    }
+  ],
+  "read_only": "on",
+  "indexes": [
+    {
+      "definition": "CREATE UNIQUE INDEX fat_perfil_br_2026_20261109_pkey ON estudo.fat_perfil_br_2026_20261109 USING btree (id_fat_perfil_br_2026)",
+      "valid": true,
+      "unique": true,
+      "name": "estudo.fat_perfil_br_2026_20261109_pkey"
+    },
+    {
+      "definition": "CREATE UNIQUE INDEX fat_perfil_br_2026_20261109_result_idx ON estudo.fat_perfil_br_2026_20261109 USING btree (id_resultado)",
+      "valid": true,
+      "unique": true,
+      "name": "estudo.fat_perfil_br_2026_20261109_result_idx"
+    },
+    {
+      "definition": "CREATE INDEX fat_perfil_br_2026_20261109_event_idx ON estudo.fat_perfil_br_2026_20261109 USING btree (id_evento)",
+      "valid": true,
+      "unique": false,
+      "name": "estudo.fat_perfil_br_2026_20261109_event_idx"
+    },
+    {
+      "definition": "CREATE INDEX fat_perfil_br_2026_20261109_date_idx ON estudo.fat_perfil_br_2026_20261109 USING btree (data_evento)",
+      "valid": true,
+      "unique": false,
+      "name": "estudo.fat_perfil_br_2026_20261109_date_idx"
+    }
+  ]
+}

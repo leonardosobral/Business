@@ -1,0 +1,11 @@
+{
+  "session": "verified-pending-be43e63a",
+  "started_at": 1795545597.423638,
+  "output": "/Users/Shared/Projects/RunnerHub/Business/output/playwright/verified-pending-be43e63a",
+  "daemon_pid": 41575,
+  "mobile_dimensions": "### Result\n\"{\\\"width\\\":390,\\\"scroll\\\":390}\"\n### Ran Playwright code\n```js\nawait page.evaluate('() => (JSON.stringify({width:innerWidth,scroll:document.documentElement.scrollWidth}))');\n```\n",
+  "detail_dimensions": "### Result\n\"{\\\"width\\\":390,\\\"scroll\\\":390}\"\n### Ran Playwright code\n```js\nawait page.evaluate('() => (JSON.stringify({width:innerWidth,scroll:document.documentElement.scrollWidth}))');\n```\n",
+  "ok": true,
+  "closed": true,
+  "daemon_after_close": ""
+}

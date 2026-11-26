@@ -1,0 +1,1658 @@
+{
+  "run": {
+    "started_at": "2026-11-09 18:19:59.230563-03",
+    "duration_ms": 12377,
+    "error_message": "",
+    "cell_version": 2,
+    "cell_id": "351",
+    "sql_sha256": "d5e0989957a3ab9b35e5322102bed5fa572e0091ad6b9200f26fc6255cafd398",
+    "truncated": 0,
+    "row_count": 1,
+    "sql_text": "-- BI 2026: fato e estrutura da view do DBA; adapter estudo conserva IDs sem localidade.\n-- Nascimento/modalidade/ranking complementados por id_resultado; nenhuma junção por nome.\nWITH base AS MATERIALIZED (\n SELECT r.sexo,r.percurso,extract(epoch FROM r.tempo_total) AS segundos,r.pcd,\n        e.tipo_corrida,e.ranking\n FROM estudo.vw_resultados_2026 r JOIN public.tb_evento_corridas e USING(id_evento)\n WHERE r.status_final=0 AND r.homologado IS TRUE AND r.concluinte IS TRUE\n   AND r.tempo_total>TIME '00:00:00' AND e.pais='BR'\n   AND e.data_final>=DATE '2026-01-01' AND e.data_final<DATE '2026-10-01'\n   AND (r.percurso IN(5,10) OR r.percurso>=21 AND r.percurso<22 OR r.percurso>=42 AND r.percurso<43)\n), desempenho AS (\n SELECT sexo,\n   CASE WHEN percurso=5 THEN '5k' WHEN percurso=10 THEN '10k' WHEN percurso<22 THEN '21k' ELSE '42k' END AS distancia,\n   CASE WHEN percurso=5 THEN CASE WHEN segundos<=1200 THEN 1 WHEN segundos<=1500 THEN 2 WHEN segundos<=1800 THEN 3 ELSE 4 END\n        WHEN percurso=10 THEN CASE WHEN segundos<=2400 THEN 1 WHEN segundos<=3000 THEN 2 WHEN segundos<=3600 THEN 3 ELSE 4 END\n        WHEN percurso<22 THEN CASE WHEN segundos<=5400 THEN 1 WHEN segundos<=7200 THEN 2 WHEN segundos<=9000 THEN 3 ELSE 4 END\n        ELSE CASE WHEN segundos<=10800 THEN 1 WHEN segundos<=12600 THEN 2 WHEN segundos<=14400 THEN 3 WHEN segundos<=16200 THEN 4 ELSE 5 END\n   END AS faixa_ordem\n FROM base WHERE tipo_corrida='rua'\n), cna AS (\n SELECT sexo,\n   CASE WHEN percurso=5 THEN '5k' WHEN percurso=10 THEN '10k' WHEN percurso<22 THEN '21k' ELSE '42k' END AS distancia,\n   CASE WHEN percurso=5 THEN CASE WHEN segundos<900 THEN 8 WHEN segundos<1020 THEN 7 WHEN segundos<1200 THEN 6 WHEN segundos<1320 THEN 5 WHEN segundos<1500 THEN 4 WHEN segundos<1620 THEN 3 WHEN segundos<1800 THEN 2 ELSE 1 END\n        WHEN percurso=10 THEN CASE WHEN segundos<2100 THEN 8 WHEN segundos<2400 THEN 7 WHEN segundos<2520 THEN 6 WHEN segundos<2700 THEN 5 WHEN segundos<3000 THEN 4 WHEN segundos<3300 THEN 3 WHEN segundos<3600 THEN 2 ELSE 1 END\n        WHEN percurso<22 THEN CASE WHEN segundos<4800 THEN 8 WHEN segundos<5100 THEN 7 WHEN segundos<5400 THEN 6 WHEN segundos<6000 THEN 5 WHEN segundos<6300 THEN 4 WHEN segundos<6600 THEN 3 WHEN segundos<7200 THEN 2 ELSE 1 END\n        ELSE CASE WHEN segundos<9000 THEN 8 WHEN segundos<9900 THEN 7 WHEN segundos<10800 THEN 6 WHEN segundos<11700 THEN 5 WHEN segundos<12600 THEN 4 WHEN segundos<13500 THEN 3 WHEN segundos<14400 THEN 2 ELSE 1 END\n   END AS faixa_ordem\n FROM base WHERE pcd IS FALSE AND (ranking IS NULL OR ranking<>'false')\n   AND (percurso IN(5,10) OR percurso BETWEEN 21 AND 21.1 OR percurso BETWEEN 42 AND 42.2)\n), todos AS (\n SELECT 'performance' AS indicador,* FROM desempenho\n UNION ALL SELECT 'cna',* FROM cna\n), contagens AS (\n SELECT indicador,distancia,faixa_ordem,\n   CASE WHEN grouping(sexo)=1 THEN 'geral' ELSE coalesce(sexo,'N/A') END AS segmento,\n   count(*) AS total\n FROM todos GROUP BY GROUPING SETS((indicador,distancia,faixa_ordem,sexo),(indicador,distancia,faixa_ordem))\n), percentuais AS (\n SELECT *,sum(total) OVER(PARTITION BY indicador,distancia,segmento) AS denominador,\n round(total*100.0/nullif(sum(total) OVER(PARTITION BY indicador,distancia,segmento),0),4) AS percentual\n FROM contagens\n)\nSELECT jsonb_build_object(\n 'coletado_em',transaction_timestamp(),'read_only',current_setting('transaction_read_only'),\n 'status','parcial_2026_concluintes_com_tempo_positivo',\n 'cna_faixas',jsonb_build_array('Branca','Laranja','Amarela','Azul','Vermelha','Marrom','Preta','Mestre'),\n 'recortes',(SELECT jsonb_agg(to_jsonb(p) ORDER BY indicador,distancia,segmento,faixa_ordem) FROM percentuais p)\n) AS payload",
+    "status": "ok",
+    "note": "Renovação completa solicitada em 09/11/2026. Mesmos critérios e corte da revisão vigente; pacote candidato, ainda não publicado. A data de coleta não amplia a janela de eventos.",
+    "finished_at": "2026-11-09 18:20:11.612142-03",
+    "frozen_at": "2026-11-09 18:20:11.617869-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 351",
+    "id": "307",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T18:19:59.230563-03:00",
+    "cell_id": 351,
+    "cell_version": 2,
+    "id": 307,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "payload"
+      ],
+      "rows": [
+        {
+          "payload": {
+            "status": "parcial_2026_concluintes_com_tempo_positivo",
+            "coletado_em": "2026-11-09T18:19:59.232283-03:00",
+            "recortes": [
+              {
+                "total": 204421,
+                "distancia": "10k",
+                "percentual": 68.0104,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 300573,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 48086,
+                "distancia": "10k",
+                "percentual": 15.9981,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 300573,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 28803,
+                "distancia": "10k",
+                "percentual": 9.5827,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 300573,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 13229,
+                "distancia": "10k",
+                "percentual": 4.4013,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 300573,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 3213,
+                "distancia": "10k",
+                "percentual": 1.069,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 300573,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 1065,
+                "distancia": "10k",
+                "percentual": 0.3543,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 300573,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 1094,
+                "distancia": "10k",
+                "percentual": 0.364,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 300573,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 662,
+                "distancia": "10k",
+                "percentual": 0.2202,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 300573,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 358016,
+                "distancia": "10k",
+                "percentual": 51.2317,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 698817,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 118781,
+                "distancia": "10k",
+                "percentual": 16.9974,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 698817,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 97627,
+                "distancia": "10k",
+                "percentual": 13.9703,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 698817,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 67968,
+                "distancia": "10k",
+                "percentual": 9.7262,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 698817,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 24883,
+                "distancia": "10k",
+                "percentual": 3.5607,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 698817,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 11555,
+                "distancia": "10k",
+                "percentual": 1.6535,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 698817,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 15629,
+                "distancia": "10k",
+                "percentual": 2.2365,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 698817,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 4358,
+                "distancia": "10k",
+                "percentual": 0.6236,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 698817,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 153584,
+                "distancia": "10k",
+                "percentual": 38.5672,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 398224,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 70693,
+                "distancia": "10k",
+                "percentual": 17.7521,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 398224,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 68820,
+                "distancia": "10k",
+                "percentual": 17.2817,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 398224,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 54739,
+                "distancia": "10k",
+                "percentual": 13.7458,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 398224,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 21670,
+                "distancia": "10k",
+                "percentual": 5.4417,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 398224,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 10489,
+                "distancia": "10k",
+                "percentual": 2.6339,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 398224,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 14535,
+                "distancia": "10k",
+                "percentual": 3.65,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 398224,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 3694,
+                "distancia": "10k",
+                "percentual": 0.9276,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 398224,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 11,
+                "distancia": "10k",
+                "percentual": 55.0,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 20,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 2,
+                "distancia": "10k",
+                "percentual": 10.0,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 20,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 4,
+                "distancia": "10k",
+                "percentual": 20.0,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 20,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 1,
+                "distancia": "10k",
+                "percentual": 5.0,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 20,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 2,
+                "distancia": "10k",
+                "percentual": 10.0,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 20,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 85708,
+                "distancia": "21k",
+                "percentual": 73.1572,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 117156,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 19164,
+                "distancia": "21k",
+                "percentual": 16.3577,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 117156,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 5250,
+                "distancia": "21k",
+                "percentual": 4.4812,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 117156,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 3463,
+                "distancia": "21k",
+                "percentual": 2.9559,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 117156,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 2721,
+                "distancia": "21k",
+                "percentual": 2.3225,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 117156,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 486,
+                "distancia": "21k",
+                "percentual": 0.4148,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 117156,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 190,
+                "distancia": "21k",
+                "percentual": 0.1622,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 117156,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 174,
+                "distancia": "21k",
+                "percentual": 0.1485,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 117156,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 173685,
+                "distancia": "21k",
+                "percentual": 55.985,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 310235,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 59332,
+                "distancia": "21k",
+                "percentual": 19.1249,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 310235,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 22653,
+                "distancia": "21k",
+                "percentual": 7.3019,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 310235,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 18829,
+                "distancia": "21k",
+                "percentual": 6.0693,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 310235,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 22847,
+                "distancia": "21k",
+                "percentual": 7.3644,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 310235,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 6465,
+                "distancia": "21k",
+                "percentual": 2.0839,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 310235,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 3513,
+                "distancia": "21k",
+                "percentual": 1.1324,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 310235,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 2911,
+                "distancia": "21k",
+                "percentual": 0.9383,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 310235,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 87895,
+                "distancia": "21k",
+                "percentual": 45.5533,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 192950,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 40146,
+                "distancia": "21k",
+                "percentual": 20.8064,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 192950,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 17392,
+                "distancia": "21k",
+                "percentual": 9.0137,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 192950,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 15359,
+                "distancia": "21k",
+                "percentual": 7.9601,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 192950,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 20119,
+                "distancia": "21k",
+                "percentual": 10.4271,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 192950,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 5979,
+                "distancia": "21k",
+                "percentual": 3.0987,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 192950,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 3323,
+                "distancia": "21k",
+                "percentual": 1.7222,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 192950,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 2737,
+                "distancia": "21k",
+                "percentual": 1.4185,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 192950,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 82,
+                "distancia": "21k",
+                "percentual": 63.5659,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 129,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 22,
+                "distancia": "21k",
+                "percentual": 17.0543,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 129,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 11,
+                "distancia": "21k",
+                "percentual": 8.5271,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 129,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 7,
+                "distancia": "21k",
+                "percentual": 5.4264,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 129,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 7,
+                "distancia": "21k",
+                "percentual": 5.4264,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 129,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 11836,
+                "distancia": "42k",
+                "percentual": 73.1837,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 16173,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 2153,
+                "distancia": "42k",
+                "percentual": 13.3123,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 16173,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 1194,
+                "distancia": "42k",
+                "percentual": 7.3827,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 16173,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 619,
+                "distancia": "42k",
+                "percentual": 3.8274,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 16173,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 178,
+                "distancia": "42k",
+                "percentual": 1.1006,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 16173,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 57,
+                "distancia": "42k",
+                "percentual": 0.3524,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 16173,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 34,
+                "distancia": "42k",
+                "percentual": 0.2102,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 16173,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 102,
+                "distancia": "42k",
+                "percentual": 0.6307,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 16173,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 39399,
+                "distancia": "42k",
+                "percentual": 57.7986,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 68166,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 10210,
+                "distancia": "42k",
+                "percentual": 14.9781,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 68166,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 7260,
+                "distancia": "42k",
+                "percentual": 10.6505,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 68166,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 5463,
+                "distancia": "42k",
+                "percentual": 8.0143,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 68166,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 2788,
+                "distancia": "42k",
+                "percentual": 4.09,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 68166,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 1936,
+                "distancia": "42k",
+                "percentual": 2.8401,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 68166,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 481,
+                "distancia": "42k",
+                "percentual": 0.7056,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 68166,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 629,
+                "distancia": "42k",
+                "percentual": 0.9227,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 68166,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 27563,
+                "distancia": "42k",
+                "percentual": 53.0588,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 51948,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 8057,
+                "distancia": "42k",
+                "percentual": 15.5097,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 51948,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 6066,
+                "distancia": "42k",
+                "percentual": 11.6771,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 51948,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 4844,
+                "distancia": "42k",
+                "percentual": 9.3247,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 51948,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 2610,
+                "distancia": "42k",
+                "percentual": 5.0243,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 51948,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 1877,
+                "distancia": "42k",
+                "percentual": 3.6132,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 51948,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 447,
+                "distancia": "42k",
+                "percentual": 0.8605,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 51948,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 484,
+                "distancia": "42k",
+                "percentual": 0.9317,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 51948,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 2,
+                "distancia": "42k",
+                "percentual": 4.4444,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 45,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 43,
+                "distancia": "42k",
+                "percentual": 95.5556,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 45,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 1256128,
+                "distancia": "5k",
+                "percentual": 84.4543,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 1487346,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 130814,
+                "distancia": "5k",
+                "percentual": 8.7951,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 1487346,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 51494,
+                "distancia": "5k",
+                "percentual": 3.4621,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 1487346,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 37501,
+                "distancia": "5k",
+                "percentual": 2.5213,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 1487346,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 8298,
+                "distancia": "5k",
+                "percentual": 0.5579,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 1487346,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 2613,
+                "distancia": "5k",
+                "percentual": 0.1757,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 1487346,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 167,
+                "distancia": "5k",
+                "percentual": 0.0112,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 1487346,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 331,
+                "distancia": "5k",
+                "percentual": 0.0223,
+                "indicador": "cna",
+                "segmento": "F",
+                "denominador": 1487346,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 1804426,
+                "distancia": "5k",
+                "percentual": 71.5979,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 2520223,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 281413,
+                "distancia": "5k",
+                "percentual": 11.1662,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 2520223,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 147897,
+                "distancia": "5k",
+                "percentual": 5.8684,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 2520223,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 159921,
+                "distancia": "5k",
+                "percentual": 6.3455,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 2520223,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 68556,
+                "distancia": "5k",
+                "percentual": 2.7202,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 2520223,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 50336,
+                "distancia": "5k",
+                "percentual": 1.9973,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 2520223,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 6645,
+                "distancia": "5k",
+                "percentual": 0.2637,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 2520223,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 1029,
+                "distancia": "5k",
+                "percentual": 0.0408,
+                "indicador": "cna",
+                "segmento": "geral",
+                "denominador": 2520223,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 547933,
+                "distancia": "5k",
+                "percentual": 53.0826,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 1032227,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 150559,
+                "distancia": "5k",
+                "percentual": 14.5858,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 1032227,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 96382,
+                "distancia": "5k",
+                "percentual": 9.3373,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 1032227,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 122343,
+                "distancia": "5k",
+                "percentual": 11.8523,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 1032227,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 60183,
+                "distancia": "5k",
+                "percentual": 5.8304,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 1032227,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 47655,
+                "distancia": "5k",
+                "percentual": 4.6167,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 1032227,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 6478,
+                "distancia": "5k",
+                "percentual": 0.6276,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 1032227,
+                "faixa_ordem": 7
+              },
+              {
+                "total": 694,
+                "distancia": "5k",
+                "percentual": 0.0672,
+                "indicador": "cna",
+                "segmento": "M",
+                "denominador": 1032227,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 365,
+                "distancia": "5k",
+                "percentual": 56.1538,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 650,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 40,
+                "distancia": "5k",
+                "percentual": 6.1538,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 650,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 21,
+                "distancia": "5k",
+                "percentual": 3.2308,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 650,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 77,
+                "distancia": "5k",
+                "percentual": 11.8462,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 650,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 75,
+                "distancia": "5k",
+                "percentual": 11.5385,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 650,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 68,
+                "distancia": "5k",
+                "percentual": 10.4615,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 650,
+                "faixa_ordem": 6
+              },
+              {
+                "total": 4,
+                "distancia": "5k",
+                "percentual": 0.6154,
+                "indicador": "cna",
+                "segmento": "X",
+                "denominador": 650,
+                "faixa_ordem": 8
+              },
+              {
+                "total": 1768,
+                "distancia": "10k",
+                "percentual": 0.5871,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 301141,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 17609,
+                "distancia": "10k",
+                "percentual": 5.8474,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 301141,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 77187,
+                "distancia": "10k",
+                "percentual": 25.6315,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 301141,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 204577,
+                "distancia": "10k",
+                "percentual": 67.934,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 301141,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 20128,
+                "distancia": "10k",
+                "percentual": 2.8721,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 700808,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 105118,
+                "distancia": "10k",
+                "percentual": 14.9995,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 700808,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 217280,
+                "distancia": "10k",
+                "percentual": 31.0042,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 700808,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 358282,
+                "distancia": "10k",
+                "percentual": 51.1241,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 700808,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 18358,
+                "distancia": "10k",
+                "percentual": 4.5936,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 399647,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 87508,
+                "distancia": "10k",
+                "percentual": 21.8963,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 399647,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 140087,
+                "distancia": "10k",
+                "percentual": 35.0527,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 399647,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 153694,
+                "distancia": "10k",
+                "percentual": 38.4574,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 399647,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 2,
+                "distancia": "10k",
+                "percentual": 10.0,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 20,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 1,
+                "distancia": "10k",
+                "percentual": 5.0,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 20,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 6,
+                "distancia": "10k",
+                "percentual": 30.0,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 20,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 11,
+                "distancia": "10k",
+                "percentual": 55.0,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 20,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 854,
+                "distancia": "21k",
+                "percentual": 0.731,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 116823,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 30706,
+                "distancia": "21k",
+                "percentual": 26.2842,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 116823,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 60820,
+                "distancia": "21k",
+                "percentual": 52.0617,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 116823,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 24443,
+                "distancia": "21k",
+                "percentual": 20.9231,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 116823,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 12970,
+                "distancia": "21k",
+                "percentual": 4.1884,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 309663,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 124059,
+                "distancia": "21k",
+                "percentual": 40.0626,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 309663,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 128542,
+                "distancia": "21k",
+                "percentual": 41.5103,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 309663,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 44092,
+                "distancia": "21k",
+                "percentual": 14.2387,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 309663,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 12116,
+                "distancia": "21k",
+                "percentual": 6.2871,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 192711,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 93306,
+                "distancia": "21k",
+                "percentual": 48.4176,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 192711,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 67653,
+                "distancia": "21k",
+                "percentual": 35.1059,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 192711,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 19636,
+                "distancia": "21k",
+                "percentual": 10.1894,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 192711,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 47,
+                "distancia": "21k",
+                "percentual": 36.4341,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 129,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 69,
+                "distancia": "21k",
+                "percentual": 53.4884,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 129,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 13,
+                "distancia": "21k",
+                "percentual": 10.0775,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 129,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 193,
+                "distancia": "42k",
+                "percentual": 1.2064,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 15998,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 803,
+                "distancia": "42k",
+                "percentual": 5.0194,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 15998,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 3358,
+                "distancia": "42k",
+                "percentual": 20.9901,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 15998,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 4497,
+                "distancia": "42k",
+                "percentual": 28.1098,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 15998,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 7147,
+                "distancia": "42k",
+                "percentual": 44.6743,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 15998,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 3068,
+                "distancia": "42k",
+                "percentual": 4.5508,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 67417,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 8261,
+                "distancia": "42k",
+                "percentual": 12.2536,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 67417,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 17472,
+                "distancia": "42k",
+                "percentual": 25.9163,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 67417,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 16409,
+                "distancia": "42k",
+                "percentual": 24.3396,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 67417,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 22207,
+                "distancia": "42k",
+                "percentual": 32.9398,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 67417,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 2830,
+                "distancia": "42k",
+                "percentual": 5.5086,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 51374,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 7458,
+                "distancia": "42k",
+                "percentual": 14.5171,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 51374,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 14114,
+                "distancia": "42k",
+                "percentual": 27.473,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 51374,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 11912,
+                "distancia": "42k",
+                "percentual": 23.1868,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 51374,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 15060,
+                "distancia": "42k",
+                "percentual": 29.3144,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 51374,
+                "faixa_ordem": 5
+              },
+              {
+                "total": 45,
+                "distancia": "42k",
+                "percentual": 100.0,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 45,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 3168,
+                "distancia": "5k",
+                "percentual": 0.2119,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 1494987,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 46182,
+                "distancia": "5k",
+                "percentual": 3.0891,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 1494987,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 183712,
+                "distancia": "5k",
+                "percentual": 12.2885,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 1494987,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 1261925,
+                "distancia": "5k",
+                "percentual": 84.4104,
+                "indicador": "performance",
+                "segmento": "F",
+                "denominador": 1494987,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 58745,
+                "distancia": "5k",
+                "percentual": 2.3177,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 2534590,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 230587,
+                "distancia": "5k",
+                "percentual": 9.0976,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 2534590,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 432240,
+                "distancia": "5k",
+                "percentual": 17.0536,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 2534590,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 1813018,
+                "distancia": "5k",
+                "percentual": 71.531,
+                "indicador": "performance",
+                "segmento": "geral",
+                "denominador": 2534590,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 55502,
+                "distancia": "5k",
+                "percentual": 5.3429,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 1038795,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 184222,
+                "distancia": "5k",
+                "percentual": 17.7342,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 1038795,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 248425,
+                "distancia": "5k",
+                "percentual": 23.9147,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 1038795,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 550646,
+                "distancia": "5k",
+                "percentual": 53.0081,
+                "indicador": "performance",
+                "segmento": "M",
+                "denominador": 1038795,
+                "faixa_ordem": 4
+              },
+              {
+                "total": 75,
+                "distancia": "5k",
+                "percentual": 9.2822,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 808,
+                "faixa_ordem": 1
+              },
+              {
+                "total": 183,
+                "distancia": "5k",
+                "percentual": 22.6485,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 808,
+                "faixa_ordem": 2
+              },
+              {
+                "total": 103,
+                "distancia": "5k",
+                "percentual": 12.7475,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 808,
+                "faixa_ordem": 3
+              },
+              {
+                "total": 447,
+                "distancia": "5k",
+                "percentual": 55.3218,
+                "indicador": "performance",
+                "segmento": "X",
+                "denominador": 808,
+                "faixa_ordem": 4
+              }
+            ],
+            "cna_faixas": [
+              "Branca",
+              "Laranja",
+              "Amarela",
+              "Azul",
+              "Vermelha",
+              "Marrom",
+              "Preta",
+              "Mestre"
+            ],
+            "read_only": "on"
+          }
+        }
+      ]
+    }
+  }
+}

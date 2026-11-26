@@ -1,0 +1,168 @@
+{
+  "truncated": false,
+  "status": "ok",
+  "started_at": "2026-10-05T15:02:53.724273-03:00",
+  "cell_id": 365,
+  "cell_version": 1,
+  "id": 175,
+  "frozen": true,
+  "result": {
+    "columns": [
+      "type",
+      "total",
+      "com_indicacion_delete"
+    ],
+    "rows": [
+      {
+        "total": 1,
+        "com_indicacion_delete": 0,
+        "type": "Velomobile"
+      },
+      {
+        "total": 125,
+        "com_indicacion_delete": 7,
+        "type": "VirtualRun"
+      },
+      {
+        "total": 5,
+        "com_indicacion_delete": 0,
+        "type": "Kayaking"
+      },
+      {
+        "total": 13,
+        "com_indicacion_delete": 0,
+        "type": "Canoeing"
+      },
+      {
+        "total": 11,
+        "com_indicacion_delete": 0,
+        "type": "InlineSkate"
+      },
+      {
+        "total": 1,
+        "com_indicacion_delete": 0,
+        "type": "IceSkate"
+      },
+      {
+        "total": 59367,
+        "com_indicacion_delete": 662,
+        "type": "Run"
+      },
+      {
+        "total": 2,
+        "com_indicacion_delete": 0,
+        "type": "Sail"
+      },
+      {
+        "total": 162,
+        "com_indicacion_delete": 1,
+        "type": "StairStepper"
+      },
+      {
+        "total": 9840,
+        "com_indicacion_delete": 154,
+        "type": "Walk"
+      },
+      {
+        "total": 13,
+        "com_indicacion_delete": 0,
+        "type": "RockClimbing"
+      },
+      {
+        "total": 12391,
+        "com_indicacion_delete": 65,
+        "type": "WeightTraining"
+      },
+      {
+        "total": 5,
+        "com_indicacion_delete": 0,
+        "type": "AlpineSki"
+      },
+      {
+        "total": 66,
+        "com_indicacion_delete": 0,
+        "type": "Rowing"
+      },
+      {
+        "total": 5962,
+        "com_indicacion_delete": 51,
+        "type": "Ride"
+      },
+      {
+        "total": 59,
+        "com_indicacion_delete": 3,
+        "type": "Soccer"
+      },
+      {
+        "total": 13,
+        "com_indicacion_delete": 0,
+        "type": "StandUpPaddling"
+      },
+      {
+        "total": 6288,
+        "com_indicacion_delete": 110,
+        "type": "Workout"
+      },
+      {
+        "total": 251,
+        "com_indicacion_delete": 0,
+        "type": "VirtualRide"
+      },
+      {
+        "total": 7,
+        "com_indicacion_delete": 0,
+        "type": "Kitesurf"
+      },
+      {
+        "total": 12,
+        "com_indicacion_delete": 0,
+        "type": "Surfing"
+      },
+      {
+        "total": 212,
+        "com_indicacion_delete": 3,
+        "type": "Hike"
+      },
+      {
+        "total": 25,
+        "com_indicacion_delete": 4,
+        "type": "EBikeRide"
+      },
+      {
+        "total": 4,
+        "com_indicacion_delete": 0,
+        "type": "Handcycle"
+      },
+      {
+        "total": 6,
+        "com_indicacion_delete": 0,
+        "type": "Wheelchair"
+      },
+      {
+        "total": 212,
+        "com_indicacion_delete": 5,
+        "type": "Crossfit"
+      },
+      {
+        "total": 364,
+        "com_indicacion_delete": 7,
+        "type": "Yoga"
+      },
+      {
+        "total": 5,
+        "com_indicacion_delete": 0,
+        "type": "WaterSport"
+      },
+      {
+        "total": 1675,
+        "com_indicacion_delete": 32,
+        "type": "Swim"
+      },
+      {
+        "total": 195,
+        "com_indicacion_delete": 2,
+        "type": "Elliptical"
+      }
+    ]
+  }
+}

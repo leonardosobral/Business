@@ -1,0 +1,32 @@
+{
+  "list": {
+    "status": 200,
+    "verified": true
+  },
+  "page2": {
+    "status": 200,
+    "verified": true
+  },
+  "identity": {
+    "status": 200,
+    "verified": true
+  },
+  "ambiguous": {
+    "status": 200,
+    "verified": true
+  },
+  "payments": {
+    "status": 200,
+    "verified": true
+  },
+  "divergent": {
+    "status": 200,
+    "verified": true
+  },
+  "angelica": {
+    "status": 200,
+    "verified": true
+  },
+  "ok": true,
+  "stage_removed": true
+}

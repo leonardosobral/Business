@@ -1,0 +1,3 @@
+## P13 — seleção dos menores tempos
+
+Consulta 281 rev2 / congelamento 67; comparação 283 rev1 / 70. A saída web 249 rev11 / 72 preenche 50 médias com seleção global por tempo, distinta da classificação legada 264 / 48. Populações iguais a 41. Quantidade determinística, percentuais sobre conclusões com ceil e desempate por ID. Referência PDF e cálculo legado preservados. Nota completa da revisão de 30/09 na seção P15. Medalhas e menores grupos de 2026 permanecem pendentes.

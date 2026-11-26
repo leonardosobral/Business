@@ -1,0 +1,19 @@
+### Result
+- [Screenshot of viewport](./queue-mobile.png)
+### Ran Playwright code
+```js
+// Screenshot viewport and save it as ./queue-mobile.png
+await page.screenshot({
+  path: './queue-mobile.png',
+  scale: 'css',
+  type: 'png'
+});
+```
+
+
+╔════════════════════════════════════════════════════════════════════╗
+║ Update available for @playwright/cli: 0.1.18 → 0.1.25              ║
+║ Run `npm install -g @playwright/cli@latest` (global) or            ║
+║ `npm install --save-dev @playwright/cli@latest` (local) to update. ║
+╚════════════════════════════════════════════════════════════════════╝
+

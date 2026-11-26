@@ -1,0 +1,28 @@
+{
+  "timings": {
+    "run.cfm": 45.505,
+    "render.cfm?filter_status=unclassified&fixture_ready=1": 2.958,
+    "render.cfm?filter_status=all&page_id=53854&user_busca=53854": 3.225,
+    "render.cfm?test_denied=1": 0.042,
+    "render.cfm?case=csrf": 2.791,
+    "render.cfm?case=legacy": 2.787
+  },
+  "statuses": {
+    "run.cfm": 200,
+    "render.cfm?filter_status=unclassified&fixture_ready=1": 200,
+    "render.cfm?filter_status=all&page_id=53854&user_busca=53854": 200,
+    "render.cfm?test_denied=1": 403,
+    "render.cfm?case=csrf": 403,
+    "render.cfm?case=legacy": 409
+  },
+  "tests": {
+    "CHECKS": 106.0,
+    "READY": 1,
+    "UNCLASSIFIED": 61,
+    "RECONCILE": 52,
+    "OK": true,
+    "MANUAL_ID": 54048
+  },
+  "ok": true,
+  "stage_removed": true
+}

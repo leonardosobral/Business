@@ -1,0 +1,205 @@
+{
+  "run": {
+    "started_at": "2026-11-09 18:19:45.764249-03",
+    "duration_ms": 12459,
+    "error_message": "",
+    "cell_version": 2,
+    "cell_id": "350",
+    "sql_sha256": "7b5979ec2e1049038a32aeb4553962a705635007579c22666d0342e1b97e868b",
+    "truncated": 0,
+    "row_count": 1,
+    "sql_text": "-- Cadastro e coleta mantêm fonte operacional; elegíveis 2026 usam BI conservada.\nWITH eventos AS MATERIALIZED (\n SELECT id_evento,extract(year FROM data_final)::int AS ano,\n  extract(month FROM data_final)::int AS mes\n FROM public.tb_evento_corridas\n WHERE pais='BR' AND (\n  (data_final>=DATE '2025-01-01' AND data_final<DATE '2025-10-01') OR\n  (data_final>=DATE '2026-01-01' AND data_final<DATE '2026-10-01'))\n), resultados AS MATERIALIZED (\n SELECT r.id_evento,count(*) AS registros_coletados,\n  count(*) FILTER(WHERE r.status_final=0 AND r.homologado IS TRUE AND r.concluinte IS TRUE) AS concluintes_estudo\n FROM public.tb_resultados r JOIN eventos e USING(id_evento)\n GROUP BY r.id_evento\n), bi AS MATERIALIZED (\n SELECT id_evento,count(*) AS n FROM estudo.vw_resultados_2026\n WHERE status_final=0 AND homologado IS TRUE AND concluinte IS TRUE GROUP BY id_evento\n), mensais AS (\n SELECT e.ano,e.mes,count(*) AS provas_cadastradas,\n  count(*) FILTER(WHERE r.registros_coletados>0) AS provas_com_resultado_coletado,\n  count(*) FILTER(WHERE CASE WHEN e.ano=2026 THEN coalesce(bi.n,0) ELSE coalesce(r.concluintes_estudo,0) END>0) AS provas_com_concluintes_elegiveis,\n  sum(CASE WHEN e.ano=2026 THEN coalesce(bi.n,0) ELSE coalesce(r.concluintes_estudo,0) END) AS concluintes_estudo\n FROM eventos e LEFT JOIN resultados r USING(id_evento) LEFT JOIN bi USING(id_evento)\n GROUP BY e.ano,e.mes\n)\nSELECT jsonb_build_object(\n 'coletado_em',transaction_timestamp(),'read_only',current_setting('transaction_read_only'),\n 'parametros',jsonb_build_object('2025',jsonb_build_object('inicio','2025-01-01','fim_exclusivo','2025-10-01'),\n                               '2026',jsonb_build_object('inicio','2026-01-01','fim_exclusivo','2026-10-01')),\n 'definicoes',jsonb_build_object(\n  'provas_cadastradas','Eventos no Brasil pela data final, inclusive cadastros inativos ou cancelados; não é contagem pela data de inclusão nem garantia de realização.',\n  'provas_com_resultado_coletado','Eventos do calendário com ao menos uma linha em tb_resultados, independentemente de status, homologação ou conclusão. Não certifica captura completa.',\n  'provas_com_concluintes_elegiveis','Eventos com ao menos um resultado status_final=0, homologado=true e concluinte=true.',\n  'concluintes_estudo','Participações elegíveis; todas as idades e modalidades, não atletas únicos.'),\n 'mensais',(SELECT jsonb_agg(to_jsonb(m) ORDER BY ano,mes) FROM mensais m)\n) AS payload",
+    "status": "ok",
+    "note": "Renovação completa solicitada em 09/11/2026. Mesmos critérios e corte da revisão vigente; pacote candidato, ainda não publicado. A data de coleta não amplia a janela de eventos.",
+    "finished_at": "2026-11-09 18:19:58.224682-03",
+    "frozen_at": "2026-11-09 18:19:58.227672-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 350",
+    "id": "302",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T18:19:45.764249-03:00",
+    "cell_id": 350,
+    "cell_version": 2,
+    "id": 302,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "payload"
+      ],
+      "rows": [
+        {
+          "payload": {
+            "definicoes": {
+              "provas_com_concluintes_elegiveis": "Eventos com ao menos um resultado status_final=0, homologado=true e concluinte=true.",
+              "concluintes_estudo": "Participações elegíveis; todas as idades e modalidades, não atletas únicos.",
+              "provas_cadastradas": "Eventos no Brasil pela data final, inclusive cadastros inativos ou cancelados; não é contagem pela data de inclusão nem garantia de realização.",
+              "provas_com_resultado_coletado": "Eventos do calendário com ao menos uma linha em tb_resultados, independentemente de status, homologação ou conclusão. Não certifica captura completa."
+            },
+            "coletado_em": "2026-11-09T18:19:45.766003-03:00",
+            "parametros": {
+              "2026": {
+                "fim_exclusivo": "2026-10-01",
+                "inicio": "2026-01-01"
+              },
+              "2025": {
+                "fim_exclusivo": "2025-10-01",
+                "inicio": "2025-01-01"
+              }
+            },
+            "mensais": [
+              {
+                "ano": 2025,
+                "mes": 1,
+                "provas_com_concluintes_elegiveis": 130,
+                "concluintes_estudo": 138830,
+                "provas_cadastradas": 213,
+                "provas_com_resultado_coletado": 130
+              },
+              {
+                "ano": 2025,
+                "mes": 2,
+                "provas_com_concluintes_elegiveis": 194,
+                "concluintes_estudo": 204351,
+                "provas_cadastradas": 318,
+                "provas_com_resultado_coletado": 194
+              },
+              {
+                "ano": 2025,
+                "mes": 3,
+                "provas_com_concluintes_elegiveis": 344,
+                "concluintes_estudo": 391410,
+                "provas_cadastradas": 548,
+                "provas_com_resultado_coletado": 345
+              },
+              {
+                "ano": 2025,
+                "mes": 4,
+                "provas_com_concluintes_elegiveis": 307,
+                "concluintes_estudo": 369714,
+                "provas_cadastradas": 488,
+                "provas_com_resultado_coletado": 307
+              },
+              {
+                "ano": 2025,
+                "mes": 5,
+                "provas_com_concluintes_elegiveis": 427,
+                "concluintes_estudo": 431271,
+                "provas_cadastradas": 766,
+                "provas_com_resultado_coletado": 427
+              },
+              {
+                "ano": 2025,
+                "mes": 6,
+                "provas_com_concluintes_elegiveis": 399,
+                "concluintes_estudo": 511073,
+                "provas_cadastradas": 799,
+                "provas_com_resultado_coletado": 399
+              },
+              {
+                "ano": 2025,
+                "mes": 7,
+                "provas_com_concluintes_elegiveis": 378,
+                "concluintes_estudo": 419399,
+                "provas_cadastradas": 682,
+                "provas_com_resultado_coletado": 378
+              },
+              {
+                "ano": 2025,
+                "mes": 8,
+                "provas_com_concluintes_elegiveis": 490,
+                "concluintes_estudo": 505127,
+                "provas_cadastradas": 899,
+                "provas_com_resultado_coletado": 490
+              },
+              {
+                "ano": 2025,
+                "mes": 9,
+                "provas_com_concluintes_elegiveis": 561,
+                "concluintes_estudo": 566204,
+                "provas_cadastradas": 1185,
+                "provas_com_resultado_coletado": 562
+              },
+              {
+                "ano": 2026,
+                "mes": 1,
+                "provas_com_concluintes_elegiveis": 193,
+                "concluintes_estudo": 158051,
+                "provas_cadastradas": 327,
+                "provas_com_resultado_coletado": 193
+              },
+              {
+                "ano": 2026,
+                "mes": 2,
+                "provas_com_concluintes_elegiveis": 199,
+                "concluintes_estudo": 165059,
+                "provas_cadastradas": 376,
+                "provas_com_resultado_coletado": 199
+              },
+              {
+                "ano": 2026,
+                "mes": 3,
+                "provas_com_concluintes_elegiveis": 564,
+                "concluintes_estudo": 566764,
+                "provas_cadastradas": 895,
+                "provas_com_resultado_coletado": 564
+              },
+              {
+                "ano": 2026,
+                "mes": 4,
+                "provas_com_concluintes_elegiveis": 474,
+                "concluintes_estudo": 459228,
+                "provas_cadastradas": 749,
+                "provas_com_resultado_coletado": 474
+              },
+              {
+                "ano": 2026,
+                "mes": 5,
+                "provas_com_concluintes_elegiveis": 770,
+                "concluintes_estudo": 719782,
+                "provas_cadastradas": 1252,
+                "provas_com_resultado_coletado": 770
+              },
+              {
+                "ano": 2026,
+                "mes": 6,
+                "provas_com_concluintes_elegiveis": 501,
+                "concluintes_estudo": 529639,
+                "provas_cadastradas": 812,
+                "provas_com_resultado_coletado": 501
+              },
+              {
+                "ano": 2026,
+                "mes": 7,
+                "provas_com_concluintes_elegiveis": 572,
+                "concluintes_estudo": 509871,
+                "provas_cadastradas": 908,
+                "provas_com_resultado_coletado": 573
+              },
+              {
+                "ano": 2026,
+                "mes": 8,
+                "provas_com_concluintes_elegiveis": 805,
+                "concluintes_estudo": 742946,
+                "provas_cadastradas": 1360,
+                "provas_com_resultado_coletado": 805
+              },
+              {
+                "ano": 2026,
+                "mes": 9,
+                "provas_com_concluintes_elegiveis": 888,
+                "concluintes_estudo": 723641,
+                "provas_cadastradas": 1500,
+                "provas_com_resultado_coletado": 896
+              }
+            ],
+            "read_only": "on"
+          }
+        }
+      ]
+    }
+  }
+}

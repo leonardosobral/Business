@@ -1,0 +1,34 @@
+{
+  "status": "candidate",
+  "source_sha256": "799dc458cda38bdd45d32fb5a19da018c1c410841c2a84bd100f7e2ea995afb5",
+  "provenance": {
+    "public_cell": "420",
+    "public_run": "9001",
+    "publication_id": "9002",
+    "publication_run": "9003"
+  },
+  "collection": "2026-11-09",
+  "version": "source-799dc458cda38b",
+  "pdf_pages": 7,
+  "artworks": 10,
+  "legacy_aliases": 2,
+  "files": {
+    "portal/brasilquecorreprovas/2026/kit/convite-criadores.txt": "ccfaaef6fed5bae2c57c8156161c8e14507b5d2ef3441cc6695e6edb367bdc5e",
+    "portal/brasilquecorreprovas/2026/kit/distancias-curtas-1080x1350.png": "17461e888e4c7709c9f2826e9fc9ff355b3c3a122d6fe48747d3d4ed64ee5b3b",
+    "portal/brasilquecorreprovas/2026/kit/distancias-curtas-1920x1080.png": "28be22cab3d4113eae7c0fbdc43fe5eadfe7d1983dcde552ad18a215481d02a6",
+    "portal/brasilquecorreprovas/2026/kit/fevereiro-comparativo-1080x1350.png": "6b1b585a3860666e704fd3111c31bc98350051c6ddd231f093ec36ca44dbc42a",
+    "portal/brasilquecorreprovas/2026/kit/fevereiro-comparativo-1920x1080.png": "522ddd29404d19c272f0ef7eb1103d7c330df5cc1ebb5808ed6ac2a3cad5086b",
+    "portal/brasilquecorreprovas/2026/kit/fora-das-capitais-1080x1350.png": "b39288aebee4753c2a04357b8d9e17bd268d2e55263ed7ca3b2b5b01e2f2e164",
+    "portal/brasilquecorreprovas/2026/kit/fora-das-capitais-1920x1080.png": "1386fc6e8838750ff9b8c3f27828d2cdb4e91ea1a9f93f09c4a15e06fa96416d",
+    "portal/brasilquecorreprovas/2026/kit/index.html": "773bc2c0c088553de084226fdb9d720fd4dfb5569fc581afd5ae76309ac6d0e2",
+    "portal/brasilquecorreprovas/2026/kit/legendas-e-fontes.txt": "beff49d2d561238a35400bf4532169353c44326bb05eabe142844c24d62b4267",
+    "portal/brasilquecorreprovas/2026/kit/panorama-publico-jan-set-2026.pdf": "64f2ecf4a8f578df5475e63733bca0c3ce4c6dd10d6d84508154b5803be7c5f5",
+    "portal/brasilquecorreprovas/2026/kit/participacao-feminina-1080x1350.png": "8a4d422fe9fa27488b12aa2d4fb07ebed890932061922d7ecc1c69832af23719",
+    "portal/brasilquecorreprovas/2026/kit/participacao-feminina-1920x1080.png": "dadb0de38e291d61edafbe3822c43d59e5fd02908ced12b99bd57987e2a530b9",
+    "portal/brasilquecorreprovas/2026/kit/provas-cadastradas-1080x1350.png": "6b1b585a3860666e704fd3111c31bc98350051c6ddd231f093ec36ca44dbc42a",
+    "portal/brasilquecorreprovas/2026/kit/provas-cadastradas-1920x1080.png": "522ddd29404d19c272f0ef7eb1103d7c330df5cc1ebb5808ed6ac2a3cad5086b",
+    "portal/brasilquecorreprovas/2026/kit/release-imprensa-2026.txt": "7a570e70cbc99b9340960301f66adea71d195d122023c60771ecbc06f10b8ea3",
+    "portal/brasilquecorreprovas/2026/kit/resultados-comparativo-1080x1350.png": "10d1100903bc26f7f6836ce5a6a7bc8d0edad3bdbcb0b5631f0d108c30518c91",
+    "portal/brasilquecorreprovas/2026/kit/resultados-comparativo-1920x1080.png": "fed16fb45f0f4b60a0cf0213d9a404a7adcbb1b4961c1df159427efea488400f"
+  }
+}

@@ -1,0 +1,440 @@
+<!doctype html><html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/assets/css/mdb.min.css"></head><body data-mdb-theme="dark" style="background:rgb(34,34,34);padding:20px">
+<link rel="stylesheet" href="/assets/css/business-ui.css"/>
+<link rel="stylesheet" href="/portal/verificados/verified.css?v=20261124"/>
+<script src="/portal/verificados/verified.js?v=20261124" defer></script>
+<section class="business-page verified-page" aria-labelledby="verified-title">
+    <header class="verified-heading">
+        <div><p class="verified-eyebrow">PORTAL · ROAD RUNNERS</p><h1 id="verified-title">Selos verificados</h1><p class="text-muted">Veja por que cada pessoa tem o selo, até quando ele vale e o histórico de cada origem.</p></div>
+        <span class="verified-readonly">Classificar um motivo não altera o selo</span>
+    </header>
+    
+    <div class="business-kpi-grid verified-kpis" aria-label="Resumo geral dos selos">
+        <a class="business-kpi" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><small>Selos ativos</small><strong>418</strong></a>
+        <a class="business-kpi" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;FILTER&#x25;5FORIGIN&#x3d;manual&amp;PAGINA&#x3d;1"><small>Sem vencimento</small><strong>128</strong></a>
+        <div class="business-kpi"><small>Ativos com prazo</small><strong>290</strong></div>
+        <a class="business-kpi verified-kpi-attention" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><small>Motivo a classificar</small><strong>128</strong></a>
+    </div>
+    <nav class="verified-tabs" aria-label="Situação do selo">
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Ativos</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">A classificar</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;inactive&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Inativos</a>
+        
+            <a aria-current="page" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Todos / histórico</a>
+        
+    </nav>
+    <form method="get" action="/portal/verificados/" class="business-panel verified-filters">
+        <input type="hidden" name="filter_status" value="all"/>
+        <div class="verified-filter-main">
+            <div><label for="verified-search">Buscar pessoa</label><input class="form-control" id="verified-search" name="user_busca" value="" placeholder="Nome, e-mail, perfil ou ID" maxlength="120"/></div>
+            <div><label for="verified-origin">Origem ou motivo</label><select id="verified-origin" class="form-select" name="filter_origin"><option value="">Todas as origens</option>
+                <option value="manual" >Concessão permanente</option><option value="vip" >Todo Santo Dia · VIP ativo</option><option value="upgrade" >Todo Santo Dia · Upgrade VIP ativo</option><option value="annual" >Compra anual ativa</option><option value="refunded" >Com estorno no histórico</option><option value="influencer" >Influencer / criador</option><option value="imprensa" >Imprensa</option><option value="parceiro" >Parceiro</option><option value="equipe" >Equipe</option><option value="cortesia" >Cortesia</option><option value="outro" >Outro motivo</option><option value="nao_informado" >Motivo não informado</option>
+            </select></div>
+            <button class="btn btn-warning" type="submit">Filtrar</button><a class="btn btn-outline-secondary" href="/portal/verificados/">Limpar</a>
+        </div>
+        <details class="verified-advanced" ><summary>Filtros de cadastro</summary>
+            <p class="text-muted small">Participação em desafio e permissões de conta são dados de cadastro; não comprovam o motivo do selo.</p>
+            <div class="verified-filter-main"><div><label for="filter-desafio">Desafio</label><input class="form-control" id="filter-desafio" name="filter_desafio" value=""/></div>
+                <div><label for="filter-produto">Produto no cadastro</label><select id="filter-produto" name="filter_produto" class="form-select"><option value="">Todos</option><option value="catarinensecorridaderua" >catarinensecorridaderua &middot; catarinensecorridaderua</option><option value="catarinensetrailrun" >catarinensetrailrun &middot; catarinensetrailrun</option><option value="circuitobrasilgigante" >circuitobrasilgigante &middot; circuitobrasilgigante</option><option value="inscricao365" >desafio365 &middot; inscricao365</option><option value="inscricao365vip" >desafio365 &middot; inscricao365vip</option><option value="inscricao365Vip" >desafio365 &middot; inscricao365Vip</option><option value="inscricao366" >desafio366 &middot; inscricao366</option><option value="inscricaotodosantodia" >desafio366 &middot; inscricaotodosantodia</option><option value="foco" >desafiofoco &middot; foco</option><option value="&#x2f;desafiosupra&#x2f;inscricao&#x2f;" >desafiosupra &middot; &#x2f;desafiosupra&#x2f;inscricao&#x2f;</option><option value="foco" >foco &middot; foco</option><option value="desafiofoco" >todosantodia &middot; desafiofoco</option><option value="inscricao366" >todosantodia &middot; inscricao366</option><option value="todosantodia" >todosantodia &middot; todosantodia</option><option value="todosantodiaupg" >todosantodia &middot; todosantodiaupg</option><option value="todosantodiaupgrade" >todosantodia &middot; todosantodiaupgrade</option><option value="todosantodiavip" >todosantodia &middot; todosantodiavip</option><option value="todosantodiavip1" >todosantodia &middot; todosantodiavip1</option><option value="&#x2f;connect&#x2f;inscricao&#x2f;" > &middot; &#x2f;connect&#x2f;inscricao&#x2f;</option><option value="&#x2f;empresa&#x2f;cadastro&#x2f;" > &middot; &#x2f;empresa&#x2f;cadastro&#x2f;</option><option value="&#x2f;ts&#x2f;inscricao&#x2f;" > &middot; &#x2f;ts&#x2f;inscricao&#x2f;</option></select></div>
+                <div><label for="filter-logic">Combinação</label><select id="filter-logic" name="filter_logic" class="form-select"><option value="any" selected>Qualquer regra</option><option value="all" >Todas as regras</option></select></div>
+            </div>
+            <div class="verified-flags"><label><input type="checkbox" name="filter_admin" value="true" /> Administrador</label><label><input type="checkbox" name="filter_dev" value="true" /> Desenvolvedor</label><label><input type="checkbox" name="filter_partner" value="true" /> Parceiro no cadastro</label></div>
+        </details>
+    </form>
+    
+        <article class="business-panel verified-detail" id="detalhes" aria-labelledby="verified-detail-title">
+            <div class="verified-detail-heading"><div><p class="verified-eyebrow">ORIGENS DO SELO · PERFIL 15305</p><h2 id="verified-detail-title">Cau&atilde; Fraga Sobral</h2>
+                <p><span class="verified-pill is-muted">Selo inativo</span> <a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;atleta&#x2f;caua&#x25;2Dfraga&#x25;2Dsobral&#x2f;" target="_blank" rel="noopener">Abrir perfil ↗</a></p></div>
+                <a class="btn btn-outline-secondary" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Fechar detalhes</a></div>
+            <div class="verified-source-grid">
+                
+                    <section class="verified-source"><h3>Compra anual do selo</h3>
+                        <p><span class="verified-pill is-muted">Estornado</span></p>
+                        <dl><dt>Pagamento</dt><dd>22&#x2f;11&#x2f;2026 22&#x3a;18</dd><dt>Valor</dt><dd>R$ 9,90</dd><dt>Validade concedida</dt><dd>22&#x2f;11&#x2f;2027</dd><dt>Pedido</dt><dd class="verified-order">or_51OPD7Jf8qInQoZN</dd></dl><p class="text-muted small">Este pagamento foi estornado e não mantém o selo ativo.</p>
+                    </section>
+                
+                    <section class="verified-source"><h3>Compra anual do selo</h3>
+                        <p><span class="verified-pill is-muted">Estornado</span></p>
+                        <dl><dt>Pagamento</dt><dd>22&#x2f;11&#x2f;2026 21&#x3a;58</dd><dt>Valor</dt><dd>R$ 9,90</dd><dt>Validade concedida</dt><dd>22&#x2f;11&#x2f;2027</dd><dt>Pedido</dt><dd class="verified-order">or_xEYOYlgI5F5w6zXW</dd></dl><p class="text-muted small">Este pagamento foi estornado e não mantém o selo ativo.</p>
+                    </section>
+                
+                    <section class="verified-source"><h3>Compra anual do selo</h3>
+                        <p><span class="verified-pill is-muted">Expirado</span></p>
+                        <dl><dt>Pagamento</dt><dd>Ainda n&atilde;o confirmado</dd><dt>Valor</dt><dd>R$ 9,90</dd><dt>Validade concedida</dt><dd>Ainda n&atilde;o concedida</dd><dt>Pedido</dt><dd class="verified-order">Ainda n&atilde;o criado</dd></dl>
+                    </section>
+                
+                    <section class="verified-source"><h3>Compra anual do selo</h3>
+                        <p><span class="verified-pill is-muted">Expirado</span></p>
+                        <dl><dt>Pagamento</dt><dd>Ainda n&atilde;o confirmado</dd><dt>Valor</dt><dd>R$ 9,90</dd><dt>Validade concedida</dt><dd>Ainda n&atilde;o concedida</dd><dt>Pedido</dt><dd class="verified-order">Ainda n&atilde;o criado</dd></dl>
+                    </section>
+                
+            </div>
+            
+        </article>
+    <p class="verified-cleanup-link"><a href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Classificar os 128 motivos pendentes →</a></p> 
+        <form id="verified-bulk-form" class="business-panel verified-quick-panel" method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" data-quick-form>
+            <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="73B74A43552707CD86CA18F19FE5301B86027B95884209F65280246C31F72224"/>
+            <div class="verified-quick-heading"><div><h2>Classificação rápida</h2><p class="text-muted">Marque as pessoas com o mesmo motivo e salve de uma vez. Apenas os perfis marcados nesta página serão classificados.</p></div><span id="verified-selected-count" role="status" aria-live="polite">0 selecionados</span></div>
+            <p class="verified-pending">Falta executar o SQL dos motivos no DataGrip para habilitar o salvamento.</p>
+            <fieldset disabled>
+                <div class="verified-quick-fields"><div><label for="bulk-category">Motivo em comum</label><select id="bulk-category" name="category" class="form-select" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer" >Influencer &#x2f; criador</option><option value="imprensa" >Imprensa</option><option value="parceiro" >Parceiro</option><option value="equipe" >Equipe</option><option value="cortesia" >Cortesia</option><option value="outro" >Outro motivo</option></select></div>
+                <div><label for="bulk-note">Vínculo ou observação <span data-note-optional>(opcional)</span></label><input id="bulk-note" name="note" class="form-control" maxlength="1800" value="" placeholder="Ex.: nome do veículo, canal ou parceria" data-quick-note/></div>
+                <button class="btn btn-warning" type="submit" id="verified-bulk-submit">Salvar selecionados</button></div>
+            </fieldset>
+        </form>
+    
+    <div class="verified-list-heading" id="lista-motivos"><h2>419 perfis encontrados</h2><span class="text-muted small">Uma pessoa pode ter mais de uma origem ativa.</span></div>
+    <div class="business-panel verified-table-wrap"><table class="table verified-table"><thead><tr><th class="verified-select-cell"><input type="checkbox" id="verified-select-all" aria-label="Selecionar todos os pendentes desta página" disabled/></th><th>Pessoa</th><th>Origem e motivo do selo</th><th>Situação e validade</th><th><span class="visually-hidden">Detalhes</span></th></tr></thead><tbody>
+        <tr id="perfil-23491">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;23491&amp;PAGINA&#x3d;1#detalhes">Adailson Lopes dos Santos</a><small class="verified-email">adailsonlsantos&#x40;gmail.com</small><small class="text-muted">Perfil 23491 · Usuário 38317</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Adailson&#x20;Lopes&#x20;dos&#x20;Santos" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;23491&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53893">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53893&amp;PAGINA&#x3d;1#detalhes">ADELINO AMORIM</a><small class="verified-email">prof.adelinoamorim&#x40;gmail.com</small><small class="text-muted">Perfil 53893 · Usuário 107639</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 01/01/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ADELINO&#x20;AMORIM" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53893&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-54048">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="54048:0" class="verified-row-select" aria-label="Selecionar ADILSON&#x20;MARTINS" disabled/><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54048&amp;PAGINA&#x3d;1#detalhes">ADILSON MARTINS</a><small class="verified-email">adilsom.sp&#x40;gmail.com</small><small class="text-muted">Perfil 54048 · Usuário 108069</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="73B74A43552707CD86CA18F19FE5301B86027B95884209F65280246C31F72224"/><input type="hidden" name="selection" value="54048:0"/>
+                        <fieldset disabled>
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ADILSON&#x20;MARTINS" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ADILSON&#x20;MARTINS">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ADILSON&#x20;MARTINS" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ADILSON&#x20;MARTINS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54048&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16336">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16336&amp;PAGINA&#x3d;1#detalhes">&Agrave;DILSON MARTINS</a><small class="verified-email">adilsonmsouza.adv&#x40;gmail.com</small><small class="text-muted">Perfil 16336 · Usuário 17425</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 02/01/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de &Agrave;DILSON&#x20;MARTINS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16336&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53980">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53980:0" class="verified-row-select" aria-label="Selecionar &Agrave;DILSON&#x20;MARTINS" disabled/><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53980&amp;PAGINA&#x3d;1#detalhes">&Agrave;DILSON MARTINS</a><small class="verified-email">adilsonmartins.vp&#x40;gmail.com</small><small class="text-muted">Perfil 53980 · Usuário 107843</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="73B74A43552707CD86CA18F19FE5301B86027B95884209F65280246C31F72224"/><input type="hidden" name="selection" value="53980:0"/>
+                        <fieldset disabled>
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de &Agrave;DILSON&#x20;MARTINS" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de &Agrave;DILSON&#x20;MARTINS">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de &Agrave;DILSON&#x20;MARTINS" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de &Agrave;DILSON&#x20;MARTINS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53980&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-2518">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2518&amp;PAGINA&#x3d;1#detalhes">ADIVANI GOMES</a><small class="verified-email">advanigomes&#x40;gmail.com</small><small class="text-muted">Perfil 2518 · Usuário 8282</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ADIVANI&#x20;GOMES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2518&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18872">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18872&amp;PAGINA&#x3d;1#detalhes">ADRIANA APARECIDA DELLA HOZ</a><small class="verified-email">dri150670&#x40;gmail.com</small><small class="text-muted">Perfil 18872 · Usuário 22219</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ADRIANA&#x20;APARECIDA&#x20;DELLA&#x20;HOZ" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18872&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-54556">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54556&amp;PAGINA&#x3d;1#detalhes">ADRIANA CARDOSO DA SILVA BLOISE</a><small class="verified-email">adrianabloise&#x40;gmail.com</small><small class="text-muted">Perfil 54556 · Usuário 110287</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 24/01/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ADRIANA&#x20;CARDOSO&#x20;DA&#x20;SILVA&#x20;BLOISE" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54556&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53045">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53045&amp;PAGINA&#x3d;1#detalhes">ADRIANA DREHER HOEFLE</a><small class="verified-email">drikadreher&#x40;gmail.com</small><small class="text-muted">Perfil 53045 · Usuário 105077</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ADRIANA&#x20;DREHER&#x20;HOEFLE" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53045&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18171">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18171&amp;PAGINA&#x3d;1#detalhes">ADRIANA TEIXEIRA LOPES</a><small class="verified-email">adrianakallyl.2&#x40;gmail.com</small><small class="text-muted">Perfil 18171 · Usuário 20893</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ADRIANA&#x20;TEIXEIRA&#x20;LOPES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18171&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16913">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16913&amp;PAGINA&#x3d;1#detalhes">ADRIANO M OLIVEIRA</a><small class="verified-email">adriano.mo&#x40;gmail.com</small><small class="text-muted">Perfil 16913 · Usuário 18570</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ADRIANO&#x20;M&#x20;OLIVEIRA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16913&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-50442">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;50442&amp;PAGINA&#x3d;1#detalhes">AECIO ALMEIDA</a><small class="verified-email">aeciomurilo&#x40;gmail.com</small><small class="text-muted">Perfil 50442 · Usuário 98312</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de AECIO&#x20;ALMEIDA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;50442&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-15399">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15399&amp;PAGINA&#x3d;1#detalhes">ALAN PEREIRA</a><small class="verified-email">arpereira&#x40;gmail.com</small><small class="text-muted">Perfil 15399 · Usuário 15259</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALAN&#x20;PEREIRA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15399&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-19064">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19064&amp;PAGINA&#x3d;1#detalhes">ALBERTO FREITAS</a><small class="verified-email">betofreitas2&#x40;gmail.com</small><small class="text-muted">Perfil 19064 · Usuário 22594</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 01/01/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALBERTO&#x20;FREITAS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19064&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17505">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17505&amp;PAGINA&#x3d;1#detalhes">ALESSANDRA PEREIRA COELHO</a><small class="verified-email">alessandrapereiracoelho02&#x40;gmail.com</small><small class="text-muted">Perfil 17505 · Usuário 19784</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALESSANDRA&#x20;PEREIRA&#x20;COELHO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17505&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-2602">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="2602:0" class="verified-row-select" aria-label="Selecionar ALEXANDER&#x20;FAJARDO" disabled/><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2602&amp;PAGINA&#x3d;1#detalhes">ALEXANDER FAJARDO</a><small class="verified-email">fajardo.correria&#x40;gmail.com</small><small class="text-muted">Perfil 2602 · Usuário 5573</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="73B74A43552707CD86CA18F19FE5301B86027B95884209F65280246C31F72224"/><input type="hidden" name="selection" value="2602:0"/>
+                        <fieldset disabled>
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ALEXANDER&#x20;FAJARDO" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ALEXANDER&#x20;FAJARDO">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ALEXANDER&#x20;FAJARDO" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALEXANDER&#x20;FAJARDO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2602&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-44360">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;44360&amp;PAGINA&#x3d;1#detalhes">ALEXANDRE BORNHOFEN ALVES</a><small class="verified-email">alexandremtm&#x40;gmail.com</small><small class="text-muted">Perfil 44360 · Usuário 83021</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 01/04/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALEXANDRE&#x20;BORNHOFEN&#x20;ALVES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;44360&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18894">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="18894:0" class="verified-row-select" aria-label="Selecionar ALEXANDRE&#x20;SOUZA&#x20;ALMEIDA" disabled/><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18894&amp;PAGINA&#x3d;1#detalhes">ALEXANDRE SOUZA ALMEIDA</a><small class="verified-email">asouzaalmeida1&#x40;gmail.com</small><small class="text-muted">Perfil 18894 · Usuário 22256</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="73B74A43552707CD86CA18F19FE5301B86027B95884209F65280246C31F72224"/><input type="hidden" name="selection" value="18894:0"/>
+                        <fieldset disabled>
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ALEXANDRE&#x20;SOUZA&#x20;ALMEIDA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ALEXANDRE&#x20;SOUZA&#x20;ALMEIDA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ALEXANDRE&#x20;SOUZA&#x20;ALMEIDA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALEXANDRE&#x20;SOUZA&#x20;ALMEIDA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18894&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-15446">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15446&amp;PAGINA&#x3d;1#detalhes">ALEXANDRE VIANNA</a><small class="verified-email">aa.vianna&#x40;gmail.com</small><small class="text-muted">Perfil 15446 · Usuário 15371</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALEXANDRE&#x20;VIANNA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15446&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16022">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="16022:0" class="verified-row-select" aria-label="Selecionar ALEX&#x20;BORGES" disabled/><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16022&amp;PAGINA&#x3d;1#detalhes">ALEX BORGES</a><small class="verified-email">alexborges1&#x40;gmail.com</small><small class="text-muted">Perfil 16022 · Usuário 16937</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="73B74A43552707CD86CA18F19FE5301B86027B95884209F65280246C31F72224"/><input type="hidden" name="selection" value="16022:0"/>
+                        <fieldset disabled>
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ALEX&#x20;BORGES" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ALEX&#x20;BORGES">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ALEX&#x20;BORGES" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALEX&#x20;BORGES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16022&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16180">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16180&amp;PAGINA&#x3d;1#detalhes">Alex Jose De Oliveira</a><small class="verified-email">alex.joliveira39&#x40;gmail.com</small><small class="text-muted">Perfil 16180 · Usuário 17161</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Alex&#x20;Jose&#x20;De&#x20;Oliveira" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16180&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-49660">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;49660&amp;PAGINA&#x3d;1#detalhes">ALEX RODRIGUES ALVES</a><small class="verified-email">alex.alves.df1&#x40;gmail.com</small><small class="text-muted">Perfil 49660 · Usuário 95967</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 01/01/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALEX&#x20;RODRIGUES&#x20;ALVES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;49660&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18170">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18170&amp;PAGINA&#x3d;1#detalhes">ALEXSANDRA DA SILVA CHAGAS</a><small class="verified-email">alechagas.amora&#x40;gmail.com</small><small class="text-muted">Perfil 18170 · Usuário 20891</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 01/01/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALEXSANDRA&#x20;DA&#x20;SILVA&#x20;CHAGAS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18170&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-2651">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2651&amp;PAGINA&#x3d;1#detalhes">ALEXSANDRO LUIZ DE SOUSA</a><small class="verified-email">asousaprincipal&#x40;gmail.com</small><small class="text-muted">Perfil 2651 · Usuário 167</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 03/01/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALEXSANDRO&#x20;LUIZ&#x20;DE&#x20;SOUSA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2651&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53039">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53039&amp;PAGINA&#x3d;1#detalhes">Aline</a><small class="verified-email">alinebello85&#x40;gmail.com</small><small class="text-muted">Perfil 53039 · Usuário 105064</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Aline" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53039&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-54334">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54334&amp;PAGINA&#x3d;1#detalhes">ALINE CONDE MUNARETO</a><small class="verified-email">alinecond&#x40;gmail.com</small><small class="text-muted">Perfil 54334 · Usuário 109206</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 13/01/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALINE&#x20;CONDE&#x20;MUNARETO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54334&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53649">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53649&amp;PAGINA&#x3d;1#detalhes">ALVARO VARELA</a><small class="verified-email">avrvarela&#x40;gmail.com</small><small class="text-muted">Perfil 53649 · Usuário 106919</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALVARO&#x20;VARELA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53649&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18700">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18700&amp;PAGINA&#x3d;1#detalhes">AMANDA COIMBRA</a><small class="verified-email">amandadosanjoscoimbra&#x40;gmail.com</small><small class="text-muted">Perfil 18700 · Usuário 21931</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de AMANDA&#x20;COIMBRA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18700&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-2732">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="2732:0" class="verified-row-select" aria-label="Selecionar AMANDA&#x20;MARTINS&#x20;ALVES" disabled/><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2732&amp;PAGINA&#x3d;1#detalhes">AMANDA MARTINS ALVES</a><small class="verified-email">amanda.fernandodenoronha&#x40;gmail.com</small><small class="text-muted">Perfil 2732 · Usuário 6014</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="73B74A43552707CD86CA18F19FE5301B86027B95884209F65280246C31F72224"/><input type="hidden" name="selection" value="2732:0"/>
+                        <fieldset disabled>
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de AMANDA&#x20;MARTINS&#x20;ALVES" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de AMANDA&#x20;MARTINS&#x20;ALVES">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de AMANDA&#x20;MARTINS&#x20;ALVES" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de AMANDA&#x20;MARTINS&#x20;ALVES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2732&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-52862">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;52862&amp;PAGINA&#x3d;1#detalhes">AMANDA NERY</a><small class="verified-email">onery.amanda&#x40;gmail.com</small><small class="text-muted">Perfil 52862 · Usuário 104597</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de AMANDA&#x20;NERY" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;52862&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53124">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53124&amp;PAGINA&#x3d;1#detalhes">AMARILDO SILVA</a><small class="verified-email">amarildo632008&#x40;gmail.com</small><small class="text-muted">Perfil 53124 · Usuário 105265</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de AMARILDO&#x20;SILVA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53124&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16542">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16542&amp;PAGINA&#x3d;1#detalhes">AMAURY HAGA</a><small class="verified-email">ahaga&#x40;uol.com.br</small><small class="text-muted">Perfil 16542 · Usuário 17803</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de AMAURY&#x20;HAGA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16542&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18266">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18266&amp;PAGINA&#x3d;1#detalhes">Am&eacute;lia Ten&oacute;rio</a><small class="verified-email">ameliatenorio22&#x40;yahoo.com.br</small><small class="text-muted">Perfil 18266 · Usuário 21077</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Am&eacute;lia&#x20;Ten&oacute;rio" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18266&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-15491">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15491&amp;PAGINA&#x3d;1#detalhes">AMELINI BERTHOLINI</a><small class="verified-email">amelini.bertholini&#x40;gmail.com</small><small class="text-muted">Perfil 15491 · Usuário 15477</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 31/12/2026</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de AMELINI&#x20;BERTHOLINI" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15491&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16792">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16792&amp;PAGINA&#x3d;1#detalhes">AMIN ZAMILUTE DO AMORIM</a><small class="verified-email">amin.zamilute&#x40;gmail.com</small><small class="text-muted">Perfil 16792 · Usuário 18274</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 09/04/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de AMIN&#x20;ZAMILUTE&#x20;DO&#x20;AMORIM" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16792&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53926">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53926&amp;PAGINA&#x3d;1#detalhes">ANA CARNEIRO</a><small class="verified-email">anaflaviacarneiro.afc&#x40;gmail.com</small><small class="text-muted">Perfil 53926 · Usuário 107734</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 01/01/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ANA&#x20;CARNEIRO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53926&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18469">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18469&amp;PAGINA&#x3d;1#detalhes">ANA CAROLINA DE FREITAS</a><small class="verified-email">anacarolinapsicof&#x40;gmail.com</small><small class="text-muted">Perfil 18469 · Usuário 21442</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div><small class="text-muted">Possui estorno no histórico</small> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 02/01/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ANA&#x20;CAROLINA&#x20;DE&#x20;FREITAS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18469&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-54021">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54021&amp;PAGINA&#x3d;1#detalhes">ANA PAULA ROESE</a><small class="verified-email">anapaula.roese&#x40;gmail.com</small><small class="text-muted">Perfil 54021 · Usuário 107962</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill">Todo Santo Dia · VIP</span></div> 
+            </td>
+            <td><strong>Ativo</strong><small class="verified-email">Até 01/01/2027</small></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ANA&#x20;PAULA&#x20;ROESE" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54021&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-19279">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="19279:0" class="verified-row-select" aria-label="Selecionar Anderson&#x20;Cardoso&#x20;Ferreira" disabled/><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19279&amp;PAGINA&#x3d;1#detalhes">Anderson Cardoso Ferreira</a><small class="verified-email">andersoncardosof1981&#x40;gmail.com</small><small class="text-muted">Perfil 19279 · Usuário 23166</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="73B74A43552707CD86CA18F19FE5301B86027B95884209F65280246C31F72224"/><input type="hidden" name="selection" value="19279:0"/>
+                        <fieldset disabled>
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Anderson&#x20;Cardoso&#x20;Ferreira" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Anderson&#x20;Cardoso&#x20;Ferreira">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Anderson&#x20;Cardoso&#x20;Ferreira" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Anderson&#x20;Cardoso&#x20;Ferreira" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19279&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16431">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="16431:0" class="verified-row-select" aria-label="Selecionar ANDERSON&#x20;DE&#x20;ANDRADE" disabled/><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16431&amp;PAGINA&#x3d;1#detalhes">ANDERSON DE ANDRADE</a><small class="verified-email">dinhomve&#x40;gmail.com</small><small class="text-muted">Perfil 16431 · Usuário 17598</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="73B74A43552707CD86CA18F19FE5301B86027B95884209F65280246C31F72224"/><input type="hidden" name="selection" value="16431:0"/>
+                        <fieldset disabled>
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ANDERSON&#x20;DE&#x20;ANDRADE" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ANDERSON&#x20;DE&#x20;ANDRADE">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ANDERSON&#x20;DE&#x20;ANDRADE" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ANDERSON&#x20;DE&#x20;ANDRADE" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16431&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr> 
+    </tbody></table></div>
+    <a id="verified-bulk-jump" class="verified-bulk-jump" href="#verified-bulk-form" hidden>Voltar à classificação do lote ↑</a>
+    <nav class="verified-pagination" aria-label="Páginas da lista"><span>Página 1 de 11</span><div><a class="btn btn-outline-secondary" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2">Próxima</a></div></nav>
+    <p class="text-muted small">As origens pagas usam a confirmação do pagamento. Estornos ficam no histórico. Datas no horário de Brasília.</p>
+</section>
+</body></html>

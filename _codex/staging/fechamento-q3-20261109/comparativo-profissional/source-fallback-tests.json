@@ -1,0 +1,44 @@
+{
+  "json_null": {
+    "new_values": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "meta": {
+      "status": "em_revisao",
+      "ressalva": "Comparativo das mesmas provas indisponível: confira a fonte congelada e sua conciliação com a narrativa pública. Ausência não significa zero."
+    },
+    "comparisons_count": 706,
+    "series_count": 116
+  },
+  "scalar": {
+    "new_values": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "meta": {
+      "status": "em_revisao",
+      "ressalva": "Comparativo das mesmas provas indisponível: confira a fonte congelada e sua conciliação com a narrativa pública. Ausência não significa zero."
+    },
+    "comparisons_count": 706,
+    "series_count": 116
+  },
+  "invalid_pointer": {
+    "new_values": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "meta": {
+      "status": "em_revisao",
+      "ressalva": "Comparativo das mesmas provas indisponível: confira a fonte congelada e sua conciliação com a narrativa pública. Ausência não significa zero."
+    },
+    "comparisons_count": 706,
+    "series_count": 116
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "ownedTab": "283508623",
+  "desktop": {
+    "dayFont": "42px",
+    "notes": [
+      {
+        "characters": 774,
+        "revision": "513",
+        "step": "organizar"
+      },
+      {
+        "characters": 871,
+        "revision": "514",
+        "step": "piloto"
+      },
+      {
+        "characters": 846,
+        "revision": "515",
+        "step": "contrato-abraceo"
+      },
+      {
+        "characters": 920,
+        "revision": "516",
+        "step": "liberacao"
+      },
+      {
+        "characters": 945,
+        "revision": "517",
+        "step": "lancamento"
+      },
+      {
+        "characters": 805,
+        "revision": "518",
+        "step": "continuidade"
+      },
+      {
+        "characters": 876,
+        "revision": "519",
+        "step": "venda-anual"
+      },
+      {
+        "characters": 936,
+        "revision": "520",
+        "step": "edicao-anual"
+      }
+    ],
+    "open": 0,
+    "rowHeights": [
+      95,
+      88,
+      111,
+      95,
+      95,
+      88,
+      86,
+      86
+    ],
+    "rows": 8,
+    "scrollWidth": 1533,
+    "width": 1533
+  },
+  "mobile": {
+    "expanded": "true",
+    "fieldFont": "16px",
+    "fieldWidth": 312,
+    "open": true,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  "pointer_expand": true,
+  "keyboard_collapse": true,
+  "single_panel": true,
+  "tab_closed_verified": true,
+  "viewport_restored": true
+}

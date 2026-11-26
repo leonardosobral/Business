@@ -1,0 +1,11 @@
+{
+  "rates_and_public_contract": true,
+  "candidate_active_references": 0,
+  "destination2026": true,
+  "destination2025": true,
+  "candidate_contract18": true,
+  "old_public_view": true,
+  "temporary_directories_left": [],
+  "proposal_executed": false,
+  "read_only_transaction": true
+}

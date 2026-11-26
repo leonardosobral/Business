@@ -1,0 +1,28 @@
+{
+  "scope": "Final central/public static pages and public-only local fixture.",
+  "files": {
+    "business/estudos/lancamento/index.cfm": {
+      "candidate": "candidate/business/estudos/lancamento/index.cfm",
+      "candidate_sha256": "b28c156ec643d2a6fd07cdf96b9ba33174cd11e65afd8fb0ed8452e9d5744c5a",
+      "before_sha256": "9f80c3e46f7a229e41ce43bcacf6f3d8eac84bae69458a609e654c25026d81db"
+    },
+    "portal/brasilquecorreprovas/2026/pagina.html": {
+      "candidate": "candidate/portal/brasilquecorreprovas/2026/pagina.html",
+      "candidate_sha256": "3362e2bd66baca1a371f94f26eb694e5b3c8e1f826657f4d2e125e8575d5844a",
+      "before_sha256": "d6244770f75865c997c3f8ada331ab5c8813e63ec7f43b4bed95440f98ff80f2"
+    },
+    "portal/brasilquecorreprovas/2026/public-preview.json": {
+      "candidate": "candidate/portal/brasilquecorreprovas/2026/public-preview.json",
+      "candidate_sha256": "85bbadbf7bf7b4af7e0a2dfc843e545e96131e50a930c8f22086a3fd34f2ae3a",
+      "before_sha256": "e0712225e97c3c12afa1fda9ca20a28d2e41c4a847fec10bf3dbffc7d9059dae"
+    }
+  },
+  "source": {
+    "cell": 420,
+    "revision": 7,
+    "run": 352,
+    "snapshot": 42,
+    "main_run": 351
+  },
+  "verification_sha256": "6e65cb9932acdfb385dcd4444f58c949303c3b2a1367dd356977a75541485ccd"
+}

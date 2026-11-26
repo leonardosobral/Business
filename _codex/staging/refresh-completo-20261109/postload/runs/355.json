@@ -1,0 +1,158 @@
+{
+  "run": {
+    "started_at": "2026-11-09 18:26:27.39949-03",
+    "duration_ms": 8734,
+    "error_message": "",
+    "cell_version": 1,
+    "cell_id": "355",
+    "sql_sha256": "6475e1ddecb4fded5adb394793269508fe1817e6a9112dad3ca1c564207b843a",
+    "truncated": 0,
+    "row_count": 1,
+    "sql_text": "-- P02/P03 — cobertura de coleta dentro do cadastro atual, sem estimativa nacional.\n-- BR, data final e todas as modalidades; rua/trail é recorte separado, não soma adicional.\n-- Cadastrados incluem inativos; coletado exige qualquer linha, sem certificar completude.\nWITH calendario AS (\n SELECT id_evento,data_final,tipo_corrida,ativo FROM public.tb_evento_corridas\n WHERE pais='BR' AND data_final>=DATE '2025-01-01' AND data_final<DATE '2026-10-01'\n), por_evento AS (\n SELECT r.id_evento,count(*) AS brutos,\n count(*) FILTER(WHERE r.status_final=0 AND r.homologado IS TRUE) AS view,\n count(*) FILTER(WHERE r.status_final=0 AND r.homologado IS TRUE AND r.concluinte IS TRUE) AS concluintes,\n count(*) FILTER(WHERE r.status_final=0 AND r.homologado IS TRUE AND r.concluinte IS FALSE) AS conclusao_falsa,\n count(*) FILTER(WHERE r.status_final=0 AND r.homologado IS TRUE AND r.concluinte IS NULL) AS conclusao_desconhecida\n FROM public.tb_resultados r JOIN calendario c USING(id_evento) GROUP BY r.id_evento\n), periodos AS(SELECT column1 AS escopo,column2 AS ano,column3 AS inicio,column4 AS fim FROM(VALUES\n ('2025 · ano completo',2025,DATE '2025-01-01',DATE '2026-01-01'),\n ('2025 · até 30/09',2025,DATE '2025-01-01',DATE '2025-10-01'),\n ('2026 · até 30/09',2026,DATE '2026-01-01',DATE '2026-10-01'))t),\nuniversos AS(SELECT 'Todas as modalidades' AS universo UNION ALL SELECT 'Rua/trail'),\ncobertura AS(\n SELECT s.escopo,s.ano,u.universo,s.inicio::text,s.fim::text AS fim_exclusivo,count(*) AS cadastradas,\n count(*) FILTER(WHERE NOT c.ativo) AS inativas,\n count(*) FILTER(WHERE p.brutos>0) AS coletadas,\n count(*) FILTER(WHERE p.view>0) AS com_view,\n count(*) FILTER(WHERE p.concluintes>0) AS com_concluintes,\n coalesce(sum(p.brutos),0)::bigint AS resultados_brutos,\n coalesce(sum(p.view),0)::bigint AS resultados_view,\n coalesce(sum(p.concluintes),0)::bigint AS concluintes,\n coalesce(sum(p.conclusao_falsa),0)::bigint AS conclusao_falsa,\n coalesce(sum(p.conclusao_desconhecida),0)::bigint AS conclusao_desconhecida,\n count(*) FILTER(WHERE p.brutos>0)*100.0/nullif(count(*),0) AS coleta_pct,\n count(*) FILTER(WHERE p.view>0)*100.0/nullif(count(*),0) AS view_pct\n FROM calendario c JOIN periodos s ON c.data_final>=s.inicio AND c.data_final<s.fim\n CROSS JOIN universos u LEFT JOIN por_evento p USING(id_evento)\n WHERE u.universo='Todas as modalidades' OR c.tipo_corrida IN('rua','trail')\n GROUP BY s.escopo,s.ano,u.universo,s.inicio,s.fim\n)\nSELECT jsonb_build_object('coletado_em',current_timestamp,'cobertura',(SELECT jsonb_agg(to_jsonb(c) ORDER BY escopo,universo) FROM cobertura c)) AS payload;",
+    "status": "ok",
+    "note": "Renovação completa solicitada em 09/11/2026. Mesmos critérios e corte da revisão vigente; pacote candidato, ainda não publicado. A data de coleta não amplia a janela de eventos.",
+    "finished_at": "2026-11-09 18:26:36.13579-03",
+    "frozen_at": "2026-11-09 18:26:36.13852-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 355",
+    "id": "332",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T18:26:27.39949-03:00",
+    "cell_id": 355,
+    "cell_version": 1,
+    "id": 332,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "payload"
+      ],
+      "rows": [
+        {
+          "payload": {
+            "cobertura": [
+              {
+                "com_view": 5124,
+                "coleta_pct": 54.659842183834506,
+                "ano": 2025,
+                "conclusao_desconhecida": 0,
+                "resultados_view": 5282373,
+                "view_pct": 54.638515674984006,
+                "resultados_brutos": 5602755,
+                "concluintes": 5282365,
+                "cadastradas": 9378,
+                "fim_exclusivo": "2026-01-01",
+                "escopo": "2025 · ano completo",
+                "universo": "Rua/trail",
+                "coletadas": 5126,
+                "conclusao_falsa": 8,
+                "inicio": "2025-01-01",
+                "com_concluintes": 5124,
+                "inativas": 4
+              },
+              {
+                "com_view": 5125,
+                "coleta_pct": 54.20807781772045,
+                "ano": 2025,
+                "conclusao_desconhecida": 0,
+                "resultados_view": 5282520,
+                "view_pct": 54.18693169803341,
+                "resultados_brutos": 5602937,
+                "concluintes": 5282512,
+                "cadastradas": 9458,
+                "fim_exclusivo": "2026-01-01",
+                "escopo": "2025 · ano completo",
+                "universo": "Todas as modalidades",
+                "coletadas": 5127,
+                "conclusao_falsa": 8,
+                "inicio": "2025-01-01",
+                "com_concluintes": 5125,
+                "inativas": 10
+              },
+              {
+                "com_view": 3230,
+                "coleta_pct": 55.26675786593707,
+                "ano": 2025,
+                "conclusao_desconhecida": 0,
+                "resultados_view": 3537380,
+                "view_pct": 55.23255813953488,
+                "resultados_brutos": 3730187,
+                "concluintes": 3537379,
+                "cadastradas": 5848,
+                "fim_exclusivo": "2025-10-01",
+                "escopo": "2025 · até 30/09",
+                "universo": "Rua/trail",
+                "coletadas": 3232,
+                "conclusao_falsa": 1,
+                "inicio": "2025-01-01",
+                "com_concluintes": 3230,
+                "inativas": 3
+              },
+              {
+                "com_view": 3230,
+                "coleta_pct": 54.79823669040353,
+                "ano": 2025,
+                "conclusao_desconhecida": 0,
+                "resultados_view": 3537380,
+                "view_pct": 54.764326890471345,
+                "resultados_brutos": 3730187,
+                "concluintes": 3537379,
+                "cadastradas": 5898,
+                "fim_exclusivo": "2025-10-01",
+                "escopo": "2025 · até 30/09",
+                "universo": "Todas as modalidades",
+                "coletadas": 3232,
+                "conclusao_falsa": 1,
+                "inicio": "2025-01-01",
+                "com_concluintes": 3230,
+                "inativas": 8
+              },
+              {
+                "com_view": 4966,
+                "coleta_pct": 61.11793611793612,
+                "ano": 2026,
+                "conclusao_desconhecida": 0,
+                "resultados_view": 4575255,
+                "view_pct": 61.007371007371006,
+                "resultados_brutos": 4870428,
+                "concluintes": 4574981,
+                "cadastradas": 8140,
+                "fim_exclusivo": "2026-10-01",
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "coletadas": 4975,
+                "conclusao_falsa": 274,
+                "inicio": "2026-01-01",
+                "com_concluintes": 4966,
+                "inativas": 10
+              },
+              {
+                "com_view": 4966,
+                "coleta_pct": 60.826506907934956,
+                "ano": 2026,
+                "conclusao_desconhecida": 0,
+                "resultados_view": 4575255,
+                "view_pct": 60.71646900599095,
+                "resultados_brutos": 4870428,
+                "concluintes": 4574981,
+                "cadastradas": 8179,
+                "fim_exclusivo": "2026-10-01",
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "coletadas": 4975,
+                "conclusao_falsa": 274,
+                "inicio": "2026-01-01",
+                "com_concluintes": 4966,
+                "inativas": 17
+              }
+            ],
+            "coletado_em": "2026-11-09T18:26:27.401304-03:00"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "audit_columns": [
+    {
+      "column": "id",
+      "type": "bigint"
+    },
+    {
+      "column": "ator_id",
+      "type": "bigint"
+    },
+    {
+      "column": "acao",
+      "type": "text"
+    },
+    {
+      "column": "entidade",
+      "type": "text"
+    },
+    {
+      "column": "entidade_id",
+      "type": "bigint"
+    },
+    {
+      "column": "detalhes",
+      "type": "jsonb"
+    },
+    {
+      "column": "criado_em",
+      "type": "timestamp with time zone"
+    }
+  ],
+  "product": {
+    "code": "previa-2026-q3",
+    "id": 1
+  },
+  "checklist_rows": 8,
+  "constraints": [
+    "CHECK (((length(acao) >= 1) AND (length(acao) <= 80)))",
+    "FOREIGN KEY (ator_id) REFERENCES tb_usuarios(id)",
+    "CHECK ((jsonb_typeof(detalhes) = 'object'::text))",
+    "CHECK (((length(entidade) >= 1) AND (length(entidade) <= 40)))",
+    "PRIMARY KEY (id)"
+  ]
+}

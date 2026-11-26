@@ -1,0 +1,62 @@
+[
+  {
+    "test": "sdk",
+    "status": 200,
+    "type": "text/javascript",
+    "cors": null,
+    "cookies": false,
+    "source_matches": true
+  },
+  {
+    "test": "root",
+    "status": 404,
+    "type": "text/html; charset=iso-8859-1",
+    "cors": null,
+    "cookies": false
+  },
+  {
+    "test": "internal",
+    "status": 404,
+    "type": "text/html; charset=iso-8859-1",
+    "cors": null,
+    "cookies": false
+  },
+  {
+    "test": "include",
+    "status": 404,
+    "type": "text/html; charset=iso-8859-1",
+    "cors": null,
+    "cookies": false
+  },
+  {
+    "test": "method",
+    "status": 403,
+    "type": "text/html; charset=iso-8859-1",
+    "cors": null,
+    "cookies": false
+  },
+  {
+    "test": "no-origin",
+    "status": 403,
+    "type": "application/json;charset=UTF-8",
+    "cors": null,
+    "cookies": false,
+    "body": "{\"status\":\"unavailable\"}"
+  },
+  {
+    "test": "unknown-site",
+    "status": 403,
+    "type": "application/json;charset=UTF-8",
+    "cors": null,
+    "cookies": false,
+    "body": "{\"status\":\"unavailable\"}"
+  },
+  {
+    "test": "invalid-token",
+    "status": 400,
+    "type": "application/json;charset=UTF-8",
+    "cors": null,
+    "cookies": false,
+    "body": "{\"status\":\"unavailable\"}"
+  }
+]

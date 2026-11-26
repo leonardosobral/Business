@@ -1,0 +1,70 @@
+{
+  "ok": true,
+  "backup": "/var/backups/business-verified-quick-8ufcm6ef",
+  "files": {
+    "services/VerifiedAdmin.cfc": {
+      "before": "bf3d4add3f167800a757d1098f96d4ca054ebd00985f7a1954995d917c13ca5f",
+      "after": "ee4e4add3899c8a3d062efeb0c11c7e354f7144f2650ea7d2af2dff293614cf8",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "portal/verificados/verified.css": {
+      "before": "1ff122d840b86bcbc94f9ccce93407102378669c3884f6608eb15150c282ecb2",
+      "after": "d5906eb9de837df60d29c07dab6392b23297a9419f3e0d9a69ba4f7623009cea",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "portal/includes/verified_backend.cfm": {
+      "before": "539520a3bb8b9c7224ca8cb457f4fdc59e21069a66df2969e6df85cdb0f5e9f1",
+      "after": "fd6cabbb869bd47e445c0dc508257909cc8237568ffc675bc3f417b6b8fbc890",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "portal/verificados/home.cfm": {
+      "before": "389fe7336538a3a8b7655ff318473deb0620c8c6eaf6b7ed782e9bf23bba351f",
+      "after": "48ba55f72527e4265c187d8b6b3d8253de062438cfaac99d7c3b080cb2b40852",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "portal/verificados/verified.js": {
+      "before": null,
+      "after": "4c1d5ef320f52ed93b1610433183678dcf8715b0698ecdd06858d39858d06606",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    }
+  },
+  "http_checks": [
+    {
+      "path": "/portal/verificados/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "path": "/portal/includes/verified_backend.cfm",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/portal/verificados/home.cfm",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/portal/verificados/verified.css",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "path": "/portal/verificados/verified.js",
+      "status": "200",
+      "ok": true
+    }
+  ],
+  "schema_changed": false,
+  "entitlements_changed": false
+}

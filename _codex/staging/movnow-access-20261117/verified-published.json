@@ -1,0 +1,259 @@
+{
+  "published": true,
+  "passed": 36,
+  "cases": [
+    {
+      "route": "agenda.cfm",
+      "profile": "admin",
+      "mode": "simulation",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "admin",
+      "mode": "simulation",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "teams/index.cfm?team=1",
+      "profile": "admin",
+      "mode": "simulation",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "teams/index.cfm?team=1",
+      "profile": "admin",
+      "mode": "simulation",
+      "method": "POST",
+      "status": 403
+    },
+    {
+      "route": "agenda.cfm",
+      "profile": "admin",
+      "mode": "canonical",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "admin",
+      "mode": "canonical",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "teams/index.cfm?team=1",
+      "profile": "admin",
+      "mode": "canonical",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "teams/index.cfm?team=1",
+      "profile": "admin",
+      "mode": "canonical",
+      "method": "POST",
+      "status": 403
+    },
+    {
+      "route": "agenda.cfm",
+      "profile": "admin",
+      "mode": "delegated",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "admin",
+      "mode": "delegated",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "teams/index.cfm?team=1",
+      "profile": "admin",
+      "mode": "delegated",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "teams/index.cfm?team=1",
+      "profile": "admin",
+      "mode": "delegated",
+      "method": "POST",
+      "status": 403
+    },
+    {
+      "route": "agenda.cfm",
+      "profile": "admin",
+      "mode": "invalid",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "admin",
+      "mode": "invalid",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "teams/index.cfm?team=1",
+      "profile": "admin",
+      "mode": "invalid",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "teams/index.cfm?team=1",
+      "profile": "admin",
+      "mode": "invalid",
+      "method": "POST",
+      "status": 403
+    },
+    {
+      "route": "agenda.cfm",
+      "profile": "admin",
+      "mode": "simulation",
+      "method": "POST",
+      "status": 403
+    },
+    {
+      "route": "agenda.cfm",
+      "profile": "admin",
+      "mode": "direct",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "agenda.cfm",
+      "profile": "dev",
+      "mode": "direct",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "agenda.cfm",
+      "profile": "partner",
+      "mode": "direct",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "agenda.cfm",
+      "profile": "owner",
+      "mode": "direct",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "admin",
+      "mode": "direct",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "owner",
+      "mode": "direct",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "owner",
+      "mode": "direct",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "viewer",
+      "mode": "direct",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "owner",
+      "mode": "direct",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "viewer",
+      "mode": "direct",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "admin",
+      "mode": "simulation",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "challenge.cfm",
+      "profile": "admin",
+      "mode": "simulation",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "backend.cfm",
+      "profile": "admin",
+      "mode": "simulation",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "backend.cfm",
+      "profile": "owner",
+      "mode": "direct",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "backend.cfm",
+      "profile": "partner",
+      "mode": "direct",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "backend.cfm",
+      "profile": "admin",
+      "mode": "direct",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "backend.cfm",
+      "profile": "admin",
+      "mode": "simulation",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "route": "teams/index.cfm",
+      "profile": "owner",
+      "mode": "direct",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "teams/index.cfm",
+      "profile": "admin",
+      "mode": "direct",
+      "method": "GET",
+      "status": 303
+    }
+  ],
+  "fixture_removed": true
+}

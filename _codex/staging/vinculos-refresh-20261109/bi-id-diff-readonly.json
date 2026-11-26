@@ -1,0 +1,59 @@
+{
+  "months": [
+    {
+      "novos_no_operacional": 2313,
+      "mes": 1,
+      "fato_fora_elegibilidade_atual": 0
+    },
+    {
+      "novos_no_operacional": 1315,
+      "mes": 2,
+      "fato_fora_elegibilidade_atual": 0
+    },
+    {
+      "novos_no_operacional": 5333,
+      "mes": 3,
+      "fato_fora_elegibilidade_atual": 143
+    },
+    {
+      "novos_no_operacional": 7943,
+      "mes": 4,
+      "fato_fora_elegibilidade_atual": 0
+    },
+    {
+      "novos_no_operacional": 9966,
+      "mes": 5,
+      "fato_fora_elegibilidade_atual": 0
+    },
+    {
+      "novos_no_operacional": 5106,
+      "mes": 6,
+      "fato_fora_elegibilidade_atual": 0
+    },
+    {
+      "novos_no_operacional": 5428,
+      "mes": 7,
+      "fato_fora_elegibilidade_atual": 0
+    },
+    {
+      "novos_no_operacional": 12624,
+      "mes": 8,
+      "fato_fora_elegibilidade_atual": 554
+    },
+    {
+      "novos_no_operacional": 20158,
+      "mes": 9,
+      "fato_fora_elegibilidade_atual": 31
+    }
+  ],
+  "capturado_em": "2026-11-09T15:39:24.841209-03:00",
+  "diff": {
+    "evento_divergente": 0,
+    "data_divergente": 170,
+    "novos_no_operacional": 70186,
+    "fato_fora_elegibilidade_atual": 728,
+    "ambos": 4501814,
+    "full_join_n": 4572728
+  },
+  "read_only": "on"
+}

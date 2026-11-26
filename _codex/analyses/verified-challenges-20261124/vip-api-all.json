@@ -1,0 +1,2559 @@
+{
+  "audited_at": "2026-11-24T17:55:17.861627+00:00",
+  "method": "GET only; exact email and registered order references",
+  "results": [
+    {
+      "profile_id": 2732,
+      "user_id": 6014,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_k1LE7bdcRHk8l9DX",
+          "code": "QXE3TM5T2X",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T20:05:11Z"
+          ],
+          "created_at": "2025-12-31T20:03:30Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 9438,
+      "user_id": 6603,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_wjrYZv6fvrT5EYWb",
+          "code": "GZNMCY2IO3",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T17:12:04Z"
+          ],
+          "created_at": "2025-12-31T17:11:17Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 11469,
+      "user_id": 166,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_bKZQYZgHmF9baEkM",
+          "code": "9OQYAM3HKE",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T20:01:57Z"
+          ],
+          "created_at": "2025-12-31T20:00:53Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 12322,
+      "user_id": 9967,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_oaqdqgcOGiqGREKl",
+          "code": "3QOHEOSXG9",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T12:21:31Z"
+          ],
+          "created_at": "2025-12-31T12:20:08Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 13813,
+      "user_id": 12719,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_kQEY5xKhVtYWgyV2",
+          "code": "W8GZFO6C2Y",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T17:54:27Z"
+          ],
+          "created_at": "2025-12-31T17:53:25Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 15572,
+      "user_id": 15696,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_o6G08Ykcnie7NKqy",
+          "code": "0552SGAEG0",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T12:50:58Z"
+          ],
+          "created_at": "2025-12-31T12:49:55Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 15644,
+      "user_id": 15979,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_BrRgMaKC9SabkjlA",
+          "code": "7GY2A9CP67",
+          "status": "canceled",
+          "classification": "refunded_or_partial",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T03:30:47Z",
+          "charge_statuses": [
+            "canceled"
+          ],
+          "transaction_statuses": [
+            "refunded"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_4bmp3ZbUbIk36ZAQ",
+          "code": "3VQVSNWI91",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T03:30:51Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "not_authorized"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_4naePlfygc9kemL1",
+          "code": "DXJWCKVIN8",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T03:31:04Z"
+          ],
+          "created_at": "2025-12-31T03:31:02Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 4
+    },
+    {
+      "profile_id": 16236,
+      "user_id": 17241,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_kqo1VnrIEMfvVPAa",
+          "code": "L0M2A8PT17",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T22:03:12Z"
+          ],
+          "created_at": "2025-12-31T22:01:30Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 16431,
+      "user_id": 17598,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_Kq6QNqGT0EFVe4Ep",
+          "code": "G4XOBXDCK5",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-30T14:43:56Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_PWyez7LFaFANdLJ8",
+          "code": "P8N7U1UW3O",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T10:31:19Z"
+          ],
+          "created_at": "2025-12-31T10:28:48Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 3
+    },
+    {
+      "profile_id": 17465,
+      "user_id": 19732,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_O4WRjb1faIG3RJn3",
+          "code": "7Z8ZBGXA62",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "products": [
+            "todosantodiaupg"
+          ],
+          "descriptions": [
+            "Upgrade Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T10:09:52Z"
+          ],
+          "created_at": "2025-12-31T10:08:28Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 4
+    },
+    {
+      "profile_id": 17698,
+      "user_id": 20084,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_2Gxwv5c7bU8pe8rj",
+          "code": "EN2VIL4AZP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T19:58:55Z"
+          ],
+          "created_at": "2025-12-31T19:57:41Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 17888,
+      "user_id": 20382,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_YGJZXqrFrIg25EAj",
+          "code": "WO29SXAQG5",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T12:10:00Z"
+          ],
+          "created_at": "2025-12-31T12:09:58Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 17923,
+      "user_id": 20431,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_rYR2NGQivt75PBJE",
+          "code": "137RHZNTO8",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T14:34:32Z"
+          ],
+          "created_at": "2025-12-31T14:33:37Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 7
+    },
+    {
+      "profile_id": 18537,
+      "user_id": 21596,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_KoVnZaVUApu44y4e",
+          "code": "740LIXXUG2",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "products": [
+            "todosantodiaupg"
+          ],
+          "descriptions": [
+            "Upgrade Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T19:18:48Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_QMvlEQ2rh5i5y0Xz",
+          "code": "JX5EUW2CD5",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "products": [
+            "todosantodiaupg"
+          ],
+          "descriptions": [
+            "Upgrade Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T19:25:06Z"
+          ],
+          "created_at": "2025-12-31T19:25:03Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            null
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_vNKRVa7uJu9baXnA",
+          "code": "O0ODH3H527",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "products": [
+            "todosantodiaupg"
+          ],
+          "descriptions": [
+            "Upgrade Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T19:17:15Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_ZM9zynMxUrHW5xqn",
+          "code": "2DKQSY4IG3",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "products": [
+            "todosantodiaupg"
+          ],
+          "descriptions": [
+            "Upgrade Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T19:20:41Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_EXQ6WWkiKSzg69ON",
+          "code": "NL8U16UXWO",
+          "status": "canceled",
+          "classification": "refunded_or_partial",
+          "amount": 3000,
+          "currency": "BRL",
+          "products": [
+            "todosantodiaupg"
+          ],
+          "descriptions": [
+            "Upgrade Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T19:25:03Z",
+          "charge_statuses": [
+            "canceled"
+          ],
+          "transaction_statuses": [
+            "refunded"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 6
+    },
+    {
+      "profile_id": 18542,
+      "user_id": 21604,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_l8vXLkeTaFYVQmg1",
+          "code": "XYW7IJKTRQ",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T19:17:58Z"
+          ],
+          "created_at": "2025-12-31T19:17:55Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 18744,
+      "user_id": 22013,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_VOY3N30C0s64bpWo",
+          "code": "VWD3H71S8D",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T17:10:15Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_7X4QNZOfKNCYQAyM",
+          "code": "7V16IVVUMP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T16:17:41Z"
+          ],
+          "created_at": "2025-12-31T16:15:58Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_yKE4ZdsMbSV6OV7G",
+          "code": "QZZGH17A41",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T16:52:47Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_LaBbQnDh5SwEKy3X",
+          "code": "3OJLH2HD87",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2026-01-01T12:04:17Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_vjYwB6kSneTykwq6",
+          "code": "ZE6LIQ9SV4",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2026-01-07T23:30:38Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 6
+    },
+    {
+      "profile_id": 18803,
+      "user_id": 22110,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_aXzBlRUOVtRW63eY",
+          "code": "EYQ8U8MH8X",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T18:35:01Z"
+          ],
+          "created_at": "2025-12-31T18:29:53Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 3
+    },
+    {
+      "profile_id": 18856,
+      "user_id": 22193,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_MQ3l9gvSzZsnN49j",
+          "code": "KONXCW1UMP",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T19:43:17Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_O9ZpqaaidiaqXDbG",
+          "code": "RX02S55TX6",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T19:44:05Z"
+          ],
+          "created_at": "2025-12-31T19:44:03Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 3
+    },
+    {
+      "profile_id": 18938,
+      "user_id": 22325,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_rGgl7BVCKCY7bK10",
+          "code": "57D2ILI479",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "products": [
+            "todosantodiaupg"
+          ],
+          "descriptions": [
+            "Upgrade Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T17:05:27Z"
+          ],
+          "created_at": "2025-12-31T17:04:19Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 18996,
+      "user_id": 22441,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_kW0OmzeTWZf35yX4",
+          "code": "50O2TKYCKG",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T08:57:13Z"
+          ],
+          "created_at": "2025-12-31T08:57:10Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 3
+    },
+    {
+      "profile_id": 19144,
+      "user_id": 22775,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_L0gk7RBtZ6HobY9B",
+          "code": "OV24F55A1O",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T09:24:38Z"
+          ],
+          "created_at": "2025-12-31T09:23:28Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 19279,
+      "user_id": 23166,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_1JxpDbMptwuk8PnB",
+          "code": "DY12H50IVQ",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "products": [
+            "todosantodiaupg"
+          ],
+          "descriptions": [
+            "Upgrade Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T15:19:53Z"
+          ],
+          "created_at": "2025-12-31T15:16:42Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            null
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 19288,
+      "user_id": 23202,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_MEve6QbNIwHznOGB",
+          "code": "9WVOIQ4SJ8",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T09:38:38Z"
+          ],
+          "created_at": "2025-12-31T09:38:36Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 19432,
+      "user_id": 23893,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_wLBl9YDCWNCaRDWE",
+          "code": "075CN2H6G1",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T17:28:58Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_Z9gW6v9cJIzJXepd",
+          "code": "94R3H4XC3X",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T17:30:23Z"
+          ],
+          "created_at": "2025-12-31T17:30:21Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 4
+    },
+    {
+      "profile_id": 21688,
+      "user_id": 33932,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_B1WGN0RIBTPdVw4o",
+          "code": "W8V8A4YTMQ",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T20:13:13Z"
+          ],
+          "created_at": "2025-12-31T20:11:54Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 28882,
+      "user_id": 49983,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_9noaMEkhj4c1Maql",
+          "code": "PGK8AQJU9R",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T20:56:30Z"
+          ],
+          "created_at": "2025-12-31T20:55:18Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53015,
+      "user_id": 105013,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_MDr03oO1sZFE34Py",
+          "code": "K01RCX8HQX",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T10:57:39Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_MBxq1MgHEH0Np53e",
+          "code": "Q4VXTJTK0W",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T11:33:18Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_WEyn8mXFjJtz21rV",
+          "code": "LZPU3DC718",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T13:06:14Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_aKdBWMQFGLHmv76o",
+          "code": "1JE9TEKH5N",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T13:07:42Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_PRowyJFGGiDnN5vV",
+          "code": "1K2PAXSNK7",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T11:31:48Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_e0lXMbEF4FBV1A9z",
+          "code": "RX18H0H4Q0",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T11:33:41Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_0o9agORuKmhdPaZG",
+          "code": "VM91HG4B1X",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T13:05:19Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_abZJmMQuOFPm3GBV",
+          "code": "DEX3S1XUQP",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T10:57:30Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_b6N7QkrToSXZaepD",
+          "code": "9D8YH3WI79",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T10:57:31Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_mjVXv8niMJTZO2lx",
+          "code": "1ZO8AM3TWX",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T12:32:36Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 11
+    },
+    {
+      "profile_id": 53025,
+      "user_id": 105037,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_JWzRP3kCjpCxYXv8",
+          "code": "6QROIOB13Z",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T20:28:39Z"
+          ],
+          "created_at": "2025-12-31T20:26:17Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53067,
+      "user_id": 105127,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_XJnQ0ArS6Hx7lWvx",
+          "code": "8D0RAM3C4M",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "products": [
+            "todosantodia"
+          ],
+          "descriptions": [
+            "Inscrição Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-18T19:30:07Z"
+          ],
+          "created_at": "2025-12-18T19:30:04Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53134,
+      "user_id": 105299,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_PZpMR9bcXIJ5k3QB",
+          "code": "DWZQA4YCR0",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T17:37:52Z"
+          ],
+          "created_at": "2025-12-31T17:37:49Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53296,
+      "user_id": 105742,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_X3xYPguJXHmqO2JR",
+          "code": "YNKOS3ZIPY",
+          "status": "canceled",
+          "classification": "refunded_or_partial",
+          "amount": 4990,
+          "currency": "BRL",
+          "products": [
+            "todosantodia"
+          ],
+          "descriptions": [
+            "Inscrição Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-21T09:10:58Z",
+          "charge_statuses": [
+            "canceled"
+          ],
+          "transaction_statuses": [
+            "refunded"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53618,
+      "user_id": 106769,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_dxw7eWkhbHeyaRbW",
+          "code": "Q40KBZWF08",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T23:33:00Z"
+          ],
+          "created_at": "2025-12-31T23:31:29Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_wL8ngezsLkIo7XGm",
+          "code": "JYQ0C87A1Y",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T23:33:23Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_Lrx2Gn6UoKFRlBJl",
+          "code": "J5O1I4DF75",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-28T13:24:48Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_PYrkKXc1lCL72Nd4",
+          "code": "QNZ5U8RT6W",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-28T13:24:47Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_xK3Ll0uG7hlqL4Dp",
+          "code": "N220F72UWE",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T23:32:02Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_ka8R21GSaac1v3BX",
+          "code": "LN5KCJEU8Q",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-28T13:25:42Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 6
+    },
+    {
+      "profile_id": 53742,
+      "user_id": 107204,
+      "customers": 1,
+      "orders": [],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53754,
+      "user_id": 107255,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_a6O3eE6sP5i5om8Y",
+          "code": "OYO9BNHJLR",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T09:56:08Z"
+          ],
+          "created_at": "2025-12-31T09:55:24Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53789,
+      "user_id": 107350,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_dKMDkKvTOKiRm91b",
+          "code": "0OJEC1H446",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T15:38:40Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_mwQkzNmuOtaQWyBe",
+          "code": "0M4MSP9UX5",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T15:38:38Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_zBb2Rk0cvcbrq84m",
+          "code": "K5EEULOTE6",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T15:35:13Z"
+          ],
+          "created_at": "2025-12-31T15:33:41Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 3
+    },
+    {
+      "profile_id": 53794,
+      "user_id": 107370,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_j2dEb2BhQ6S9Eel9",
+          "code": "RJ82FP8B9X",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T20:24:02Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_w0qayBrUwOUMyk9m",
+          "code": "5LYGI9MB0X",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T20:31:28Z"
+          ],
+          "created_at": "2025-12-31T20:30:16Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 53798,
+      "user_id": 107382,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_yEzKARuN4c1NdN5D",
+          "code": "OXRMI9PURL",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T17:00:58Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_r9Blve3uyunbDPqX",
+          "code": "R2QYT0TGO0",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T17:01:45Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "failed"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_1QLvPpSA0Fo2vgpo",
+          "code": "6O01S05IJ4",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T17:04:55Z"
+          ],
+          "created_at": "2025-12-31T17:04:51Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 3
+    },
+    {
+      "profile_id": 53812,
+      "user_id": 107420,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_VBqvrqdHEjHmjo4J",
+          "code": "J2G2HRFV8J",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T18:50:25Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_ywzBVMMF8sLgjpKJ",
+          "code": "9OO8SOOUNM",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T18:51:22Z"
+          ],
+          "created_at": "2025-12-31T18:50:26Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    },
+    {
+      "profile_id": 53816,
+      "user_id": 107428,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_mlWgadYtXGtGW2x9",
+          "code": "1NQXCJ3SGD",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T19:24:00Z"
+          ],
+          "created_at": "2025-12-31T19:23:57Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53820,
+      "user_id": 107436,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_gzLn0X5HoofyAnAv",
+          "code": "WV25C2IE8W",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T19:37:35Z"
+          ],
+          "created_at": "2025-12-31T19:37:27Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53823,
+      "user_id": 107445,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_AOdgMXQfZu6zPYn6",
+          "code": "LDY0CEYF54",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T19:59:07Z"
+          ],
+          "created_at": "2025-12-31T19:57:31Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53839,
+      "user_id": 107489,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_pbdjX2qC2ds6BM6o",
+          "code": "9R93WCGCLR",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T21:38:14Z"
+          ],
+          "created_at": "2025-12-31T21:37:20Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53848,
+      "user_id": 107516,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_mqdWeaPirrfzXbrJ",
+          "code": "DNXRU8H08J",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T22:40:20Z"
+          ],
+          "created_at": "2025-12-31T22:38:45Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53850,
+      "user_id": 107521,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_WJRX03jH62togzer",
+          "code": "92L4HNVT7L",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T22:53:29Z"
+          ],
+          "created_at": "2025-12-31T22:51:16Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53854,
+      "user_id": 107531,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_9ranjvzUBULj8PRo",
+          "code": "N20MFYF18R",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T23:24:23Z"
+          ],
+          "created_at": "2025-12-31T23:23:19Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    },
+    {
+      "profile_id": 53857,
+      "user_id": 107537,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_gWOLO4nfXpuY2Aay",
+          "code": "4JRJH5NT63",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T23:37:13Z"
+          ],
+          "created_at": "2025-12-31T23:36:06Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_E7v54XDwuxCx42a0",
+          "code": "08LFNWB88Z",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T23:37:48Z",
+          "charge_statuses": [
+            "pending"
+          ],
+          "transaction_statuses": [
+            "waiting_payment"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 2
+    }
+  ]
+}

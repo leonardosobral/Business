@@ -1,0 +1,202 @@
+{
+  "publication": {
+    "contract_version": 18,
+    "year": 2026,
+    "paired_run": 329,
+    "payload_sha256": "a04b8ac9649bb5a230c0c3e36b07fcd5be75add96a474d0aa842632f19d45a85",
+    "run": 351,
+    "paired_revision": 3,
+    "id": 42,
+    "cell": 251
+  },
+  "destinations": [
+    {
+      "ano": 2025,
+      "publicacao_id": 37,
+      "cell_id": 249,
+      "versao": 19
+    },
+    {
+      "ano": 2026,
+      "publicacao_id": 41,
+      "cell_id": 251,
+      "versao": 22
+    }
+  ],
+  "validated_payload_sha256": "a04b8ac9649bb5a230c0c3e36b07fcd5be75add96a474d0aa842632f19d45a85",
+  "captured_at": "2026-11-09T18:47:21.606501-03:00",
+  "active_references": 0,
+  "previous_contract_version": 17,
+  "current_product": {
+    "status": "ACTIVE",
+    "publication": 41,
+    "id": 1
+  },
+  "view_definition": " SELECT ((r.result -> 'rows'::text) -> 0) -> 'payload'::text AS payload\n   FROM estudo.notebook_runs r\n     JOIN estudo.produtos p ON p.codigo = 'previa-2026-q3'::text AND p.status = 'ACTIVE'::text AND p.publicacao_id = 41\n  WHERE r.id = 239 AND r.cell_id = 420 AND r.frozen AND r.status = 'ok'::text AND NOT r.truncated AND r.row_count = 1;",
+  "public_payload": {
+    "release": {
+      "coleta": "2026-11-09",
+      "historias": {
+        "pareadas": {
+          "variacao_percentual": 2.2
+        },
+        "provas": {
+          "variacao_percentual": 38.7
+        },
+        "mulheres": {
+          "anterior": 52.5,
+          "atual": 53.8,
+          "diferenca_pp": 1.4
+        },
+        "resultados": {
+          "variacao_percentual": 29.3
+        }
+      },
+      "indicadores": [
+        {
+          "universo": "Base: todas as participações elegíveis. Uma pessoa pode concluir mais de uma prova.",
+          "descricao": "As mulheres representam a maior parte das participações registradas no período.",
+          "label": "Elas seguem maioria.",
+          "comparativo": {
+            "anterior": 52.5,
+            "nota": "Mesmos nove meses; participações, não pessoas únicas."
+          },
+          "id": "femininas",
+          "valor": 53.8
+        },
+        {
+          "universo": "Nascimento entre 1981 e 1996 ou aproximação pela faixa etária. Desconhecidos permanecem no denominador.",
+          "descricao": "Os Millennials concentram quase metade das participações observadas.",
+          "label": "Uma geração em destaque.",
+          "comparativo": {
+            "anterior": 41.9,
+            "nota": "Mesma regra de geração; a cobertura das idades também muda entre anos."
+          },
+          "id": "millennials",
+          "valor": 46.1
+        },
+        {
+          "universo": "Base: corridas de rua com distância positiva informada; percentual de participações, não de provas.",
+          "descricao": "Participações em percursos cadastrados inferiores a 6 km.",
+          "label": "As curtas têm mais presença.",
+          "comparativo": {
+            "anterior": 58.4,
+            "nota": "Rua com distância positiva; percursos inferiores a 6 km."
+          },
+          "id": "distancias_curtas",
+          "valor": 61.4
+        },
+        {
+          "universo": "Localização da prova, não residência do atleta. Localidades não classificadas permanecem no denominador.",
+          "descricao": "Quase metade das participações de rua está em provas fora das capitais.",
+          "label": "O interior também é protagonista.",
+          "comparativo": {
+            "anterior": 40.1,
+            "nota": "Mesma regra de localização; não classificados continuam no denominador. Coletas próprias por tema; referência2025 2026-11-09; referência2026 2026-11-09."
+          },
+          "id": "interior",
+          "valor": 48.0
+        },
+        {
+          "universo": "Base: todas as participações elegíveis de janeiro a setembro de 2026. Não representa o ano completo.",
+          "descricao": "O terceiro trimestre concentra a maior parcela das participações dos nove meses.",
+          "label": "Julho a setembro puxam o recorte.",
+          "comparativo": {
+            "anterior": 42.1,
+            "nota": "Peso de julho–setembro no total de janeiro–setembro de cada ano."
+          },
+          "id": "terceiro_trimestre",
+          "valor": 43.2
+        },
+        {
+          "universo": "Provas de rua elegíveis ao ranking, com alguma conclusão. O porte observado depende da completude da captura.",
+          "descricao": "Quase metade das participações observadas está nas 10% maiores provas da base de porte.",
+          "label": "As maiores concentram o volume.",
+          "comparativo": {
+            "anterior": 49.4,
+            "nota": "Top 10% recalculado em Jan–Set de cada ano; não são necessariamente as mesmas provas."
+          },
+          "id": "concentracao_porte",
+          "valor": 48.1
+        }
+      ],
+      "periodo_inicio": "2026-01-01",
+      "periodo_fim": "2026-09-30",
+      "title": "O Brasil que Corre Provas 2026 · Janeiro a setembro"
+    },
+    "ok": true
+  },
+  "annual_latest_run": 353,
+  "runs": [
+    {
+      "revision": 3,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "391b0e338fff0088868fd4814e119db63fda8214a0cd38ae5e105dcbc0d537f4",
+      "id": 329,
+      "frozen": true,
+      "cell": 387
+    },
+    {
+      "revision": 42,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "a04b8ac9649bb5a230c0c3e36b07fcd5be75add96a474d0aa842632f19d45a85",
+      "id": 351,
+      "frozen": true,
+      "cell": 251
+    },
+    {
+      "revision": 7,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "584fee688f5826365ed33534eb7da4b6256c9037ef937bdd4b6ed8fab2180dd8",
+      "id": 352,
+      "frozen": true,
+      "cell": 420
+    },
+    {
+      "revision": 3,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "2decc751a22220501a68972ca2291ac87626ff3ed212de82cdd1878b6b6f3637",
+      "id": 353,
+      "frozen": true,
+      "cell": 418
+    }
+  ],
+  "production_hashes": {
+    "business/estudos/includes/StudyAccess.cfc": "9e4456eb30b7070dda3841418a658cb71be81a9a80c608175bd3fca680afb761",
+    "business/estudos/leitor/index.cfm": "550a1303877451d89fcea974ccd3d03563a3fe126147d3967e29db576a8c3f66",
+    "business/estudos/leitor/dados.cfm": "4405b23f5302ee0c0568a76a7b519a2540ddcf4d9e722910385afe5d4871d132",
+    "business/estudo/includes/StudyEditions.cfc": "b5aae7ea02086c61dea80229d2c76623f68d583f2737d9ce3eed30d996e968d4",
+    "business/estudo/anual/index.cfm": "5f03f0ec69666280e02cc661c62ecf99cb1e91442643bfb0eb6ae617cd14adb8",
+    "business/estudo/anual/dados.cfm": "b17682904b584e3cc9bffdb9592e73f2e2a88020b29c0ecab424dec7f82e2e37",
+    "business/estudo/anual/_guard.cfm": "acbf180119b4db5f360a7e5ccb1b32fa5683a8fdf73ab416ee0e79f740603d18",
+    "business/estudos/leitor/pagina.html": "7d578434059ba9186544fadde9862090a12fcdd90708965c0c877aed82d6e787",
+    "business/estudos/leitor/estudo.css": "727edacc1f80c820caed7b14980c187ce246e240c98fb8fc5175fbfae53abc89",
+    "business/estudos/leitor/dados.js": "f85ccb100c95e77cabffd7c299cbdd88636480b90f25329cb0eb241d83697c21",
+    "business/estudos/leitor/graficos.js": "5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b",
+    "business/estudos/leitor/parcial.js": "aa0d9ae6c645f7abe2cb349f5456116fe5a87bd4bb2bc63f67b2695042d6a9c8",
+    "business/estudos/leitor/estudo.js": "7b0e006e7b07c97ec61610522e313cfd585907e89dbea8a56c77b58dc24ee5e6",
+    "business/estudos/leitor/navegacao.js": "9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533",
+    "portal/brasilquecorreprovas/web/pagina.html": "583dae94c168deb218a1431bfe04a0a50f0cf2e949b1c3d1f7154462fa8fcabf",
+    "portal/brasilquecorreprovas/web/estudo.css": "8654f347f385f7f719c7596f2765500318a3f08c9e05931b17d81a9d0ec40371",
+    "portal/brasilquecorreprovas/web/dados.js": "82477b26c45e604953d7d81a285ca744a356e5c63bb8c71e1cf6773aeeb366e3",
+    "portal/brasilquecorreprovas/web/graficos.js": "5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b",
+    "portal/brasilquecorreprovas/web/parcial.js": "fb2b355717b25d7a538bfc486c5e344284310e3ae8f538c60b7bed57b0984db9",
+    "portal/brasilquecorreprovas/web/estudo.js": "00f8476db9ed5b9510925d64d2a39a5d2b5d98de48f405841c621d1602742141",
+    "portal/brasilquecorreprovas/web/navegacao.js": "9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533",
+    "portal/brasilquecorreprovas/imprensa/principal/index.cfm": "ffa273e57c3b4557d535ae26d66f3fd2cf682ec319bdcb71f95782a21380cdf0",
+    "portal/brasilquecorreprovas/imprensa/principal/dados.cfm": "5d8a0886a08bf03db78e35801589a8f880ff0cccd2a0cac0f5ae4d4b29c805d7",
+    "portal/brasilquecorreprovas/imprensa/principal/parcial-2026.js": "304c3a51f056b26b85e0c3d4fa386e239856b541323f6e31125b56318fc66a32",
+    "portal/brasilquecorreprovas/imprensa/principal/estudo-2026.css": "cb989651b463ac15c50cd9c56afd1c7ae01e102ea96bd1f016113f0baee707ad",
+    "portal/brasilquecorreprovas/2026/dados.cfm": "18584bb68d15cfe29ca0186d28d89752f91015267b35727c325237302375bb65",
+    "portal/brasilquecorreprovas/imprensa/_guard.cfm": "459391a17d732769e605c213f02897d35a5c14b9188159cfb9e29327d662a869"
+  },
+  "temporary_directories_left": []
+}

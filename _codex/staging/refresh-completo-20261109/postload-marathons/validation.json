@@ -1,0 +1,50 @@
+{
+  "scope": "offline rendering and numerical reconciliation; no visual/browser/CF compilation claim",
+  "rendered": {
+    "2025": {
+      "html_bytes": 126897,
+      "age_bytes": 12886,
+      "detail_bytes": 1914
+    },
+    "2026": {
+      "html_bytes": 175578,
+      "age_bytes": 11289,
+      "detail_bytes": 1885
+    }
+  },
+  "all_chapters_present": true,
+  "full_lists": true,
+  "principal_top10_matches": true,
+  "press_year_partition": true,
+  "boston_nyc_unchanged": true,
+  "source_runs": {
+    "capitulo": 357,
+    "especiais": 341,
+    "perfil-2025": 293,
+    "perfil-2026": 304,
+    "provas-2025": 294,
+    "provas-2026": 305,
+    "perfil-decadas-2025": 295,
+    "perfil-decadas-2026": 306,
+    "cell-423": 291,
+    "cell-424": 301,
+    "cell-425": 292,
+    "cell-426": 303,
+    "cell-427": 339,
+    "cell-428": 324,
+    "cell-429": 340,
+    "cell-433": 357,
+    "cell-434": 293,
+    "cell-435": 304,
+    "cell-436": 294,
+    "cell-437": 305,
+    "cell-441": 295,
+    "cell-442": 306,
+    "cell-444": 296,
+    "cell-445": 342,
+    "cell-446": 343,
+    "cell-449": 358,
+    "cell-452": 308,
+    "cell-453": 359
+  }
+}

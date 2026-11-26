@@ -1,0 +1,36 @@
+{
+  "approved_pairs": [
+    {
+      "publication_id": 41,
+      "public_run": 239,
+      "revision": 5
+    },
+    {
+      "publication_id": 42,
+      "public_run": 352,
+      "revision": 7
+    }
+  ],
+  "cfc_exact_replacements": [
+    {
+      "before": "                a.payload AS publication\n",
+      "after": "                a.publicacao_id,a.payload AS publication\n"
+    },
+    {
+      "before": "AND a.publicacao_id=41 AND jsonb_extract_path_text",
+      "after": "AND a.publicacao_id IN (41,42) AND jsonb_extract_path_text"
+    },
+    {
+      "before": "            SELECT jsonb_extract_path(result,'rows','0','payload','release') AS narrative\n            FROM estudo.notebook_runs\n            WHERE id=239 AND cell_id=420 AND cell_version=5 AND frozen AND status='ok' AND NOT truncated AND row_count=1",
+      "after": "            SELECT approved_pairs.publication_id,r.id AS narrative_run,r.cell_version AS narrative_revision,\n                jsonb_extract_path(r.result,'rows','0','payload','release') AS narrative\n            FROM (VALUES (41::bigint,239::bigint,5::integer),\n                         (42::bigint,352::bigint,7::integer)) approved_pairs(publication_id,run_id,revision)\n            JOIN estudo.notebook_runs r ON r.id=approved_pairs.run_id AND r.cell_id=420 AND r.cell_version=approved_pairs.revision\n            WHERE r.frozen AND r.status='ok' AND NOT r.truncated AND r.row_count=1"
+    },
+    {
+      "before": "            SELECT p.*\n            FROM paired_source p CROSS JOIN paired_public n",
+      "after": "            SELECT p.*,n.narrative_run,n.narrative_revision\n            FROM paired_source p JOIN paired_public n ON n.publication_id=p.publicacao_id"
+    },
+    {
+      "before": "'narrativa',jsonb_build_object('celula',420,'execucao',239,'revisao',5)",
+      "after": "'narrativa',jsonb_build_object('celula',420,'execucao',narrative_run,'revisao',narrative_revision)"
+    }
+  ]
+}

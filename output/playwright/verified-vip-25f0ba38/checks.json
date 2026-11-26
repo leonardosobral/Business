@@ -1,0 +1,94 @@
+{
+  "commands": [
+    {
+      "args": [
+        "open",
+        "http://127.0.0.1:63880/detail.html"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "resize",
+        "1440",
+        "1100"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "snapshot"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "screenshot",
+        "--filename=/Users/Shared/Projects/RunnerHub/Business/output/playwright/verified-vip-25f0ba38/desktop.png"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "resize",
+        "390",
+        "844"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "snapshot"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "screenshot",
+        "--filename=/Users/Shared/Projects/RunnerHub/Business/output/playwright/verified-vip-25f0ba38/mobile.png"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "eval",
+        "JSON.stringify({viewport:innerWidth,width:document.documentElement.scrollWidth,vip:document.body.innerText.includes(\"Confirmado no cadastro\")})"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "goto",
+        "http://127.0.0.1:63880/"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "snapshot"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "screenshot",
+        "--filename=/Users/Shared/Projects/RunnerHub/Business/output/playwright/verified-vip-25f0ba38/queue-mobile.png"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "eval",
+        "JSON.stringify({viewport:innerWidth,width:document.documentElement.scrollWidth,count:document.querySelector(\".verified-list-heading h2\").innerText})"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "close"
+      ],
+      "code": 0
+    }
+  ],
+  "closed": true
+}

@@ -1,0 +1,177 @@
+{
+  "publications": [
+    {
+      "year": 2026,
+      "run": 33,
+      "id": 2
+    },
+    {
+      "year": 2026,
+      "run": 47,
+      "id": 5
+    },
+    {
+      "year": 2026,
+      "run": 56,
+      "id": 7
+    },
+    {
+      "year": 2026,
+      "run": 64,
+      "id": 9
+    },
+    {
+      "year": 2026,
+      "run": 74,
+      "id": 11
+    },
+    {
+      "year": 2026,
+      "run": 81,
+      "id": 13
+    },
+    {
+      "year": 2026,
+      "run": 96,
+      "id": 17
+    },
+    {
+      "year": 2026,
+      "run": 101,
+      "id": 19
+    },
+    {
+      "year": 2026,
+      "run": 109,
+      "id": 21
+    },
+    {
+      "year": 2026,
+      "run": 112,
+      "id": 22
+    },
+    {
+      "year": 2026,
+      "run": 122,
+      "id": 24
+    },
+    {
+      "year": 2026,
+      "run": 126,
+      "id": 25
+    },
+    {
+      "year": 2026,
+      "run": 131,
+      "id": 27
+    },
+    {
+      "year": 2026,
+      "run": 136,
+      "id": 29
+    },
+    {
+      "year": 2026,
+      "run": 141,
+      "id": 31
+    },
+    {
+      "year": 2026,
+      "run": 143,
+      "id": 33
+    },
+    {
+      "year": 2026,
+      "run": 145,
+      "id": 34
+    },
+    {
+      "year": 2026,
+      "run": 152,
+      "id": 36
+    },
+    {
+      "year": 2026,
+      "run": 206,
+      "id": 38
+    },
+    {
+      "year": 2026,
+      "run": 211,
+      "id": 39
+    },
+    {
+      "year": 2026,
+      "run": 214,
+      "id": 40
+    },
+    {
+      "year": 2026,
+      "run": 233,
+      "id": 41
+    }
+  ],
+  "destinations": [
+    {
+      "ano": 2025,
+      "publicacao_id": 37,
+      "cell_id": 249,
+      "versao": 19
+    },
+    {
+      "ano": 2026,
+      "publicacao_id": 41,
+      "cell_id": 251,
+      "versao": 22
+    }
+  ],
+  "triggers": [
+    "CREATE TRIGGER web_publicacao_imutavel BEFORE DELETE OR UPDATE ON estudo.web_publicacoes FOR EACH ROW EXECUTE FUNCTION estudo.notebook_immutable()",
+    "CREATE TRIGGER web_publicacao_no_truncate BEFORE TRUNCATE ON estudo.web_publicacoes FOR EACH STATEMENT EXECUTE FUNCTION estudo.notebook_immutable()"
+  ],
+  "columns": [
+    {
+      "nullable": "NO",
+      "type": "bigint",
+      "default": null,
+      "name": "id"
+    },
+    {
+      "nullable": "NO",
+      "type": "integer",
+      "default": null,
+      "name": "ano"
+    },
+    {
+      "nullable": "NO",
+      "type": "bigint",
+      "default": null,
+      "name": "run_id"
+    },
+    {
+      "nullable": "NO",
+      "type": "jsonb",
+      "default": null,
+      "name": "payload"
+    },
+    {
+      "nullable": "NO",
+      "type": "text",
+      "default": null,
+      "name": "nota"
+    },
+    {
+      "nullable": "NO",
+      "type": "bigint",
+      "default": null,
+      "name": "publicado_por"
+    },
+    {
+      "nullable": "NO",
+      "type": "timestamp with time zone",
+      "default": "clock_timestamp()",
+      "name": "publicado_em"
+    }
+  ],
+  "publish_function": "CREATE OR REPLACE FUNCTION estudo.publicar_web(p_ano integer, p_run bigint, p_esperada bigint, p_admin bigint, p_nota text)\n RETURNS bigint\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE d estudo.web_destinos; p jsonb; pid bigint;\nBEGIN\n IF p_admin IS NULL OR p_admin<=0 OR length(btrim(p_nota)) NOT BETWEEN 1 AND 2000 THEN RAISE EXCEPTION 'Administrador e nota obrigatorios'; END IF;\n SELECT * INTO d FROM estudo.web_destinos WHERE ano=p_ano FOR UPDATE;\n IF d.ano IS NULL THEN RAISE EXCEPTION 'Edicao inexistente'; END IF;\n IF EXISTS(SELECT 1 FROM estudo.web_publicacoes WHERE id=d.publicacao_id AND run_id=p_run) THEN RETURN d.publicacao_id; END IF;\n IF coalesce(d.publicacao_id,0)<>p_esperada THEN RAISE EXCEPTION 'A publicacao mudou. Recarregue antes de publicar'; END IF;\n p:=estudo.web_payload_conferido(p_ano,p_run);\n  INSERT INTO estudo.web_publicacoes(ano,run_id,payload,nota,publicado_por) VALUES(p_ano,p_run,p,p_nota,p_admin) RETURNING id INTO pid;\n UPDATE estudo.web_destinos SET publicacao_id=pid,versao=versao+1 WHERE ano=p_ano;\n RETURN pid;\nEND;$function$\n"
+}

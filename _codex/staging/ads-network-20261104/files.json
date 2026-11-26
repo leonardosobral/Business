@@ -1,0 +1,22 @@
+[
+  "ads-network/.htaccess",
+  "ads-network/Application.cfc",
+  "ads-network/includes/request.cfm",
+  "ads-network/v1/serve.cfm",
+  "ads-network/v1/viewable.cfm",
+  "ads-network/v1/click.cfm",
+  "ads-network/sdk/v1.js",
+  "portal/includes/publisher_inventory_helpers.cfm",
+  "portal/includes/paid_banner_helpers.cfm",
+  "portal/includes/paid_banner_queries.cfm",
+  "portal/includes/paid_banner_form.cfm",
+  "portal/includes/paid_banner_list.cfm",
+  "portal/includes/paid_banner_home.cfm",
+  "portal/includes/banner_management_backend.cfm",
+  "portal/includes/banner_dashboard_backend.cfm",
+  "portal/includes/banner_form.cfm",
+  "portal/banners/sites/backend.cfm",
+  "portal/banners/sites/home.cfm",
+  "portal/banners/sites/index.cfm",
+  "portal/banners/home.cfm"
+]

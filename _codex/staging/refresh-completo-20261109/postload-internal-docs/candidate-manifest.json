@@ -1,0 +1,76 @@
+{
+  "scope": "Isolated internal documents candidate; not published",
+  "facts": {
+    "snapshot": 42,
+    "main_run": 351,
+    "main_cell": 251,
+    "public_run": 352,
+    "public_cell": 420,
+    "cohort_run": 329,
+    "pairs": 615,
+    "cutoff": "2026-09-30",
+    "collection": "2026-11-09",
+    "matched": "2,2%",
+    "calendar": "38,7%",
+    "volume": "29,3%",
+    "women_before": "52,5%",
+    "women_after": "53,8%",
+    "short": "61,4%",
+    "interior": "48,0%"
+  },
+  "artifacts": [
+    {
+      "candidate": "runtime/business/estudos/lancamento/arquivo.cfm",
+      "destination": "estudos/lancamento/arquivo.cfm",
+      "sha256": "6566b1552c35ef435c875fbd0a719ff44dbc733909bd76450d7a0f84ab968d90",
+      "bytes": 1932,
+      "baseline_sha256": "bcd6479c906a2526ef9b61d2896dde73580c754b3a8a5746cea0090ac5845dcd"
+    },
+    {
+      "candidate": "runtime/business/estudos/lancamento/arquivos/brasil-que-corre-provas-guia-rapido-q3.pdf",
+      "destination": "estudos/lancamento/arquivos/brasil-que-corre-provas-guia-rapido-q3.pdf",
+      "sha256": "3b03f015d455874262c94a42ad3bb03e4316ef7d89161631086734d0b0944a20",
+      "bytes": 42175,
+      "baseline_sha256": "fd32ac5fc63d3f42ede6955f9e66875b3b4f18cf844b05c2193ee1d78ab3b4a6"
+    },
+    {
+      "candidate": "runtime/business/estudos/lancamento/arquivos/brasil-que-corre-provas-lancamento-q3-execucao-v7.pdf",
+      "destination": "estudos/lancamento/arquivos/brasil-que-corre-provas-lancamento-q3-execucao-v7.pdf",
+      "sha256": "16a57cf624dda9fae1c66eebff5c83a64a9dab56edcf780720e0c8f1fbf1cac3",
+      "bytes": 47929,
+      "baseline_sha256": null
+    }
+  ],
+  "baseline": {
+    "runtime": {
+      "estudos/lancamento/index.cfm": "9f80c3e46f7a229e41ce43bcacf6f3d8eac84bae69458a609e654c25026d81db",
+      "estudos/lancamento/arquivo.cfm": "bcd6479c906a2526ef9b61d2896dde73580c754b3a8a5746cea0090ac5845dcd",
+      "estudos/lancamento/arquivos/brasil-que-corre-provas-guia-rapido-q3.pdf": "fd32ac5fc63d3f42ede6955f9e66875b3b4f18cf844b05c2193ee1d78ab3b4a6",
+      "estudos/lancamento/arquivos/brasil-que-corre-provas-lancamento-q3-execucao-v6.pdf": "8af695d422c70e62c603126c3839ed97b31d41bd91cd3afb8ec0ae78c1696f68",
+      "estudos/lancamento/arquivos/brasil-que-corre-provas-lancamento-q3-execucao-v5.pdf": "2f886359df22602ee7fa84029b48bd764bcf348f56ff71ceaa3e7ceb316fc1e8"
+    },
+    "generators": {
+      "gerar_pdf_guia_rapido.py": "b8c26e5dc4ef5e4a1f43b28e7bd98e549b9553c51379c32346de392033315b72",
+      "gerar_pdf_execucao_v6.py": "90c8854627dfff8ca6134d8739971e127a44ac9af4f43fb9111e9a60382c2916"
+    },
+    "fonts": {
+      "LibreFranklin-400.ttf": "fb40136489d01767226935deddfdf62540222d955ba9ed16fc34be7e9050eaf4",
+      "LibreFranklin-700.ttf": "62ac7a038728520b21c3865571f127288da3072297edb735970e5c5a11971ba3",
+      "LibreFranklin-900.ttf": "3ef6c324f66edb25820871106fdfd845df8b6d94d212feff41a5e09d88ed0731",
+      "Poppins-400.ttf": "1ccebf12edbc45ca58f02f76280ed01266d13d896085da28f5dc033fb41cb663",
+      "Poppins-600.ttf": "d349ce83b3a8d4a63224f86a621aec7ba8f3983eb2ecf4e044bad11a242a5098",
+      "Poppins-700.ttf": "dbf66e8bc1e859b05d05ea14d0eb994f9c230083d7fc38817634c2fefa796fad"
+    }
+  },
+  "sources": {
+    "postload/runs/251.json": "326f4c3419b783465db74fbc84834983dfaa4b8ae7f3af3887660b7e4285348b",
+    "postload/runs/420.json": "96599b83a8e920a01a9781270a4f85eee2df25e45ce1ea65027c9b398c4255e6",
+    "postload/runs/387.json": "ab57802d7f85a180857541c128c3fb82fe7d3673f9f54fa5872f9323396ebd19"
+  },
+  "generators": {
+    "gerar_pdf_execucao_v7.py": "33b65dd890754f2d910a54e82c3f54ab60860ccb589e1260b13e00068979ca81",
+    "gerar_pdf_guia_rapido.py": "ac3de85e8bb415352def699a77cba8e2d362225e934306098436db0427a33acc"
+  },
+  "verification_sha256": "19e7bb02b73c9f0ecaa6f94fc1702681bf45196492200bde64f527ed0aac4cad",
+  "patch_sha256": "1f73b87c843c943298b06da230ab982e3745b86f7cb9b74402dc30514041a25c"
+}

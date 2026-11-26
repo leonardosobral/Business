@@ -1,0 +1,543 @@
+<!--- DADOS DO USUARIO LOGADO --->
+
+<!---
+    Este backend e incluido tanto pela pagina quanto por estruturas compartilhadas
+    (template/header). Carrega-lo novamente na mesma requisicao repete consultas e
+    tenta redeclarar funcoes de permissao no escopo da pagina.
+--->
+<cfif structKeyExists(REQUEST, "businessBackendLoginLoaded") AND REQUEST.businessBackendLoginLoaded>
+    <cfexit method="exittemplate"/>
+</cfif>
+<cfset REQUEST.businessBackendLoginLoaded = true/>
+<cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED">
+    <cfset VARIABLES.roadRunnersBaseUrl="https://roadrunners.run"/>
+    <cfset VARIABLES.businessAccountPendingAccess=false/>
+    <cfset VARIABLES.businessPendingWorkspace=false/>
+    <cfset qPerfil=queryNew("id,name,email,is_admin,is_dev,is_partner,id_pagina,nome,imagem_usuario,tag,tag_prefix,strava_id,aka,fonte_lead,partner_info")/>
+    <cfset queryAddRow(qPerfil)/>
+    <cfset querySetCell(qPerfil,"id",REQUEST.businessAccessContext.actorId)/>
+    <cfset querySetCell(qPerfil,"name",REQUEST.businessIdentity.name)/>
+    <cfset querySetCell(qPerfil,"nome",REQUEST.businessIdentity.name)/>
+    <cfset querySetCell(qPerfil,"email",REQUEST.businessIdentity.email)/>
+    <cfset querySetCell(qPerfil,"imagem_usuario","/assets/user.png")/>
+    <cfloop list="is_admin,is_dev,is_partner" index="businessDelegationFlag"><cfset querySetCell(qPerfil,businessDelegationFlag,false)/></cfloop>
+    <cfinclude template="business_account_context.cfm"/>
+    <cfinclude template="business_permissions.cfm"/>
+    <cfset qNotificacoes=queryNew("id_notifica,link,icone,conteudo_notifica,data_leitura")/>
+    <cfset qNotificacoesNaoLidas=queryNew("total")/>
+    <cfset queryAddRow(qNotificacoesNaoLidas)/><cfset querySetCell(qNotificacoesNaoLidas,"total",0)/>
+    <cfset qPermissoes=queryNew("id_permissao,id_usuario,tag,tipo_agregacao,titulo,ordem")/>
+    <cfset VARIABLES.permissoes=""/>
+    <cfset qEventosConta=queryNew("id_evento")/>
+    <cfset qEventosContaOperacao=queryNew("id_evento")/>
+    <cfif REQUEST.businessDelegationService.has(REQUEST.businessAccessContext,"events.view")>
+        <cfquery name="qEventosConta" datasource="runnerhub">
+            SELECT DISTINCT id_evento FROM tb_conta_eventos
+            WHERE id_conta=<cfqueryparam cfsqltype="cf_sql_bigint" value="#REQUEST.businessAccessContext.accountId#"/>
+              AND status::text='ATIVO'
+        </cfquery>
+        <cfif REQUEST.businessDelegationService.has(REQUEST.businessAccessContext,"events.manage")><cfset qEventosContaOperacao=duplicate(qEventosConta)/></cfif>
+    </cfif>
+    <cfexit method="exittemplate"/>
+</cfif>
+
+
+<cfinclude template="business_pending_access.cfm"/>
+
+<cfset VARIABLES.roadRunnersBaseUrl = "https://roadrunners.run"/>
+<cfset VARIABLES.businessSkipCookieLogin = false/>
+<cfset VARIABLES.businessAccountPendingAccess = false/>
+<cfset VARIABLES.businessPendingWorkspace = false/>
+<cfset VARIABLES.businessPendingRequestAccountId = ""/>
+<cfset VARIABLES.businessPendingExistingAccountRequest = false/>
+<cfset VARIABLES.businessUserManagementStatusReady = false/>
+<cfset qBusinessPendingRegistration = QueryNew("id_solicitacao,id_conta,nome_empresa,tipo_prestador,status,status_conta,data_criacao,nome_responsavel,email_responsavel,origem_gestora_id")/>
+
+<cftry>
+    <cfquery name="qBusinessUserManagementSchema">
+        SELECT to_regclass('public.tb_usuarios_gestao') IS NOT NULL AS ready
+    </cfquery>
+    <cfset VARIABLES.businessUserManagementStatusReady = isBoolean(qBusinessUserManagementSchema.ready)
+        ? qBusinessUserManagementSchema.ready
+        : listFindNoCase("1,true,yes,on", trim(qBusinessUserManagementSchema.ready & "")) GT 0/>
+    <cfcatch type="any">
+        <cfset VARIABLES.businessUserManagementStatusReady = false/>
+    </cfcatch>
+</cftry>
+
+<cfif isDefined("URL.logout") AND URL.logout EQ "1">
+    <cfset VARIABLES.businessSkipCookieLogin = true/>
+</cfif>
+
+<cfif isDefined("URL.action")
+    AND URL.action EQ "abrir_notificacao"
+    AND isDefined("REQUEST.businessIdentity.id")
+    AND len(trim(REQUEST.businessIdentity.id))
+    AND isDefined("URL.id_notifica")
+    AND isNumeric(URL.id_notifica)>
+
+    <cfset VARIABLES.businessNotificationRedirectUrl = isDefined("URL.destino") ? trim(URL.destino) : ""/>
+
+    <cfif len(VARIABLES.businessNotificationRedirectUrl)>
+        <cfif NOT reFindNoCase("^https?://", VARIABLES.businessNotificationRedirectUrl)>
+            <cfif left(VARIABLES.businessNotificationRedirectUrl, 1) EQ "/">
+                <cfset VARIABLES.businessNotificationRedirectUrl = VARIABLES.roadRunnersBaseUrl & VARIABLES.businessNotificationRedirectUrl/>
+            <cfelse>
+                <cfset VARIABLES.businessNotificationRedirectUrl = VARIABLES.roadRunnersBaseUrl & "/" & VARIABLES.businessNotificationRedirectUrl/>
+            </cfif>
+        </cfif>
+    <cfelse>
+        <cfset VARIABLES.businessNotificationRedirectUrl = VARIABLES.roadRunnersBaseUrl & "/"/>
+    </cfif>
+
+    <cfquery>
+        UPDATE tb_notifica
+        SET data_leitura = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+        WHERE id_notifica = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.id_notifica#"/>
+          AND id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
+          AND data_leitura IS NULL
+    </cfquery>
+
+    <cflocation addtoken="false" url="#VARIABLES.businessNotificationRedirectUrl#"/>
+</cfif>
+
+<cfif NOT VARIABLES.businessSkipCookieLogin AND isDefined("REQUEST.businessIdentity.id")>
+    <cfquery name="qPerfil">
+        SELECT usr.id, usr.name, usr.email,
+        coalesce(usr.is_admin, false) AS is_admin,
+        coalesce(usr.is_partner, false) AS is_partner,
+        coalesce(usr.is_dev, false) AS is_dev,
+        usr.strava_id, usr.aka, usr.fonte_lead,
+        coalesce(
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.roadRunnersBaseUrl#/assets/paginas/"/> || nullif(trim(pg.path_imagem), ''),
+            nullif(trim(usr.strava_profile), ''),
+            nullif(trim(usr.imagem_usuario), ''),
+            <cfqueryparam cfsqltype="cf_sql_varchar" value="/assets/user.png"/>
+        ) AS imagem_usuario,
+        pg.tag, pg.tag_prefix, pg.id_pagina, coalesce(pg.nome, usr.name) as nome, pg.verificado, pg.cidade, pg.uf,
+        pg.instagram, pg.youtube, pg.tiktok, pg.website, pg.loja, pg.whatsapp, pg.whatsapp_publico, pg.descricao,
+        usr.partner_info
+        FROM tb_usuarios usr
+        <cfif VARIABLES.businessUserManagementStatusReady>
+            LEFT JOIN tb_usuarios_gestao usrgest ON usrgest.id_usuario = usr.id
+        </cfif>
+        LEFT JOIN tb_paginas_usuarios pgusr on usr.id = pgusr.id_usuario
+        LEFT JOIN tb_paginas pg on pg.id_pagina = pgusr.id_pagina
+        WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
+        <cfif VARIABLES.businessUserManagementStatusReady>
+            AND coalesce(usrgest.ativo, true) = true
+            AND coalesce(usrgest.excluido, false) = false
+        </cfif>
+        AND (
+            usr.is_admin = true
+            OR usr.is_dev = true
+            OR EXISTS (
+                SELECT 1
+                FROM tb_conta_usuarios cu
+                INNER JOIN tb_contas cont ON cont.id_conta = cu.id_conta
+                WHERE cu.id_usuario = usr.id
+                  AND cu.status = 'ATIVO'::status_usuario_conta
+                  AND cont.status IN ('ATIVA'::status_conta, 'PENDENTE'::status_conta)
+            )
+            OR EXISTS (
+                SELECT 1
+                FROM tb_conta_cadastro_solicitacoes sol
+                WHERE lower(sol.email_responsavel) = lower(usr.email)
+                  <cfif structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled>
+                    AND sol.origem_gestora_id IS NULL
+                  </cfif>
+                  AND sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
+            )
+        )
+    </cfquery>
+    <cfinclude template="business_account_context.cfm"/>
+    <cfinclude template="business_permissions.cfm"/>
+    <cfif isDefined("VARIABLES.businessPendingAccountId") AND len(trim(VARIABLES.businessPendingAccountId))>
+        <cfset VARIABLES.businessPendingWorkspace = true/>
+    </cfif>
+    <cfif qPerfil.recordcount
+        AND isDefined("VARIABLES.businessAccountSelectionRequired")
+        AND VARIABLES.businessAccountSelectionRequired
+        AND NOT findNoCase("/selecionar-conta/", CGI.SCRIPT_NAME)>
+        <cfset VARIABLES.businessAccountSelectionUrl = "/selecionar-conta/"/>
+        <cfif findNoCase("/saude-eventos/central/", CGI.SCRIPT_NAME)>
+            <cfset VARIABLES.businessAccountSelectionReturn = "/saude-eventos/central/"/>
+            <cfif isDefined("URL.id_evento") AND isNumeric(URL.id_evento) AND val(URL.id_evento) GT 0>
+                <cfset VARIABLES.businessAccountSelectionReturn &= "?id_evento=" & int(URL.id_evento)/>
+                <cfif isDefined("URL.percurso") AND isNumeric(URL.percurso) AND val(URL.percurso) GT 0>
+                    <cfset VARIABLES.businessAccountSelectionReturn &= "&percurso=" & val(URL.percurso)/>
+                </cfif>
+            </cfif>
+            <cfset VARIABLES.businessAccountSelectionUrl &= "?redirect=" & urlEncodedFormat(VARIABLES.businessAccountSelectionReturn)/>
+        </cfif>
+        <cflocation addtoken="false" url="#VARIABLES.businessAccountSelectionUrl#"/>
+    </cfif>
+    <cfif qPerfil.recordcount
+        AND isDefined("VARIABLES.businessCurrentAccountIsMedical")
+        AND VARIABLES.businessCurrentAccountIsMedical
+        AND NOT findNoCase("/saude-eventos/", CGI.SCRIPT_NAME)
+        AND NOT findNoCase("/selecionar-conta/", CGI.SCRIPT_NAME)
+        AND compareNoCase(CGI.SCRIPT_NAME, "/logout.cfm") NEQ 0>
+        <cflocation addtoken="false" url="/saude-eventos/"/>
+    </cfif>
+    <cftry>
+        <cfquery name="qBusinessPendingRegistration">
+            SELECT sol.id_solicitacao,
+                   sol.id_conta,
+                   coalesce(cont.nome_conta, sol.nome_empresa) AS nome_empresa,
+                   sol.tipo_prestador,
+                   sol.status::text AS status,
+                   cont.status::text AS status_conta,
+                   sol.data_criacao,
+                   sol.nome_responsavel,
+                   sol.email_responsavel,
+                   <cfif structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled>sol.origem_gestora_id<cfelse>NULL::bigint AS origem_gestora_id</cfif>
+            FROM tb_usuarios usr
+            INNER JOIN tb_conta_cadastro_solicitacoes sol
+                ON lower(sol.email_responsavel) = lower(usr.email)
+                <cfif structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled>
+                  AND sol.origem_gestora_id IS NULL
+                </cfif>
+            LEFT JOIN tb_contas cont ON cont.id_conta = sol.id_conta
+            WHERE usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
+              AND coalesce(usr.is_admin, false) = false
+              AND sol.status = 'PENDENTE'::status_conta_cadastro_solicitacao
+              AND NOT EXISTS (
+                SELECT 1
+                FROM tb_conta_usuarios cu
+                INNER JOIN tb_contas cont ON cont.id_conta = cu.id_conta
+                WHERE cu.id_usuario = usr.id
+                  AND cu.status = 'ATIVO'::status_usuario_conta
+                  AND cont.status = 'ATIVA'::status_conta
+              )
+            ORDER BY sol.data_criacao DESC
+            LIMIT 1
+        </cfquery>
+
+        <cfif NOT qBusinessPendingRegistration.recordcount
+          AND structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled
+          AND isDefined("VARIABLES.businessPendingAccountId") AND len(trim(VARIABLES.businessPendingAccountId & ""))
+          AND structKeyExists(REQUEST,"businessDelegationIdentity")>
+            <cfset VARIABLES.businessPendingOwnerRecord=createObject("component","services.accountDelegation.Workspace").init(
+                createObject("component","services.accountDelegation.Store").init("runnerhub"),
+                createObject("component","services.accountDelegation.Policy")
+            ).pendingOwnerRegistration(REQUEST.businessDelegationIdentity)/>
+            <cfif NOT structIsEmpty(VARIABLES.businessPendingOwnerRecord)>
+                <cfset queryAddRow(qBusinessPendingRegistration)/>
+                <cfloop collection="#VARIABLES.businessPendingOwnerRecord#" item="businessPendingOwnerKey">
+                    <cfset querySetCell(qBusinessPendingRegistration,businessPendingOwnerKey,VARIABLES.businessPendingOwnerRecord[businessPendingOwnerKey])/>
+                </cfloop>
+            </cfif>
+        </cfif>
+
+        <cfif qBusinessPendingRegistration.recordcount>
+            <cfset VARIABLES.businessPendingWorkspace = true/>
+            <cfset VARIABLES.businessPendingRegistrationId = qBusinessPendingRegistration.id_solicitacao/>
+            <cfif NOT isDefined("VARIABLES.businessPendingAccountName") OR NOT len(trim(VARIABLES.businessPendingAccountName))>
+                <cfset VARIABLES.businessPendingAccountName = qBusinessPendingRegistration.nome_empresa/>
+            </cfif>
+            <cfif len(trim(qBusinessPendingRegistration.id_conta & ""))>
+                <cfset VARIABLES.businessPendingRequestAccountId = qBusinessPendingRegistration.id_conta/>
+            </cfif>
+            <cfset VARIABLES.businessPendingExistingAccountRequest = qBusinessPendingRegistration.status_conta EQ "ATIVA"/>
+        </cfif>
+
+        <cfcatch type="any">
+            <cfset VARIABLES.businessAccountPendingAccess = false/>
+            <cfset qBusinessPendingRegistration = QueryNew("id_solicitacao,id_conta,nome_empresa,tipo_prestador,status,status_conta,data_criacao,nome_responsavel,email_responsavel,origem_gestora_id")/>
+        </cfcatch>
+    </cftry>
+
+    <cfif VARIABLES.businessAccountPendingAccess AND isDefined("VARIABLES.template")>
+        <cflocation addtoken="false" url="/"/>
+    </cfif>
+
+    <!--- Confirmed owners of agency-created pending accounts receive status only until internal approval. --->
+    <cfif qBusinessPendingRegistration.recordcount
+        AND len(trim(qBusinessPendingRegistration.origem_gestora_id & ""))
+        AND isDefined("VARIABLES.template")
+        AND NOT listFindNoCase("/,/faq/,/suporte/", VARIABLES.template)>
+        <cflocation addtoken="false" url="/"/>
+    </cfif>
+
+    <cfset VARIABLES.businessPendingAllowedTemplates = businessPendingAllowedTemplates(
+        VARIABLES.businessPendingExistingAccountRequest
+    )/>
+    <cfif qPerfil.recordcount
+        AND VARIABLES.businessPendingWorkspace
+        AND isDefined("VARIABLES.template")
+        AND NOT businessPendingTemplateAllowed(VARIABLES.template, VARIABLES.businessPendingExistingAccountRequest)>
+        <cflocation addtoken="false" url="/"/>
+    </cfif>
+
+    <cfif qPerfil.recordcount>
+        <cfif NOT StructKeyExists(SESSION, "businessNotificationCsrf")
+            OR NOT len(trim(SESSION.businessNotificationCsrf & ""))>
+            <cfset SESSION.businessNotificationCsrf = lCase(hash(createUUID() & now() & getTickCount(), "SHA-256"))/>
+        </cfif>
+        <cfset VARIABLES.businessNotificationCsrf = SESSION.businessNotificationCsrf/>
+
+        <cfif isDefined("FORM.action")
+            AND FORM.action EQ "marcar_todas_notificacoes_lidas"
+            AND isDefined("FORM.business_notification_csrf")
+            AND FORM.business_notification_csrf EQ VARIABLES.businessNotificationCsrf>
+
+            <cfquery>
+                UPDATE tb_notifica
+                SET data_leitura = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>
+                  AND data_leitura IS NULL
+                  AND data_publicacao <= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                  AND (
+                      data_expiracao IS NULL
+                      OR data_expiracao >= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                  )
+            </cfquery>
+
+            <cfset VARIABLES.businessNotificationReturnUrl = "/"/>
+            <cfif isDefined("FORM.business_notification_return")>
+                <cfset VARIABLES.businessNotificationRequestedReturn = trim(FORM.business_notification_return & "")/>
+                <cfif left(VARIABLES.businessNotificationRequestedReturn, 1) EQ "/"
+                    AND left(VARIABLES.businessNotificationRequestedReturn, 2) NEQ "//"
+                    AND NOT find(chr(10), VARIABLES.businessNotificationRequestedReturn)
+                    AND NOT find(chr(13), VARIABLES.businessNotificationRequestedReturn)
+                    AND NOT find("\", VARIABLES.businessNotificationRequestedReturn)>
+                    <cfset VARIABLES.businessNotificationReturnUrl = VARIABLES.businessNotificationRequestedReturn/>
+                </cfif>
+            </cfif>
+
+            <cflocation addtoken="false" url="#VARIABLES.businessNotificationReturnUrl#"/>
+        </cfif>
+
+        <cfif qPerfil.is_admin>
+            <cftry>
+                <cfquery>
+                    INSERT INTO tb_notifica
+                    (
+                        id_usuario,
+                        id_notifica_template,
+                        data_publicacao,
+                        data_expiracao,
+                        link
+                    )
+                    SELECT setr.id_usuario_responsavel,
+                           10,
+                           cham.updated_at,
+                           cham.updated_at + interval '999 days',
+                           <cfqueryparam cfsqltype="cf_sql_varchar" value="https://#cgi.http_host#/helpdesk/?ticket_id="/> || cham.id_chamado
+                    FROM tb_helpdesk_chamados cham
+                    INNER JOIN tb_helpdesk_setores setr ON setr.id_setor = cham.id_setor
+                    WHERE setr.id_usuario_responsavel = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
+                      AND cham.id_usuario <> setr.id_usuario_responsavel
+                      AND cham.status IN (
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="aberto"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="cliente_respondeu"/>
+                      )
+                      AND COALESCE(
+                        (
+                            SELECT MAX(ntf.data_publicacao)
+                            FROM tb_notifica ntf
+                            WHERE ntf.id_usuario = setr.id_usuario_responsavel
+                              AND ntf.id_notifica_template = 10
+                              AND ntf.link = <cfqueryparam cfsqltype="cf_sql_varchar" value="https://#cgi.http_host#/helpdesk/?ticket_id="/> || cham.id_chamado
+                        ),
+                        timestamp '1900-01-01 00:00:00'
+                      ) < cham.updated_at
+                </cfquery>
+            <cfcatch type="any"></cfcatch>
+            </cftry>
+        </cfif>
+
+        <cfquery name="qNotificacoes">
+            SELECT ntf.id_notifica,
+                   ntf.id_usuario,
+                   ntf.data_publicacao,
+                   ntf.data_expiracao,
+                   ntf.data_leitura,
+                   ntf.id_notifica_template,
+                   COALESCE(ntf.link, tpl.link) AS link,
+                   COALESCE(ntf.icone, tpl.icone) AS icone,
+                   COALESCE(ntf.conteudo_notifica, tpl.conteudo_template) AS conteudo_notifica
+            FROM tb_notifica ntf
+            LEFT JOIN tb_notifica_template tpl ON ntf.id_notifica_template = tpl.id_notifica_template
+            WHERE ntf.data_publicacao <= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+            AND (ntf.data_expiracao IS NULL OR ntf.data_expiracao >= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>)
+            AND ntf.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
+            ORDER BY ntf.data_publicacao DESC, ntf.id_notifica DESC
+        </cfquery>
+
+        <cfquery name="qNotificacoesNaoLidas">
+            SELECT count(*) AS total
+            FROM tb_notifica ntf
+            WHERE ntf.data_publicacao <= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+            AND (ntf.data_expiracao IS NULL OR ntf.data_expiracao >= <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>)
+            AND ntf.data_leitura IS NULL
+            AND ntf.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
+        </cfquery>
+
+        <cfif isDefined("URL.notificacao")>
+            <cfquery>
+                UPDATE tb_notifica
+                SET data_leitura = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
+                AND data_leitura IS NULL
+            </cfquery>
+        </cfif>
+    <cfelse>
+        <cfset qNotificacoes = queryNew("id_notifica,id_usuario,data_publicacao,data_expiracao,data_leitura,id_notifica_template,link,icone,conteudo_notifica")/>
+        <cfset qNotificacoesNaoLidas = queryNew("total")/>
+    </cfif>
+    <cfset qEventosConta = queryNew("id_evento")/>
+    <cfset qEventosContaOperacao = queryNew("id_evento")/>
+    <cfif NOT (isDefined("VARIABLES.businessEffectiveIsAdmin") AND VARIABLES.businessEffectiveIsAdmin)
+        AND isDefined("VARIABLES.businessEffectiveAccountIds")
+        AND len(trim(VARIABLES.businessEffectiveAccountIds))
+        AND VARIABLES.businessEffectiveAccountIds NEQ "0">
+        <cfquery name="qEventosConta">
+            SELECT DISTINCT id_evento
+            FROM tb_conta_eventos
+            WHERE id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountIds#" list="true"/>)
+              AND status = 'ATIVO'::status_conta_evento
+        </cfquery>
+    </cfif>
+    <cfif NOT (isDefined("VARIABLES.businessEffectiveIsAdmin") AND VARIABLES.businessEffectiveIsAdmin)
+        AND isDefined("VARIABLES.businessEffectiveAccountOperatorIds")
+        AND len(trim(VARIABLES.businessEffectiveAccountOperatorIds))
+        AND VARIABLES.businessEffectiveAccountOperatorIds NEQ "0">
+        <cfquery name="qEventosContaOperacao">
+            SELECT DISTINCT id_evento
+            FROM tb_conta_eventos
+            WHERE id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessEffectiveAccountOperatorIds#" list="true"/>)
+              AND status = 'ATIVO'::status_conta_evento
+        </cfquery>
+    </cfif>
+    <cfif isDefined("VARIABLES.businessEffectiveIsAdmin") AND VARIABLES.businessEffectiveIsAdmin>
+        <cfquery name="qPermissoes">
+            SELECT perm.*, '' as tipo_agregacao, tema.*, agr.ordem,
+            COALESCE(agr.bi_nome, 'Todas as Provas - Brasil') as titulo
+            FROM public.tb_permissoes perm
+            inner join tb_bi agr on agr.bi_tag = perm.tag
+            inner join tb_temas tema on tema.id_tema = agr.id_tema
+            WHERE perm.id_usuario = 0
+            UNION
+            SELECT perm.*, '' as tipo_agregacao, tema.*, agr.ordem,
+            COALESCE(agr.agregador_nome, 'Brasil') as titulo
+            FROM public.tb_permissoes perm
+            inner join tb_agregadores agr on agr.agregador_tag = perm.tag
+            inner join tb_temas tema on tema.id_tema = agr.id_tema
+            WHERE perm.id_usuario = 0
+            UNION
+            SELECT perm.*, agr.tipo_agregacao, tema.*, agr.ordem,
+            COALESCE(agr.nome_evento_agregado, 'Brasil') as titulo
+            FROM public.tb_permissoes perm
+            inner join tb_agrega_eventos agr on agr.tag = perm.tag
+            inner join tb_temas tema on tema.id_tema = agr.id_tema
+            WHERE perm.id_usuario = 0
+            ORDER BY tipo, ordem
+        </cfquery>
+    <cfelse>
+        <cfquery name="qPermissoes">
+            SELECT perm.*, '' as tipo_agregacao, tema.*, agr.ordem,
+            COALESCE(agr.bi_nome, 'Todas as Provas - Brasil') as titulo
+            FROM public.tb_permissoes perm
+            inner join tb_bi agr on agr.bi_tag = perm.tag
+            inner join tb_temas tema on tema.id_tema = agr.id_tema
+            WHERE perm.id_usuario IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.businessEffectiveUserIds#" list="true"/>)
+            UNION
+            SELECT perm.*, '' as tipo_agregacao, tema.*, agr.ordem,
+            COALESCE(agr.agregador_nome, 'Brasil') as titulo
+            FROM public.tb_permissoes perm
+            inner join tb_agregadores agr on agr.agregador_tag = perm.tag
+            inner join tb_temas tema on tema.id_tema = agr.id_tema
+            WHERE perm.id_usuario IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.businessEffectiveUserIds#" list="true"/>)
+            UNION
+            SELECT perm.*, agr.tipo_agregacao, tema.*, agr.ordem,
+            COALESCE(agr.nome_evento_agregado, 'Brasil') as titulo
+            FROM public.tb_permissoes perm
+            inner join tb_agrega_eventos agr on agr.tag = perm.tag
+            inner join tb_temas tema on tema.id_tema = agr.id_tema
+            WHERE perm.id_usuario IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.businessEffectiveUserIds#" list="true"/>)
+            ORDER BY tipo, ordem
+        </cfquery>
+    </cfif>
+<cfelse>
+    <cfif isDefined("VARIABLES.template")
+        AND compareNoCase(VARIABLES.template, "/saude-eventos/central/") NEQ 0>
+        <cflocation addtoken="false" url="/"/>
+    </cfif>
+</cfif>
+
+
+<!--- GOOGLE SIGN OUT --->
+
+<cfif isDefined("URL.action") AND URL.action EQ "googlesignout">
+    <cflocation addtoken="false" url="/logout.cfm"/>
+</cfif>
+
+
+<!--- Google callbacks are verified in OnRequestStart before loading this profile. --->
+
+
+<!--- ATUALIZAR CADASTRO POCKET --->
+
+<cfif isDefined("FORM.action") AND FORM.action EQ "atualizar_cadastro_pocket">
+    <cfquery name="qCheckTagPagina">
+        SELECT tag FROM tb_paginas
+        WHERE tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lCase(trim(FORM.tag))#"/>
+        AND id_pagina <> <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_pagina#"/>
+    </cfquery>
+    <cfquery datasource="runner_dba" name="qUpdatePagina">
+        UPDATE tb_paginas
+        SET
+        nome = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.nome#"/>,
+        tag_prefix = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tag_prefix#"/>,
+        <cfif NOT qCheckTagPagina.recordcount>
+            tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="#lCase(trim(FORM.tag))#"/>,
+        </cfif>
+        cidade = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.cidade#"/>,
+        uf = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.uf#"/>,
+        <!---pais = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.pais#"/>,--->
+        descricao = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.descricao#"/>,
+        id_usuario_cadastro = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
+        WHERE id_pagina = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.id_pagina#"/>
+    </cfquery>
+    <cfquery datasource="runner_dba" name="qUpdateUsuario">
+        UPDATE tb_usuarios
+        SET
+        name = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.nome#"/>,
+        <cfif isDefined("FORM.assessoria")>
+            assessoria = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.assessoria#"/>,
+        </cfif>
+        cidade = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.cidade#"/>,
+        estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.uf#"/>,
+        pais = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.pais#"/>
+        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
+    </cfquery>
+    <cfif qCheckTagPagina.recordcount>
+        <cflocation addtoken="false" url="#FORM.template#inscricao/?info=tag&tag=#FORM.tag#"/>
+    </cfif>
+</cfif>
+
+
+<!--- CONFIRMAR INSCRICAO BUSINESS --->
+
+<cfif isDefined("FORM.action") AND FORM.action EQ "confirmar_business">
+    <cfset VARIABLES.postback = {}/>
+    <cfif isDefined("FORM.documento")>
+        <cfset VARIABLES.postback["documento"] = FORM.documento/>
+    </cfif>
+    <cfif isDefined("FORM.celular")>
+        <cfset VARIABLES.postback["celular"] = FORM.celular/>
+    </cfif>
+    <cfif isDefined("FORM.nome_comercial")>
+        <cfset VARIABLES.postback["nome_comercial"] = FORM.nome_comercial/>
+    </cfif>
+    <cfif isDefined("FORM.perfil")>
+        <cfset VARIABLES.postback["perfil"] = FORM.perfil/>
+    </cfif>
+    <cfquery datasource="runner_dba" name="qInsertIncricaoTreino">
+        UPDATE tb_usuarios
+        set partner_info = <cfqueryparam cfsqltype="cf_sql_varchar" value="#serializeJSON(VARIABLES.postback)#"/>::jsonb
+        WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#REQUEST.businessIdentity.id#"/>
+    </cfquery>
+</cfif>

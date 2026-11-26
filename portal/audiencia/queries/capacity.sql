@@ -8,6 +8,7 @@ WITH clock AS (
     FROM audience.events e CROSS JOIN clock c
     WHERE :region_dimension = 'market' AND :environment = 'prod' AND :include_internal = false
       AND e.environment = 'prod' AND e.is_internal = false
+      AND (:page_family <> 'verified' OR (e.page_family = 'other' AND e.page_path = '/verificado/'))
       AND e.occurred_at >= (c.today - (CAST(:days AS integer) - 1))::timestamp AT TIME ZONE 'America/Sao_Paulo'
       AND e.occurred_at <= c.as_of
       AND e.slot_key <> ''
@@ -33,7 +34,7 @@ WITH clock AS (
     FROM opportunity_identity o
     JOIN slot_signals s USING (page_view_id, slot_key, audience_uf)
     WHERE (:uf = '' OR o.audience_uf = :uf)
-      AND (:page_family = '' OR o.page_family = :page_family)
+      AND (:page_family IN ('', 'verified') OR o.page_family = :page_family)
       AND (:device_class = '' OR o.device_class = :device_class)
 ), physical_slots AS (
     -- A page/slot can be observed under several commercial UFs; count it once after selection.

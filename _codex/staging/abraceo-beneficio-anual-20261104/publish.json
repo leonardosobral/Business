@@ -1,0 +1,9 @@
+{
+  "published": [
+    "estudos/includes/StudyAccess.cfc",
+    "estudos/includes/FirstAccess.cfc",
+    "estudos/primeiro-acesso/index.cfm",
+    "estudos/primeiro-acesso/primeiro-acesso.js"
+  ],
+  "backup": "/var/backups/business-abraceo-annual-benefit-20261104/baseline"
+}

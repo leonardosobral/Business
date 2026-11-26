@@ -1,0 +1,9 @@
+{
+  "published": [
+    "eventos/index.cfm",
+    "eventos/home.cfm"
+  ],
+  "backup": "/var/backups/business-event-approval-20261117-lrn4zsih",
+  "hashes_verified": true,
+  "temporary_uploads_removed": true
+}

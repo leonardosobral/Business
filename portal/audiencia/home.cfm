@@ -149,6 +149,28 @@
         </div>
 
         <div class="audience-tab-panel" data-audience-panel id="audience-acquisition">
+        <cfif VARIABLES.audienceFamily EQ "verified">
+        <section class="audience-panel" aria-labelledby="verified-entries-title">
+            <h2 class="h5" id="verified-entries-title">Por onde os atletas chegaram à oferta?</h2>
+            <p class="audience-meta">Cada abertura de /verificado/ conta uma vez. Um navegador pode voltar por outra entrada. Aberturas sem referência registrada ficam em “Sem identificação”. A tabela abaixo deste quadro mostra o canal pelo qual a sessão começou. A aba <a href="#audience-campaigns">Campanha</a> detalha os links marcados com UTM.</p>
+            <cfif structKeyExists(VARIABLES.audienceQueries,"verifiedEntries")>
+                <cfset audEntries = VARIABLES.audienceQueries.verifiedEntries/>
+                <div class="table-responsive"><table class="table table-sm mb-0">
+                    <thead><tr><th scope="col">Entrada da oferta</th><th scope="col">Aberturas</th><th scope="col">Navegadores</th><th scope="col">Sessões</th></tr></thead>
+                    <tbody><cfoutput query="audEntries"><cfif audEntries.breakdown EQ "entry"><tr><td>#encodeForHtml(entry_label)#</td><td>#audienceCount(pageviews)#</td><td>#audienceCount(visitors)#</td><td>#audienceCount(sessions)#</td></tr></cfif></cfoutput>
+                    <cfif NOT audEntries.recordcount><tr><td colspan="4">Nenhuma abertura registrada no período selecionado.</td></tr></cfif></tbody>
+                </table></div>
+                <cfif listFind(valueList(audEntries.breakdown),"host")>
+                    <h3 class="h6 mt-4">Sites de origem da sessão</h3>
+                    <p class="audience-meta">Até 25 domínios informados pelo navegador, ordenados pelas aberturas da oferta.</p>
+                    <div class="table-responsive"><table class="table table-sm mb-0">
+                        <thead><tr><th scope="col">Domínio</th><th scope="col">Aberturas</th><th scope="col">Navegadores</th><th scope="col">Sessões</th></tr></thead>
+                        <tbody><cfoutput query="audEntries"><cfif audEntries.breakdown EQ "host"><tr><td>#encodeForHtml(entry_label)#</td><td>#audienceCount(pageviews)#</td><td>#audienceCount(visitors)#</td><td>#audienceCount(sessions)#</td></tr></cfif></cfoutput></tbody>
+                    </table></div>
+                </cfif>
+            <cfelse><p class="audience-meta" role="status">Não foi possível consultar as entradas da oferta agora.</p></cfif>
+        </section>
+        </cfif>
         <section class="audience-panel" id="aquisicao"><h2 class="h5">De onde vem o público?</h2>
             <p class="audience-meta">Uma linha por origem, reunindo todos os meios, campanhas e links. Visitantes e sessões são contados uma vez por origem no recorte. Sessão qualificada: 30 segundos ativos ou duas páginas distintas. Um visitante pode aparecer em origens diferentes.</p>
             <div class="table-responsive audience-table-scroll" tabindex="0" role="region" aria-label="Audiência consolidada por origem"><table class="table table-sm"><thead><tr><th scope="col">Origem</th><th scope="col">Público</th><th scope="col">Sessões / qualificadas</th><th scope="col">Uso ativo</th></tr></thead><tbody>

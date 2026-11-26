@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/estudos/primeiro-acesso/",
+    "method": "GET",
+    "status": 200
+  },
+  {
+    "path": "/estudos/primeiro-acesso/api.cfm",
+    "method": "GET",
+    "status": 403
+  },
+  {
+    "path": "/estudos/primeiro-acesso/api.cfm",
+    "method": "POST",
+    "status": 401
+  },
+  {
+    "path": "/estudos/api.cfm",
+    "method": "GET",
+    "status": 403
+  },
+  {
+    "path": "/estudos/api.cfm",
+    "method": "POST",
+    "status": 401
+  },
+  {
+    "path": "/estudos/primeiro-acesso/primeiro-acesso.js",
+    "method": "GET",
+    "status": 200
+  }
+]

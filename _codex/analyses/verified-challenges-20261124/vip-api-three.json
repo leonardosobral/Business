@@ -1,0 +1,169 @@
+{
+  "audited_at": "2026-11-24T17:52:12.964312+00:00",
+  "method": "GET only; exact email and registered order references",
+  "results": [
+    {
+      "profile_id": 15644,
+      "user_id": 15979,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_BrRgMaKC9SabkjlA",
+          "code": "7GY2A9CP67",
+          "status": "canceled",
+          "classification": "refunded_or_partial",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T03:30:47Z",
+          "charge_statuses": [
+            "canceled"
+          ],
+          "transaction_statuses": [
+            "refunded"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_4bmp3ZbUbIk36ZAQ",
+          "code": "3VQVSNWI91",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [],
+          "created_at": "2025-12-31T03:30:51Z",
+          "charge_statuses": [
+            "failed"
+          ],
+          "transaction_statuses": [
+            "not_authorized"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_4naePlfygc9kemL1",
+          "code": "DXJWCKVIN8",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T03:31:04Z"
+          ],
+          "created_at": "2025-12-31T03:31:02Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "captured"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 4
+    },
+    {
+      "profile_id": 17923,
+      "user_id": 20431,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_rYR2NGQivt75PBJE",
+          "code": "137RHZNTO8",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T14:34:32Z"
+          ],
+          "created_at": "2025-12-31T14:33:37Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 7
+    },
+    {
+      "profile_id": 53854,
+      "user_id": 107531,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_9ranjvzUBULj8PRo",
+          "code": "N20MFYF18R",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "products": [
+            "todosantodiavip"
+          ],
+          "descriptions": [
+            "Inscrição Vip Corra Todo Santo Dia"
+          ],
+          "paid_at": [
+            "2025-12-31T23:24:23Z"
+          ],
+          "created_at": "2025-12-31T23:23:19Z",
+          "charge_statuses": [
+            "paid"
+          ],
+          "transaction_statuses": [
+            "paid"
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "orders_examined": 1
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "verified_files": {
+    "portal/includes/banner_management_backend.cfm": {
+      "sha256": "79e355cfbe3a773f47482e2be66632e68db90b68855602d0c95b9d404421308e",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    }
+  },
+  "preserved_dependencies": 0,
+  "published_at": "2026-11-04T18:16:37.081372+00:00",
+  "backup": "/var/backups/ads-network-20261104-5ny93v75/baseline",
+  "stage": "/var/backups/ads-network-20261104-5ny93v75"
+}

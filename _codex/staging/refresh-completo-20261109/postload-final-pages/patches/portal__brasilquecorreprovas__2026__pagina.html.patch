@@ -1,0 +1,25 @@
+--- a/portal/brasilquecorreprovas/2026/pagina.html
++++ b/portal/brasilquecorreprovas/2026/pagina.html
+@@ -6,18 +6,18 @@
+   <meta name="robots" content="noindex,nofollow">
+   <meta name="theme-color" content="#242424">
+   <link rel="canonical" href="https://roadrunners.run/brasilquecorreprovas/2026/">
+-  <meta property="og:image" content="https://roadrunners.run/brasilquecorreprovas/2026/kit/provas-cadastradas-1920x1080.png?v=20261104-edicoes-calendario">
++  <meta property="og:image" content="https://roadrunners.run/brasilquecorreprovas/2026/kit/provas-cadastradas-1920x1080.png?v=20261109-refresh-q3">
+   <meta property="og:image:width" content="1920">
+   <meta property="og:image:height" content="1080">
+-  <meta property="og:image:alt" content="Comparativo Jan–Set 2025–2026: +2,1% nos concluintes das mesmas provas e +33,9% no calendário cadastrado. Universos distintos, sujeitos à coleta.">
++  <meta property="og:image:alt" content="Comparativo Jan–Set 2025–2026: +2,2% nos concluintes das mesmas provas e +38,7% no calendário cadastrado. Universos distintos, sujeitos à coleta.">
+   <meta name="twitter:card" content="summary_large_image">
+   <meta property="og:url" content="https://roadrunners.run/brasilquecorreprovas/2026/">
+   <title>O Brasil que Corre Provas 2026 · Janeiro a setembro</title>
+-  <meta name="description" content="O que mudou na corrida de 2025 para 2026? Compare janeiro a setembro e conheça os recortes da prévia profissional do Brasil que Corre Provas.">
++  <meta name="description" content="Jan–Set 2025–2026: +2,2% nas mesmas provas e +38,7% no calendário cadastrado. Universos distintos, sujeitos à coleta. Conheça a prévia profissional.">
+   <meta property="og:type" content="website">
+   <meta property="og:locale" content="pt_BR">
+   <meta property="og:title" content="O Brasil que Corre Provas 2026 · Janeiro a setembro">
+-  <meta property="og:description" content="Mais provas no calendário, alta menor nas mesmas provas. Compare janeiro a setembro de 2025 e 2026 e conheça os destaques do Brasil que Corre Provas.">
++  <meta property="og:description" content="Jan–Set 2025–2026: +2,2% nas mesmas provas e +38,7% no calendário cadastrado. Universos distintos, sujeitos à coleta. Conheça a prévia profissional.">
+   <link rel="preload" href="/brasilquecorreprovas/web/assets/libre-franklin-latin.woff2" as="font" type="font/woff2" crossorigin>
+   <link rel="preload" href="/brasilquecorreprovas/web/assets/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+   <link rel="stylesheet" href="estudo-publico.css?v=20261019-imprensa">

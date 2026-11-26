@@ -1,0 +1,42 @@
+{
+  "ready_within_checked_scope": true,
+  "published_by_vertical_task": false,
+  "principal2026_run": 351,
+  "principal2026_contract": 18,
+  "principal2026_private_snapshot": 42,
+  "snapshot_active_destinations": 0,
+  "snapshot_active_products": 0,
+  "canonical_files_changed": false,
+  "commercial_products_unchanged": true,
+  "styles_and_admin_guard_unchanged": true,
+  "chapters": [
+    "years",
+    "pairs",
+    "runs",
+    "boston",
+    "notes",
+    "age_audit",
+    "pairs2025",
+    "context",
+    "brasil_gigante"
+  ],
+  "years": {
+    "2025": {
+      "selected": 41,
+      "editorial": 54234,
+      "profile": 54234,
+      "inventory": 100
+    },
+    "2026": {
+      "selected": 39,
+      "editorial": 61452,
+      "profile": 61469,
+      "inventory": 96
+    }
+  },
+  "frozen_current_cells": 22,
+  "pdfs_generated": false,
+  "boston_nyc_unchanged": true,
+  "candidate_files": 9,
+  "candidate_manifest_sha256": "ddba47dad12d365d8dad31e7c499d6902ce560108558d08d1e7cfe7ae16049bb"
+}

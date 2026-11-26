@@ -1,0 +1,5015 @@
+{
+  "audited_at": "2026-11-24T19:41:36.839200+00:00",
+  "method": "GET only; exact account email and known order references; all products; order detail refreshed",
+  "results": [
+    {
+      "profile_id": 3003,
+      "user_id": 8316,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:39:42.852565+00:00"
+    },
+    {
+      "profile_id": 8779,
+      "user_id": 8030,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_WAn2MROSEnTd68pd",
+          "code": "0WJYFNZUEN",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2024-12-19T18:03:30Z",
+          "updated_at": "2024-12-19T18:14:28Z",
+          "paid_amount": 3591,
+          "charges": [
+            {
+              "id": "ch_BVzgomOhRbUWaPL5",
+              "status": "paid",
+              "amount": 3591,
+              "paid_amount": 3591,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-19T18:14:28Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:39:44.443130+00:00"
+    },
+    {
+      "profile_id": 9270,
+      "user_id": 6102,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:39:44.749149+00:00"
+    },
+    {
+      "profile_id": 12418,
+      "user_id": 11132,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_r89AVz0IdtJJMvoL",
+          "code": "YV8JA1MSL4",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2026-01-01T13:06:08Z",
+          "updated_at": "2026-01-01T13:06:10Z",
+          "paid_amount": 4990,
+          "charges": [
+            {
+              "id": "ch_01g3Ex5SKBs6Km76",
+              "status": "paid",
+              "amount": 4990,
+              "paid_amount": 4990,
+              "refunded_amount": 0,
+              "paid_at": "2026-01-01T13:06:10Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:39:45.832216+00:00"
+    },
+    {
+      "profile_id": 15398,
+      "user_id": 15258,
+      "customers": 13,
+      "orders": [
+        {
+          "id": "or_AW91ekZt0yfZLnBZ",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-04-10T19:53:50Z",
+          "updated_at": "2025-04-10T19:54:33Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_BzXkLp3u3wI5kyQM",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-04-10T19:54:33Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_oDRzm1dUKUlPGXdy",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-02-19T21:40:02Z",
+          "updated_at": "2025-02-19T21:41:00Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_ZWJVvJwFJFVPxapb",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-02-19T21:41:00Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_k9X340Eu7gfl3LJd",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-02-11T16:03:47Z",
+          "updated_at": "2025-02-11T16:04:38Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_qRXG3wJc8TvvGWKg",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-02-11T16:04:38Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_QRvVpWPU3UVeN5ED",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-02-06T09:41:46Z",
+          "updated_at": "2025-02-06T09:45:12Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_9rmzl5eijiql570B",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-02-06T09:45:12Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_Avxbw6xiJimGWPMk",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-01-30T13:20:53Z",
+          "updated_at": "2025-01-30T13:21:34Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_PN4dxkWI1I6xj2Gp",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-30T13:21:34Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_XxGAVyTOaiver2Yd",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-01-20T21:11:27Z",
+          "updated_at": "2025-01-20T21:12:09Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_0kZBNmGhBtwePq94",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-20T21:12:08Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_YZAoO7CbPSQkoOWl",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-01-10T18:25:45Z",
+          "updated_at": "2025-01-10T18:26:27Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_Y58Kl44TLNS2lVJx",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-10T18:26:26Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_DrLxkgKf6Gh9gx7g",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-01-08T11:44:17Z",
+          "updated_at": "2025-01-08T11:44:59Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_2q08o66FXu8Eo7gY",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-08T11:44:59Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_dJmDAjxUmUnY8K2Z",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-01-08T11:39:28Z",
+          "updated_at": "2025-01-08T11:40:07Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_QZa6Yadh8hW7Gjry",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-08T11:40:06Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_P15QLEjhDh4lxvDZ",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-01-07T10:34:02Z",
+          "updated_at": "2025-01-07T10:34:32Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_Nm9AZA8sNs4Bg1qz",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-07T10:34:32Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_DL0YzBbsn2C2z1rx",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-01-02T22:42:48Z",
+          "updated_at": "2025-01-02T22:43:33Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_doKnMw0EFQuYj2Rv",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-02T22:43:32Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_6aXJNqdFpFbYO7gm",
+          "code": "UPD365VIP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2025-01-02T12:42:34Z",
+          "updated_at": "2025-01-02T12:43:41Z",
+          "paid_amount": 3000,
+          "charges": [
+            {
+              "id": "ch_VAnxgBWSmSwNO4QR",
+              "status": "paid",
+              "amount": 3000,
+              "paid_amount": 3000,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-02T12:43:40Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "item_gdEwovYDZzQ9L2rhMFjbLlaWAXRx04Vk",
+              "description": "Desafio 365 VIP Upgrade",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_vNzDVetPPFM5aqJx",
+          "code": "YD9T80AJ81",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-04T21:42:15Z",
+          "updated_at": "2024-12-04T21:44:15Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_Rd03xpdu72H7xGje",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-04T21:44:14Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        },
+        {
+          "id": "or_ZxRL6EEh9TPZ6DmE",
+          "code": "23LOCX4BLW",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-04T21:41:00Z",
+          "updated_at": "2024-12-04T21:41:01Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_oVr9mpXC3UO8ZXQm",
+              "status": "pending",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        },
+        {
+          "id": "or_G97pAmk9s3h3R0qb",
+          "code": "NPYC01A4XN",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-04T23:55:55Z",
+          "updated_at": "2024-12-04T23:55:58Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_wrbnjq3VcnuEJQyR",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-04T23:55:58Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_G79Vn3Mhyu7ke2JE",
+          "code": "68V2SGYA1G",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2025-12-20T21:13:00Z",
+          "updated_at": "2025-12-20T21:14:22Z",
+          "paid_amount": 6990,
+          "charges": [
+            {
+              "id": "ch_kjBqR64fOI9vnX89",
+              "status": "paid",
+              "amount": 6990,
+              "paid_amount": 6990,
+              "refunded_amount": 0,
+              "paid_at": "2025-12-20T21:14:21Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_wR03Z7jTqT5pXPdl",
+          "code": "NQNJTZTVD0",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-01-06T20:09:54Z",
+          "updated_at": "2025-01-06T20:09:55Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_j1o8PEysxsWPA295",
+              "status": "pending",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_K2Y9OWdUlUmoNQ15",
+          "code": "WR6GUYU5LM",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-01-06T20:06:51Z",
+          "updated_at": "2025-01-06T20:08:16Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_xkrRX2eFNF7Z06gA",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-06T20:08:16Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_7oN0LDPTYYU750bA",
+          "code": "NK5ZFQU5WV",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2026-01-01T00:28:19Z",
+          "updated_at": "2026-01-01T00:29:24Z",
+          "paid_amount": 6990,
+          "charges": [
+            {
+              "id": "ch_LZEqkz4txmHNpDQW",
+              "status": "paid",
+              "amount": 6990,
+              "paid_amount": 6990,
+              "refunded_amount": 0,
+              "paid_at": "2026-01-01T00:29:24Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_Nln53LjCetzoQgrL",
+          "code": "69XDC1WCEE",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2025-01-02T21:18:45Z",
+          "updated_at": "2025-01-02T21:20:01Z",
+          "paid_amount": 3591,
+          "charges": [
+            {
+              "id": "ch_R3Vw5oBIJOtQlOeL",
+              "status": "paid",
+              "amount": 3591,
+              "paid_amount": 3591,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-02T21:20:00Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_m6z08Ajt0tD3gaRv",
+          "code": "GP58HVH2PY",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2025-01-01T00:59:20Z",
+          "updated_at": "2025-01-01T00:59:21Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_nGbJ0Nnh1h509pxy",
+              "status": "pending",
+              "amount": 3591,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_53mKpAgf3fdxBgaG",
+          "code": "NG0YIVI73P",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-01-01T15:29:19Z",
+          "updated_at": "2025-01-01T15:29:20Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_Z92D7p2hGhnrGzKn",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-01T15:29:20Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_OkwR94ns7se2pz7m",
+          "code": "ZL1WFXFYJO",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-29T01:24:36Z",
+          "updated_at": "2024-12-29T01:26:03Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_ajNZ4Ods3skenDJK",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-29T01:26:03Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_b635xdWQCwFozRgj",
+          "code": "68R1CK1COQ",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2025-12-29T12:45:17Z",
+          "updated_at": "2025-12-29T12:45:21Z",
+          "paid_amount": 6990,
+          "charges": [
+            {
+              "id": "ch_yYw5Kw3sYFkKJ846",
+              "status": "paid",
+              "amount": 6990,
+              "paid_amount": 6990,
+              "refunded_amount": 0,
+              "paid_at": "2025-12-29T12:45:20Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_pVZKmjxuqRTZLlge",
+          "code": "E7VOS50FYQ",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2024-12-04T23:18:15Z",
+          "updated_at": "2024-12-04T23:19:51Z",
+          "paid_amount": 3591,
+          "charges": [
+            {
+              "id": "ch_wO0qj4YHEkTYA8LK",
+              "status": "paid",
+              "amount": 3591,
+              "paid_amount": 3591,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-04T23:19:51Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_0Z38w7vt1tmkRqJm",
+          "code": "1R14FGF7RZ",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2025-01-02T11:13:01Z",
+          "updated_at": "2025-01-02T11:14:03Z",
+          "paid_amount": 3591,
+          "charges": [
+            {
+              "id": "ch_lo1WYPrf0fkDB4G5",
+              "status": "paid",
+              "amount": 3591,
+              "paid_amount": 3591,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-02T11:14:03Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        },
+        {
+          "id": "or_KY0qE0RSySL62QJO",
+          "code": "386OSPS2J4",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-01-01T23:19:44Z",
+          "updated_at": "2025-01-01T23:20:50Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_r04PmONFjFb2NeqK",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-01T23:20:50Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:39:59.092125+00:00"
+    },
+    {
+      "profile_id": 15402,
+      "user_id": 15266,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_nq4Py7Qt9aC4eJwe",
+          "code": "4852T2NC0Q",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6291,
+          "currency": "BRL",
+          "created_at": "2024-12-05T00:56:52Z",
+          "updated_at": "2024-12-05T00:57:54Z",
+          "paid_amount": 6291,
+          "charges": [
+            {
+              "id": "ch_rYaj8LGkFlHMyqZk",
+              "status": "paid",
+              "amount": 6291,
+              "paid_amount": 6291,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-05T00:57:54Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6291,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_4nz6V9vlfzuQZlwa",
+          "code": "JRWDUD0B6Y",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 6291,
+          "currency": "BRL",
+          "created_at": "2024-12-05T00:54:15Z",
+          "updated_at": "2024-12-05T00:57:08Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_awzBJQahVmh2boAN",
+              "status": "pending",
+              "amount": 6291,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6291,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:00.705780+00:00"
+    },
+    {
+      "profile_id": 15838,
+      "user_id": 16515,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_bRv9L2qsDVSLA0qE",
+          "code": "4X6BYDFQJL",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-22T17:05:50Z",
+          "updated_at": "2025-12-22T17:07:25Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_zKVW98dC4vCboNjn",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2025-12-22T17:07:24Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_jkW5mDguviDrD1Oa",
+          "code": "QRWHRPI23N",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6291,
+          "currency": "BRL",
+          "created_at": "2024-12-05T01:10:36Z",
+          "updated_at": "2024-12-05T01:14:55Z",
+          "paid_amount": 6291,
+          "charges": [
+            {
+              "id": "ch_RnrQLzib5SraNL7J",
+              "status": "paid",
+              "amount": 6291,
+              "paid_amount": 6291,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-05T01:14:54Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6291,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_09XWA6eT7ir8rQdK",
+          "code": "ELM2UO0UNL",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-31T22:38:49Z",
+          "updated_at": "2025-12-31T22:38:50Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_3BxlvGTv7UYBmg1q",
+              "status": "pending",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_O9nvd2rI9fRWAYMP",
+          "code": "K9XJHZI4JR",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2024-12-04T22:04:54Z",
+          "updated_at": "2024-12-05T00:14:33Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_mwK2oykUxhXjWbY4",
+              "status": "failed",
+              "amount": 3591,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        },
+        {
+          "id": "or_852LvRnuaAu66LzX",
+          "code": "QJNXFWNS3O",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2024-12-04T22:01:16Z",
+          "updated_at": "2024-12-04T22:37:38Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_mVByq2Yh5EhD8W6p",
+              "status": "failed",
+              "amount": 3591,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:03.759019+00:00"
+    },
+    {
+      "profile_id": 16004,
+      "user_id": 16902,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_RKM5PO6iQbT0BYdy",
+          "code": "QNY2ET6HDN",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6291,
+          "currency": "BRL",
+          "created_at": "2024-12-04T22:19:31Z",
+          "updated_at": "2024-12-09T20:39:24Z",
+          "paid_amount": 6291,
+          "charges": [
+            {
+              "id": "ch_1JzPLxvIOcGrPZ3e",
+              "status": "paid",
+              "amount": 6291,
+              "paid_amount": 6291,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-09T20:39:23Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6291,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_6PjxbnkcWmsBJoB2",
+          "code": "YZ8BOXH9QN",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2025-12-31T20:25:10Z",
+          "updated_at": "2025-12-31T20:25:11Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_0qvXBv0hwsQwAVJe",
+              "status": "pending",
+              "amount": 6990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_AeVwM5UYWtRDw042",
+          "code": "WYJMBVMFJY",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 6291,
+          "currency": "BRL",
+          "created_at": "2024-12-05T01:12:24Z",
+          "updated_at": "2024-12-09T20:36:38Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_jWLb2AzH9SAVJOr0",
+              "status": "pending",
+              "amount": 6291,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6291,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:07.539763+00:00"
+    },
+    {
+      "profile_id": 16022,
+      "user_id": 16937,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_kAMXBW1f8DhnlyKj",
+          "code": "NEWWCY2FGN",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-04T23:24:08Z",
+          "updated_at": "2024-12-04T23:24:43Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_Aa0QGeRhBtyVY6BD",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-04T23:24:43Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_KodEyQSLkfMMED1k",
+          "code": "YOVVUVH8NR",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2026-01-01T23:40:46Z",
+          "updated_at": "2026-01-01T23:40:46Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_lDv17kKsxUdn1BQe",
+              "status": "failed",
+              "amount": 6990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_Xo6OM5VFrUZDp4Zd",
+          "code": "4M90U5OC7V",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2026-01-01T23:41:02Z",
+          "updated_at": "2026-01-01T23:41:03Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_OeVrQq7cYwU1ZrpL",
+              "status": "pending",
+              "amount": 6990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_yDxYwXJsG8f0RpV0",
+          "code": "LGWF8XBK0R",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-04T22:52:10Z",
+          "updated_at": "2024-12-04T22:52:11Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_yj5B8P1SADTjvEMl",
+              "status": "pending",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        },
+        {
+          "id": "or_705NyrLurIlbMxPk",
+          "code": "W078CX1SKD",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-04T22:51:36Z",
+          "updated_at": "2024-12-04T22:51:36Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_x8yDLXPsQhvAL9JN",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:12.849258+00:00"
+    },
+    {
+      "profile_id": 16181,
+      "user_id": 17162,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_bv3O70DI1iMdgjEn",
+          "code": "PV7EI2RTJQ",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-14T11:25:43Z",
+          "updated_at": "2024-12-14T11:25:47Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_4P3Q0oVSVrhr45Gl",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-14T11:25:47Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_5Ovgampf0FD6V4GP",
+          "code": "J90PULNFN0",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2026-05-31T18:48:05Z",
+          "updated_at": "2026-05-31T18:48:06Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_X7JbVQaIKdsnVkBK",
+              "status": "pending",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_924OmZEukBtX7W1w",
+          "code": "N1LGU5VA2D",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2026-05-31T18:50:08Z",
+          "updated_at": "2026-05-31T18:50:09Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_KgLPDb4hoskwNrAz",
+              "status": "pending",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_omM3mxMHRaFlOXAB",
+          "code": "X83MCK5F58",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2026-05-31T18:48:04Z",
+          "updated_at": "2026-05-31T18:48:05Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_vZKnBDWtAOIaRwX8",
+              "status": "pending",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_yR63YzjcgbHKL8Je",
+          "code": "1JM0TDVHY8",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2026-05-31T18:50:09Z",
+          "updated_at": "2026-05-31T18:50:10Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_390JE93I4bimJWlB",
+              "status": "pending",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_q4BmdWJu5ulrGJyO",
+          "code": "G0K3I7I208",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2024-12-31T13:33:56Z",
+          "updated_at": "2024-12-31T13:33:58Z",
+          "paid_amount": 6990,
+          "charges": [
+            {
+              "id": "ch_lerZ8e2U1UYWjLpD",
+              "status": "paid",
+              "amount": 6990,
+              "paid_amount": 6990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-31T13:33:58Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        },
+        {
+          "id": "or_jKPz0ZLuvuQbDpG3",
+          "code": "EP7KIEIJYR",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2024-12-31T13:33:50Z",
+          "updated_at": "2024-12-31T13:33:52Z",
+          "paid_amount": 6990,
+          "charges": [
+            {
+              "id": "ch_Xnq31bQf3fRA0gzE",
+              "status": "paid",
+              "amount": 6990,
+              "paid_amount": 6990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-31T13:33:52Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        },
+        {
+          "id": "or_XDx9M33IKBiX4YNL",
+          "code": "6EDMS12AZO",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-14T11:28:06Z",
+          "updated_at": "2024-12-14T11:28:09Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_bPYyQwvuYiLnlDXx",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-14T11:28:09Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        },
+        {
+          "id": "or_7grwYLHbRS8m2M5v",
+          "code": "N99GU01U48",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-06T23:33:07Z",
+          "updated_at": "2024-12-06T23:33:08Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_zRM6VYAi1TDVrnaK",
+              "status": "pending",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        },
+        {
+          "id": "or_ye5BQ2qH3eSLo7Zb",
+          "code": "ZOLGAK8AK2",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-06T23:32:31Z",
+          "updated_at": "2024-12-06T23:32:32Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_rBmvqDPu7jCJ6YMp",
+              "status": "pending",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:18.524099+00:00"
+    },
+    {
+      "profile_id": 16548,
+      "user_id": 17814,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_5rKz3aoTgSmEvBD4",
+          "code": "XQ3YIGI0Y6",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2024-12-12T23:44:21Z",
+          "updated_at": "2024-12-12T23:45:12Z",
+          "paid_amount": 6990,
+          "charges": [
+            {
+              "id": "ch_m2AQD8gzHGT7JL49",
+              "status": "paid",
+              "amount": 6990,
+              "paid_amount": 6990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-12T23:45:11Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:21.485514+00:00"
+    },
+    {
+      "profile_id": 17169,
+      "user_id": 19095,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_o4zv4Onf4jSlPEO5",
+          "code": "P4ECNJC54X",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2024-12-17T23:01:12Z",
+          "updated_at": "2024-12-17T23:02:53Z",
+          "paid_amount": 6990,
+          "charges": [
+            {
+              "id": "ch_E6qZ8oZSy7U2N4Q0",
+              "status": "paid",
+              "amount": 6990,
+              "paid_amount": 6990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-17T23:02:52Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_4EqNl0XU0SPBlQ6Z",
+          "code": "7E2XTZXUPQ",
+          "status": "canceled",
+          "classification": "refunded_or_partial",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-17T11:14:58Z",
+          "updated_at": "2025-12-18T00:37:19Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_EYNQ10ViESzXd6WJ",
+              "status": "canceled",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 3990,
+              "paid_at": "2025-12-17T11:15:01Z",
+              "method": "credit_card",
+              "transaction_status": "refunded"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_YKALqElfVUl428BJ",
+          "code": "30XVF7PTKP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-17T11:14:57Z",
+          "updated_at": "2025-12-17T11:14:59Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_gZOYRl7EIZCwywQj",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2025-12-17T11:14:59Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_kPJ0WNbIKEF1N9EW",
+          "code": "4VV1HEMU0O",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2026-06-28T15:04:04Z",
+          "updated_at": "2026-06-28T15:04:05Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_p0z1EVBIBC0LEMxL",
+              "status": "pending",
+              "amount": 3000,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiaupg",
+              "description": "Upgrade Vip Corra Todo Santo Dia",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_kbE7QJ6lUyiNQ842",
+          "code": "3885UNOTLN",
+          "status": "canceled",
+          "classification": "refunded_or_partial",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-17T11:15:01Z",
+          "updated_at": "2025-12-18T00:37:00Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_0kRz3DnIBdfpJ9WP",
+              "status": "canceled",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 3990,
+              "paid_at": "2025-12-17T11:15:04Z",
+              "method": "credit_card",
+              "transaction_status": "refunded"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:26.831256+00:00"
+    },
+    {
+      "profile_id": 17441,
+      "user_id": 19696,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_BjXZ9mjh3kcnBZOA",
+          "code": "1V49I9CK52",
+          "status": "canceled",
+          "classification": "refunded_or_partial",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2024-12-23T12:28:48Z",
+          "updated_at": "2024-12-23T17:31:52Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_D73rLpeTgyfeRdG9",
+              "status": "canceled",
+              "amount": 6990,
+              "paid_amount": 6990,
+              "refunded_amount": 6990,
+              "paid_at": "2024-12-23T12:28:50Z",
+              "method": "credit_card",
+              "transaction_status": "refunded"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_KBG1GVup0hZnxwkQ",
+          "code": "N1YPS67SYR",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2024-12-23T12:28:50Z",
+          "updated_at": "2024-12-23T12:28:57Z",
+          "paid_amount": 6990,
+          "charges": [
+            {
+              "id": "ch_A9l5RmwiXcLYoMW3",
+              "status": "paid",
+              "amount": 6990,
+              "paid_amount": 6990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-23T12:28:57Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:28.423523+00:00"
+    },
+    {
+      "profile_id": 17459,
+      "user_id": 19726,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_VqJ8E11S1PUwq8v5",
+          "code": "6VE8F4XIZK",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2024-12-23T15:05:09Z",
+          "updated_at": "2025-01-01T02:31:32Z",
+          "paid_amount": 3591,
+          "charges": [
+            {
+              "id": "ch_waZRgoPfms65R3WP",
+              "status": "paid",
+              "amount": 3591,
+              "paid_amount": 3591,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-01T02:31:32Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_0EQBXWmt74fMb63Y",
+          "code": "JZ8YTLPBED",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-27T13:01:03Z",
+          "updated_at": "2025-12-27T13:01:04Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_aD907ROhVqCJNwQ1",
+              "status": "pending",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_9rb4z0F18szD3vm5",
+          "code": "EG6OHODFNL",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-27T13:01:03Z",
+          "updated_at": "2025-12-27T13:01:04Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_45gzPKmLT0Twv10w",
+              "status": "pending",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_EZypoA8SmSyL0WJ2",
+          "code": "1P0JF7FO3G",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2024-12-23T15:04:48Z",
+          "updated_at": "2024-12-23T15:04:49Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_J0eOoDlHYH2oyXPk",
+              "status": "failed",
+              "amount": 3591,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:31.429083+00:00"
+    },
+    {
+      "profile_id": 17480,
+      "user_id": 19753,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_OG0JvWwf4VcQrk9d",
+          "code": "GJLQTN5SLQ",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-23T15:51:25Z",
+          "updated_at": "2024-12-23T15:51:32Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_zAqarkeHRRIM0O3Y",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-23T15:51:32Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:32.917851+00:00"
+    },
+    {
+      "profile_id": 17625,
+      "user_id": 19977,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_rPGVvWnu9u8j1Ydm",
+          "code": "V45YFMF041",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 6291,
+          "currency": "BRL",
+          "created_at": "2024-12-24T12:13:31Z",
+          "updated_at": "2024-12-24T12:14:13Z",
+          "paid_amount": 6291,
+          "charges": [
+            {
+              "id": "ch_4P7bOVZsMszOEoBG",
+              "status": "paid",
+              "amount": 6291,
+              "paid_amount": 6291,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-24T12:14:13Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365vip",
+              "description": "Inscrição Vip Desafio 365",
+              "amount": 6291,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:34.885533+00:00"
+    },
+    {
+      "profile_id": 17638,
+      "user_id": 20005,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_XaKVb2MhYh6wApkJ",
+          "code": "D4OKI2IYP8",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2025-01-02T04:36:15Z",
+          "updated_at": "2025-01-02T04:36:18Z",
+          "paid_amount": 3591,
+          "charges": [
+            {
+              "id": "ch_jNqYJA8iQi96Roym",
+              "status": "paid",
+              "amount": 3591,
+              "paid_amount": 3591,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-02T04:36:18Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_3KDVgk4UNIYpVMve",
+          "code": "K9JKINT4JO",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:49Z",
+          "updated_at": "2025-12-25T14:07:50Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_OX3rl2Q5UOSg64Kz",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_5Qr4WY1iOvcmRwKR",
+          "code": "7MJMHDPUJ7",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:48Z",
+          "updated_at": "2025-12-25T14:07:49Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_WVldReEh6Zi1RnmQ",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_8G7BR484uGSgRrpZ",
+          "code": "R2P4C4LAWY",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:47Z",
+          "updated_at": "2025-12-25T14:07:50Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_7lB2nzjSoiOn3b9d",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2025-12-25T14:07:50Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_9AlmaBAtXJsWLr4J",
+          "code": "RG74B9ZHM1",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:49Z",
+          "updated_at": "2025-12-25T14:07:50Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_ezE6NZZCgFPNPaLw",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_AJ1qg5pTmcKPXwma",
+          "code": "JO4DFRQT79",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:48Z",
+          "updated_at": "2025-12-25T14:07:49Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_rwqa4ODPCrubk1EP",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_GygdWkPf0qHKEdMr",
+          "code": "R9Q6TQUQXR",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:49Z",
+          "updated_at": "2025-12-25T14:07:50Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_6lWMEWgHk2UBEqB0",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_Jy7XQAHyVIvvXjD8",
+          "code": "3QV5H7PBZN",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:48Z",
+          "updated_at": "2025-12-25T14:07:49Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_bDK20vbT4hX0R6Y4",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_O4zRnRdJtwU57doW",
+          "code": "8LRWIZYSZV",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2026-03-17T11:36:54Z",
+          "updated_at": "2026-03-17T11:36:55Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_bKWk5LfB5snNr7l4",
+              "status": "pending",
+              "amount": 3000,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiaupg",
+              "description": "Upgrade Vip Corra Todo Santo Dia",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_QYMNPQwHo7h2yLn4",
+          "code": "4WJS1WBDWQ",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:49Z",
+          "updated_at": "2025-12-25T14:07:50Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_wPga7P4KcjUV7Wdy",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_R5MDO4bgUri8XmvJ",
+          "code": "2LQ6C1YA39",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:50Z",
+          "updated_at": "2025-12-25T14:07:51Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_Jnjv4EYtylHnoAqX",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_Renq0v5ikHL2P23b",
+          "code": "012MIWPFQX",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:48Z",
+          "updated_at": "2025-12-25T14:08:00Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_RrqkpD3uOAu3E1DK",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_W4eyREBhBU1XmYMG",
+          "code": "MP7LB4F29Y",
+          "status": "canceled",
+          "classification": "refunded_or_partial",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:47Z",
+          "updated_at": "2026-01-02T13:42:23Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_om8BNkesJOuK4nz3",
+              "status": "canceled",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 3990,
+              "paid_at": "2025-12-25T14:07:49Z",
+              "method": "credit_card",
+              "transaction_status": "refunded"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_YoeO44u4bhYaO4kP",
+          "code": "2JMTGWCLG2",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:40Z",
+          "updated_at": "2025-12-25T14:07:59Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_ZW5wY9NTQImqRBlG",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_akNwB8pNCzUXB0oy",
+          "code": "XLV9H0TK9G",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:48Z",
+          "updated_at": "2025-12-25T14:07:49Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_5va3V0ESXXUO7obY",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_knoqlroFyaCwe2m3",
+          "code": "9Y1YT00BVJ",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:49Z",
+          "updated_at": "2025-12-25T14:07:50Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_q0pLP7BC7KFRGdZK",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_nGVolLWkCYTO1PZg",
+          "code": "YQ2KTD1C68",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:08:27Z",
+          "updated_at": "2025-12-25T14:08:28Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_GM58RMlhdCWbj1Ad",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_nLpYDRNCRTrvx1kV",
+          "code": "MXGDTRLUPZ",
+          "status": "canceled",
+          "classification": "refunded_or_partial",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:38Z",
+          "updated_at": "2026-01-02T13:44:11Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_OkyoDOqsYXC3e71b",
+              "status": "canceled",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 3990,
+              "paid_at": "2025-12-25T14:07:41Z",
+              "method": "credit_card",
+              "transaction_status": "refunded"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_p7QLrkbiZIJ1GNdE",
+          "code": "422S2VA994",
+          "status": "canceled",
+          "classification": "refunded_or_partial",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:46Z",
+          "updated_at": "2026-01-02T13:43:16Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_5rEqKP9CQ9cP269l",
+              "status": "canceled",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 3990,
+              "paid_at": "2025-12-25T14:07:48Z",
+              "method": "credit_card",
+              "transaction_status": "refunded"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_pjW2N8JsnF5vV8rk",
+          "code": "VD51F3T45N",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:48Z",
+          "updated_at": "2025-12-25T14:07:49Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_AQlGNjsA6UZMGebV",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_vGWo0QukquEVx0AE",
+          "code": "G2VLSV8TNZ",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:08:41Z",
+          "updated_at": "2025-12-25T14:09:51Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_J4o6j7xcbu7BE3Nn",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2025-12-25T14:09:50Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_vlnzEQWAUjFz4PNk",
+          "code": "Z4Q2UMNCXE",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2025-12-25T14:07:48Z",
+          "updated_at": "2025-12-25T14:07:48Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_4bvRXd6h4hpDYe5x",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "not_authorized"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:47.496978+00:00"
+    },
+    {
+      "profile_id": 17705,
+      "user_id": 20092,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_aNEQG4lCEHdGRbPO",
+          "code": "E7D4LFLSKW",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-24T20:32:26Z",
+          "updated_at": "2024-12-24T20:34:09Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_0Z98lgKHdpI7w6rR",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-24T20:34:09Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:50.356393+00:00"
+    },
+    {
+      "profile_id": 17997,
+      "user_id": 20561,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_olpmnR0CMCowe3Db",
+          "code": "97POS1SWK3",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-26T21:25:32Z",
+          "updated_at": "2024-12-26T21:25:35Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_1Rk2GXeIoI9pXQ4P",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-26T21:25:35Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_MbgVA12FNBF9jD3o",
+          "code": "GQLNSWNB4Q",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 4980,
+          "currency": "BRL",
+          "created_at": "2025-12-17T00:31:29Z",
+          "updated_at": "2025-12-17T11:36:51Z",
+          "paid_amount": 4980,
+          "charges": [
+            {
+              "id": "ch_Odp3KQ2cLhnYWaNx",
+              "status": "paid",
+              "amount": 4980,
+              "paid_amount": 4980,
+              "refunded_amount": 0,
+              "paid_at": "2025-12-17T00:31:31Z",
+              "method": "credit_card",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4980,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_X36L9GPi1iElbJpR",
+          "code": "MO29FMF5L1",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-26T21:19:34Z",
+          "updated_at": "2024-12-26T21:19:34Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_V7K0v9JSpSNw4O6P",
+              "status": "failed",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:52.527580+00:00"
+    },
+    {
+      "profile_id": 18593,
+      "user_id": 21722,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_O5QBM7nCrCxlg1xP",
+          "code": "01NOUDUYZR",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-31T14:05:03Z",
+          "updated_at": "2024-12-31T14:05:06Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_xq2wQl0fNf8QErPW",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-31T14:05:06Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_xgJMYzxt8SmKjzXQ",
+          "code": "LX2GU24B0V",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2026-02-27T18:12:49Z",
+          "updated_at": "2026-02-27T18:12:50Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_XYWLQqoFXGCmwL83",
+              "status": "pending",
+              "amount": 3000,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiaupg",
+              "description": "Upgrade Vip Corra Todo Santo Dia",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:54.530206+00:00"
+    },
+    {
+      "profile_id": 18600,
+      "user_id": 21733,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_rQBvWB5F1FO2A1a7",
+          "code": "LYPQTWTG9O",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2024-12-31T13:03:05Z",
+          "updated_at": "2024-12-31T13:04:38Z",
+          "paid_amount": 3591,
+          "charges": [
+            {
+              "id": "ch_Dpv0Y01tqtwZgX3b",
+              "status": "paid",
+              "amount": 3591,
+              "paid_amount": 3591,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-31T13:04:38Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_zG2Lwlosas0Rd6Jm",
+          "code": "94ODFNFYPM",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2026-01-01T18:54:48Z",
+          "updated_at": "2026-01-01T18:59:17Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_3K04knJH9HNk9Q5E",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2026-01-01T18:59:17Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:56.320055+00:00"
+    },
+    {
+      "profile_id": 18799,
+      "user_id": 22105,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_QDj4NGdIqIXLa0R5",
+          "code": "L8V0TZTR5O",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2024-12-31T22:05:31Z",
+          "updated_at": "2024-12-31T22:06:47Z",
+          "paid_amount": 3990,
+          "charges": [
+            {
+              "id": "ch_4BYeKB9IdIXnb97j",
+              "status": "paid",
+              "amount": 3990,
+              "paid_amount": 3990,
+              "refunded_amount": 0,
+              "paid_at": "2024-12-31T22:06:46Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:57.266165+00:00"
+    },
+    {
+      "profile_id": 18894,
+      "user_id": 22256,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_b48QwMxHrH7BYjzR",
+          "code": "O1OLS3SQ1P",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 3591,
+          "currency": "BRL",
+          "created_at": "2025-01-01T02:13:14Z",
+          "updated_at": "2025-01-01T02:14:41Z",
+          "paid_amount": 3591,
+          "charges": [
+            {
+              "id": "ch_Om1XLNeugulDnare",
+              "status": "paid",
+              "amount": 3591,
+              "paid_amount": 3591,
+              "refunded_amount": 0,
+              "paid_at": "2025-01-01T02:14:41Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "inscricao365",
+              "description": "Inscrição Desafio 365",
+              "amount": 3591,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_V4GK1LNhvcKAvgeZ",
+          "code": "96M3F9ILZO",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 6990,
+          "currency": "BRL",
+          "created_at": "2026-01-02T14:51:47Z",
+          "updated_at": "2026-01-02T14:51:49Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_Oeo4BN4HLbtL6kVX",
+              "status": "pending",
+              "amount": 6990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 6990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_ZV9KazOc5uxGgb21",
+          "code": "V04H8DTR06",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3990,
+          "currency": "BRL",
+          "created_at": "2026-01-02T14:56:03Z",
+          "updated_at": "2026-01-02T14:56:04Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_zkLQE4swDc7lj3DR",
+              "status": "pending",
+              "amount": 3990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 3990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:40:59.926595+00:00"
+    },
+    {
+      "profile_id": 22902,
+      "user_id": 37129,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:00.117111+00:00"
+    },
+    {
+      "profile_id": 34387,
+      "user_id": 61884,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_7ykjBq8uw7iQ2rVn",
+          "code": "WEX6F7YIRJ",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2025-12-31T22:26:59Z",
+          "updated_at": "2025-12-31T22:27:00Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_a5jlr8sM5F2K1K7V",
+              "status": "failed",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_YqGBx6qIlpILR3Za",
+          "code": "0813HX6BDV",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2025-12-31T22:28:11Z",
+          "updated_at": "2025-12-31T22:28:12Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_Q1ebZOLfASypgrqj",
+              "status": "failed",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_dkJRGQYFbfr4znaB",
+          "code": "63X27HJH0N",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2025-12-31T22:26:59Z",
+          "updated_at": "2025-12-31T22:27:00Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_dYXoBpRFN5CeayDE",
+              "status": "failed",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_vbo9AMpsPu6O98Dm",
+          "code": "Z7KQIETPOJ",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2025-12-31T22:28:50Z",
+          "updated_at": "2025-12-31T22:28:51Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_axP7QEGIMntPP7md",
+              "status": "pending",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:02.848255+00:00"
+    },
+    {
+      "profile_id": 40197,
+      "user_id": 75725,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:03.102120+00:00"
+    },
+    {
+      "profile_id": 53020,
+      "user_id": 105029,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:03.379566+00:00"
+    },
+    {
+      "profile_id": 53125,
+      "user_id": 105268,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_1l5drmGhAps7z43z",
+          "code": "ZP0NF7HDDP",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2025-12-18T00:42:56Z",
+          "updated_at": "2025-12-18T00:42:58Z",
+          "paid_amount": 4990,
+          "charges": [
+            {
+              "id": "ch_O7qv3KZFkfXjvplV",
+              "status": "paid",
+              "amount": 4990,
+              "paid_amount": 4990,
+              "refunded_amount": 0,
+              "paid_at": "2025-12-18T00:42:58Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_EwzmAwJUvtwxoJZX",
+          "code": "8GY3H5TV08",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2026-06-09T14:19:08Z",
+          "updated_at": "2026-06-09T14:19:09Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_9XdPwnpIpULYK5jQ",
+              "status": "pending",
+              "amount": 3000,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiaupg",
+              "description": "Upgrade Vip Corra Todo Santo Dia",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_Gy1nLykt5c17zb35",
+          "code": "9NZ4CQSXZ9",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2026-06-09T14:17:26Z",
+          "updated_at": "2026-06-09T14:17:26Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_VdymN6yigSWvmlJA",
+              "status": "pending",
+              "amount": 3000,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiaupg",
+              "description": "Upgrade Vip Corra Todo Santo Dia",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:08.904328+00:00"
+    },
+    {
+      "profile_id": 53138,
+      "user_id": 105308,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:09.149898+00:00"
+    },
+    {
+      "profile_id": 53154,
+      "user_id": 105348,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_nWlaQwYLuxCn94Vo",
+          "code": "Q78ZF3YC60",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2025-12-18T13:02:05Z",
+          "updated_at": "2025-12-18T13:02:06Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_YJZ3mQEudH2w3eW9",
+              "status": "pending",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_qeyBmOpecOt1NpLz",
+          "code": "J2GKH92F3W",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2025-12-18T13:02:03Z",
+          "updated_at": "2025-12-18T13:02:04Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_dkjzO3PigCPAZL47",
+              "status": "pending",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:10.690838+00:00"
+    },
+    {
+      "profile_id": 53222,
+      "user_id": 105543,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:11.005017+00:00"
+    },
+    {
+      "profile_id": 53385,
+      "user_id": 105958,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_9Eb8knS6DszQjvyk",
+          "code": "JG9U1EIRYZ",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2025-12-26T14:34:54Z",
+          "updated_at": "2025-12-26T16:02:39Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_pd9RPalSwvcvWKYn",
+              "status": "failed",
+              "amount": 4990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_9qoRZpL6TRFGZMeA",
+          "code": "WV35I2ZTJ9",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2025-12-22T11:50:30Z",
+          "updated_at": "2025-12-22T11:55:16Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_ABapMP66sESv1zKx",
+              "status": "failed",
+              "amount": 4990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_AEMZ7pOuyCVGqL5m",
+          "code": "54O1C10BY5",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2025-12-26T16:02:10Z",
+          "updated_at": "2025-12-26T16:03:07Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_MeqzGNMt3UzLdk6W",
+              "status": "failed",
+              "amount": 4990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_OQDpYQtg9I8epAjz",
+          "code": "QM4GBEGS89",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2025-12-26T09:23:22Z",
+          "updated_at": "2025-12-26T09:24:18Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_J9AyMyaSehooMd8W",
+              "status": "failed",
+              "amount": 4990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_Oq5RolxuyiRqoW3j",
+          "code": "54PF9WIZY2",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2025-12-26T14:31:37Z",
+          "updated_at": "2025-12-26T14:31:37Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_Jp6M0rjsDsY0xAqX",
+              "status": "failed",
+              "amount": 4990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_YoMyBAa1inH6BPDm",
+          "code": "1OP0UKVTNX",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2025-12-26T14:23:01Z",
+          "updated_at": "2025-12-26T14:23:01Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_a4DmNJYUB8Ue8mzR",
+              "status": "failed",
+              "amount": 4990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_aPX0mqwHqSpZErMy",
+          "code": "0PWIQ8B2PL",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2025-12-22T11:49:43Z",
+          "updated_at": "2025-12-22T11:51:46Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_gv2QMZC15uJnzMbK",
+              "status": "failed",
+              "amount": 4990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_wMXAQD6Cg2syalD8",
+          "code": "8EGGF7WAVX",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2025-12-26T09:22:39Z",
+          "updated_at": "2025-12-26T09:22:39Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_y8rjRmmuxDcMRxAb",
+              "status": "failed",
+              "amount": 4990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:16.656032+00:00"
+    },
+    {
+      "profile_id": 53410,
+      "user_id": 106018,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_7OegZbf3oSo5ga5G",
+          "code": "Z3W6U0BNEZ",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2026-01-01T22:50:21Z",
+          "updated_at": "2026-01-01T22:50:22Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_2njb3GriWBHMKExw",
+              "status": "failed",
+              "amount": 3000,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiaupg",
+              "description": "Upgrade Vip Corra Todo Santo Dia",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_aP31omRFDmu3qze4",
+          "code": "138QCG2I0V",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2026-01-01T14:06:28Z",
+          "updated_at": "2026-01-01T14:06:28Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_wq6Vgl5SMi31RkmL",
+              "status": "failed",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_k7BAantW4FxVNb19",
+          "code": "3W5LU0U94E",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 3000,
+          "currency": "BRL",
+          "created_at": "2026-01-01T22:46:12Z",
+          "updated_at": "2026-01-01T22:46:13Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_GAjPbPZcJhWRMvlm",
+              "status": "failed",
+              "amount": 3000,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "credit_card",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiaupg",
+              "description": "Upgrade Vip Corra Todo Santo Dia",
+              "amount": 3000,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        },
+        {
+          "id": "or_y9j65GbIjI1RGbzg",
+          "code": "ZN7YI5I60K",
+          "status": "failed",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2026-01-01T14:05:47Z",
+          "updated_at": "2026-01-01T14:06:58Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_zbmWvZGuNuYBRxnX",
+              "status": "failed",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "failed"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:22.843944+00:00"
+    },
+    {
+      "profile_id": 53439,
+      "user_id": 106109,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_JOr1mEJTrwtyk1vX",
+          "code": "N1ZVBY1H86",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2025-12-23T07:12:21Z",
+          "updated_at": "2025-12-23T07:12:22Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_KMPJpXyuNsRq1G9N",
+              "status": "pending",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:24.858086+00:00"
+    },
+    {
+      "profile_id": 53466,
+      "user_id": 106178,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:25.055555+00:00"
+    },
+    {
+      "profile_id": 53490,
+      "user_id": 106268,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_YK6aQ1qsrKcWaXgz",
+          "code": "R6KYS7DUEM",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2025-12-24T12:12:39Z",
+          "updated_at": "2025-12-24T12:13:37Z",
+          "paid_amount": 4990,
+          "charges": [
+            {
+              "id": "ch_gvZ35ZYfLcPZw5VK",
+              "status": "paid",
+              "amount": 4990,
+              "paid_amount": 4990,
+              "refunded_amount": 0,
+              "paid_at": "2025-12-24T12:13:36Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:26.389491+00:00"
+    },
+    {
+      "profile_id": 53511,
+      "user_id": 106332,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_QNX0anvImYu9qb46",
+          "code": "43KDUGZHWX",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2025-12-24T21:24:15Z",
+          "updated_at": "2025-12-24T21:24:17Z",
+          "paid_amount": 4990,
+          "charges": [
+            {
+              "id": "ch_NKJeAyxCNIVbXxlQ",
+              "status": "paid",
+              "amount": 4990,
+              "paid_amount": 4990,
+              "refunded_amount": 0,
+              "paid_at": "2025-12-24T21:24:17Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:28.077120+00:00"
+    },
+    {
+      "profile_id": 53555,
+      "user_id": 106516,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:28.498681+00:00"
+    },
+    {
+      "profile_id": 53563,
+      "user_id": 106544,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:28.925154+00:00"
+    },
+    {
+      "profile_id": 53592,
+      "user_id": 106665,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:29.221480+00:00"
+    },
+    {
+      "profile_id": 53634,
+      "user_id": 106855,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:29.448639+00:00"
+    },
+    {
+      "profile_id": 53774,
+      "user_id": 107317,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:29.693065+00:00"
+    },
+    {
+      "profile_id": 53785,
+      "user_id": 107341,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:30.022120+00:00"
+    },
+    {
+      "profile_id": 53867,
+      "user_id": 107567,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:30.271191+00:00"
+    },
+    {
+      "profile_id": 53874,
+      "user_id": 107584,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_e3z7lWJurMupB98b",
+          "code": "35VWC6C4M3",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2026-01-01T19:30:11Z",
+          "updated_at": "2026-01-01T19:31:59Z",
+          "paid_amount": 4990,
+          "charges": [
+            {
+              "id": "ch_k3g5ArUlpI7AD6Rv",
+              "status": "paid",
+              "amount": 4990,
+              "paid_amount": 4990,
+              "refunded_amount": 0,
+              "paid_at": "2026-01-01T19:31:59Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:31.376745+00:00"
+    },
+    {
+      "profile_id": 53877,
+      "user_id": 107590,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:31.572397+00:00"
+    },
+    {
+      "profile_id": 53887,
+      "user_id": 107619,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_8lPDXyK7CdiJQpbR",
+          "code": "Q2K6A02T8G",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2026-01-05T00:53:52Z",
+          "updated_at": "2026-01-05T00:54:05Z",
+          "paid_amount": 4990,
+          "charges": [
+            {
+              "id": "ch_qVJMwr1cd1Hg0kbl",
+              "status": "paid",
+              "amount": 4990,
+              "paid_amount": 4990,
+              "refunded_amount": 0,
+              "paid_at": "2026-01-05T00:54:05Z",
+              "method": "credit_card",
+              "transaction_status": "captured"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "customer_from_registered_order",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:32.976499+00:00"
+    },
+    {
+      "profile_id": 53970,
+      "user_id": 107828,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:33.212477+00:00"
+    },
+    {
+      "profile_id": 53980,
+      "user_id": 107843,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:33.556306+00:00"
+    },
+    {
+      "profile_id": 53988,
+      "user_id": 107868,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:33.839521+00:00"
+    },
+    {
+      "profile_id": 54028,
+      "user_id": 107994,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:34.107417+00:00"
+    },
+    {
+      "profile_id": 54048,
+      "user_id": 108069,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:34.326564+00:00"
+    },
+    {
+      "profile_id": 54089,
+      "user_id": 108217,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_7bWpe6af0fOVrKJl",
+          "code": "ZRKPFLFM5N",
+          "status": "paid",
+          "classification": "confirmed",
+          "amount": 4990,
+          "currency": "BRL",
+          "created_at": "2026-01-02T17:55:45Z",
+          "updated_at": "2026-01-02T17:57:23Z",
+          "paid_amount": 4990,
+          "charges": [
+            {
+              "id": "ch_JMw0g1whNh74WRja",
+              "status": "paid",
+              "amount": 4990,
+              "paid_amount": 4990,
+              "refunded_amount": 0,
+              "paid_at": "2026-01-02T17:57:22Z",
+              "method": "pix",
+              "transaction_status": "paid"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodia",
+              "description": "Inscrição Corra Todo Santo Dia",
+              "amount": 4990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email",
+            "registration_or_transaction_reference"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:35.325397+00:00"
+    },
+    {
+      "profile_id": 54371,
+      "user_id": 109414,
+      "customers": 1,
+      "orders": [
+        {
+          "id": "or_eoV64RRUXHr94v2g",
+          "code": "56MNS2FQJR",
+          "status": "pending",
+          "classification": "unconfirmed",
+          "amount": 7990,
+          "currency": "BRL",
+          "created_at": "2026-01-13T10:59:58Z",
+          "updated_at": "2026-01-13T10:59:58Z",
+          "paid_amount": 0,
+          "charges": [
+            {
+              "id": "ch_bOK43eZCRUyRJdYo",
+              "status": "pending",
+              "amount": 7990,
+              "paid_amount": 0,
+              "refunded_amount": 0,
+              "paid_at": "",
+              "method": "pix",
+              "transaction_status": "waiting_payment"
+            }
+          ],
+          "items": [
+            {
+              "code": "todosantodiavip",
+              "description": "Inscrição Vip Corra Todo Santo Dia",
+              "amount": 7990,
+              "quantity": 1
+            }
+          ],
+          "match_basis": [
+            "exact_account_email"
+          ]
+        }
+      ],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:36.154917+00:00"
+    },
+    {
+      "profile_id": 54433,
+      "user_id": 109765,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:36.369130+00:00"
+    },
+    {
+      "profile_id": 55516,
+      "user_id": 114796,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:36.643199+00:00"
+    },
+    {
+      "profile_id": 61389,
+      "user_id": 132299,
+      "customers": 0,
+      "orders": [],
+      "errors": [],
+      "verified_at": "2026-11-24T19:41:36.839148+00:00"
+    }
+  ]
+}

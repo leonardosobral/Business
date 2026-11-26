@@ -1,0 +1,10 @@
+{
+  "published": [
+    "estudos/includes/StudyAccess.cfc",
+    "estudos/lancamento/checklist.cfm",
+    "estudos/lancamento/checklist.js",
+    "estudos/lancamento/lancamento.css",
+    "estudos/lancamento/index.cfm"
+  ],
+  "backup": "/var/backups/business-launch-responsibles-20261104/baseline"
+}

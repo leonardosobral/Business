@@ -1,0 +1,102 @@
+{
+  "metadata_file": "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/refresh-completo-20261109/dba-load-review/current-metadata.json",
+  "source_script_sha256": "d9907382d2de1c9d396d4edb0d23c907c89aa0e74bca62cfa6783c99b34c6a08",
+  "function_md5": {
+    "get_id_categoria_cbat(int4range)": "aa6fe20f75af7d049cc0cb1bb49fbfc5",
+    "get_id_dim_faixa(numeric,time without time zone)": "547a306bfba2b1bd9fe072b76869608d",
+    "get_id_geracao(int4range,integer)": "4ceab31871e33e5eb841c16d6e37cd82",
+    "get_id_geracao(int4range,integer,date,date)": "221972b658c5e11554e75a9b361da415"
+  },
+  "views_md5": {
+    "estudo.vwbi_perfil_br_2026": "19b2d5dfdaec0ff8eaeea4bdf5c57cdb",
+    "estudo.vw_resultados_2026": "51d27f43da989bb1f50bdc414f54192e",
+    "public.vwbi_fat_perfil_br_2026": "fddd821daa89826c4284eb5a81b954d0",
+    "estudo.vw_resultados_comparativo_2025_2026": "5d6c7b6d81cbbe774e0963e6e8ab65fb"
+  },
+  "fact_columns": [
+    [
+      "id_fat_perfil_br_2026",
+      "integer"
+    ],
+    [
+      "id_data",
+      "integer"
+    ],
+    [
+      "id_localidade",
+      "integer"
+    ],
+    [
+      "id_evento",
+      "integer"
+    ],
+    [
+      "id_organizador",
+      "integer"
+    ],
+    [
+      "id_cronometrador",
+      "integer"
+    ],
+    [
+      "id_resultado",
+      "integer"
+    ],
+    [
+      "id_geracao",
+      "integer"
+    ],
+    [
+      "id_cbat_categoria",
+      "integer"
+    ],
+    [
+      "id_faixa",
+      "integer"
+    ],
+    [
+      "data_evento",
+      "date"
+    ],
+    [
+      "percurso",
+      "numeric"
+    ],
+    [
+      "sexo",
+      "varchar(1)"
+    ],
+    [
+      "tempo_total",
+      "time without time zone"
+    ],
+    [
+      "idade_range",
+      "int4range"
+    ],
+    [
+      "id_usuario",
+      "integer"
+    ],
+    [
+      "id_atleta_strava",
+      "integer"
+    ],
+    [
+      "pcd",
+      "boolean"
+    ],
+    [
+      "evento_homologado",
+      "boolean"
+    ],
+    [
+      "resultado_homologado",
+      "boolean"
+    ]
+  ],
+  "versioned_views_columns": {
+    "estudo.vwbi_perfil_br_2026": 52,
+    "estudo.vw_resultados_2026": 36
+  }
+}

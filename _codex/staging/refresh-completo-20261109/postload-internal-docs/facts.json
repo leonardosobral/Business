@@ -1,0 +1,18 @@
+{
+  "snapshot": 42,
+  "main_run": 351,
+  "main_cell": 251,
+  "public_run": 352,
+  "public_cell": 420,
+  "cohort_run": 329,
+  "pairs": 615,
+  "cutoff": "2026-09-30",
+  "collection": "2026-11-09",
+  "matched": "2,2%",
+  "calendar": "38,7%",
+  "volume": "29,3%",
+  "women_before": "52,5%",
+  "women_after": "53,8%",
+  "short": "61,4%",
+  "interior": "48,0%"
+}

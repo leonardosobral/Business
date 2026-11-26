@@ -1,0 +1,155 @@
+{
+  "emulatedViewport": {
+    "width": 390,
+    "height": 844
+  },
+  "physicalDevice": false,
+  "beforeIdentityAdmin": true,
+  "ownedTabs": [
+    "283510344",
+    "283510348",
+    "283510353",
+    "283510357"
+  ],
+  "logout": {
+    "loginScreen": true
+  },
+  "newLogin": {
+    "googleAccountPickerUsed": true,
+    "logoutScreenConfirmed": true,
+    "sameNonAdminAccount": true,
+    "voucherNotRequestedAgain": true,
+    "readLinkAvailable": true
+  },
+  "library": {
+    "clientWidth": 390,
+    "hasAdminTab": false,
+    "innerHeight": 844,
+    "innerWidth": 390,
+    "noPageOverflow": true,
+    "readLink": {
+      "height": 55.1953125,
+      "left": 45,
+      "right": 297.375
+    },
+    "scrollWidth": 390,
+    "tabs": {
+      "scrollWidth": 431,
+      "width": 390
+    }
+  },
+  "benefit": {
+    "visible": true,
+    "annualSeparate": true
+  },
+  "reader": {
+    "canvases": 46,
+    "clientWidth": 390,
+    "innerHeight": 844,
+    "innerWidth": 390,
+    "lastFooter": "ROAD RUNNERS\n/ BASE CONGELADA\nPÁGINA 37 / 37",
+    "noPageOverflow": true,
+    "pages": 37,
+    "renderedCanvases": 46,
+    "scrollWidth": 390,
+    "has615": true,
+    "has22": true,
+    "has387": true
+  },
+  "navigation": {
+    "bodyScrollX": 0,
+    "chapterStripOverflow": true,
+    "chapterStripScrollLeft": 815.5,
+    "docWidth": 390,
+    "navBottom": 118.59375,
+    "navTop": 62,
+    "sourceBottom": 61.6953125,
+    "sourceTop": 0,
+    "target": "fontes",
+    "titleTop": 146.859375,
+    "titleVisibleBelowBars": true,
+    "viewport": 390
+  },
+  "calendar": {
+    "bodyScrollX": 0,
+    "cardBounds": [
+      {
+        "bottom": -449.8828125,
+        "left": 34,
+        "right": 356,
+        "top": -902.859375
+      },
+      {
+        "bottom": 5.046875,
+        "left": 34,
+        "right": 356,
+        "top": -417.8828125
+      }
+    ],
+    "cardsStacked": true,
+    "docWidth": 390,
+    "gridColumns": "322px",
+    "innerWidth": 390,
+    "tables": [
+      {
+        "contained": true,
+        "overflowX": "auto",
+        "scrollWidth": 338,
+        "width": 322
+      },
+      {
+        "contained": true,
+        "overflowX": "auto",
+        "scrollWidth": 781,
+        "width": 322
+      }
+    ]
+  },
+  "filter": {
+    "docWidth": 390,
+    "femaleSelected": true,
+    "pages": 37,
+    "renderedCanvases": 46,
+    "viewport": 390
+  },
+  "calendarNavigation": {
+    "active": "Calendário",
+    "docWidth": 390,
+    "hash": "#calendario",
+    "navBottom": 118.59375,
+    "scrollX": 0,
+    "sectionTop": 146.84375,
+    "titleTop": 264.640625,
+    "viewport": 390
+  },
+  "pointerNavigation": {
+    "visibleGeographyClickHash": "#geografia",
+    "visibleCalendarClickHash": "#calendario"
+  },
+  "result": {
+    "mobileResponsivePassed": true,
+    "newLoginPassed": true,
+    "readersTested": 1,
+    "fullPilotCompleted": false,
+    "codeChangesNeeded": false,
+    "scope": "Chrome emulation at390x844; not a physical phone"
+  },
+  "viewportRestored": {
+    "readerWidth": 1392,
+    "libraryWidth": 390,
+    "libraryFinalWidth": 1392,
+    "finalWidth": 1392
+  },
+  "adminRestored": true,
+  "central": {
+    "saved": true,
+    "ownersPreserved": true,
+    "pilotPending": true,
+    "releasePending": true
+  },
+  "automationObservation": {
+    "offscreenPointerDuringImmediateRerenderRequiredRetry": true,
+    "keyboardAndStableVisiblePointerPassed": true,
+    "applicationPatchNeeded": false
+  }
+}

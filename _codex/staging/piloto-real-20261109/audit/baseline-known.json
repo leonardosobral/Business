@@ -1,0 +1,8 @@
+{
+  "source": "Parent confirmed before UI redemption; direct prior capture failed before query because sandbox DNS was blocked",
+  "user_id": 492,
+  "voucher_id": 200,
+  "voucher_status": "READY",
+  "user_grants": 0,
+  "user_benefits": 0
+}

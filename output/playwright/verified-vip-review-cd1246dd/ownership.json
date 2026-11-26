@@ -1,0 +1,24 @@
+{
+  "daemon_pid": 40302,
+  "session": "verified-vip-review-cd1246dd",
+  "configs": [
+    {
+      "name": "verified-vip-review-cd1246dd",
+      "version": "1.63.0-alpha-2026-08-05",
+      "timestamp": 1795544326334,
+      "socketPath": "/var/folders/ct/41b1hy657kq5s56h529h2y3m0000gn/T/pw-6924c269/cli/dd6a4cb594722-a79ba-view-cd1246dd.sock",
+      "cli": {},
+      "browser": {
+        "browserName": "chromium",
+        "launchOptions": {
+          "headless": true,
+          "channel": "chrome",
+          "chromiumSandbox": true,
+          "args": [
+            "--disable-blink-features=AutomationControlled"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1892 @@
+[
+  {
+    "page": 1,
+    "text": "ROAD",
+    "box": [
+      56,
+      30,
+      73,
+      24.32
+    ]
+  },
+  {
+    "page": 1,
+    "text": "RUNNERS",
+    "box": [
+      144,
+      30,
+      140,
+      24.32
+    ]
+  },
+  {
+    "page": 1,
+    "text": "O BRASIL QUE CORRE PROVAS",
+    "box": [
+      298,
+      34,
+      425,
+      16.64
+    ]
+  },
+  {
+    "page": 1,
+    "text": "PLANO INTERNO DE EXECUÇÃO",
+    "box": [
+      980,
+      34,
+      250,
+      15.36
+    ]
+  },
+  {
+    "page": 1,
+    "text": "O LANÇAMENTO QUE FAZEMOS AGORA",
+    "box": [
+      56,
+      687,
+      730,
+      14.08
+    ]
+  },
+  {
+    "page": 1,
+    "text": "09 NOV 2026 / V6",
+    "box": [
+      995,
+      687,
+      160,
+      14.08
+    ]
+  },
+  {
+    "page": 1,
+    "text": "01 / 08",
+    "box": [
+      1170,
+      686,
+      70,
+      15.36
+    ]
+  },
+  {
+    "page": 1,
+    "text": "JAN-SET 2026 / ESTREIA EM 13 DE NOVEMBRO",
+    "box": [
+      70,
+      97,
+      383,
+      15.36
+    ]
+  },
+  {
+    "page": 1,
+    "text": "O trimestre fechou.<br/>Vamos colocar os<br/>dados em circulação.",
+    "box": [
+      56,
+      149,
+      790,
+      192
+    ]
+  },
+  {
+    "page": 1,
+    "text": "A prévia lança o que já está revisado.<br/>Os temas que exigem mais trabalho ficam para o anual.",
+    "box": [
+      59,
+      370,
+      835,
+      64
+    ]
+  },
+  {
+    "page": 1,
+    "text": "DATA CONFIRMADA",
+    "box": [
+      965,
+      174,
+      230,
+      16.64
+    ]
+  },
+  {
+    "page": 1,
+    "text": "13",
+    "box": [
+      956,
+      214,
+      245,
+      134.4
+    ]
+  },
+  {
+    "page": 1,
+    "text": "NOVEMBRO",
+    "box": [
+      965,
+      337,
+      231,
+      33.28
+    ]
+  },
+  {
+    "page": 1,
+    "text": "Piloto em 10-11/11.<br/>Parceria em negociação.",
+    "box": [
+      965,
+      379,
+      234,
+      44
+    ]
+  },
+  {
+    "page": 1,
+    "text": "PÚBLICO",
+    "box": [
+      76,
+      513,
+      334,
+      17.92
+    ]
+  },
+  {
+    "page": 1,
+    "text": "Percentuais + pautas<br/>para compartilhar.",
+    "box": [
+      76,
+      548,
+      334,
+      54
+    ]
+  },
+  {
+    "page": 1,
+    "text": "CONVIDADOS",
+    "box": [
+      473,
+      513,
+      334,
+      17.92
+    ]
+  },
+  {
+    "page": 1,
+    "text": "Leitura profissional<br/>no Business.",
+    "box": [
+      473,
+      548,
+      334,
+      54
+    ]
+  },
+  {
+    "page": 1,
+    "text": "JANEIRO",
+    "box": [
+      870,
+      513,
+      334,
+      17.92
+    ]
+  },
+  {
+    "page": 1,
+    "text": "Edição anual paga.<br/>Oferta ainda em validação.",
+    "box": [
+      870,
+      548,
+      334,
+      54
+    ]
+  },
+  {
+    "page": 1,
+    "text": "Plano atualizado em 09/11/2026. Lançamento confirmado para 13/11. A prévia cobre provas de 01/01 a 30/09; o anual cobre 2026 inteiro.",
+    "box": [
+      56,
+      643,
+      1168,
+      14.72
+    ]
+  },
+  {
+    "page": 2,
+    "text": "ROAD",
+    "box": [
+      56,
+      30,
+      73,
+      24.32
+    ]
+  },
+  {
+    "page": 2,
+    "text": "RUNNERS",
+    "box": [
+      144,
+      30,
+      140,
+      24.32
+    ]
+  },
+  {
+    "page": 2,
+    "text": "O BRASIL QUE CORRE PROVAS",
+    "box": [
+      298,
+      34,
+      425,
+      16.64
+    ]
+  },
+  {
+    "page": 2,
+    "text": "PLANO INTERNO DE EXECUÇÃO",
+    "box": [
+      980,
+      34,
+      250,
+      15.36
+    ]
+  },
+  {
+    "page": 2,
+    "text": "ESCOPO QUE PROTEGE O TIMING",
+    "box": [
+      56,
+      687,
+      730,
+      14.08
+    ]
+  },
+  {
+    "page": 2,
+    "text": "09 NOV 2026 / V6",
+    "box": [
+      995,
+      687,
+      160,
+      14.08
+    ]
+  },
+  {
+    "page": 2,
+    "text": "02 / 08",
+    "box": [
+      1170,
+      686,
+      70,
+      15.36
+    ]
+  },
+  {
+    "page": 2,
+    "text": "ENTREGA EDITORIAL, NÃO LISTA DE PENDÊNCIAS",
+    "box": [
+      70,
+      97,
+      407,
+      15.36
+    ]
+  },
+  {
+    "page": 2,
+    "text": "O leitor recebe uma edição fechada.",
+    "box": [
+      56,
+      143,
+      1168,
+      55.04
+    ]
+  },
+  {
+    "page": 2,
+    "text": "A prévia profissional é completa dentro do recorte lançado agora.",
+    "box": [
+      56,
+      205,
+      1168,
+      26.88
+    ]
+  },
+  {
+    "page": 2,
+    "text": "PANORAMA PÚBLICO",
+    "box": [
+      78,
+      287,
+      330,
+      16.64
+    ]
+  },
+  {
+    "page": 2,
+    "text": "Poucos dados.<br/>Muito contexto.",
+    "box": [
+      78,
+      333,
+      329,
+      66
+    ]
+  },
+  {
+    "page": 2,
+    "text": "Seis cards e três comparativos no hotsite. Kit: cinco pautas, dez artes e PDF de sete páginas. Fontes abertas.",
+    "box": [
+      78,
+      430,
+      328,
+      112
+    ]
+  },
+  {
+    "page": 2,
+    "text": "PRÉVIA PROFISSIONAL",
+    "box": [
+      475,
+      287,
+      330,
+      16.64
+    ]
+  },
+  {
+    "page": 2,
+    "text": "Mais profundidade.<br/>Acesso nominal.",
+    "box": [
+      475,
+      333,
+      329,
+      66
+    ]
+  },
+  {
+    "page": 2,
+    "text": "Capítulos completos de perfil, idades, gerações, distâncias, geografia, calendário e porte. Fontes e critérios.",
+    "box": [
+      475,
+      430,
+      328,
+      112
+    ]
+  },
+  {
+    "page": 2,
+    "text": "TEMAS PARA O ANUAL",
+    "box": [
+      872,
+      287,
+      330,
+      16.64
+    ]
+  },
+  {
+    "page": 2,
+    "text": "Mostrar o horizonte.<br/>Sem números frágeis.",
+    "box": [
+      872,
+      333,
+      329,
+      66
+    ]
+  },
+  {
+    "page": 2,
+    "text": "Preços, kits e lotes, faixas de desempenho (CNA), ritmo nacional de 42 km e Q4: temas em preparação.",
+    "box": [
+      872,
+      430,
+      328,
+      112
+    ]
+  },
+  {
+    "page": 2,
+    "text": "Novas normalizações seguem em paralelo. A prévia não precisa esperá-las.",
+    "box": [
+      56,
+      606,
+      1168,
+      26.88
+    ]
+  },
+  {
+    "page": 2,
+    "text": "Profissional: publicação 41/run 233; corte 30/09/2026. Maratonas: apoio editorial separado, em revisão web; sem promessa de novo PDF.",
+    "box": [
+      56,
+      643,
+      1168,
+      14.72
+    ]
+  },
+  {
+    "page": 3,
+    "text": "ROAD",
+    "box": [
+      56,
+      30,
+      73,
+      24.32
+    ]
+  },
+  {
+    "page": 3,
+    "text": "RUNNERS",
+    "box": [
+      144,
+      30,
+      140,
+      24.32
+    ]
+  },
+  {
+    "page": 3,
+    "text": "O BRASIL QUE CORRE PROVAS",
+    "box": [
+      298,
+      34,
+      425,
+      16.64
+    ]
+  },
+  {
+    "page": 3,
+    "text": "PLANO INTERNO DE EXECUÇÃO",
+    "box": [
+      980,
+      34,
+      250,
+      15.36
+    ]
+  },
+  {
+    "page": 3,
+    "text": "CONTEÚDO PRONTO PARA ABRIR A CONVERSA",
+    "box": [
+      56,
+      687,
+      730,
+      14.08
+    ]
+  },
+  {
+    "page": 3,
+    "text": "09 NOV 2026 / V6",
+    "box": [
+      995,
+      687,
+      160,
+      14.08
+    ]
+  },
+  {
+    "page": 3,
+    "text": "03 / 08",
+    "box": [
+      1170,
+      686,
+      70,
+      15.36
+    ]
+  },
+  {
+    "page": 3,
+    "text": "5 PAUTAS / 10 ARTES / PDF PÚBLICO DE 7 PÁGINAS",
+    "box": [
+      70,
+      97,
+      450,
+      15.36
+    ]
+  },
+  {
+    "page": 3,
+    "text": "Cinco pautas. Uma base com contexto.",
+    "box": [
+      56,
+      143,
+      1168,
+      51.2
+    ]
+  },
+  {
+    "page": 3,
+    "text": "Abertura: calendário mais cheio, alta menor nas edições das mesmas provas.",
+    "box": [
+      56,
+      204,
+      1168,
+      26.88
+    ]
+  },
+  {
+    "page": 3,
+    "text": "CALENDÁRIO E MESMAS PROVAS",
+    "box": [
+      77,
+      272,
+      331,
+      15.36
+    ]
+  },
+  {
+    "page": 3,
+    "text": "PARTICIPAÇÃO FEMININA",
+    "box": [
+      474,
+      272,
+      331,
+      15.36
+    ]
+  },
+  {
+    "page": 3,
+    "text": "RESULTADOS REGISTRADOS",
+    "box": [
+      871,
+      272,
+      331,
+      15.36
+    ]
+  },
+  {
+    "page": 3,
+    "text": "+2,1%",
+    "box": [
+      77,
+      302,
+      330,
+      53
+    ]
+  },
+  {
+    "page": 3,
+    "text": "concluintes nas mesmas provas",
+    "box": [
+      79,
+      357,
+      328,
+      19.2
+    ]
+  },
+  {
+    "page": 3,
+    "text": "+33,9%",
+    "box": [
+      77,
+      389,
+      330,
+      53
+    ]
+  },
+  {
+    "page": 3,
+    "text": "provas no calendário cadastrado",
+    "box": [
+      79,
+      446,
+      328,
+      19.2
+    ]
+  },
+  {
+    "page": 3,
+    "text": "Universos diferentes; sujeitos à coleta.",
+    "box": [
+      79,
+      491,
+      328,
+      18
+    ]
+  },
+  {
+    "page": 3,
+    "text": "53,9%",
+    "box": [
+      474,
+      302,
+      331,
+      70
+    ]
+  },
+  {
+    "page": 3,
+    "text": "Elas seguem<br/>maioria",
+    "box": [
+      477,
+      391,
+      327,
+      62
+    ]
+  },
+  {
+    "page": 3,
+    "text": "Participações elegíveis,<br/>não pessoas únicas.",
+    "box": [
+      477,
+      475,
+      327,
+      46
+    ]
+  },
+  {
+    "page": 3,
+    "text": "+27,3%",
+    "box": [
+      871,
+      302,
+      331,
+      70
+    ]
+  },
+  {
+    "page": 3,
+    "text": "Mais registros.<br/>Mais perguntas.",
+    "box": [
+      874,
+      391,
+      327,
+      62
+    ]
+  },
+  {
+    "page": 3,
+    "text": "Captura e importações<br/>afetam a comparação.",
+    "box": [
+      874,
+      475,
+      327,
+      46
+    ]
+  },
+  {
+    "page": 3,
+    "text": "61,2%",
+    "box": [
+      73,
+      569,
+      154,
+      40
+    ]
+  },
+  {
+    "page": 3,
+    "text": "A força dos percursos curtos",
+    "box": [
+      239,
+      565,
+      368,
+      23.04
+    ]
+  },
+  {
+    "page": 3,
+    "text": "Participações de rua em percursos positivos abaixo de 6 km.",
+    "box": [
+      239,
+      593,
+      368,
+      15
+    ]
+  },
+  {
+    "page": 3,
+    "text": "47,5%",
+    "box": [
+      664,
+      569,
+      154,
+      40
+    ]
+  },
+  {
+    "page": 3,
+    "text": "A corrida além das capitais",
+    "box": [
+      830,
+      565,
+      376,
+      23.04
+    ]
+  },
+  {
+    "page": 3,
+    "text": "Local da prova, não residência do atleta.",
+    "box": [
+      830,
+      593,
+      376,
+      15
+    ]
+  },
+  {
+    "page": 3,
+    "text": "Jan-Set 2025/2026. Público: célula 420/run 239; origem 41/run 233. Coleta por bloco; panorama 2026: 06/10. Não isola crescimento do mercado.",
+    "box": [
+      56,
+      643,
+      1168,
+      14.72
+    ]
+  },
+  {
+    "page": 4,
+    "text": "ROAD",
+    "box": [
+      56,
+      30,
+      73,
+      24.32
+    ]
+  },
+  {
+    "page": 4,
+    "text": "RUNNERS",
+    "box": [
+      144,
+      30,
+      140,
+      24.32
+    ]
+  },
+  {
+    "page": 4,
+    "text": "O BRASIL QUE CORRE PROVAS",
+    "box": [
+      298,
+      34,
+      425,
+      16.64
+    ]
+  },
+  {
+    "page": 4,
+    "text": "PLANO INTERNO DE EXECUÇÃO",
+    "box": [
+      980,
+      34,
+      250,
+      15.36
+    ]
+  },
+  {
+    "page": 4,
+    "text": "DA DESCOBERTA AO RELACIONAMENTO",
+    "box": [
+      56,
+      687,
+      730,
+      14.08
+    ]
+  },
+  {
+    "page": 4,
+    "text": "09 NOV 2026 / V6",
+    "box": [
+      995,
+      687,
+      160,
+      14.08
+    ]
+  },
+  {
+    "page": 4,
+    "text": "04 / 08",
+    "box": [
+      1170,
+      686,
+      70,
+      15.36
+    ]
+  },
+  {
+    "page": 4,
+    "text": "O BUSINESS É O PONTO DE ENCONTRO",
+    "box": [
+      70,
+      97,
+      363,
+      15.36
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Primeiro, provar utilidade.<br/>Depois, vender o anual.",
+    "box": [
+      56,
+      142,
+      1168,
+      104
+    ]
+  },
+  {
+    "page": 4,
+    "text": "PÚBLICO",
+    "box": [
+      56,
+      263,
+      1150,
+      16.64
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Post ou vídeo",
+    "box": [
+      74,
+      311,
+      241,
+      28.16
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Descobre a pesquisa",
+    "box": [
+      74,
+      355,
+      241,
+      23
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Panorama",
+    "box": [
+      373,
+      311,
+      241,
+      28.16
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Conhece os destaques",
+    "box": [
+      373,
+      355,
+      241,
+      23
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Interesse",
+    "box": [
+      672,
+      311,
+      241,
+      28.16
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Pede acesso ou aviso",
+    "box": [
+      672,
+      355,
+      241,
+      23
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Janeiro",
+    "box": [
+      971,
+      311,
+      241,
+      28.16
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Oferta do anual",
+    "box": [
+      971,
+      355,
+      241,
+      23
+    ]
+  },
+  {
+    "page": 4,
+    "text": "CONVIDADO",
+    "box": [
+      56,
+      433,
+      1150,
+      16.64
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Convite nominal",
+    "box": [
+      74,
+      481,
+      241,
+      28.16
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Profissional ou criador",
+    "box": [
+      74,
+      525,
+      241,
+      23
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Conta Business",
+    "box": [
+      373,
+      481,
+      241,
+      28.16
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Login + resgate",
+    "box": [
+      373,
+      525,
+      241,
+      23
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Leitura",
+    "box": [
+      672,
+      481,
+      241,
+      28.16
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Usa e dá feedback",
+    "box": [
+      672,
+      525,
+      241,
+      23
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Benefício",
+    "box": [
+      971,
+      481,
+      241,
+      28.16
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Compra antecipada -50%",
+    "box": [
+      971,
+      525,
+      241,
+      23
+    ]
+  },
+  {
+    "page": 4,
+    "text": "50% é desconto na compra. A cortesia não inclui o anual gratuitamente.",
+    "box": [
+      56,
+      609,
+      1168,
+      25.6
+    ]
+  },
+  {
+    "page": 4,
+    "text": "Prévia por convite/voucher, sem venda. Resgate válido ativa o benefício de 50%, já implementado em 04/11. Checkout anual pendente.",
+    "box": [
+      56,
+      643,
+      1168,
+      14.72
+    ]
+  },
+  {
+    "page": 5,
+    "text": "ROAD",
+    "box": [
+      56,
+      30,
+      73,
+      24.32
+    ]
+  },
+  {
+    "page": 5,
+    "text": "RUNNERS",
+    "box": [
+      144,
+      30,
+      140,
+      24.32
+    ]
+  },
+  {
+    "page": 5,
+    "text": "O BRASIL QUE CORRE PROVAS",
+    "box": [
+      298,
+      34,
+      425,
+      16.64
+    ]
+  },
+  {
+    "page": 5,
+    "text": "PLANO INTERNO DE EXECUÇÃO",
+    "box": [
+      980,
+      34,
+      250,
+      15.36
+    ]
+  },
+  {
+    "page": 5,
+    "text": "DISTRIBUIÇÃO QUE NÃO TRAVA A ESTREIA",
+    "box": [
+      56,
+      687,
+      730,
+      14.08
+    ]
+  },
+  {
+    "page": 5,
+    "text": "09 NOV 2026 / V6",
+    "box": [
+      995,
+      687,
+      160,
+      14.08
+    ]
+  },
+  {
+    "page": 5,
+    "text": "05 / 08",
+    "box": [
+      1170,
+      686,
+      70,
+      15.36
+    ]
+  },
+  {
+    "page": 5,
+    "text": "DUAS FRENTES EM PARALELO",
+    "box": [
+      70,
+      97,
+      270,
+      15.36
+    ]
+  },
+  {
+    "page": 5,
+    "text": "ABRACEO amplia. Criadores repercutem.",
+    "box": [
+      56,
+      143,
+      1168,
+      51.2
+    ]
+  },
+  {
+    "page": 5,
+    "text": "ABRACEO",
+    "box": [
+      81,
+      246,
+      518,
+      38.4
+    ]
+  },
+  {
+    "page": 5,
+    "text": "EM NEGOCIAÇÃO",
+    "box": [
+      96,
+      301,
+      175,
+      15.36
+    ]
+  },
+  {
+    "page": 5,
+    "text": "Lote preparado",
+    "box": [
+      82,
+      352,
+      518,
+      30.72
+    ]
+  },
+  {
+    "page": 5,
+    "text": "95 vouchers READY, com resgate até 24/11. Convite individual, leitura profissional e suporte no primeiro acesso.",
+    "box": [
+      82,
+      394,
+      513,
+      84
+    ]
+  },
+  {
+    "page": 5,
+    "text": "Conferir contrato e comunicação até 12/11.",
+    "box": [
+      92,
+      534,
+      501,
+      20.48
+    ]
+  },
+  {
+    "page": 5,
+    "text": "CRIADORES",
+    "box": [
+      672,
+      246,
+      527,
+      38.4
+    ]
+  },
+  {
+    "page": 5,
+    "text": "SELEÇÃO INICIAL: 5-8 NOMES",
+    "box": [
+      687,
+      301,
+      260,
+      15.36
+    ]
+  },
+  {
+    "page": 5,
+    "text": "Pauta boa + liberdade editorial",
+    "box": [
+      673,
+      352,
+      527,
+      29.44
+    ]
+  },
+  {
+    "page": 5,
+    "text": "Kit público, fontes, acesso nominal aos convidados e canal de dúvidas. Shorts agora; reviews e entrevistas depois.",
+    "box": [
+      673,
+      394,
+      521,
+      84
+    ]
+  },
+  {
+    "page": 5,
+    "text": "Cortesia não exige post nem avaliação positiva.",
+    "box": [
+      673,
+      536,
+      523,
+      20.48
+    ]
+  },
+  {
+    "page": 5,
+    "text": "Começar por afinidade e credibilidade. Seguidores são apenas parte do contexto.",
+    "box": [
+      56,
+      608,
+      1168,
+      25.6
+    ]
+  },
+  {
+    "page": 5,
+    "text": "Nenhum contato ou envio é executado por este plano. Uso da marca da associação depende de acordo. Conteúdo contratado é outra negociação.",
+    "box": [
+      56,
+      643,
+      1168,
+      14.72
+    ]
+  },
+  {
+    "page": 6,
+    "text": "ROAD",
+    "box": [
+      56,
+      30,
+      73,
+      24.32
+    ]
+  },
+  {
+    "page": 6,
+    "text": "RUNNERS",
+    "box": [
+      144,
+      30,
+      140,
+      24.32
+    ]
+  },
+  {
+    "page": 6,
+    "text": "O BRASIL QUE CORRE PROVAS",
+    "box": [
+      298,
+      34,
+      425,
+      16.64
+    ]
+  },
+  {
+    "page": 6,
+    "text": "PLANO INTERNO DE EXECUÇÃO",
+    "box": [
+      980,
+      34,
+      250,
+      15.36
+    ]
+  },
+  {
+    "page": 6,
+    "text": "O CAMINHO CURTO ATÉ A ESTREIA",
+    "box": [
+      56,
+      687,
+      730,
+      14.08
+    ]
+  },
+  {
+    "page": 6,
+    "text": "09 NOV 2026 / V6",
+    "box": [
+      995,
+      687,
+      160,
+      14.08
+    ]
+  },
+  {
+    "page": 6,
+    "text": "06 / 08",
+    "box": [
+      1170,
+      686,
+      70,
+      15.36
+    ]
+  },
+  {
+    "page": 6,
+    "text": "9 A 13 DE NOVEMBRO / DATA CONFIRMADA",
+    "box": [
+      70,
+      97,
+      330,
+      15.36
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Cinco dias para colocar a prévia na rua.",
+    "box": [
+      56,
+      143,
+      1168,
+      52.480000000000004
+    ]
+  },
+  {
+    "page": 6,
+    "text": "09 NOV",
+    "box": [
+      75,
+      261,
+      234,
+      32.0
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Fechar e organizar",
+    "box": [
+      75,
+      320,
+      233,
+      28
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Leo e Carlos organizam pautas e selecionam leitores e criadores.",
+    "box": [
+      75,
+      404,
+      233,
+      81
+    ]
+  },
+  {
+    "page": 6,
+    "text": "10-11 NOV",
+    "box": [
+      374,
+      261,
+      234,
+      32.0
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Pilotar acesso",
+    "box": [
+      374,
+      320,
+      233,
+      28
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Login, voucher, leitura. Confirmar a experiência com os leitores do piloto.",
+    "box": [
+      374,
+      404,
+      233,
+      81
+    ]
+  },
+  {
+    "page": 6,
+    "text": "12 NOV",
+    "box": [
+      673,
+      261,
+      234,
+      32.0
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Conferir e liberar",
+    "box": [
+      673,
+      320,
+      233,
+      28
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Conferir contrato, peças, links e destinatários. Liberar após as conferências.",
+    "box": [
+      673,
+      404,
+      233,
+      108
+    ]
+  },
+  {
+    "page": 6,
+    "text": "13 NOV",
+    "box": [
+      972,
+      261,
+      234,
+      32.0
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Lançamento",
+    "box": [
+      972,
+      320,
+      233,
+      28
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Post principal + stories + kit. Primeira onda de convites autorizados.",
+    "box": [
+      972,
+      404,
+      233,
+      81
+    ]
+  },
+  {
+    "page": 6,
+    "text": "14-20 NOV",
+    "box": [
+      78,
+      582,
+      192,
+      21.76
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Pautas de apoio, suporte, entrevistas e reviews que surgirem.",
+    "box": [
+      279,
+      582,
+      918,
+      24.32
+    ]
+  },
+  {
+    "page": 6,
+    "text": "Estreia em 13/11. Contrato ABRACEO até 12/11. Piloto e liberação dependem da conferência de Leo e Carlos.",
+    "box": [
+      56,
+      643,
+      1168,
+      14.72
+    ]
+  },
+  {
+    "page": 7,
+    "text": "ROAD",
+    "box": [
+      56,
+      30,
+      73,
+      24.32
+    ]
+  },
+  {
+    "page": 7,
+    "text": "RUNNERS",
+    "box": [
+      144,
+      30,
+      140,
+      24.32
+    ]
+  },
+  {
+    "page": 7,
+    "text": "O BRASIL QUE CORRE PROVAS",
+    "box": [
+      298,
+      34,
+      425,
+      16.64
+    ]
+  },
+  {
+    "page": 7,
+    "text": "PLANO INTERNO DE EXECUÇÃO",
+    "box": [
+      980,
+      34,
+      250,
+      15.36
+    ]
+  },
+  {
+    "page": 7,
+    "text": "CONVERTER A PRÉVIA EM INTENÇÃO DE COMPRA",
+    "box": [
+      56,
+      687,
+      730,
+      14.08
+    ]
+  },
+  {
+    "page": 7,
+    "text": "09 NOV 2026 / V6",
+    "box": [
+      995,
+      687,
+      160,
+      14.08
+    ]
+  },
+  {
+    "page": 7,
+    "text": "07 / 08",
+    "box": [
+      1170,
+      686,
+      70,
+      15.36
+    ]
+  },
+  {
+    "page": 7,
+    "text": "NOVEMBRO ABRE A RELAÇÃO. JANEIRO VENDE.",
+    "box": [
+      70,
+      97,
+      398,
+      15.36
+    ]
+  },
+  {
+    "page": 7,
+    "text": "Não deixar o interesse esfriar.",
+    "box": [
+      56,
+      143,
+      1168,
+      55.04
+    ]
+  },
+  {
+    "page": 7,
+    "text": "14-20 NOV",
+    "box": [
+      78,
+      261,
+      330,
+      17.92
+    ]
+  },
+  {
+    "page": 7,
+    "text": "Ouvir quem leu",
+    "box": [
+      78,
+      310,
+      329,
+      31
+    ]
+  },
+  {
+    "page": 7,
+    "text": "Qual decisão o dado ajudaria a tomar? Separar dificuldade de acesso de falta de interesse.",
+    "box": [
+      78,
+      390,
+      328,
+      84
+    ]
+  },
+  {
+    "page": 7,
+    "text": "NOV-DEZ",
+    "box": [
+      475,
+      261,
+      330,
+      17.92
+    ]
+  },
+  {
+    "page": 7,
+    "text": "Dar razão para voltar",
+    "box": [
+      475,
+      310,
+      329,
+      31
+    ]
+  },
+  {
+    "page": 7,
+    "text": "Pautas úteis, dúvidas respondidas e entrevistas. Definir oferta e testar checkout antes do recesso.",
+    "box": [
+      475,
+      390,
+      328,
+      84
+    ]
+  },
+  {
+    "page": 7,
+    "text": "JAN 2027",
+    "box": [
+      872,
+      261,
+      330,
+      17.92
+    ]
+  },
+  {
+    "page": 7,
+    "text": "Apresentar a oferta",
+    "box": [
+      872,
+      310,
+      329,
+      31
+    ]
+  },
+  {
+    "page": 7,
+    "text": "Anual separado, em preparação. Resgates válidos já têm benefício de 50%; checkout pendente.",
+    "box": [
+      872,
+      390,
+      328,
+      84
+    ]
+  },
+  {
+    "page": 7,
+    "text": "PROPOSTAS / ANUAL 2026 EM JANEIRO DE 2027",
+    "box": [
+      78,
+      566,
+      1090,
+      15.36
+    ]
+  },
+  {
+    "page": 7,
+    "text": "R$ 497   |   R$ 248,50 com benefício   |   06/01 antecipado   |   11/01 geral",
+    "box": [
+      78,
+      592,
+      1113,
+      26.88
+    ]
+  },
+  {
+    "page": 7,
+    "text": "Preços, licença, datas e prazo do desconto não são oferta ativa. Curadoria de novembro não espera o checkout anual. Ads e eventos são opcionais.",
+    "box": [
+      56,
+      643,
+      1168,
+      14.72
+    ]
+  },
+  {
+    "page": 8,
+    "text": "ROAD",
+    "box": [
+      56,
+      30,
+      73,
+      24.32
+    ]
+  },
+  {
+    "page": 8,
+    "text": "RUNNERS",
+    "box": [
+      144,
+      30,
+      140,
+      24.32
+    ]
+  },
+  {
+    "page": 8,
+    "text": "O BRASIL QUE CORRE PROVAS",
+    "box": [
+      298,
+      34,
+      425,
+      16.64
+    ]
+  },
+  {
+    "page": 8,
+    "text": "PLANO INTERNO DE EXECUÇÃO",
+    "box": [
+      980,
+      34,
+      250,
+      15.36
+    ]
+  },
+  {
+    "page": 8,
+    "text": "O QUE PRECISA DE DECISÃO PARA ESTREAR",
+    "box": [
+      56,
+      687,
+      730,
+      14.08
+    ]
+  },
+  {
+    "page": 8,
+    "text": "09 NOV 2026 / V6",
+    "box": [
+      995,
+      687,
+      160,
+      14.08
+    ]
+  },
+  {
+    "page": 8,
+    "text": "08 / 08",
+    "box": [
+      1170,
+      686,
+      70,
+      15.36
+    ]
+  },
+  {
+    "page": 8,
+    "text": "PRÓXIMAS AÇÕES / ESTREIA EM 13 DE NOVEMBRO",
+    "box": [
+      70,
+      97,
+      450,
+      15.36
+    ]
+  },
+  {
+    "page": 8,
+    "text": "Agora é escolher pessoas<br/>e operar o lançamento.",
+    "box": [
+      56,
+      141,
+      1168,
+      108
+    ]
+  },
+  {
+    "page": 8,
+    "text": "01",
+    "box": [
+      78,
+      307,
+      47,
+      30.72
+    ]
+  },
+  {
+    "page": 8,
+    "text": "Donos e suporte",
+    "box": [
+      138,
+      309,
+      270,
+      28.16
+    ]
+  },
+  {
+    "page": 8,
+    "text": "Leo e Carlos: lançamento, editorial, convites e suporte. Estreia em 13/11 confirmada.",
+    "box": [
+      79,
+      373,
+      327,
+      90
+    ]
+  },
+  {
+    "page": 8,
+    "text": "02",
+    "box": [
+      475,
+      307,
+      47,
+      30.72
+    ]
+  },
+  {
+    "page": 8,
+    "text": "Piloto e contatos",
+    "box": [
+      535,
+      309,
+      270,
+      28.16
+    ]
+  },
+  {
+    "page": 8,
+    "text": "Leo e Carlos escolhem 5-10 leitores e primeiros criadores, e autorizam os contatos.",
+    "box": [
+      476,
+      373,
+      327,
+      90
+    ]
+  },
+  {
+    "page": 8,
+    "text": "03",
+    "box": [
+      872,
+      307,
+      47,
+      30.72
+    ]
+  },
+  {
+    "page": 8,
+    "text": "Lote e contrato",
+    "box": [
+      932,
+      309,
+      270,
+      28.16
+    ]
+  },
+  {
+    "page": 8,
+    "text": "Conferir 95 vouchers READY, resgate até 24/11. Concluir negociação ABRACEO até 12/11.",
+    "box": [
+      873,
+      373,
+      327,
+      90
+    ]
+  },
+  {
+    "page": 8,
+    "text": "NÃO ESPERAR",
+    "box": [
+      79,
+      556,
+      1080,
+      15.36
+    ]
+  },
+  {
+    "page": 8,
+    "text": "Normalizações novas, reviews prontos ou decisão de preço anual.",
+    "box": [
+      79,
+      582,
+      1118,
+      25.6
+    ]
+  },
+  {
+    "page": 8,
+    "text": "Hotsite: roadrunners.run/brasilquecorreprovas/2026/ | Biblioteca: business.roadrunners.run/estudos/ | Plano e rascunhos ficam com a equipe.",
+    "box": [
+      56,
+      643,
+      1168,
+      14.72
+    ]
+  }
+]

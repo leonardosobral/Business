@@ -1,0 +1,441 @@
+{
+  "source_before": {
+    "version": 1,
+    "id": 428,
+    "hash": "d9c5cd4e93a04a3c2bca23fbafb657de"
+  },
+  "sql_sha256": "06063d7d047441cfb02ed52d513b0ab6184b629a17046836bb6f5d860ebe7e03",
+  "run": {
+    "started_at": "2026-11-09 18:24:38.447301-03",
+    "duration_ms": 7,
+    "error_message": "",
+    "cell_version": 2,
+    "cell_id": "428",
+    "sql_sha256": "f8ece9d7803105e670cf5952689472eea1c17df6bceb74a9c01213ed03c9e0c2",
+    "truncated": 0,
+    "row_count": 39,
+    "sql_text": "-- Renovação candidata09/11; curadoria/capturas externas preservadas; entradas=[{\"cell\": 426, \"revision\": 1, \"run\": 303, \"started_at\": \"2026-11-09 18:19:51.924112-03\"}]\n-- Seleção inicial de provas identificadas na referência CR 2026, com resultados elegíveis.\n-- Ainda não é censo nem lista final de percursos aferidos. Jan-Set, por data_final da base.\n-- Uma edição por prova: Goiânia 37874 (não 43068), Torres 43073 (não 34240), Feira 43077 (não 37693).\n-- Mesma data/cidade/nome e fonte de cronometragem; não somar importações alternativas.\n-- Paraná 37310: data do cadastro diverge da referência; ambos dentro do recorte, conferir antes de análise mensal.\n-- FILA 36974 retida para auditoria de 23 tempos sub2h; Piracicaba tem vínculo/data divergente; demais lacunas ficam no inventário.\n-- Floripa usa a captura oficial congelada 210, igual ao estudo geral; substitui o BI integralmente (3594 -> 3592), sem soma.\nWITH fonte AS (SELECT j.value AS v FROM estudo.notebook_runs r CROSS JOIN LATERAL jsonb_array_elements(r.result->'rows') j WHERE r.id=303),\nfloripa AS (SELECT result->'rows'->0->'payload'->'classificados_geral_elite' AS f FROM estudo.notebook_runs WHERE id=210)\nSELECT (v->>'id_evento')::int AS id_evento,v->>'nome_evento' AS nome_evento,v->>'data_final' AS data_final,\n(v->>'id_agrega_evento')::int AS id_agrega_evento,\nCASE WHEN (v->>'id_evento')::int=34529 THEN (f->>'concluintes')::int ELSE (v->>'participacoes')::int END AS participacoes,\nCASE WHEN (v->>'id_evento')::int=34529 THEN (f->>'feminino')::int ELSE (v->>'feminino')::int END AS feminino,\nCASE WHEN (v->>'id_evento')::int=34529 THEN (f->>'sub3')::int ELSE (v->>'sub3')::int END AS sub3,\nCASE WHEN (v->>'id_evento')::int=34529 THEN (f->>'sub4')::int ELSE (v->>'sub4')::int END AS sub4\nFROM fonte CROSS JOIN floripa WHERE (v->>'id_evento')::int IN(43066,34236,33486,34235,29291,34529,38863,37310,34841,39421,35868,33490,36245,37815,43078,40448,34840,36973,39393,36250,36249,37874,31176,39461,37868,38234,37322,40597,31179,34131,36246,33976,43073,37307,37006,43077,33713,36665,43074) ORDER BY participacoes DESC,id_evento",
+    "status": "ok",
+    "note": "Referências novas e curadoria literal preservada. Não publica HTML/produtos. Capturas externas mantêm suas datas. Principal2025 histórico205; demais temas com fontes próprias.",
+    "finished_at": "2026-11-09 18:24:38.455793-03",
+    "frozen_at": "2026-11-09 18:24:38.458685-03",
+    "title": "Maratonas — derivação renovada — 09/11/2026 — célula 428",
+    "id": "324",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "truncated": false,
+    "status": "ok",
+    "started_at": "2026-11-09T18:24:38.447301-03:00",
+    "cell_id": 428,
+    "cell_version": 2,
+    "id": 324,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "id_evento",
+        "nome_evento",
+        "data_final",
+        "id_agrega_evento",
+        "participacoes",
+        "feminino",
+        "sub3",
+        "sub4"
+      ],
+      "rows": [
+        {
+          "data_final": "2026-06-07",
+          "nome_evento": "Maratona Internacional do Rio de Janeiro 2026",
+          "sub4": 5344,
+          "sub3": 332,
+          "id_evento": 43066,
+          "feminino": 3877,
+          "id_agrega_evento": 19,
+          "participacoes": 14120
+        },
+        {
+          "data_final": "2026-05-31",
+          "nome_evento": "Maratona Internacional de Porto Alegre 2026",
+          "sub4": 4407,
+          "sub3": 545,
+          "id_evento": 34236,
+          "feminino": 2127,
+          "id_agrega_evento": 26,
+          "participacoes": 7445
+        },
+        {
+          "data_final": "2026-07-26",
+          "nome_evento": "SP City Marathon 2026",
+          "sub4": 2426,
+          "sub3": 158,
+          "id_evento": 33486,
+          "feminino": 1358,
+          "id_agrega_evento": 21,
+          "participacoes": 6642
+        },
+        {
+          "data_final": "2026-07-12",
+          "nome_evento": "New Balance 42k Porto Alegre",
+          "sub4": 3304,
+          "sub3": 550,
+          "id_evento": 34235,
+          "feminino": 1416,
+          "id_agrega_evento": 39,
+          "participacoes": 5210
+        },
+        {
+          "data_final": "2026-04-12",
+          "nome_evento": "Maratona Internacional de São Paulo 2026",
+          "sub4": 1401,
+          "sub3": 102,
+          "id_evento": 29291,
+          "feminino": 714,
+          "id_agrega_evento": 17,
+          "participacoes": 4266
+        },
+        {
+          "data_final": "2026-08-30",
+          "nome_evento": "Maratona Internacional de Floripa 2026",
+          "sub4": 1682,
+          "sub3": 124,
+          "id_evento": 34529,
+          "feminino": 1127,
+          "id_agrega_evento": 28,
+          "participacoes": 3592
+        },
+        {
+          "data_final": "2026-06-28",
+          "nome_evento": "1ª MARATONA E 17ª MEIA MARATONA INTERNACIONAL DE BELO HORIZONTE",
+          "sub4": 891,
+          "sub3": 67,
+          "id_evento": 38863,
+          "feminino": 524,
+          "id_agrega_evento": null,
+          "participacoes": 2393
+        },
+        {
+          "data_final": "2026-04-28",
+          "nome_evento": "Maratona Internacional do Paraná 2026",
+          "sub4": 932,
+          "sub3": 44,
+          "id_evento": 37310,
+          "feminino": 564,
+          "id_agrega_evento": 1000,
+          "participacoes": 2245
+        },
+        {
+          "data_final": "2026-04-12",
+          "nome_evento": "MARATONA INTERNACIONAL DE FORTALEZA 2026",
+          "sub4": 544,
+          "sub3": 27,
+          "id_evento": 34841,
+          "feminino": 318,
+          "id_agrega_evento": null,
+          "participacoes": 1922
+        },
+        {
+          "data_final": "2026-08-02",
+          "nome_evento": "MARATONA INTERNACIONAL DE MACEIÓ 2026",
+          "sub4": 823,
+          "sub3": 43,
+          "id_evento": 39421,
+          "feminino": 422,
+          "id_agrega_evento": 730,
+          "participacoes": 1909
+        },
+        {
+          "data_final": "2026-05-17",
+          "nome_evento": "MARATONA OFICIAL DE BELO HORIZONTE 2026",
+          "sub4": 673,
+          "sub3": 32,
+          "id_evento": 35868,
+          "feminino": 440,
+          "id_agrega_evento": 737,
+          "participacoes": 1888
+        },
+        {
+          "data_final": "2026-06-21",
+          "nome_evento": "2ª Maratona de Praia Grande",
+          "sub4": 577,
+          "sub3": 54,
+          "id_evento": 33490,
+          "feminino": 283,
+          "id_agrega_evento": null,
+          "participacoes": 1326
+        },
+        {
+          "data_final": "2026-09-27",
+          "nome_evento": "Maratona de Salvador 2026",
+          "sub4": 414,
+          "sub3": 31,
+          "id_evento": 36245,
+          "feminino": 183,
+          "id_agrega_evento": 15,
+          "participacoes": 1108
+        },
+        {
+          "data_final": "2026-06-07",
+          "nome_evento": "Meia e Maratona Cidade de Florianópolis - 2026",
+          "sub4": 353,
+          "sub3": 23,
+          "id_evento": 37815,
+          "feminino": 234,
+          "id_agrega_evento": 40,
+          "participacoes": 857
+        },
+        {
+          "data_final": "2026-09-27",
+          "nome_evento": "MARATONA DE NITERÓI 2026",
+          "sub4": 206,
+          "sub3": 19,
+          "id_evento": 43078,
+          "feminino": 231,
+          "id_agrega_evento": 34,
+          "participacoes": 764
+        },
+        {
+          "data_final": "2026-04-05",
+          "nome_evento": "Maratona de Manaus Moto Honda",
+          "sub4": 116,
+          "sub3": 12,
+          "id_evento": 40448,
+          "feminino": 98,
+          "id_agrega_evento": null,
+          "participacoes": 574
+        },
+        {
+          "data_final": "2026-04-19",
+          "nome_evento": "Maratona De João Pessoa 2026",
+          "sub4": 215,
+          "sub3": 16,
+          "id_evento": 34840,
+          "feminino": 0,
+          "id_agrega_evento": 12,
+          "participacoes": 559
+        },
+        {
+          "data_final": "2026-09-20",
+          "nome_evento": "2ª MARATONA DE SÃO JOSÉ",
+          "sub4": 203,
+          "sub3": 13,
+          "id_evento": 36973,
+          "feminino": 75,
+          "id_agrega_evento": 1397,
+          "participacoes": 501
+        },
+        {
+          "data_final": "2026-07-05",
+          "nome_evento": "Maratona de Campo Grande 2026",
+          "sub4": 177,
+          "sub3": 12,
+          "id_evento": 39393,
+          "feminino": 92,
+          "id_agrega_evento": 9,
+          "participacoes": 418
+        },
+        {
+          "data_final": "2026-07-25",
+          "nome_evento": "MARATONA DO LITORAL",
+          "sub4": 235,
+          "sub3": 36,
+          "id_evento": 36249,
+          "feminino": 111,
+          "id_agrega_evento": 501,
+          "participacoes": 404
+        },
+        {
+          "data_final": "2026-07-05",
+          "nome_evento": "MARATONA DE LONDRINA 2026",
+          "sub4": 174,
+          "sub3": 18,
+          "id_evento": 36250,
+          "feminino": 66,
+          "id_agrega_evento": 72,
+          "participacoes": 404
+        },
+        {
+          "data_final": "2026-05-24",
+          "nome_evento": "3ª MARATONA INTERNACIONAL DE GOIÂNIA",
+          "sub4": 138,
+          "sub3": 6,
+          "id_evento": 37874,
+          "feminino": 67,
+          "id_agrega_evento": 708,
+          "participacoes": 370
+        },
+        {
+          "data_final": "2026-05-31",
+          "nome_evento": "MARATONA INTERNACIONAL DE OLINDA  2026",
+          "sub4": 100,
+          "sub3": 5,
+          "id_evento": 31176,
+          "feminino": 76,
+          "id_agrega_evento": 13,
+          "participacoes": 342
+        },
+        {
+          "data_final": "2026-04-21",
+          "nome_evento": "MARATONA BRASÍLIA 2026",
+          "sub4": 110,
+          "sub3": 15,
+          "id_evento": 39461,
+          "feminino": 44,
+          "id_agrega_evento": null,
+          "participacoes": 289
+        },
+        {
+          "data_final": "2026-07-05",
+          "nome_evento": "28ª MARATONA INTERNACIONAL DE BLUMENAU  - 2026",
+          "sub4": 141,
+          "sub3": 15,
+          "id_evento": 37868,
+          "feminino": 37,
+          "id_agrega_evento": 35,
+          "participacoes": 214
+        },
+        {
+          "data_final": "2026-05-03",
+          "nome_evento": "MARATONA INTERNACIONAL DE CAMPINAS",
+          "sub4": 99,
+          "sub3": 8,
+          "id_evento": 38234,
+          "feminino": 23,
+          "id_agrega_evento": 743,
+          "participacoes": 195
+        },
+        {
+          "data_final": "2026-03-29",
+          "nome_evento": "MARATONA INTERNACIONAL DO FREVO 2026",
+          "sub4": 48,
+          "sub3": 3,
+          "id_evento": 37322,
+          "feminino": 38,
+          "id_agrega_evento": null,
+          "participacoes": 190
+        },
+        {
+          "data_final": "2026-04-12",
+          "nome_evento": "SEGURALTA MARATHON",
+          "sub4": 81,
+          "sub3": 4,
+          "id_evento": 40597,
+          "feminino": 38,
+          "id_agrega_evento": null,
+          "participacoes": 189
+        },
+        {
+          "data_final": "2026-05-24",
+          "nome_evento": "MARATONA INTERNACIONAL DE PG",
+          "sub4": 73,
+          "sub3": 5,
+          "id_evento": 31179,
+          "feminino": 45,
+          "id_agrega_evento": 747,
+          "participacoes": 167
+        },
+        {
+          "data_final": "2026-05-24",
+          "nome_evento": "Maratona Farol A Farol - 2026",
+          "sub4": 55,
+          "sub3": 4,
+          "id_evento": 34131,
+          "feminino": 22,
+          "id_agrega_evento": null,
+          "participacoes": 147
+        },
+        {
+          "data_final": "2026-08-30",
+          "nome_evento": "13° Maratona EM MOVIMENTO EM GOIANIA",
+          "sub4": 48,
+          "sub3": 0,
+          "id_evento": 36246,
+          "feminino": 14,
+          "id_agrega_evento": null,
+          "participacoes": 135
+        },
+        {
+          "data_final": "2026-03-15",
+          "nome_evento": "I Maratona de Macapá",
+          "sub4": 33,
+          "sub3": 1,
+          "id_evento": 33713,
+          "feminino": 33,
+          "id_agrega_evento": null,
+          "participacoes": 116
+        },
+        {
+          "data_final": "2026-03-15",
+          "nome_evento": "2ª Maratona de Torres",
+          "sub4": 48,
+          "sub3": 7,
+          "id_evento": 43073,
+          "feminino": 21,
+          "id_agrega_evento": 65,
+          "participacoes": 101
+        },
+        {
+          "data_final": "2026-05-24",
+          "nome_evento": "MARATONA DE TUBARÃO 2026",
+          "sub4": 58,
+          "sub3": 7,
+          "id_evento": 37307,
+          "feminino": 25,
+          "id_agrega_evento": 27,
+          "participacoes": 96
+        },
+        {
+          "data_final": "2026-09-27",
+          "nome_evento": "Maratona de Criciúma 2026",
+          "sub4": 59,
+          "sub3": 10,
+          "id_evento": 37006,
+          "feminino": 16,
+          "id_agrega_evento": 31,
+          "participacoes": 95
+        },
+        {
+          "data_final": "2026-05-17",
+          "nome_evento": "2ª Maratona de Feira de Santana",
+          "sub4": 57,
+          "sub3": 5,
+          "id_evento": 43077,
+          "feminino": 10,
+          "id_agrega_evento": null,
+          "participacoes": 90
+        },
+        {
+          "data_final": "2026-07-19",
+          "nome_evento": "9ª Jipa City Marathon",
+          "sub4": 29,
+          "sub3": 0,
+          "id_evento": 33976,
+          "feminino": 30,
+          "id_agrega_evento": 859,
+          "participacoes": 60
+        },
+        {
+          "data_final": "2026-09-06",
+          "nome_evento": "MARATONA DE BONITO",
+          "sub4": 23,
+          "sub3": 2,
+          "id_evento": 36665,
+          "feminino": 12,
+          "id_agrega_evento": null,
+          "participacoes": 57
+        },
+        {
+          "data_final": "2026-08-02",
+          "nome_evento": "2ª Maratona de Capão da Canoa",
+          "sub4": 29,
+          "sub3": 0,
+          "id_evento": 43074,
+          "feminino": 12,
+          "id_agrega_evento": 1422,
+          "participacoes": 52
+        }
+      ]
+    }
+  }
+}

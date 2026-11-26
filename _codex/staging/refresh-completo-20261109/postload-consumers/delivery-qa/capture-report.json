@@ -1,0 +1,19 @@
+{
+  "41": {
+    "source": 231,
+    "narrative": 239,
+    "pairs": 608,
+    "bytes": 544552,
+    "status": "disponivel"
+  },
+  "42": {
+    "source": 329,
+    "narrative": 352,
+    "pairs": 615,
+    "bytes": 547265,
+    "status": "disponivel"
+  },
+  "database_read_only": true,
+  "request_identity_created": false,
+  "temporary_directories_left": []
+}

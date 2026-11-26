@@ -1,0 +1,111 @@
+{
+  "months": [
+    {
+      "script_rows": 158051,
+      "non_homologated_added": null,
+      "mes": 1,
+      "excluded": null,
+      "approved": 158051
+    },
+    {
+      "script_rows": 165059,
+      "non_homologated_added": null,
+      "mes": 2,
+      "excluded": null,
+      "approved": 165059
+    },
+    {
+      "script_rows": 566764,
+      "non_homologated_added": null,
+      "mes": 3,
+      "excluded": null,
+      "approved": 566764
+    },
+    {
+      "script_rows": 459228,
+      "non_homologated_added": null,
+      "mes": 4,
+      "excluded": null,
+      "approved": 459228
+    },
+    {
+      "script_rows": 719782,
+      "non_homologated_added": null,
+      "mes": 5,
+      "excluded": null,
+      "approved": 719782
+    },
+    {
+      "script_rows": 529639,
+      "non_homologated_added": null,
+      "mes": 6,
+      "excluded": null,
+      "approved": 529639
+    },
+    {
+      "script_rows": 509871,
+      "non_homologated_added": null,
+      "mes": 7,
+      "excluded": null,
+      "approved": 509871
+    },
+    {
+      "script_rows": 742644,
+      "non_homologated_added": null,
+      "mes": 8,
+      "excluded": null,
+      "approved": 742644
+    },
+    {
+      "script_rows": 722066,
+      "non_homologated_added": null,
+      "mes": 9,
+      "excluded": null,
+      "approved": 722066
+    }
+  ],
+  "capturado_em": "2026-11-09T16:09:00.302344-03:00",
+  "summary": {
+    "non_homologated_added_by_original_script_unique": null,
+    "approved_other_kind": null,
+    "approved_missing_initial_date": null,
+    "approved_null_time": null,
+    "approved_initial_final_year_differ": null,
+    "original_script_rows": 4573104,
+    "approved_excluded_by_original_script": null,
+    "approved_events": 4964,
+    "approved_initial_final_month_differ": 61,
+    "approved_kids": null,
+    "approved_initial_final_differ": 131799,
+    "approved_retained_by_original_script_unique": 4573104,
+    "script_events": 4964,
+    "approved_date_join_extra_rows": null,
+    "approved_null_modality": null,
+    "approved_duplicate_initial_date": null,
+    "approved": 4573104,
+    "approved_missing_final_date": null
+  },
+  "approved_flag_groups": [
+    {
+      "null_time": false,
+      "allowed_kind": true,
+      "n": 4573104,
+      "kids": false,
+      "null_modality": false
+    }
+  ],
+  "timeout": "45s",
+  "kinds": [
+    {
+      "tipo_corrida": "rua",
+      "non_homologated_added": null,
+      "approved": 4543628
+    },
+    {
+      "tipo_corrida": "trail",
+      "non_homologated_added": null,
+      "approved": 29476
+    }
+  ],
+  "read_only": "on"
+}

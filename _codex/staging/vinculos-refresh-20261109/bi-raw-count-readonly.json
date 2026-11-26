@@ -1,0 +1,63 @@
+{
+  "months": [
+    {
+      "eventos": 193,
+      "mes": 1,
+      "participacoes": 158051
+    },
+    {
+      "eventos": 199,
+      "mes": 2,
+      "participacoes": 165059
+    },
+    {
+      "eventos": 564,
+      "mes": 3,
+      "participacoes": 566764
+    },
+    {
+      "eventos": 474,
+      "mes": 4,
+      "participacoes": 459228
+    },
+    {
+      "eventos": 770,
+      "mes": 5,
+      "participacoes": 719782
+    },
+    {
+      "eventos": 501,
+      "mes": 6,
+      "participacoes": 529639
+    },
+    {
+      "eventos": 573,
+      "mes": 7,
+      "participacoes": 510008
+    },
+    {
+      "eventos": 804,
+      "mes": 8,
+      "participacoes": 742644
+    },
+    {
+      "eventos": 885,
+      "mes": 9,
+      "participacoes": 720962
+    }
+  ],
+  "capturado_em": "2026-11-09T15:38:58.162732-03:00",
+  "raw": {
+    "eventos": 4963,
+    "max_resultado": 32563726,
+    "primeira_data": "2026-01-02",
+    "ultima_data": "2026-09-30",
+    "min_resultado": 23085895,
+    "ids": 4572137,
+    "mulheres": 2460899,
+    "n": 4572137,
+    "homens": 2109686
+  },
+  "timeout": "45s",
+  "read_only": "on"
+}

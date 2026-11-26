@@ -1,0 +1,18 @@
+{
+  "qa_transactions_rolled_back": true,
+  "expired_voucher_denied": true,
+  "wrong_email_denied": true,
+  "cnpj_repeat_idempotent": true,
+  "zero_percent_transition": true,
+  "first_access_voucher": true,
+  "verified_identity_required": true,
+  "cnpj_new": true,
+  "voucher_50": true,
+  "voucher_repeat_idempotent": true,
+  "revoked_cnpj_denied": true,
+  "no_free_annual_reading": true,
+  "redeemed_repair": true,
+  "cnpj_nominal_ready": true,
+  "revoked_benefit_preserved": true,
+  "cross_account_grant_denied": true
+}

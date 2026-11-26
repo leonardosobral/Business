@@ -1,0 +1,16 @@
+<!doctype html><html lang="pt-br"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/mdb.min.css"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/style.css"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/cores_admin.css"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/business-ui.css"><body data-mdb-theme="dark" class="bg-dark-subtle"><main style="max-width:1250px;margin:20px auto;padding:16px">
+<link rel="stylesheet" href="https://business.roadrunners.run/assets/css/portal-banner-dashboard.css?v=rr-neutral-20261026"/>
+<section class="banner-dashboard">
+
+<header class="banner-header"><div><div class="banner-eyebrow">Administração · rede de publicidade</div><h1 class="h3">Sites e spots</h1><p>Cadastre onde os banners podem aparecer e copie o código de instalação.</p></div><a href="/portal/banners/" class="btn btn-outline-info">Voltar aos banners</a></header>
+<nav class="nav nav-tabs mb-4" aria-label="Cadastro da rede"><a class="nav-link" href="?tab=sites">Sites</a><a class="nav-link" href="?tab=spots">Spots</a><a class="nav-link active" href="?tab=install" aria-current="page">Código de instalação</a></nav>
+
+<section class="banner-panel"><h2 class="h5">Instale no outro site</h2><ol><li>Cadastre o site e os domínios utilizados.</li><li>Crie um spot para cada espaço de exibição.</li><li>Cole a div no local do banner e o script uma única vez na página.</li><li>Cadastre um banner escolhendo esse site e spot e envie para análise.</li></ol><p class="small">Sem banner aprovado e elegível, o espaço fica vazio. O script não usa cookies. Se o site usa CSP, permita ads.roadrunners.run em script-src e connect-src e o domínio das imagens em img-src.</p>
+
+<article class="border rounded p-3 my-3"><h3 class="h6">Site de demonstra&ccedil;&atilde;o — Lateral da p&aacute;gina inicial</h3><label class="visually-hidden" for="code-00000000-0000-4000-8000-000000000002">Código de instalação</label><textarea id="code-00000000-0000-4000-8000-000000000002" class="form-control font-monospace" rows="3" readonly>&lt;div data-rr-ads-site&#x3d;&quot;site-demo&quot; data-rr-ads-spot&#x3d;&quot;lateral-home&quot;&gt;&lt;&#x2f;div&gt;&#xa;&lt;script async src&#x3d;&quot;https&#x3a;&#x2f;&#x2f;ads.roadrunners.run&#x2f;sdk&#x2f;v1.js&quot;&gt;&lt;&#x2f;script&gt;</textarea><button type="button" class="btn btn-sm btn-info mt-2" data-copy-code="code-00000000-0000-4000-8000-000000000002">Copiar código</button><span class="ms-2 small" role="status" data-copy-status></span></article>
+</section>
+</section>
+<script>
+document.querySelectorAll('[data-copy-code]').forEach(button=>button.addEventListener('click',async()=>{const field=document.getElementById(button.dataset.copyCode);const status=button.parentElement.querySelector('[data-copy-status]');try{await navigator.clipboard.writeText(field.value);status.textContent='Código copiado.';}catch(_){field.focus();field.select();status.textContent='Código selecionado. Use Ctrl+C ou ⌘C.';}}));
+</script>
+</main></body></html>

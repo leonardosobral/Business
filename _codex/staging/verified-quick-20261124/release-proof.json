@@ -1,0 +1,55 @@
+{
+  "tested_at": "2026-11-24T14:17:31.172232+00:00",
+  "hashes": {
+    "services/VerifiedAdmin.cfc": "ee4e4add3899c8a3d062efeb0c11c7e354f7144f2650ea7d2af2dff293614cf8",
+    "portal/verificados/verified.css": "d5906eb9de837df60d29c07dab6392b23297a9419f3e0d9a69ba4f7623009cea",
+    "portal/includes/verified_backend.cfm": "fd6cabbb869bd47e445c0dc508257909cc8237568ffc675bc3f417b6b8fbc890",
+    "portal/verificados/home.cfm": "48ba55f72527e4265c187d8b6b3d8253de062438cfaac99d7c3b080cb2b40852",
+    "portal/verificados/verified.js": "4c1d5ef320f52ed93b1610433183678dcf8715b0698ecdd06858d39858d06606"
+  },
+  "native": {
+    "timings": {
+      "run.cfm": 2.176,
+      "render.cfm?filter_status=unclassified&fixture_ready=1": 2.187,
+      "render.cfm?filter_status=unclassified": 2.177,
+      "render.cfm?test_denied=1": 0.037,
+      "render.cfm?case=csrf": 2.283,
+      "render.cfm?case=legacy": 2.235
+    },
+    "statuses": {
+      "run.cfm": 200,
+      "render.cfm?filter_status=unclassified&fixture_ready=1": 200,
+      "render.cfm?filter_status=unclassified": 200,
+      "render.cfm?test_denied=1": 403,
+      "render.cfm?case=csrf": 403,
+      "render.cfm?case=legacy": 409
+    },
+    "tests": {
+      "CHECKS": 24.0,
+      "READY": 0,
+      "UNCLASSIFIED": 128,
+      "OK": true,
+      "MANUAL_ID": 54048
+    },
+    "ok": true,
+    "stage_removed": true
+  },
+  "sql": {
+    "ok": true,
+    "checks": [
+      "initial migration",
+      "idempotence",
+      "admin authorization",
+      "permanent-only",
+      "category validation",
+      "reason validation",
+      "concurrent revision",
+      "append-only history",
+      "no entitlement mutation",
+      "restricted grants",
+      "batch rollback on conflict",
+      "batch success"
+    ],
+    "temporary_cluster_removed": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "capturado_em": "2026-11-09T15:40:15.259066-03:00",
+  "event_timestamps_scope_calendar": {
+    "incluidos_apos_ultima_coleta": 291,
+    "max_processamento": "2026-07-12T16:41:13.063",
+    "processados_apos_ultima_coleta": 0,
+    "max_inclusao": "2026-11-04T10:01:40.05132"
+  },
+  "read_only": "on",
+  "perdidos": {
+    "nao_br": 0,
+    "evento_movido": 0,
+    "resultado_nao_homologado": 0,
+    "data_fora_jan_set": 143,
+    "status_diferente_zero": 0,
+    "n": 728,
+    "nao_concluinte": 0,
+    "resultado_removido": 585
+  }
+}

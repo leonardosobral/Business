@@ -1,0 +1,1494 @@
+### Page
+- Page URL: http://127.0.0.1:63880/
+### Snapshot
+```yaml
+- region [ref=f1e2]:
+  - generic [ref=f1e3]:
+    - generic [ref=f1e4]:
+      - paragraph [ref=f1e5]: PORTAL · ROAD RUNNERS
+      - heading "Selos verificados" [level=1] [ref=f1e6]
+      - paragraph [ref=f1e7]: Veja por que cada pessoa tem o selo, até quando ele vale e o histórico de cada origem.
+    - generic [ref=f1e8]: Classificar um motivo não altera o selo
+  - generic "Resumo geral dos selos" [ref=f1e9]:
+    - link [ref=f1e10] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&PAGINA=1
+      - text: Selos ativos
+      - strong [ref=f1e11]: "418"
+    - link [ref=f1e12] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&FILTER%5FORIGIN=manual&PAGINA=1
+      - text: Sem vencimento
+      - strong [ref=f1e13]: "128"
+    - generic [ref=f1e14]:
+      - text: Ativos com prazo
+      - strong [ref=f1e15]: "290"
+    - link [ref=f1e16] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=1
+      - text: Motivo a classificar
+      - strong [ref=f1e17]: "61"
+  - navigation "Situação do selo" [ref=f1e18]:
+    - link "Ativos" [ref=f1e19] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&PAGINA=1
+    - link "A classificar" [ref=f1e20] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Conferir VIP" [ref=f1e21] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=reconcile&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Inativos" [ref=f1e22] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=inactive&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Todos / histórico" [ref=f1e23] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=all&FILTER%5FLOGIC=any&PAGINA=1
+  - paragraph [ref=f1e24]: Esta fila reúne concessões sem motivo ou vínculo VIP conhecido. VIP e upgrade confirmados no cadastro aparecem identificados, mesmo quando o pagamento ainda precisa ser conciliado.
+  - generic [ref=f1e25]:
+    - generic [ref=f1e26]:
+      - generic [ref=f1e27]:
+        - generic [ref=f1e28]: Buscar pessoa
+        - textbox "Buscar pessoa" [ref=f1e29]:
+          - /placeholder: Nome, e-mail, perfil ou ID
+      - generic [ref=f1e30]:
+        - generic [ref=f1e31]: Origem ou motivo
+        - combobox "Origem ou motivo" [ref=f1e32]:
+          - option "Todas as origens" [selected]
+          - option "Concessão permanente"
+          - option "Todo Santo Dia · VIP ativo"
+          - option "Todo Santo Dia · VIP/upgrade confirmado no cadastro"
+          - option "Todo Santo Dia · Upgrade VIP ativo"
+          - option "Compra anual ativa"
+          - option "Com estorno no histórico"
+          - option "Atleta de elite"
+          - option "Influencer / criador"
+          - option "Imprensa"
+          - option "Parceiro"
+          - option "Equipe"
+          - option "Cortesia"
+          - option "Outro motivo"
+          - option "Motivo não informado"
+      - button "Filtrar" [ref=f1e33] [cursor=pointer]
+      - link "Limpar" [ref=f1e34] [cursor=pointer]:
+        - /url: /portal/verificados/
+    - group [ref=f1e35]:
+      - generic "Filtros de cadastro" [ref=f1e36] [cursor=pointer]
+      - option "Todos" [selected]
+      - option "catarinensecorridaderua · catarinensecorridaderua"
+      - option "catarinensetrailrun · catarinensetrailrun"
+      - option "circuitobrasilgigante · circuitobrasilgigante"
+      - option "desafio365 · inscricao365"
+      - option "desafio365 · inscricao365vip"
+      - option "desafio365 · inscricao365Vip"
+      - option "desafio366 · inscricao366"
+      - option "desafio366 · inscricaotodosantodia"
+      - option "desafiofoco · foco"
+      - option "desafiosupra · /desafiosupra/inscricao/"
+      - option "foco · foco"
+      - option "todosantodia · desafiofoco"
+      - option "todosantodia · inscricao366"
+      - option "todosantodia · todosantodia"
+      - option "todosantodia · todosantodiaupg"
+      - option "todosantodia · todosantodiaupgrade"
+      - option "todosantodia · todosantodiavip"
+      - option "todosantodia · todosantodiavip1"
+      - option "· /connect/inscricao/"
+      - option "· /empresa/cadastro/"
+      - option "· /ts/inscricao/"
+      - option "Qualquer regra" [selected]
+      - option "Todas as regras"
+  - generic [ref=f1e37]:
+    - generic [ref=f1e38]:
+      - generic [ref=f1e39]:
+        - heading "Classificação rápida" [level=2] [ref=f1e40]
+        - paragraph [ref=f1e41]: Marque as pessoas com o mesmo motivo e salve de uma vez. Apenas os perfis marcados nesta página serão classificados.
+      - status [ref=f1e42]: 0 selecionados
+    - group [ref=f1e43]:
+      - generic [ref=f1e44]:
+        - generic [ref=f1e45]:
+          - generic [ref=f1e46]: Motivo em comum
+          - combobox "Motivo em comum" [ref=f1e47]:
+            - option "Escolha o motivo" [selected]
+            - option "Atleta de elite"
+            - option "Influencer / criador"
+            - option "Imprensa"
+            - option "Parceiro"
+            - option "Equipe"
+            - option "Cortesia"
+            - option "Outro motivo"
+        - generic [ref=f1e48]:
+          - generic [ref=f1e49]: Vínculo ou observação (opcional)
+          - textbox "Vínculo ou observação (opcional)" [ref=f1e50]
+        - button "Salvar selecionados" [disabled]
+  - generic [ref=f1e51]:
+    - heading "61 perfis encontrados" [level=2] [ref=f1e52]
+    - generic [ref=f1e53]: Uma pessoa pode ter mais de uma origem ativa.
+  - table [ref=f1e55]:
+    - rowgroup [ref=f1e56]:
+      - row [ref=f1e57]:
+        - cell "Selecionar ADILSON MARTINS Selecionar para classificar" [ref=f1e58]:
+          - generic [ref=f1e59]:
+            - checkbox "Selecionar ADILSON MARTINS" [ref=f1e60]
+            - generic [ref=f1e61]: Selecionar para classificar
+        - cell "ADILSON MARTINS adilsom.sp@gmail.com Perfil 54048 · Usuário 108069" [ref=f1e62]:
+          - link "ADILSON MARTINS" [ref=f1e63] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54048&PAGINA=1#detalhes
+          - generic [ref=f1e64]: adilsom.sp@gmail.com
+          - text: Perfil 54048 · Usuário 108069
+        - cell "Motivo não informado Concessão permanente" [ref=f1e65]:
+          - generic [ref=f1e66]:
+            - generic [ref=f1e67]: Motivo não informado
+            - generic [ref=f1e68]: Concessão permanente
+          - group [ref=f1e70]:
+            - generic [ref=f1e71]:
+              - combobox "Motivo do selo de ADILSON MARTINS" [ref=f1e72]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ADILSON MARTINS" [ref=f1e73] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ADILSON MARTINS" [ref=f1e74]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e75]:
+          - strong [ref=f1e76]: Sem vencimento
+        - cell [ref=f1e77]:
+          - link "Ver origens de ADILSON MARTINS" [ref=f1e78] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54048&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e79]:
+        - cell "Selecionar ÀDILSON MARTINS Selecionar para classificar" [ref=f1e80]:
+          - generic [ref=f1e81]:
+            - checkbox "Selecionar ÀDILSON MARTINS" [ref=f1e82]
+            - generic [ref=f1e83]: Selecionar para classificar
+        - cell "ÀDILSON MARTINS adilsonmartins.vp@gmail.com Perfil 53980 · Usuário 107843" [ref=f1e84]:
+          - link "ÀDILSON MARTINS" [ref=f1e85] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53980&PAGINA=1#detalhes
+          - generic [ref=f1e86]: adilsonmartins.vp@gmail.com
+          - text: Perfil 53980 · Usuário 107843
+        - cell "Motivo não informado Concessão permanente" [ref=f1e87]:
+          - generic [ref=f1e88]:
+            - generic [ref=f1e89]: Motivo não informado
+            - generic [ref=f1e90]: Concessão permanente
+          - group [ref=f1e92]:
+            - generic [ref=f1e93]:
+              - combobox "Motivo do selo de ÀDILSON MARTINS" [ref=f1e94]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ÀDILSON MARTINS" [ref=f1e95] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ÀDILSON MARTINS" [ref=f1e96]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e97]:
+          - strong [ref=f1e98]: Sem vencimento
+        - cell [ref=f1e99]:
+          - link "Ver origens de ÀDILSON MARTINS" [ref=f1e100] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53980&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e101]:
+        - cell "Selecionar ALEXANDRE SOUZA ALMEIDA Selecionar para classificar" [ref=f1e102]:
+          - generic [ref=f1e103]:
+            - checkbox "Selecionar ALEXANDRE SOUZA ALMEIDA" [ref=f1e104]
+            - generic [ref=f1e105]: Selecionar para classificar
+        - cell "ALEXANDRE SOUZA ALMEIDA asouzaalmeida1@gmail.com Perfil 18894 · Usuário 22256" [ref=f1e106]:
+          - link "ALEXANDRE SOUZA ALMEIDA" [ref=f1e107] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18894&PAGINA=1#detalhes
+          - generic [ref=f1e108]: asouzaalmeida1@gmail.com
+          - text: Perfil 18894 · Usuário 22256
+        - cell "Motivo não informado Concessão permanente" [ref=f1e109]:
+          - generic [ref=f1e110]:
+            - generic [ref=f1e111]: Motivo não informado
+            - generic [ref=f1e112]: Concessão permanente
+          - group [ref=f1e114]:
+            - generic [ref=f1e115]:
+              - combobox "Motivo do selo de ALEXANDRE SOUZA ALMEIDA" [ref=f1e116]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ALEXANDRE SOUZA ALMEIDA" [ref=f1e117] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ALEXANDRE SOUZA ALMEIDA" [ref=f1e118]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e119]:
+          - strong [ref=f1e120]: Sem vencimento
+        - cell [ref=f1e121]:
+          - link "Ver origens de ALEXANDRE SOUZA ALMEIDA" [ref=f1e122] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18894&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e123]:
+        - cell "Selecionar ALEX BORGES Selecionar para classificar" [ref=f1e124]:
+          - generic [ref=f1e125]:
+            - checkbox "Selecionar ALEX BORGES" [ref=f1e126]
+            - generic [ref=f1e127]: Selecionar para classificar
+        - cell "ALEX BORGES alexborges1@gmail.com Perfil 16022 · Usuário 16937" [ref=f1e128]:
+          - link "ALEX BORGES" [ref=f1e129] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=16022&PAGINA=1#detalhes
+          - generic [ref=f1e130]: alexborges1@gmail.com
+          - text: Perfil 16022 · Usuário 16937
+        - cell "Motivo não informado Concessão permanente" [ref=f1e131]:
+          - generic [ref=f1e132]:
+            - generic [ref=f1e133]: Motivo não informado
+            - generic [ref=f1e134]: Concessão permanente
+          - group [ref=f1e136]:
+            - generic [ref=f1e137]:
+              - combobox "Motivo do selo de ALEX BORGES" [ref=f1e138]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ALEX BORGES" [ref=f1e139] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ALEX BORGES" [ref=f1e140]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e141]:
+          - strong [ref=f1e142]: Sem vencimento
+        - cell [ref=f1e143]:
+          - link "Ver origens de ALEX BORGES" [ref=f1e144] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=16022&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e145]:
+        - cell "Selecionar ARLENE ECHEVERRIA Selecionar para classificar" [ref=f1e146]:
+          - generic [ref=f1e147]:
+            - checkbox "Selecionar ARLENE ECHEVERRIA" [ref=f1e148]
+            - generic [ref=f1e149]: Selecionar para classificar
+        - cell "ARLENE ECHEVERRIA arlene.dnaanimal@gmail.com Perfil 15838 · Usuário 16515" [ref=f1e150]:
+          - link "ARLENE ECHEVERRIA" [ref=f1e151] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=15838&PAGINA=1#detalhes
+          - generic [ref=f1e152]: arlene.dnaanimal@gmail.com
+          - text: Perfil 15838 · Usuário 16515
+        - cell "Motivo não informado Concessão permanente" [ref=f1e153]:
+          - generic [ref=f1e154]:
+            - generic [ref=f1e155]: Motivo não informado
+            - generic [ref=f1e156]: Concessão permanente
+          - group [ref=f1e158]:
+            - generic [ref=f1e159]:
+              - combobox "Motivo do selo de ARLENE ECHEVERRIA" [ref=f1e160]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ARLENE ECHEVERRIA" [ref=f1e161] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ARLENE ECHEVERRIA" [ref=f1e162]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e163]:
+          - strong [ref=f1e164]: Sem vencimento
+        - cell [ref=f1e165]:
+          - link "Ver origens de ARLENE ECHEVERRIA" [ref=f1e166] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=15838&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e167]:
+        - cell "Selecionar ARMINDO KEHL Selecionar para classificar" [ref=f1e168]:
+          - generic [ref=f1e169]:
+            - checkbox "Selecionar ARMINDO KEHL" [ref=f1e170]
+            - generic [ref=f1e171]: Selecionar para classificar
+        - cell "ARMINDO KEHL armindokehl@gmail.com Perfil 3003 · Usuário 8316" [ref=f1e172]:
+          - link "ARMINDO KEHL" [ref=f1e173] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=3003&PAGINA=1#detalhes
+          - generic [ref=f1e174]: armindokehl@gmail.com
+          - text: Perfil 3003 · Usuário 8316
+        - cell "Motivo não informado Concessão permanente" [ref=f1e175]:
+          - generic [ref=f1e176]:
+            - generic [ref=f1e177]: Motivo não informado
+            - generic [ref=f1e178]: Concessão permanente
+          - group [ref=f1e180]:
+            - generic [ref=f1e181]:
+              - combobox "Motivo do selo de ARMINDO KEHL" [ref=f1e182]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ARMINDO KEHL" [ref=f1e183] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ARMINDO KEHL" [ref=f1e184]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e185]:
+          - strong [ref=f1e186]: Sem vencimento
+        - cell [ref=f1e187]:
+          - link "Ver origens de ARMINDO KEHL" [ref=f1e188] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=3003&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e189]:
+        - cell "Selecionar BRUNO BARRETO BERGAMO Selecionar para classificar" [ref=f1e190]:
+          - generic [ref=f1e191]:
+            - checkbox "Selecionar BRUNO BARRETO BERGAMO" [ref=f1e192]
+            - generic [ref=f1e193]: Selecionar para classificar
+        - cell "BRUNO BARRETO BERGAMO brunobergamo@gmail.com Perfil 53410 · Usuário 106018" [ref=f1e194]:
+          - link "BRUNO BARRETO BERGAMO" [ref=f1e195] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53410&PAGINA=1#detalhes
+          - generic [ref=f1e196]: brunobergamo@gmail.com
+          - text: Perfil 53410 · Usuário 106018
+        - cell "Motivo não informado Concessão permanente" [ref=f1e197]:
+          - generic [ref=f1e198]:
+            - generic [ref=f1e199]: Motivo não informado
+            - generic [ref=f1e200]: Concessão permanente
+          - group [ref=f1e202]:
+            - generic [ref=f1e203]:
+              - combobox "Motivo do selo de BRUNO BARRETO BERGAMO" [ref=f1e204]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de BRUNO BARRETO BERGAMO" [ref=f1e205] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de BRUNO BARRETO BERGAMO" [ref=f1e206]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e207]:
+          - strong [ref=f1e208]: Sem vencimento
+        - cell [ref=f1e209]:
+          - link "Ver origens de BRUNO BARRETO BERGAMO" [ref=f1e210] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53410&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e211]:
+        - cell "Selecionar BRUNO SCHWARZ Selecionar para classificar" [ref=f1e212]:
+          - generic [ref=f1e213]:
+            - checkbox "Selecionar BRUNO SCHWARZ" [ref=f1e214]
+            - generic [ref=f1e215]: Selecionar para classificar
+        - cell "BRUNO SCHWARZ brunoschwarzadv@gmail.com Perfil 15402 · Usuário 15266" [ref=f1e216]:
+          - link "BRUNO SCHWARZ" [ref=f1e217] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=15402&PAGINA=1#detalhes
+          - generic [ref=f1e218]: brunoschwarzadv@gmail.com
+          - text: Perfil 15402 · Usuário 15266
+        - cell "Motivo não informado Concessão permanente" [ref=f1e219]:
+          - generic [ref=f1e220]:
+            - generic [ref=f1e221]: Motivo não informado
+            - generic [ref=f1e222]: Concessão permanente
+          - group [ref=f1e224]:
+            - generic [ref=f1e225]:
+              - combobox "Motivo do selo de BRUNO SCHWARZ" [ref=f1e226]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de BRUNO SCHWARZ" [ref=f1e227] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de BRUNO SCHWARZ" [ref=f1e228]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e229]:
+          - strong [ref=f1e230]: Sem vencimento
+        - cell [ref=f1e231]:
+          - link "Ver origens de BRUNO SCHWARZ" [ref=f1e232] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=15402&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e233]:
+        - cell "Selecionar Cezar Luiz Guimarães Selecionar para classificar" [ref=f1e234]:
+          - generic [ref=f1e235]:
+            - checkbox "Selecionar Cezar Luiz Guimarães" [ref=f1e236]
+            - generic [ref=f1e237]: Selecionar para classificar
+        - cell "Cezar Luiz Guimarães cezarluiz@gmail.com Perfil 22902 · Usuário 37129" [ref=f1e238]:
+          - link "Cezar Luiz Guimarães" [ref=f1e239] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=22902&PAGINA=1#detalhes
+          - generic [ref=f1e240]: cezarluiz@gmail.com
+          - text: Perfil 22902 · Usuário 37129
+        - cell "Motivo não informado Concessão permanente" [ref=f1e241]:
+          - generic [ref=f1e242]:
+            - generic [ref=f1e243]: Motivo não informado
+            - generic [ref=f1e244]: Concessão permanente
+          - group [ref=f1e246]:
+            - generic [ref=f1e247]:
+              - combobox "Motivo do selo de Cezar Luiz Guimarães" [ref=f1e248]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Cezar Luiz Guimarães" [ref=f1e249] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Cezar Luiz Guimarães" [ref=f1e250]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e251]:
+          - strong [ref=f1e252]: Sem vencimento
+        - cell [ref=f1e253]:
+          - link "Ver origens de Cezar Luiz Guimarães" [ref=f1e254] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=22902&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e255]:
+        - cell "Selecionar Débora Aparecida Simas Selecionar para classificar" [ref=f1e256]:
+          - generic [ref=f1e257]:
+            - checkbox "Selecionar Débora Aparecida Simas" [ref=f1e258]
+            - generic [ref=f1e259]: Selecionar para classificar
+        - cell "Débora Aparecida Simas simasdebora45@gmail.com Perfil 27813 · Usuário 47835" [ref=f1e260]:
+          - link "Débora Aparecida Simas" [ref=f1e261] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=27813&PAGINA=1#detalhes
+          - generic [ref=f1e262]: simasdebora45@gmail.com
+          - text: Perfil 27813 · Usuário 47835
+        - cell "Motivo não informado Concessão permanente" [ref=f1e263]:
+          - generic [ref=f1e264]:
+            - generic [ref=f1e265]: Motivo não informado
+            - generic [ref=f1e266]: Concessão permanente
+          - group [ref=f1e268]:
+            - generic [ref=f1e269]:
+              - combobox "Motivo do selo de Débora Aparecida Simas" [ref=f1e270]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Débora Aparecida Simas" [ref=f1e271] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Débora Aparecida Simas" [ref=f1e272]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e273]:
+          - strong [ref=f1e274]: Sem vencimento
+        - cell [ref=f1e275]:
+          - link "Ver origens de Débora Aparecida Simas" [ref=f1e276] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=27813&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e277]:
+        - cell "Selecionar EDSON LUIS Selecionar para classificar" [ref=f1e278]:
+          - generic [ref=f1e279]:
+            - checkbox "Selecionar EDSON LUIS" [ref=f1e280]
+            - generic [ref=f1e281]: Selecionar para classificar
+        - cell "EDSON LUIS edsonluisdobkowski@gmail.com Perfil 53490 · Usuário 106268" [ref=f1e282]:
+          - link "EDSON LUIS" [ref=f1e283] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53490&PAGINA=1#detalhes
+          - generic [ref=f1e284]: edsonluisdobkowski@gmail.com
+          - text: Perfil 53490 · Usuário 106268
+        - cell "Motivo não informado Concessão permanente" [ref=f1e285]:
+          - generic [ref=f1e286]:
+            - generic [ref=f1e287]: Motivo não informado
+            - generic [ref=f1e288]: Concessão permanente
+          - group [ref=f1e290]:
+            - generic [ref=f1e291]:
+              - combobox "Motivo do selo de EDSON LUIS" [ref=f1e292]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de EDSON LUIS" [ref=f1e293] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de EDSON LUIS" [ref=f1e294]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e295]:
+          - strong [ref=f1e296]: Sem vencimento
+        - cell [ref=f1e297]:
+          - link "Ver origens de EDSON LUIS" [ref=f1e298] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53490&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e299]:
+        - cell "Selecionar ELESON SOUZA Selecionar para classificar" [ref=f1e300]:
+          - generic [ref=f1e301]:
+            - checkbox "Selecionar ELESON SOUZA" [ref=f1e302]
+            - generic [ref=f1e303]: Selecionar para classificar
+        - cell "ELESON SOUZA elesonbs@gmail.com Perfil 18593 · Usuário 21722" [ref=f1e304]:
+          - link "ELESON SOUZA" [ref=f1e305] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18593&PAGINA=1#detalhes
+          - generic [ref=f1e306]: elesonbs@gmail.com
+          - text: Perfil 18593 · Usuário 21722
+        - cell "Motivo não informado Concessão permanente" [ref=f1e307]:
+          - generic [ref=f1e308]:
+            - generic [ref=f1e309]: Motivo não informado
+            - generic [ref=f1e310]: Concessão permanente
+          - group [ref=f1e312]:
+            - generic [ref=f1e313]:
+              - combobox "Motivo do selo de ELESON SOUZA" [ref=f1e314]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ELESON SOUZA" [ref=f1e315] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ELESON SOUZA" [ref=f1e316]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e317]:
+          - strong [ref=f1e318]: Sem vencimento
+        - cell [ref=f1e319]:
+          - link "Ver origens de ELESON SOUZA" [ref=f1e320] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18593&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e321]:
+        - cell "Selecionar ELISÂNGELA DA SILVA Selecionar para classificar" [ref=f1e322]:
+          - generic [ref=f1e323]:
+            - checkbox "Selecionar ELISÂNGELA DA SILVA" [ref=f1e324]
+            - generic [ref=f1e325]: Selecionar para classificar
+        - cell "ELISÂNGELA DA SILVA angela-silvagdk@hotmail.com Perfil 53634 · Usuário 106855" [ref=f1e326]:
+          - link "ELISÂNGELA DA SILVA" [ref=f1e327] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53634&PAGINA=1#detalhes
+          - generic [ref=f1e328]: angela-silvagdk@hotmail.com
+          - text: Perfil 53634 · Usuário 106855
+        - cell "Motivo não informado Concessão permanente" [ref=f1e329]:
+          - generic [ref=f1e330]:
+            - generic [ref=f1e331]: Motivo não informado
+            - generic [ref=f1e332]: Concessão permanente
+          - group [ref=f1e334]:
+            - generic [ref=f1e335]:
+              - combobox "Motivo do selo de ELISÂNGELA DA SILVA" [ref=f1e336]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ELISÂNGELA DA SILVA" [ref=f1e337] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ELISÂNGELA DA SILVA" [ref=f1e338]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e339]:
+          - strong [ref=f1e340]: Sem vencimento
+        - cell [ref=f1e341]:
+          - link "Ver origens de ELISÂNGELA DA SILVA" [ref=f1e342] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53634&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e343]:
+        - cell "Selecionar ELIZA CRISTINA GIOVANETTI Selecionar para classificar" [ref=f1e344]:
+          - generic [ref=f1e345]:
+            - checkbox "Selecionar ELIZA CRISTINA GIOVANETTI" [ref=f1e346]
+            - generic [ref=f1e347]: Selecionar para classificar
+        - cell "ELIZA CRISTINA GIOVANETTI eliza.cristina095@gmail.com Perfil 53874 · Usuário 107584" [ref=f1e348]:
+          - link "ELIZA CRISTINA GIOVANETTI" [ref=f1e349] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53874&PAGINA=1#detalhes
+          - generic [ref=f1e350]: eliza.cristina095@gmail.com
+          - text: Perfil 53874 · Usuário 107584
+        - cell "Motivo não informado Concessão permanente" [ref=f1e351]:
+          - generic [ref=f1e352]:
+            - generic [ref=f1e353]: Motivo não informado
+            - generic [ref=f1e354]: Concessão permanente
+          - group [ref=f1e356]:
+            - generic [ref=f1e357]:
+              - combobox "Motivo do selo de ELIZA CRISTINA GIOVANETTI" [ref=f1e358]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ELIZA CRISTINA GIOVANETTI" [ref=f1e359] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ELIZA CRISTINA GIOVANETTI" [ref=f1e360]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e361]:
+          - strong [ref=f1e362]: Sem vencimento
+        - cell [ref=f1e363]:
+          - link "Ver origens de ELIZA CRISTINA GIOVANETTI" [ref=f1e364] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53874&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e365]:
+        - cell "Selecionar ERIKA PATRICIA Selecionar para classificar" [ref=f1e366]:
+          - generic [ref=f1e367]:
+            - checkbox "Selecionar ERIKA PATRICIA" [ref=f1e368]
+            - generic [ref=f1e369]: Selecionar para classificar
+        - cell "ERIKA PATRICIA eripaty1303@gmail.com Perfil 53511 · Usuário 106332" [ref=f1e370]:
+          - link "ERIKA PATRICIA" [ref=f1e371] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53511&PAGINA=1#detalhes
+          - generic [ref=f1e372]: eripaty1303@gmail.com
+          - text: Perfil 53511 · Usuário 106332
+        - cell "Motivo não informado Concessão permanente" [ref=f1e373]:
+          - generic [ref=f1e374]:
+            - generic [ref=f1e375]: Motivo não informado
+            - generic [ref=f1e376]: Concessão permanente
+          - group [ref=f1e378]:
+            - generic [ref=f1e379]:
+              - combobox "Motivo do selo de ERIKA PATRICIA" [ref=f1e380]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ERIKA PATRICIA" [ref=f1e381] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ERIKA PATRICIA" [ref=f1e382]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e383]:
+          - strong [ref=f1e384]: Sem vencimento
+        - cell [ref=f1e385]:
+          - link "Ver origens de ERIKA PATRICIA" [ref=f1e386] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53511&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e387]:
+        - cell "Selecionar EVERTON OLIVA Selecionar para classificar" [ref=f1e388]:
+          - generic [ref=f1e389]:
+            - checkbox "Selecionar EVERTON OLIVA" [ref=f1e390]
+            - generic [ref=f1e391]: Selecionar para classificar
+        - cell "EVERTON OLIVA everton_oliva@hotmail.com Perfil 53887 · Usuário 107619" [ref=f1e392]:
+          - link "EVERTON OLIVA" [ref=f1e393] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53887&PAGINA=1#detalhes
+          - generic [ref=f1e394]: everton_oliva@hotmail.com
+          - text: Perfil 53887 · Usuário 107619
+        - cell "Motivo não informado Concessão permanente" [ref=f1e395]:
+          - generic [ref=f1e396]:
+            - generic [ref=f1e397]: Motivo não informado
+            - generic [ref=f1e398]: Concessão permanente
+          - group [ref=f1e400]:
+            - generic [ref=f1e401]:
+              - combobox "Motivo do selo de EVERTON OLIVA" [ref=f1e402]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de EVERTON OLIVA" [ref=f1e403] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de EVERTON OLIVA" [ref=f1e404]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e405]:
+          - strong [ref=f1e406]: Sem vencimento
+        - cell [ref=f1e407]:
+          - link "Ver origens de EVERTON OLIVA" [ref=f1e408] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53887&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e409]:
+        - cell "Selecionar Ewerton Martins Gerent Selecionar para classificar" [ref=f1e410]:
+          - generic [ref=f1e411]:
+            - checkbox "Selecionar Ewerton Martins Gerent" [ref=f1e412]
+            - generic [ref=f1e413]: Selecionar para classificar
+        - cell "Ewerton Martins Gerent egerent@gmail.com Perfil 12418 · Usuário 11132" [ref=f1e414]:
+          - link "Ewerton Martins Gerent" [ref=f1e415] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=12418&PAGINA=1#detalhes
+          - generic [ref=f1e416]: egerent@gmail.com
+          - text: Perfil 12418 · Usuário 11132
+        - cell "Motivo não informado Concessão permanente" [ref=f1e417]:
+          - generic [ref=f1e418]:
+            - generic [ref=f1e419]: Motivo não informado
+            - generic [ref=f1e420]: Concessão permanente
+          - group [ref=f1e422]:
+            - generic [ref=f1e423]:
+              - combobox "Motivo do selo de Ewerton Martins Gerent" [ref=f1e424]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Ewerton Martins Gerent" [ref=f1e425] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Ewerton Martins Gerent" [ref=f1e426]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e427]:
+          - strong [ref=f1e428]: Sem vencimento
+        - cell [ref=f1e429]:
+          - link "Ver origens de Ewerton Martins Gerent" [ref=f1e430] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=12418&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e431]:
+        - cell "Selecionar FÁBIO DO CARMO GOMES Selecionar para classificar" [ref=f1e432]:
+          - generic [ref=f1e433]:
+            - checkbox "Selecionar FÁBIO DO CARMO GOMES" [ref=f1e434]
+            - generic [ref=f1e435]: Selecionar para classificar
+        - cell "FÁBIO DO CARMO GOMES contato@fabiodocarmo.com Perfil 54371 · Usuário 109414" [ref=f1e436]:
+          - link "FÁBIO DO CARMO GOMES" [ref=f1e437] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54371&PAGINA=1#detalhes
+          - generic [ref=f1e438]: contato@fabiodocarmo.com
+          - text: Perfil 54371 · Usuário 109414
+        - cell "Motivo não informado Concessão permanente" [ref=f1e439]:
+          - generic [ref=f1e440]:
+            - generic [ref=f1e441]: Motivo não informado
+            - generic [ref=f1e442]: Concessão permanente
+          - group [ref=f1e444]:
+            - generic [ref=f1e445]:
+              - combobox "Motivo do selo de FÁBIO DO CARMO GOMES" [ref=f1e446]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de FÁBIO DO CARMO GOMES" [ref=f1e447] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de FÁBIO DO CARMO GOMES" [ref=f1e448]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e449]:
+          - strong [ref=f1e450]: Sem vencimento
+        - cell [ref=f1e451]:
+          - link "Ver origens de FÁBIO DO CARMO GOMES" [ref=f1e452] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54371&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e453]:
+        - cell "Selecionar FATIMA REIS Selecionar para classificar" [ref=f1e454]:
+          - generic [ref=f1e455]:
+            - checkbox "Selecionar FATIMA REIS" [ref=f1e456]
+            - generic [ref=f1e457]: Selecionar para classificar
+        - cell "FATIMA REIS fatima.reis@gmail.com Perfil 54433 · Usuário 109765" [ref=f1e458]:
+          - link "FATIMA REIS" [ref=f1e459] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54433&PAGINA=1#detalhes
+          - generic [ref=f1e460]: fatima.reis@gmail.com
+          - text: Perfil 54433 · Usuário 109765
+        - cell "Motivo não informado Concessão permanente" [ref=f1e461]:
+          - generic [ref=f1e462]:
+            - generic [ref=f1e463]: Motivo não informado
+            - generic [ref=f1e464]: Concessão permanente
+          - group [ref=f1e466]:
+            - generic [ref=f1e467]:
+              - combobox "Motivo do selo de FATIMA REIS" [ref=f1e468]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de FATIMA REIS" [ref=f1e469] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de FATIMA REIS" [ref=f1e470]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e471]:
+          - strong [ref=f1e472]: Sem vencimento
+        - cell [ref=f1e473]:
+          - link "Ver origens de FATIMA REIS" [ref=f1e474] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54433&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e475]:
+        - cell "Selecionar FERNANDA PARADIZO Selecionar para classificar" [ref=f1e476]:
+          - generic [ref=f1e477]:
+            - checkbox "Selecionar FERNANDA PARADIZO" [ref=f1e478]
+            - generic [ref=f1e479]: Selecionar para classificar
+        - cell "FERNANDA PARADIZO feparadizo@gmail.com Perfil 55758 · Usuário 116141" [ref=f1e480]:
+          - link "FERNANDA PARADIZO" [ref=f1e481] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=55758&PAGINA=1#detalhes
+          - generic [ref=f1e482]: feparadizo@gmail.com
+          - text: Perfil 55758 · Usuário 116141
+        - cell "Motivo não informado Concessão permanente" [ref=f1e483]:
+          - generic [ref=f1e484]:
+            - generic [ref=f1e485]: Motivo não informado
+            - generic [ref=f1e486]: Concessão permanente
+          - group [ref=f1e488]:
+            - generic [ref=f1e489]:
+              - combobox "Motivo do selo de FERNANDA PARADIZO" [ref=f1e490]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de FERNANDA PARADIZO" [ref=f1e491] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de FERNANDA PARADIZO" [ref=f1e492]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e493]:
+          - strong [ref=f1e494]: Sem vencimento
+        - cell [ref=f1e495]:
+          - link "Ver origens de FERNANDA PARADIZO" [ref=f1e496] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=55758&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e497]:
+        - cell "Selecionar FERNANDO NAZARIO SOUSA Selecionar para classificar" [ref=f1e498]:
+          - generic [ref=f1e499]:
+            - checkbox "Selecionar FERNANDO NAZARIO SOUSA" [ref=f1e500]
+            - generic [ref=f1e501]: Selecionar para classificar
+        - cell "FERNANDO NAZARIO SOUSA fnazarios@gmail.com Perfil 8779 · Usuário 8030" [ref=f1e502]:
+          - link "FERNANDO NAZARIO SOUSA" [ref=f1e503] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=8779&PAGINA=1#detalhes
+          - generic [ref=f1e504]: fnazarios@gmail.com
+          - text: Perfil 8779 · Usuário 8030
+        - cell "Motivo não informado Concessão permanente" [ref=f1e505]:
+          - generic [ref=f1e506]:
+            - generic [ref=f1e507]: Motivo não informado
+            - generic [ref=f1e508]: Concessão permanente
+          - group [ref=f1e510]:
+            - generic [ref=f1e511]:
+              - combobox "Motivo do selo de FERNANDO NAZARIO SOUSA" [ref=f1e512]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de FERNANDO NAZARIO SOUSA" [ref=f1e513] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de FERNANDO NAZARIO SOUSA" [ref=f1e514]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e515]:
+          - strong [ref=f1e516]: Sem vencimento
+        - cell [ref=f1e517]:
+          - link "Ver origens de FERNANDO NAZARIO SOUSA" [ref=f1e518] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=8779&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e519]:
+        - cell "Selecionar GISLAINY CRISOSTOMO VELASCO Selecionar para classificar" [ref=f1e520]:
+          - generic [ref=f1e521]:
+            - checkbox "Selecionar GISLAINY CRISOSTOMO VELASCO" [ref=f1e522]
+            - generic [ref=f1e523]: Selecionar para classificar
+        - cell "GISLAINY CRISOSTOMO VELASCO gislainycrisostomo@gmail.com Perfil 16548 · Usuário 17814" [ref=f1e524]:
+          - link "GISLAINY CRISOSTOMO VELASCO" [ref=f1e525] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=16548&PAGINA=1#detalhes
+          - generic [ref=f1e526]: gislainycrisostomo@gmail.com
+          - text: Perfil 16548 · Usuário 17814
+        - cell "Motivo não informado Concessão permanente" [ref=f1e527]:
+          - generic [ref=f1e528]:
+            - generic [ref=f1e529]: Motivo não informado
+            - generic [ref=f1e530]: Concessão permanente
+          - group [ref=f1e532]:
+            - generic [ref=f1e533]:
+              - combobox "Motivo do selo de GISLAINY CRISOSTOMO VELASCO" [ref=f1e534]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de GISLAINY CRISOSTOMO VELASCO" [ref=f1e535] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de GISLAINY CRISOSTOMO VELASCO" [ref=f1e536]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e537]:
+          - strong [ref=f1e538]: Sem vencimento
+        - cell [ref=f1e539]:
+          - link "Ver origens de GISLAINY CRISOSTOMO VELASCO" [ref=f1e540] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=16548&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e541]:
+        - cell "Selecionar GUSTAVO DE SOUZA Selecionar para classificar" [ref=f1e542]:
+          - generic [ref=f1e543]:
+            - checkbox "Selecionar GUSTAVO DE SOUZA" [ref=f1e544]
+            - generic [ref=f1e545]: Selecionar para classificar
+        - cell "GUSTAVO DE SOUZA sgustavo38@gmail.com Perfil 55516 · Usuário 114796" [ref=f1e546]:
+          - link "GUSTAVO DE SOUZA" [ref=f1e547] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=55516&PAGINA=1#detalhes
+          - generic [ref=f1e548]: sgustavo38@gmail.com
+          - text: Perfil 55516 · Usuário 114796
+        - cell "Motivo não informado Concessão permanente" [ref=f1e549]:
+          - generic [ref=f1e550]:
+            - generic [ref=f1e551]: Motivo não informado
+            - generic [ref=f1e552]: Concessão permanente
+          - group [ref=f1e554]:
+            - generic [ref=f1e555]:
+              - combobox "Motivo do selo de GUSTAVO DE SOUZA" [ref=f1e556]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de GUSTAVO DE SOUZA" [ref=f1e557] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de GUSTAVO DE SOUZA" [ref=f1e558]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e559]:
+          - strong [ref=f1e560]: Sem vencimento
+        - cell [ref=f1e561]:
+          - link "Ver origens de GUSTAVO DE SOUZA" [ref=f1e562] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=55516&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e563]:
+        - cell "Selecionar Huellington Silveira Selecionar para classificar" [ref=f1e564]:
+          - generic [ref=f1e565]:
+            - checkbox "Selecionar Huellington Silveira" [ref=f1e566]
+            - generic [ref=f1e567]: Selecionar para classificar
+        - cell "Huellington Silveira hsilveira88@hotmail.com Perfil 54089 · Usuário 108217" [ref=f1e568]:
+          - link "Huellington Silveira" [ref=f1e569] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54089&PAGINA=1#detalhes
+          - generic [ref=f1e570]: hsilveira88@hotmail.com
+          - text: Perfil 54089 · Usuário 108217
+        - cell "Motivo não informado Concessão permanente" [ref=f1e571]:
+          - generic [ref=f1e572]:
+            - generic [ref=f1e573]: Motivo não informado
+            - generic [ref=f1e574]: Concessão permanente
+          - group [ref=f1e576]:
+            - generic [ref=f1e577]:
+              - combobox "Motivo do selo de Huellington Silveira" [ref=f1e578]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Huellington Silveira" [ref=f1e579] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Huellington Silveira" [ref=f1e580]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e581]:
+          - strong [ref=f1e582]: Sem vencimento
+        - cell [ref=f1e583]:
+          - link "Ver origens de Huellington Silveira" [ref=f1e584] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54089&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e585]:
+        - cell "Selecionar IGOR MONACO Selecionar para classificar" [ref=f1e586]:
+          - generic [ref=f1e587]:
+            - checkbox "Selecionar IGOR MONACO" [ref=f1e588]
+            - generic [ref=f1e589]: Selecionar para classificar
+        - cell "IGOR MONACO igor-monaco@hotmail.com Perfil 53592 · Usuário 106665" [ref=f1e590]:
+          - link "IGOR MONACO" [ref=f1e591] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53592&PAGINA=1#detalhes
+          - generic [ref=f1e592]: igor-monaco@hotmail.com
+          - text: Perfil 53592 · Usuário 106665
+        - cell "Motivo não informado Concessão permanente" [ref=f1e593]:
+          - generic [ref=f1e594]:
+            - generic [ref=f1e595]: Motivo não informado
+            - generic [ref=f1e596]: Concessão permanente
+          - group [ref=f1e598]:
+            - generic [ref=f1e599]:
+              - combobox "Motivo do selo de IGOR MONACO" [ref=f1e600]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de IGOR MONACO" [ref=f1e601] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de IGOR MONACO" [ref=f1e602]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e603]:
+          - strong [ref=f1e604]: Sem vencimento
+        - cell [ref=f1e605]:
+          - link "Ver origens de IGOR MONACO" [ref=f1e606] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53592&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e607]:
+        - cell "Selecionar IGOR NUNES Selecionar para classificar" [ref=f1e608]:
+          - generic [ref=f1e609]:
+            - checkbox "Selecionar IGOR NUNES" [ref=f1e610]
+            - generic [ref=f1e611]: Selecionar para classificar
+        - cell "IGOR NUNES igornunescunha@gmail.com Perfil 53774 · Usuário 107317" [ref=f1e612]:
+          - link "IGOR NUNES" [ref=f1e613] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53774&PAGINA=1#detalhes
+          - generic [ref=f1e614]: igornunescunha@gmail.com
+          - text: Perfil 53774 · Usuário 107317
+        - cell "Motivo não informado Concessão permanente" [ref=f1e615]:
+          - generic [ref=f1e616]:
+            - generic [ref=f1e617]: Motivo não informado
+            - generic [ref=f1e618]: Concessão permanente
+          - group [ref=f1e620]:
+            - generic [ref=f1e621]:
+              - combobox "Motivo do selo de IGOR NUNES" [ref=f1e622]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de IGOR NUNES" [ref=f1e623] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de IGOR NUNES" [ref=f1e624]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e625]:
+          - strong [ref=f1e626]: Sem vencimento
+        - cell [ref=f1e627]:
+          - link "Ver origens de IGOR NUNES" [ref=f1e628] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53774&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e629]:
+        - cell "Selecionar IGOR RICARDO SILVA Selecionar para classificar" [ref=f1e630]:
+          - generic [ref=f1e631]:
+            - checkbox "Selecionar IGOR RICARDO SILVA" [ref=f1e632]
+            - generic [ref=f1e633]: Selecionar para classificar
+        - cell "IGOR RICARDO SILVA noobless.go@gmail.com Perfil 9270 · Usuário 6102" [ref=f1e634]:
+          - link "IGOR RICARDO SILVA" [ref=f1e635] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=9270&PAGINA=1#detalhes
+          - generic [ref=f1e636]: noobless.go@gmail.com
+          - text: Perfil 9270 · Usuário 6102
+        - cell "Motivo não informado Concessão permanente" [ref=f1e637]:
+          - generic [ref=f1e638]:
+            - generic [ref=f1e639]: Motivo não informado
+            - generic [ref=f1e640]: Concessão permanente
+          - group [ref=f1e642]:
+            - generic [ref=f1e643]:
+              - combobox "Motivo do selo de IGOR RICARDO SILVA" [ref=f1e644]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de IGOR RICARDO SILVA" [ref=f1e645] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de IGOR RICARDO SILVA" [ref=f1e646]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e647]:
+          - strong [ref=f1e648]: Sem vencimento
+        - cell [ref=f1e649]:
+          - link "Ver origens de IGOR RICARDO SILVA" [ref=f1e650] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=9270&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e651]:
+        - cell "Selecionar ISABELA SOBRAL Selecionar para classificar" [ref=f1e652]:
+          - generic [ref=f1e653]:
+            - checkbox "Selecionar ISABELA SOBRAL" [ref=f1e654]
+            - generic [ref=f1e655]: Selecionar para classificar
+        - cell "ISABELA SOBRAL isasobral01@gmail.com Perfil 53988 · Usuário 107868" [ref=f1e656]:
+          - link "ISABELA SOBRAL" [ref=f1e657] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53988&PAGINA=1#detalhes
+          - generic [ref=f1e658]: isasobral01@gmail.com
+          - text: Perfil 53988 · Usuário 107868
+        - cell "Motivo não informado Concessão permanente" [ref=f1e659]:
+          - generic [ref=f1e660]:
+            - generic [ref=f1e661]: Motivo não informado
+            - generic [ref=f1e662]: Concessão permanente
+          - group [ref=f1e664]:
+            - generic [ref=f1e665]:
+              - combobox "Motivo do selo de ISABELA SOBRAL" [ref=f1e666]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ISABELA SOBRAL" [ref=f1e667] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ISABELA SOBRAL" [ref=f1e668]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e669]:
+          - strong [ref=f1e670]: Sem vencimento
+        - cell [ref=f1e671]:
+          - link "Ver origens de ISABELA SOBRAL" [ref=f1e672] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53988&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e673]:
+        - cell "Selecionar ISABEL DOMINGOS Selecionar para classificar" [ref=f1e674]:
+          - generic [ref=f1e675]:
+            - checkbox "Selecionar ISABEL DOMINGOS" [ref=f1e676]
+            - generic [ref=f1e677]: Selecionar para classificar
+        - cell "ISABEL DOMINGOS isabel.dsmococa@gmail.com Perfil 18799 · Usuário 22105" [ref=f1e678]:
+          - link "ISABEL DOMINGOS" [ref=f1e679] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18799&PAGINA=1#detalhes
+          - generic [ref=f1e680]: isabel.dsmococa@gmail.com
+          - text: Perfil 18799 · Usuário 22105
+        - cell "Motivo não informado Concessão permanente" [ref=f1e681]:
+          - generic [ref=f1e682]:
+            - generic [ref=f1e683]: Motivo não informado
+            - generic [ref=f1e684]: Concessão permanente
+          - group [ref=f1e686]:
+            - generic [ref=f1e687]:
+              - combobox "Motivo do selo de ISABEL DOMINGOS" [ref=f1e688]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ISABEL DOMINGOS" [ref=f1e689] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ISABEL DOMINGOS" [ref=f1e690]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e691]:
+          - strong [ref=f1e692]: Sem vencimento
+        - cell [ref=f1e693]:
+          - link "Ver origens de ISABEL DOMINGOS" [ref=f1e694] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18799&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e695]:
+        - cell "Selecionar ISMAEL COMERLATO Selecionar para classificar" [ref=f1e696]:
+          - generic [ref=f1e697]:
+            - checkbox "Selecionar ISMAEL COMERLATO" [ref=f1e698]
+            - generic [ref=f1e699]: Selecionar para classificar
+        - cell "ISMAEL COMERLATO ismacomerlato@gmail.com Perfil 53466 · Usuário 106178" [ref=f1e700]:
+          - link "ISMAEL COMERLATO" [ref=f1e701] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53466&PAGINA=1#detalhes
+          - generic [ref=f1e702]: ismacomerlato@gmail.com
+          - text: Perfil 53466 · Usuário 106178
+        - cell "Motivo não informado Concessão permanente" [ref=f1e703]:
+          - generic [ref=f1e704]:
+            - generic [ref=f1e705]: Motivo não informado
+            - generic [ref=f1e706]: Concessão permanente
+          - group [ref=f1e708]:
+            - generic [ref=f1e709]:
+              - combobox "Motivo do selo de ISMAEL COMERLATO" [ref=f1e710]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ISMAEL COMERLATO" [ref=f1e711] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ISMAEL COMERLATO" [ref=f1e712]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e713]:
+          - strong [ref=f1e714]: Sem vencimento
+        - cell [ref=f1e715]:
+          - link "Ver origens de ISMAEL COMERLATO" [ref=f1e716] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53466&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e717]:
+        - cell "Selecionar JEAN CARLO SILVA COELHO Selecionar para classificar" [ref=f1e718]:
+          - generic [ref=f1e719]:
+            - checkbox "Selecionar JEAN CARLO SILVA COELHO" [ref=f1e720]
+            - generic [ref=f1e721]: Selecionar para classificar
+        - cell "JEAN CARLO SILVA COELHO jeancarlocoelho@gmail.com Perfil 40197 · Usuário 75725" [ref=f1e722]:
+          - link "JEAN CARLO SILVA COELHO" [ref=f1e723] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=40197&PAGINA=1#detalhes
+          - generic [ref=f1e724]: jeancarlocoelho@gmail.com
+          - text: Perfil 40197 · Usuário 75725
+        - cell "Motivo não informado Concessão permanente" [ref=f1e725]:
+          - generic [ref=f1e726]:
+            - generic [ref=f1e727]: Motivo não informado
+            - generic [ref=f1e728]: Concessão permanente
+          - group [ref=f1e730]:
+            - generic [ref=f1e731]:
+              - combobox "Motivo do selo de JEAN CARLO SILVA COELHO" [ref=f1e732]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de JEAN CARLO SILVA COELHO" [ref=f1e733] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de JEAN CARLO SILVA COELHO" [ref=f1e734]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e735]:
+          - strong [ref=f1e736]: Sem vencimento
+        - cell [ref=f1e737]:
+          - link "Ver origens de JEAN CARLO SILVA COELHO" [ref=f1e738] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=40197&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e739]:
+        - cell "Selecionar JÉS CARLETE JUNIOR Selecionar para classificar" [ref=f1e740]:
+          - generic [ref=f1e741]:
+            - checkbox "Selecionar JÉS CARLETE JUNIOR" [ref=f1e742]
+            - generic [ref=f1e743]: Selecionar para classificar
+        - cell "JÉS CARLETE JUNIOR jescarletejunior@gmail.com Perfil 53555 · Usuário 106516" [ref=f1e744]:
+          - link "JÉS CARLETE JUNIOR" [ref=f1e745] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53555&PAGINA=1#detalhes
+          - generic [ref=f1e746]: jescarletejunior@gmail.com
+          - text: Perfil 53555 · Usuário 106516
+        - cell "Motivo não informado Concessão permanente" [ref=f1e747]:
+          - generic [ref=f1e748]:
+            - generic [ref=f1e749]: Motivo não informado
+            - generic [ref=f1e750]: Concessão permanente
+          - group [ref=f1e752]:
+            - generic [ref=f1e753]:
+              - combobox "Motivo do selo de JÉS CARLETE JUNIOR" [ref=f1e754]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de JÉS CARLETE JUNIOR" [ref=f1e755] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de JÉS CARLETE JUNIOR" [ref=f1e756]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e757]:
+          - strong [ref=f1e758]: Sem vencimento
+        - cell [ref=f1e759]:
+          - link "Ver origens de JÉS CARLETE JUNIOR" [ref=f1e760] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53555&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e761]:
+        - cell "Selecionar JESSICA CRISTINA Selecionar para classificar" [ref=f1e762]:
+          - generic [ref=f1e763]:
+            - checkbox "Selecionar JESSICA CRISTINA" [ref=f1e764]
+            - generic [ref=f1e765]: Selecionar para classificar
+        - cell "JESSICA CRISTINA jessicacrissilva04@gmail.com Perfil 34387 · Usuário 61884" [ref=f1e766]:
+          - link "JESSICA CRISTINA" [ref=f1e767] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=34387&PAGINA=1#detalhes
+          - generic [ref=f1e768]: jessicacrissilva04@gmail.com
+          - text: Perfil 34387 · Usuário 61884
+        - cell "Motivo não informado Concessão permanente" [ref=f1e769]:
+          - generic [ref=f1e770]:
+            - generic [ref=f1e771]: Motivo não informado
+            - generic [ref=f1e772]: Concessão permanente
+          - group [ref=f1e774]:
+            - generic [ref=f1e775]:
+              - combobox "Motivo do selo de JESSICA CRISTINA" [ref=f1e776]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de JESSICA CRISTINA" [ref=f1e777] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de JESSICA CRISTINA" [ref=f1e778]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e779]:
+          - strong [ref=f1e780]: Sem vencimento
+        - cell [ref=f1e781]:
+          - link "Ver origens de JESSICA CRISTINA" [ref=f1e782] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=34387&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e783]:
+        - cell "Selecionar JESSICA MARTINS Selecionar para classificar" [ref=f1e784]:
+          - generic [ref=f1e785]:
+            - checkbox "Selecionar JESSICA MARTINS" [ref=f1e786]
+            - generic [ref=f1e787]: Selecionar para classificar
+        - cell "JESSICA MARTINS adm.jmartins@gmail.com Perfil 53970 · Usuário 107828" [ref=f1e788]:
+          - link "JESSICA MARTINS" [ref=f1e789] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53970&PAGINA=1#detalhes
+          - generic [ref=f1e790]: adm.jmartins@gmail.com
+          - text: Perfil 53970 · Usuário 107828
+        - cell "Motivo não informado Concessão permanente" [ref=f1e791]:
+          - generic [ref=f1e792]:
+            - generic [ref=f1e793]: Motivo não informado
+            - generic [ref=f1e794]: Concessão permanente
+          - group [ref=f1e796]:
+            - generic [ref=f1e797]:
+              - combobox "Motivo do selo de JESSICA MARTINS" [ref=f1e798]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de JESSICA MARTINS" [ref=f1e799] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de JESSICA MARTINS" [ref=f1e800]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e801]:
+          - strong [ref=f1e802]: Sem vencimento
+        - cell [ref=f1e803]:
+          - link "Ver origens de JESSICA MARTINS" [ref=f1e804] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53970&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e805]:
+        - cell "Selecionar JÉSSICA MORAES CRUVINEL Selecionar para classificar" [ref=f1e806]:
+          - generic [ref=f1e807]:
+            - checkbox "Selecionar JÉSSICA MORAES CRUVINEL" [ref=f1e808]
+            - generic [ref=f1e809]: Selecionar para classificar
+        - cell "JÉSSICA MORAES CRUVINEL jessicacruvinel@gmail.com Perfil 53563 · Usuário 106544" [ref=f1e810]:
+          - link "JÉSSICA MORAES CRUVINEL" [ref=f1e811] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53563&PAGINA=1#detalhes
+          - generic [ref=f1e812]: jessicacruvinel@gmail.com
+          - text: Perfil 53563 · Usuário 106544
+        - cell "Motivo não informado Concessão permanente" [ref=f1e813]:
+          - generic [ref=f1e814]:
+            - generic [ref=f1e815]: Motivo não informado
+            - generic [ref=f1e816]: Concessão permanente
+          - group [ref=f1e818]:
+            - generic [ref=f1e819]:
+              - combobox "Motivo do selo de JÉSSICA MORAES CRUVINEL" [ref=f1e820]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de JÉSSICA MORAES CRUVINEL" [ref=f1e821] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de JÉSSICA MORAES CRUVINEL" [ref=f1e822]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e823]:
+          - strong [ref=f1e824]: Sem vencimento
+        - cell [ref=f1e825]:
+          - link "Ver origens de JÉSSICA MORAES CRUVINEL" [ref=f1e826] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53563&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e827]:
+        - cell "Selecionar João Pedro Faria Selecionar para classificar" [ref=f1e828]:
+          - generic [ref=f1e829]:
+            - checkbox "Selecionar João Pedro Faria" [ref=f1e830]
+            - generic [ref=f1e831]: Selecionar para classificar
+        - cell "João Pedro Faria joaopedrofaria1999@gmail.com Perfil 53222 · Usuário 105543" [ref=f1e832]:
+          - link "João Pedro Faria" [ref=f1e833] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53222&PAGINA=1#detalhes
+          - generic [ref=f1e834]: joaopedrofaria1999@gmail.com
+          - text: Perfil 53222 · Usuário 105543
+        - cell "Motivo não informado Concessão permanente" [ref=f1e835]:
+          - generic [ref=f1e836]:
+            - generic [ref=f1e837]: Motivo não informado
+            - generic [ref=f1e838]: Concessão permanente
+          - group [ref=f1e840]:
+            - generic [ref=f1e841]:
+              - combobox "Motivo do selo de João Pedro Faria" [ref=f1e842]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de João Pedro Faria" [ref=f1e843] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de João Pedro Faria" [ref=f1e844]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e845]:
+          - strong [ref=f1e846]: Sem vencimento
+        - cell [ref=f1e847]:
+          - link "Ver origens de João Pedro Faria" [ref=f1e848] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53222&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e849]:
+        - cell "Selecionar Juliana Rezende Selecionar para classificar" [ref=f1e850]:
+          - generic [ref=f1e851]:
+            - checkbox "Selecionar Juliana Rezende" [ref=f1e852]
+            - generic [ref=f1e853]: Selecionar para classificar
+        - cell "Juliana Rezende jrezende450@gmail.com Perfil 18600 · Usuário 21733" [ref=f1e854]:
+          - link "Juliana Rezende" [ref=f1e855] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18600&PAGINA=1#detalhes
+          - generic [ref=f1e856]: jrezende450@gmail.com
+          - text: Perfil 18600 · Usuário 21733
+        - cell "Motivo não informado Concessão permanente" [ref=f1e857]:
+          - generic [ref=f1e858]:
+            - generic [ref=f1e859]: Motivo não informado
+            - generic [ref=f1e860]: Concessão permanente
+          - group [ref=f1e862]:
+            - generic [ref=f1e863]:
+              - combobox "Motivo do selo de Juliana Rezende" [ref=f1e864]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Juliana Rezende" [ref=f1e865] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Juliana Rezende" [ref=f1e866]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e867]:
+          - strong [ref=f1e868]: Sem vencimento
+        - cell [ref=f1e869]:
+          - link "Ver origens de Juliana Rezende" [ref=f1e870] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18600&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e871]:
+        - cell "Selecionar KARLA SILVA Selecionar para classificar" [ref=f1e872]:
+          - generic [ref=f1e873]:
+            - checkbox "Selecionar KARLA SILVA" [ref=f1e874]
+            - generic [ref=f1e875]: Selecionar para classificar
+        - cell "KARLA SILVA karlacs@gmail.com Perfil 13937 · Usuário 12912" [ref=f1e876]:
+          - link "KARLA SILVA" [ref=f1e877] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=13937&PAGINA=1#detalhes
+          - generic [ref=f1e878]: karlacs@gmail.com
+          - text: Perfil 13937 · Usuário 12912
+        - cell "Motivo não informado Concessão permanente" [ref=f1e879]:
+          - generic [ref=f1e880]:
+            - generic [ref=f1e881]: Motivo não informado
+            - generic [ref=f1e882]: Concessão permanente
+          - group [ref=f1e884]:
+            - generic [ref=f1e885]:
+              - combobox "Motivo do selo de KARLA SILVA" [ref=f1e886]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de KARLA SILVA" [ref=f1e887] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de KARLA SILVA" [ref=f1e888]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e889]:
+          - strong [ref=f1e890]: Sem vencimento
+        - cell [ref=f1e891]:
+          - link "Ver origens de KARLA SILVA" [ref=f1e892] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=13937&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e893]:
+        - cell "Selecionar Kiyoshi Selecionar para classificar" [ref=f1e894]:
+          - generic [ref=f1e895]:
+            - checkbox "Selecionar Kiyoshi" [ref=f1e896]
+            - generic [ref=f1e897]: Selecionar para classificar
+        - cell "Kiyoshi kiyoshi.matsuda@gmail.com Perfil 53785 · Usuário 107341" [ref=f1e898]:
+          - link "Kiyoshi" [ref=f1e899] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53785&PAGINA=1#detalhes
+          - generic [ref=f1e900]: kiyoshi.matsuda@gmail.com
+          - text: Perfil 53785 · Usuário 107341
+        - cell "Motivo não informado Concessão permanente" [ref=f1e901]:
+          - generic [ref=f1e902]:
+            - generic [ref=f1e903]: Motivo não informado
+            - generic [ref=f1e904]: Concessão permanente
+          - group [ref=f1e906]:
+            - generic [ref=f1e907]:
+              - combobox "Motivo do selo de Kiyoshi" [ref=f1e908]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Kiyoshi" [ref=f1e909] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Kiyoshi" [ref=f1e910]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e911]:
+          - strong [ref=f1e912]: Sem vencimento
+        - cell [ref=f1e913]:
+          - link "Ver origens de Kiyoshi" [ref=f1e914] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53785&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=f1e915]:
+        - cell "Selecionar LEANDRO CORDEIRO Selecionar para classificar" [ref=f1e916]:
+          - generic [ref=f1e917]:
+            - checkbox "Selecionar LEANDRO CORDEIRO" [ref=f1e918]
+            - generic [ref=f1e919]: Selecionar para classificar
+        - cell "LEANDRO CORDEIRO leohelo2023@gmail.com Perfil 54028 · Usuário 107994" [ref=f1e920]:
+          - link "LEANDRO CORDEIRO" [ref=f1e921] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54028&PAGINA=1#detalhes
+          - generic [ref=f1e922]: leohelo2023@gmail.com
+          - text: Perfil 54028 · Usuário 107994
+        - cell "Motivo não informado Concessão permanente" [ref=f1e923]:
+          - generic [ref=f1e924]:
+            - generic [ref=f1e925]: Motivo não informado
+            - generic [ref=f1e926]: Concessão permanente
+          - group [ref=f1e928]:
+            - generic [ref=f1e929]:
+              - combobox "Motivo do selo de LEANDRO CORDEIRO" [ref=f1e930]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de LEANDRO CORDEIRO" [ref=f1e931] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de LEANDRO CORDEIRO" [ref=f1e932]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=f1e933]:
+          - strong [ref=f1e934]: Sem vencimento
+        - cell [ref=f1e935]:
+          - link "Ver origens de LEANDRO CORDEIRO" [ref=f1e936] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54028&PAGINA=1#detalhes
+            - text: Ver origens
+  - navigation "Páginas da lista" [ref=f1e937]:
+    - generic [ref=f1e938]: Página 1 de 2
+    - link "Próxima" [ref=f1e940] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=2
+  - paragraph [ref=f1e941]: VIP/upgrade confirmado no cadastro identifica o vínculo e sai da fila de motivos desconhecidos. Pagamento e validade dependem da conciliação financeira. Estornos ficam no histórico. Datas de pagamento no horário de Brasília.
+```
+
+
+╔════════════════════════════════════════════════════════════════════╗
+║ Update available for @playwright/cli: 0.1.18 → 0.1.25              ║
+║ Run `npm install -g @playwright/cli@latest` (global) or            ║
+║ `npm install --save-dev @playwright/cli@latest` (local) to update. ║
+╚════════════════════════════════════════════════════════════════════╝
+

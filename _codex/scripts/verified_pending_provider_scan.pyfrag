@@ -1,0 +1,59 @@
+import os,time,signal
+print(json.dumps({'scan_pid':os.getpid(),'started_at':time.time(),'identities':len(identities)}),flush=True)
+def cents(x):return x if isinstance(x,int) and not isinstance(x,bool) and x>=0 else 0
+def sanitize(d,basis):
+ charges=d.get('charges') or [];items=d.get('items') or [];safe=[];refund=False;chargeback=False;paid_total=0
+ for c in charges:
+  t=c.get('last_transaction') or {};status=c.get('status','');ref=max(cents(c.get('canceled_amount')),cents(c.get('refunded_amount')),cents(t.get('canceled_amount')),cents(t.get('refunded_amount')))
+  paid=cents(c.get('paid_amount'));paid=paid or (cents(c.get('amount')) if status=='paid' and c.get('paid_at') else 0)
+  if status=='paid':paid_total+=paid
+  refund=refund or ref>0 or t.get('status') in ('refunded','partial_refunded') or (status=='canceled' and (paid>0 or c.get('paid_at')))
+  chargeback=chargeback or status=='chargedback' or t.get('status') in ('chargedback','chargeback')
+  safe.append({'id':c.get('id'),'status':status,'amount':cents(c.get('amount')),'paid_amount':paid,'refunded_amount':ref,'paid_at':c.get('paid_at') or '', 'method':c.get('payment_method') or '', 'transaction_status':t.get('status') or ''})
+ valid=d.get('currency')=='BRL' and isinstance(d.get('amount'),int) and d['amount']>0 and not d.get('is_test',False)
+ state='chargeback' if chargeback else ('refunded_or_partial' if refund else ('confirmed' if valid and d.get('status')=='paid' and paid_total==d['amount'] else 'unconfirmed'))
+ return {'id':d['id'],'code':d.get('code') or '', 'status':d.get('status') or '', 'classification':state,'amount':cents(d.get('amount')),'currency':d.get('currency') or '', 'created_at':d.get('created_at') or '', 'updated_at':d.get('updated_at') or '', 'paid_amount':paid_total, 'charges':safe,'items':[{'code':str(i.get('code') or '')[:150],'description':str(i.get('description') or '')[:180],'amount':cents(i.get('amount')),'quantity':cents(i.get('quantity'))} for i in items],'match_basis':sorted(basis)}
+results=[]
+for idx,identity in enumerate(identities):
+ result={'profile_id':identity['profile_id'],'user_id':identity['user_id'],'customers':0,'orders':[],'errors':[],'ambiguous_refs':[]};orders={};customers={};email=(identity.get('email') or '').lower().strip()
+ def err(e):return str(e) if isinstance(e,RuntimeError) else type(e).__name__
+ def add(d,basis):
+  oid=d.get('id','')
+  if not re.fullmatch('or_[A-Za-z0-9]+',oid):raise RuntimeError('invalid_order_id')
+  if oid not in orders:orders[oid]=[d,set()]
+  orders[oid][1].add(basis)
+ try:
+  if email:
+   for c in listing('/customers',{'email':email}):
+    if str(c.get('email','')).lower().strip()==email:customers[c['id']]='exact_account_email'
+  for ref in sorted(set(json.loads(identity['refs'])+json.loads(identity['order_ids']))):
+   if not re.fullmatch('[A-Za-z0-9_-]{4,80}',ref):continue
+   try:
+    found=[get('/orders/'+ref)] if re.fullmatch('or_[A-Za-z0-9]+',ref) else listing('/orders',{'code':ref})
+    found=[d for d in found if ref in (d.get('id'),d.get('code'))]
+    ambiguous=len(found)>1
+    if ambiguous:result['ambiguous_refs'].append({'reference':ref,'orders_found':len(found),'reason':'reused_order_code'})
+    for d in found:
+     c=d.get('customer') or {};same_email=bool(email) and str(c.get('email','')).lower().strip()==email
+     if ambiguous and not same_email:continue
+     add(d,'exact_account_email' if same_email else 'unique_registered_order_reference')
+     if c.get('id'):customers.setdefault(c['id'],'exact_account_email' if same_email else 'customer_from_unique_registered_order')
+   except Exception as e:result['errors'].append(err(e))
+  for cid,basis in customers.items():
+   try:
+    for d in listing('/orders',{'customer_id':cid}):
+     if (d.get('customer') or {}).get('id')!=cid:raise RuntimeError('customer_filter_mismatch')
+     add(d,basis)
+   except Exception as e:result['errors'].append(err(e))
+  result['customers']=len(customers)
+  # Refresh every order individually; list status alone is not treated as the final check.
+  for oid,(d,basis) in orders.items():
+   try:
+    fresh=get('/orders/'+oid)
+    if fresh.get('id')!=oid:raise RuntimeError('order_identity_mismatch')
+    safe=sanitize(fresh,basis);safe['customer_email_matches']=bool(email) and str((fresh.get('customer') or {}).get('email','')).lower().strip()==email;result['orders'].append(safe)
+   except Exception as e:result['errors'].append(err(e))
+ except Exception as e:result['errors'].append(err(e))
+ result['verified_at']=datetime.datetime.now(datetime.timezone.utc).isoformat();results.append(result)
+ print(json.dumps({'progress':idx+1,'total':len(identities),'orders':len(result['orders']),'errors':len(result['errors'])}),flush=True)
+print(json.dumps({'audited_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'method':'GET only; exact account email and known order references; all products; order detail refreshed','results':results}),flush=True)

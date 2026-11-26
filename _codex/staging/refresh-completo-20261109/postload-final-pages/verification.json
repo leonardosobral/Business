@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "date": "2026-11-09",
+  "public_source": {
+    "cell": 420,
+    "revision": 7,
+    "run": 352,
+    "snapshot": 42,
+    "main_run": 351
+  },
+  "public_fixture": "Exact public payload from the frozen run, without run metadata or private SQL.",
+  "fixture_current_js_test": {
+    "status": "PASS",
+    "indicators": 6,
+    "coleta": "09/11/2026",
+    "stories": {
+      "mulheres": {
+        "anterior": 52.5,
+        "atual": 53.8,
+        "diferenca_pp": 1.4
+      },
+      "resultados": {
+        "variacao_percentual": 29.3
+      },
+      "provas": {
+        "variacao_percentual": 38.7
+      },
+      "pareadas": {
+        "variacao_percentual": 2.2
+      }
+    }
+  },
+  "central": "Media textareas identical; dynamic checklist/owners/forms/CSRF, strategy, deadlines and scripts preserved. V7 current; v6/v5 historical.",
+  "hotsite": "Only metadata changed: image cache key, image alt, description and OG description. Body/JS/CSRF/endpoint unchanged.",
+  "canonical_runtime": "All three canonical source hashes unchanged after generation.",
+  "limits": "No browser layout, CFML execution, DB queries or deployed HTTP verification. Controller must integrate new kit art, PDF/router and coordinated DB snapshot/view cutover.",
+  "resources": "No browser/server/background process created. Finite Node check exited."
+}

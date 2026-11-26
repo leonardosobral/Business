@@ -1,0 +1,9 @@
+{
+  "stage": "/var/backups/ads-network-20261104-8_5kf2j2",
+  "manifest_sha256": "8f31c3c9cec3d08f10576d1ef1c25adbd37f19478bfdef7daa3a0e05bf5633ca",
+  "candidate_hashes": {
+    "portal/includes/banner_management_backend.cfm": "9d4bcfe1de915c2c50a42bc4bf723a8823c1aec6387ff81609df7f898747ec02"
+  },
+  "backup": "/var/backups/ads-network-20261104-8_5kf2j2/baseline",
+  "runtime_files_changed": false
+}

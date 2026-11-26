@@ -1,0 +1,137 @@
+{
+  "audit": [
+    {
+      "actor_id": 139,
+      "campaign_id": null,
+      "entity_id": 1,
+      "created_at": "2026-11-09T21:20:51.175734-03:00",
+      "access_id": null,
+      "status": "ACTIVE",
+      "entity": "campaign",
+      "voucher_id": null,
+      "action": "CAMPAIGN_STATUS",
+      "percent": null,
+      "kind": null,
+      "version": 2,
+      "id": 561,
+      "campaign": null
+    },
+    {
+      "actor_id": 139,
+      "campaign_id": "1",
+      "entity_id": 200,
+      "created_at": "2026-11-09T21:22:32.480234-03:00",
+      "access_id": null,
+      "status": null,
+      "entity": "voucher",
+      "voucher_id": null,
+      "action": "CREATE_VOUCHER",
+      "percent": null,
+      "kind": null,
+      "version": null,
+      "id": 562,
+      "campaign": null
+    },
+    {
+      "actor_id": 492,
+      "campaign_id": null,
+      "entity_id": 27,
+      "created_at": "2026-11-09T21:39:36.879766-03:00",
+      "access_id": "36",
+      "status": null,
+      "entity": "benefit",
+      "voucher_id": "200",
+      "action": "ANNUAL_EARLY_PURCHASE_BENEFIT",
+      "percent": 50,
+      "kind": "EARLY_PURCHASE",
+      "version": null,
+      "id": 564,
+      "campaign": "piloto"
+    },
+    {
+      "actor_id": 492,
+      "campaign_id": null,
+      "entity_id": 200,
+      "created_at": "2026-11-09T21:39:36.883168-03:00",
+      "access_id": "36",
+      "status": null,
+      "entity": "voucher",
+      "voucher_id": null,
+      "action": "REDEEM",
+      "percent": null,
+      "kind": null,
+      "version": null,
+      "id": 565,
+      "campaign": null
+    }
+  ],
+  "counts": {
+    "user_grants": 1,
+    "voucher_benefits": 1,
+    "user_eligible_benefits": 1,
+    "voucher_grants": 1,
+    "user_benefits": 1,
+    "user_active_grants": 1
+  },
+  "products": [
+    {
+      "code": "previa-2026-q3",
+      "status": "ACTIVE",
+      "publication": 42,
+      "id": 1
+    },
+    {
+      "code": "anual-2026",
+      "status": "DRAFT",
+      "publication": null,
+      "id": 2
+    }
+  ],
+  "captured_at": "2026-11-09T23:06:37.707437-03:00",
+  "voucher": {
+    "redeemed_by": 492,
+    "status": "REDEEMED",
+    "campaign_id": 1,
+    "expires_at": "2026-11-25T00:00:00-03:00",
+    "id": 200,
+    "redeemed_at": "2026-11-09T21:39:36.86273-03:00"
+  },
+  "user": {
+    "is_admin": false,
+    "id": 492
+  },
+  "grants": [
+    {
+      "status": "ACTIVE",
+      "voucher_id": 200,
+      "granted_at": "2026-11-09T21:39:36.869359-03:00",
+      "user_id": 492,
+      "id": 36,
+      "product_id": 1
+    }
+  ],
+  "benefits": [
+    {
+      "access_id": 36,
+      "status": "ELIGIBLE",
+      "percent": 50,
+      "user_id": 492,
+      "id": 27,
+      "product_id": 2
+    }
+  ],
+  "campaign": {
+    "code": "piloto",
+    "status": "ACTIVE",
+    "benefit_percent": 50,
+    "version": 2,
+    "id": 1,
+    "product_id": 1,
+    "benefit_product_id": 2
+  },
+  "read_only": "on",
+  "cleanup": {
+    "owned_temporary_directories": 1,
+    "temporary_directories_left": []
+  }
+}

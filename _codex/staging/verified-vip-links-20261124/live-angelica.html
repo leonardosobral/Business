@@ -1,0 +1,112 @@
+<!doctype html><html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/assets/css/mdb.min.css"></head><body data-mdb-theme="dark" style="background:rgb(34,34,34);padding:20px">
+<link rel="stylesheet" href="/assets/css/business-ui.css"/>
+<link rel="stylesheet" href="/portal/verificados/verified.css?v=20261124"/>
+<script src="/portal/verificados/verified.js?v=20261124" defer></script>
+<section class="business-page verified-page" aria-labelledby="verified-title">
+    <header class="verified-heading">
+        <div><p class="verified-eyebrow">PORTAL · ROAD RUNNERS</p><h1 id="verified-title">Selos verificados</h1><p class="text-muted">Veja por que cada pessoa tem o selo, até quando ele vale e o histórico de cada origem.</p></div>
+        <span class="verified-readonly">Classificar um motivo não altera o selo</span>
+    </header>
+    
+    <div class="business-kpi-grid verified-kpis" aria-label="Resumo geral dos selos">
+        <a class="business-kpi" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><small>Selos ativos</small><strong>418</strong></a>
+        <a class="business-kpi" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;FILTER&#x25;5FORIGIN&#x3d;manual&amp;PAGINA&#x3d;1"><small>Sem vencimento</small><strong>128</strong></a>
+        <div class="business-kpi"><small>Ativos com prazo</small><strong>290</strong></div>
+        <a class="business-kpi verified-kpi-attention" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><small>Motivo a classificar</small><strong>61</strong></a>
+    </div>
+    <nav class="verified-tabs" aria-label="Situação do selo">
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;USER&#x25;5FBUSCA&#x3d;53854&amp;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Ativos</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;USER&#x25;5FBUSCA&#x3d;53854&amp;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">A classificar</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;USER&#x25;5FBUSCA&#x3d;53854&amp;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Conferir VIP</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;USER&#x25;5FBUSCA&#x3d;53854&amp;FILTER&#x25;5FSTATUS&#x3d;inactive&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Inativos</a>
+        
+            <a aria-current="page" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;USER&#x25;5FBUSCA&#x3d;53854&amp;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Todos / histórico</a>
+        
+    </nav>
+    
+    <form method="get" action="/portal/verificados/" class="business-panel verified-filters">
+        <input type="hidden" name="filter_status" value="all"/>
+        <div class="verified-filter-main">
+            <div><label for="verified-search">Buscar pessoa</label><input class="form-control" id="verified-search" name="user_busca" value="53854" placeholder="Nome, e-mail, perfil ou ID" maxlength="120"/></div>
+            <div><label for="verified-origin">Origem ou motivo</label><select id="verified-origin" class="form-select" name="filter_origin"><option value="">Todas as origens</option>
+                <option value="manual" >Concessão permanente</option><option value="vip" >Todo Santo Dia · VIP ativo</option><option value="registered_vip" >Todo Santo Dia · VIP/upgrade confirmado no cadastro</option><option value="upgrade" >Todo Santo Dia · Upgrade VIP ativo</option><option value="annual" >Compra anual ativa</option><option value="refunded" >Com estorno no histórico</option><option value="elite" >Atleta de elite</option><option value="influencer" >Influencer / criador</option><option value="imprensa" >Imprensa</option><option value="parceiro" >Parceiro</option><option value="equipe" >Equipe</option><option value="cortesia" >Cortesia</option><option value="outro" >Outro motivo</option><option value="nao_informado" >Motivo não informado</option>
+            </select></div>
+            <button class="btn btn-warning" type="submit">Filtrar</button><a class="btn btn-outline-secondary" href="/portal/verificados/">Limpar</a>
+        </div>
+        <details class="verified-advanced" ><summary>Filtros de cadastro</summary>
+            <p class="text-muted small">VIP e upgrade confirmados no Todo Santo Dia identificam um vínculo com o selo. Outros cadastros e permissões de conta não comprovam esse vínculo.</p>
+            <div class="verified-filter-main"><div><label for="filter-desafio">Desafio</label><input class="form-control" id="filter-desafio" name="filter_desafio" value=""/></div>
+                <div><label for="filter-produto">Produto no cadastro</label><select id="filter-produto" name="filter_produto" class="form-select"><option value="">Todos</option><option value="catarinensecorridaderua" >catarinensecorridaderua &middot; catarinensecorridaderua</option><option value="catarinensetrailrun" >catarinensetrailrun &middot; catarinensetrailrun</option><option value="circuitobrasilgigante" >circuitobrasilgigante &middot; circuitobrasilgigante</option><option value="inscricao365" >desafio365 &middot; inscricao365</option><option value="inscricao365vip" >desafio365 &middot; inscricao365vip</option><option value="inscricao365Vip" >desafio365 &middot; inscricao365Vip</option><option value="inscricao366" >desafio366 &middot; inscricao366</option><option value="inscricaotodosantodia" >desafio366 &middot; inscricaotodosantodia</option><option value="foco" >desafiofoco &middot; foco</option><option value="&#x2f;desafiosupra&#x2f;inscricao&#x2f;" >desafiosupra &middot; &#x2f;desafiosupra&#x2f;inscricao&#x2f;</option><option value="foco" >foco &middot; foco</option><option value="desafiofoco" >todosantodia &middot; desafiofoco</option><option value="inscricao366" >todosantodia &middot; inscricao366</option><option value="todosantodia" >todosantodia &middot; todosantodia</option><option value="todosantodiaupg" >todosantodia &middot; todosantodiaupg</option><option value="todosantodiaupgrade" >todosantodia &middot; todosantodiaupgrade</option><option value="todosantodiavip" >todosantodia &middot; todosantodiavip</option><option value="todosantodiavip1" >todosantodia &middot; todosantodiavip1</option><option value="&#x2f;connect&#x2f;inscricao&#x2f;" > &middot; &#x2f;connect&#x2f;inscricao&#x2f;</option><option value="&#x2f;empresa&#x2f;cadastro&#x2f;" > &middot; &#x2f;empresa&#x2f;cadastro&#x2f;</option><option value="&#x2f;ts&#x2f;inscricao&#x2f;" > &middot; &#x2f;ts&#x2f;inscricao&#x2f;</option></select></div>
+                <div><label for="filter-logic">Combinação</label><select id="filter-logic" name="filter_logic" class="form-select"><option value="any" selected>Qualquer regra</option><option value="all" >Todas as regras</option></select></div>
+            </div>
+            <div class="verified-flags"><label><input type="checkbox" name="filter_admin" value="true" /> Administrador</label><label><input type="checkbox" name="filter_dev" value="true" /> Desenvolvedor</label><label><input type="checkbox" name="filter_partner" value="true" /> Parceiro no cadastro</label></div>
+        </details>
+    </form>
+    
+        <article class="business-panel verified-detail" id="detalhes" aria-labelledby="verified-detail-title">
+            <div class="verified-detail-heading"><div><p class="verified-eyebrow">ORIGENS DO SELO · PERFIL 53854</p><h2 id="verified-detail-title">ANGELICA SANDES</h2>
+                <p><span class="verified-pill">Sem vencimento</span> <a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;atleta&#x2f;angelica&#x25;2Dsandes&#x2f;" target="_blank" rel="noopener">Abrir perfil ↗</a></p></div>
+                <a class="btn btn-outline-secondary" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;USER&#x25;5FBUSCA&#x3d;53854&amp;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Fechar detalhes</a></div>
+            <div class="verified-source-grid">
+                
+                    <section class="verified-source"><h3>Concess&atilde;o permanente</h3>
+                        <p><span class="verified-pill ">Origem ativa</span></p>
+                        <p>Vínculo Todo Santo Dia identificado no cadastro.</p><p class="text-muted">A concessão permanente está preservada. Os registros VIP e a conciliação aparecem abaixo.</p> 
+                    </section>
+                
+            </div>
+            
+                <section class="verified-classification" aria-label="Vínculos confirmados no cadastro"><h3>Vínculos Todo Santo Dia</h3>
+                    <div class="verified-source-grid"><section class="verified-source">
+                        <h3>Todo Santo Dia · VIP</h3>
+                        <p><span class="verified-pill">Confirmado no cadastro</span></p>
+                        <p class="text-muted">Cadastro em 16&#x2f;04&#x2f;2026 11&#x3a;10. Esta data não é a data do pagamento.</p>
+                        <p class="verified-pending">Conferir pagamento e validade: este vínculo ainda não foi conciliado com o histórico do selo.</p> 
+                    </section></div>
+                </section>
+            
+                <details class="verified-classification" ><summary>Classificar a concessão permanente</summary>
+                    <p class="text-muted">Registre aqui outro motivo de concessão, quando houver. Os vínculos VIP/upgrade e seus pagamentos aparecem separadamente.</p>
+                    
+                        <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;USER&#x25;5FBUSCA&#x3d;53854&amp;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53854&amp;PAGINA&#x3d;1">
+                            <input type="hidden" name="verified_action" value="classify"/><input type="hidden" name="verified_csrf" value="1848E1F7DF28657A1D049E4FCB6F270BD26651B864B20AEF208B95287BD88E81"/><input type="hidden" name="profile_id" value="53854"/><input type="hidden" name="revision" value="0"/>
+                            <label for="classification-category">Motivo da concessão</label><select name="category" id="classification-category" class="form-select" required><option value="nao_informado" selected>Motivo n&atilde;o informado</option><option value="elite" >Atleta de elite</option><option value="influencer" >Influencer &#x2f; criador</option><option value="imprensa" >Imprensa</option><option value="parceiro" >Parceiro</option><option value="equipe" >Equipe</option><option value="cortesia" >Cortesia</option><option value="outro" >Outro motivo</option></select>
+                            <label for="classification-reason">Detalhes e referência</label><textarea id="classification-reason" name="reason" class="form-control" rows="3" minlength="5" maxlength="2000" required placeholder="Ex.: imprensa — veículo ou contato que motivou a concessão."></textarea>
+                            <p class="text-muted small">A anotação fica visível somente para administradores, com autor e data.</p><button type="submit" class="btn btn-warning">Salvar motivo</button>
+                        </form>
+                    
+                </details>
+            
+        </article>
+    <p class="verified-cleanup-link"><a href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Classificar os 61 motivos pendentes →</a></p> 
+        <form id="verified-bulk-form" class="business-panel verified-quick-panel" method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;USER&#x25;5FBUSCA&#x3d;53854&amp;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" data-quick-form>
+            <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="1848E1F7DF28657A1D049E4FCB6F270BD26651B864B20AEF208B95287BD88E81"/>
+            <div class="verified-quick-heading"><div><h2>Classificação rápida</h2><p class="text-muted">Marque as pessoas com o mesmo motivo e salve de uma vez. Apenas os perfis marcados nesta página serão classificados.</p></div><span id="verified-selected-count" role="status" aria-live="polite">0 selecionados</span></div>
+            
+            <fieldset >
+                <div class="verified-quick-fields"><div><label for="bulk-category">Motivo em comum</label><select id="bulk-category" name="category" class="form-select" required data-quick-category><option value="">Escolha o motivo</option><option value="elite" >Atleta de elite</option><option value="influencer" >Influencer &#x2f; criador</option><option value="imprensa" >Imprensa</option><option value="parceiro" >Parceiro</option><option value="equipe" >Equipe</option><option value="cortesia" >Cortesia</option><option value="outro" >Outro motivo</option></select></div>
+                <div><label for="bulk-note">Vínculo ou observação <span data-note-optional>(opcional)</span></label><input id="bulk-note" name="note" class="form-control" maxlength="1800" value="" placeholder="Ex.: nome do veículo, canal ou parceria" data-quick-note/></div>
+                <button class="btn btn-warning" type="submit" id="verified-bulk-submit">Salvar selecionados</button></div>
+            </fieldset>
+        </form>
+    
+    <div class="verified-list-heading" id="lista-motivos"><h2>1 perfil encontrado</h2><span class="text-muted small">Uma pessoa pode ter mais de uma origem ativa.</span></div>
+    <div class="business-panel verified-table-wrap"><table class="table verified-table"><thead><tr><th class="verified-select-cell"><input type="checkbox" id="verified-select-all" aria-label="Selecionar todos os pendentes desta página" /></th><th>Pessoa</th><th>Origem e motivo do selo</th><th>Situação e validade</th><th><span class="visually-hidden">Detalhes</span></th></tr></thead><tbody>
+        <tr id="perfil-53854">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;USER&#x25;5FBUSCA&#x3d;53854&amp;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53854&amp;PAGINA&#x3d;1#detalhes">ANGELICA SANDES</a><small class="verified-email">angel.sandes&#x40;gmail.com</small><small class="text-muted">Perfil 53854 · Usuário 107531</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ANGELICA&#x20;SANDES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;USER&#x25;5FBUSCA&#x3d;53854&amp;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53854&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr> 
+    </tbody></table></div>
+    <a id="verified-bulk-jump" class="verified-bulk-jump" href="#verified-bulk-form" hidden>Voltar à classificação do lote ↑</a>
+    <nav class="verified-pagination" aria-label="Páginas da lista"><span>Página 1 de 1</span><div></div></nav>
+    <p class="text-muted small">VIP/upgrade confirmado no cadastro identifica o vínculo e sai da fila de motivos desconhecidos. Pagamento e validade dependem da conciliação financeira. Estornos ficam no histórico. Datas de pagamento no horário de Brasília.</p>
+</section>
+</body></html>

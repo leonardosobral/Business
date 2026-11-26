@@ -1,0 +1,49 @@
+{
+  "truncated": false,
+  "status": "ok",
+  "started_at": "2026-10-13T10:20:52.130963-03:00",
+  "cell_id": 421,
+  "cell_version": 1,
+  "id": 237,
+  "frozen": true,
+  "result": {
+    "columns": [
+      "coletado_em",
+      "ano",
+      "regiao",
+      "tipo",
+      "total",
+      "denominador",
+      "percentual"
+    ],
+    "rows": [
+      {
+        "total": 2069080,
+        "ano": 2025,
+        "tipo": "Capital",
+        "percentual": 59.059688511436555,
+        "regiao": "Brasil",
+        "coletado_em": "2026-10-13T10:20:52.135226-03:00",
+        "denominador": 3503371
+      },
+      {
+        "total": 1406209,
+        "ano": 2025,
+        "tipo": "Interior",
+        "percentual": 40.13874065863992,
+        "regiao": "Brasil",
+        "coletado_em": "2026-10-13T10:20:52.135226-03:00",
+        "denominador": 3503371
+      },
+      {
+        "total": 28082,
+        "ano": 2025,
+        "tipo": "Não classificada",
+        "percentual": 0.8015708299235222,
+        "regiao": "Brasil",
+        "coletado_em": "2026-10-13T10:20:52.135226-03:00",
+        "denominador": 3503371
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "business": {
+    "estudos/lancamento/index.cfm": {
+      "sha": "b337842d7134fc06fa3d3fe1a9418a7eb899798070ad1abb1426bb21868f867d"
+    },
+    "estudos/lancamento/arquivo.cfm": {
+      "sha": "7ed902b9bb3a360f4b149aa6a1a94a11cafe49600535fa95c3379068062f7f9c"
+    }
+  },
+  "portal": {
+    "brasilquecorreprovas/2026/pagina.html": {
+      "sha": "a70d6a97256db964a715c2282e68cc0b3d322d61fd24b9660d75ed8b4ef599b1"
+    }
+  }
+}

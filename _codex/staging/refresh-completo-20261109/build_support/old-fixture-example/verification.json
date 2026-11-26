@@ -1,0 +1,39 @@
+{
+  "historical_fixture_only": true,
+  "network_used": false,
+  "database_queries_executed": 0,
+  "claim": "Identical 105 SQL projection SELECT expressions, ignoring source labels; every 608 pair and exact cohort metric reproduced by Python.",
+  "not_claimed": "Generated SQL has not been parsed or numerically evaluated by PostgreSQL; 2026 BI freshness is not verified.",
+  "baseline_series": 137,
+  "contract": 17,
+  "projection_equations_equal": true,
+  "matched_pairs_equal": true,
+  "cohort": {
+    "pares": 608,
+    "concluintes_2025": 1185401,
+    "concluintes_2026": 1210676,
+    "delta": 25275,
+    "variacao_pct": "2.132189866551487640047545100",
+    "cresceram": 323,
+    "cairam": 284,
+    "iguais": 1,
+    "participacao_no_aumento_pct": 2.6149626559536827,
+    "cobertura_2025_pct": 33.5238882247654,
+    "cobertura_2026_pct": 26.888721970833362
+  },
+  "matcher_sha256": "8fbb97997c443f76099491c1f2cc43e9f45bf304da62c80dae8efd1a34880fcf",
+  "preserved_evidence": [
+    "variacoes_a_z",
+    "maratonas_revisao_eventos",
+    "maratonas_revisao_situacoes"
+  ],
+  "files": {
+    "example-cell-251.sql": "40474c19378a6f8db770a6492318d42d8829af2c70b8b5737ed05565d2e204cf",
+    "example-cell-377.sql": "7ca7727708cf2e9d5ec922a07081d1f44f48085cb6c831321af6d3b3df3fc7df",
+    "example-cell-380.sql": "a89e7e30a2346bcf467f4d9e538329d35b8e909d1d8fec1f0451ff8f8f6eeadb",
+    "example-cell-387.sql": "e9a8c84d8a4b5c7fc14e17cfd9b5b89d69a7a9460d2e2d7de286af5dac34082a",
+    "example-cell-414.sql": "fab45298c4095acd66fb86912463c552adb0c816f3ed046e71cea1336ce61724",
+    "example-cell-418.sql": "5aac6f598776ad8f48b1fb07d5ed2339adc58371a43d73272ea447bcea3a1c01",
+    "example-cell-420.sql": "1b54d0b5faed6f02322de7387da8a772f80a11fd2380d6e54aed7c0af590b129"
+  }
+}

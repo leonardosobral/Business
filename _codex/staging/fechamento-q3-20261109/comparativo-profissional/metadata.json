@@ -1,0 +1,1315 @@
+{
+  "public_definition": " SELECT ((r.result -> 'rows'::text) -> 0) -> 'payload'::text AS payload\n   FROM estudo.notebook_runs r\n     JOIN estudo.produtos p ON p.codigo = 'previa-2026-q3'::text AND p.status = 'ACTIVE'::text AND p.publicacao_id = 41\n  WHERE r.id = 239 AND r.cell_id = 420 AND r.frozen AND r.status = 'ok'::text AND NOT r.truncated AND r.row_count = 1;",
+  "comparison_keys": [
+    "aviso",
+    "provas",
+    "mensais",
+    "periodo",
+    "mulheres",
+    "meses_completos",
+    "ultima_data_2025",
+    "ultima_data_2026"
+  ],
+  "publication_meta": {
+    "corte": "2026-09-30",
+    "ano": 2026,
+    "geracoes_metodo": "proximidade_v2",
+    "periodo_fim_exclusivo": "2026-10-01",
+    "metodologia": "concluintes_q3_2026_v2",
+    "estado": "rascunho",
+    "parcial": true,
+    "maratonas_referencia_externa": {
+      "revisao": 1,
+      "verificado_em": "2026-10-03",
+      "celula": 334,
+      "execucao": 138,
+      "url": "https://www.nyrr.org/tcsnycmarathon"
+    },
+    "periodo_inicio": "2026-01-01",
+    "inscricoes": {
+      "revisao": 1,
+      "ausencia": "81.7177754677754678",
+      "celula": 366,
+      "execucao": 176,
+      "mediana": "60.0000000000000000",
+      "coletado_em": "2026-10-05",
+      "fim": "2026-09-30",
+      "ausentes": 6289,
+      "informadas": 1407,
+      "zeradas": 0,
+      "negativas": 0,
+      "analisadas": 1405,
+      "calendario": 7696,
+      "divergencias_json": 243,
+      "media": "74.9299572953736655",
+      "cobertura": "18.2822245322245322",
+      "inicio": "2026-01-01",
+      "simbolicas": 2
+    },
+    "maratonas_destaques": {
+      "revisao": 2,
+      "corte": "2026-09-30",
+      "celula": 353,
+      "execucao": 218,
+      "provas": 10,
+      "fonte_celula": 309,
+      "fonte_revisao": 1,
+      "coletado_em": "2026-10-05",
+      "derivado_em": "2026-10-03T10:26:20.987725-03:00",
+      "outros": 0,
+      "fonte_execucao": 111
+    },
+    "origem": "BI 2026: public.tbbi_fat_perfil_br_2026, estrutura de public.vwbi_fat_perfil_br_2026 reproduzida em adaptador estudo sem descartar dimensões ausentes. Nascimento/modalidade/ranking por id_resultado. Auditoria célula413 congelamento215:4.502.542 IDs únicos,150.159 sem localidade conservados. Fontes relidas e preservadas; coleta06/10/2026; corte30/09; PDF2025 e versões anteriores preservados.",
+    "notebook_fontes": [
+      {
+        "revisao": 3,
+        "celula": 312,
+        "execucao": 117,
+        "coletado_em": "2026-10-01T15:26:11.478337-03:00"
+      },
+      {
+        "revisao": 1,
+        "celula": 315,
+        "execucao": 119,
+        "coletado_em": "2026-10-01T15:28:29.308726-03:00"
+      },
+      {
+        "revisao": 1,
+        "celula": 329,
+        "execucao": 129,
+        "coletado_em": "2026-10-03T08:09:13.238136-03:00"
+      },
+      {
+        "revisao": 2,
+        "celula": 331,
+        "execucao": 134,
+        "coletado_em": "2026-10-03T10:26:20.987725-03:00"
+      },
+      {
+        "revisao": 1,
+        "celula": 333,
+        "execucao": 137,
+        "coletado_em": "2026-10-03T12:08:18.335893-03:00"
+      },
+      {
+        "revisao": 1,
+        "celula": 334,
+        "execucao": 138,
+        "coletado_em": "2026-10-03T12:08:22.974107-03:00"
+      },
+      {
+        "revisao": 1,
+        "celula": 336,
+        "execucao": 144,
+        "coletado_em": "2026-10-05T10:25:36.745033-03:00"
+      },
+      {
+        "revisao": 1,
+        "celula": 341,
+        "execucao": 148,
+        "coletado_em": "2026-10-05T11:42:23.892767-03:00"
+      },
+      {
+        "revisao": 3,
+        "celula": 340,
+        "execucao": 151,
+        "coletado_em": "2026-10-05T11:57:57.620505-03:00"
+      },
+      {
+        "revisao": 1,
+        "celula": 346,
+        "execucao": 156,
+        "coletado_em": "2026-10-05 14:56:51.866816-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 348,
+        "execucao": 158,
+        "coletado_em": "2026-10-05 14:57:04.935238-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 349,
+        "execucao": 159,
+        "coletado_em": "2026-10-05 14:57:20.928557-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 357,
+        "execucao": 167,
+        "coletado_em": "2026-10-05 14:58:11.125732-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 380,
+        "execucao": 190,
+        "coletado_em": "2026-10-05 15:04:49.896505-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 343,
+        "execucao": 153,
+        "coletado_em": "2026-10-05 14:52:38.74043-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 347,
+        "execucao": 157,
+        "coletado_em": "2026-10-05 14:56:58.069606-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 350,
+        "execucao": 160,
+        "coletado_em": "2026-10-05 14:57:24.795298-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 351,
+        "execucao": 161,
+        "coletado_em": "2026-10-05 14:57:32.995785-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 353,
+        "execucao": 163,
+        "coletado_em": "2026-10-05 14:57:48.931114-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 355,
+        "execucao": 165,
+        "coletado_em": "2026-10-05 14:57:56.058391-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 356,
+        "execucao": 166,
+        "coletado_em": "2026-10-05 14:58:05.856025-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 358,
+        "execucao": 168,
+        "coletado_em": "2026-10-05 14:58:18.946727-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 359,
+        "execucao": 169,
+        "coletado_em": "2026-10-05 14:58:31.693785-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 378,
+        "execucao": 188,
+        "coletado_em": "2026-10-05 15:04:19.657081-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 361,
+        "execucao": 171,
+        "coletado_em": "2026-10-05 14:58:44.788352-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 377,
+        "execucao": 187,
+        "coletado_em": "2026-10-05 15:03:47.320573-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 363,
+        "execucao": 173,
+        "coletado_em": "2026-10-05 15:02:49.32799-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 364,
+        "execucao": 174,
+        "coletado_em": "2026-10-05 15:02:52.075814-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 366,
+        "execucao": 176,
+        "coletado_em": "2026-10-05 15:02:57.857147-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 367,
+        "execucao": 177,
+        "coletado_em": "2026-10-05 15:02:58.777083-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 368,
+        "execucao": 178,
+        "coletado_em": "2026-10-05 15:03:01.112438-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 384,
+        "execucao": 194,
+        "coletado_em": "2026-10-05 15:11:54.051927-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 402,
+        "execucao": 210,
+        "coletado_em": "2026-10-05"
+      },
+      {
+        "revisao": 1,
+        "celula": 405,
+        "execucao": 213,
+        "coletado_em": "2026-10-06"
+      },
+      {
+        "revisao": 1,
+        "celula": 404,
+        "execucao": 212,
+        "coletado_em": "2026-10-06"
+      },
+      {
+        "revisao": 2,
+        "celula": 357,
+        "execucao": 219,
+        "coletado_em": "2026-10-06 23:10:35.675609-03"
+      },
+      {
+        "revisao": 2,
+        "celula": 380,
+        "execucao": 225,
+        "coletado_em": "2026-10-06 23:11:54.796339-03"
+      },
+      {
+        "revisao": 2,
+        "celula": 343,
+        "execucao": 216,
+        "coletado_em": "2026-10-06 23:09:57.882601-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 347,
+        "execucao": 228,
+        "coletado_em": "2026-10-06 23:12:22.585759-03"
+      },
+      {
+        "revisao": 2,
+        "celula": 350,
+        "execucao": 224,
+        "coletado_em": "2026-10-06 23:11:50.924677-03"
+      },
+      {
+        "revisao": 2,
+        "celula": 351,
+        "execucao": 217,
+        "coletado_em": "2026-10-06 23:10:06.444368-03"
+      },
+      {
+        "revisao": 2,
+        "celula": 353,
+        "execucao": 218,
+        "coletado_em": "2026-10-06 23:10:21.051986-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 358,
+        "execucao": 227,
+        "coletado_em": "2026-10-06 23:12:20.218047-03"
+      },
+      {
+        "revisao": 2,
+        "celula": 359,
+        "execucao": 220,
+        "coletado_em": "2026-10-06 23:10:44.027936-03"
+      },
+      {
+        "revisao": 2,
+        "celula": 378,
+        "execucao": 221,
+        "coletado_em": "2026-10-06 23:11:12.857693-03"
+      },
+      {
+        "revisao": 2,
+        "celula": 368,
+        "execucao": 222,
+        "coletado_em": "2026-10-06 23:11:22.101678-03"
+      },
+      {
+        "revisao": 3,
+        "celula": 384,
+        "execucao": 226,
+        "coletado_em": "2026-10-06 23:12:09.810389-03"
+      },
+      {
+        "revisao": 1,
+        "celula": 413,
+        "execucao": 215,
+        "coletado_em": "2026-10-06"
+      },
+      {
+        "revisao": 2,
+        "celula": 387,
+        "execucao": 231,
+        "coletado_em": "2026-10-06"
+      },
+      {
+        "revisao": 1,
+        "celula": 402,
+        "execucao": 210,
+        "coletado_em": "2026-10-05"
+      }
+    ],
+    "maratonas_cadastro": {
+      "revisao": 1,
+      "corte": "2026-09-30",
+      "celula": 364,
+      "execucao": 174,
+      "coletado_em": "2026-10-05"
+    },
+    "escopo_trimestres": 3,
+    "maratonas_revisao": {
+      "regra": "Triagem dos 16 IDs com resultados 42–42,2 km e sem percurso rua/km correspondente no congelamento 174. Captura atual 212. Confirmação de distância não certifica terreno, homologação, realização ou captura completa. Linhas por regra reproduzem a regra cadastral anterior; ela ainda admite revezamentos e tipos esportivos incorretos. Sem correções operacionais, exclusões automáticas ou mudança nos indicadores publicados.",
+      "total": 16,
+      "revisao": 1,
+      "verificado_em": "2026-10-06",
+      "corte": "2026-09-30",
+      "fonte_auditoria": 212,
+      "celula": 405,
+      "execucao": 213,
+      "celula_auditoria": 404,
+      "linhas_por_regra": 1456,
+      "casos": [
+        {
+          "grupo": "importacao_divergente",
+          "ranking": null,
+          "url_regulamento": "",
+          "estado": "PR",
+          "data_final": "2026-09-27",
+          "nome_evento": "5KM Maratona Internacional de Foz do Iguaçu 5KM",
+          "url_wiclax": "https://www.supercrono.com.br/resultados/result/data/OZWVCU/event.json",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 268,
+          "url_inscricao": "",
+          "cidade": "FOZ DO IGUAÇU",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 48640,
+          "proximo_passo": "Conferir associação da prova, modalidade, conclusão e conversão dos tempos; recolher novamente a fonte correta. Não trocar a distância nem excluir só os tempos rápidos.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "Importação divergente",
+          "modalidades": [
+            {
+              "linhas": 778,
+              "modalidade": "42KM",
+              "elegiveis": 158,
+              "id_evento": 48640,
+              "mediana_segundos": 42.858000000000004,
+              "menor_segundos": 30.041
+            },
+            {
+              "linhas": 27,
+              "modalidade": "42KM ACD ESPECIAL",
+              "elegiveis": 0,
+              "id_evento": 48640,
+              "mediana_segundos": null,
+              "menor_segundos": null
+            },
+            {
+              "linhas": 13,
+              "modalidade": "42KM CADEIRANTE",
+              "elegiveis": 0,
+              "id_evento": 48640,
+              "mediana_segundos": null,
+              "menor_segundos": null
+            },
+            {
+              "linhas": 320,
+              "modalidade": "42KM REVEZAMENTO",
+              "elegiveis": 105,
+              "id_evento": 48640,
+              "mediana_segundos": 39.736,
+              "menor_segundos": 30.015
+            },
+            {
+              "linhas": 3,
+              "modalidade": "42KM REVEZAMENTO ACD ESP.",
+              "elegiveis": 0,
+              "id_evento": 48640,
+              "mediana_segundos": null,
+              "menor_segundos": null
+            },
+            {
+              "linhas": 92,
+              "modalidade": "42KM TRABALHADOR DO COMERCIO",
+              "elegiveis": 5,
+              "id_evento": 48640,
+              "mediana_segundos": 56.165,
+              "menor_segundos": 31.019
+            }
+          ],
+          "url_resultado": "https://www.supercrono.com.br/resultados/result/#/maratona-internacional-de-foz-do-iguau-5k",
+          "percursos": [],
+          "prioridade": 1,
+          "linhas_brutas": 1233,
+          "tag": "2026-5km-maratona-internacional-de-foz-do-iguacu-5km",
+          "referencias": [
+            "https://www.supercrono.com.br/resultados/result/#/maratona-internacional-de-foz-do-iguau-5k"
+          ],
+          "evidencia": "A Super Crono exibe Maratona Internacional de Foz do Iguaçu 5K, modalidade 5KM. Neste ID há 1.233 linhas marcadas 42 km; 268 passam pela regra atual, incluindo 105 REVEZAMENTO. Tempos mínimos de 30 segundos evidenciam outra divergência, cuja causa não foi diagnosticada."
+        },
+        {
+          "grupo": "tipo_divergente",
+          "ranking": null,
+          "url_regulamento": "",
+          "estado": "SC",
+          "data_final": "2026-05-17",
+          "nome_evento": "UCC RIDE MTB - 5ª ETAPA - COPA OESTE MTB 2026",
+          "url_wiclax": "https://www.quedasadventure.com.br/resultados/eventos/2026/ucc2026/UCC2026.clax",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 184,
+          "url_inscricao": "",
+          "cidade": "Caçador",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 42782,
+          "proximo_passo": "Corrigir a classificação esportiva e revisar a importação; esses 42 km não comprovam uma maratona de corrida.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "Tipo de prova divergente",
+          "modalidades": [
+            {
+              "linhas": 210,
+              "modalidade": "42K",
+              "elegiveis": 184,
+              "id_evento": 42782,
+              "mediana_segundos": 7426.5,
+              "menor_segundos": 4478.0
+            }
+          ],
+          "url_resultado": "https://www.quedasadventure.com.br/resultados/g-live.html?f=eventos/2026/ucc2026/UCC2026.clax",
+          "percursos": [],
+          "prioridade": 2,
+          "linhas_brutas": 210,
+          "tag": "2026-ucc-ride-mtb-5-etapa-copa-oeste-mtb-2026",
+          "referencias": [
+            "https://www.quedasadventure.com.br/EVENTOS/index.php?id=48"
+          ],
+          "evidencia": "A organização identifica Mountain Bike XCM e modalidade SPORT de 42 km. O evento está classificado como rua no portal."
+        },
+        {
+          "grupo": "tipo_divergente",
+          "ranking": null,
+          "url_regulamento": null,
+          "estado": "RN",
+          "data_final": "2026-03-14",
+          "nome_evento": "TRUN - ETAPA PIPA 2026",
+          "url_wiclax": "https://resultados.racezone.com.br/mycrono/data/1UPCFX6/event.json?ver=1773499506000",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 14,
+          "url_inscricao": "https://www.race83.com.br/new/evento/545/2342/trun-etapa-pipa-2026",
+          "cidade": "Tibau do Sul",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 39970,
+          "proximo_passo": "Revisar tipo_corrida e cadastrar o percurso como trail; não acrescentar uma maratona de rua.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "Tipo de prova divergente",
+          "modalidades": [
+            {
+              "linhas": 14,
+              "modalidade": "LONG TRAIL",
+              "elegiveis": 14,
+              "id_evento": 39970,
+              "mediana_segundos": 18263,
+              "menor_segundos": 13813.0
+            }
+          ],
+          "url_resultado": "https://resultados.racezone.com.br/mycrono/#/trun-pipa-2026",
+          "percursos": [],
+          "prioridade": 3,
+          "linhas_brutas": 14,
+          "tag": "2026-trun-etapa-pipa-2026",
+          "referencias": [
+            "https://www.race83.com.br/evento/2342/trun-etapa-pipa-2026"
+          ],
+          "evidencia": "A plataforma oficial identifica Trail Run; os resultados importados têm modalidade LONG TRAIL."
+        },
+        {
+          "grupo": "tipo_divergente",
+          "ranking": null,
+          "url_regulamento": null,
+          "estado": "BA",
+          "data_final": "2026-04-04",
+          "nome_evento": "CORRIDA SANTA",
+          "url_wiclax": "https://www.cronusteccorridas.com.br/resultados/evento/2026/CORRIDA-SANTA-2026/CORRIDA-SANTA-2026.clax",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 15,
+          "url_inscricao": "",
+          "cidade": "Mucugê",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 40447,
+          "proximo_passo": "Revisar tipo_corrida e percurso; separar a prova de montanha do recorte de rua.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "Tipo de prova divergente",
+          "modalidades": [
+            {
+              "linhas": 5,
+              "modalidade": "42K EXPERIENCE",
+              "elegiveis": 5,
+              "id_evento": 40447,
+              "mediana_segundos": 15843.8,
+              "menor_segundos": 15732.1
+            },
+            {
+              "linhas": 1,
+              "modalidade": "42K-PARTICIPATIVO",
+              "elegiveis": 1,
+              "id_evento": 40447,
+              "mediana_segundos": 15871.5,
+              "menor_segundos": 15871.5
+            },
+            {
+              "linhas": 13,
+              "modalidade": "PERCURSO 42k 42K",
+              "elegiveis": 9,
+              "id_evento": 40447,
+              "mediana_segundos": 26871.7,
+              "menor_segundos": 20180.8
+            }
+          ],
+          "url_resultado": "https://www.cronusteccorridas.com.br/resultados/g-live.html?f=evento/2026/CORRIDA-SANTA-2026/CORRIDA-SANTA-2026.clax",
+          "percursos": [],
+          "prioridade": 3,
+          "linhas_brutas": 19,
+          "tag": "2026-corrida-santa",
+          "referencias": [
+            "https://www.races.com.br/corridasanta2026"
+          ],
+          "evidencia": "O regulamento da organização descreve trilhas e prova de montanha, com aproximadamente 42 km."
+        },
+        {
+          "grupo": "tipo_divergente",
+          "ranking": null,
+          "url_regulamento": null,
+          "estado": "SP",
+          "data_final": "2026-04-25",
+          "nome_evento": "28 PRAIAS COSTA NORTE",
+          "url_wiclax": null,
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 225,
+          "url_inscricao": "",
+          "cidade": "Ubatuba",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 41082,
+          "proximo_passo": "Revisar tipo_corrida, cadastrar percursos e distinguir solo de revezamento.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "Tipo de prova divergente",
+          "modalidades": [
+            {
+              "linhas": 225,
+              "modalidade": "42k",
+              "elegiveis": 225,
+              "id_evento": 41082,
+              "mediana_segundos": 26434,
+              "menor_segundos": 15124.0
+            }
+          ],
+          "url_resultado": "https://www.cronoserv.com.br/resultado/28-praias-costa-norte,260055",
+          "percursos": [],
+          "prioridade": 3,
+          "linhas_brutas": 225,
+          "tag": "2026-28-praias-costa-norte",
+          "referencias": [
+            "https://www.ubatuba.sp.gov.br/destaques/eventosesp2026/"
+          ],
+          "evidencia": "A Prefeitura de Ubatuba identifica trail running, 7 a 42 km, solo e revezamento, na edição de 25/04/2026."
+        },
+        {
+          "grupo": "tipo_divergente",
+          "ranking": null,
+          "url_regulamento": "",
+          "estado": "MG",
+          "data_final": "2026-09-12",
+          "nome_evento": "BRT - Boqueirão Trail Run 2026 - Tapira/MG",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 8,
+          "url_inscricao": "",
+          "cidade": "Tapira",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 47613,
+          "proximo_passo": "Revisar tipo_corrida para trail e conferir o percurso de 42 km na modalidade efetiva.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "Tipo de prova divergente",
+          "modalidades": [
+            {
+              "linhas": 8,
+              "modalidade": "42KM",
+              "elegiveis": 8,
+              "id_evento": 47613,
+              "mediana_segundos": 17016.5,
+              "menor_segundos": 15417.0
+            }
+          ],
+          "url_resultado": "https://sportbro.com.br/v3/brt-boqueiro-trail-run-2026",
+          "percursos": [],
+          "prioridade": 3,
+          "linhas_brutas": 8,
+          "tag": "2026-brt-boqueirao-trail-run-2026-tapiramg",
+          "referencias": [
+            "https://sportbro.com.br/v3/brt-boqueiro-trail-run-2026"
+          ],
+          "evidencia": "A página da cronometragem identifica Boqueirão Trail Run 2026, RN Sports, Tapira/MG, em 12/09."
+        },
+        {
+          "grupo": "tipo_divergente",
+          "ranking": null,
+          "url_regulamento": "",
+          "estado": "SP",
+          "data_final": "2026-09-19",
+          "nome_evento": "Rocky Mountain Games 2026 - 2ª Etapa",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 36,
+          "url_inscricao": "",
+          "cidade": "Sao Paulo",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 48354,
+          "proximo_passo": "Revisar tipo_corrida e validar modalidade/terreno na fonte antes de completar o cadastro.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "Tipo de prova divergente",
+          "modalidades": [
+            {
+              "linhas": 36,
+              "modalidade": "TRAIL RUN 42KM",
+              "elegiveis": 36,
+              "id_evento": 48354,
+              "mediana_segundos": 22550.3515,
+              "menor_segundos": 11111.881
+            }
+          ],
+          "url_resultado": "https://www.polesportivo.com.br/resultado.php?ev=1447",
+          "percursos": [],
+          "prioridade": 3,
+          "linhas_brutas": 36,
+          "tag": "2026-rocky-mountain-games-2026-2-etapa",
+          "referencias": [
+            "https://www.polesportivo.com.br/resultado.php?ev=1447"
+          ],
+          "evidencia": "A modalidade importada é explicitamente TRAIL RUN 42KM, enquanto o evento está classificado como rua. A página externa não foi acessível nesta revisão."
+        },
+        {
+          "grupo": "percurso_confirmado",
+          "ranking": null,
+          "url_regulamento": null,
+          "estado": "RJ",
+          "data_final": "2026-05-01",
+          "nome_evento": "5D ULTRAMARATHON 2026",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 15,
+          "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=73928&origem=novo-site&lang=pt-BR",
+          "cidade": "Valença",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 34839,
+          "proximo_passo": "Completar o percurso de 42 km após conferir tipo de terreno e data da modalidade dentro do evento de vários dias.",
+          "url_hotsite": "https://www.ticketsports.com.br/e/5d-ultramarathon-2026-73928",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "42 km confirmados na fonte",
+          "modalidades": [
+            {
+              "linhas": 15,
+              "modalidade": "42KM",
+              "elegiveis": 15,
+              "id_evento": 34839,
+              "mediana_segundos": 17815,
+              "menor_segundos": 14402.0
+            }
+          ],
+          "url_resultado": "https://esportecorrida.com.br/v3/resultado_.php?evt=2454",
+          "percursos": [
+            {
+              "bloqueado": false,
+              "km": 5,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 10,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 21,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 100,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 160,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 230,
+              "tipo": "rua",
+              "unidade": "km"
+            }
+          ],
+          "prioridade": 4,
+          "linhas_brutas": 15,
+          "tag": "2026-5d-ultramarathon-2026",
+          "referencias": [
+            "https://www.5dultramarathon.com/edicoes"
+          ],
+          "evidencia": "A edição oficial de 2026 lista 42 km; o cadastro tem 5, 10, 21, 100, 160 e 230 km, sem 42 km."
+        },
+        {
+          "grupo": "percurso_confirmado",
+          "ranking": null,
+          "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/86772/2b9d2d103287428fb23e8e8ff15925ec639137825817377284.pdf",
+          "estado": "PE",
+          "data_final": "2026-05-17",
+          "nome_evento": "4ª MARATONA INTERNACIONAL FMO",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 76,
+          "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86772&origem=novo-site&lang=en-US",
+          "cidade": "Olinda",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 40980,
+          "proximo_passo": "Cadastrar as distâncias efetivas da edição, conferindo terreno e modalidade individual.",
+          "url_hotsite": "https://www.ticketsports.com.br/e/4%C2%AA+MARATONA+INTERNACIONAL+FMO-86772",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "42 km confirmados na fonte",
+          "modalidades": [
+            {
+              "linhas": 76,
+              "modalidade": "42k",
+              "elegiveis": 76,
+              "id_evento": 40980,
+              "mediana_segundos": 15728.5,
+              "menor_segundos": 8069.0
+            }
+          ],
+          "url_resultado": "https://www.zeniteesportes.com/resultados?evento=534",
+          "percursos": [],
+          "prioridade": 4,
+          "linhas_brutas": 76,
+          "tag": "2026-4-maratona-internacional-fmo",
+          "referencias": [
+            "https://www.zeniteesportes.com/resultados?evento=534"
+          ],
+          "evidencia": "Na cronometragem, a seleção 4ª MARATONA INTERNACIONAL FMO oferece 42KM - GERAL. O cadastro não tem percursos."
+        },
+        {
+          "grupo": "percurso_confirmado",
+          "ranking": null,
+          "url_regulamento": "",
+          "estado": "PA",
+          "data_final": "2026-06-14",
+          "nome_evento": "MARATONA DE SANTO ANTÔNIO",
+          "url_wiclax": "https://timeupmarcacoes.com.br/resultados/eventos/2026/MARATONA_SANTO_ANTONIO/MARATONA_SANTO_ANTONIO.clax",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 16,
+          "url_inscricao": "",
+          "cidade": "Belterra",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 44586,
+          "proximo_passo": "Completar os percursos da edição, conferindo unidade, tipo de terreno e data.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "42 km confirmados na fonte",
+          "modalidades": [
+            {
+              "linhas": 18,
+              "modalidade": "42k 42KM",
+              "elegiveis": 16,
+              "id_evento": 44586,
+              "mediana_segundos": 13484.221,
+              "menor_segundos": 10190.619
+            }
+          ],
+          "url_resultado": "https://timeupmarcacoes.com.br/resultados/g-live.html?f=eventos/2026/MARATONA_SANTO_ANTONIO/MARATONA_SANTO_ANTONIO.clax",
+          "percursos": [],
+          "prioridade": 4,
+          "linhas_brutas": 18,
+          "tag": "2026-maratona-de-santo-antonio",
+          "referencias": [
+            "https://www.timeupmarcacoes.com.br/evento/maratona-de-santo-antonio-2026"
+          ],
+          "evidencia": "A página oficial da edição de Belterra em 14/06/2026 lista 7, 21 e 42 km; o cadastro não tem percursos."
+        },
+        {
+          "grupo": "percurso_confirmado",
+          "ranking": null,
+          "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/84987/53d8fd8060c84d34bf10afd0ee00ec4f639003526581080644.pdf",
+          "estado": "SC",
+          "data_final": "2026-07-05",
+          "nome_evento": "28ª MARATONA INTERNACIONAL DE BLUMENAU  - 2026",
+          "url_wiclax": null,
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 214,
+          "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=84987&origem=novo-site&lang=en-US",
+          "cidade": "Blumenau",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 37868,
+          "proximo_passo": "Completar o percurso de 42 km; manter modalidades especiais separadas no recorte convencional.",
+          "url_hotsite": "https://www.ticketsports.com.br/e/28-maratona-internacional-de-blumenau-2026-84987",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "42 km confirmados na fonte",
+          "modalidades": [
+            {
+              "linhas": 214,
+              "modalidade": "42 KM",
+              "elegiveis": 214,
+              "id_evento": 37868,
+              "mediana_segundos": 13735.5,
+              "menor_segundos": 8950.0
+            }
+          ],
+          "url_resultado": "https://chiprun.com.br/evento/28a-maratona-internacional-de-blumenau-2026/",
+          "percursos": [
+            {
+              "bloqueado": false,
+              "km": 5,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 10,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 21,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 42,
+              "tipo": "rua",
+              "unidade": "km"
+            }
+          ],
+          "prioridade": 4,
+          "linhas_brutas": 214,
+          "tag": "2026-28-maratona-internacional-de-blumenau-2026",
+          "referencias": [
+            "https://chiprun.com.br/evento/28a-maratona-internacional-de-blumenau-2026/"
+          ],
+          "evidencia": "A página da ChipRun de 05/07/2026 lista 42 KM e HAND BIKE separado; o cadastro contém somente 5, 10 e 21 km."
+        },
+        {
+          "grupo": "percurso_confirmado",
+          "ranking": null,
+          "url_regulamento": "",
+          "estado": "GO",
+          "data_final": "2026-08-01",
+          "nome_evento": "MARATONA E MEIA DA CHAPADA DOS VEADEIROS CAIXA",
+          "url_wiclax": "https://brlive.info/brlive/resultados/bsb/bsb.maratonaemeiachapada.01082026.clax",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 33,
+          "url_inscricao": "",
+          "cidade": "Alto Paraíso de Goiás",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 45804,
+          "proximo_passo": "Completar as distâncias; confirmar terreno e data da edição, pois o cabeçalho da plataforma diverge do texto do evento.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "42 km confirmados na fonte",
+          "modalidades": [
+            {
+              "linhas": 42,
+              "modalidade": "42k",
+              "elegiveis": 33,
+              "id_evento": 45804,
+              "mediana_segundos": 16689.96,
+              "menor_segundos": 11476.54
+            },
+            {
+              "linhas": 1,
+              "modalidade": "CADEIRANTE 42KM",
+              "elegiveis": 0,
+              "id_evento": 45804,
+              "mediana_segundos": null,
+              "menor_segundos": null
+            }
+          ],
+          "url_resultado": "https://brlive.info/brlive/g-live.html?f=resultados/bsb/bsb.maratonaemeiachapada.01082026.clax",
+          "percursos": [],
+          "prioridade": 4,
+          "linhas_brutas": 43,
+          "tag": "2026-maratona-e-meia-da-chapada-dos-veadeiros-caixa",
+          "referencias": [
+            "https://centraldacorrida.com.br/evento/maratona-e-meia-da-chapada-dos-veadeiros-caixa"
+          ],
+          "evidencia": "A plataforma do organizador anuncia 42 km MARATONA SOLO e 21 km solo/dupla. O cadastro não tem percursos."
+        },
+        {
+          "grupo": "percurso_confirmado",
+          "ranking": null,
+          "url_regulamento": "",
+          "estado": "SP",
+          "data_final": "2026-08-23",
+          "nome_evento": "TAUBATÉ MARATHON",
+          "url_wiclax": null,
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 264,
+          "url_inscricao": "",
+          "cidade": "TAUBATÉ",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 46817,
+          "proximo_passo": "Completar os percursos e conferir homologação/atualização dos resultados; confirmar terreno sem usar o nome como critério único.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "42 km confirmados na fonte",
+          "modalidades": [
+            {
+              "linhas": 264,
+              "modalidade": "42KM",
+              "elegiveis": 264,
+              "id_evento": 46817,
+              "mediana_segundos": 14794.5,
+              "menor_segundos": 10319.0
+            }
+          ],
+          "url_resultado": "https://www.cronoserv.com.br/evento/3680?tab=result",
+          "percursos": [],
+          "prioridade": 4,
+          "linhas_brutas": 264,
+          "tag": "2026-taubate-marathon",
+          "referencias": [
+            "https://www.cronoserv.com.br/evento/3680?tab=result"
+          ],
+          "evidencia": "A Cronoserv identifica TAUBATÉ MARATHON e provas 5K, 10K, 21K e 42K. A fonte informa resultado provisório; o cadastro não tem percursos."
+        },
+        {
+          "grupo": "vinculo_a_revisar",
+          "ranking": null,
+          "url_regulamento": null,
+          "estado": "MT",
+          "data_final": "2026-05-17",
+          "nome_evento": "MARATONA SENTA A PÚA",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 37,
+          "url_inscricao": "https://ultramacho.com.br/",
+          "cidade": "Chapada dos Guimarães",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 38070,
+          "proximo_passo": "Conferir vínculo com dia/modalidade, resultado individual e desafio; revisar tipo de prova e percurso antes de acrescentar 42 km.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "Vínculo ou modalidade a revisar",
+          "modalidades": [
+            {
+              "linhas": 37,
+              "modalidade": "42k",
+              "elegiveis": 37,
+              "id_evento": 38070,
+              "mediana_segundos": 18967,
+              "menor_segundos": 15767.0
+            }
+          ],
+          "url_resultado": "https://www.morro-mt.com.br/resultados/circuito-ultramacho-senta-a-pua-domingo-626",
+          "percursos": [
+            {
+              "bloqueado": false,
+              "km": 7,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 21,
+              "tipo": "rua",
+              "unidade": "km"
+            }
+          ],
+          "prioridade": 5,
+          "linhas_brutas": 37,
+          "tag": "2026-maratona-senta-a-pua",
+          "referencias": [
+            "https://www.morro-mt.com.br/resultados/circuito-ultramacho-senta-a-pua-domingo-626"
+          ],
+          "evidencia": "O link cadastrado abre a etapa de domingo, com Trail Run 7/21 km e desafio 42+21 km; os registros importados estão marcados 42 km."
+        },
+        {
+          "grupo": "vinculo_a_revisar",
+          "ranking": null,
+          "url_regulamento": "",
+          "estado": "SP",
+          "data_final": "2026-06-28",
+          "nome_evento": "GUARULHOS ULTRAMARATHON",
+          "url_wiclax": "https://ravelisports.com.br/resultados/eventos/2026/ULTRA-GUARULHOS/CORRIDA.clax",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 21,
+          "url_inscricao": "",
+          "cidade": "GUARULHOS",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 44199,
+          "proximo_passo": "Confirmar regulamento e modalidade, terreno e vínculo do resultado; depois completar o cadastro.",
+          "url_hotsite": "",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "Vínculo ou modalidade a revisar",
+          "modalidades": [
+            {
+              "linhas": 27,
+              "modalidade": "42K",
+              "elegiveis": 21,
+              "id_evento": 44199,
+              "mediana_segundos": 23284.439,
+              "menor_segundos": 16670.0
+            }
+          ],
+          "url_resultado": "https://ravelisports.com.br/resultados/g-live.html?f=eventos/2026/ULTRA-GUARULHOS/CORRIDA.clax",
+          "percursos": [],
+          "prioridade": 5,
+          "linhas_brutas": 27,
+          "tag": "2026-guarulhos-ultramarathon",
+          "referencias": [
+            "https://ravelisports.com.br/resultados/g-live.html?f=eventos/2026/ULTRA-GUARULHOS/CORRIDA.clax"
+          ],
+          "evidencia": "O congelamento contém modalidade 42K, mas a verificação desta etapa não confirmou o terreno nem a equivalência individual na fonte externa."
+        },
+        {
+          "grupo": "vinculo_a_revisar",
+          "ranking": null,
+          "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/73377/97474c00f2a845cb91edf215a85e6fd1639039854459364413.pdf",
+          "estado": "RJ",
+          "data_final": "2026-09-05",
+          "nome_evento": "13º ULTRADESAFIO SANA - MACAÉRJ 2026.",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "elegiveis": 30,
+          "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=73377&origem=novo-site&lang=en-US",
+          "cidade": "Macaé",
+          "congelamento_referencia": 174,
+          "verificado_em": "2026-10-06",
+          "id_evento": 34834,
+          "proximo_passo": "Conferir a modalidade de 42 km no regulamento e resultado original antes de corrigir cadastro ou tipo.",
+          "url_hotsite": "https://www.ticketsports.com.br/e/13-ultradesafio-sana-macaerj-2026--73377",
+          "coletado_em": "2026-10-06T19:27:16.230229-03:00",
+          "situacao": "Vínculo ou modalidade a revisar",
+          "modalidades": [
+            {
+              "linhas": 30,
+              "modalidade": "42KM",
+              "elegiveis": 30,
+              "id_evento": 34834,
+              "mediana_segundos": 19613.5,
+              "menor_segundos": 13535.0
+            }
+          ],
+          "url_resultado": "https://esportecorrida.com.br/v3/resultado_.php?evt=2759",
+          "percursos": [
+            {
+              "bloqueado": false,
+              "km": 10,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 80,
+              "tipo": "rua",
+              "unidade": "km"
+            }
+          ],
+          "prioridade": 5,
+          "linhas_brutas": 30,
+          "tag": "2026-13-ultradesafio-sana-macaerj-2026",
+          "referencias": [
+            "https://esportecorrida.com.br/v3/resultado_.php?evt=2759",
+            "https://www.ticketsports.com.br/e/13-ultradesafio-sana-macaerj-2026--73377"
+          ],
+          "evidencia": "Há 42KM na importação e somente 10/80 km no cadastro. Terreno, dia e equivalência individual ainda precisam de confirmação na fonte."
+        }
+      ],
+      "resumo": [
+        {
+          "eventos": 1,
+          "grupo": "importacao_divergente",
+          "situacao": "Importação divergente",
+          "linhas_por_regra": 268
+        },
+        {
+          "eventos": 6,
+          "grupo": "percurso_confirmado",
+          "situacao": "42 km confirmados na fonte",
+          "linhas_por_regra": 618
+        },
+        {
+          "eventos": 6,
+          "grupo": "tipo_divergente",
+          "situacao": "Tipo de prova divergente",
+          "linhas_por_regra": 482
+        },
+        {
+          "eventos": 3,
+          "grupo": "vinculo_a_revisar",
+          "situacao": "Vínculo ou modalidade a revisar",
+          "linhas_por_regra": 88
+        }
+      ]
+    },
+    "porte": {
+      "revisao": 2,
+      "ano": 2026,
+      "celula": 368,
+      "execucao": 222,
+      "mediana": "453.0000000000000000",
+      "coletado_em": "2026-10-06",
+      "fim": "2026-09-30",
+      "calendario": 7697,
+      "concentracao": "47.9635580301870048",
+      "provas": 4716,
+      "media": "948.1187446988973707",
+      "maiores_participacoes": 2144608,
+      "inicio": "2026-01-01",
+      "participacoes": 4471328,
+      "maiores_provas": 472
+    },
+    "ultima_data_evento": "2026-09-30",
+    "coletado_em": "2026-10-06T23:09:57.88483-03:00",
+    "totais_fontes": {
+      "eventos": "Notebook congelamento224: cadastro BR01/01–30/09; coleta operacional e elegíveis BI",
+      "resultados": "BI2026 adaptada em estudo; congelamento216: BR,status0/homologado/concluinte01/01–30/09, sem perda de localidades"
+    },
+    "versao": 3,
+    "inscricoes_geral": {
+      "revisao": 1,
+      "celula": 367,
+      "execucao": 177,
+      "mediana": "95.0000000000000000",
+      "coletado_em": "2026-10-05",
+      "fim": "2026-09-30",
+      "com_opcoes": 1469,
+      "analisadas": 393,
+      "calendario": 7696,
+      "media": "106.6097709923664122",
+      "cobertura": "5.1065488565488565",
+      "sem_geral_identificado": 1076,
+      "inicio": "2026-01-01",
+      "sem_opcoes": 6227
+    },
+    "contrato_versao": 17,
+    "maratonas": {
+      "revisao": 2,
+      "eventos": 72,
+      "corte": "2026-09-30",
+      "celula": 353,
+      "floripa": {
+        "revisao": 1,
+        "status": "restaurado",
+        "incorporado_em": "2026-10-06",
+        "celula": 402,
+        "referencia": "https://resultados.racetag.com.br/mycrono/data/14221WX/results.json",
+        "execucao": 210,
+        "captura": "2026-10-05",
+        "nota": "Fonte RaceTag 42K GERAL/ELITE; corrigida no estudo. Base operacional do portal segue para recoleta.",
+        "concluintes": 3592
+      },
+      "execucao": 218,
+      "top10_concluintes": 49744,
+      "coletado_em": "2026-10-06",
+      "elegiveis_podio": 10,
+      "bloqueadas": [],
+      "concluintes": 66481
+    },
+    "mapeamento": {
+      "revisao": 1,
+      "corte": "2026-09-30",
+      "destaque_categoria": "Provas mapeadas",
+      "celula": 363,
+      "execucao": 173,
+      "sobreposicao_azul_vermelho": 493,
+      "coletado_em": "2026-10-05",
+      "formula_stats_percentual": "86.0816542948038176"
+    },
+    "geracoes_regra": "Nascimento em31/12 prioritário; faixa finita14+ com atéduas gerações pela idade central inteira, menor central no empate. Aproximações separadas; desconhecidos permanecem no denominador.",
+    "perfil": {
+      "revisao": 1,
+      "corte": "2026-09-30",
+      "celula": 361,
+      "contas": 56452,
+      "execucao": 171,
+      "regra_peso": "Peso: intervalo de20 a300 kg, inclusivo, confirmado pelo responsável em03/10/2026. Um valor de740 kg fica fora; alternativas/exclusões preservadas no congelamento104. Sem nova coleta ou alteração cadastral.",
+      "coletado_em": "2026-10-05"
+    }
+  },
+  "public_columns": [
+    "payload"
+  ],
+  "run_columns": [
+    "id",
+    "cell_id",
+    "cell_version",
+    "sql_text",
+    "sql_sha256",
+    "executed_by",
+    "started_at",
+    "finished_at",
+    "duration_ms",
+    "status",
+    "result",
+    "row_count",
+    "truncated",
+    "error_message",
+    "frozen",
+    "frozen_at",
+    "frozen_by",
+    "title",
+    "note"
+  ]
+}

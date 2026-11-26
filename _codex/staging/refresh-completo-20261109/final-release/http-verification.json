@@ -1,0 +1,73 @@
+{
+  "teams": [
+    {
+      "method": "GET",
+      "path": "/teams/",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/teams/",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/teams/meu-team/",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/teams/meu-team/",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/teams/entrar/",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/teams/entrar/",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/teams/convidar/",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/teams/convidar/",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/profile/teams.cfm",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/profile/teams.cfm",
+      "status": 404
+    }
+  ],
+  "public": {
+    "status": 200,
+    "bytes": 2958,
+    "six_indicators": 6,
+    "paired": 2.2,
+    "calendar": 38.7,
+    "volume": 29.3
+  },
+  "press_principal": {
+    "status": 200,
+    "contract": 18,
+    "paired_source": 329,
+    "series": 116
+  },
+  "press_2025_status": 200,
+  "release": 200,
+  "landing": 200,
+  "professional_anonymous": 401,
+  "internal_pdf_anonymous": 401
+}

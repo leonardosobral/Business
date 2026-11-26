@@ -1,0 +1,1577 @@
+{
+  "batch": "verified-vip-20261124",
+  "approved": [
+    {
+      "profile_id": 2732,
+      "user_id": 6014,
+      "id": "or_k1LE7bdcRHk8l9DX",
+      "code": "QXE3TM5T2X",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T20:05:11Z",
+      "provider_order": {
+        "id": "or_k1LE7bdcRHk8l9DX",
+        "code": "QXE3TM5T2X",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T20:05:12Z",
+        "created_at": "2025-12-31T20:03:30Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_ev8JLnzCrWiGB1D6",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T20:05:11Z",
+            "updated_at": "2025-12-31T20:05:12Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:26.670131+00:00"
+    },
+    {
+      "profile_id": 9438,
+      "user_id": 6603,
+      "id": "or_wjrYZv6fvrT5EYWb",
+      "code": "GZNMCY2IO3",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T17:12:04Z",
+      "provider_order": {
+        "id": "or_wjrYZv6fvrT5EYWb",
+        "code": "GZNMCY2IO3",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T17:12:04Z",
+        "created_at": "2025-12-31T17:11:17Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_rj98obhWZteywYO5",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T17:12:04Z",
+            "updated_at": "2025-12-31T17:12:04Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:26.760171+00:00"
+    },
+    {
+      "profile_id": 11469,
+      "user_id": 166,
+      "id": "or_bKZQYZgHmF9baEkM",
+      "code": "9OQYAM3HKE",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T20:01:57Z",
+      "provider_order": {
+        "id": "or_bKZQYZgHmF9baEkM",
+        "code": "9OQYAM3HKE",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T20:01:58Z",
+        "created_at": "2025-12-31T20:00:53Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_PKNEA5Bsbc7DeZ7O",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T20:01:57Z",
+            "updated_at": "2025-12-31T20:01:58Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:26.666124+00:00"
+    },
+    {
+      "profile_id": 12322,
+      "user_id": 9967,
+      "id": "or_oaqdqgcOGiqGREKl",
+      "code": "3QOHEOSXG9",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T12:21:31Z",
+      "provider_order": {
+        "id": "or_oaqdqgcOGiqGREKl",
+        "code": "3QOHEOSXG9",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T12:21:31Z",
+        "created_at": "2025-12-31T12:20:08Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_jwPol2ksOhP0Ge2M",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T12:21:31Z",
+            "updated_at": "2025-12-31T12:21:31Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:26.975661+00:00"
+    },
+    {
+      "profile_id": 13813,
+      "user_id": 12719,
+      "id": "or_kQEY5xKhVtYWgyV2",
+      "code": "W8GZFO6C2Y",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T17:54:27Z",
+      "provider_order": {
+        "id": "or_kQEY5xKhVtYWgyV2",
+        "code": "W8GZFO6C2Y",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T17:54:27Z",
+        "created_at": "2025-12-31T17:53:25Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_36a2K04txC18yX0D",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T17:54:27Z",
+            "updated_at": "2025-12-31T17:54:27Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:26.916610+00:00"
+    },
+    {
+      "profile_id": 15572,
+      "user_id": 15696,
+      "id": "or_o6G08Ykcnie7NKqy",
+      "code": "0552SGAEG0",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T12:50:58Z",
+      "provider_order": {
+        "id": "or_o6G08Ykcnie7NKqy",
+        "code": "0552SGAEG0",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T12:50:59Z",
+        "created_at": "2025-12-31T12:49:55Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_K29MmWECNES5DjXN",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T12:50:58Z",
+            "updated_at": "2025-12-31T12:50:59Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:27.028070+00:00"
+    },
+    {
+      "profile_id": 15644,
+      "user_id": 15979,
+      "id": "or_4naePlfygc9kemL1",
+      "code": "DXJWCKVIN8",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T03:31:04Z",
+      "provider_order": {
+        "id": "or_4naePlfygc9kemL1",
+        "code": "DXJWCKVIN8",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T03:31:04Z",
+        "created_at": "2025-12-31T03:31:02Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_xgROzDRCB6t1Eeok",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T03:31:04Z",
+            "updated_at": "2025-12-31T03:31:04Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:27.149180+00:00"
+    },
+    {
+      "profile_id": 16236,
+      "user_id": 17241,
+      "id": "or_kqo1VnrIEMfvVPAa",
+      "code": "L0M2A8PT17",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T22:03:12Z",
+      "provider_order": {
+        "id": "or_kqo1VnrIEMfvVPAa",
+        "code": "L0M2A8PT17",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T22:03:12Z",
+        "created_at": "2025-12-31T22:01:30Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_aVXv1oAksoiNGO5D",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T22:03:12Z",
+            "updated_at": "2025-12-31T22:03:12Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:27.239987+00:00"
+    },
+    {
+      "profile_id": 16431,
+      "user_id": 17598,
+      "id": "or_PWyez7LFaFANdLJ8",
+      "code": "P8N7U1UW3O",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T10:31:19Z",
+      "provider_order": {
+        "id": "or_PWyez7LFaFANdLJ8",
+        "code": "P8N7U1UW3O",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T10:31:19Z",
+        "created_at": "2025-12-31T10:28:48Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_2OwxkYEIpIbkKDlP",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T10:31:19Z",
+            "updated_at": "2025-12-31T10:31:19Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:27.248140+00:00"
+    },
+    {
+      "profile_id": 17465,
+      "user_id": 19732,
+      "id": "or_O4WRjb1faIG3RJn3",
+      "code": "7Z8ZBGXA62",
+      "product": "todosantodiaupg",
+      "amount": 3000,
+      "paid_at": "2025-12-31T10:09:52Z",
+      "provider_order": {
+        "id": "or_O4WRjb1faIG3RJn3",
+        "code": "7Z8ZBGXA62",
+        "amount": 3000,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T10:09:53Z",
+        "created_at": "2025-12-31T10:08:28Z",
+        "items": [
+          {
+            "code": "todosantodiaupg",
+            "amount": 3000,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_APwRYMnAsGi5j4Gm",
+            "currency": "BRL",
+            "amount": 3000,
+            "status": "paid",
+            "paid_amount": 3000,
+            "paid_at": "2025-12-31T10:09:52Z",
+            "updated_at": "2025-12-31T10:09:53Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:27.356484+00:00"
+    },
+    {
+      "profile_id": 17698,
+      "user_id": 20084,
+      "id": "or_2Gxwv5c7bU8pe8rj",
+      "code": "EN2VIL4AZP",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T19:58:55Z",
+      "provider_order": {
+        "id": "or_2Gxwv5c7bU8pe8rj",
+        "code": "EN2VIL4AZP",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T19:58:56Z",
+        "created_at": "2025-12-31T19:57:41Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_BJpZWnOCRvf71aoE",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T19:58:55Z",
+            "updated_at": "2025-12-31T19:58:55Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:27.678057+00:00"
+    },
+    {
+      "profile_id": 17888,
+      "user_id": 20382,
+      "id": "or_YGJZXqrFrIg25EAj",
+      "code": "WO29SXAQG5",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T12:10:00Z",
+      "provider_order": {
+        "id": "or_YGJZXqrFrIg25EAj",
+        "code": "WO29SXAQG5",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T12:10:00Z",
+        "created_at": "2025-12-31T12:09:58Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_m95rZWzCOACM8wep",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T12:10:00Z",
+            "updated_at": "2025-12-31T12:10:00Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:27.497328+00:00"
+    },
+    {
+      "profile_id": 17923,
+      "user_id": 20431,
+      "id": "or_rYR2NGQivt75PBJE",
+      "code": "137RHZNTO8",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T14:34:32Z",
+      "provider_order": {
+        "id": "or_rYR2NGQivt75PBJE",
+        "code": "137RHZNTO8",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T14:34:33Z",
+        "created_at": "2025-12-31T14:33:37Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_vn2R7kAuNSn9xqw6",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T14:34:32Z",
+            "updated_at": "2025-12-31T14:34:33Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:27.594072+00:00"
+    },
+    {
+      "profile_id": 18537,
+      "user_id": 21596,
+      "id": "or_QMvlEQ2rh5i5y0Xz",
+      "code": "JX5EUW2CD5",
+      "product": "todosantodiaupg",
+      "amount": 3000,
+      "paid_at": "2025-12-31T19:25:06Z",
+      "provider_order": {
+        "id": "or_QMvlEQ2rh5i5y0Xz",
+        "code": "JX5EUW2CD5",
+        "amount": 3000,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T19:25:06Z",
+        "created_at": "2025-12-31T19:25:03Z",
+        "items": [
+          {
+            "code": "todosantodiaupg",
+            "amount": 3000,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_Mb2WwnHJxuLKZe8m",
+            "currency": "BRL",
+            "amount": 3000,
+            "status": "paid",
+            "paid_amount": 3000,
+            "paid_at": "2025-12-31T19:25:06Z",
+            "updated_at": "2025-12-31T19:25:06Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:27.738071+00:00"
+    },
+    {
+      "profile_id": 18542,
+      "user_id": 21604,
+      "id": "or_l8vXLkeTaFYVQmg1",
+      "code": "XYW7IJKTRQ",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T19:17:58Z",
+      "provider_order": {
+        "id": "or_l8vXLkeTaFYVQmg1",
+        "code": "XYW7IJKTRQ",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T19:17:58Z",
+        "created_at": "2025-12-31T19:17:55Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_1lgA9ZqSbKiV8XJk",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T19:17:58Z",
+            "updated_at": "2025-12-31T19:17:58Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:27.839446+00:00"
+    },
+    {
+      "profile_id": 18744,
+      "user_id": 22013,
+      "id": "or_7X4QNZOfKNCYQAyM",
+      "code": "7V16IVVUMP",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T16:17:41Z",
+      "provider_order": {
+        "id": "or_7X4QNZOfKNCYQAyM",
+        "code": "7V16IVVUMP",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T16:26:20Z",
+        "created_at": "2025-12-31T16:15:58Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_XAVjb3pHdcKnBvl6",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T16:17:41Z",
+            "updated_at": "2025-12-31T16:26:20Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:27.893028+00:00"
+    },
+    {
+      "profile_id": 18803,
+      "user_id": 22110,
+      "id": "or_aXzBlRUOVtRW63eY",
+      "code": "EYQ8U8MH8X",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T18:35:01Z",
+      "provider_order": {
+        "id": "or_aXzBlRUOVtRW63eY",
+        "code": "EYQ8U8MH8X",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T18:35:02Z",
+        "created_at": "2025-12-31T18:29:53Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_p7XwLR6tPxs3nAGQ",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T18:35:01Z",
+            "updated_at": "2025-12-31T18:35:02Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:28.018943+00:00"
+    },
+    {
+      "profile_id": 18856,
+      "user_id": 22193,
+      "id": "or_O9ZpqaaidiaqXDbG",
+      "code": "RX02S55TX6",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T19:44:05Z",
+      "provider_order": {
+        "id": "or_O9ZpqaaidiaqXDbG",
+        "code": "RX02S55TX6",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T19:44:05Z",
+        "created_at": "2025-12-31T19:44:03Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_pWkP7yTrafp02MB5",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T19:44:05Z",
+            "updated_at": "2025-12-31T19:44:05Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:28.191128+00:00"
+    },
+    {
+      "profile_id": 18938,
+      "user_id": 22325,
+      "id": "or_rGgl7BVCKCY7bK10",
+      "code": "57D2ILI479",
+      "product": "todosantodiaupg",
+      "amount": 3000,
+      "paid_at": "2025-12-31T17:05:27Z",
+      "provider_order": {
+        "id": "or_rGgl7BVCKCY7bK10",
+        "code": "57D2ILI479",
+        "amount": 3000,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T17:05:27Z",
+        "created_at": "2025-12-31T17:04:19Z",
+        "items": [
+          {
+            "code": "todosantodiaupg",
+            "amount": 3000,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_Ypkr5N1tbtzXNwAP",
+            "currency": "BRL",
+            "amount": 3000,
+            "status": "paid",
+            "paid_amount": 3000,
+            "paid_at": "2025-12-31T17:05:27Z",
+            "updated_at": "2025-12-31T17:05:27Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:28.707300+00:00"
+    },
+    {
+      "profile_id": 18996,
+      "user_id": 22441,
+      "id": "or_kW0OmzeTWZf35yX4",
+      "code": "50O2TKYCKG",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T08:57:13Z",
+      "provider_order": {
+        "id": "or_kW0OmzeTWZf35yX4",
+        "code": "50O2TKYCKG",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T08:57:13Z",
+        "created_at": "2025-12-31T08:57:10Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_NQgKb49tMQuBWEGd",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T08:57:13Z",
+            "updated_at": "2025-12-31T08:57:13Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:28.276428+00:00"
+    },
+    {
+      "profile_id": 19144,
+      "user_id": 22775,
+      "id": "or_L0gk7RBtZ6HobY9B",
+      "code": "OV24F55A1O",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T09:24:38Z",
+      "provider_order": {
+        "id": "or_L0gk7RBtZ6HobY9B",
+        "code": "OV24F55A1O",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T09:24:38Z",
+        "created_at": "2025-12-31T09:23:28Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_GabVN58iLC8ePpKW",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T09:24:38Z",
+            "updated_at": "2025-12-31T09:24:38Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:28.422326+00:00"
+    },
+    {
+      "profile_id": 19279,
+      "user_id": 23166,
+      "id": "or_1JxpDbMptwuk8PnB",
+      "code": "DY12H50IVQ",
+      "product": "todosantodiaupg",
+      "amount": 3000,
+      "paid_at": "2025-12-31T15:19:53Z",
+      "provider_order": {
+        "id": "or_1JxpDbMptwuk8PnB",
+        "code": "DY12H50IVQ",
+        "amount": 3000,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T15:23:12Z",
+        "created_at": "2025-12-31T15:16:42Z",
+        "items": [
+          {
+            "code": "todosantodiaupg",
+            "amount": 3000,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_ke2Mg08tJsL5gXJa",
+            "currency": "BRL",
+            "amount": 3000,
+            "status": "paid",
+            "paid_amount": 3000,
+            "paid_at": "2025-12-31T15:19:53Z",
+            "updated_at": "2025-12-31T15:23:12Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:28.470494+00:00"
+    },
+    {
+      "profile_id": 19288,
+      "user_id": 23202,
+      "id": "or_MEve6QbNIwHznOGB",
+      "code": "9WVOIQ4SJ8",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T09:38:38Z",
+      "provider_order": {
+        "id": "or_MEve6QbNIwHznOGB",
+        "code": "9WVOIQ4SJ8",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T09:38:38Z",
+        "created_at": "2025-12-31T09:38:36Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_G16bjACPvHvvEQmd",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T09:38:38Z",
+            "updated_at": "2025-12-31T09:38:38Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:28.639969+00:00"
+    },
+    {
+      "profile_id": 19432,
+      "user_id": 23893,
+      "id": "or_Z9gW6v9cJIzJXepd",
+      "code": "94R3H4XC3X",
+      "product": "todosantodiavip",
+      "amount": 6990,
+      "paid_at": "2025-12-31T17:30:23Z",
+      "provider_order": {
+        "id": "or_Z9gW6v9cJIzJXepd",
+        "code": "94R3H4XC3X",
+        "amount": 6990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T17:30:23Z",
+        "created_at": "2025-12-31T17:30:21Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 6990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_OwRZKMzH7uvO5MY9",
+            "currency": "BRL",
+            "amount": 6990,
+            "status": "paid",
+            "paid_amount": 6990,
+            "paid_at": "2025-12-31T17:30:23Z",
+            "updated_at": "2025-12-31T17:30:23Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:28.674815+00:00"
+    },
+    {
+      "profile_id": 21688,
+      "user_id": 33932,
+      "id": "or_B1WGN0RIBTPdVw4o",
+      "code": "W8V8A4YTMQ",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T20:13:13Z",
+      "provider_order": {
+        "id": "or_B1WGN0RIBTPdVw4o",
+        "code": "W8V8A4YTMQ",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T20:13:13Z",
+        "created_at": "2025-12-31T20:11:54Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_yrGVP5xJC1fedbj7",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T20:13:13Z",
+            "updated_at": "2025-12-31T20:13:13Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:28.855440+00:00"
+    },
+    {
+      "profile_id": 28882,
+      "user_id": 49983,
+      "id": "or_9noaMEkhj4c1Maql",
+      "code": "PGK8AQJU9R",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T20:56:30Z",
+      "provider_order": {
+        "id": "or_9noaMEkhj4c1Maql",
+        "code": "PGK8AQJU9R",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T20:56:30Z",
+        "created_at": "2025-12-31T20:55:18Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_XxqGMZ1iDZc7k3RN",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T20:56:30Z",
+            "updated_at": "2025-12-31T20:56:30Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:28.901116+00:00"
+    },
+    {
+      "profile_id": 53025,
+      "user_id": 105037,
+      "id": "or_JWzRP3kCjpCxYXv8",
+      "code": "6QROIOB13Z",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T20:28:39Z",
+      "provider_order": {
+        "id": "or_JWzRP3kCjpCxYXv8",
+        "code": "6QROIOB13Z",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T20:28:39Z",
+        "created_at": "2025-12-31T20:26:17Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_ZGvYEPh91cGVO0Qo",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T20:28:39Z",
+            "updated_at": "2025-12-31T20:28:39Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:28.931945+00:00"
+    },
+    {
+      "profile_id": 53134,
+      "user_id": 105299,
+      "id": "or_PZpMR9bcXIJ5k3QB",
+      "code": "DWZQA4YCR0",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T17:37:52Z",
+      "provider_order": {
+        "id": "or_PZpMR9bcXIJ5k3QB",
+        "code": "DWZQA4YCR0",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T17:37:52Z",
+        "created_at": "2025-12-31T17:37:49Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_2M96newqhXfZYm7y",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T17:37:52Z",
+            "updated_at": "2025-12-31T17:37:52Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:29.126156+00:00"
+    },
+    {
+      "profile_id": 53618,
+      "user_id": 106769,
+      "id": "or_dxw7eWkhbHeyaRbW",
+      "code": "Q40KBZWF08",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T23:33:00Z",
+      "provider_order": {
+        "id": "or_dxw7eWkhbHeyaRbW",
+        "code": "Q40KBZWF08",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T23:33:01Z",
+        "created_at": "2025-12-31T23:31:29Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_OKq1Zn0IG2SJ1m5J",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T23:33:00Z",
+            "updated_at": "2025-12-31T23:33:01Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:29.153154+00:00"
+    },
+    {
+      "profile_id": 53754,
+      "user_id": 107255,
+      "id": "or_a6O3eE6sP5i5om8Y",
+      "code": "OYO9BNHJLR",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T09:56:08Z",
+      "provider_order": {
+        "id": "or_a6O3eE6sP5i5om8Y",
+        "code": "OYO9BNHJLR",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T09:56:08Z",
+        "created_at": "2025-12-31T09:55:24Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_QRm2yR2hoHmRynaX",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T09:56:08Z",
+            "updated_at": "2025-12-31T09:56:08Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:29.194168+00:00"
+    },
+    {
+      "profile_id": 53789,
+      "user_id": 107350,
+      "id": "or_zBb2Rk0cvcbrq84m",
+      "code": "K5EEULOTE6",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T15:35:13Z",
+      "provider_order": {
+        "id": "or_zBb2Rk0cvcbrq84m",
+        "code": "K5EEULOTE6",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T15:43:32Z",
+        "created_at": "2025-12-31T15:33:41Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_qkAQqJ5hR2SeY6Ww",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T15:35:13Z",
+            "updated_at": "2025-12-31T15:43:32Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:29.416038+00:00"
+    },
+    {
+      "profile_id": 53794,
+      "user_id": 107370,
+      "id": "or_w0qayBrUwOUMyk9m",
+      "code": "5LYGI9MB0X",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T20:31:28Z",
+      "provider_order": {
+        "id": "or_w0qayBrUwOUMyk9m",
+        "code": "5LYGI9MB0X",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T20:31:28Z",
+        "created_at": "2025-12-31T20:30:16Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_aN1VqpbCRfD9lEY8",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T20:31:28Z",
+            "updated_at": "2025-12-31T20:31:28Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:29.367452+00:00"
+    },
+    {
+      "profile_id": 53798,
+      "user_id": 107382,
+      "id": "or_1QLvPpSA0Fo2vgpo",
+      "code": "6O01S05IJ4",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T17:04:55Z",
+      "provider_order": {
+        "id": "or_1QLvPpSA0Fo2vgpo",
+        "code": "6O01S05IJ4",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T17:04:55Z",
+        "created_at": "2025-12-31T17:04:51Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_4Z0PNNS8XcNgPbAr",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T17:04:55Z",
+            "updated_at": "2025-12-31T17:04:55Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:29.488586+00:00"
+    },
+    {
+      "profile_id": 53812,
+      "user_id": 107420,
+      "id": "or_ywzBVMMF8sLgjpKJ",
+      "code": "9OO8SOOUNM",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T18:51:22Z",
+      "provider_order": {
+        "id": "or_ywzBVMMF8sLgjpKJ",
+        "code": "9OO8SOOUNM",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T18:52:22Z",
+        "created_at": "2025-12-31T18:50:26Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_VapZqwKH7QcMq8z4",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T18:51:22Z",
+            "updated_at": "2025-12-31T18:52:22Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:29.641526+00:00"
+    },
+    {
+      "profile_id": 53816,
+      "user_id": 107428,
+      "id": "or_mlWgadYtXGtGW2x9",
+      "code": "1NQXCJ3SGD",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T19:24:00Z",
+      "provider_order": {
+        "id": "or_mlWgadYtXGtGW2x9",
+        "code": "1NQXCJ3SGD",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T19:24:00Z",
+        "created_at": "2025-12-31T19:23:57Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_4Z2OaYqI0bSlao36",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T19:24:00Z",
+            "updated_at": "2025-12-31T19:24:00Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:29.637052+00:00"
+    },
+    {
+      "profile_id": 53820,
+      "user_id": 107436,
+      "id": "or_gzLn0X5HoofyAnAv",
+      "code": "WV25C2IE8W",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T19:37:35Z",
+      "provider_order": {
+        "id": "or_gzLn0X5HoofyAnAv",
+        "code": "WV25C2IE8W",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T19:37:35Z",
+        "created_at": "2025-12-31T19:37:27Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_ENXabPTZqTX4W9wk",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T19:37:35Z",
+            "updated_at": "2025-12-31T19:37:35Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:29.815294+00:00"
+    },
+    {
+      "profile_id": 53823,
+      "user_id": 107445,
+      "id": "or_AOdgMXQfZu6zPYn6",
+      "code": "LDY0CEYF54",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T19:59:07Z",
+      "provider_order": {
+        "id": "or_AOdgMXQfZu6zPYn6",
+        "code": "LDY0CEYF54",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T19:59:08Z",
+        "created_at": "2025-12-31T19:57:31Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_4q5XvPMibzsyxN8o",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T19:59:07Z",
+            "updated_at": "2025-12-31T19:59:08Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:29.865582+00:00"
+    },
+    {
+      "profile_id": 53839,
+      "user_id": 107489,
+      "id": "or_pbdjX2qC2ds6BM6o",
+      "code": "9R93WCGCLR",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T21:38:14Z",
+      "provider_order": {
+        "id": "or_pbdjX2qC2ds6BM6o",
+        "code": "9R93WCGCLR",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T21:38:15Z",
+        "created_at": "2025-12-31T21:37:20Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_lmBLl1ZFrCa9pVOg",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T21:38:14Z",
+            "updated_at": "2025-12-31T21:38:15Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:29.887755+00:00"
+    },
+    {
+      "profile_id": 53848,
+      "user_id": 107516,
+      "id": "or_mqdWeaPirrfzXbrJ",
+      "code": "DNXRU8H08J",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T22:40:20Z",
+      "provider_order": {
+        "id": "or_mqdWeaPirrfzXbrJ",
+        "code": "DNXRU8H08J",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T22:40:21Z",
+        "created_at": "2025-12-31T22:38:45Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_RYvOYl1IoaF86Zoq",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T22:40:20Z",
+            "updated_at": "2025-12-31T22:40:21Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:30.065661+00:00"
+    },
+    {
+      "profile_id": 53850,
+      "user_id": 107521,
+      "id": "or_WJRX03jH62togzer",
+      "code": "92L4HNVT7L",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T22:53:29Z",
+      "provider_order": {
+        "id": "or_WJRX03jH62togzer",
+        "code": "92L4HNVT7L",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T22:53:29Z",
+        "created_at": "2025-12-31T22:51:16Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_VPm51L8KT3FP1R9q",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T22:53:29Z",
+            "updated_at": "2025-12-31T22:53:29Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:30.684294+00:00"
+    },
+    {
+      "profile_id": 53854,
+      "user_id": 107531,
+      "id": "or_9ranjvzUBULj8PRo",
+      "code": "N20MFYF18R",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T23:24:23Z",
+      "provider_order": {
+        "id": "or_9ranjvzUBULj8PRo",
+        "code": "N20MFYF18R",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T23:24:23Z",
+        "created_at": "2025-12-31T23:23:19Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_M3xVYLzH7HVlNW2K",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T23:24:23Z",
+            "updated_at": "2025-12-31T23:24:23Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:30.193347+00:00"
+    },
+    {
+      "profile_id": 53857,
+      "user_id": 107537,
+      "id": "or_gWOLO4nfXpuY2Aay",
+      "code": "4JRJH5NT63",
+      "product": "todosantodiavip",
+      "amount": 7990,
+      "paid_at": "2025-12-31T23:37:13Z",
+      "provider_order": {
+        "id": "or_gWOLO4nfXpuY2Aay",
+        "code": "4JRJH5NT63",
+        "amount": 7990,
+        "currency": "BRL",
+        "status": "paid",
+        "updated_at": "2025-12-31T23:37:14Z",
+        "created_at": "2025-12-31T23:36:06Z",
+        "items": [
+          {
+            "code": "todosantodiavip",
+            "amount": 7990,
+            "quantity": 1
+          }
+        ],
+        "charges": [
+          {
+            "id": "ch_R16goVRcDESrBjPk",
+            "currency": "BRL",
+            "amount": 7990,
+            "status": "paid",
+            "paid_amount": 7990,
+            "paid_at": "2025-12-31T23:37:13Z",
+            "updated_at": "2025-12-31T23:37:14Z"
+          }
+        ]
+      },
+      "verified_at": "2026-11-24T18:08:30.318795+00:00"
+    }
+  ],
+  "review": [
+    {
+      "profile_id": 53015,
+      "user_id": 105013
+    },
+    {
+      "profile_id": 53067,
+      "user_id": 105127
+    },
+    {
+      "profile_id": 53296,
+      "user_id": 105742
+    },
+    {
+      "profile_id": 53742,
+      "user_id": 107204
+    }
+  ]
+}

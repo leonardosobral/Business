@@ -10,7 +10,7 @@ function audienceLabel(required string value) {
     var labels = {"home":"Home", "state":"Estado", "search":"Busca", "event":"Evento",
         "profile":"Perfil", "news":"Notícias — lista", "news_detail":"Notícia — detalhe",
         "videos":"Vídeos — lista", "video_detail":"Vídeo — detalhe", "results":"Resultados",
-        "calendar":"Agenda", "circuit":"Circuito", "other":"Outras páginas", "MOBILE":"Mobile", "TABLET":"Tablet", "DESKTOP":"Desktop", "UNKNOWN":"Desconhecido"};
+        "calendar":"Agenda", "circuit":"Circuito", "verified":"Oferta Atleta Verificado", "other":"Outras páginas", "MOBILE":"Mobile", "TABLET":"Tablet", "DESKTOP":"Desktop", "UNKNOWN":"Desconhecido"};
     return structKeyExists(labels, arguments.value) ? labels[arguments.value] : arguments.value;
 }
 function audienceDate(value) {
@@ -76,7 +76,7 @@ VARIABLES.audienceUf = uCase(audienceInput("uf"));
 VARIABLES.audienceUfList = "AC,AL,AP,AM,BA,CE,DF,ES,GO,MA,MT,MS,MG,PA,PB,PR,PE,PI,RJ,RN,RS,RO,RR,SC,SP,SE,TO,--";
 if (!listFind(VARIABLES.audienceUfList, VARIABLES.audienceUf)) VARIABLES.audienceUf = "";
 VARIABLES.audienceFamily = lCase(audienceInput("pagina"));
-VARIABLES.audienceFamilies = "home,state,search,event,profile,news,news_detail,videos,video_detail,results,calendar,circuit,other";
+VARIABLES.audienceFamilies = "home,state,search,event,profile,news,news_detail,videos,video_detail,results,calendar,circuit,verified,other";
 if (!listFind(VARIABLES.audienceFamilies, VARIABLES.audienceFamily)) VARIABLES.audienceFamily = "";
 VARIABLES.audienceDevice = uCase(audienceInput("dispositivo"));
 if (!listFind("MOBILE,TABLET,DESKTOP,UNKNOWN", VARIABLES.audienceDevice)) VARIABLES.audienceDevice = "";
@@ -119,6 +119,14 @@ try {
         }
         VARIABLES.audienceSummary = {first_event="", last_received=""};
         structAppend(VARIABLES.audienceSummary, queryGetRow(VARIABLES.audienceQueries.summary, 1), true);
+        if (VARIABLES.audienceFamily EQ "verified") {
+            try {
+                VARIABLES.audienceEntrySql = replace(fileRead(VARIABLES.audienceQueryDirectory & "verified_entries.sql", "UTF-8"), "/* AUDIENCE_FILTER */", VARIABLES.audienceFilterSql);
+                VARIABLES.audienceQueries.verifiedEntries = queryExecute(VARIABLES.audienceEntrySql, VARIABLES.audienceParams, {datasource="runnerhub", timeout=15, cachedwithin=createTimeSpan(0,0,1,0)});
+            } catch(any audienceEntryReadError) {
+                writeLog(file="audience_measurement", type="error", text="Business verified offer entries unavailable: " & left(audienceEntryReadError.type & "", 100));
+            }
+        }
         // Observed occupancy supports diagnostic filters and fails independently of existing reports.
         try {
             VARIABLES.audienceOccupancySql = audienceOccupancyStatement("occupancy");

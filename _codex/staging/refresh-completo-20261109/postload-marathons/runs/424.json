@@ -1,0 +1,810 @@
+{
+  "source": {
+    "id": 424,
+    "version": 1,
+    "hash": "4d61e8aedbcf6db679669f305d6e3041"
+  },
+  "run": {
+    "started_at": "2026-11-09 18:19:36.981874-03",
+    "duration_ms": 13466,
+    "error_message": "",
+    "cell_version": 1,
+    "cell_id": "424",
+    "sql_sha256": "5b4ecd12c34a8928524508320219f400a05070e034e2b4e4e1a64474341feade",
+    "truncated": 0,
+    "row_count": 76,
+    "sql_text": "-- Vertical maratonas: totais autorais; participações, não pessoas únicas.\nWITH base AS MATERIALIZED (\n SELECT e.id_evento,e.tipo_corrida,extract(month FROM e.data_final)::int AS mes,r.percurso,r.sexo\n FROM estudo.vw_resultados_2026 r JOIN public.tb_evento_corridas e USING(id_evento)\n WHERE e.pais='BR' AND e.data_final>=DATE '2026-01-01' AND e.data_final<DATE '2026-10-01'\n AND r.status_final=0 AND r.homologado IS TRUE AND r.concluinte IS TRUE\n), grupos AS (\n SELECT *,CASE WHEN percurso IS NULL OR percurso<=0 THEN 'Sem distância válida'\n WHEN percurso=5 THEN '5 km' WHEN percurso=10 THEN '10 km'\n WHEN percurso BETWEEN 21 AND 21.2 THEN '21–21,2 km'\n WHEN percurso BETWEEN 42 AND 42.2 THEN '42–42,2 km'\n ELSE 'Outras distâncias' END AS faixa FROM base\n)\nSELECT 2026 AS ano,current_timestamp AS coletado_em,mes,tipo_corrida,faixa,count(*) AS participacoes,\n count(DISTINCT id_evento) AS eventos,count(*) FILTER(WHERE sexo='F') AS feminino\nFROM grupos GROUP BY mes,tipo_corrida,faixa ORDER BY mes,tipo_corrida,faixa",
+    "status": "ok",
+    "note": "Mesma amostra/critério da revisão vigente. Nova fonte BI versionada após carga DataGrip; ainda candidato sem publicação. Floripa oficial210 permanece independente dos perfis BI.",
+    "finished_at": "2026-11-09 18:19:50.452672-03",
+    "frozen_at": "2026-11-09 18:19:50.460287-03",
+    "title": "Maratonas — recaptura Jan–Set — 09/11/2026 — célula 424",
+    "id": "301",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "truncated": false,
+    "status": "ok",
+    "started_at": "2026-11-09T18:19:36.981874-03:00",
+    "cell_id": 424,
+    "cell_version": 1,
+    "id": 301,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "ano",
+        "coletado_em",
+        "mes",
+        "tipo_corrida",
+        "faixa",
+        "participacoes",
+        "eventos",
+        "feminino"
+      ],
+      "rows": [
+        {
+          "eventos": 63,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 13701,
+          "mes": 1,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 31310
+        },
+        {
+          "eventos": 15,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 2380,
+          "mes": 1,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 8348
+        },
+        {
+          "eventos": 3,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 141,
+          "mes": 1,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "42–42,2 km",
+          "participacoes": 667
+        },
+        {
+          "eventos": 131,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 35908,
+          "mes": 1,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 65112
+        },
+        {
+          "eventos": 89,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 28168,
+          "mes": 1,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 50872
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 36,
+          "mes": 1,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 84
+        },
+        {
+          "eventos": 4,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 344,
+          "mes": 1,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 684
+        },
+        {
+          "eventos": 2,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 532,
+          "mes": 1,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 974
+        },
+        {
+          "eventos": 64,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 6023,
+          "mes": 2,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 16172
+        },
+        {
+          "eventos": 7,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 542,
+          "mes": 2,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 2168
+        },
+        {
+          "eventos": 145,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 51623,
+          "mes": 2,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 93067
+        },
+        {
+          "eventos": 80,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 29990,
+          "mes": 2,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 50357
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 178,
+          "mes": 2,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 385
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 111,
+          "mes": 2,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 214
+        },
+        {
+          "eventos": 3,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 1440,
+          "mes": 2,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 2696
+        },
+        {
+          "eventos": 209,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 35244,
+          "mes": 3,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 81465
+        },
+        {
+          "eventos": 38,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 6531,
+          "mes": 3,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 20699
+        },
+        {
+          "eventos": 5,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 114,
+          "mes": 3,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "42–42,2 km",
+          "participacoes": 522
+        },
+        {
+          "eventos": 423,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 212603,
+          "mes": 3,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 336545
+        },
+        {
+          "eventos": 226,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 66204,
+          "mes": 3,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 125348
+        },
+        {
+          "eventos": 2,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 60,
+          "mes": 3,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 128
+        },
+        {
+          "eventos": 4,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 107,
+          "mes": 3,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 291
+        },
+        {
+          "eventos": 2,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 83,
+          "mes": 3,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 161
+        },
+        {
+          "eventos": 7,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 662,
+          "mes": 3,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 1605
+        },
+        {
+          "eventos": 181,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 31390,
+          "mes": 4,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 70252
+        },
+        {
+          "eventos": 43,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 17588,
+          "mes": 4,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 49091
+        },
+        {
+          "eventos": 9,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 1844,
+          "mes": 4,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "42–42,2 km",
+          "participacoes": 10375
+        },
+        {
+          "eventos": 346,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 133777,
+          "mes": 4,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 233124
+        },
+        {
+          "eventos": 191,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 52647,
+          "mes": 4,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 90888
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 17,
+          "mes": 4,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 39
+        },
+        {
+          "eventos": 3,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 269,
+          "mes": 4,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 570
+        },
+        {
+          "eventos": 3,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 101,
+          "mes": 4,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 181
+        },
+        {
+          "eventos": 13,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 2242,
+          "mes": 4,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 4708
+        },
+        {
+          "eventos": 325,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 52619,
+          "mes": 5,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 128016
+        },
+        {
+          "eventos": 54,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 15680,
+          "mes": 5,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 42241
+        },
+        {
+          "eventos": 17,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 3119,
+          "mes": 5,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "42–42,2 km",
+          "participacoes": 12259
+        },
+        {
+          "eventos": 583,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 229139,
+          "mes": 5,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 393894
+        },
+        {
+          "eventos": 308,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 76293,
+          "mes": 5,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 137766
+        },
+        {
+          "eventos": 4,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 104,
+          "mes": 5,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 242
+        },
+        {
+          "eventos": 2,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 63,
+          "mes": 5,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 219
+        },
+        {
+          "eventos": 7,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 248,
+          "mes": 5,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 455
+        },
+        {
+          "eventos": 14,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 1962,
+          "mes": 5,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 4690
+        },
+        {
+          "eventos": 204,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 35698,
+          "mes": 6,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 79744
+        },
+        {
+          "eventos": 38,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 23487,
+          "mes": 6,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 53999
+        },
+        {
+          "eventos": 7,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 4945,
+          "mes": 6,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "42–42,2 km",
+          "participacoes": 18854
+        },
+        {
+          "eventos": 372,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 159793,
+          "mes": 6,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 272493
+        },
+        {
+          "eventos": 193,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 54000,
+          "mes": 6,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 99820
+        },
+        {
+          "eventos": 4,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 89,
+          "mes": 6,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 229
+        },
+        {
+          "eventos": 2,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 102,
+          "mes": 6,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 185
+        },
+        {
+          "eventos": 10,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 2183,
+          "mes": 6,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 4315
+        },
+        {
+          "eventos": 222,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 31722,
+          "mes": 7,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 72093
+        },
+        {
+          "eventos": 44,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 19800,
+          "mes": 7,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 48463
+        },
+        {
+          "eventos": 11,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 3179,
+          "mes": 7,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "42–42,2 km",
+          "participacoes": 13659
+        },
+        {
+          "eventos": 447,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 173017,
+          "mes": 7,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 288623
+        },
+        {
+          "eventos": 206,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 48114,
+          "mes": 7,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 85062
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 69,
+          "mes": 7,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 127
+        },
+        {
+          "eventos": 3,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 82,
+          "mes": 7,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 217
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 90,
+          "mes": 7,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 151
+        },
+        {
+          "eventos": 6,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 683,
+          "mes": 7,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 1476
+        },
+        {
+          "eventos": 353,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 49138,
+          "mes": 8,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 114134
+        },
+        {
+          "eventos": 51,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 20227,
+          "mes": 8,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 52694
+        },
+        {
+          "eventos": 9,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 1860,
+          "mes": 8,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "42–42,2 km",
+          "participacoes": 7322
+        },
+        {
+          "eventos": 634,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 252182,
+          "mes": 8,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 425335
+        },
+        {
+          "eventos": 298,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 83213,
+          "mes": 8,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 142418
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 227,
+          "mes": 8,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "42–42,2 km",
+          "participacoes": 914
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 56,
+          "mes": 8,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 129
+        },
+        {
+          "eventos": 326,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 45606,
+          "mes": 9,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 107624
+        },
+        {
+          "eventos": 57,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 10588,
+          "mes": 9,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 31960
+        },
+        {
+          "eventos": 14,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 771,
+          "mes": 9,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "42–42,2 km",
+          "participacoes": 3706
+        },
+        {
+          "eventos": 659,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 246982,
+          "mes": 9,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 426478
+        },
+        {
+          "eventos": 369,
+          "ano": 2026,
+          "tipo_corrida": "rua",
+          "feminino": 81151,
+          "mes": 9,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 150466
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 311,
+          "mes": 9,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "10 km",
+          "participacoes": 527
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 112,
+          "mes": 9,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "21–21,2 km",
+          "participacoes": 238
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 24,
+          "mes": 9,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "42–42,2 km",
+          "participacoes": 117
+        },
+        {
+          "eventos": 1,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 260,
+          "mes": 9,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "5 km",
+          "participacoes": 423
+        },
+        {
+          "eventos": 7,
+          "ano": 2026,
+          "tipo_corrida": "trail",
+          "feminino": 902,
+          "mes": 9,
+          "coletado_em": "2026-11-09T18:19:36.987202-03:00",
+          "faixa": "Outras distâncias",
+          "participacoes": 2102
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "matrix": [
+    {
+      "stored": 0,
+      "two_args": 0,
+      "four_args": 0,
+      "n": 42,
+      "raw_present": false
+    },
+    {
+      "stored": 0,
+      "two_args": 0,
+      "four_args": 0,
+      "n": 527178,
+      "raw_present": true
+    },
+    {
+      "stored": 0,
+      "two_args": 1,
+      "four_args": 0,
+      "n": 8,
+      "raw_present": true
+    },
+    {
+      "stored": 0,
+      "two_args": 2,
+      "four_args": 0,
+      "n": 5,
+      "raw_present": true
+    },
+    {
+      "stored": 0,
+      "two_args": 3,
+      "four_args": 0,
+      "n": 19,
+      "raw_present": true
+    },
+    {
+      "stored": 0,
+      "two_args": 4,
+      "four_args": 0,
+      "n": 77,
+      "raw_present": true
+    },
+    {
+      "stored": 0,
+      "two_args": 5,
+      "four_args": 0,
+      "n": 57,
+      "raw_present": true
+    },
+    {
+      "stored": 1,
+      "two_args": 0,
+      "four_args": 1,
+      "n": 39151,
+      "raw_present": true
+    },
+    {
+      "stored": 1,
+      "two_args": 1,
+      "four_args": 1,
+      "n": 33,
+      "raw_present": false
+    },
+    {
+      "stored": 1,
+      "two_args": 1,
+      "four_args": 1,
+      "n": 144320,
+      "raw_present": true
+    },
+    {
+      "stored": 1,
+      "two_args": 2,
+      "four_args": 1,
+      "n": 857,
+      "raw_present": true
+    },
+    {
+      "stored": 1,
+      "two_args": 3,
+      "four_args": 1,
+      "n": 28,
+      "raw_present": true
+    },
+    {
+      "stored": 1,
+      "two_args": 4,
+      "four_args": 1,
+      "n": 1,
+      "raw_present": true
+    },
+    {
+      "stored": 2,
+      "two_args": 0,
+      "four_args": 2,
+      "n": 83871,
+      "raw_present": true
+    },
+    {
+      "stored": 2,
+      "two_args": 1,
+      "four_args": 2,
+      "n": 11844,
+      "raw_present": true
+    },
+    {
+      "stored": 2,
+      "two_args": 2,
+      "four_args": 2,
+      "n": 61,
+      "raw_present": false
+    },
+    {
+      "stored": 2,
+      "two_args": 2,
+      "four_args": 2,
+      "n": 706301,
+      "raw_present": true
+    },
+    {
+      "stored": 2,
+      "two_args": 3,
+      "four_args": 2,
+      "n": 53640,
+      "raw_present": true
+    },
+    {
+      "stored": 3,
+      "two_args": 0,
+      "four_args": 3,
+      "n": 177051,
+      "raw_present": true
+    },
+    {
+      "stored": 3,
+      "two_args": 1,
+      "four_args": 3,
+      "n": 3,
+      "raw_present": true
+    },
+    {
+      "stored": 3,
+      "two_args": 2,
+      "four_args": 3,
+      "n": 16142,
+      "raw_present": true
+    },
+    {
+      "stored": 3,
+      "two_args": 3,
+      "four_args": 3,
+      "n": 321,
+      "raw_present": false
+    },
+    {
+      "stored": 3,
+      "two_args": 3,
+      "four_args": 3,
+      "n": 1878232,
+      "raw_present": true
+    },
+    {
+      "stored": 3,
+      "two_args": 4,
+      "four_args": 3,
+      "n": 5747,
+      "raw_present": true
+    },
+    {
+      "stored": 3,
+      "two_args": 5,
+      "four_args": 3,
+      "n": 1,
+      "raw_present": true
+    },
+    {
+      "stored": 4,
+      "two_args": 0,
+      "four_args": 4,
+      "n": 82936,
+      "raw_present": true
+    },
+    {
+      "stored": 4,
+      "two_args": 2,
+      "four_args": 4,
+      "n": 7,
+      "raw_present": true
+    },
+    {
+      "stored": 4,
+      "two_args": 3,
+      "four_args": 4,
+      "n": 1485,
+      "raw_present": true
+    },
+    {
+      "stored": 4,
+      "two_args": 4,
+      "four_args": 4,
+      "n": 128,
+      "raw_present": false
+    },
+    {
+      "stored": 4,
+      "two_args": 4,
+      "four_args": 4,
+      "n": 720978,
+      "raw_present": true
+    },
+    {
+      "stored": 4,
+      "two_args": 5,
+      "four_args": 4,
+      "n": 8530,
+      "raw_present": true
+    },
+    {
+      "stored": 5,
+      "two_args": 0,
+      "four_args": 5,
+      "n": 7954,
+      "raw_present": true
+    },
+    {
+      "stored": 5,
+      "two_args": 2,
+      "four_args": 5,
+      "n": 2,
+      "raw_present": true
+    },
+    {
+      "stored": 5,
+      "two_args": 3,
+      "four_args": 5,
+      "n": 8,
+      "raw_present": true
+    },
+    {
+      "stored": 5,
+      "two_args": 4,
+      "four_args": 5,
+      "n": 5149,
+      "raw_present": true
+    },
+    {
+      "stored": 5,
+      "two_args": 5,
+      "four_args": 5,
+      "n": 30375,
+      "raw_present": true
+    }
+  ],
+  "capturado_em": "2026-11-09T16:10:31.745693-03:00",
+  "summary": {
+    "groups": 4945,
+    "stored_different_four_args": null,
+    "without_raw": 585,
+    "different_two_vs_four": 494573,
+    "stored_different_two_args": 494573,
+    "stored_four_args_would_revert_with_two": 494573,
+    "n": 4502542
+  },
+  "read_only": "on"
+}

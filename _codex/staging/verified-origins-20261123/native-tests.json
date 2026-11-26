@@ -1,0 +1,38 @@
+{
+  "timings": {
+    "run.cfm": 25.554,
+    "render.cfm": 2.417,
+    "render.cfm?page_id=54048": 2.738,
+    "render.cfm?test_denied=1": 0.04,
+    "render.cfm?case=csrf": 2.481,
+    "render.cfm?case=legacy": 2.293
+  },
+  "statuses": {
+    "run.cfm": 200,
+    "render.cfm": 200,
+    "render.cfm?page_id=54048": 200,
+    "render.cfm?test_denied=1": 403,
+    "render.cfm?case=csrf": 403,
+    "render.cfm?case=legacy": 409
+  },
+  "tests": {
+    "CHECKS": 102.0,
+    "CLASSIFICATION_READY": 0,
+    "ACTIVE": {
+      "unclassified": 128,
+      "active": 418,
+      "annual": 290,
+      "inactive": 1,
+      "permanent": 128
+    },
+    "VIP_ID": 53893,
+    "UPGRADE": 48,
+    "REFUND_ID": 15305,
+    "MANUAL": 128,
+    "OK": true,
+    "VIP": 244,
+    "MANUAL_ID": 54048
+  },
+  "ok": true,
+  "stage_removed": true
+}

@@ -1,0 +1,1968 @@
+{
+  "truncated": false,
+  "status": "ok",
+  "started_at": "2026-10-05T15:02:52.075814-03:00",
+  "cell_id": 364,
+  "cell_version": 1,
+  "id": 174,
+  "frozen": true,
+  "result": {
+    "columns": [
+      "payload"
+    ],
+    "rows": [
+      {
+        "payload": {
+          "regra": "Eventos ativos BR/rua; ranking nulo ou diferente de false; data_final dentro do período. Cadastro = percurso rua/km de42 a42.2. Coleta = linha bruta da mesma distância. Elegíveis = regra revisada convencional de2026; não certifica realização ou completude. Contagem por id_evento, sem inferir maratona pelo nome; percursos bloqueados continuam cadastrados. Fração divide cadastradas por todos os eventos da mesma base; cadastro de distâncias incompleto pode subestimar.",
+          "linhas": [
+            {
+              "ano": 2025,
+              "corte": "2025-12-31",
+              "fracao_percentual": "0.98852403136007271901",
+              "elegiveis_sem_cadastro": 9,
+              "cadastradas_coletadas": 63,
+              "coletadas_sem_cadastro": 11,
+              "calendario": 8801,
+              "cadastradas": 87,
+              "cadastradas_elegiveis": 63,
+              "com_percurso_bloqueado": 16,
+              "elegiveis_total": 72,
+              "distancia_informada": 5256,
+              "coletadas_total": 74,
+              "participacoes_elegiveis": 58922
+            },
+            {
+              "ano": 2026,
+              "corte": "2026-09-30",
+              "fracao_percentual": "1.0005197505197505",
+              "elegiveis_sem_cadastro": 16,
+              "cadastradas_coletadas": 56,
+              "coletadas_sem_cadastro": 16,
+              "calendario": 7696,
+              "cadastradas": 77,
+              "cadastradas_elegiveis": 56,
+              "com_percurso_bloqueado": 9,
+              "elegiveis_total": 72,
+              "distancia_informada": 3461,
+              "coletadas_total": 72,
+              "participacoes_elegiveis": 66520
+            }
+          ],
+          "auditoria": [
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-03-14",
+              "nome_evento": "Ultramaratona Caminhos de Caravaggio",
+              "cadastrado": false,
+              "linhas_brutas": 3,
+              "elegiveis": 0,
+              "id_evento": 13166
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-10",
+              "nome_evento": "1ª Maratona da Cidade de Marília",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 22579
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-04-06",
+              "nome_evento": "Maratona Internacional de São Paulo 2025",
+              "cadastrado": true,
+              "linhas_brutas": 4872,
+              "elegiveis": 4856,
+              "id_evento": 22582
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-04-20",
+              "nome_evento": "Maratona de João Pessoa 2025",
+              "cadastrado": true,
+              "linhas_brutas": 858,
+              "elegiveis": 858,
+              "id_evento": 22586
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-04-27",
+              "nome_evento": "New Balance 42k Porto Alegre",
+              "cadastrado": true,
+              "linhas_brutas": 1765,
+              "elegiveis": 1765,
+              "id_evento": 22590
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-05-18",
+              "nome_evento": "Maratona Internacional do Natal 2025",
+              "cadastrado": true,
+              "linhas_brutas": 200,
+              "elegiveis": 178,
+              "id_evento": 22591
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-06-28",
+              "nome_evento": "1ª Maratona da Cidade de São Luís",
+              "cadastrado": true,
+              "linhas_brutas": 139,
+              "elegiveis": 139,
+              "id_evento": 22592
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-08-31",
+              "nome_evento": "Maratona Internacional de Floripa 2025",
+              "cadastrado": true,
+              "linhas_brutas": 5152,
+              "elegiveis": 5137,
+              "id_evento": 22792
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-01-26",
+              "nome_evento": "Maratona Duque de Caxias",
+              "cadastrado": true,
+              "linhas_brutas": 76,
+              "elegiveis": 76,
+              "id_evento": 23713
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-04-21",
+              "nome_evento": "A Maratona Brasília 2025",
+              "cadastrado": true,
+              "linhas_brutas": 511,
+              "elegiveis": 411,
+              "id_evento": 24012
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-08-31",
+              "nome_evento": "12ª Maratona Internacional de Goiânia em Movimento 2025",
+              "cadastrado": true,
+              "linhas_brutas": 10,
+              "elegiveis": 10,
+              "id_evento": 24015
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-09-21",
+              "nome_evento": "Maratona de Salvador 2025",
+              "cadastrado": true,
+              "linhas_brutas": 1223,
+              "elegiveis": 1105,
+              "id_evento": 24016
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-06-08",
+              "nome_evento": "Maratona Internacional de Porto Alegre 2025",
+              "cadastrado": true,
+              "linhas_brutas": 5769,
+              "elegiveis": 5769,
+              "id_evento": 24998
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-06-22",
+              "nome_evento": "Maratona Internacional do Rio de Janeiro 2025",
+              "cadastrado": true,
+              "linhas_brutas": 13179,
+              "elegiveis": 13132,
+              "id_evento": 24999
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-07-06",
+              "nome_evento": "Maratona Internacional de Blumenau 2025",
+              "cadastrado": true,
+              "linhas_brutas": 298,
+              "elegiveis": 298,
+              "id_evento": 25395
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-10-26",
+              "nome_evento": "Maratona de Aracaju 2025",
+              "cadastrado": true,
+              "linhas_brutas": 1372,
+              "elegiveis": 1363,
+              "id_evento": 25481
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-05-18",
+              "nome_evento": "Maratona de Feira 2025",
+              "cadastrado": true,
+              "linhas_brutas": 81,
+              "elegiveis": 81,
+              "id_evento": 25680
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-30",
+              "nome_evento": "4a Pan Kids 7km",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 25695
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-05-18",
+              "nome_evento": "8ª Maratona Nilson Lima de Uberlandia 2025",
+              "cadastrado": true,
+              "linhas_brutas": 397,
+              "elegiveis": 397,
+              "id_evento": 25698
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-09-28",
+              "nome_evento": "3ª Maratona e 8ª Meia Maratona Criciúma 2025",
+              "cadastrado": true,
+              "linhas_brutas": 112,
+              "elegiveis": 112,
+              "id_evento": 25720
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-05-25",
+              "nome_evento": "Maratona de Pg - 2025",
+              "cadastrado": true,
+              "linhas_brutas": 198,
+              "elegiveis": 198,
+              "id_evento": 25726
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-05-25",
+              "nome_evento": "Maratona de Tubarão 2025",
+              "cadastrado": true,
+              "linhas_brutas": 113,
+              "elegiveis": 100,
+              "id_evento": 25727
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-03-16",
+              "nome_evento": "Maratona de Torres 2025",
+              "cadastrado": true,
+              "linhas_brutas": 118,
+              "elegiveis": 110,
+              "id_evento": 25733
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-05-25",
+              "nome_evento": "Meia Maratona Farol a Farol",
+              "cadastrado": true,
+              "linhas_brutas": 177,
+              "elegiveis": 159,
+              "id_evento": 25839
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-29",
+              "nome_evento": "K42 Brasil",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 25843
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-11-29",
+              "nome_evento": "9ª Maratona Desafio do Barreiro - 2º Dia",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 25963
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-09-13",
+              "nome_evento": "Desafio Internacional Rota da Baleia 2025",
+              "cadastrado": true,
+              "linhas_brutas": 106,
+              "elegiveis": 106,
+              "id_evento": 26226
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-05-18",
+              "nome_evento": "Rio do Rastro Marathon - 42k",
+              "cadastrado": true,
+              "linhas_brutas": 293,
+              "elegiveis": 293,
+              "id_evento": 26231
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-05-17",
+              "nome_evento": "Rio do Rastro Marathon - 25k",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 26232
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-02-09",
+              "nome_evento": "Maratona do Vinho 2025",
+              "cadastrado": true,
+              "linhas_brutas": 181,
+              "elegiveis": 181,
+              "id_evento": 26252
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-01-25",
+              "nome_evento": "TTT 2025",
+              "cadastrado": false,
+              "linhas_brutas": 117,
+              "elegiveis": 117,
+              "id_evento": 26256
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-11-01",
+              "nome_evento": "Maratona de Jurerê 2025",
+              "cadastrado": true,
+              "linhas_brutas": 691,
+              "elegiveis": 691,
+              "id_evento": 26506
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-24",
+              "nome_evento": "Maratona Fila 2025",
+              "cadastrado": true,
+              "linhas_brutas": 508,
+              "elegiveis": 508,
+              "id_evento": 26514
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-09-14",
+              "nome_evento": "17ª Corrida Ecológica do Sana 2025",
+              "cadastrado": true,
+              "linhas_brutas": 35,
+              "elegiveis": 35,
+              "id_evento": 26749
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-06-29",
+              "nome_evento": "Maratona de Londrina 2025",
+              "cadastrado": true,
+              "linhas_brutas": 449,
+              "elegiveis": 449,
+              "id_evento": 26768
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-07-27",
+              "nome_evento": "SP City Marathon 2025",
+              "cadastrado": true,
+              "linhas_brutas": 5422,
+              "elegiveis": 5386,
+              "id_evento": 26867
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-06-22",
+              "nome_evento": "Meia e Maratona Cidade de Florianópolis 2025",
+              "cadastrado": true,
+              "linhas_brutas": 426,
+              "elegiveis": 426,
+              "id_evento": 26983
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-01-26",
+              "nome_evento": "Maratona Oficial de Ribeirão Preto",
+              "cadastrado": true,
+              "linhas_brutas": 310,
+              "elegiveis": 310,
+              "id_evento": 27088
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-10-26",
+              "nome_evento": "Maratona Internacional de Pomerode 2025",
+              "cadastrado": true,
+              "linhas_brutas": 733,
+              "elegiveis": 731,
+              "id_evento": 27099
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-11-23",
+              "nome_evento": "Maratona de Curitiba 2025",
+              "cadastrado": true,
+              "linhas_brutas": 3040,
+              "elegiveis": 3034,
+              "id_evento": 27104
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-12-21",
+              "nome_evento": "2°Maratona e 4°Meia Maratona Cuiabá Cidade do Sol",
+              "cadastrado": true,
+              "linhas_brutas": 78,
+              "elegiveis": 78,
+              "id_evento": 27192
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-04-13",
+              "nome_evento": "Maratona do Coração 2025",
+              "cadastrado": true,
+              "linhas_brutas": 35,
+              "elegiveis": 34,
+              "id_evento": 27505
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-06-14",
+              "nome_evento": "3º Ultra Desafio Boituva",
+              "cadastrado": true,
+              "linhas_brutas": 39,
+              "elegiveis": 36,
+              "id_evento": 27516
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-08-03",
+              "nome_evento": "Maratona Internacional de João Pessoa 2025",
+              "cadastrado": true,
+              "linhas_brutas": 426,
+              "elegiveis": 384,
+              "id_evento": 27532
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-06-15",
+              "nome_evento": "Ptr - Etapa Gravatá",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 27536
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-31",
+              "nome_evento": "Maratona de Vitória 2025",
+              "cadastrado": true,
+              "linhas_brutas": 752,
+              "elegiveis": 744,
+              "id_evento": 27635
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-03",
+              "nome_evento": "Maratona Internacional de Piracicaba",
+              "cadastrado": true,
+              "linhas_brutas": 359,
+              "elegiveis": 358,
+              "id_evento": 27637
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-11-16",
+              "nome_evento": "Maratona e Ultramaratona Galo Véio 2025",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 27638
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-10-25",
+              "nome_evento": "Xc Run Buzios 2025",
+              "cadastrado": true,
+              "linhas_brutas": 304,
+              "elegiveis": 304,
+              "id_evento": 27722
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-07-06",
+              "nome_evento": "Maratona de Campo Grande 2025",
+              "cadastrado": true,
+              "linhas_brutas": 381,
+              "elegiveis": 294,
+              "id_evento": 27747
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-06-22",
+              "nome_evento": "7ª Maratona Portal a Portal de Qb",
+              "cadastrado": true,
+              "linhas_brutas": 67,
+              "elegiveis": 67,
+              "id_evento": 27752
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-05-25",
+              "nome_evento": "2ª Maratona Internacional de Goiânia",
+              "cadastrado": true,
+              "linhas_brutas": 206,
+              "elegiveis": 187,
+              "id_evento": 27771
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-03-23",
+              "nome_evento": "Desafio Pedra Selada - Vargem Grande - Resend...",
+              "cadastrado": true,
+              "linhas_brutas": 35,
+              "elegiveis": 30,
+              "id_evento": 28030
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-11-23",
+              "nome_evento": "Maratona Monumental de Brasília 2025",
+              "cadastrado": true,
+              "linhas_brutas": 1848,
+              "elegiveis": 1848,
+              "id_evento": 28253
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-11-30",
+              "nome_evento": "8º Maratona Sorocaba Novembro Azul",
+              "cadastrado": true,
+              "linhas_brutas": 1028,
+              "elegiveis": 1028,
+              "id_evento": 28327
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-03-08",
+              "nome_evento": "Prova Ultra 12 Horas – 4ª Edição",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 28413
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-05-18",
+              "nome_evento": "Maratona Internacional Fmo de Olinda 2025",
+              "cadastrado": true,
+              "linhas_brutas": 166,
+              "elegiveis": 166,
+              "id_evento": 28572
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-04-13",
+              "nome_evento": "Maratona de Manaus",
+              "cadastrado": true,
+              "linhas_brutas": 636,
+              "elegiveis": 583,
+              "id_evento": 28609
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-06-15",
+              "nome_evento": "Maratona Praia Grande",
+              "cadastrado": true,
+              "linhas_brutas": 734,
+              "elegiveis": 724,
+              "id_evento": 28610
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-07-20",
+              "nome_evento": "Maratona de Campinas 2025",
+              "cadastrado": true,
+              "linhas_brutas": 215,
+              "elegiveis": 215,
+              "id_evento": 28611
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-09-14",
+              "nome_evento": "Maratona de Niterói 2025",
+              "cadastrado": true,
+              "linhas_brutas": 558,
+              "elegiveis": 558,
+              "id_evento": 28612
+            },
+            {
+              "bloqueado": true,
+              "ano": 2025,
+              "data_final": "2025-09-28",
+              "nome_evento": "Maratona Internacional de Foz do Iguaçu 2025",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 28613
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-12-07",
+              "nome_evento": "Maratona Internacional Maurício de Nassau 2025",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 28614
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-10-12",
+              "nome_evento": "Maratona de Pelotas",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 28615
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-11-02",
+              "nome_evento": "Maratona Pedra Azul 2025",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 28616
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-03",
+              "nome_evento": "Maratona de Capão da Canoa",
+              "cadastrado": true,
+              "linhas_brutas": 60,
+              "elegiveis": 48,
+              "id_evento": 28617
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-17",
+              "nome_evento": "Maratona do Litoral",
+              "cadastrado": true,
+              "linhas_brutas": 401,
+              "elegiveis": 400,
+              "id_evento": 28704
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-01",
+              "nome_evento": "Desafio Beto Carrero World 2025",
+              "cadastrado": false,
+              "linhas_brutas": 591,
+              "elegiveis": 591,
+              "id_evento": 28877
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-04-05",
+              "nome_evento": "28 PRAIAS KAILASH - COSTA NORTE",
+              "cadastrado": true,
+              "linhas_brutas": 156,
+              "elegiveis": 156,
+              "id_evento": 29229
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-04-05",
+              "nome_evento": "3ª UMLD - ULTRAMARATONA LAGO DOURADO",
+              "cadastrado": false,
+              "linhas_brutas": 1,
+              "elegiveis": 0,
+              "id_evento": 29231
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-09-21",
+              "nome_evento": "1ª MARATONA DE SÃO JOSÉ",
+              "cadastrado": true,
+              "linhas_brutas": 683,
+              "elegiveis": 683,
+              "id_evento": 29387
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-11-16",
+              "nome_evento": "MARATONA TERRA DOS MARECHAIS  - 2025",
+              "cadastrado": true,
+              "linhas_brutas": 45,
+              "elegiveis": 45,
+              "id_evento": 30015
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-10-26",
+              "nome_evento": "6º Desafio Contra a Paralisia Infantil do Rotary Club",
+              "cadastrado": true,
+              "linhas_brutas": 28,
+              "elegiveis": 28,
+              "id_evento": 30229
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-11-23",
+              "nome_evento": "5ª Maratona Internacional SulSportShow Xangri-Lá",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 30469
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-11-09",
+              "nome_evento": "7ª Maratona de Santa Cruz do Sul",
+              "cadastrado": true,
+              "linhas_brutas": 78,
+              "elegiveis": 72,
+              "id_evento": 30471
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-01-18",
+              "nome_evento": "1ª Maratona SulSportShow Canela",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 30477
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-10",
+              "nome_evento": "Maratona de Gramado 2025",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 30485
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-05-25",
+              "nome_evento": "6ª Maratona José Trindade",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 30677
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-07-20",
+              "nome_evento": "5ª Maratona de Epitácio",
+              "cadastrado": true,
+              "linhas_brutas": 36,
+              "elegiveis": 29,
+              "id_evento": 30791
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-10",
+              "nome_evento": "3ª MARATONA DE REVEZAMENTO",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 31315
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-07-06",
+              "nome_evento": "MARATONA DE REVEZAMENTO KTO 2025",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 31398
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-12-14",
+              "nome_evento": "ROTA DOS DESBRAVADORES",
+              "cadastrado": false,
+              "linhas_brutas": 13,
+              "elegiveis": 13,
+              "id_evento": 31657
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-11-30",
+              "nome_evento": "Maratona de Caxias do Sul",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 31934
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-09-06",
+              "nome_evento": "3ª Maratona de Revezamento da Cidade de Passo Fundo",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 31940
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-07-20",
+              "nome_evento": "8ª Jipa City Marathon",
+              "cadastrado": true,
+              "linhas_brutas": 111,
+              "elegiveis": 76,
+              "id_evento": 31973
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-10",
+              "nome_evento": "CLARO MARATONA DO SOL 2025",
+              "cadastrado": false,
+              "linhas_brutas": 76,
+              "elegiveis": 75,
+              "id_evento": 32212
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-08-17",
+              "nome_evento": "DESAFIO DA FLORESTA",
+              "cadastrado": false,
+              "linhas_brutas": 26,
+              "elegiveis": 26,
+              "id_evento": 32225
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-10-12",
+              "nome_evento": "CIRCUITO ULTRAMACHO - SENTA A PÚA",
+              "cadastrado": false,
+              "linhas_brutas": 48,
+              "elegiveis": 48,
+              "id_evento": 32603
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-09-27",
+              "nome_evento": "TODO MUNDO CORRE PELA VIDA SETEMBRO AMARELO 2025",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 33330
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-12-06",
+              "nome_evento": "Corridas de Montanha - Deserto do Jalapão",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 33450
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-12-31",
+              "nome_evento": "8ª Maratona da Virada",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 33767
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-09-28",
+              "nome_evento": "Maratona Dr Gordon 2025",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 33918
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-10-19",
+              "nome_evento": "3ª Maratona de Santa Maria",
+              "cadastrado": true,
+              "linhas_brutas": 182,
+              "elegiveis": 160,
+              "id_evento": 34269
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-12-07",
+              "nome_evento": "MARATONA 150 ANOS AMERICANA HUGO FARIAS",
+              "cadastrado": true,
+              "linhas_brutas": 67,
+              "elegiveis": 67,
+              "id_evento": 34883
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-10-25",
+              "nome_evento": "FESTIVAL DA MONTANHA ROCKY MOUNTAIN GAMES - ETAPA CAMPOS DO JORDÃO 2025",
+              "cadastrado": true,
+              "linhas_brutas": 75,
+              "elegiveis": 75,
+              "id_evento": 34984
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-12-14",
+              "nome_evento": "MARATONA AP 2025",
+              "cadastrado": false,
+              "linhas_brutas": 107,
+              "elegiveis": 107,
+              "id_evento": 36477
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-11-30",
+              "nome_evento": "MARATONA DE PORTO VELHO LUPO",
+              "cadastrado": false,
+              "linhas_brutas": 72,
+              "elegiveis": 51,
+              "id_evento": 37091
+            },
+            {
+              "bloqueado": false,
+              "ano": 2025,
+              "data_final": "2025-12-13",
+              "nome_evento": "ULTRA DA ESTÂNCIA - SIGA TEU CAMINHO",
+              "cadastrado": false,
+              "linhas_brutas": 13,
+              "elegiveis": 13,
+              "id_evento": 37391
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-01-25",
+              "nome_evento": "Maratona Oficial de Ribeirão Preto Piracanjuba Proforce 2026",
+              "cadastrado": true,
+              "linhas_brutas": 318,
+              "elegiveis": 318,
+              "id_evento": 28250
+            },
+            {
+              "bloqueado": true,
+              "ano": 2026,
+              "data_final": "2026-04-12",
+              "nome_evento": "Maratona Internacional de São Paulo 2026",
+              "cadastrado": true,
+              "linhas_brutas": 4307,
+              "elegiveis": 4266,
+              "id_evento": 29291
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-03-14",
+              "nome_evento": "2ª Maratona PiauÍ Crono",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 29963
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-31",
+              "nome_evento": "MARATONA INTERNACIONAL DE OLINDA  2026",
+              "cadastrado": true,
+              "linhas_brutas": 380,
+              "elegiveis": 342,
+              "id_evento": 31176
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-24",
+              "nome_evento": "MARATONA INTERNACIONAL DE PG",
+              "cadastrado": true,
+              "linhas_brutas": 167,
+              "elegiveis": 167,
+              "id_evento": 31179
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-02-07",
+              "nome_evento": "Maratona do Vinho 2026",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 31932
+            },
+            {
+              "bloqueado": true,
+              "ano": 2026,
+              "data_final": "2026-08-02",
+              "nome_evento": "Maratona Internacional De João Pessoa 2026",
+              "cadastrado": true,
+              "linhas_brutas": 335,
+              "elegiveis": 335,
+              "id_evento": 32450
+            },
+            {
+              "bloqueado": true,
+              "ano": 2026,
+              "data_final": "2026-07-26",
+              "nome_evento": "SP City Marathon 2026",
+              "cadastrado": true,
+              "linhas_brutas": 6666,
+              "elegiveis": 6642,
+              "id_evento": 33486
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-06-21",
+              "nome_evento": "2ª Maratona de Praia Grande",
+              "cadastrado": true,
+              "linhas_brutas": 1326,
+              "elegiveis": 1326,
+              "id_evento": 33490
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-03",
+              "nome_evento": "Maratona de Piracicaba",
+              "cadastrado": true,
+              "linhas_brutas": 334,
+              "elegiveis": 334,
+              "id_evento": 33491
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-03-15",
+              "nome_evento": "I Maratona de Macapá",
+              "cadastrado": true,
+              "linhas_brutas": 136,
+              "elegiveis": 116,
+              "id_evento": 33713
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-07-19",
+              "nome_evento": "9ª Jipa City Marathon",
+              "cadastrado": true,
+              "linhas_brutas": 133,
+              "elegiveis": 60,
+              "id_evento": 33976
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-24",
+              "nome_evento": "Maratona Farol A Farol - 2026",
+              "cadastrado": true,
+              "linhas_brutas": 168,
+              "elegiveis": 147,
+              "id_evento": 34131
+            },
+            {
+              "bloqueado": true,
+              "ano": 2026,
+              "data_final": "2026-07-12",
+              "nome_evento": "New Balance 42k Porto Alegre",
+              "cadastrado": true,
+              "linhas_brutas": 5231,
+              "elegiveis": 5210,
+              "id_evento": 34235
+            },
+            {
+              "bloqueado": true,
+              "ano": 2026,
+              "data_final": "2026-05-31",
+              "nome_evento": "Maratona Internacional de Porto Alegre 2026",
+              "cadastrado": true,
+              "linhas_brutas": 7497,
+              "elegiveis": 7445,
+              "id_evento": 34236
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-03-15",
+              "nome_evento": "2º Ulbra - Maratona Internacional de Torres",
+              "cadastrado": true,
+              "linhas_brutas": 101,
+              "elegiveis": 101,
+              "id_evento": 34240
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-01-17",
+              "nome_evento": "TTT 2026",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 34243
+            },
+            {
+              "bloqueado": true,
+              "ano": 2026,
+              "data_final": "2026-08-30",
+              "nome_evento": "Maratona Internacional de Floripa 2026",
+              "cadastrado": true,
+              "linhas_brutas": 4632,
+              "elegiveis": 3631,
+              "id_evento": 34529
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-05",
+              "nome_evento": "13º ULTRADESAFIO SANA - MACAÉRJ 2026.",
+              "cadastrado": false,
+              "linhas_brutas": 30,
+              "elegiveis": 30,
+              "id_evento": 34834
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-01",
+              "nome_evento": "5D ULTRAMARATHON 2026",
+              "cadastrado": false,
+              "linhas_brutas": 15,
+              "elegiveis": 15,
+              "id_evento": 34839
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-04-19",
+              "nome_evento": "Maratona De João Pessoa 2026",
+              "cadastrado": true,
+              "linhas_brutas": 559,
+              "elegiveis": 559,
+              "id_evento": 34840
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-04-12",
+              "nome_evento": "MARATONA INTERNACIONAL DE FORTALEZA 2026",
+              "cadastrado": true,
+              "linhas_brutas": 1937,
+              "elegiveis": 1922,
+              "id_evento": 34841
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-17",
+              "nome_evento": "RIO DO RASTRO MARATHON - A TRANSFORMAÇÃO",
+              "cadastrado": true,
+              "linhas_brutas": 336,
+              "elegiveis": 336,
+              "id_evento": 35375
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-30",
+              "nome_evento": "Ultra Guaraqueçaba 126K",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 35533
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-01-25",
+              "nome_evento": "MARATONA DUQUE DE CAXIAS",
+              "cadastrado": true,
+              "linhas_brutas": 103,
+              "elegiveis": 103,
+              "id_evento": 35623
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-17",
+              "nome_evento": "MARATONA OFICIAL DE BELO HORIZONTE 2026",
+              "cadastrado": true,
+              "linhas_brutas": 1903,
+              "elegiveis": 1888,
+              "id_evento": 35868
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-27",
+              "nome_evento": "Maratona de Salvador 2026",
+              "cadastrado": true,
+              "linhas_brutas": 1125,
+              "elegiveis": 1108,
+              "id_evento": 36245
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-30",
+              "nome_evento": "13° Maratona EM MOVIMENTO EM GOIANIA",
+              "cadastrado": true,
+              "linhas_brutas": 137,
+              "elegiveis": 135,
+              "id_evento": 36246
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-07-25",
+              "nome_evento": "MARATONA DO LITORAL",
+              "cadastrado": true,
+              "linhas_brutas": 409,
+              "elegiveis": 404,
+              "id_evento": 36249
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-07-05",
+              "nome_evento": "MARATONA DE LONDRINA 2026",
+              "cadastrado": true,
+              "linhas_brutas": 404,
+              "elegiveis": 404,
+              "id_evento": 36250
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-02",
+              "nome_evento": "LIVE! RUN XP Brasília 2026",
+              "cadastrado": true,
+              "linhas_brutas": 387,
+              "elegiveis": 377,
+              "id_evento": 36451
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-06",
+              "nome_evento": "MARATONA DE BONITO",
+              "cadastrado": true,
+              "linhas_brutas": 75,
+              "elegiveis": 57,
+              "id_evento": 36665
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-20",
+              "nome_evento": "2ª MARATONA DE SÃO JOSÉ",
+              "cadastrado": true,
+              "linhas_brutas": 506,
+              "elegiveis": 501,
+              "id_evento": 36973
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-23",
+              "nome_evento": "MARATONA FILA 2026",
+              "cadastrado": true,
+              "linhas_brutas": 562,
+              "elegiveis": 562,
+              "id_evento": 36974
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-27",
+              "nome_evento": "Maratona de Criciúma 2026",
+              "cadastrado": true,
+              "linhas_brutas": 95,
+              "elegiveis": 95,
+              "id_evento": 37006
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-07-25",
+              "nome_evento": "MOUNTAIN DO COSTÃO DO SANTINHO 2026",
+              "cadastrado": true,
+              "linhas_brutas": 49,
+              "elegiveis": 49,
+              "id_evento": 37007
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-24",
+              "nome_evento": "MARATONA DE TUBARÃO 2026",
+              "cadastrado": true,
+              "linhas_brutas": 96,
+              "elegiveis": 96,
+              "id_evento": 37307
+            },
+            {
+              "bloqueado": true,
+              "ano": 2026,
+              "data_final": "2026-04-28",
+              "nome_evento": "Maratona Internacional do Paraná 2026",
+              "cadastrado": true,
+              "linhas_brutas": 2279,
+              "elegiveis": 2245,
+              "id_evento": 37310
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-03-29",
+              "nome_evento": "MARATONA INTERNACIONAL DO FREVO 2026",
+              "cadastrado": true,
+              "linhas_brutas": 190,
+              "elegiveis": 190,
+              "id_evento": 37322
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-17",
+              "nome_evento": "Mara De Feira",
+              "cadastrado": true,
+              "linhas_brutas": 93,
+              "elegiveis": 90,
+              "id_evento": 37693
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-06-07",
+              "nome_evento": "Meia e Maratona Cidade de Florianópolis - 2026",
+              "cadastrado": true,
+              "linhas_brutas": 857,
+              "elegiveis": 857,
+              "id_evento": 37815
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-07-05",
+              "nome_evento": "28ª MARATONA INTERNACIONAL DE BLUMENAU  - 2026",
+              "cadastrado": false,
+              "linhas_brutas": 214,
+              "elegiveis": 214,
+              "id_evento": 37868
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-24",
+              "nome_evento": "3ª MARATONA INTERNACIONAL DE GOIÂNIA",
+              "cadastrado": true,
+              "linhas_brutas": 377,
+              "elegiveis": 370,
+              "id_evento": 37874
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-17",
+              "nome_evento": "MARATONA SENTA A PÚA",
+              "cadastrado": false,
+              "linhas_brutas": 37,
+              "elegiveis": 37,
+              "id_evento": 38070
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-03",
+              "nome_evento": "MARATONA INTERNACIONAL DE CAMPINAS",
+              "cadastrado": true,
+              "linhas_brutas": 195,
+              "elegiveis": 195,
+              "id_evento": 38234
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-07-05",
+              "nome_evento": "CLARO MARATONA DO SOL 2026",
+              "cadastrado": true,
+              "linhas_brutas": 129,
+              "elegiveis": 124,
+              "id_evento": 38687
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-06-28",
+              "nome_evento": "1ª MARATONA E 17ª MEIA MARATONA INTERNACIONAL DE BELO HORIZONTE",
+              "cadastrado": true,
+              "linhas_brutas": 2393,
+              "elegiveis": 2393,
+              "id_evento": 38863
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-16",
+              "nome_evento": "9ª MARATONA NILSON LIMA DE UBERLANDIA 2026",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 39188
+            },
+            {
+              "bloqueado": true,
+              "ano": 2026,
+              "data_final": "2026-07-05",
+              "nome_evento": "Maratona de Campo Grande 2026",
+              "cadastrado": true,
+              "linhas_brutas": 418,
+              "elegiveis": 418,
+              "id_evento": 39393
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-30",
+              "nome_evento": "MARATONA DE VITÓRIA 2026",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 39414
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-02",
+              "nome_evento": "MARATONA INTERNACIONAL DE MACEIÓ 2026",
+              "cadastrado": true,
+              "linhas_brutas": 1930,
+              "elegiveis": 1909,
+              "id_evento": 39421
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-04-21",
+              "nome_evento": "MARATONA BRASÍLIA 2026",
+              "cadastrado": true,
+              "linhas_brutas": 353,
+              "elegiveis": 289,
+              "id_evento": 39461
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-04-12",
+              "nome_evento": "1ª MARATONA ROBERTO DINAMITE",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 39470
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-06-14",
+              "nome_evento": "4º EDIÇÃO - ULTRA DESAFIO BOITUVA",
+              "cadastrado": true,
+              "linhas_brutas": 71,
+              "elegiveis": 66,
+              "id_evento": 39644
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-03-14",
+              "nome_evento": "TRUN - ETAPA PIPA 2026",
+              "cadastrado": false,
+              "linhas_brutas": 14,
+              "elegiveis": 14,
+              "id_evento": 39970
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-07-19",
+              "nome_evento": "MARATONA SERRA IMPERIAL - 2026",
+              "cadastrado": true,
+              "linhas_brutas": 45,
+              "elegiveis": 45,
+              "id_evento": 40207
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-06-27",
+              "nome_evento": "9ª MEIA MARATONA DE UBERABA",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 40220
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-04-04",
+              "nome_evento": "CORRIDA SANTA",
+              "cadastrado": false,
+              "linhas_brutas": 19,
+              "elegiveis": 15,
+              "id_evento": 40447
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-04-05",
+              "nome_evento": "Maratona de Manaus Moto Honda",
+              "cadastrado": true,
+              "linhas_brutas": 648,
+              "elegiveis": 574,
+              "id_evento": 40448
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-30",
+              "nome_evento": "Maratona Internacional de Piracicaba",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 40451
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-04-12",
+              "nome_evento": "SEGURALTA MARATHON",
+              "cadastrado": true,
+              "linhas_brutas": 189,
+              "elegiveis": 189,
+              "id_evento": 40597
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-07-19",
+              "nome_evento": "6ª MARATONA EPITÁCIO",
+              "cadastrado": true,
+              "linhas_brutas": 39,
+              "elegiveis": 34,
+              "id_evento": 40881
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-17",
+              "nome_evento": "4ª MARATONA INTERNACIONAL FMO",
+              "cadastrado": false,
+              "linhas_brutas": 76,
+              "elegiveis": 76,
+              "id_evento": 40980
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-04-25",
+              "nome_evento": "28 PRAIAS COSTA NORTE",
+              "cadastrado": false,
+              "linhas_brutas": 225,
+              "elegiveis": 225,
+              "id_evento": 41082
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-07-19",
+              "nome_evento": "Maratona de Campinas",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 41282
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-09",
+              "nome_evento": "15ª Corrida Pedestre Da Cidade De Paraíso-SP",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 41423
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-17",
+              "nome_evento": "UCC RIDE MTB - 5ª ETAPA - COPA OESTE MTB 2026",
+              "cadastrado": false,
+              "linhas_brutas": 210,
+              "elegiveis": 184,
+              "id_evento": 42782
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-26",
+              "nome_evento": "TODO MUNDO CORRE PELA VIDA setembro amarelo 2026",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 42943
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-02",
+              "nome_evento": "DESAFIO DA PONTE 2026",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 43052
+            },
+            {
+              "bloqueado": true,
+              "ano": 2026,
+              "data_final": "2026-06-07",
+              "nome_evento": "Maratona Internacional do Rio de Janeiro 2026",
+              "cadastrado": true,
+              "linhas_brutas": 14175,
+              "elegiveis": 14120,
+              "id_evento": 43066
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-24",
+              "nome_evento": "3ª MARATONA INTERNACIONAL DE GOIÂNIA WR",
+              "cadastrado": true,
+              "linhas_brutas": 373,
+              "elegiveis": 366,
+              "id_evento": 43068
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-27",
+              "nome_evento": "4ª Maratona de Santa Maria",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 43072
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-03-15",
+              "nome_evento": "2ª Maratona de Torres",
+              "cadastrado": true,
+              "linhas_brutas": 101,
+              "elegiveis": 101,
+              "id_evento": 43073
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-02",
+              "nome_evento": "2ª Maratona de Capão da Canoa",
+              "cadastrado": true,
+              "linhas_brutas": 52,
+              "elegiveis": 52,
+              "id_evento": 43074
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-07-26",
+              "nome_evento": "2ª Maratona da Cidade de São Luís",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 43076
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-05-17",
+              "nome_evento": "2ª Maratona de Feira de Santana",
+              "cadastrado": true,
+              "linhas_brutas": 93,
+              "elegiveis": 90,
+              "id_evento": 43077
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-27",
+              "nome_evento": "MARATONA DE NITERÓI 2026",
+              "cadastrado": true,
+              "linhas_brutas": 764,
+              "elegiveis": 764,
+              "id_evento": 43078
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-12",
+              "nome_evento": "Desafio Internacional Rota Da Baleia 80k 2026",
+              "cadastrado": true,
+              "linhas_brutas": 326,
+              "elegiveis": 285,
+              "id_evento": 43746
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-20",
+              "nome_evento": "Garapa Ultra Trail 2026 -terceira Etapa",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 44054
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-06-28",
+              "nome_evento": "GUARULHOS ULTRAMARATHON",
+              "cadastrado": false,
+              "linhas_brutas": 27,
+              "elegiveis": 21,
+              "id_evento": 44199
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-06-14",
+              "nome_evento": "MARATONA DE SANTO ANTÔNIO",
+              "cadastrado": false,
+              "linhas_brutas": 18,
+              "elegiveis": 16,
+              "id_evento": 44586
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-16",
+              "nome_evento": "1ª MARATONA ORBITA DE REVEZAMENTO",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 45035
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-12",
+              "nome_evento": "1ª Maratona De Revezamento Da Ueg-iporá - Duplas E Quartetos",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 45200
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-12",
+              "nome_evento": "TRAIL RUN SERRA DA BODOQUENA 2026",
+              "cadastrado": true,
+              "linhas_brutas": 40,
+              "elegiveis": 22,
+              "id_evento": 45409
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-01",
+              "nome_evento": "MARATONA E MEIA DA CHAPADA DOS VEADEIROS CAIXA",
+              "cadastrado": false,
+              "linhas_brutas": 43,
+              "elegiveis": 33,
+              "id_evento": 45804
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-20",
+              "nome_evento": "MARATONINHA CAPIXABA ETAPA VILA VELHA 2026 - 10 ANOS",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 46100
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-20",
+              "nome_evento": "UP Trail Run",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 46102
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-30",
+              "nome_evento": "CORRIDA DO EUCALIPTO - BRACELL 2026",
+              "cadastrado": true,
+              "linhas_brutas": 0,
+              "elegiveis": 0,
+              "id_evento": 46113
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-08-23",
+              "nome_evento": "TAUBATÉ MARATHON",
+              "cadastrado": false,
+              "linhas_brutas": 264,
+              "elegiveis": 264,
+              "id_evento": 46817
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-05",
+              "nome_evento": "42K TERRA DA LUZ - 2026",
+              "cadastrado": true,
+              "linhas_brutas": 292,
+              "elegiveis": 240,
+              "id_evento": 47305
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-12",
+              "nome_evento": "BRT - Boqueirão Trail Run 2026 - Tapira/MG",
+              "cadastrado": false,
+              "linhas_brutas": 8,
+              "elegiveis": 8,
+              "id_evento": 47613
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-19",
+              "nome_evento": "Rocky Mountain Games 2026 - 2ª Etapa",
+              "cadastrado": false,
+              "linhas_brutas": 36,
+              "elegiveis": 36,
+              "id_evento": 48354
+            },
+            {
+              "bloqueado": false,
+              "ano": 2026,
+              "data_final": "2026-09-27",
+              "nome_evento": "5KM Maratona Internacional de Foz do Iguaçu 5KM",
+              "cadastrado": false,
+              "linhas_brutas": 1233,
+              "elegiveis": 268,
+              "id_evento": 48640
+            }
+          ],
+          "coletado_em": "2026-10-05T15:02:52.077772-03:00"
+        }
+      }
+    ]
+  }
+}

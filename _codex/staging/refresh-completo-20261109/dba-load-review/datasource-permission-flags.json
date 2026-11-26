@@ -1,0 +1,38 @@
+{
+  "datasource": "runner_dba",
+  "sql_permissions": {
+    "alter": "false",
+    "create": "false",
+    "drop": "false",
+    "delete": "true",
+    "update": "true",
+    "storedproc": "false",
+    "revoke": "false",
+    "select": "true",
+    "grant": "false",
+    "insert": "true"
+  },
+  "boolean_keys": [
+    "alter",
+    "create",
+    "disable_clob",
+    "drop",
+    "ApplicationName",
+    "ClientHostName",
+    "ClientUser",
+    "delete",
+    "disable_autogenkeys",
+    "pooling",
+    "update",
+    "storedproc",
+    "disable",
+    "disable_blob",
+    "revoke",
+    "select",
+    "grant",
+    "ISJ2EE",
+    "validateConnection",
+    "insert",
+    "useSpyLog"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "event_id": 36657,
+  "source_athletes": 1981,
+  "expected_import": 1944,
+  "final_count": 1944,
+  "missing_from_source": 0,
+  "unexpected_final_rows": 0,
+  "public_checks": [
+    {
+      "path": "origin",
+      "http": "200 0.099928",
+      "returncode": 0,
+      "has_event_name": true,
+      "has_results": true,
+      "has_error": false
+    },
+    {
+      "path": "public",
+      "http": "200 0.380964",
+      "returncode": 0,
+      "has_event_name": true,
+      "has_results": true,
+      "has_error": false
+    }
+  ],
+  "processing_requests": [
+    {
+      "time_utc": "09/Nov/2026:14:18:09 +0000",
+      "request": "POST /api/racezone/parse.cfm HTTP/1.1",
+      "http": "200",
+      "referer": "https://runnerhub.run/api/racezone/?id_evento=36657&auto=true"
+    },
+    {
+      "time_utc": "09/Nov/2026:14:18:32 +0000",
+      "request": "POST /api/racezone/parse.cfm HTTP/1.1",
+      "http": "200",
+      "referer": "https://runnerhub.run/api/racezone/?id_evento=43665&auto=true"
+    },
+    {
+      "time_utc": "09/Nov/2026:14:18:51 +0000",
+      "request": "POST /api/racezone/parse.cfm HTTP/1.1",
+      "http": "200",
+      "referer": "https://runnerhub.run/admin/stats_obs.cfm?preset=&regiao=&estado=&cidade=&id_agrega_evento=&agregador_tag=&periodo=2026"
+    },
+    {
+      "time_utc": "09/Nov/2026:14:18:55 +0000",
+      "request": "POST /api/racezone/parse.cfm HTTP/1.1",
+      "http": "200",
+      "referer": "https://runnerhub.run/admin/stats_obs.cfm?preset=&regiao=&estado=&cidade=&id_agrega_evento=&agregador_tag=&periodo=2026"
+    }
+  ],
+  "source_content_preserved": true,
+  "temporary_probes_remaining": [],
+  "backup": "/var/backups/runnerhub-racezone-cache-20261109-5f8132d5bd",
+  "public_url": "https://openresults.run/evento/2026-feira-night-run-analise-2026/"
+}

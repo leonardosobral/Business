@@ -1,0 +1,5 @@
+{
+  "services/VerifiedAdmin.cfc": "34910b6e69d008e64bc55adbc29e5b55e0e485796be84b7da3cbdc70221c550c",
+  "portal/verificados/home.cfm": "9589775ee05c9eb0ffcf9f0204bb9101299f4274ad5dfe7c077a3c848e2ca348",
+  "portal/includes/verified_backend.cfm": "fd6cabbb869bd47e445c0dc508257909cc8237568ffc675bc3f417b6b8fbc890"
+}

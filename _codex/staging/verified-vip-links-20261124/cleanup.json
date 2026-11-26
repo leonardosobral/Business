@@ -1,0 +1,12 @@
+{
+  "preview_pid": 39243,
+  "preview_stopped": true,
+  "preview_directory_removed": true,
+  "browser_session": "verified-vip-25f0ba38",
+  "browser_daemon_pid": 39264,
+  "browser_daemon_stopped": true,
+  "browser_socket_inactive": true,
+  "native_stage_removed": true,
+  "live_stage_removed": true,
+  "provider_audit_processes_exited": true
+}

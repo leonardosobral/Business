@@ -1,0 +1,125 @@
+{
+  "cases": [
+    {
+      "version": "before",
+      "action": "GET",
+      "status": 200,
+      "redirect": "",
+      "body_bytes": 1998409,
+      "complete": true,
+      "access_error": false,
+      "tail": ""
+    },
+    {
+      "version": "before",
+      "action": "aprovar",
+      "status": 200,
+      "redirect": "",
+      "body_bytes": 1998290,
+      "complete": false,
+      "access_error": false,
+      "tail": ""
+    },
+    {
+      "version": "before",
+      "action": "negar",
+      "status": 200,
+      "redirect": "",
+      "body_bytes": 1998290,
+      "complete": false,
+      "access_error": false,
+      "tail": ""
+    },
+    {
+      "version": "before",
+      "action": "solicitar",
+      "status": 200,
+      "redirect": "",
+      "body_bytes": 1998290,
+      "complete": false,
+      "access_error": false,
+      "tail": ""
+    },
+    {
+      "version": "before",
+      "action": "forbidden",
+      "status": 200,
+      "redirect": "",
+      "body_bytes": 2012356,
+      "complete": false,
+      "access_error": false,
+      "tail": ""
+    },
+    {
+      "version": "before",
+      "action": "invalid",
+      "status": 200,
+      "redirect": "",
+      "body_bytes": 2012356,
+      "complete": false,
+      "access_error": false,
+      "tail": ""
+    },
+    {
+      "version": "after",
+      "action": "GET",
+      "status": 200,
+      "redirect": "",
+      "body_bytes": 1998297,
+      "complete": true,
+      "access_error": false,
+      "tail": ""
+    },
+    {
+      "version": "after",
+      "action": "aprovar",
+      "status": 302,
+      "redirect": "https://business.roadrunners.run/eventos/?solicitacao=aprovada",
+      "body_bytes": 0,
+      "complete": false,
+      "access_error": false,
+      "tail": ""
+    },
+    {
+      "version": "after",
+      "action": "negar",
+      "status": 302,
+      "redirect": "https://business.roadrunners.run/eventos/?solicitacao=negada",
+      "body_bytes": 0,
+      "complete": false,
+      "access_error": false,
+      "tail": ""
+    },
+    {
+      "version": "after",
+      "action": "solicitar",
+      "status": 302,
+      "redirect": "https://business.roadrunners.run/eventos/?solicitacao=pedido",
+      "body_bytes": 0,
+      "complete": false,
+      "access_error": false,
+      "tail": ""
+    },
+    {
+      "version": "after",
+      "action": "forbidden",
+      "status": 403,
+      "redirect": "",
+      "body_bytes": 107,
+      "complete": false,
+      "access_error": true,
+      "tail": ""
+    },
+    {
+      "version": "after",
+      "action": "invalid",
+      "status": 400,
+      "redirect": "",
+      "body_bytes": 107,
+      "complete": false,
+      "access_error": true,
+      "tail": ""
+    }
+  ],
+  "temporary_fixture_removed": true
+}

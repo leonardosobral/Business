@@ -1,0 +1,16 @@
+{
+  "notes": 8,
+  "versions": {
+    "continuidade": 518,
+    "contrato-abraceo": 515,
+    "edicao-anual": 520,
+    "lancamento": 517,
+    "liberacao": 516,
+    "organizar": 513,
+    "piloto": 514,
+    "venda-anual": 519
+  },
+  "validation_state_preserved": true,
+  "responsibles_preserved": true,
+  "matched_text": true
+}

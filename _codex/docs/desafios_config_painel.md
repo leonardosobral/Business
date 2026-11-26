@@ -7,7 +7,7 @@ O Business lê a configuração pelo `tag` do desafio.
 - `widgets` é a lista ordenada dos cartões a exibir. As chaves disponíveis são
   `no_desafio`, `em_andamento`, `vip`, `confirmados`, `pendentes`, `inscritos`,
   `atletas_com_atividade` e `dias_com_atividade`.
-- `progresso: "dias_com_atividade"` habilita os dois cartões de atividade.
+- `progresso: "dias_com_atividade"` habilita a apuração de dias de atividade.
   O painel conta um dia por atleta confirmado com uma atividade válida de
   qualquer modalidade do Strava. Usa a data local da atividade dentro do
   período do desafio, a partir da inscrição.
@@ -15,15 +15,34 @@ O Business lê a configuração pelo `tag` do desafio.
   `confirmados`, `pendentes` e, com o modo de dias de atividade, `atividade`.
   Quando a URL inclui `periodo`, o filtro da URL tem prioridade.
 
-O Foco abre em `inscritos` e exibe os cartões de inscritos e de atividade.
-A migração `2026-11-19_desafios_config_painel_periodo_padrao.sql` aplica essa
-configuração ao registro existente.
+O Foco abre no **Resumo**, com o funil no lugar da faixa de cartões. A aba
+**Atletas** abre em `inscritos` quando não há filtro. Esse padrão vem da
+migração `2026-11-19_desafios_config_painel_periodo_padrao.sql`.
 
-O cartão **Atividades registradas** usa a chave `dias_com_atividade` e soma
-uma atividade por atleta por dia. O painel exibe um gráfico de inscrições por
-dia, pela data de cadastro, e outro de atividades registradas por dia, pela
-contagem do cartão. Ambos incluem zeros nos dias sem registros entre o
-primeiro e o último dia exibido.
+O gráfico **Atividades registradas por dia** soma uma atividade por atleta
+por dia. O gráfico de inscrições usa a data de cadastro. Ambos incluem zeros
+nos dias sem registros entre o primeiro e o último dia exibido.
+
+O ranking **Modalidades mais praticadas** usa essa mesma seleção de atividades
+válidas. Cada treino do Strava conta para sua modalidade, inclusive quando um
+atleta registra mais de um treino no mesmo dia. O ranking prefere `sport_type`
+e usa `type` para atividades sem esse campo. **Atletas únicos** conta cada
+inscrito uma vez por modalidade, mesmo quando ele treina mais de uma variante
+agrupada na mesma categoria.
+
+No Foco, o **Resumo** reúne o funil, as séries diárias, a frequência dos
+últimos sete dias e a retenção por semana de inscrição. As etapas do funil
+abrem a aba **Atletas** com o filtro correspondente. Um histórico de atividade
+ou de ponto mantém a passagem pelo Strava no funil. O filtro de conexão atual
+avalia as credenciais disponíveis para o cron.
+
+A frequência inclui todos os inscritos, com um registro por atleta e por dia.
+A retenção agrupa quem treinou na semana da inscrição e verifica o retorno
+na semana seguinte. As semanas incompletas ficam em andamento.
+
+A aba **Pontos** lê a fila `tb_strava_foco_points`. Exibe os últimos 30 dias
+por data da confirmação, a confirmação mais recente, a fila e as revisões,
+incluindo HTTP 408. As janelas diárias seguem o horário de Brasília.
 
 Uma configuração vazia carrega os widgets anteriores. Os circuitos com painéis
 próprios mantêm seus painéis. Os dias de atividade medem participação. O

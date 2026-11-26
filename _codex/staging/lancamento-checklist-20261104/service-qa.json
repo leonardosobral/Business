@@ -1,0 +1,11 @@
+{
+  "verified_identity_required": true,
+  "non_admin_read_write_rejected": true,
+  "reopen": true,
+  "unknown_step_rejected": true,
+  "save_and_reload": true,
+  "saved_steps": 0,
+  "stale_write_conflict": true,
+  "qa_writes_rolled_back": true,
+  "steps": 8
+}

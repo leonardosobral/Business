@@ -1,0 +1,16 @@
+{
+  "mobile_responsive": "PASS",
+  "viewport": "390x844 Chrome emulation",
+  "physical_device": false,
+  "new_google_login": "PASS",
+  "access_and_50pct_benefit_preserved": true,
+  "pages": 37,
+  "charts": 46,
+  "central_updated": [
+    "piloto",
+    "liberacao"
+  ],
+  "full_pilot_step_still_pending": true,
+  "cleanup": "PASS",
+  "runtime_code_changed": false
+}

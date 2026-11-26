@@ -1,0 +1,31 @@
+{
+  "captured_at": "2026-11-09T21:18:59.589618+00:00",
+  "files": 27,
+  "divergent_files": [],
+  "current_product": {
+    "code": "previa-2026-q3",
+    "status": "ACTIVE",
+    "publication": 41,
+    "published_at": "2026-10-06T23:20:59.658419-03:00",
+    "payload_sha256": "a1717534f16863d21345a2ba1e8ec4657c0f7802d61b36089608bfe42b53b7d4",
+    "run": 233,
+    "id": 1
+  },
+  "public_run": 239,
+  "public_revision": 5,
+  "annual_latest_run": 234,
+  "view_owner": "runner_dba",
+  "security_barrier": true,
+  "privileges": {
+    "product_update": true,
+    "publication_insert": true,
+    "preview_function": true,
+    "schema_create": true,
+    "publish_function": true
+  },
+  "owned_bridge_prefix": "postload-consumers-read-2c4eb17052e04f88ac16c6d4025a04b6-",
+  "temporary_directories_left": [],
+  "ready_for_ids": true,
+  "database_mutations": false,
+  "runtime_publication": false
+}

@@ -1,0 +1,30 @@
+{
+  "CANDIDATE": [
+    {
+      "event_date": "2022-11-06",
+      "tempo_bruto": "",
+      "user_id": 49983,
+      "cbat": "",
+      "account_name": "Guilherme Neto Sousa Ferreira",
+      "nome_evento": "Bsb City Half Marathon",
+      "profile_name": "GUILHERME NETO",
+      "category": "nao_informado",
+      "result_user_id": 49983,
+      "num_peito": 7,
+      "tempo_total": "01:11:38.332",
+      "profile_id": 28882,
+      "homologado": 1,
+      "id_resultado": 1831949,
+      "classificacao_sexo": 4,
+      "nome_categoria": "ELITEM",
+      "percurso": 21,
+      "classificacao_total": 4,
+      "concluinte": 1,
+      "status_final": 0,
+      "tag": "gneto25",
+      "result_name": "GUILHERME NETO DE SOUSA FERREIRA",
+      "permanent": 1,
+      "event_tag": "2022-bsb-city-half-marathon"
+    }
+  ]
+}

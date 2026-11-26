@@ -1,0 +1,26 @@
+[
+  {
+    "checked": false,
+    "notes": "PRÓXIMO PASSO: selecionar 5–10 leitores e autorizar os convites para testar o acesso completo.\n\nPRONTO (04/11)\n• Login Google, biblioteca, leitor profissional e gestão de convites no Business.\n• Primeiro acesso ABRACEO por CNPJ/voucher preparado; 95 vouchers nominais prontos, com resgate até 24/11. A regra de 50% na compra antecipada do anual foi corrigida e testada em 04/11; o benefício fica registrado no resgate.\n• Testes técnicos administrativos já executados em desktop e celular.\n\nFALTA\n• Ativar as campanhas de piloto/editorial quando houver autorização: ambas estão em rascunho e sem vouchers emitidos.\n• Testar com convidados reais: conta Google, e-mail correto, resgate, retorno posterior à biblioteca, gráficos e exportações, também no celular.\n• Conferir o primeiro acesso dos representantes e registrar problemas e correções.\n• Na conferência de 04/11: zero resgates, zero acessos concedidos e zero representantes declarados. O piloto com convidados ainda precisa acontecer.",
+    "revision": "539",
+    "step": "etapa-piloto"
+  },
+  {
+    "checked": false,
+    "notes": "PRÓXIMO PASSO: concluir a aprovação do contrato e alinhar a comunicação com a ABRACEO até 12/11.\n\nPRONTO\n• Fluxo de primeiro acesso dos associados, pré-cadastros e vouchers preparado no Business.\n• Proposta da prévia por convite e do anual vendido separadamente já refletida nos materiais internos.\n• Benefício de 50% na compra antecipada do anual configurado e testado no primeiro acesso por voucher e CNPJ em 04/11.\n\nFALTA\n• Concluir a revisão e obter a aprovação das partes sobre o contrato.\n• Confirmar público elegível, responsabilidades, contrapartidas, uso das marcas e autorização da comunicação conjunta.\n• Ratificar no contrato os termos do benefício de 50% já configurado: público elegível, compra antecipada do anual, prazo e comunicação aos associados.\n• Validar prazo de resgate até 24/11 e a primeira onda de associados. Registrar aqui a aprovação e quem a confirmou.",
+    "revision": "540",
+    "step": "etapa-contrato-abraceo"
+  },
+  {
+    "checked": false,
+    "notes": "PRÓXIMO PASSO: concluir o piloto com convidados e revisar a abertura temporária da área de imprensa.\n\nPRONTO (04/11)\n• Hotsite, kit e central publicados; materiais preparados para 13/11 e links principais respondendo.\n• Área de imprensa oferece quatro edições: estudo principal e maratonas, 2025 e prévia 2026.\n• Cronograma e acompanhamento compartilhado funcionando no desktop e celular.\n• Primeiro acesso ABRACEO corrigido em 04/11: voucher e CNPJ registram o direito à compra antecipada do anual com 50%, sem duplicidade. Os 95 vouchers e seus vencimentos foram preservados.\n\nFALTA ATÉ 12/11\n• Conferir com convidados do piloto se o resgate confirma o benefício anual de 50% na conta. A regra já passou nos testes técnicos; falta a validação com leitores reais.\n• Definir se a imprensa continuará com acesso temporariamente aberto, sem login/código, ou voltará ao convite; testar o fluxo escolhido antes de divulgar.\n• Concluir o piloto com não administradores e revisar login, resgate, leitura e exportações.\n• Conferir aprovação do contrato, comunicação da parceria, chamadas, links e destinatários. Registrar a liberação final.",
+    "revision": "541",
+    "step": "etapa-liberacao"
+  },
+  {
+    "checked": false,
+    "notes": "PRÓXIMO PASSO: fechar oferta, licença e checkout do anual durante novembro e dezembro.\n\nPRONTO\n• Funil definido: prévia pública enxuta → convite/conta Business → leitura profissional → oferta anual.\n• Produto anual de 2026 cadastrado em rascunho; infraestrutura de pagamento já existe no Business.\n• Primeiro acesso ABRACEO já registra o benefício de 50% na compra antecipada do anual quando o convite é resgatado (correção de 04/11).\n• Hipóteses de preço e benefício estão na central, ainda sujeitas à validação comercial.\n\nFALTA\n• Aprovar preço, licença, condições da oferta e público elegível à compra antecipada com 50% de desconto.\n• Integrar o benefício de 50% registrado no resgate à oferta/checkout do anual e validar a compra antecipada quando a venda for aberta.\n• Configurar a oferta do estudo no pagamento e testar compra, confirmação e liberação de leitura.\n• Preparar a comunicação com quem usou a prévia e os materiais comerciais antes do recesso.\n• Este trabalho prepara janeiro; não impede a estreia da prévia de 13/11.",
+    "revision": "542",
+    "step": "etapa-venda-anual"
+  }
+]

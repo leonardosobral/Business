@@ -1,0 +1,24 @@
+{
+  "list": {
+    "status": 200,
+    "verified": true
+  },
+  "quick": {
+    "status": 200,
+    "verified": true
+  },
+  "vip": {
+    "status": 200,
+    "verified": true
+  },
+  "manual": {
+    "status": 200,
+    "verified": true
+  },
+  "refund": {
+    "status": 200,
+    "verified": true
+  },
+  "ok": true,
+  "stage_removed": true
+}

@@ -1,0 +1,2196 @@
+[
+  {
+    "id": 155,
+    "section": 38,
+    "section_title": "2025 — P03 — Panorama, volume e gênero",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:31:40.577141-03:00",
+      "cell_version": 1,
+      "id": 6
+    }
+  },
+  {
+    "id": 157,
+    "section": 38,
+    "section_title": "2025 — P03 — Panorama, volume e gênero",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:32:48.853189-03:00",
+      "cell_version": 1,
+      "id": 7
+    }
+  },
+  {
+    "id": 159,
+    "section": 38,
+    "section_title": "2025 — P03 — Panorama, volume e gênero",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:33:28.366959-03:00",
+      "cell_version": 1,
+      "id": 8
+    }
+  },
+  {
+    "id": 163,
+    "section": 39,
+    "section_title": "2025 — P04 — Faixas etárias",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:41:08.261718-03:00",
+      "cell_version": 2,
+      "id": 10
+    }
+  },
+  {
+    "id": 167,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:41:32.201302-03:00",
+      "cell_version": 2,
+      "id": 11
+    }
+  },
+  {
+    "id": 169,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:41:47.581466-03:00",
+      "cell_version": 1,
+      "id": 12
+    }
+  },
+  {
+    "id": 173,
+    "section": 41,
+    "section_title": "2025 — P06 — Distâncias e participação por sexo",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:42:07.533077-03:00",
+      "cell_version": 1,
+      "id": 13
+    }
+  },
+  {
+    "id": 175,
+    "section": 41,
+    "section_title": "2025 — P06 — Distâncias e participação por sexo",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:42:12.135901-03:00",
+      "cell_version": 1,
+      "id": 14
+    }
+  },
+  {
+    "id": 177,
+    "section": 41,
+    "section_title": "2025 — P06 — Distâncias e participação por sexo",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:42:25.630758-03:00",
+      "cell_version": 1,
+      "id": 15
+    }
+  },
+  {
+    "id": 179,
+    "section": 41,
+    "section_title": "2025 — P06 — Distâncias e participação por sexo",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:42:30.01158-03:00",
+      "cell_version": 1,
+      "id": 16
+    }
+  },
+  {
+    "id": 181,
+    "section": 41,
+    "section_title": "2025 — P06 — Distâncias e participação por sexo",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:42:34.868361-03:00",
+      "cell_version": 1,
+      "id": 17
+    }
+  },
+  {
+    "id": 185,
+    "section": 42,
+    "section_title": "2025 — P07 — Gerações nas distâncias",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:42:49.831567-03:00",
+      "cell_version": 1,
+      "id": 18
+    }
+  },
+  {
+    "id": 189,
+    "section": 43,
+    "section_title": "2025 — P08 — Ritmo e performance",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:43:40.868165-03:00",
+      "cell_version": 1,
+      "id": 19
+    }
+  },
+  {
+    "id": 191,
+    "section": 43,
+    "section_title": "2025 — P08 — Ritmo e performance",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:44:08.482555-03:00",
+      "cell_version": 1,
+      "id": 20
+    }
+  },
+  {
+    "id": 195,
+    "section": 44,
+    "section_title": "2025 — P09 — Regiões e gênero",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:44:20.567298-03:00",
+      "cell_version": 1,
+      "id": 21
+    }
+  },
+  {
+    "id": 199,
+    "section": 45,
+    "section_title": "2025 — P10 — Estados, cidades e capital/interior",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:45:00.098094-03:00",
+      "cell_version": 1,
+      "id": 22
+    }
+  },
+  {
+    "id": 201,
+    "section": 45,
+    "section_title": "2025 — P10 — Estados, cidades e capital/interior",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:45:06.467639-03:00",
+      "cell_version": 1,
+      "id": 23
+    }
+  },
+  {
+    "id": 203,
+    "section": 45,
+    "section_title": "2025 — P10 — Estados, cidades e capital/interior",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:45:11.927142-03:00",
+      "cell_version": 1,
+      "id": 24
+    }
+  },
+  {
+    "id": 207,
+    "section": 46,
+    "section_title": "2025 — P11 — Calendário, trimestres e estações",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:45:23.512717-03:00",
+      "cell_version": 1,
+      "id": 25
+    }
+  },
+  {
+    "id": 211,
+    "section": 47,
+    "section_title": "2025 — P12 — Top maratonas e tempos",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:45:28.810901-03:00",
+      "cell_version": 1,
+      "id": 26
+    }
+  },
+  {
+    "id": 215,
+    "section": 48,
+    "section_title": "2025 — P13 — Maratonas rápidas e pódio",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:45:45.274717-03:00",
+      "cell_version": 1,
+      "id": 27
+    }
+  },
+  {
+    "id": 219,
+    "section": 49,
+    "section_title": "2025 — P14 — Faixas Corrida no Ar",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:45:48.048287-03:00",
+      "cell_version": 1,
+      "id": 28
+    }
+  },
+  {
+    "id": 223,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:46:14.480885-03:00",
+      "cell_version": 1,
+      "id": 29
+    }
+  },
+  {
+    "id": 227,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-28T14:46:30.556224-03:00",
+      "cell_version": 1,
+      "id": 30
+    }
+  },
+  {
+    "id": 249,
+    "section": 54,
+    "section_title": "2025 — Saída para web",
+    "version": 34,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:35:03.080865-03:00",
+      "cell_version": 34,
+      "id": 205
+    }
+  },
+  {
+    "id": 251,
+    "section": 55,
+    "section_title": "2026 — Saída para web",
+    "version": 39,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:20:06.899204-03:00",
+      "cell_version": 39,
+      "id": 233
+    }
+  },
+  {
+    "id": 253,
+    "section": 37,
+    "section_title": "2025 — Comece aqui — mapa das páginas",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 255,
+    "section": 48,
+    "section_title": "2025 — P13 — Maratonas rápidas e pódio",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T12:25:57.028042-03:00",
+      "cell_version": 1,
+      "id": 34
+    }
+  },
+  {
+    "id": 257,
+    "section": 47,
+    "section_title": "2025 — P12 — Top maratonas e tempos",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T12:53:42.344917-03:00",
+      "cell_version": 1,
+      "id": 40
+    }
+  },
+  {
+    "id": 259,
+    "section": 47,
+    "section_title": "2025 — P12 — Top maratonas e tempos",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T12:55:11.694886-03:00",
+      "cell_version": 2,
+      "id": 41
+    }
+  },
+  {
+    "id": 260,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T12:55:12.223533-03:00",
+      "cell_version": 1,
+      "id": 42
+    }
+  },
+  {
+    "id": 261,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T13:03:22.735014-03:00",
+      "cell_version": 1,
+      "id": 46
+    }
+  },
+  {
+    "id": 264,
+    "section": 48,
+    "section_title": "2025 — P13 — Maratonas rápidas e pódio",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T13:12:50.849849-03:00",
+      "cell_version": 2,
+      "id": 48
+    }
+  },
+  {
+    "id": 266,
+    "section": 48,
+    "section_title": "2025 — P13 — Maratonas rápidas e pódio",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T13:14:48.631295-03:00",
+      "cell_version": 1,
+      "id": 49
+    }
+  },
+  {
+    "id": 267,
+    "section": 45,
+    "section_title": "2025 — P10 — Estados, cidades e capital/interior",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T13:53:59.146051-03:00",
+      "cell_version": 2,
+      "id": 52
+    }
+  },
+  {
+    "id": 268,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T13:52:47.546193-03:00",
+      "cell_version": 1,
+      "id": 51
+    }
+  },
+  {
+    "id": 271,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T14:07:19.079671-03:00",
+      "cell_version": 2,
+      "id": 58
+    }
+  },
+  {
+    "id": 273,
+    "section": 49,
+    "section_title": "2025 — P14 — Faixas Corrida no Ar",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T22:14:08.340534-03:00",
+      "cell_version": 1,
+      "id": 59
+    }
+  },
+  {
+    "id": 274,
+    "section": 43,
+    "section_title": "2025 — P08 — Ritmo e performance",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T22:17:55.054585-03:00",
+      "cell_version": 2,
+      "id": 60
+    }
+  },
+  {
+    "id": 275,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T22:19:03.253821-03:00",
+      "cell_version": 1,
+      "id": 61
+    }
+  },
+  {
+    "id": 276,
+    "section": 49,
+    "section_title": "2025 — P14 — Faixas Corrida no Ar",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T22:20:48.234489-03:00",
+      "cell_version": 1,
+      "id": 62
+    }
+  },
+  {
+    "id": 280,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T22:50:50.143004-03:00",
+      "cell_version": 1,
+      "id": 65
+    }
+  },
+  {
+    "id": 281,
+    "section": 48,
+    "section_title": "2025 — P13 — Maratonas rápidas e pódio",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T22:55:59.786809-03:00",
+      "cell_version": 2,
+      "id": 67
+    }
+  },
+  {
+    "id": 282,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T22:58:52.29977-03:00",
+      "cell_version": 2,
+      "id": 69
+    }
+  },
+  {
+    "id": 283,
+    "section": 48,
+    "section_title": "2025 — P13 — Maratonas rápidas e pódio",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T23:00:54.269147-03:00",
+      "cell_version": 1,
+      "id": 70
+    }
+  },
+  {
+    "id": 284,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T23:00:54.298876-03:00",
+      "cell_version": 1,
+      "id": 71
+    }
+  },
+  {
+    "id": 287,
+    "section": 44,
+    "section_title": "2025 — P09 — Regiões e gênero",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T23:30:15.08219-03:00",
+      "cell_version": 1,
+      "id": 75
+    }
+  },
+  {
+    "id": 288,
+    "section": 45,
+    "section_title": "2025 — P10 — Estados, cidades e capital/interior",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T23:31:11.69503-03:00",
+      "cell_version": 2,
+      "id": 77
+    }
+  },
+  {
+    "id": 291,
+    "section": 45,
+    "section_title": "2025 — P10 — Estados, cidades e capital/interior",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-09-30T23:47:02.690794-03:00",
+      "cell_version": 1,
+      "id": 82
+    }
+  },
+  {
+    "id": 292,
+    "section": 38,
+    "section_title": "2025 — P03 — Panorama, volume e gênero",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T00:05:17.508679-03:00",
+      "cell_version": 1,
+      "id": 83
+    }
+  },
+  {
+    "id": 294,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T07:06:35.798764-03:00",
+      "cell_version": 1,
+      "id": 87
+    }
+  },
+  {
+    "id": 295,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T07:07:58.762266-03:00",
+      "cell_version": 1,
+      "id": 88
+    }
+  },
+  {
+    "id": 296,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T07:08:09.865601-03:00",
+      "cell_version": 1,
+      "id": 89
+    }
+  },
+  {
+    "id": 297,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T07:08:23.41316-03:00",
+      "cell_version": 1,
+      "id": 90
+    }
+  },
+  {
+    "id": 298,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T07:10:30.840074-03:00",
+      "cell_version": 2,
+      "id": 92
+    }
+  },
+  {
+    "id": 300,
+    "section": 46,
+    "section_title": "2025 — P11 — Calendário, trimestres e estações",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T08:24:36.622294-03:00",
+      "cell_version": 1,
+      "id": 97
+    }
+  },
+  {
+    "id": 301,
+    "section": 48,
+    "section_title": "2025 — P13 — Maratonas rápidas e pódio",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T08:24:52.341116-03:00",
+      "cell_version": 1,
+      "id": 98
+    }
+  },
+  {
+    "id": 302,
+    "section": 46,
+    "section_title": "2025 — P11 — Calendário, trimestres e estações",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T08:25:50.02081-03:00",
+      "cell_version": 1,
+      "id": 99
+    }
+  },
+  {
+    "id": 305,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 4,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T09:44:58.491528-03:00",
+      "cell_version": 4,
+      "id": 104
+    }
+  },
+  {
+    "id": 306,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T09:45:03.894367-03:00",
+      "cell_version": 2,
+      "id": 105
+    }
+  },
+  {
+    "id": 308,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T12:56:33.122376-03:00",
+      "cell_version": 1,
+      "id": 110
+    }
+  },
+  {
+    "id": 309,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T13:02:58.113732-03:00",
+      "cell_version": 1,
+      "id": 111
+    }
+  },
+  {
+    "id": 310,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T13:13:41.505508-03:00",
+      "cell_version": 1,
+      "id": 113
+    }
+  },
+  {
+    "id": 312,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 3,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T15:26:11.476865-03:00",
+      "cell_version": 3,
+      "id": 117
+    }
+  },
+  {
+    "id": 313,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T15:23:25.456322-03:00",
+      "cell_version": 1,
+      "id": 116
+    }
+  },
+  {
+    "id": 314,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T15:27:40.76934-03:00",
+      "cell_version": 1,
+      "id": 118
+    }
+  },
+  {
+    "id": 315,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T15:28:29.307495-03:00",
+      "cell_version": 1,
+      "id": 119
+    }
+  },
+  {
+    "id": 317,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 318,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 319,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 320,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 321,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 322,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 323,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 3,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-01T21:32:14.77761-03:00",
+      "cell_version": 3,
+      "id": 125
+    }
+  },
+  {
+    "id": 325,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-03T07:56:58.417479-03:00",
+      "cell_version": 1,
+      "id": 127
+    }
+  },
+  {
+    "id": 326,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 328,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-03T07:59:28.673416-03:00",
+      "cell_version": 1,
+      "id": 128
+    }
+  },
+  {
+    "id": 329,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-03T08:09:13.236371-03:00",
+      "cell_version": 1,
+      "id": 129
+    }
+  },
+  {
+    "id": 330,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-03T08:21:16.280858-03:00",
+      "cell_version": 1,
+      "id": 132
+    }
+  },
+  {
+    "id": 331,
+    "section": 47,
+    "section_title": "2025 — P12 — Top maratonas e tempos",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-03T10:26:20.986087-03:00",
+      "cell_version": 2,
+      "id": 134
+    }
+  },
+  {
+    "id": 333,
+    "section": 47,
+    "section_title": "2025 — P12 — Top maratonas e tempos",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-03T12:08:18.332219-03:00",
+      "cell_version": 1,
+      "id": 137
+    }
+  },
+  {
+    "id": 334,
+    "section": 47,
+    "section_title": "2025 — P12 — Top maratonas e tempos",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-03T12:08:22.971967-03:00",
+      "cell_version": 1,
+      "id": 138
+    }
+  },
+  {
+    "id": 336,
+    "section": 58,
+    "section_title": "2026 — Inscrições — preços e cobertura",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T10:25:36.739125-03:00",
+      "cell_version": 1,
+      "id": 144
+    }
+  },
+  {
+    "id": 338,
+    "section": 58,
+    "section_title": "2026 — Inscrições — preços e cobertura",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T11:17:32.857278-03:00",
+      "cell_version": 2,
+      "id": 146
+    }
+  },
+  {
+    "id": 340,
+    "section": 58,
+    "section_title": "2026 — Inscrições — preços e cobertura",
+    "version": 3,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T11:57:57.618846-03:00",
+      "cell_version": 3,
+      "id": 151
+    }
+  },
+  {
+    "id": 341,
+    "section": 60,
+    "section_title": "Porte e concentração das provas — 2025 / 2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T11:42:23.890187-03:00",
+      "cell_version": 1,
+      "id": 148
+    }
+  },
+  {
+    "id": 343,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:09:57.882601-03:00",
+      "cell_version": 2,
+      "id": 216
+    }
+  },
+  {
+    "id": 344,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T14:54:27.255356-03:00",
+      "cell_version": 1,
+      "id": 154
+    }
+  },
+  {
+    "id": 345,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T14:54:27.906779-03:00",
+      "cell_version": 1,
+      "id": 155
+    }
+  },
+  {
+    "id": 346,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T14:56:51.866816-03:00",
+      "cell_version": 1,
+      "id": 156
+    }
+  },
+  {
+    "id": 347,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:12:22.585759-03:00",
+      "cell_version": 1,
+      "id": 228
+    }
+  },
+  {
+    "id": 348,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T14:57:04.935238-03:00",
+      "cell_version": 1,
+      "id": 158
+    }
+  },
+  {
+    "id": 349,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T14:57:20.928557-03:00",
+      "cell_version": 1,
+      "id": 159
+    }
+  },
+  {
+    "id": 350,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:11:50.924677-03:00",
+      "cell_version": 2,
+      "id": 224
+    }
+  },
+  {
+    "id": 351,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:10:06.444368-03:00",
+      "cell_version": 2,
+      "id": 217
+    }
+  },
+  {
+    "id": 352,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T14:57:39.802037-03:00",
+      "cell_version": 1,
+      "id": 162
+    }
+  },
+  {
+    "id": 353,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:10:21.051986-03:00",
+      "cell_version": 2,
+      "id": 218
+    }
+  },
+  {
+    "id": 354,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T14:57:54.716502-03:00",
+      "cell_version": 1,
+      "id": 164
+    }
+  },
+  {
+    "id": 355,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T14:57:56.058391-03:00",
+      "cell_version": 1,
+      "id": 165
+    }
+  },
+  {
+    "id": 356,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T14:58:05.856025-03:00",
+      "cell_version": 1,
+      "id": 166
+    }
+  },
+  {
+    "id": 357,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:10:35.675609-03:00",
+      "cell_version": 2,
+      "id": 219
+    }
+  },
+  {
+    "id": 358,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:12:20.218047-03:00",
+      "cell_version": 1,
+      "id": 227
+    }
+  },
+  {
+    "id": 359,
+    "section": 45,
+    "section_title": "2025 — P10 — Estados, cidades e capital/interior",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:10:44.027936-03:00",
+      "cell_version": 2,
+      "id": 220
+    }
+  },
+  {
+    "id": 360,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T14:58:43.678342-03:00",
+      "cell_version": 1,
+      "id": 170
+    }
+  },
+  {
+    "id": 361,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T14:58:44.788352-03:00",
+      "cell_version": 1,
+      "id": 171
+    }
+  },
+  {
+    "id": 362,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 363,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:02:49.32799-03:00",
+      "cell_version": 1,
+      "id": 173
+    }
+  },
+  {
+    "id": 364,
+    "section": 47,
+    "section_title": "2025 — P12 — Top maratonas e tempos",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:02:52.075814-03:00",
+      "cell_version": 1,
+      "id": 174
+    }
+  },
+  {
+    "id": 365,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:02:53.724273-03:00",
+      "cell_version": 1,
+      "id": 175
+    }
+  },
+  {
+    "id": 366,
+    "section": 58,
+    "section_title": "2026 — Inscrições — preços e cobertura",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:02:57.857147-03:00",
+      "cell_version": 1,
+      "id": 176
+    }
+  },
+  {
+    "id": 367,
+    "section": 58,
+    "section_title": "2026 — Inscrições — preços e cobertura",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:02:58.777083-03:00",
+      "cell_version": 1,
+      "id": 177
+    }
+  },
+  {
+    "id": 368,
+    "section": 60,
+    "section_title": "Porte e concentração das provas — 2025 / 2026",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:11:22.101678-03:00",
+      "cell_version": 2,
+      "id": 222
+    }
+  },
+  {
+    "id": 369,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:03:07.817097-03:00",
+      "cell_version": 1,
+      "id": 179
+    }
+  },
+  {
+    "id": 370,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:03:15.298927-03:00",
+      "cell_version": 1,
+      "id": 180
+    }
+  },
+  {
+    "id": 371,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:03:20.69461-03:00",
+      "cell_version": 1,
+      "id": 181
+    }
+  },
+  {
+    "id": 372,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:03:26.102433-03:00",
+      "cell_version": 1,
+      "id": 182
+    }
+  },
+  {
+    "id": 373,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:03:30.74117-03:00",
+      "cell_version": 1,
+      "id": 183
+    }
+  },
+  {
+    "id": 374,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:03:34.709146-03:00",
+      "cell_version": 1,
+      "id": 184
+    }
+  },
+  {
+    "id": 375,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:03:38.616216-03:00",
+      "cell_version": 1,
+      "id": 185
+    }
+  },
+  {
+    "id": 376,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:03:42.793254-03:00",
+      "cell_version": 1,
+      "id": 186
+    }
+  },
+  {
+    "id": 377,
+    "section": 50,
+    "section_title": "2025 — P15 — Perfil e outros esportes",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:03:47.320573-03:00",
+      "cell_version": 1,
+      "id": 187
+    }
+  },
+  {
+    "id": 378,
+    "section": 45,
+    "section_title": "2025 — P10 — Estados, cidades e capital/interior",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:11:12.857693-03:00",
+      "cell_version": 2,
+      "id": 221
+    }
+  },
+  {
+    "id": 379,
+    "section": 47,
+    "section_title": "2025 — P12 — Top maratonas e tempos",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:04:49.262314-03:00",
+      "cell_version": 1,
+      "id": 189
+    }
+  },
+  {
+    "id": 380,
+    "section": 40,
+    "section_title": "2025 — P05 — Gerações e comparações anuais",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:11:54.796339-03:00",
+      "cell_version": 2,
+      "id": 225
+    }
+  },
+  {
+    "id": 381,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 382,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 383,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:12:57.349943-03:00",
+      "cell_version": 1,
+      "id": 229
+    }
+  },
+  {
+    "id": 384,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 3,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:12:09.810389-03:00",
+      "cell_version": 3,
+      "id": 226
+    }
+  },
+  {
+    "id": 385,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:15:07.159761-03:00",
+      "cell_version": 1,
+      "id": 195
+    }
+  },
+  {
+    "id": 386,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 387,
+    "section": 57,
+    "section_title": "2026 — Recortes e conciliação",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:14:29.791897-03:00",
+      "cell_version": 2,
+      "id": 231
+    }
+  },
+  {
+    "id": 388,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 389,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:21:07.697124-03:00",
+      "cell_version": 1,
+      "id": 197
+    }
+  },
+  {
+    "id": 390,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:21:08.751751-03:00",
+      "cell_version": 1,
+      "id": 198
+    }
+  },
+  {
+    "id": 391,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:24:38.447052-03:00",
+      "cell_version": 1,
+      "id": 199
+    }
+  },
+  {
+    "id": 392,
+    "section": 51,
+    "section_title": "2025 — Apoio — qualidade, fontes e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T15:24:39.514072-03:00",
+      "cell_version": 1,
+      "id": 200
+    }
+  },
+  {
+    "id": 396,
+    "section": 61,
+    "section_title": "2026 — Floripa — resultados, desempenho e Boston",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T20:20:56.488903-03:00",
+      "cell_version": 1,
+      "id": 207
+    }
+  },
+  {
+    "id": 398,
+    "section": 61,
+    "section_title": "2026 — Floripa — resultados, desempenho e Boston",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T20:28:23.563-03:00",
+      "cell_version": 1,
+      "id": 208
+    }
+  },
+  {
+    "id": 400,
+    "section": 62,
+    "section_title": "2026 — NB 42K Porto Alegre — auditoria Boston",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-05T20:57:16.775434-03:00",
+      "cell_version": 1,
+      "id": 209
+    }
+  },
+  {
+    "id": 402,
+    "section": 61,
+    "section_title": "2026 — Floripa — resultados, desempenho e Boston",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T19:10:20.570142-03:00",
+      "cell_version": 1,
+      "id": 210
+    }
+  },
+  {
+    "id": 404,
+    "section": 47,
+    "section_title": "2025 — P12 — Top maratonas e tempos",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T19:27:16.228597-03:00",
+      "cell_version": 1,
+      "id": 212
+    }
+  },
+  {
+    "id": 405,
+    "section": 47,
+    "section_title": "2025 — P12 — Top maratonas e tempos",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T19:32:50.147526-03:00",
+      "cell_version": 1,
+      "id": 213
+    }
+  },
+  {
+    "id": 408,
+    "section": 63,
+    "section_title": "2026 — Fontes BI do DBA",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 409,
+    "section": 63,
+    "section_title": "2026 — Fontes BI do DBA",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 410,
+    "section": 63,
+    "section_title": "2026 — Fontes BI do DBA",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 411,
+    "section": 63,
+    "section_title": "2026 — Fontes BI do DBA",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": null
+  },
+  {
+    "id": 413,
+    "section": 63,
+    "section_title": "2026 — Fontes BI do DBA",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:09:31.686063-03:00",
+      "cell_version": 1,
+      "id": 215
+    }
+  },
+  {
+    "id": 414,
+    "section": 63,
+    "section_title": "2026 — Fontes BI do DBA",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-06T23:14:06.254287-03:00",
+      "cell_version": 1,
+      "id": 230
+    }
+  },
+  {
+    "id": 418,
+    "section": 65,
+    "section_title": "2026 — Anual — saída e pendências",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-10T09:57:18.019782-03:00",
+      "cell_version": 1,
+      "id": 234
+    }
+  },
+  {
+    "id": 420,
+    "section": 64,
+    "section_title": "2026 — Comece aqui — três edições",
+    "version": 5,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-13T10:37:53.18123-03:00",
+      "cell_version": 5,
+      "id": 239
+    }
+  },
+  {
+    "id": 421,
+    "section": 64,
+    "section_title": "2026 — Comece aqui — três edições",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-13T10:20:52.130963-03:00",
+      "cell_version": 1,
+      "id": 237
+    }
+  },
+  {
+    "id": 423,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:15:00.713544-03:00",
+      "cell_version": 1,
+      "id": 240
+    }
+  },
+  {
+    "id": 424,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:15:55.208972-03:00",
+      "cell_version": 1,
+      "id": 241
+    }
+  },
+  {
+    "id": 425,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:16:07.986912-03:00",
+      "cell_version": 1,
+      "id": 242
+    }
+  },
+  {
+    "id": 426,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:16:23.871738-03:00",
+      "cell_version": 1,
+      "id": 243
+    }
+  },
+  {
+    "id": 427,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:17:55.217838-03:00",
+      "cell_version": 1,
+      "id": 244
+    }
+  },
+  {
+    "id": 428,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:19:42.729095-03:00",
+      "cell_version": 1,
+      "id": 245
+    }
+  },
+  {
+    "id": 429,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:20:26.310843-03:00",
+      "cell_version": 1,
+      "id": 246
+    }
+  },
+  {
+    "id": 432,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:47:19.599001-03:00",
+      "cell_version": 1,
+      "id": 248
+    }
+  },
+  {
+    "id": 433,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:47:55.132517-03:00",
+      "cell_version": 1,
+      "id": 249
+    }
+  },
+  {
+    "id": 434,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:48:41.762676-03:00",
+      "cell_version": 1,
+      "id": 250
+    }
+  },
+  {
+    "id": 435,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:48:43.336061-03:00",
+      "cell_version": 1,
+      "id": 251
+    }
+  },
+  {
+    "id": 436,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:48:46.341497-03:00",
+      "cell_version": 1,
+      "id": 252
+    }
+  },
+  {
+    "id": 437,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T15:48:49.077401-03:00",
+      "cell_version": 1,
+      "id": 253
+    }
+  },
+  {
+    "id": 439,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T16:15:55.990646-03:00",
+      "cell_version": 1,
+      "id": 254
+    }
+  },
+  {
+    "id": 440,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T16:15:57.860919-03:00",
+      "cell_version": 1,
+      "id": 255
+    }
+  },
+  {
+    "id": 441,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T16:21:25.856696-03:00",
+      "cell_version": 1,
+      "id": 256
+    }
+  },
+  {
+    "id": 442,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T16:21:27.382981-03:00",
+      "cell_version": 1,
+      "id": 257
+    }
+  },
+  {
+    "id": 444,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 1,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T16:39:18.85954-03:00",
+      "cell_version": 1,
+      "id": 258
+    }
+  },
+  {
+    "id": 445,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 3,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T16:43:03.724394-03:00",
+      "cell_version": 3,
+      "id": 260
+    }
+  },
+  {
+    "id": 446,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T16:49:24.965233-03:00",
+      "cell_version": 2,
+      "id": 261
+    }
+  },
+  {
+    "id": 449,
+    "section": 66,
+    "section_title": "Maratonas — estudo vertical e Brasil Gigante — 2025/2026",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-19T17:15:36.070902-03:00",
+      "cell_version": 2,
+      "id": 263
+    }
+  },
+  {
+    "id": 452,
+    "section": 67,
+    "section_title": "Maratonas — Encarte Brasil Gigante — Jan–Set 2026",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-23T18:37:36.417596-03:00",
+      "cell_version": 2,
+      "id": 265
+    }
+  },
+  {
+    "id": 453,
+    "section": 67,
+    "section_title": "Maratonas — Encarte Brasil Gigante — Jan–Set 2026",
+    "version": 2,
+    "type": "code",
+    "lang": "sql",
+    "last_frozen": {
+      "started_at": "2026-10-23T18:39:07.622809-03:00",
+      "cell_version": 2,
+      "id": 266
+    }
+  }
+]

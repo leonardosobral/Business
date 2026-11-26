@@ -1,0 +1,585 @@
+{
+  "backup": "/var/backups/runnerhub-racezone-cache-20261109-5f8132d5bd",
+  "event": [
+    {
+      "NOME_EVENTO": "FEIRA NIGHT RUN AN\u00c1LISE 2026",
+      "DATA_FINAL": "November, 07 2026 00:00:00",
+      "URL_WICLAX": "",
+      "ID_EVENTO": 36657,
+      "TAG": "2026-feira-night-run-analise-2026",
+      "URL_RESULTADO": "https://resultados.racetag.com.br/mycrono/#/corrida-feira-nigth-run-analise-2026"
+    }
+  ],
+  "active": [],
+  "cache_settings": {
+    "templateCacheSize": "<var name=\"templateCacheSize\"><number>1024.0</number></var>",
+    "saveClassFiles": "<var name=\"saveClassFiles\"><boolean value=\"true\" /></var>",
+    "trustedCacheEnabled": "<var name=\"trustedCacheEnabled\"><boolean value=\"false\" /></var>"
+  },
+  "tables": [
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "integer",
+      "column_name": "id_evento_percurso"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "numeric",
+      "column_name": "percurso_evento"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "character varying",
+      "column_name": "unidade_de_medida"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "integer",
+      "column_name": "id_evento"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "date",
+      "column_name": "data_percurso"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "time without time zone",
+      "column_name": "hora_largada"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "character varying",
+      "column_name": "mapa"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "character varying",
+      "column_name": "tipo_corrida"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "boolean",
+      "column_name": "percurso_bloqueado"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "integer",
+      "column_name": "id_permit"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "time without time zone",
+      "column_name": "rp_m"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "time without time zone",
+      "column_name": "rp_f"
+    },
+    {
+      "table_name": "tb_evento_corridas_percursos",
+      "data_type": "time without time zone",
+      "column_name": "hora_corte"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "integer",
+      "column_name": "id_resultado"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "integer",
+      "column_name": "num_peito"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "character varying",
+      "column_name": "nome"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "date",
+      "column_name": "data_nascimento"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "integer",
+      "column_name": "id_evento"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "character varying",
+      "column_name": "modalidade"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "time without time zone",
+      "column_name": "pace"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "numeric",
+      "column_name": "percurso"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "character varying",
+      "column_name": "sexo"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "time without time zone",
+      "column_name": "tempo_bruto"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "time without time zone",
+      "column_name": "tempo_total"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "numeric",
+      "column_name": "classificacao_categoria"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "numeric",
+      "column_name": "classificacao_sexo"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "numeric",
+      "column_name": "classificacao_total"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "numeric",
+      "column_name": "velocidade_media"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "character varying",
+      "column_name": "equipe"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "character varying",
+      "column_name": "nome_categoria"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "integer",
+      "column_name": "id_usuario"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "integer",
+      "column_name": "id_categoria"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "boolean",
+      "column_name": "homologado"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "boolean",
+      "column_name": "concluinte"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "uuid",
+      "column_name": "chave_processamento"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "uuid",
+      "column_name": "chave_verificacao"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "character varying",
+      "column_name": "nacionalidade"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "integer",
+      "column_name": "status_final"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "time without time zone",
+      "column_name": "hora_largada"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "time without time zone",
+      "column_name": "tempo_f1_categoria"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "time without time zone",
+      "column_name": "tempo_f1_sexo"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "time without time zone",
+      "column_name": "tempo_f1_total"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "integer",
+      "column_name": "posicao_ranking"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "integer",
+      "column_name": "classificacao_pais"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "boolean",
+      "column_name": "pcd"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "tsvector",
+      "column_name": "nome_full_text"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "int4range",
+      "column_name": "idade_range"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "text",
+      "column_name": "nome_normalizado"
+    },
+    {
+      "table_name": "tb_resultados",
+      "data_type": "character varying",
+      "column_name": "origem_resultado"
+    },
+    {
+      "table_name": "tb_resultados_processa",
+      "data_type": "character varying",
+      "column_name": "cod_evento"
+    },
+    {
+      "table_name": "tb_resultados_processa",
+      "data_type": "integer",
+      "column_name": "id_evento"
+    },
+    {
+      "table_name": "tb_resultados_processa",
+      "data_type": "timestamp without time zone",
+      "column_name": "data_processamento_inicial"
+    },
+    {
+      "table_name": "tb_resultados_processa",
+      "data_type": "timestamp without time zone",
+      "column_name": "data_processamento_final"
+    },
+    {
+      "table_name": "tb_resultados_processa",
+      "data_type": "uuid",
+      "column_name": "chave_processamento"
+    },
+    {
+      "table_name": "tb_resultados_processa",
+      "data_type": "boolean",
+      "column_name": "erro_execucao"
+    },
+    {
+      "table_name": "tb_resultados_processa",
+      "data_type": "uuid",
+      "column_name": "chave_verificacao"
+    },
+    {
+      "table_name": "tb_resultados_processa_logs",
+      "data_type": "integer",
+      "column_name": "id_resultado_processa_log"
+    },
+    {
+      "table_name": "tb_resultados_processa_logs",
+      "data_type": "integer",
+      "column_name": "id_evento"
+    },
+    {
+      "table_name": "tb_resultados_processa_logs",
+      "data_type": "character varying",
+      "column_name": "cod_evento"
+    },
+    {
+      "table_name": "tb_resultados_processa_logs",
+      "data_type": "timestamp without time zone",
+      "column_name": "data_processamento"
+    },
+    {
+      "table_name": "tb_resultados_processa_logs",
+      "data_type": "uuid",
+      "column_name": "chave_processamento"
+    },
+    {
+      "table_name": "tb_resultados_processa_logs",
+      "data_type": "boolean",
+      "column_name": "erro_execucao"
+    },
+    {
+      "table_name": "tb_resultados_processa_logs",
+      "data_type": "text",
+      "column_name": "log_execucao"
+    },
+    {
+      "table_name": "tb_resultados_resumo",
+      "data_type": "integer",
+      "column_name": "id_resultado_resumo"
+    },
+    {
+      "table_name": "tb_resultados_resumo",
+      "data_type": "integer",
+      "column_name": "id_evento"
+    },
+    {
+      "table_name": "tb_resultados_resumo",
+      "data_type": "integer",
+      "column_name": "percurso"
+    },
+    {
+      "table_name": "tb_resultados_resumo",
+      "data_type": "character varying",
+      "column_name": "modalidade"
+    },
+    {
+      "table_name": "tb_resultados_resumo",
+      "data_type": "integer",
+      "column_name": "concluintes"
+    },
+    {
+      "table_name": "tb_resultados_resumo",
+      "data_type": "character varying",
+      "column_name": "tipo_corrida"
+    },
+    {
+      "table_name": "tb_resultados_resumo",
+      "data_type": "integer",
+      "column_name": "inscritos"
+    },
+    {
+      "table_name": "tb_resultados_resumo",
+      "data_type": "time without time zone",
+      "column_name": "pace_medio"
+    },
+    {
+      "table_name": "tb_resultados_resumo",
+      "data_type": "time without time zone",
+      "column_name": "pace_medio_top_10"
+    },
+    {
+      "table_name": "tb_resultados_resumo",
+      "data_type": "time without time zone",
+      "column_name": "pace_medio_top_100"
+    },
+    {
+      "table_name": "tb_resultados_resumo",
+      "data_type": "integer",
+      "column_name": "concluintes_sub3"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "integer",
+      "column_name": "id_resultado"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "num_peito"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "nome"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "categoria"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "id_evento"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "modalidade"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "pace"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "percurso"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "sexo"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "tempo_bruto"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "tempo_total"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "classificacao_categoria"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "classificacao_sexo"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "classificacao_total"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "velocidade_media"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "equipe"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "uuid",
+      "column_name": "chave_processamento"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "data_nascimento"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "nacionalidade"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "hora_largada"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "np"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "integer",
+      "column_name": "id_usuario"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "character varying",
+      "column_name": "status_final"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "boolean",
+      "column_name": "concluinte"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "boolean",
+      "column_name": "pcd"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "jsonb",
+      "column_name": "auditoria"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "timestamp without time zone",
+      "column_name": "data_captura_resultado"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "timestamp without time zone",
+      "column_name": "data_auditoria"
+    },
+    {
+      "table_name": "tb_resultados_temp",
+      "data_type": "boolean",
+      "column_name": "homologado_auditoria"
+    }
+  ],
+  "procedures": [
+    {
+      "name": "atualiza_classific_f1_v2",
+      "mutations": [
+        "tb_resultados",
+        "tb_resultados_processa_logs",
+        "tb_resultados",
+        "tb_resultados",
+        "tb_resultados",
+        "tb_resultados",
+        "tb_resultados",
+        "tb_resultados",
+        "tb_resultados",
+        "tb_resultados"
+      ]
+    },
+    {
+      "name": "atualiza_resultados_resumo_2025",
+      "mutations": [
+        "tb_resultados_resumo_2025",
+        "tb_resultados_resumo_2025",
+        "tb_resultados_resumo_2025",
+        "tb_resultados_resumo_2025",
+        "tb_resultados_resumo_2025"
+      ]
+    },
+    {
+      "name": "gera_resultados",
+      "mutations": [
+        "tb_resultados_processa_logs",
+        "tb_resultados_processa_logs",
+        "tb_resultados_processa",
+        "tb_resultados",
+        "tb_resultados_temp",
+        "atualiza_resultados_resumo_2025",
+        "tb_resultados_resumo",
+        "tb_resultados_resumo",
+        "tb_resultados_resumo",
+        "tb_resultados_resumo",
+        "tb_resultados_processa"
+      ]
+    }
+  ],
+  "source_hashes": {
+    "api/racezone/index.cfm": "9ecd2f699542a1f35b38ce332cbf79843e9570be4d26e5861c3640dccc826dc4",
+    "api/racezone/parse.cfm": "a76787780747d3b614b76c7f8158e5f1ca8b2297f1d49c75c8fa6ff784223df5",
+    "api/racezone/resolve_url.cfm": "8a2e315966fd6da1af2200ad154afb5cbe2fa96744f06769413f33255b5a2bc7",
+    "includes/seo-web-tools-head.cfm": "7b2cc14091a460e8a052d132cf8f20ba2b174a4ed4a57e3b3f37a82af71bf01b"
+  }
+}

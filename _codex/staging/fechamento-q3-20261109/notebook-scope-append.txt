@@ -1,0 +1,13 @@
+
+
+## Fechamento do lançamento — 09/11/2026
+
+Escopo Jan–Set mantido: público enxuto, profissional com os capítulos revisados e anual em preparação. O kit vigente tem cinco pautas, dez artes e PDF público de sete páginas. A execução interna atual é a v6; versões anteriores ficam preservadas.
+
+O leitor profissional e a leitura de imprensa de 2026 passam a destacar no calendário as edições pareadas e o calendário cadastrado, sem aumentar as 37 páginas. Fonte da coorte: célula 387 revisão 2, congelamento 231, já referenciada no pacote 41/run233. Narrativa pública: célula 420 revisão 5, congelamento 239. As séries derivadas de entrega comparativo_pareadas_amostra, comparativo_pareadas_concluintes e comparativo_pareadas_variacao preservam quantidades, taxa sem arredondamento e proveniência nos CSVs. Nenhuma consulta analítica foi reexecutada ou substituída por esta revisão de apresentação.
+
+A variação soma os concluintes de cada ano antes de dividir; não é média das variações de provas. Os dois indicadores usam universos distintos, sujeitos à captura. Não são pessoas únicas, censo ou medida isolada do crescimento real. Referência ausente/inválida mostra revisão, sem transformar ausência em zero nem impedir a leitura dos demais capítulos.
+
+Maratonas detalhado é apoio editorial separado, em revisão web. O capítulo das dez maiores elegíveis permanece na prévia principal. Preços/kits/lotes, CNA, ritmo nacional dos 42 km, auditoria cadastral e Q4 continuam no rascunho anual.
+
+Leo e Carlos são responsáveis conjuntos pelo lançamento, editorial, convites e suporte, conforme confirmação de 09/11. Piloto real, seleção de destinatários, aprovação final das peças, contrato/comunicação ABRACEO e decisões de acesso da imprensa continuam acompanhados na central; revisão técnica não valida essas etapas nem envia convites.

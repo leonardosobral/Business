@@ -1,0 +1,12 @@
+{
+  "published": [
+    "eventos/assets/events-workspace.css",
+    "eventos/listagem_eventos.cfm",
+    "eventos/form_edicao.cfm",
+    "eventos/home.cfm",
+    "eventos/index.cfm"
+  ],
+  "backup": "/var/backups/business-events-width-20261117-kvm68sjw",
+  "hashes_verified": true,
+  "temporary_uploads_removed": true
+}

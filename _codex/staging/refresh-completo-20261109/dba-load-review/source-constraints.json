@@ -1,0 +1,97 @@
+{
+  "capturado_em": "2026-11-09T16:10:56.504685-03:00",
+  "constraints": [
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CHECK ((((latitude IS NULL) AND (longitude IS NULL)) OR ((latitude IS NOT NULL) AND (longitude IS NOT NULL))))",
+      "name": "ck_tb_evento_corridas_radar_coordinate_pair"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CHECK (((latitude IS NULL) OR ((latitude >= ('-90.0'::numeric)::double precision) AND (latitude <= (90.0)::double precision))))",
+      "name": "ck_tb_evento_corridas_radar_latitude"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CHECK (((longitude IS NULL) OR ((longitude >= ('-180.0'::numeric)::double precision) AND (longitude <= (180.0)::double precision))))",
+      "name": "ck_tb_evento_corridas_radar_longitude"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "PRIMARY KEY (id_evento)",
+      "name": "tb_evento_corridas_pk"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "PRIMARY KEY (id_resultado)",
+      "name": "tb_resultados_nova_pkey"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "FOREIGN KEY (id_evento) REFERENCES tb_evento_corridas(id_evento) ON DELETE RESTRICT",
+      "name": "tb_resultados_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "FOREIGN KEY (status_final) REFERENCES tb_tipos_status_final(id_tipo_status_final) ON UPDATE RESTRICT ON DELETE RESTRICT",
+      "name": "tb_resultados_tb_tipos_status_final_id_tipo_status_final_fk"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id) ON DELETE SET NULL",
+      "name": "tb_resultados_tb_usuarios_id_fk"
+    }
+  ],
+  "source_columns": [
+    {
+      "table": "tb_evento_corridas",
+      "column": "id_evento",
+      "maximum_length": null,
+      "nullable": "NO",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "data_inicial",
+      "maximum_length": null,
+      "nullable": "NO",
+      "type": "date"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "data_final",
+      "maximum_length": null,
+      "nullable": "NO",
+      "type": "date"
+    },
+    {
+      "table": "tb_resultados",
+      "column": "id_resultado",
+      "maximum_length": null,
+      "nullable": "NO",
+      "type": "integer"
+    },
+    {
+      "table": "tb_resultados",
+      "column": "id_evento",
+      "maximum_length": null,
+      "nullable": "YES",
+      "type": "integer"
+    },
+    {
+      "table": "tb_resultados",
+      "column": "percurso",
+      "maximum_length": null,
+      "nullable": "YES",
+      "type": "numeric"
+    },
+    {
+      "table": "tb_resultados",
+      "column": "sexo",
+      "maximum_length": null,
+      "nullable": "YES",
+      "type": "character varying"
+    }
+  ],
+  "read_only": "on"
+}

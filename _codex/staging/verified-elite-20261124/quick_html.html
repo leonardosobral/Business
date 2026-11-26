@@ -1,0 +1,666 @@
+<!doctype html><html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/assets/css/mdb.min.css"></head><body data-mdb-theme="dark" style="background:rgb(34,34,34);padding:20px">
+<link rel="stylesheet" href="/assets/css/business-ui.css"/>
+<link rel="stylesheet" href="/portal/verificados/verified.css?v=20261124"/>
+<script src="/portal/verificados/verified.js?v=20261124" defer></script>
+<section class="business-page verified-page" aria-labelledby="verified-title">
+    <header class="verified-heading">
+        <div><p class="verified-eyebrow">PORTAL · ROAD RUNNERS</p><h1 id="verified-title">Selos verificados</h1><p class="text-muted">Veja por que cada pessoa tem o selo, até quando ele vale e o histórico de cada origem.</p></div>
+        <span class="verified-readonly">Classificar um motivo não altera o selo</span>
+    </header>
+    
+    <div class="business-kpi-grid verified-kpis" aria-label="Resumo geral dos selos">
+        <a class="business-kpi" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><small>Selos ativos</small><strong>418</strong></a>
+        <a class="business-kpi" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;FILTER&#x25;5FORIGIN&#x3d;manual&amp;PAGINA&#x3d;1"><small>Sem vencimento</small><strong>128</strong></a>
+        <div class="business-kpi"><small>Ativos com prazo</small><strong>290</strong></div>
+        <a class="business-kpi verified-kpi-attention" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><small>Motivo a classificar</small><strong>107</strong></a>
+    </div>
+    <nav class="verified-tabs" aria-label="Situação do selo">
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Ativos</a>
+        
+            <a aria-current="page" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">A classificar</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;inactive&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Inativos</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Todos / histórico</a>
+        
+    </nav>
+    <form method="get" action="/portal/verificados/" class="business-panel verified-filters">
+        <input type="hidden" name="filter_status" value="unclassified"/>
+        <div class="verified-filter-main">
+            <div><label for="verified-search">Buscar pessoa</label><input class="form-control" id="verified-search" name="user_busca" value="" placeholder="Nome, e-mail, perfil ou ID" maxlength="120"/></div>
+            <div><label for="verified-origin">Origem ou motivo</label><select id="verified-origin" class="form-select" name="filter_origin"><option value="">Todas as origens</option>
+                <option value="manual" >Concessão permanente</option><option value="vip" >Todo Santo Dia · VIP ativo</option><option value="upgrade" >Todo Santo Dia · Upgrade VIP ativo</option><option value="annual" >Compra anual ativa</option><option value="refunded" >Com estorno no histórico</option><option value="elite" >Atleta de elite</option><option value="influencer" >Influencer / criador</option><option value="imprensa" >Imprensa</option><option value="parceiro" >Parceiro</option><option value="equipe" >Equipe</option><option value="cortesia" >Cortesia</option><option value="outro" >Outro motivo</option><option value="nao_informado" >Motivo não informado</option>
+            </select></div>
+            <button class="btn btn-warning" type="submit">Filtrar</button><a class="btn btn-outline-secondary" href="/portal/verificados/">Limpar</a>
+        </div>
+        <details class="verified-advanced" ><summary>Filtros de cadastro</summary>
+            <p class="text-muted small">Participação em desafio e permissões de conta são dados de cadastro; não comprovam o motivo do selo.</p>
+            <div class="verified-filter-main"><div><label for="filter-desafio">Desafio</label><input class="form-control" id="filter-desafio" name="filter_desafio" value=""/></div>
+                <div><label for="filter-produto">Produto no cadastro</label><select id="filter-produto" name="filter_produto" class="form-select"><option value="">Todos</option><option value="catarinensecorridaderua" >catarinensecorridaderua &middot; catarinensecorridaderua</option><option value="catarinensetrailrun" >catarinensetrailrun &middot; catarinensetrailrun</option><option value="circuitobrasilgigante" >circuitobrasilgigante &middot; circuitobrasilgigante</option><option value="inscricao365" >desafio365 &middot; inscricao365</option><option value="inscricao365vip" >desafio365 &middot; inscricao365vip</option><option value="inscricao365Vip" >desafio365 &middot; inscricao365Vip</option><option value="inscricao366" >desafio366 &middot; inscricao366</option><option value="inscricaotodosantodia" >desafio366 &middot; inscricaotodosantodia</option><option value="foco" >desafiofoco &middot; foco</option><option value="&#x2f;desafiosupra&#x2f;inscricao&#x2f;" >desafiosupra &middot; &#x2f;desafiosupra&#x2f;inscricao&#x2f;</option><option value="foco" >foco &middot; foco</option><option value="desafiofoco" >todosantodia &middot; desafiofoco</option><option value="inscricao366" >todosantodia &middot; inscricao366</option><option value="todosantodia" >todosantodia &middot; todosantodia</option><option value="todosantodiaupg" >todosantodia &middot; todosantodiaupg</option><option value="todosantodiaupgrade" >todosantodia &middot; todosantodiaupgrade</option><option value="todosantodiavip" >todosantodia &middot; todosantodiavip</option><option value="todosantodiavip1" >todosantodia &middot; todosantodiavip1</option><option value="&#x2f;connect&#x2f;inscricao&#x2f;" > &middot; &#x2f;connect&#x2f;inscricao&#x2f;</option><option value="&#x2f;empresa&#x2f;cadastro&#x2f;" > &middot; &#x2f;empresa&#x2f;cadastro&#x2f;</option><option value="&#x2f;ts&#x2f;inscricao&#x2f;" > &middot; &#x2f;ts&#x2f;inscricao&#x2f;</option></select></div>
+                <div><label for="filter-logic">Combinação</label><select id="filter-logic" name="filter_logic" class="form-select"><option value="any" selected>Qualquer regra</option><option value="all" >Todas as regras</option></select></div>
+            </div>
+            <div class="verified-flags"><label><input type="checkbox" name="filter_admin" value="true" /> Administrador</label><label><input type="checkbox" name="filter_dev" value="true" /> Desenvolvedor</label><label><input type="checkbox" name="filter_partner" value="true" /> Parceiro no cadastro</label></div>
+        </details>
+    </form>
+    
+        <form id="verified-bulk-form" class="business-panel verified-quick-panel" method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" data-quick-form>
+            <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/>
+            <div class="verified-quick-heading"><div><h2>Classificação rápida</h2><p class="text-muted">Marque as pessoas com o mesmo motivo e salve de uma vez. Apenas os perfis marcados nesta página serão classificados.</p></div><span id="verified-selected-count" role="status" aria-live="polite">0 selecionados</span></div>
+            
+            <fieldset >
+                <div class="verified-quick-fields"><div><label for="bulk-category">Motivo em comum</label><select id="bulk-category" name="category" class="form-select" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer" >Influencer &#x2f; criador</option><option value="imprensa" >Imprensa</option><option value="parceiro" >Parceiro</option><option value="equipe" >Equipe</option><option value="cortesia" >Cortesia</option><option value="outro" >Outro motivo</option></select></div>
+                <div><label for="bulk-note">Vínculo ou observação <span data-note-optional>(opcional)</span></label><input id="bulk-note" name="note" class="form-control" maxlength="1800" value="" placeholder="Ex.: nome do veículo, canal ou parceria" data-quick-note/></div>
+                <button class="btn btn-warning" type="submit" id="verified-bulk-submit">Salvar selecionados</button></div>
+            </fieldset>
+        </form>
+    
+    <div class="verified-list-heading" id="lista-motivos"><h2>107 perfis encontrados</h2><span class="text-muted small">Uma pessoa pode ter mais de uma origem ativa.</span></div>
+    <div class="business-panel verified-table-wrap"><table class="table verified-table"><thead><tr><th class="verified-select-cell"><input type="checkbox" id="verified-select-all" aria-label="Selecionar todos os pendentes desta página" /></th><th>Pessoa</th><th>Origem e motivo do selo</th><th>Situação e validade</th><th><span class="visually-hidden">Detalhes</span></th></tr></thead><tbody>
+        <tr id="perfil-54048">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="54048:0" class="verified-row-select" aria-label="Selecionar ADILSON&#x20;MARTINS" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54048&amp;PAGINA&#x3d;1#detalhes">ADILSON MARTINS</a><small class="verified-email">adilsom.sp&#x40;gmail.com</small><small class="text-muted">Perfil 54048 · Usuário 108069</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="54048:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ADILSON&#x20;MARTINS" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ADILSON&#x20;MARTINS">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ADILSON&#x20;MARTINS" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ADILSON&#x20;MARTINS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54048&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53980">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53980:0" class="verified-row-select" aria-label="Selecionar &Agrave;DILSON&#x20;MARTINS" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53980&amp;PAGINA&#x3d;1#detalhes">&Agrave;DILSON MARTINS</a><small class="verified-email">adilsonmartins.vp&#x40;gmail.com</small><small class="text-muted">Perfil 53980 · Usuário 107843</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53980:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de &Agrave;DILSON&#x20;MARTINS" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de &Agrave;DILSON&#x20;MARTINS">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de &Agrave;DILSON&#x20;MARTINS" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de &Agrave;DILSON&#x20;MARTINS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53980&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18894">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="18894:0" class="verified-row-select" aria-label="Selecionar ALEXANDRE&#x20;SOUZA&#x20;ALMEIDA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18894&amp;PAGINA&#x3d;1#detalhes">ALEXANDRE SOUZA ALMEIDA</a><small class="verified-email">asouzaalmeida1&#x40;gmail.com</small><small class="text-muted">Perfil 18894 · Usuário 22256</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="18894:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ALEXANDRE&#x20;SOUZA&#x20;ALMEIDA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ALEXANDRE&#x20;SOUZA&#x20;ALMEIDA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ALEXANDRE&#x20;SOUZA&#x20;ALMEIDA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALEXANDRE&#x20;SOUZA&#x20;ALMEIDA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18894&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16022">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="16022:0" class="verified-row-select" aria-label="Selecionar ALEX&#x20;BORGES" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16022&amp;PAGINA&#x3d;1#detalhes">ALEX BORGES</a><small class="verified-email">alexborges1&#x40;gmail.com</small><small class="text-muted">Perfil 16022 · Usuário 16937</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="16022:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ALEX&#x20;BORGES" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ALEX&#x20;BORGES">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ALEX&#x20;BORGES" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ALEX&#x20;BORGES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16022&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-2732">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="2732:0" class="verified-row-select" aria-label="Selecionar AMANDA&#x20;MARTINS&#x20;ALVES" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2732&amp;PAGINA&#x3d;1#detalhes">AMANDA MARTINS ALVES</a><small class="verified-email">amanda.fernandodenoronha&#x40;gmail.com</small><small class="text-muted">Perfil 2732 · Usuário 6014</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="2732:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de AMANDA&#x20;MARTINS&#x20;ALVES" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de AMANDA&#x20;MARTINS&#x20;ALVES">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de AMANDA&#x20;MARTINS&#x20;ALVES" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de AMANDA&#x20;MARTINS&#x20;ALVES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2732&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-19279">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="19279:0" class="verified-row-select" aria-label="Selecionar Anderson&#x20;Cardoso&#x20;Ferreira" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19279&amp;PAGINA&#x3d;1#detalhes">Anderson Cardoso Ferreira</a><small class="verified-email">andersoncardosof1981&#x40;gmail.com</small><small class="text-muted">Perfil 19279 · Usuário 23166</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="19279:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Anderson&#x20;Cardoso&#x20;Ferreira" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Anderson&#x20;Cardoso&#x20;Ferreira">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Anderson&#x20;Cardoso&#x20;Ferreira" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Anderson&#x20;Cardoso&#x20;Ferreira" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19279&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16431">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="16431:0" class="verified-row-select" aria-label="Selecionar ANDERSON&#x20;DE&#x20;ANDRADE" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16431&amp;PAGINA&#x3d;1#detalhes">ANDERSON DE ANDRADE</a><small class="verified-email">dinhomve&#x40;gmail.com</small><small class="text-muted">Perfil 16431 · Usuário 17598</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="16431:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ANDERSON&#x20;DE&#x20;ANDRADE" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ANDERSON&#x20;DE&#x20;ANDRADE">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ANDERSON&#x20;DE&#x20;ANDRADE" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ANDERSON&#x20;DE&#x20;ANDRADE" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16431&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53839">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53839:0" class="verified-row-select" aria-label="Selecionar Andr&eacute;&#x20;Rocha" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53839&amp;PAGINA&#x3d;1#detalhes">Andr&eacute; Rocha</a><small class="verified-email">andreisni&#x40;hotmail.com</small><small class="text-muted">Perfil 53839 · Usuário 107489</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53839:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Andr&eacute;&#x20;Rocha" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Andr&eacute;&#x20;Rocha">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Andr&eacute;&#x20;Rocha" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Andr&eacute;&#x20;Rocha" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53839&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53854">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53854:0" class="verified-row-select" aria-label="Selecionar ANGELICA&#x20;SANDES" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53854&amp;PAGINA&#x3d;1#detalhes">ANGELICA SANDES</a><small class="verified-email">angel.sandes&#x40;gmail.com</small><small class="text-muted">Perfil 53854 · Usuário 107531</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53854:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ANGELICA&#x20;SANDES" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ANGELICA&#x20;SANDES">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ANGELICA&#x20;SANDES" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ANGELICA&#x20;SANDES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53854&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-15838">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="15838:0" class="verified-row-select" aria-label="Selecionar ARLENE&#x20;ECHEVERRIA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15838&amp;PAGINA&#x3d;1#detalhes">ARLENE ECHEVERRIA</a><small class="verified-email">arlene.dnaanimal&#x40;gmail.com</small><small class="text-muted">Perfil 15838 · Usuário 16515</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="15838:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ARLENE&#x20;ECHEVERRIA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ARLENE&#x20;ECHEVERRIA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ARLENE&#x20;ECHEVERRIA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ARLENE&#x20;ECHEVERRIA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15838&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-3003">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="3003:0" class="verified-row-select" aria-label="Selecionar ARMINDO&#x20;KEHL" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;3003&amp;PAGINA&#x3d;1#detalhes">ARMINDO KEHL</a><small class="verified-email">armindokehl&#x40;gmail.com</small><small class="text-muted">Perfil 3003 · Usuário 8316</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="3003:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ARMINDO&#x20;KEHL" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ARMINDO&#x20;KEHL">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ARMINDO&#x20;KEHL" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ARMINDO&#x20;KEHL" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;3003&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-15644">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="15644:0" class="verified-row-select" aria-label="Selecionar BASTOS&#x20;&#x26d1;&#xfe0f;&#x1f1e7;&#x1f1f7;&#x1fae1;" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15644&amp;PAGINA&#x3d;1#detalhes">BASTOS &#x26d1;&#xfe0f;&#x1f1e7;&#x1f1f7;&#x1fae1;</a><small class="verified-email">basto1gbs&#x40;gmail.com</small><small class="text-muted">Perfil 15644 · Usuário 15979</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="15644:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de BASTOS&#x20;&#x26d1;&#xfe0f;&#x1f1e7;&#x1f1f7;&#x1fae1;" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de BASTOS&#x20;&#x26d1;&#xfe0f;&#x1f1e7;&#x1f1f7;&#x1fae1;">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de BASTOS&#x20;&#x26d1;&#xfe0f;&#x1f1e7;&#x1f1f7;&#x1fae1;" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de BASTOS&#x20;&#x26d1;&#xfe0f;&#x1f1e7;&#x1f1f7;&#x1fae1;" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15644&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53410">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53410:0" class="verified-row-select" aria-label="Selecionar BRUNO&#x20;BARRETO&#x20;BERGAMO" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53410&amp;PAGINA&#x3d;1#detalhes">BRUNO BARRETO BERGAMO</a><small class="verified-email">brunobergamo&#x40;gmail.com</small><small class="text-muted">Perfil 53410 · Usuário 106018</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53410:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de BRUNO&#x20;BARRETO&#x20;BERGAMO" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de BRUNO&#x20;BARRETO&#x20;BERGAMO">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de BRUNO&#x20;BARRETO&#x20;BERGAMO" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de BRUNO&#x20;BARRETO&#x20;BERGAMO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53410&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-15402">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="15402:0" class="verified-row-select" aria-label="Selecionar BRUNO&#x20;SCHWARZ" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15402&amp;PAGINA&#x3d;1#detalhes">BRUNO SCHWARZ</a><small class="verified-email">brunoschwarzadv&#x40;gmail.com</small><small class="text-muted">Perfil 15402 · Usuário 15266</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="15402:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de BRUNO&#x20;SCHWARZ" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de BRUNO&#x20;SCHWARZ">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de BRUNO&#x20;SCHWARZ" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de BRUNO&#x20;SCHWARZ" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15402&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17923">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="17923:0" class="verified-row-select" aria-label="Selecionar CARINA&#x20;APARECIDA&#x20;PEREIRA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17923&amp;PAGINA&#x3d;1#detalhes">CARINA APARECIDA PEREIRA</a><small class="verified-email">carinaaparecidapereira67&#x40;gmail.com</small><small class="text-muted">Perfil 17923 · Usuário 20431</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="17923:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de CARINA&#x20;APARECIDA&#x20;PEREIRA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de CARINA&#x20;APARECIDA&#x20;PEREIRA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de CARINA&#x20;APARECIDA&#x20;PEREIRA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de CARINA&#x20;APARECIDA&#x20;PEREIRA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17923&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-22902">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="22902:0" class="verified-row-select" aria-label="Selecionar Cezar&#x20;Luiz&#x20;Guimar&atilde;es" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;22902&amp;PAGINA&#x3d;1#detalhes">Cezar Luiz Guimar&atilde;es</a><small class="verified-email">cezarluiz&#x40;gmail.com</small><small class="text-muted">Perfil 22902 · Usuário 37129</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="22902:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Cezar&#x20;Luiz&#x20;Guimar&atilde;es" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Cezar&#x20;Luiz&#x20;Guimar&atilde;es">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Cezar&#x20;Luiz&#x20;Guimar&atilde;es" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Cezar&#x20;Luiz&#x20;Guimar&atilde;es" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;22902&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-27813">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="27813:0" class="verified-row-select" aria-label="Selecionar D&eacute;bora&#x20;Aparecida&#x20;Simas" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;27813&amp;PAGINA&#x3d;1#detalhes">D&eacute;bora Aparecida Simas</a><small class="verified-email">simasdebora45&#x40;gmail.com</small><small class="text-muted">Perfil 27813 · Usuário 47835</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="27813:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de D&eacute;bora&#x20;Aparecida&#x20;Simas" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de D&eacute;bora&#x20;Aparecida&#x20;Simas">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de D&eacute;bora&#x20;Aparecida&#x20;Simas" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de D&eacute;bora&#x20;Aparecida&#x20;Simas" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;27813&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53857">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53857:0" class="verified-row-select" aria-label="Selecionar DEBORA&#x20;MENEZES&#x20;SA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53857&amp;PAGINA&#x3d;1#detalhes">DEBORA MENEZES SA</a><small class="verified-email">deboramensa&#x40;gmail.com</small><small class="text-muted">Perfil 53857 · Usuário 107537</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53857:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de DEBORA&#x20;MENEZES&#x20;SA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de DEBORA&#x20;MENEZES&#x20;SA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de DEBORA&#x20;MENEZES&#x20;SA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de DEBORA&#x20;MENEZES&#x20;SA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53857&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-19432">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="19432:0" class="verified-row-select" aria-label="Selecionar Deby&#x20;Danoli" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19432&amp;PAGINA&#x3d;1#detalhes">Deby Danoli</a><small class="verified-email">debydanoli&#x40;gmail.com</small><small class="text-muted">Perfil 19432 · Usuário 23893</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="19432:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Deby&#x20;Danoli" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Deby&#x20;Danoli">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Deby&#x20;Danoli" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Deby&#x20;Danoli" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19432&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18744">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="18744:0" class="verified-row-select" aria-label="Selecionar DINEUMA&#x20;ABRANTES" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18744&amp;PAGINA&#x3d;1#detalhes">DINEUMA ABRANTES</a><small class="verified-email">dineumamcp&#x40;hotmail.com</small><small class="text-muted">Perfil 18744 · Usuário 22013</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="18744:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de DINEUMA&#x20;ABRANTES" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de DINEUMA&#x20;ABRANTES">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de DINEUMA&#x20;ABRANTES" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de DINEUMA&#x20;ABRANTES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18744&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53490">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53490:0" class="verified-row-select" aria-label="Selecionar EDSON&#x20;LUIS" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53490&amp;PAGINA&#x3d;1#detalhes">EDSON LUIS</a><small class="verified-email">edsonluisdobkowski&#x40;gmail.com</small><small class="text-muted">Perfil 53490 · Usuário 106268</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53490:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de EDSON&#x20;LUIS" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de EDSON&#x20;LUIS">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de EDSON&#x20;LUIS" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de EDSON&#x20;LUIS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53490&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18593">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="18593:0" class="verified-row-select" aria-label="Selecionar ELESON&#x20;SOUZA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18593&amp;PAGINA&#x3d;1#detalhes">ELESON SOUZA</a><small class="verified-email">elesonbs&#x40;gmail.com</small><small class="text-muted">Perfil 18593 · Usuário 21722</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="18593:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ELESON&#x20;SOUZA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ELESON&#x20;SOUZA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ELESON&#x20;SOUZA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ELESON&#x20;SOUZA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18593&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53634">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53634:0" class="verified-row-select" aria-label="Selecionar ELIS&Acirc;NGELA&#x20;DA&#x20;SILVA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53634&amp;PAGINA&#x3d;1#detalhes">ELIS&Acirc;NGELA DA SILVA</a><small class="verified-email">angela-silvagdk&#x40;hotmail.com</small><small class="text-muted">Perfil 53634 · Usuário 106855</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53634:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ELIS&Acirc;NGELA&#x20;DA&#x20;SILVA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ELIS&Acirc;NGELA&#x20;DA&#x20;SILVA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ELIS&Acirc;NGELA&#x20;DA&#x20;SILVA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ELIS&Acirc;NGELA&#x20;DA&#x20;SILVA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53634&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53874">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53874:0" class="verified-row-select" aria-label="Selecionar ELIZA&#x20;CRISTINA&#x20;GIOVANETTI" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53874&amp;PAGINA&#x3d;1#detalhes">ELIZA CRISTINA GIOVANETTI</a><small class="verified-email">eliza.cristina095&#x40;gmail.com</small><small class="text-muted">Perfil 53874 · Usuário 107584</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53874:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ELIZA&#x20;CRISTINA&#x20;GIOVANETTI" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ELIZA&#x20;CRISTINA&#x20;GIOVANETTI">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ELIZA&#x20;CRISTINA&#x20;GIOVANETTI" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ELIZA&#x20;CRISTINA&#x20;GIOVANETTI" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53874&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53511">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53511:0" class="verified-row-select" aria-label="Selecionar ERIKA&#x20;PATRICIA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53511&amp;PAGINA&#x3d;1#detalhes">ERIKA PATRICIA</a><small class="verified-email">eripaty1303&#x40;gmail.com</small><small class="text-muted">Perfil 53511 · Usuário 106332</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53511:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de ERIKA&#x20;PATRICIA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de ERIKA&#x20;PATRICIA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de ERIKA&#x20;PATRICIA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ERIKA&#x20;PATRICIA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53511&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53887">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53887:0" class="verified-row-select" aria-label="Selecionar EVERTON&#x20;OLIVA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53887&amp;PAGINA&#x3d;1#detalhes">EVERTON OLIVA</a><small class="verified-email">everton_oliva&#x40;hotmail.com</small><small class="text-muted">Perfil 53887 · Usuário 107619</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53887:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de EVERTON&#x20;OLIVA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de EVERTON&#x20;OLIVA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de EVERTON&#x20;OLIVA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de EVERTON&#x20;OLIVA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53887&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-12418">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="12418:0" class="verified-row-select" aria-label="Selecionar Ewerton&#x20;Martins&#x20;Gerent" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;12418&amp;PAGINA&#x3d;1#detalhes">Ewerton Martins Gerent</a><small class="verified-email">egerent&#x40;gmail.com</small><small class="text-muted">Perfil 12418 · Usuário 11132</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="12418:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Ewerton&#x20;Martins&#x20;Gerent" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Ewerton&#x20;Martins&#x20;Gerent">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Ewerton&#x20;Martins&#x20;Gerent" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Ewerton&#x20;Martins&#x20;Gerent" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;12418&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-54371">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="54371:0" class="verified-row-select" aria-label="Selecionar F&Aacute;BIO&#x20;DO&#x20;CARMO&#x20;GOMES" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54371&amp;PAGINA&#x3d;1#detalhes">F&Aacute;BIO DO CARMO GOMES</a><small class="verified-email">contato&#x40;fabiodocarmo.com</small><small class="text-muted">Perfil 54371 · Usuário 109414</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="54371:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de F&Aacute;BIO&#x20;DO&#x20;CARMO&#x20;GOMES" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de F&Aacute;BIO&#x20;DO&#x20;CARMO&#x20;GOMES">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de F&Aacute;BIO&#x20;DO&#x20;CARMO&#x20;GOMES" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de F&Aacute;BIO&#x20;DO&#x20;CARMO&#x20;GOMES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54371&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53850">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53850:0" class="verified-row-select" aria-label="Selecionar FABRICIO&#x20;D&rsquo;AVILA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53850&amp;PAGINA&#x3d;1#detalhes">FABRICIO D&rsquo;AVILA</a><small class="verified-email">fabriciodavilla&#x40;gmail.com</small><small class="text-muted">Perfil 53850 · Usuário 107521</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53850:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de FABRICIO&#x20;D&rsquo;AVILA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de FABRICIO&#x20;D&rsquo;AVILA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de FABRICIO&#x20;D&rsquo;AVILA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de FABRICIO&#x20;D&rsquo;AVILA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53850&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-54433">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="54433:0" class="verified-row-select" aria-label="Selecionar FATIMA&#x20;REIS" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54433&amp;PAGINA&#x3d;1#detalhes">FATIMA REIS</a><small class="verified-email">fatima.reis&#x40;gmail.com</small><small class="text-muted">Perfil 54433 · Usuário 109765</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="54433:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de FATIMA&#x20;REIS" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de FATIMA&#x20;REIS">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de FATIMA&#x20;REIS" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de FATIMA&#x20;REIS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54433&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-55758">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="55758:0" class="verified-row-select" aria-label="Selecionar FERNANDA&#x20;PARADIZO" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;55758&amp;PAGINA&#x3d;1#detalhes">FERNANDA PARADIZO</a><small class="verified-email">feparadizo&#x40;gmail.com</small><small class="text-muted">Perfil 55758 · Usuário 116141</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="55758:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de FERNANDA&#x20;PARADIZO" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de FERNANDA&#x20;PARADIZO">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de FERNANDA&#x20;PARADIZO" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de FERNANDA&#x20;PARADIZO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;55758&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-8779">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="8779:0" class="verified-row-select" aria-label="Selecionar FERNANDO&#x20;NAZARIO&#x20;SOUSA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;8779&amp;PAGINA&#x3d;1#detalhes">FERNANDO NAZARIO SOUSA</a><small class="verified-email">fnazarios&#x40;gmail.com</small><small class="text-muted">Perfil 8779 · Usuário 8030</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="8779:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de FERNANDO&#x20;NAZARIO&#x20;SOUSA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de FERNANDO&#x20;NAZARIO&#x20;SOUSA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de FERNANDO&#x20;NAZARIO&#x20;SOUSA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de FERNANDO&#x20;NAZARIO&#x20;SOUSA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;8779&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18537">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="18537:0" class="verified-row-select" aria-label="Selecionar Fl&aacute;vio&#x20;Albuquerque" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18537&amp;PAGINA&#x3d;1#detalhes">Fl&aacute;vio Albuquerque</a><small class="verified-email">fa2304905&#x40;gmail.com</small><small class="text-muted">Perfil 18537 · Usuário 21596</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="18537:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Fl&aacute;vio&#x20;Albuquerque" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Fl&aacute;vio&#x20;Albuquerque">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Fl&aacute;vio&#x20;Albuquerque" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Fl&aacute;vio&#x20;Albuquerque" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18537&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53134">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53134:0" class="verified-row-select" aria-label="Selecionar FLAVIO&#x20;JIMENEZ" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53134&amp;PAGINA&#x3d;1#detalhes">FLAVIO JIMENEZ</a><small class="verified-email">flaviojvf&#x40;gmail.com</small><small class="text-muted">Perfil 53134 · Usuário 105299</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53134:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de FLAVIO&#x20;JIMENEZ" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de FLAVIO&#x20;JIMENEZ">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de FLAVIO&#x20;JIMENEZ" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de FLAVIO&#x20;JIMENEZ" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53134&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53754">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53754:0" class="verified-row-select" aria-label="Selecionar FRANCIENE&#x20;LOPES" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53754&amp;PAGINA&#x3d;1#detalhes">FRANCIENE LOPES</a><small class="verified-email">franlopest&#x40;gmail.com</small><small class="text-muted">Perfil 53754 · Usuário 107255</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53754:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de FRANCIENE&#x20;LOPES" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de FRANCIENE&#x20;LOPES">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de FRANCIENE&#x20;LOPES" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de FRANCIENE&#x20;LOPES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53754&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53296">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53296:0" class="verified-row-select" aria-label="Selecionar GABI&#x20;LA&#x20;ROSA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53296&amp;PAGINA&#x3d;1#detalhes">GABI LA ROSA</a><small class="verified-email">corregablarosa&#x40;gmail.com</small><small class="text-muted">Perfil 53296 · Usuário 105742</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53296:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de GABI&#x20;LA&#x20;ROSA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de GABI&#x20;LA&#x20;ROSA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de GABI&#x20;LA&#x20;ROSA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de GABI&#x20;LA&#x20;ROSA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53296&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53015">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53015:0" class="verified-row-select" aria-label="Selecionar GISELE&#x20;LIMA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53015&amp;PAGINA&#x3d;1#detalhes">GISELE LIMA</a><small class="verified-email">giselelima.personaltrainer&#x40;gmail.com</small><small class="text-muted">Perfil 53015 · Usuário 105013</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="53015:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de GISELE&#x20;LIMA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de GISELE&#x20;LIMA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de GISELE&#x20;LIMA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de GISELE&#x20;LIMA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53015&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16548">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="16548:0" class="verified-row-select" aria-label="Selecionar GISLAINY&#x20;CRISOSTOMO&#x20;VELASCO" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16548&amp;PAGINA&#x3d;1#detalhes">GISLAINY CRISOSTOMO VELASCO</a><small class="verified-email">gislainycrisostomo&#x40;gmail.com</small><small class="text-muted">Perfil 16548 · Usuário 17814</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="16548:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de GISLAINY&#x20;CRISOSTOMO&#x20;VELASCO" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de GISLAINY&#x20;CRISOSTOMO&#x20;VELASCO">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de GISLAINY&#x20;CRISOSTOMO&#x20;VELASCO" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de GISLAINY&#x20;CRISOSTOMO&#x20;VELASCO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16548&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-28882">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="28882:0" class="verified-row-select" aria-label="Selecionar GUILHERME&#x20;NETO" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;28882&amp;PAGINA&#x3d;1#detalhes">GUILHERME NETO</a><small class="verified-email">guilherme090209&#x40;gmail.com</small><small class="text-muted">Perfil 28882 · Usuário 49983</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="28882:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de GUILHERME&#x20;NETO" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de GUILHERME&#x20;NETO">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de GUILHERME&#x20;NETO" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de GUILHERME&#x20;NETO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;28882&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-55516">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="55516:0" class="verified-row-select" aria-label="Selecionar GUSTAVO&#x20;DE&#x20;SOUZA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;55516&amp;PAGINA&#x3d;1#detalhes">GUSTAVO DE SOUZA</a><small class="verified-email">sgustavo38&#x40;gmail.com</small><small class="text-muted">Perfil 55516 · Usuário 114796</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div> 
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="4C06D0BB02B9509A38E0FCECA62CBF71853C7D3AE7ABD835933474F62867BFBF"/><input type="hidden" name="selection" value="55516:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de GUSTAVO&#x20;DE&#x20;SOUZA" required data-quick-category><option value="">Escolha o motivo</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de GUSTAVO&#x20;DE&#x20;SOUZA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de GUSTAVO&#x20;DE&#x20;SOUZA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de GUSTAVO&#x20;DE&#x20;SOUZA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;55516&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr> 
+    </tbody></table></div>
+    <a id="verified-bulk-jump" class="verified-bulk-jump" href="#verified-bulk-form" hidden>Voltar à classificação do lote ↑</a>
+    <nav class="verified-pagination" aria-label="Páginas da lista"><span>Página 1 de 3</span><div><a class="btn btn-outline-secondary" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2">Próxima</a></div></nav>
+    <p class="text-muted small">As origens pagas usam a confirmação do pagamento. Estornos ficam no histórico. Datas no horário de Brasília.</p>
+</section>
+</body></html>

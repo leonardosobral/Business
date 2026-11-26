@@ -1,0 +1,83 @@
+{
+  "commands": [
+    {
+      "args": [
+        "open",
+        "http://127.0.0.1:64099/detail.html"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "resize",
+        "1440",
+        "1100"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "snapshot"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "screenshot",
+        "--filename=/Users/Shared/Projects/RunnerHub/Business/output/playwright/verified-vip-review-cd1246dd/desktop.png"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "screenshot",
+        "#detalhes",
+        "--filename=/Users/Shared/Projects/RunnerHub/Business/output/playwright/verified-vip-review-cd1246dd/detail-desktop.png"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "resize",
+        "390",
+        "844"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "snapshot"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "screenshot",
+        "--filename=/Users/Shared/Projects/RunnerHub/Business/output/playwright/verified-vip-review-cd1246dd/mobile.png"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "screenshot",
+        "#detalhes",
+        "--filename=/Users/Shared/Projects/RunnerHub/Business/output/playwright/verified-vip-review-cd1246dd/detail-mobile.png"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "eval",
+        "JSON.stringify({viewport:innerWidth,width:document.documentElement.scrollWidth,review:document.body.innerText.includes(\"Diverg\u00eancias VIP (4)\"),four:document.body.innerText.includes(\"4 perfis encontrados\")})"
+      ],
+      "code": 0
+    },
+    {
+      "args": [
+        "close"
+      ],
+      "code": 0
+    }
+  ],
+  "closed": true
+}

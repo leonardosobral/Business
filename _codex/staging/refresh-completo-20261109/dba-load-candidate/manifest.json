@@ -1,0 +1,14 @@
+{
+  "candidate_only": true,
+  "sql_executed": false,
+  "source_metadata_sha256": "c146778709155cfcfd197891afea40effd98c172b2b579bc836b491723c24d69",
+  "files": {
+    "00-preflight.sql": "26578b26ffe6cb8a149a1a8ce2b7f2f2cf2809d8720cab0c85c96f47bc619522",
+    "10-load-version.sql": "7eb4e474012619996b3cdf5810ee6b64fd411bd8a215b934cabf0ba75a93376b",
+    "15-load-and-cutover.sql": "46cf49e20c5598fe5ae26e82900d44ae97c05309e3e6965664dab6fd4f54e4df",
+    "20-verify-version.sql": "e55b67d09d5a0ac9d794af553d24bb6194a41fa28cd77a2f3b02caefe10c0dc9",
+    "30-cutover-study.sql": "ff9d5d8cbc2d857f8292b607b85fe9ead84531c7e1289e63bdc0fb5aff0e73d8",
+    "40-rollback-study.sql": "a49c11b2ac683ff7a0a208d57fdeafc6c2c25e7d81e52d93504b0b13e6734348",
+    "source-select.sql": "92702fcab2671c67ff14a088376b70bd30adaae66ccf8ea8c79362201e1b6644"
+  }
+}

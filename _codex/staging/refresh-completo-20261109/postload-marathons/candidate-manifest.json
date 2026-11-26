@@ -1,0 +1,139 @@
+{
+  "published": false,
+  "pdfs_generated": false,
+  "principal2025": "historical205",
+  "principal2026_run": 351,
+  "principal2026_contract": 18,
+  "principal2026_publication": 42,
+  "principal2026_activation": "not_changed_by_vertical_task",
+  "frozen_runs": {
+    "441": {
+      "run": 295,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:54.071079-03"
+    },
+    "436": {
+      "run": 294,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:52.633375-03"
+    },
+    "444": {
+      "run": 296,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:55.286256-03"
+    },
+    "425": {
+      "run": 292,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:45.816865-03"
+    },
+    "434": {
+      "run": 293,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:51.302528-03"
+    },
+    "423": {
+      "run": 291,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:27.497931-03"
+    },
+    "437": {
+      "run": 305,
+      "revision": 1,
+      "started_at": "2026-11-09 18:19:56.237708-03"
+    },
+    "426": {
+      "run": 303,
+      "revision": 1,
+      "started_at": "2026-11-09 18:19:51.924112-03"
+    },
+    "446": {
+      "run": 343,
+      "revision": 4,
+      "started_at": "2026-11-09 18:31:19.180511-03"
+    },
+    "427": {
+      "run": 339,
+      "revision": 3,
+      "started_at": "2026-11-09 18:31:12.809605-03"
+    },
+    "424": {
+      "run": 301,
+      "revision": 1,
+      "started_at": "2026-11-09 18:19:36.981874-03"
+    },
+    "432": {
+      "run": 341,
+      "revision": 3,
+      "started_at": "2026-11-09 18:31:16.019327-03"
+    },
+    "449": {
+      "run": 358,
+      "revision": 5,
+      "started_at": "2026-11-09 18:44:07.319585-03"
+    },
+    "428": {
+      "run": 324,
+      "revision": 2,
+      "started_at": "2026-11-09 18:24:38.447301-03"
+    },
+    "445": {
+      "run": 342,
+      "revision": 5,
+      "started_at": "2026-11-09 18:31:17.62935-03"
+    },
+    "453": {
+      "run": 359,
+      "revision": 7,
+      "started_at": "2026-11-09 18:44:09.36012-03"
+    },
+    "452": {
+      "run": 308,
+      "revision": 2,
+      "started_at": "2026-11-09 18:20:00.171625-03"
+    },
+    "429": {
+      "run": 340,
+      "revision": 3,
+      "started_at": "2026-11-09 18:31:14.538989-03"
+    },
+    "433": {
+      "run": 357,
+      "revision": 4,
+      "started_at": "2026-11-09 18:44:05.554969-03"
+    },
+    "435": {
+      "run": 304,
+      "revision": 1,
+      "started_at": "2026-11-09 18:19:54.400857-03"
+    },
+    "442": {
+      "run": 306,
+      "revision": 1,
+      "started_at": "2026-11-09 18:19:58.130314-03"
+    }
+  },
+  "reader_stats": {
+    "2025": {
+      "events": 41,
+      "finishers": 54234,
+      "payload_bytes": 384168
+    },
+    "2026": {
+      "events": 39,
+      "finishers": 61452,
+      "payload_bytes": 445154
+    }
+  },
+  "files": {
+    "business/estudos/lancamento/arquivos/maratonas-auditoria-idades.csv": "b0db0c92b7e5d6b8330480509a6cad63aadd5c3250682a601aa587cd713a762b",
+    "business/estudos/lancamento/arquivos/maratonas-indicadores-completos.csv": "6fc33933e39a3865f6938a592ccf13d8b62a9ce7a01ae3ce44a27773000d8d7d",
+    "business/estudos/lancamento/arquivos/maratonas-pares-2025-2026.csv": "d0ce4b6a1b3ccd302efd08d77a05dbeaded05728a86bdbc801a535b6988dca6e",
+    "business/estudos/lancamento/arquivos/maratonas-selecao-2025.csv": "02ba6cf1762845d45ae463e450442082e97998d11156a5e1d893bacc528d36b7",
+    "business/estudos/lancamento/arquivos/maratonas-selecao-2026.csv": "104eb5b47188f88dd5908137212117df32c819b4fd5e8cfba3aca084a083e8d0",
+    "business/estudos/lancamento/maratonas-detalhado.js": "2be1978bca07be02cd68ca34d71b40000d6eec9a10178e4d23de034e81fc2dbe",
+    "business/estudos/lancamento/maratonas.cfm": "dc9cc83d64a47b08232988a859f5771495f6cc210c393a35b03e0496e1e4cbaf",
+    "portal/brasilquecorreprovas/imprensa/maratonas/index.cfm": "e5c486d8aa28fb357dfda592b151ecb1ada3fd55bd4240152ac76823a3c529a2",
+    "portal/brasilquecorreprovas/imprensa/maratonas/maratonas-detalhado.js": "c56c96c9385c2fc56a23dc1078b7e18b8fd31077e6afd67a57ea2e1f03e8306d"
+  }
+}

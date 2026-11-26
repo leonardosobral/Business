@@ -1,0 +1,93 @@
+{
+  "release": {
+    "coleta": "2026-11-09",
+    "historias": {
+      "pareadas": {
+        "variacao_percentual": 2.2
+      },
+      "provas": {
+        "variacao_percentual": 38.7
+      },
+      "mulheres": {
+        "anterior": 52.5,
+        "atual": 53.8,
+        "diferenca_pp": 1.4
+      },
+      "resultados": {
+        "variacao_percentual": 29.3
+      }
+    },
+    "indicadores": [
+      {
+        "universo": "Base: todas as participações elegíveis. Uma pessoa pode concluir mais de uma prova.",
+        "descricao": "As mulheres representam a maior parte das participações registradas no período.",
+        "label": "Elas seguem maioria.",
+        "comparativo": {
+          "anterior": 52.5,
+          "nota": "Mesmos nove meses; participações, não pessoas únicas."
+        },
+        "id": "femininas",
+        "valor": 53.8
+      },
+      {
+        "universo": "Nascimento entre 1981 e 1996 ou aproximação pela faixa etária. Desconhecidos permanecem no denominador.",
+        "descricao": "Os Millennials concentram quase metade das participações observadas.",
+        "label": "Uma geração em destaque.",
+        "comparativo": {
+          "anterior": 41.9,
+          "nota": "Mesma regra de geração; a cobertura das idades também muda entre anos."
+        },
+        "id": "millennials",
+        "valor": 46.1
+      },
+      {
+        "universo": "Base: corridas de rua com distância positiva informada; percentual de participações, não de provas.",
+        "descricao": "Participações em percursos cadastrados inferiores a 6 km.",
+        "label": "As curtas têm mais presença.",
+        "comparativo": {
+          "anterior": 58.4,
+          "nota": "Rua com distância positiva; percursos inferiores a 6 km."
+        },
+        "id": "distancias_curtas",
+        "valor": 61.4
+      },
+      {
+        "universo": "Localização da prova, não residência do atleta. Localidades não classificadas permanecem no denominador.",
+        "descricao": "Quase metade das participações de rua está em provas fora das capitais.",
+        "label": "O interior também é protagonista.",
+        "comparativo": {
+          "anterior": 40.1,
+          "nota": "Mesma regra de localização; não classificados continuam no denominador. Coletas próprias por tema; referência2025 2026-11-09; referência2026 2026-11-09."
+        },
+        "id": "interior",
+        "valor": 48.0
+      },
+      {
+        "universo": "Base: todas as participações elegíveis de janeiro a setembro de 2026. Não representa o ano completo.",
+        "descricao": "O terceiro trimestre concentra a maior parcela das participações dos nove meses.",
+        "label": "Julho a setembro puxam o recorte.",
+        "comparativo": {
+          "anterior": 42.1,
+          "nota": "Peso de julho–setembro no total de janeiro–setembro de cada ano."
+        },
+        "id": "terceiro_trimestre",
+        "valor": 43.2
+      },
+      {
+        "universo": "Provas de rua elegíveis ao ranking, com alguma conclusão. O porte observado depende da completude da captura.",
+        "descricao": "Quase metade das participações observadas está nas 10% maiores provas da base de porte.",
+        "label": "As maiores concentram o volume.",
+        "comparativo": {
+          "anterior": 49.4,
+          "nota": "Top 10% recalculado em Jan–Set de cada ano; não são necessariamente as mesmas provas."
+        },
+        "id": "concentracao_porte",
+        "valor": 48.1
+      }
+    ],
+    "periodo_inicio": "2026-01-01",
+    "periodo_fim": "2026-09-30",
+    "title": "O Brasil que Corre Provas 2026 · Janeiro a setembro"
+  },
+  "ok": true
+}

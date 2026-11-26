@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "database_read_only": true,
+    "identity_still_nonadmin": true,
+    "same_grant": true,
+    "same_benefit": true,
+    "same_counts": true,
+    "same_voucher": true,
+    "same_campaign": true,
+    "same_products": true,
+    "same_audit_ids": true,
+    "one_early_purchase_event": true,
+    "one_redeem_event": true,
+    "temporary_cleanup_verified": true
+  },
+  "passed": true,
+  "grant_id": 36,
+  "benefit_id": 27,
+  "voucher_id": 200,
+  "user_id": 492,
+  "baseline_source": "Parent confirmed 0 grants/0 benefits and READY; initial direct capture failed before query",
+  "captured_at": "2026-11-09T21:42:05.026198-03:00",
+  "no_personal_email_or_raw_code_captured": true,
+  "database_mutation": false
+}

@@ -35,6 +35,7 @@ WITH clock AS (
            e.slot_state, e.delivery_id, e.campaign_id
     FROM audience.events e CROSS JOIN clock c
     WHERE e.environment = :environment
+      AND (:page_family <> 'verified' OR (e.page_family = 'other' AND e.page_path = '/verificado/'))
       AND (:include_internal = true OR e.is_internal = false)
       AND e.occurred_at >= (c.today - (CAST(:days AS integer) - 1))::timestamp AT TIME ZONE 'America/Sao_Paulo'
       AND e.occurred_at <= c.as_of
@@ -85,6 +86,6 @@ WITH clock AS (
     LEFT JOIN slot_formats sf ON sf.slot_key = o.slot_key
     LEFT JOIN placement_formats pf ON pf.placement_key = o.placement_key
     WHERE (:uf = '' OR o.audience_uf = :uf)
-      AND (:page_family = '' OR o.page_family = :page_family)
+      AND (:page_family IN ('', 'verified') OR o.page_family = :page_family)
       AND (:device_class = '' OR o.device_class = :device_class)
 )

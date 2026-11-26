@@ -1,0 +1,24 @@
+{
+  "backup": "/var/backups/runnerhub-racezone-cache-20261109-5f8132d5bd/database-before.json",
+  "sha256": "a4eaff948efbf0466708d793c7706c3eeff1a7972c6e9f82bf0a0b5414167cd1",
+  "rows": {
+    "tb_resultados": 0,
+    "tb_evento_corridas": 1,
+    "tb_resultados_temp": 0,
+    "tb_resultados_resumo": 21018,
+    "tb_resultados_processa": 0,
+    "tb_resultados_resumo_2025": 0,
+    "tb_resultados_processa_logs": 0,
+    "tb_evento_corridas_percursos": 2
+  },
+  "conditions": {
+    "tb_evento_corridas": "id_evento=36657",
+    "tb_evento_corridas_percursos": "id_evento=36657",
+    "tb_resultados": "id_evento=36657",
+    "tb_resultados_temp": "id_evento='36657'",
+    "tb_resultados_resumo": "id_evento=36657 OR tipo_corrida IS NULL",
+    "tb_resultados_resumo_2025": "id_evento=36657",
+    "tb_resultados_processa": "id_evento=36657 OR cod_evento='36657'",
+    "tb_resultados_processa_logs": "id_evento=36657 OR cod_evento='36657'"
+  }
+}

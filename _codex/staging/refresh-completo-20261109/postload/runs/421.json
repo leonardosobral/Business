@@ -1,0 +1,70 @@
+{
+  "run": {
+    "started_at": "2026-11-09 18:23:05.507256-03",
+    "duration_ms": 10417,
+    "error_message": "",
+    "cell_version": 1,
+    "cell_id": "421",
+    "sql_sha256": "e2e5f501ea00e62be43912a8ffc9b25d1f15b99a1e6db58b23d398c7d868bc7e",
+    "truncated": 0,
+    "row_count": 3,
+    "sql_text": "-- Comparativo público: referência 2025 de janeiro a setembro, mesma regra de conclusão do card 2026.\n-- Derivada da célula378 relida em13/10/2026, sem alterar a fonte do DBA.\n-- Coleta própria de2025;2026 preserva publicação41/run233, geografia221 de06/10.\n-- Critérios: BR/rua,status0,homologado,concluinte;localização da prova.\n-- Validação cidade+UF+código, dimensões ambíguas e ausentes no denominador.\nWITH eventos AS (\n SELECT id_evento,extract(year FROM data_final)::integer AS ano,cod_cidade,\n upper(btrim(estado)) AS uf,\n translate(upper(regexp_replace(btrim(cidade),'\\s+',' ','g')),'ÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇ','AAAAAEEEEIIIIOOOOOUUUUC') AS nome\n FROM public.tb_evento_corridas\n WHERE pais='BR' AND upper(tipo_corrida)='RUA'\n AND data_final>=DATE '2025-01-01' AND data_final<DATE '2025-10-01'\n), contagens AS (\n SELECT e.id_evento,count(*) AS n FROM eventos e JOIN public.tb_resultados r USING(id_evento)\n WHERE r.status_final=0 AND r.homologado IS TRUE AND r.concluinte IS TRUE\n GROUP BY e.id_evento\n), cidades AS (\n SELECT c.cod_cidade,c.id_localidade,upper(btrim(c.uf)) AS uf,\n translate(upper(regexp_replace(btrim(c.nome_cidade),'\\s+',' ','g')),'ÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇ','AAAAAEEEEIIIIOOOOOUUUUC') AS nome\n FROM public.tb_cidades c\n), chaves AS (\n SELECT nome,uf,count(*) AS candidatos,min(cod_cidade) AS codigo FROM cidades GROUP BY nome,uf\n), locais AS (\n SELECT id_localidade,count(*) AS candidatos,max(upper(btrim(estado))) AS uf,\n max(translate(upper(regexp_replace(btrim(nome_cidade),'\\s+',' ','g')),'ÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇ','AAAAAEEEEIIIIOOOOOUUUUC')) AS nome,\n bool_and(capital) AS capital,count(capital) AS tem_capital\n FROM public.tbbi_dim_localidade GROUP BY id_localidade\n), ufs AS (\n SELECT upper(btrim(uf)) AS uf,CASE WHEN count(DISTINCT regiao)=1 THEN max(regiao) END AS regiao\n FROM public.tb_uf GROUP BY upper(btrim(uf))\n), mapa AS (\n SELECT e.*,r.n,u.regiao,l.capital,\n CASE WHEN coalesce(k.candidatos,0)=0 THEN 'Cidade/UF sem correspondência'\n WHEN k.candidatos<>1 THEN 'Cidade/UF ambígua'\n WHEN e.cod_cidade>0 AND e.cod_cidade<>k.codigo THEN 'Código diverge da cidade/UF'\n WHEN coalesce(l.candidatos,0)<>1 OR l.tem_capital<>1 OR l.uf IS NULL OR l.nome IS NULL THEN 'Dimensão ausente ou ambígua'\n WHEN l.uf<>e.uf OR l.nome<>e.nome THEN 'Dimensão diverge da cidade/UF'\n WHEN u.regiao IS NULL THEN 'UF sem região'\n WHEN e.cod_cidade>0 THEN 'Código e cidade/UF validados'\n ELSE 'Cidade/UF única; evento sem código' END AS qualidade\n FROM eventos e JOIN contagens r USING(id_evento)\n LEFT JOIN chaves k ON k.nome=e.nome AND k.uf=e.uf\n LEFT JOIN cidades c ON k.candidatos=1 AND c.cod_cidade=k.codigo\n LEFT JOIN locais l ON l.id_localidade=c.id_localidade\n LEFT JOIN ufs u ON u.uf=e.uf\n), base AS (\n SELECT *,CASE WHEN qualidade IN('Código e cidade/UF validados','Cidade/UF única; evento sem código')\n THEN CASE WHEN capital THEN 'Capital' ELSE 'Interior' END ELSE 'Não classificada' END AS tipo\n FROM mapa\n), geo AS (\n SELECT ano,coalesce(regiao,'Não classificada') AS regiao,tipo,sum(n) AS total FROM base GROUP BY ano,regiao,tipo\n UNION ALL SELECT ano,'Brasil',tipo,sum(n) FROM base GROUP BY ano,tipo\n), qualidade AS (\n SELECT ano,qualidade,count(*) AS eventos,sum(n) AS participacoes FROM base GROUP BY ano,qualidade\n), resultado AS (\n SELECT *,sum(total) OVER(PARTITION BY ano,regiao) AS denominador,\n total*100.0/nullif(sum(total) OVER(PARTITION BY ano,regiao),0) AS percentual\n FROM geo\n)\nSELECT current_timestamp AS coletado_em,ano,regiao,tipo,total,denominador,percentual FROM resultado WHERE regiao='Brasil' ORDER BY tipo",
+    "status": "ok",
+    "note": "Renovação completa solicitada em 09/11/2026. Mesmos critérios e corte da revisão vigente; pacote candidato, ainda não publicado. A data de coleta não amplia a janela de eventos.",
+    "finished_at": "2026-11-09 18:23:15.925418-03",
+    "frozen_at": "2026-11-09 18:23:15.936409-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 421",
+    "id": "320",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T18:23:05.507256-03:00",
+    "cell_id": 421,
+    "cell_version": 1,
+    "id": 320,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "coletado_em",
+        "ano",
+        "regiao",
+        "tipo",
+        "total",
+        "denominador",
+        "percentual"
+      ],
+      "rows": [
+        {
+          "total": 2070456,
+          "ano": 2025,
+          "tipo": "Capital",
+          "percentual": 59.07552612004071,
+          "regiao": "Brasil",
+          "coletado_em": "2026-11-09T18:23:05.509039-03:00",
+          "denominador": 3504761
+        },
+        {
+          "total": 1406223,
+          "ano": 2025,
+          "tipo": "Interior",
+          "percentual": 40.1232209557228,
+          "regiao": "Brasil",
+          "coletado_em": "2026-11-09T18:23:05.509039-03:00",
+          "denominador": 3504761
+        },
+        {
+          "total": 28082,
+          "ano": 2025,
+          "tipo": "Não classificada",
+          "percentual": 0.8012529242364886,
+          "regiao": "Brasil",
+          "coletado_em": "2026-11-09T18:23:05.509039-03:00",
+          "denominador": 3504761
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "READY": [
+    {
+      "ready": 1
+    }
+  ],
+  "COUNTS": [
+    {
+      "unclassified": 128,
+      "active": 418,
+      "annual": 290,
+      "permanent": 128
+    }
+  ],
+  "PERMISSIONS": [
+    {
+      "can_classify": 1,
+      "can_read": 1
+    }
+  ],
+  "CLASSIFICATIONS": [
+    {
+      "revisions": 0,
+      "profiles": 0
+    }
+  ]
+}

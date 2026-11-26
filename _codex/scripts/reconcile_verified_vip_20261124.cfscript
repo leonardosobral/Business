@@ -1,0 +1,137 @@
+function q(required string sql,struct params={}) {return queryExecute(arguments.sql,arguments.params,{datasource="runner_dba",timeout=25});}
+function p(required any value,string type="cf_sql_varchar") {return {value=arguments.value,cfsqltype=arguments.type};}
+function ensure(required boolean ok,required string message) {if(!arguments.ok)throw(type="VipReconciliation.Guard",message=arguments.message);}
+function stableState(required string cohort) {
+ var params={ids={value=arguments.cohort,cfsqltype="cf_sql_integer",list=true}};
+ return q("SELECT jsonb_build_object(
+  'grants',(SELECT md5(coalesce(jsonb_agg(to_jsonb(g) ORDER BY id)::text,'')) FROM rr_verified.grants g),
+  'dev_grants',(SELECT md5(coalesce(jsonb_agg(to_jsonb(g) ORDER BY id)::text,'')) FROM rr_verified_dev.grants g),
+  'orders',(SELECT md5(coalesce(jsonb_agg(to_jsonb(o) ORDER BY id)::text,'')) FROM rr_verified.orders o),
+  'classifications',(SELECT md5(coalesce(jsonb_agg(to_jsonb(c) ORDER BY revision)::text,'')) FROM rr_verified.admin_classifications c),
+  'other_flags',(SELECT md5(coalesce(jsonb_agg(jsonb_build_array(id_pagina,verificado) ORDER BY id_pagina)::text,'')) FROM public.tb_paginas WHERE id_pagina NOT IN (:ids)),
+  'other_reclassifications',(SELECT md5(coalesce(jsonb_agg(to_jsonb(r) ORDER BY profile_id)::text,'')) FROM rr_verified.legacy_reclassifications r WHERE profile_id NOT IN (:ids)),
+  'other_sources',(SELECT md5(coalesce(jsonb_agg(to_jsonb(c) ORDER BY provider_order_id)::text,'')) FROM rr_verified.challenge_orders c WHERE profile_id NOT IN (:ids))
+ )::text AS value",params).value[1];
+}
+input=deserializeJSON(toString(binaryDecode("__PAYLOAD__","base64")));
+applyChanges=__APPLY__;
+report={applied=false,batch=input.batch,provider_writes=false};
+ensure(input.batch=="verified-vip-20261124" AND arrayLen(input.approved)==42 AND arrayLen(input.review)==4,"Unexpected approved batch");
+ids=[];orderIds=[];
+for(item in input.approved){arrayAppend(ids,item.profile_id);arrayAppend(orderIds,item.id);}
+cohort=arrayToList(ids);
+ensure(hash(cohort,"SHA-256")=="__COHORT_HASH__","Approved profile set changed");
+snapshotService=new services.crm.CrmPagarmeSnapshotService().init("runner_dba");
+ledger=new services.crm.CrmConversionService().init("runner_dba",{allowedSources=["pagarme"]});
+snapshots=[];events=[];
+// Validate all provider answers before any mutation; historical orders stay historical.
+for(item in input.approved) {
+ identity={state="historical",provider_order_id=item.id,order_code=item.code,product_code=item.product};
+ snapshot=snapshotService.classify(item.provider_order,identity);
+ ensure(snapshot.status=="confirmed" AND snapshot.gross_amount_minor==item.amount,"Provider no longer confirms the approved amount");
+ ensure(q("SELECT CAST(:verified AS timestamptz) BETWEEN now()-interval '2 hours' AND now()+interval '5 minutes' AS fresh",{verified=p(item.verified_at)}).fresh[1],"Provider evidence expired");
+ arrayAppend(snapshots,snapshot);
+ event=snapshotService.events(item.provider_order,identity)[1];
+ event.occurred_at=createObject("java","java.util.Date").init(createObject("java","java.time.Instant").parse(item.paid_at).toEpochMilli());
+ arrayAppend(events,event);
+}
+transaction isolation="serializable" {
+ q("SET LOCAL lock_timeout='5s'");q("SET LOCAL statement_timeout='25s'");
+ q("SELECT pg_advisory_xact_lock(hashtext('rr_verified:foundation'))");
+ ensure(q("SELECT current_database()='runnerhub' AND current_user='runner_dba' AND EXISTS(SELECT 1 FROM public.tb_usuarios WHERE id=139 AND is_admin) AS ready").ready[1],"Wrong database, role, or actor");
+ ensure(q("SELECT md5(pg_get_functiondef('rr_verified.challenge_end(timestamptz)'::regprocedure))='17d687861f1309d547e9c353853bcc22'
+  AND md5(pg_get_functiondef('rr_verified.profile_status(integer,timestamptz)'::regprocedure))='3324835fe509551401ad420ed1d07c32' AS ready").ready[1],"Badge date/status contract changed");
+ for(item in input.approved)q("SELECT pg_advisory_xact_lock(742912,:id)",{id=p(item.profile_id,"cf_sql_integer")});
+ params={ids={value=cohort,cfsqltype="cf_sql_integer",list=true}};
+ existing=q("SELECT count(*) AS n FROM rr_verified.legacy_reclassifications WHERE profile_id IN (:ids)",params).n[1];
+ ensure(existing==0 OR existing==42,"Partially applied cohort; inspect before proceeding");
+ protectedBefore=stableState(cohort);
+ if(existing==0) {
+  ensure(q("SELECT (SELECT count(*) FROM rr_verified.grants WHERE origin='legacy')=418 AND
+   (SELECT count(*) FROM rr_verified.legacy_reclassifications)=290 AS ready").ready[1],"Badge cohort changed");
+  // Recheck ownership, exact order references and previous entitlements for the whole batch.
+  for(item in input.approved) {
+   bind={profile=p(item.profile_id,"cf_sql_integer"),user=p(item.user_id,"cf_sql_integer"),order=p(item.id),product=p(item.product),grant=p(item.legacy_grant)};
+   owner=q("SELECT p.id_pagina FROM public.tb_paginas p WHERE p.id_pagina=:profile AND p.id_usuario_cadastro=:user AND p.tag_prefix='atleta' AND p.verificado
+    AND EXISTS(SELECT 1 FROM public.tb_paginas_usuarios pu WHERE pu.id_pagina=p.id_pagina AND pu.id_usuario=:user)
+    AND EXISTS(SELECT 1 FROM public.desafios d WHERE d.id_usuario=:user AND d.desafio='todosantodia' AND d.produto IN ('todosantodiavip','todosantodiaupg') AND d.status='C')
+    AND EXISTS(SELECT 1 FROM public.tb_transacoes t WHERE t.origem_transacao='pagarme' AND t.status_atual='order.paid' AND t.id_usuario=:user AND t.valor_transacao>0
+      AND t.json_transacao->'data'->>'id'=:order AND t.json_transacao->'data'->'items'->0->>'code'=:product)
+    AND NOT EXISTS(SELECT 1 FROM public.tb_transacoes t WHERE t.origem_transacao='pagarme' AND t.id_usuario>0 AND t.id_usuario<>:user AND t.json_transacao->'data'->>'id'=:order)
+    FOR UPDATE OF p",bind);
+   ensure(owner.recordCount==1,"Ownership or registration changed for profile " & item.profile_id);
+   previous=q("SELECT id FROM rr_verified.grants g WHERE g.profile_id=:profile AND g.origin='legacy' AND to_jsonb(g)=CAST(:grant AS jsonb) FOR UPDATE",bind);
+   ensure(previous.recordCount==1,"Legacy grant changed for profile " & item.profile_id);
+   ensure(!q("SELECT EXISTS(SELECT 1 FROM rr_verified.challenge_orders WHERE profile_id=:profile OR provider_order_id=:order)
+    OR EXISTS(SELECT 1 FROM rr_verified.orders WHERE profile_id=:profile)
+    OR EXISTS(SELECT 1 FROM crm_interno.conversion_order_state WHERE order_key=:order)
+    OR EXISTS(SELECT 1 FROM crm_interno.pagarme_order_audit WHERE provider_order_id=:order)
+    OR EXISTS(SELECT 1 FROM crm_interno.checkout_order_identity WHERE provider_order_id=:order) AS conflict",bind).conflict[1],"Existing payment conflicts with batch");
+   item.legacy_id=previous.id[1];
+  }
+  for(index=1;index<=42;index++) {
+   item=input.approved[index];snapshot=snapshots[index];
+   outcome=ledger.ingest(events[index]);ensure(!outcome.duplicate,"Unexpected prior financial event");
+   bind={profile=p(item.profile_id,"cf_sql_integer"),user=p(item.user_id,"cf_sql_integer"),order=p(item.id),product=p(item.product),amount=p(item.amount,"cf_sql_integer"),
+    paid=p(item.paid_at),updated=p(snapshot.provider_updated_at),verified=p(item.verified_at),charge=p(snapshot.charge_id),legacy=p(item.legacy_id,"cf_sql_bigint")};
+   changed=q("UPDATE crm_interno.conversion_order_state SET product_code=:product,paid_at=CAST(:paid AS timestamptz),provider_updated_at=CAST(:updated AS timestamptz),
+    last_checked_at=CAST(:verified AS timestamptz),classification='confirmed',coverage_kind='provider_historical',updated_at=clock_timestamp()
+    WHERE source='pagarme' AND account_scope='roadrunners' AND order_key=:order AND user_id IS NULL AND match_basis='unmatched' RETURNING id",bind);
+   ensure(changed.recordCount==1,"Financial state update count mismatch");
+   q("INSERT INTO crm_interno.pagarme_order_audit(provider_order_id,coverage_kind,classification,product_code,reason_code,last_attempt_at,last_verified_at,provider_updated_at,charge_id)
+    VALUES(:order,'provider_historical','confirmed',:product,'',CAST(:verified AS timestamptz),CAST(:verified AS timestamptz),CAST(:updated AS timestamptz),:charge)",bind);
+   q("INSERT INTO rr_verified.challenge_orders(provider_order_id,profile_id,user_id,product_code,amount_cents,state,paid_at,last_checked_at,next_check_at)
+    VALUES(:order,:profile,:user,:product,:amount,'paid',CAST(:paid AS timestamptz),CAST(:verified AS timestamptz),now()+interval '1 day')",bind);
+   q("INSERT INTO rr_verified.challenge_events(provider_order_id,new_state) VALUES(:order,'paid')",bind);
+   q("INSERT INTO rr_verified.legacy_reclassifications(profile_id,legacy_grant_id,reason)
+    VALUES(:profile,:legacy,'Origem Todo Santo Dia VIP/upgrade; conciliação de 42 pagamentos e aplicação do prazo autorizadas pelo proprietário em 24/11/2026')",bind);
+   ensure(q("UPDATE public.tb_paginas SET verificado=false WHERE id_pagina=:profile AND id_usuario_cadastro=:user AND verificado RETURNING id_pagina",bind).recordCount==1,"Permanent flag update count mismatch");
+   q("SELECT rr_verified.reflow_paid(:profile)",bind);
+   bind.details=p(item.audit_details_json);
+   q("INSERT INTO crm_interno.audit(actor_id,action,entity_id,revision,details)
+    VALUES(139,'verified.vip_reconciled',:order,0,CAST(:details AS jsonb))",bind);
+  }
+  for(review in input.review) {
+   ensure(!q("SELECT EXISTS(SELECT 1 FROM rr_verified.challenge_orders WHERE profile_id=:profile) OR EXISTS(SELECT 1 FROM rr_verified.legacy_reclassifications WHERE profile_id=:profile) AS changed",{profile=p(review.profile_id,"cf_sql_integer")}).changed[1],"Review-only profile changed");
+   q("INSERT INTO crm_interno.audit(actor_id,action,entity_id,revision,details) VALUES(139,'verified.vip_review',:profile,0,CAST(:details AS jsonb))",
+    {profile=p(review.profile_id & ""),details=p(review.audit_details_json)});
+  }
+ }
+ // Exact postconditions also make a repeat run a read-only no-op.
+ for(index=1;index<=42;index++) {
+  item=input.approved[index];bind={profile=p(item.profile_id,"cf_sql_integer"),user=p(item.user_id,"cf_sql_integer"),order=p(item.id),product=p(item.product),amount=p(item.amount,"cf_sql_integer"),paid=p(item.paid_at)};
+  check=q("SELECT co.state='paid' AND co.profile_id=:profile AND co.user_id=:user AND co.product_code=:product AND co.amount_cents=:amount AND co.paid_at=CAST(:paid AS timestamptz)
+   AND co.ends_at=rr_verified.challenge_end(CAST(:paid AS timestamptz)) AND st.active AND NOT st.permanent AND st.valid_until=co.ends_at
+   AND NOT pg.verificado AND a.classification='confirmed' AND a.coverage_kind='provider_historical' AND a.product_code=:product
+   AND s.status='confirmed' AND s.classification='confirmed' AND s.product_code=:product AND s.paid_at=co.paid_at AND s.net_amount_minor=:amount AND s.coverage_kind='provider_historical'
+   AND e.occurred_at=co.paid_at AND e.amount_minor=:amount AND e.status='confirmed'
+   AND EXISTS(SELECT 1 FROM rr_verified.legacy_reclassifications WHERE profile_id=:profile)
+   AND (SELECT count(*) FROM crm_interno.audit WHERE action='verified.vip_reconciled' AND entity_id=:order AND details->>'batch'='verified-vip-20261124')=1
+   AS ok FROM rr_verified.challenge_orders co JOIN public.tb_paginas pg ON pg.id_pagina=co.profile_id
+   JOIN crm_interno.pagarme_order_audit a ON a.provider_order_id=co.provider_order_id
+   JOIN crm_interno.conversion_order_state s ON s.source='pagarme' AND s.account_scope='roadrunners' AND s.order_key=co.provider_order_id
+   JOIN crm_interno.conversion_events e ON e.source=s.source AND e.account_scope=s.account_scope AND e.order_key=s.order_key AND e.event_key=s.order_key||':paid'
+   CROSS JOIN LATERAL rr_verified.profile_status(co.profile_id) st WHERE co.provider_order_id=:order",bind);
+  if(check.recordCount!=1 OR !check.ok[1]) {
+   diagnostic=q("SELECT co.profile_id,co.state,co.paid_at::text AS source_paid,co.ends_at::text AS source_end,st.active,st.permanent,st.valid_until::text,
+    pg.verificado,s.status,s.classification,s.coverage_kind,s.net_amount_minor,s.paid_at::text AS ledger_paid,e.occurred_at::text AS event_paid,e.amount_minor,
+    a.classification AS audit_classification,(SELECT count(*) FROM crm_interno.audit WHERE action='verified.vip_reconciled' AND entity_id=:order) AS audit_count
+    FROM rr_verified.challenge_orders co JOIN public.tb_paginas pg ON pg.id_pagina=co.profile_id
+    JOIN crm_interno.conversion_order_state s ON s.order_key=co.provider_order_id JOIN crm_interno.conversion_events e ON e.order_key=s.order_key
+    JOIN crm_interno.pagarme_order_audit a ON a.provider_order_id=co.provider_order_id CROSS JOIN LATERAL rr_verified.profile_status(co.profile_id) st WHERE co.provider_order_id=:order",bind);
+   throw(type="VipReconciliation.Guard",message="Postcondition failed for profile " & item.profile_id & ": " & serializeJSON(diagnostic));
+  }
+ }
+ ensure(protectedBefore==stableState(cohort),"An unrelated badge, history or classification changed");
+ reviewIds="53015,53067,53296,53742";
+ ensure(q("SELECT count(*)=4 AND bool_and(st.permanent) AS ok FROM public.tb_paginas p CROSS JOIN LATERAL rr_verified.profile_status(p.id_pagina) st
+  WHERE p.id_pagina IN (53015,53067,53296,53742)").ok[1],"Review-only badges changed");
+ ensure(q("SELECT count(*)=4 AS ok FROM crm_interno.audit WHERE action='verified.vip_review' AND details->>'batch'='verified-vip-20261124'").ok[1],"Review list mismatch");
+ report={applied=applyChanges,already_applied=existing==42,batch=input.batch,conciliated=42,reclassified=42,review_separated=4,provider_writes=false,
+  grants_and_other_profiles_unchanged=true,classifications_preserved=true,public_checkout_unchanged=true};
+ report.totals=queryExecute("SELECT count(*) FILTER(WHERE st.active) AS active,count(*) FILTER(WHERE st.permanent) AS permanent,
+  count(*) FILTER(WHERE st.active AND NOT st.permanent) AS annual FROM rr_verified.grants g CROSS JOIN LATERAL rr_verified.profile_status(g.profile_id) st WHERE g.origin='legacy'",{},{datasource="runner_dba",returntype="array"});
+ report.terms=queryExecute("SELECT c.profile_id,c.product_code,to_char(c.paid_at AT TIME ZONE 'America/Sao_Paulo','YYYY-MM-DD HH24:MI:SS') AS paid_at,
+  to_char((c.ends_at-interval '1 second') AT TIME ZONE 'America/Sao_Paulo','DD/MM/YYYY') AS valid_until FROM rr_verified.challenge_orders c WHERE c.profile_id IN (:ids) ORDER BY c.profile_id",params,{datasource="runner_dba",returntype="array"});
+ if(!applyChanges)transaction action="rollback";
+}

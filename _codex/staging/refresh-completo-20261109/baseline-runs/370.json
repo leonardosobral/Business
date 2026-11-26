@@ -1,0 +1,133 @@
+{
+  "truncated": false,
+  "status": "ok",
+  "started_at": "2026-10-05T15:03:15.298927-03:00",
+  "cell_id": 370,
+  "cell_version": 1,
+  "id": 180,
+  "frozen": true,
+  "result": {
+    "columns": [
+      "type",
+      "total",
+      "com_indicacion_delete"
+    ],
+    "rows": [
+      {
+        "total": 84,
+        "com_indicacion_delete": 3,
+        "type": "Elliptical"
+      },
+      {
+        "total": 2,
+        "com_indicacion_delete": 0,
+        "type": "Velomobile"
+      },
+      {
+        "total": 81,
+        "com_indicacion_delete": 0,
+        "type": "VirtualRun"
+      },
+      {
+        "total": 1518,
+        "com_indicacion_delete": 95,
+        "type": "Workout"
+      },
+      {
+        "total": 6,
+        "com_indicacion_delete": 0,
+        "type": "InlineSkate"
+      },
+      {
+        "total": 3,
+        "com_indicacion_delete": 0,
+        "type": "Canoeing"
+      },
+      {
+        "total": 48,
+        "com_indicacion_delete": 1,
+        "type": "VirtualRide"
+      },
+      {
+        "total": 22,
+        "com_indicacion_delete": 0,
+        "type": "Hike"
+      },
+      {
+        "total": 21149,
+        "com_indicacion_delete": 424,
+        "type": "Run"
+      },
+      {
+        "total": 2,
+        "com_indicacion_delete": 1,
+        "type": "Sail"
+      },
+      {
+        "total": 1,
+        "com_indicacion_delete": 0,
+        "type": "Skateboard"
+      },
+      {
+        "total": 50,
+        "com_indicacion_delete": 1,
+        "type": "StairStepper"
+      },
+      {
+        "total": 2028,
+        "com_indicacion_delete": 76,
+        "type": "Walk"
+      },
+      {
+        "total": 10,
+        "com_indicacion_delete": 0,
+        "type": "RockClimbing"
+      },
+      {
+        "total": 21,
+        "com_indicacion_delete": 3,
+        "type": "EBikeRide"
+      },
+      {
+        "total": 3110,
+        "com_indicacion_delete": 51,
+        "type": "WeightTraining"
+      },
+      {
+        "total": 2,
+        "com_indicacion_delete": 0,
+        "type": "Wheelchair"
+      },
+      {
+        "total": 40,
+        "com_indicacion_delete": 0,
+        "type": "Rowing"
+      },
+      {
+        "total": 1343,
+        "com_indicacion_delete": 34,
+        "type": "Ride"
+      },
+      {
+        "total": 14,
+        "com_indicacion_delete": 1,
+        "type": "Soccer"
+      },
+      {
+        "total": 50,
+        "com_indicacion_delete": 0,
+        "type": "Crossfit"
+      },
+      {
+        "total": 108,
+        "com_indicacion_delete": 4,
+        "type": "Yoga"
+      },
+      {
+        "total": 437,
+        "com_indicacion_delete": 11,
+        "type": "Swim"
+      }
+    ]
+  }
+}

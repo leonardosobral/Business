@@ -1,0 +1,134 @@
+{
+  "destinations": [
+    {
+      "ano": 2025,
+      "publicacao_id": 37,
+      "cell_id": 249,
+      "versao": 19
+    },
+    {
+      "ano": 2026,
+      "publicacao_id": 41,
+      "cell_id": 251,
+      "versao": 22
+    }
+  ],
+  "products": [
+    {
+      "code": "previa-2026-q3",
+      "status": "ACTIVE",
+      "publication": 41,
+      "published_at": "2026-10-06T23:20:59.658419-03:00",
+      "payload_sha256": "a1717534f16863d21345a2ba1e8ec4657c0f7802d61b36089608bfe42b53b7d4",
+      "run": 233,
+      "id": 1
+    },
+    {
+      "code": "anual-2026",
+      "status": "DRAFT",
+      "publication": null,
+      "published_at": null,
+      "payload_sha256": null,
+      "run": null,
+      "id": 2
+    }
+  ],
+  "captured_at": "2026-11-09T18:18:59.298579-03:00",
+  "source_runs": [
+    {
+      "revision": 1,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "c99fa0a6c9dd2b79bad27ac0e97cc8b0528033266faab2826bba276ce0565563",
+      "frozen_at": "2026-10-05T15:15:11.949024-03:00",
+      "id": 196,
+      "frozen": true,
+      "cell": 387
+    },
+    {
+      "revision": 2,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "6fa667f86e69e3f111518170266d5413bd3bf4d40fc7093b6b4f16b2d378edcc",
+      "frozen_at": "2026-10-06T23:14:29.820871-03:00",
+      "id": 231,
+      "frozen": true,
+      "cell": 387
+    },
+    {
+      "revision": 1,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "0e28fd4fe04f87abcfb4683f39c90d821ba00ee37a68dc12f1cc67151d614a0c",
+      "frozen_at": "2026-10-10T09:57:18.090047-03:00",
+      "id": 234,
+      "frozen": true,
+      "cell": 418
+    },
+    {
+      "revision": 1,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "8833c9645f980470d55e5b33a6aa5e9c86ec748269335074fc4820115f0197d7",
+      "frozen_at": "2026-10-10T12:45:46.452799-03:00",
+      "id": 235,
+      "frozen": true,
+      "cell": 420
+    },
+    {
+      "revision": 2,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "6bdfe3e6df83d389c18daac98bc716b26de124ab8dbd5aba2a51fe2a79e8dadb",
+      "frozen_at": "2026-10-10T13:35:35.59248-03:00",
+      "id": 236,
+      "frozen": true,
+      "cell": 420
+    },
+    {
+      "revision": 3,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "a5b3be5c6a468987da7e5269fef445cca08d089b90f5458508cc5e7cbc27d5af",
+      "frozen_at": "2026-10-13T10:22:40.838361-03:00",
+      "id": 238,
+      "frozen": true,
+      "cell": 420
+    },
+    {
+      "revision": 5,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "72a14c3d1fab2942912b00a85fc54a6e28928b9a1a19909102a6eff427f2a440",
+      "frozen_at": "2026-10-13T10:37:53.261438-03:00",
+      "id": 239,
+      "frozen": true,
+      "cell": 420
+    }
+  ],
+  "view": {
+    "sha256": "ee05be7bd4b56685eb01cd0e9c7fcc3a4a0f54fc8a80604e59b52717157252e4",
+    "definition": " SELECT ((r.result -> 'rows'::text) -> 0) -> 'payload'::text AS payload\n   FROM estudo.notebook_runs r\n     JOIN estudo.produtos p ON p.codigo = 'previa-2026-q3'::text AND p.status = 'ACTIVE'::text AND p.publicacao_id = 41\n  WHERE r.id = 239 AND r.cell_id = 420 AND r.frozen AND r.status = 'ok'::text AND NOT r.truncated AND r.row_count = 1;",
+    "owner": "runner_dba",
+    "security_barrier": true,
+    "options": [
+      "security_barrier=true"
+    ]
+  },
+  "annual_latest_run": 234,
+  "privileges": {
+    "product_update": true,
+    "publication_insert": true,
+    "preview_function": true,
+    "schema_create": true,
+    "publish_function": true
+  },
+  "database_user": "runner_dba"
+}

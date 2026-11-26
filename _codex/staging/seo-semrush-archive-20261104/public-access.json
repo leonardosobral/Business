@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/portal/seo/?aba=semrush",
+    "status": 403,
+    "privateDataAbsent": true
+  },
+  {
+    "path": "/portal/seo/arquivo.cfm?arquivo=roadrunners-issues",
+    "status": 403,
+    "privateDataAbsent": true
+  },
+  {
+    "path": "/portal/includes/seo_semrush_archive_backend.cfm",
+    "status": 403,
+    "privateDataAbsent": true
+  },
+  {
+    "path": "/portal/conteudo/seo_semrush_archive.cfm",
+    "status": 403,
+    "privateDataAbsent": true
+  }
+]

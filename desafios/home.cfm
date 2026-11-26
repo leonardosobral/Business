@@ -13,6 +13,34 @@
 
 <!--- TAG PARAM TREAT --->
 <cfset URL.desafio = trim(replace(URL.desafio, '/', ''))/>
+<cfset VARIABLES.challengeIsFoco = compareNoCase(URL.desafio, "foco") EQ 0/>
+<cfif VARIABLES.challengeIsFoco>
+    <cfif NOT isDefined("VARIABLES.requireAdminAllowed") OR NOT VARIABLES.requireAdminAllowed>
+        <cfheader statuscode="403"/>
+        <cfabort/>
+    </cfif>
+    <cfparam name="URL.tela" default=""/>
+    <cfparam name="URL.etapa" default=""/>
+    <cfset URL.tela = lcase(trim(URL.tela))/>
+    <cfset URL.etapa = lcase(trim(URL.etapa))/>
+    <cfif NOT listFindNoCase("inscritos,strava,atividade,ponto,sem-strava,sem-atividade,sem-ponto", URL.etapa)>
+        <cfset URL.etapa = ""/>
+    </cfif>
+    <cfif NOT listFindNoCase("resumo,participantes,pontos", URL.tela)>
+        <cfset URL.tela = (VARIABLES.challengePeriodWasProvided OR len(URL.etapa) OR len(URL.busca)
+            OR len(URL.regiao) OR len(URL.estado) OR len(URL.cidade) OR len(URL.preset)) ? "participantes" : "resumo"/>
+    </cfif>
+
+    <nav class="d-flex flex-wrap gap-2 mb-3" aria-label="Painel do Desafio Foco">
+        <a class="btn btn-sm <cfif URL.tela EQ 'resumo'>btn-warning<cfelse>btn-outline-secondary</cfif>" href="/desafios/foco/?tela=resumo"<cfif URL.tela EQ 'resumo'> aria-current="page"</cfif>>Resumo</a>
+        <a class="btn btn-sm <cfif URL.tela EQ 'participantes'>btn-warning<cfelse>btn-outline-secondary</cfif>" href="/desafios/foco/?tela=participantes"<cfif URL.tela EQ 'participantes'> aria-current="page"</cfif>>Atletas</a>
+        <a class="btn btn-sm <cfif URL.tela EQ 'pontos'>btn-warning<cfelse>btn-outline-secondary</cfif>" href="/desafios/foco/?tela=pontos"<cfif URL.tela EQ 'pontos'> aria-current="page"</cfif>>Pontos</a>
+    </nav>
+</cfif>
+
+<cfif VARIABLES.challengeIsFoco AND URL.tela EQ "pontos">
+    <cfinclude template="includes/pontos_foco.cfm"/>
+<cfelse>
 <cfif NOT VARIABLES.challengePeriodWasProvided
     AND listFindNoCase("catarinensecorridaderua,catarinensetrailrun,circuitobrasilgigante", URL.desafio)>
     <cfset URL.periodo = ""/>
@@ -69,6 +97,7 @@
 
 <!--- WIDGETS TEMPORAIS --->
 
+<cfif NOT VARIABLES.challengeIsFoco>
 <cfset VARIABLES.challengeWidgetCards = {
     no_desafio = {
         periodo = "nodesafio", css = "bg-5k",
@@ -114,11 +143,22 @@
         </cfif>
     </cfloop>
 </div>
-
-<cfif VARIABLES.challengeUsesActivityDays>
-    <cfinclude template="includes/atividade_diaria.cfm"/>
 </cfif>
 
+<cfif VARIABLES.challengeUsesActivityDays>
+    <cfif VARIABLES.challengeIsFoco>
+        <cfinclude template="includes/funil_foco.cfm"/>
+    </cfif>
+    <cfif NOT VARIABLES.challengeIsFoco OR URL.tela EQ "resumo">
+        <cfinclude template="includes/atividade_diaria.cfm"/>
+        <cfif isDefined("VARIABLES.requireAdminAllowed") AND VARIABLES.requireAdminAllowed>
+            <cfif VARIABLES.challengeIsFoco><cfinclude template="includes/engajamento.cfm"/></cfif>
+            <cfinclude template="includes/modalidades.cfm"/>
+        </cfif>
+    </cfif>
+</cfif>
+
+<cfif NOT VARIABLES.challengeIsFoco OR URL.tela EQ "participantes">
 <!--- WIDGETS PRESETS --->
 
 <!---div class="row g-3 mb-3">
@@ -255,6 +295,11 @@
 
 
     <cfif URL.periodo NEQ "pendentes">
+        <cfif VARIABLES.challengeIsFoco>
+            <cfset VARIABLES.focoGeoUrl = "/desafios/foco/?tela=participantes&amp;periodo=" & urlEncodedFormat(URL.periodo)
+                & "&amp;etapa=" & urlEncodedFormat(URL.etapa) & "&amp;busca=" & urlEncodedFormat(URL.busca)
+                & "&amp;preset=" & urlEncodedFormat(URL.preset)/>
+        </cfif>
 
         <!---<div class="col-md-3 d-none d-xl-block">--->
 
@@ -262,7 +307,7 @@
 
                 <!--- LISTAGEM DE REGIAO --->
 
-                <div class="col-4">
+                <div class="<cfif VARIABLES.challengeIsFoco>col-12 col-md-4<cfelse>col-4</cfif>">
 
                     <div class="card">
 
@@ -274,10 +319,17 @@
 
                                 <table id="tblEventos" class="table table-stripped table-hovered table-condensed table-sm mb-0" >
                                     <cfoutput query="qStatsRegiao">
+                                        <cfif VARIABLES.challengeIsFoco>
+                                            <tr<cfif qStatsRegiao.regiao EQ URL.regiao> class="table-active"</cfif>>
+                                                <td><a class="text-reset text-decoration-underline" href="#VARIABLES.focoGeoUrl#<cfif qStatsRegiao.regiao NEQ URL.regiao>&amp;regiao=#urlEncodedFormat(qStatsRegiao.regiao)#</cfif>">#encodeForHTML(qStatsRegiao.regiao)#</a></td>
+                                                <td>#qStatsRegiao.total#</td>
+                                            </tr>
+                                        <cfelse>
                                         <tr style="cursor: pointer;" <cfif qStatsRegiao.regiao EQ URL.regiao>class="table-active" onclick="location.href = './?periodo=#URL.periodo#&preset=#URL.preset#'"<cfelse>onclick="location.href = './?periodo=#URL.periodo#&preset=#URL.preset#&regiao=#urlEncodedFormat(qStatsRegiao.regiao)#'"</cfif> >
                                             <td>#qStatsRegiao.regiao#</td>
                                             <td>#qStatsRegiao.total#</td>
                                         </tr>
+                                        </cfif>
                                     </cfoutput>
                                 </table>
 
@@ -291,7 +343,7 @@
 
                 <!--- LISTAGEM DE UF --->
 
-                <div class="col-4">
+                <div class="<cfif VARIABLES.challengeIsFoco>col-12 col-md-4<cfelse>col-4</cfif>">
 
                     <div class="card">
 
@@ -303,10 +355,17 @@
 
                                 <table id="tblEventos" class="table table-stripped table-condensed table-sm mb-0" >
                                     <cfoutput query="qStatsEstado">
+                                        <cfif VARIABLES.challengeIsFoco>
+                                            <tr<cfif qStatsEstado.estado EQ URL.estado> class="table-active"</cfif>>
+                                                <td><a class="text-reset text-decoration-underline" href="#VARIABLES.focoGeoUrl#&amp;regiao=#urlEncodedFormat(URL.regiao)#<cfif qStatsEstado.estado NEQ URL.estado>&amp;estado=#urlEncodedFormat(qStatsEstado.estado)#</cfif>">#encodeForHTML(qStatsEstado.estado)#</a></td>
+                                                <td>#qStatsEstado.total#</td>
+                                            </tr>
+                                        <cfelse>
                                         <tr style="cursor: pointer;" <cfif qStatsEstado.estado EQ URL.estado>class="table-active" onclick="location.href = './?periodo=#URL.periodo#&preset=#URL.preset#&regiao=#URL.regiao#'"<cfelse>onclick="location.href = './?periodo=#URL.periodo#&preset=#URL.preset#&regiao=#URL.regiao#&estado=#urlEncodedFormat(qStatsEstado.estado)#'"</cfif> >
                                             <td>#qStatsEstado.estado#</td>
                                             <td>#qStatsEstado.total#</td>
                                         </tr>
+                                        </cfif>
                                     </cfoutput>
                                 </table>
 
@@ -320,7 +379,7 @@
 
                 <!--- LISTAGEM DE CIDADE --->
 
-                <div class="col-4">
+                <div class="<cfif VARIABLES.challengeIsFoco>col-12 col-md-4<cfelse>col-4</cfif>">
 
                     <div class="card">
 
@@ -332,10 +391,17 @@
 
                                 <table id="tblEventos" class="table table-stripped table-condensed table-sm mb-0" >
                                     <cfoutput query="qStatsCidade">
+                                        <cfif VARIABLES.challengeIsFoco>
+                                            <tr<cfif qStatsCidade.cidade EQ URL.cidade> class="table-active"</cfif>>
+                                                <td><a class="text-reset text-decoration-underline" href="#VARIABLES.focoGeoUrl#&amp;regiao=#urlEncodedFormat(URL.regiao)#&amp;estado=#urlEncodedFormat(URL.estado)#<cfif qStatsCidade.cidade NEQ URL.cidade>&amp;cidade=#urlEncodedFormat(qStatsCidade.cidade)#</cfif>">#encodeForHTML(qStatsCidade.cidade)# - #encodeForHTML(qStatsCidade.estado ?: '')#</a></td>
+                                                <td>#qStatsCidade.total#</td>
+                                            </tr>
+                                        <cfelse>
                                         <tr style="cursor: pointer;" <cfif qStatsCidade.cidade EQ URL.cidade>class="table-active"  onclick="location.href = './?periodo=#URL.periodo#&preset=#URL.preset#&regiao=#URL.regiao#&estado=#URL.estado#'"<cfelse>onclick="location.href = './?periodo=#URL.periodo#&reset=#URL.preset#&regiao=#URL.regiao#&estado=#URL.estado#&cidade=#urlEncodedFormat(qStatsCidade.cidade)#'"</cfif> >
                                             <td>#qStatsCidade.cidade# - #qStatsCidade.estado#</td>
                                             <td>#qStatsCidade.total#</td>
                                         </tr>
+                                        </cfif>
                                     </cfoutput>
                                 </table>
 
@@ -369,7 +435,7 @@
 
                     <div class="card-body p-2">
 
-                        <cfif URL.periodo NEQ "pendentes">
+                        <cfif URL.periodo NEQ "pendentes" OR VARIABLES.challengeIsFoco>
 
                             <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
                             <cfquery name="qStatsEvento" dbtype="query">
@@ -387,8 +453,16 @@
                             </cfquery>
                             <cfset desafiosAddQueryTiming("qStatsEvento:inscritos", VARIABLES.desafiosQueryStart, qStatsEvento.recordcount, "qoq")/>
 
-                            <a href="/desafios/includes/exportar_excel.cfm?desafio=<cfoutput>#URL.desafio#</cfoutput>&tipo=inscritos"><button class="btn btn-sm btn-outline-success mb-3"><i class="fas fa-file-excel"></i> Exportar excel </button> </a>
-                            <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
+                            <cfif NOT VARIABLES.challengeIsFoco OR NOT len(URL.etapa)>
+                                <a href="/desafios/includes/exportar_excel.cfm?desafio=<cfoutput>#URL.desafio#</cfoutput>&amp;tipo=inscritos" class="btn btn-sm btn-outline-success mb-3"><i class="fas fa-file-excel"></i> <cfif VARIABLES.challengeIsFoco>Exportar inscritos<cfelse>Exportar Excel</cfif></a>
+                            </cfif>
+                            <cfif VARIABLES.challengeIsFoco AND NOT qStatsEvento.recordcount>
+                                <p class="mb-0 p-2">Nenhum atleta encontrado com os filtros selecionados.</p>
+                            <cfelse>
+                                <cfif VARIABLES.challengeIsFoco><div class="table-responsive"></cfif>
+                                <cfinclude template="includes/tabela_usuarios_padrao.cfm"/>
+                                <cfif VARIABLES.challengeIsFoco></div></cfif>
+                            </cfif>
 
                         <cfelse>
 
@@ -533,4 +607,6 @@
 
 <!---</div>--->
 
+</cfif>
+</cfif>
 </cfif>

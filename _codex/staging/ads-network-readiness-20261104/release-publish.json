@@ -1,0 +1,20 @@
+{
+  "verified_files": {
+    "portal/banners/sites/backend.cfm": {
+      "sha256": "ac4152bd4e4bde13ae04a059932a3d38b01b6a6a92661c8f5fb86ccf7873f68a",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/banners/sites/home.cfm": {
+      "sha256": "9d0b45253401a4a86fa2ad78ce7702fae182b7ccf974c86da60b48aa810e189c",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "preserved_dependencies": 0,
+  "published_at": "2026-11-04T16:10:14.772442+00:00",
+  "backup": "/var/backups/ads-network-20261104-wnotoc_g/baseline",
+  "stage": "/var/backups/ads-network-20261104-wnotoc_g"
+}

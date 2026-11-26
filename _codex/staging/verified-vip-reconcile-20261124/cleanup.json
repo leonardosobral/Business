@@ -1,0 +1,9 @@
+{
+  "preview_stopped": true,
+  "preview_directory_removed": true,
+  "browser_daemon_stopped": true,
+  "browser_socket_inactive": true,
+  "native_stage_removed": true,
+  "live_stage_removed": true,
+  "operator_runs_exited": true
+}

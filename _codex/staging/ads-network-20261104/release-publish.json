@@ -1,0 +1,128 @@
+{
+  "verified_files": {
+    "ads-network/.htaccess": {
+      "sha256": "abc9c5b6b679e2aab943d2dc3cf69700d28396c657fb13c7c0f3315a96af222f",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads-network/Application.cfc": {
+      "sha256": "eab30c1839d743480210f94005269a7f80c6f1deb2a93544919343d83106977d",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads-network/includes/request.cfm": {
+      "sha256": "fb03aafc621faff9f68ef15cfc4bad0bfc987edc6f49c5634c38bb1ca17f1d63",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads-network/sdk/v1.js": {
+      "sha256": "2d3bf076fca5ab4f00c59852bd31c1b05439677df6315fb483c1a30eb2641d96",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads-network/v1/click.cfm": {
+      "sha256": "bd3aa024526c0f23a1f7668a56eabb0e01cfd9bdfc6ee84f41e7d009e57fcdb5",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads-network/v1/serve.cfm": {
+      "sha256": "85b1499336f3236580299b1f607e9c1fb7f442066af6d3d20dbea289608f2760",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads-network/v1/viewable.cfm": {
+      "sha256": "bd3aa024526c0f23a1f7668a56eabb0e01cfd9bdfc6ee84f41e7d009e57fcdb5",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/banners/home.cfm": {
+      "sha256": "98d1d510cda2898e81b76ce8287c0b2b530064f4142adfe405a661a63684549c",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/banners/sites/backend.cfm": {
+      "sha256": "1cd858863e36c0b3071dbaedc01af91a91d219aad752bb1187f7d68958d49e69",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/banners/sites/home.cfm": {
+      "sha256": "b821d0561c316a63f6b9ec56dd5d962a5345d4502effddad1ae7484a13ae76f6",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/banners/sites/index.cfm": {
+      "sha256": "66cddb0bfd8a57d2b4573ed35d522d49d24007a5b15c97648d386e17bd7570c3",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/banner_dashboard_backend.cfm": {
+      "sha256": "ed6f9ca1dbfa4959a3e955645d4c50ec7e77bbfeb4260bb0fc13b6ddef5cedee",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/banner_form.cfm": {
+      "sha256": "a88b2c3f086743875af50f591dd2ade75e5bed8c94b447e3b48abb6feee8759d",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/banner_management_backend.cfm": {
+      "sha256": "1fccd933bfb4c77cbfdd5d6522fb65f131d94b8759fae2aa80ab13a5263c71e0",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "portal/includes/paid_banner_form.cfm": {
+      "sha256": "10f9e8d2c6cc93a2ed6ef3d44b7f66483317ab3160bdc68680c87f094ca42ff7",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/paid_banner_helpers.cfm": {
+      "sha256": "74857980885318ecbc81da26ad3ece9d6ffe23bbb66a3519e1e3c0ff8d9e3839",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/paid_banner_home.cfm": {
+      "sha256": "df8282ee5fc2492ee0be1cf6ea23c3342e8330814b4bf00f1ab975c16bc4c5fd",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/paid_banner_list.cfm": {
+      "sha256": "6046e40a322e60e78cb93c558d267f271ccfcea1b79b3228548719c4d65992a5",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/paid_banner_queries.cfm": {
+      "sha256": "a87c76036707abc0b5411fedded753ff6806978bf01a1731ac2496221281f8c1",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "portal/includes/publisher_inventory_helpers.cfm": {
+      "sha256": "7c970947393ccd7ba4d65d85fe022900b36964cb2c252e13a7e487640b803053",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "preserved_dependencies": 0,
+  "published_at": "2026-11-04T15:36:48.863609+00:00",
+  "backup": "/var/backups/ads-network-20261104-csb4jt9i/baseline",
+  "stage": "/var/backups/ads-network-20261104-csb4jt9i"
+}

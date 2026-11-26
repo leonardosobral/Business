@@ -1,0 +1,10 @@
+SELECT jsonb_build_object(
+ 'capturado_em',transaction_timestamp(),'read_only',current_setting('transaction_read_only'),
+ 'columns',(SELECT jsonb_agg(jsonb_build_object('name',column_name,'type',data_type,'nullable',is_nullable,'default',column_default) ORDER BY ordinal_position) FROM information_schema.columns WHERE table_schema='public' AND table_name='tbbi_fat_perfil_br_2026'),
+ 'functions',(SELECT jsonb_agg(jsonb_build_object('name',p.proname,'args',pg_get_function_identity_arguments(p.oid),'definition',pg_get_functiondef(p.oid))) FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname IN('get_id_geracao','get_id_categoria_cbat','get_id_dim_faixa')),
+ 'views',(SELECT jsonb_agg(jsonb_build_object('name',c.oid::regclass::text,'definition',pg_get_viewdef(c.oid,true))) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE c.relkind='v' AND (c.oid='public.vwbi_fat_perfil_br_2026'::regclass OR (n.nspname='estudo' AND c.relname IN('vwbi_perfil_br_2026','vw_resultados_2026','vw_resultados_comparativo_2025_2026')))),
+ 'direct_dependents',(SELECT jsonb_agg(DISTINCT c.oid::regclass::text) FROM pg_depend d JOIN pg_rewrite r ON r.oid=d.objid JOIN pg_class c ON c.oid=r.ev_class WHERE d.refobjid IN('public.tbbi_fat_perfil_br_2026'::regclass,'public.vwbi_fat_perfil_br_2026'::regclass) AND c.oid<>d.refobjid),
+ 'table_acl',(SELECT relacl FROM pg_class WHERE oid='public.tbbi_fat_perfil_br_2026'::regclass),
+ 'view_acl',(SELECT relacl FROM pg_class WHERE oid='public.vwbi_fat_perfil_br_2026'::regclass),
+ 'date_dimension',(SELECT jsonb_build_object('rows',sum(n),'dates',count(*),'first',min(data_referencia),'last',max(data_referencia),'duplicate_dates',count(*) FILTER(WHERE n>1),'duplicate_surplus',sum(n-1)) FROM(SELECT data_referencia,count(*) AS n FROM public.tbbi_dim_data GROUP BY data_referencia)x)
+ )::text AS payload

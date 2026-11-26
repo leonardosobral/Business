@@ -1,0 +1,14 @@
+### Result
+"{\"viewport\":390,\"width\":390,\"review\":true,\"four\":true}"
+### Ran Playwright code
+```js
+await page.evaluate('() => (JSON.stringify({viewport:innerWidth,width:document.documentElement.scrollWidth,review:document.body.innerText.includes("Divergências VIP (4)"),four:document.body.innerText.includes("4 perfis encontrados")}))');
+```
+
+
+╔════════════════════════════════════════════════════════════════════╗
+║ Update available for @playwright/cli: 0.1.18 → 0.1.25              ║
+║ Run `npm install -g @playwright/cli@latest` (global) or            ║
+║ `npm install --save-dev @playwright/cli@latest` (local) to update. ║
+╚════════════════════════════════════════════════════════════════════╝
+

@@ -1,0 +1,10 @@
+Publicado em 17/11/2026: Logar como no Business, sem senha mestra.
+11 arquivos publicados e hashes conferidos.
+Backup: /var/backups/business-support-login-20261117-htuh2i2r
+27 verificações de serviço e 17 casos HTTP aprovados em produção, com rollback e limpeza dos fixtures.
+Chrome: acesso iniciado por Leonardo (139) como Inscrições Movnow (136808), conta Movnow (25).
+Conferido: somente Movnow no seletor, sem administração, sem Agendas/Desafios no menu; Meus Teams abriu vazio sem erro.
+Voltar ao administrador restaurou Administração - Usuários/Todas as contas.
+Sessão de suporte encerrada; aba de teste fechada; abas e janelas pessoais preservadas.
+Auditoria final: 194 / retorno_administrador
+Screenshot: chrome-movnow-teams.png

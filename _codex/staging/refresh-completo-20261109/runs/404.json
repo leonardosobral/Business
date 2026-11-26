@@ -1,0 +1,704 @@
+{
+  "run": {
+    "started_at": "2026-11-09 15:53:00.843739-03",
+    "duration_ms": 45,
+    "error_message": "",
+    "cell_version": 1,
+    "cell_id": "404",
+    "sql_sha256": "842c2a1d1721168b9b21f29492815a585bcba2af1696f379a417396a55ac34bf",
+    "truncated": 0,
+    "row_count": 16,
+    "sql_text": "-- Revisão dos 16 casos do congelamento 174: não acrescentar 42 km ao cadastro automaticamente.\n-- Captura atual por esses IDs, preservando a referência original Jan–Set; apenas agregados.\n-- A distância marcada em tb_resultados não confirma que seja corrida de rua individual.\nWITH ids AS(SELECT column1 AS id_evento FROM(VALUES (34834),(34839),(37868),(38070),(39970),(40447),(40980),(41082),(42782),(44199),(44586),(45804),(46817),(47613),(48354),(48640)) t),\nbase AS MATERIALIZED(\n SELECT r.id_evento,r.modalidade,r.percurso,r.tempo_total,\n r.status_final=0 AND r.homologado IS TRUE AND r.concluinte IS TRUE AND r.tempo_total>TIME '00:00:00' AND r.pcd IS FALSE\n AND NOT(coalesce(r.modalidade,'') ~* '(CADEIR|DEFICI|ANDANTE|HAND|BIKE|GUIA|(^|[^A-Z0-9])(PCD|ACD|DI|DV|DA|DMAI|DMS|CAD)([^A-Z0-9]|$))') AS elegivel\n FROM public.tb_resultados r JOIN ids i USING(id_evento) WHERE r.percurso BETWEEN 42 AND 42.2\n), grupos AS(\n SELECT id_evento,coalesce(modalidade,'[não informada]') AS modalidade,count(*) AS linhas,\n count(*) FILTER(WHERE elegivel) AS elegiveis,\n min(extract(epoch FROM tempo_total)) FILTER(WHERE elegivel) AS menor_segundos,\n percentile_cont(0.5) WITHIN GROUP(ORDER BY extract(epoch FROM tempo_total)) FILTER(WHERE elegivel) AS mediana_segundos\n FROM base GROUP BY id_evento,modalidade\n)\nSELECT e.id_evento,e.nome_evento,e.data_final,e.cidade,e.estado,e.tag,e.tipo_corrida,e.ranking,e.ativo,\n e.url_resultado,e.url_wiclax,e.url_hotsite,e.url_inscricao,e.url_regulamento,\n (SELECT count(*) FROM base b WHERE b.id_evento=e.id_evento) AS linhas_brutas,\n (SELECT count(*) FROM base b WHERE b.id_evento=e.id_evento AND b.elegivel) AS elegiveis,\n (SELECT jsonb_agg(to_jsonb(g) ORDER BY modalidade) FROM grupos g WHERE g.id_evento=e.id_evento) AS modalidades,\n coalesce((SELECT jsonb_agg(jsonb_build_object('km',d.percurso_evento,'unidade',d.unidade_de_medida,'tipo',d.tipo_corrida,'bloqueado',d.percurso_bloqueado) ORDER BY d.percurso_evento) FROM public.tb_evento_corridas_percursos d WHERE d.id_evento=e.id_evento),'[]'::jsonb) AS percursos,\n current_timestamp AS coletado_em,174 AS congelamento_referencia\n FROM public.tb_evento_corridas e JOIN ids i USING(id_evento) ORDER BY e.data_final,e.id_evento",
+    "status": "ok",
+    "note": "Renovação completa solicitada em 09/11/2026. Mesmos critérios e corte da revisão vigente; pacote candidato, ainda não publicado. A data de coleta não amplia a janela de eventos.",
+    "finished_at": "2026-11-09 15:53:00.890982-03",
+    "frozen_at": "2026-11-09 15:53:00.894916-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 404",
+    "id": "297",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T15:53:00.843739-03:00",
+    "cell_id": 404,
+    "cell_version": 1,
+    "id": 297,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "id_evento",
+        "nome_evento",
+        "data_final",
+        "cidade",
+        "estado",
+        "tag",
+        "tipo_corrida",
+        "ranking",
+        "ativo",
+        "url_resultado",
+        "url_wiclax",
+        "url_hotsite",
+        "url_inscricao",
+        "url_regulamento",
+        "linhas_brutas",
+        "elegiveis",
+        "modalidades",
+        "percursos",
+        "coletado_em",
+        "congelamento_referencia"
+      ],
+      "rows": [
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 39970,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 14,
+              "modalidade": "LONG TRAIL",
+              "elegiveis": 14,
+              "id_evento": 39970,
+              "mediana_segundos": 18263,
+              "menor_segundos": 13813.0
+            }
+          ],
+          "url_resultado": "https://resultados.racezone.com.br/mycrono/#/trun-pipa-2026",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": null,
+          "estado": "RN",
+          "data_final": "2026-03-14",
+          "nome_evento": "TRUN - ETAPA PIPA 2026",
+          "url_wiclax": "https://resultados.racezone.com.br/mycrono/data/1UPCFX6/event.json?ver=1773499506000",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 14,
+          "elegiveis": 14,
+          "url_inscricao": "https://www.race83.com.br/new/evento/545/2342/trun-etapa-pipa-2026",
+          "tag": "2026-trun-etapa-pipa-2026",
+          "cidade": "Tibau do Sul"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 40447,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 5,
+              "modalidade": "42K EXPERIENCE",
+              "elegiveis": 5,
+              "id_evento": 40447,
+              "mediana_segundos": 15843.8,
+              "menor_segundos": 15732.1
+            },
+            {
+              "linhas": 1,
+              "modalidade": "42K-PARTICIPATIVO",
+              "elegiveis": 1,
+              "id_evento": 40447,
+              "mediana_segundos": 15871.5,
+              "menor_segundos": 15871.5
+            },
+            {
+              "linhas": 13,
+              "modalidade": "PERCURSO 42k 42K",
+              "elegiveis": 9,
+              "id_evento": 40447,
+              "mediana_segundos": 26871.7,
+              "menor_segundos": 20180.8
+            }
+          ],
+          "url_resultado": "https://www.cronusteccorridas.com.br/resultados/g-live.html?f=evento/2026/CORRIDA-SANTA-2026/CORRIDA-SANTA-2026.clax",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": null,
+          "estado": "BA",
+          "data_final": "2026-04-04",
+          "nome_evento": "CORRIDA SANTA",
+          "url_wiclax": "https://www.cronusteccorridas.com.br/resultados/evento/2026/CORRIDA-SANTA-2026/CORRIDA-SANTA-2026.clax",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 19,
+          "elegiveis": 15,
+          "url_inscricao": "",
+          "tag": "2026-corrida-santa",
+          "cidade": "Mucugê"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 41082,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 225,
+              "modalidade": "42k",
+              "elegiveis": 225,
+              "id_evento": 41082,
+              "mediana_segundos": 26434,
+              "menor_segundos": 15124.0
+            }
+          ],
+          "url_resultado": "https://www.cronoserv.com.br/resultado/28-praias-costa-norte,260055",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": null,
+          "estado": "SP",
+          "data_final": "2026-04-25",
+          "nome_evento": "28 PRAIAS COSTA NORTE",
+          "url_wiclax": null,
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 225,
+          "elegiveis": 225,
+          "url_inscricao": "",
+          "tag": "2026-28-praias-costa-norte",
+          "cidade": "Ubatuba"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 34839,
+          "url_hotsite": "https://www.ticketsports.com.br/e/5d-ultramarathon-2026-73928",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 15,
+              "modalidade": "42KM",
+              "elegiveis": 15,
+              "id_evento": 34839,
+              "mediana_segundos": 17815,
+              "menor_segundos": 14402.0
+            }
+          ],
+          "url_resultado": "https://esportecorrida.com.br/v3/resultado_.php?evt=2454",
+          "ranking": null,
+          "percursos": [
+            {
+              "bloqueado": false,
+              "km": 5,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 10,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 21,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 100,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 160,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 230,
+              "tipo": "rua",
+              "unidade": "km"
+            }
+          ],
+          "url_regulamento": null,
+          "estado": "RJ",
+          "data_final": "2026-05-01",
+          "nome_evento": "5D ULTRAMARATHON 2026",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 15,
+          "elegiveis": 15,
+          "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=73928&origem=novo-site&lang=pt-BR",
+          "tag": "2026-5d-ultramarathon-2026",
+          "cidade": "Valença"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 38070,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 37,
+              "modalidade": "42k",
+              "elegiveis": 37,
+              "id_evento": 38070,
+              "mediana_segundos": 18967,
+              "menor_segundos": 15767.0
+            }
+          ],
+          "url_resultado": "https://www.morro-mt.com.br/resultados/circuito-ultramacho-senta-a-pua-domingo-626",
+          "ranking": null,
+          "percursos": [
+            {
+              "bloqueado": false,
+              "km": 7,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 21,
+              "tipo": "rua",
+              "unidade": "km"
+            }
+          ],
+          "url_regulamento": null,
+          "estado": "MT",
+          "data_final": "2026-05-17",
+          "nome_evento": "MARATONA SENTA A PÚA",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 37,
+          "elegiveis": 37,
+          "url_inscricao": "https://ultramacho.com.br/",
+          "tag": "2026-maratona-senta-a-pua",
+          "cidade": "Chapada dos Guimarães"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 40980,
+          "url_hotsite": "https://www.ticketsports.com.br/e/4%C2%AA+MARATONA+INTERNACIONAL+FMO-86772",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 76,
+              "modalidade": "42k",
+              "elegiveis": 76,
+              "id_evento": 40980,
+              "mediana_segundos": 15728.5,
+              "menor_segundos": 8069.0
+            }
+          ],
+          "url_resultado": "https://www.zeniteesportes.com/resultados?evento=534",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/86772/2b9d2d103287428fb23e8e8ff15925ec639137825817377284.pdf",
+          "estado": "PE",
+          "data_final": "2026-05-17",
+          "nome_evento": "4ª MARATONA INTERNACIONAL FMO",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 76,
+          "elegiveis": 76,
+          "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86772&origem=novo-site&lang=en-US",
+          "tag": "2026-4-maratona-internacional-fmo",
+          "cidade": "Olinda"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 42782,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 210,
+              "modalidade": "42K",
+              "elegiveis": 184,
+              "id_evento": 42782,
+              "mediana_segundos": 7426.5,
+              "menor_segundos": 4478.0
+            }
+          ],
+          "url_resultado": "https://www.quedasadventure.com.br/resultados/g-live.html?f=eventos/2026/ucc2026/UCC2026.clax",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": "",
+          "estado": "SC",
+          "data_final": "2026-05-17",
+          "nome_evento": "UCC RIDE MTB - 5ª ETAPA - COPA OESTE MTB 2026",
+          "url_wiclax": "https://www.quedasadventure.com.br/resultados/eventos/2026/ucc2026/UCC2026.clax",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 210,
+          "elegiveis": 184,
+          "url_inscricao": "",
+          "tag": "2026-ucc-ride-mtb-5-etapa-copa-oeste-mtb-2026",
+          "cidade": "Caçador"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 44586,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 18,
+              "modalidade": "42k 42KM",
+              "elegiveis": 16,
+              "id_evento": 44586,
+              "mediana_segundos": 13484.221,
+              "menor_segundos": 10190.619
+            }
+          ],
+          "url_resultado": "https://timeupmarcacoes.com.br/resultados/g-live.html?f=eventos/2026/MARATONA_SANTO_ANTONIO/MARATONA_SANTO_ANTONIO.clax",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": "",
+          "estado": "PA",
+          "data_final": "2026-06-14",
+          "nome_evento": "MARATONA DE SANTO ANTÔNIO",
+          "url_wiclax": "https://timeupmarcacoes.com.br/resultados/eventos/2026/MARATONA_SANTO_ANTONIO/MARATONA_SANTO_ANTONIO.clax",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 18,
+          "elegiveis": 16,
+          "url_inscricao": "",
+          "tag": "2026-maratona-de-santo-antonio",
+          "cidade": "Belterra"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 44199,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 27,
+              "modalidade": "42K",
+              "elegiveis": 21,
+              "id_evento": 44199,
+              "mediana_segundos": 23284.439,
+              "menor_segundos": 16670.0
+            }
+          ],
+          "url_resultado": "https://ravelisports.com.br/resultados/g-live.html?f=eventos/2026/ULTRA-GUARULHOS/CORRIDA.clax",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": "",
+          "estado": "SP",
+          "data_final": "2026-06-28",
+          "nome_evento": "GUARULHOS ULTRAMARATHON",
+          "url_wiclax": "https://ravelisports.com.br/resultados/eventos/2026/ULTRA-GUARULHOS/CORRIDA.clax",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 27,
+          "elegiveis": 21,
+          "url_inscricao": "",
+          "tag": "2026-guarulhos-ultramarathon",
+          "cidade": "GUARULHOS"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 37868,
+          "url_hotsite": "https://www.ticketsports.com.br/e/28-maratona-internacional-de-blumenau-2026-84987",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 214,
+              "modalidade": "42 KM",
+              "elegiveis": 214,
+              "id_evento": 37868,
+              "mediana_segundos": 13735.5,
+              "menor_segundos": 8950.0
+            }
+          ],
+          "url_resultado": "https://chiprun.com.br/evento/28a-maratona-internacional-de-blumenau-2026/",
+          "ranking": null,
+          "percursos": [
+            {
+              "bloqueado": false,
+              "km": 5,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 10,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 21,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 42,
+              "tipo": "rua",
+              "unidade": "km"
+            }
+          ],
+          "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/84987/53d8fd8060c84d34bf10afd0ee00ec4f639003526581080644.pdf",
+          "estado": "SC",
+          "data_final": "2026-07-05",
+          "nome_evento": "28ª MARATONA INTERNACIONAL DE BLUMENAU  - 2026",
+          "url_wiclax": null,
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 214,
+          "elegiveis": 214,
+          "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=84987&origem=novo-site&lang=en-US",
+          "tag": "2026-28-maratona-internacional-de-blumenau-2026",
+          "cidade": "Blumenau"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 45804,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 42,
+              "modalidade": "42k",
+              "elegiveis": 33,
+              "id_evento": 45804,
+              "mediana_segundos": 16689.96,
+              "menor_segundos": 11476.54
+            },
+            {
+              "linhas": 1,
+              "modalidade": "CADEIRANTE 42KM",
+              "elegiveis": 0,
+              "id_evento": 45804,
+              "mediana_segundos": null,
+              "menor_segundos": null
+            }
+          ],
+          "url_resultado": "https://brlive.info/brlive/g-live.html?f=resultados/bsb/bsb.maratonaemeiachapada.01082026.clax",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": "",
+          "estado": "GO",
+          "data_final": "2026-08-01",
+          "nome_evento": "MARATONA E MEIA DA CHAPADA DOS VEADEIROS CAIXA",
+          "url_wiclax": "https://brlive.info/brlive/resultados/bsb/bsb.maratonaemeiachapada.01082026.clax",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 43,
+          "elegiveis": 33,
+          "url_inscricao": "",
+          "tag": "2026-maratona-e-meia-da-chapada-dos-veadeiros-caixa",
+          "cidade": "Alto Paraíso de Goiás"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 46817,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 264,
+              "modalidade": "42KM",
+              "elegiveis": 264,
+              "id_evento": 46817,
+              "mediana_segundos": 14794.5,
+              "menor_segundos": 10319.0
+            }
+          ],
+          "url_resultado": "https://www.cronoserv.com.br/evento/3680?tab=result",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": "",
+          "estado": "SP",
+          "data_final": "2026-08-23",
+          "nome_evento": "TAUBATÉ MARATHON",
+          "url_wiclax": null,
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 264,
+          "elegiveis": 264,
+          "url_inscricao": "",
+          "tag": "2026-taubate-marathon",
+          "cidade": "TAUBATÉ"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 34834,
+          "url_hotsite": "https://www.ticketsports.com.br/e/13-ultradesafio-sana-macaerj-2026--73377",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 30,
+              "modalidade": "42KM",
+              "elegiveis": 30,
+              "id_evento": 34834,
+              "mediana_segundos": 19613.5,
+              "menor_segundos": 13535.0
+            }
+          ],
+          "url_resultado": "https://esportecorrida.com.br/v3/resultado_.php?evt=2759",
+          "ranking": null,
+          "percursos": [
+            {
+              "bloqueado": false,
+              "km": 10,
+              "tipo": "rua",
+              "unidade": "km"
+            },
+            {
+              "bloqueado": false,
+              "km": 80,
+              "tipo": "rua",
+              "unidade": "km"
+            }
+          ],
+          "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/73377/97474c00f2a845cb91edf215a85e6fd1639039854459364413.pdf",
+          "estado": "RJ",
+          "data_final": "2026-09-05",
+          "nome_evento": "13º ULTRADESAFIO SANA - MACAÉRJ 2026.",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 30,
+          "elegiveis": 30,
+          "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=73377&origem=novo-site&lang=en-US",
+          "tag": "2026-13-ultradesafio-sana-macaerj-2026",
+          "cidade": "Macaé"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 47613,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 8,
+              "modalidade": "42KM",
+              "elegiveis": 8,
+              "id_evento": 47613,
+              "mediana_segundos": 17016.5,
+              "menor_segundos": 15417.0
+            }
+          ],
+          "url_resultado": "https://sportbro.com.br/v3/brt-boqueiro-trail-run-2026",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": "",
+          "estado": "MG",
+          "data_final": "2026-09-12",
+          "nome_evento": "BRT - Boqueirão Trail Run 2026 - Tapira/MG",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 8,
+          "elegiveis": 8,
+          "url_inscricao": "",
+          "tag": "2026-brt-boqueirao-trail-run-2026-tapiramg",
+          "cidade": "Tapira"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 48354,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 36,
+              "modalidade": "TRAIL RUN 42KM",
+              "elegiveis": 36,
+              "id_evento": 48354,
+              "mediana_segundos": 22550.3515,
+              "menor_segundos": 11111.881
+            }
+          ],
+          "url_resultado": "https://www.polesportivo.com.br/resultado.php?ev=1447",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": "",
+          "estado": "SP",
+          "data_final": "2026-09-19",
+          "nome_evento": "Rocky Mountain Games 2026 - 2ª Etapa",
+          "url_wiclax": "",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 36,
+          "elegiveis": 36,
+          "url_inscricao": "",
+          "tag": "2026-rocky-mountain-games-2026-2-etapa",
+          "cidade": "Sao Paulo"
+        },
+        {
+          "congelamento_referencia": 174,
+          "id_evento": 48640,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T15:53:00.845671-03:00",
+          "modalidades": [
+            {
+              "linhas": 778,
+              "modalidade": "42KM",
+              "elegiveis": 158,
+              "id_evento": 48640,
+              "mediana_segundos": 42.858000000000004,
+              "menor_segundos": 30.041
+            },
+            {
+              "linhas": 27,
+              "modalidade": "42KM ACD ESPECIAL",
+              "elegiveis": 0,
+              "id_evento": 48640,
+              "mediana_segundos": null,
+              "menor_segundos": null
+            },
+            {
+              "linhas": 13,
+              "modalidade": "42KM CADEIRANTE",
+              "elegiveis": 0,
+              "id_evento": 48640,
+              "mediana_segundos": null,
+              "menor_segundos": null
+            },
+            {
+              "linhas": 320,
+              "modalidade": "42KM REVEZAMENTO",
+              "elegiveis": 105,
+              "id_evento": 48640,
+              "mediana_segundos": 39.736,
+              "menor_segundos": 30.015
+            },
+            {
+              "linhas": 3,
+              "modalidade": "42KM REVEZAMENTO ACD ESP.",
+              "elegiveis": 0,
+              "id_evento": 48640,
+              "mediana_segundos": null,
+              "menor_segundos": null
+            },
+            {
+              "linhas": 92,
+              "modalidade": "42KM TRABALHADOR DO COMERCIO",
+              "elegiveis": 5,
+              "id_evento": 48640,
+              "mediana_segundos": 56.165,
+              "menor_segundos": 31.019
+            }
+          ],
+          "url_resultado": "https://www.supercrono.com.br/resultados/result/#/maratona-internacional-de-foz-do-iguau-5k",
+          "ranking": null,
+          "percursos": [],
+          "url_regulamento": "",
+          "estado": "PR",
+          "data_final": "2026-09-27",
+          "nome_evento": "5KM Maratona Internacional de Foz do Iguaçu 5KM",
+          "url_wiclax": "https://www.supercrono.com.br/resultados/result/data/OZWVCU/event.json",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "linhas_brutas": 1233,
+          "elegiveis": 268,
+          "url_inscricao": "",
+          "tag": "2026-5km-maratona-internacional-de-foz-do-iguacu-5km",
+          "cidade": "FOZ DO IGUAÇU"
+        }
+      ]
+    }
+  }
+}

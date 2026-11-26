@@ -1,0 +1,41 @@
+{
+  "scope": "Three final page/fixture candidates only; local, unpublished.",
+  "artifacts": [
+    {
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/refresh-completo-20261109/postload-final-pages/candidate/business/estudos/lancamento/index.cfm",
+      "target_project": "business",
+      "destination": "estudos/lancamento/index.cfm",
+      "before_sha256": "9f80c3e46f7a229e41ce43bcacf6f3d8eac84bae69458a609e654c25026d81db",
+      "after_sha256": "b28c156ec643d2a6fd07cdf96b9ba33174cd11e65afd8fb0ed8452e9d5744c5a",
+      "bytes": 22627
+    },
+    {
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/refresh-completo-20261109/postload-final-pages/candidate/portal/brasilquecorreprovas/2026/pagina.html",
+      "target_project": "portal",
+      "destination": "brasilquecorreprovas/2026/pagina.html",
+      "before_sha256": "d6244770f75865c997c3f8ada331ab5c8813e63ec7f43b4bed95440f98ff80f2",
+      "after_sha256": "3362e2bd66baca1a371f94f26eb694e5b3c8e1f826657f4d2e125e8575d5844a",
+      "bytes": 18375
+    },
+    {
+      "candidate": "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/refresh-completo-20261109/postload-final-pages/candidate/portal/brasilquecorreprovas/2026/public-preview.json",
+      "target_project": "portal",
+      "destination": "brasilquecorreprovas/2026/public-preview.json",
+      "before_sha256": "e0712225e97c3c12afa1fda9ca20a28d2e41c4a847fec10bf3dbffc7d9059dae",
+      "after_sha256": "85bbadbf7bf7b4af7e0a2dfc843e545e96131e50a930c8f22086a3fd34f2ae3a",
+      "bytes": 3660
+    }
+  ],
+  "source_run_sha256": "96599b83a8e920a01a9781270a4f85eee2df25e45ce1ea65027c9b398c4255e6",
+  "source_textareas_sha256": "83152ed827df27d3eb30767000652b676cca2c7c781598a183aacd1b65ae520e",
+  "source_texts_json_sha256": "1cc33a9fb85eb71f024778e60ca9820f5d15f2c6ed753b49e6dc5107d1fa3736",
+  "dependencies": {
+    "pdf_router": "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/refresh-completo-20261109/postload-internal-docs/runtime/business/estudos/lancamento/arquivo.cfm",
+    "pdf_router_sha256": "6566b1552c35ef435c875fbd0a719ff44dbc733909bd76450d7a0f84ab968d90",
+    "kit": "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/refresh-completo-20261109/postload-media/candidate/portal/brasilquecorreprovas/2026/kit",
+    "dynamic_js_sha256": "e10eb10028f348ffcd731cc2046d4f14ae8d8d42db0632a425307d7ffaca3260",
+    "live_shell_sha256": "0bb3001933ed404b263cd5527a58655288b13d81f0aa10552d85d8a355cc6b45",
+    "live_endpoint_sha256": "18584bb68d15cfe29ca0186d28d89752f91015267b35727c325237302375bb65"
+  },
+  "verification_sha256": "6e65cb9932acdfb385dcd4444f58c949303c3b2a1367dd356977a75541485ccd"
+}

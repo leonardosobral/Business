@@ -1,0 +1,14 @@
+{
+  "estudos/includes/StudyAccess.cfc": {
+    "sha": "981dfd96aabed918c112b3d2defb16337ab963bc6779a4262153dfbf86af9a59"
+  },
+  "estudos/includes/FirstAccess.cfc": {
+    "sha": "a4cd4513c2291b3affd614bc2bafb22adbe9a3fcf9e1ddaf2e0906757d2fb213"
+  },
+  "estudos/primeiro-acesso/index.cfm": {
+    "sha": "7cdfc2022abcaa8392aed50f794df5392ba08ee3dc9f6b4e89c70a24fcb34ebc"
+  },
+  "estudos/primeiro-acesso/primeiro-acesso.js": {
+    "sha": "3c2df39cda76ea0825149427d9103d7ab401ea65701915d9f0b24c8313afa3ff"
+  }
+}

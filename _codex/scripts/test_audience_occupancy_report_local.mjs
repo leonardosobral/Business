@@ -459,6 +459,33 @@ try {
     { environment: "prod' OR true --" }]) verifyCoverage(overrides);
   extensionEqual(verifyCoverage({ uf: 'AC' }).map(row => row.page_folder), ['/arena/'], 'commercial UF filters the folder evidence');
   extensionEqual(verifyCoverage({ environment: 'dev' }).map(row => row.page_folder), ['/development/'], 'environment filter applies to folder evidence');
+  const offer = { page_family: 'other', page_path: '/verificado/', content_type: 'verified_offer',
+    content_id: 'home', visitor_id: page(), session_id: page() };
+  const openedOffer = page();
+  seed([
+    event(openedOffer, 'page_view', offer),
+    event(openedOffer, 'page_engagement', offer),
+    event(page(), 'page_view', { ...offer, content_id: 'creator' }),
+    event(page(), 'page_view', { ...offer, content_type: '', content_id: '' }),
+    event(page(), 'page_view', { ...offer, content_id: 'unrecognized' }),
+    event(page(), 'page_view', { ...offer, page_path: '/verificado/checkout/' }),
+    event(page(), 'page_view', { ...offer, page_family: 'profile' }),
+    event(page(), 'page_view', { ...offer, is_internal: true }),
+    event(page(), 'page_view', { ...offer, environment: 'dev' }),
+    ...opportunity(offer), ...opportunity({ ...offer, page_path: '/verificado/checkout/' })
+  ]);
+  const verified = { page_family: 'verified' };
+  const offerEntries = executeReport('verified_entries', verified);
+  extensionEqual(Object.fromEntries(offerEntries.map(row => [row.entry_label, row.pageviews])),
+    { 'Sem identificação': 2, 'Home': 1, 'Página de criadores': 1 }, 'only canonical openings, preserving earlier unattributed views');
+  extensionEqual(offerEntries.every(row => row.visitors === 1 && row.sessions === 1), true, 'repeat viewers are distinct within each entry');
+  const offerSummary = executeReport('summary', verified)[0];
+  extensionEqual([offerSummary.pageviews, offerSummary.visitors, offerSummary.sessions, offerSummary.engaged_sessions],
+    [4, 1, 1, 0], 'revisits via another entry do not become distinct destinations or visitors');
+  extensionEqual(executeReport('origins', verified)[0].pageviews, 4, 'acquisition source uses the same exact offer route');
+  extensionEqual(executeReport('acquisition', verified)[0].pageviews, 4, 'campaigns use the same exact offer route');
+  extensionEqual(query(verified)[0].registered, 1, 'inventory excludes the checkout subpath');
+  compareCapacity(verified);
   console.log(`Audience occupancy SQL: ${checks} original assertions plus ${extensionChecks} regional/coverage assertions passed against isolated PostgreSQL as SELECT-only role.`);
 } finally {
   if (started) run('pg_ctl', ['-D', resolve(scratch, 'data'), '-m', 'immediate', '-w', 'stop']);

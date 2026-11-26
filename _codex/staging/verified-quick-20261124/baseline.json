@@ -1,0 +1,7 @@
+{
+  "services/VerifiedAdmin.cfc": "bf3d4add3f167800a757d1098f96d4ca054ebd00985f7a1954995d917c13ca5f",
+  "portal/verificados/verified.css": "1ff122d840b86bcbc94f9ccce93407102378669c3884f6608eb15150c282ecb2",
+  "portal/includes/verified_backend.cfm": "539520a3bb8b9c7224ca8cb457f4fdc59e21069a66df2969e6df85cdb0f5e9f1",
+  "portal/verificados/home.cfm": "389fe7336538a3a8b7655ff318473deb0620c8c6eaf6b7ed782e9bf23bba351f",
+  "portal/verificados/index.cfm": "19f703cffcef6f0a417e3ab8af0a1989e92b81e0fe8bca855714959a65827526"
+}

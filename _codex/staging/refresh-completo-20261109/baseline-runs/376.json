@@ -1,0 +1,128 @@
+{
+  "truncated": false,
+  "status": "ok",
+  "started_at": "2026-10-05T15:03:42.793254-03:00",
+  "cell_id": 376,
+  "cell_version": 1,
+  "id": 186,
+  "frozen": true,
+  "result": {
+    "columns": [
+      "type",
+      "total",
+      "com_indicacion_delete"
+    ],
+    "rows": [
+      {
+        "total": 1,
+        "com_indicacion_delete": 0,
+        "type": "Velomobile"
+      },
+      {
+        "total": 49,
+        "com_indicacion_delete": 0,
+        "type": "VirtualRun"
+      },
+      {
+        "total": 1116,
+        "com_indicacion_delete": 18,
+        "type": "Workout"
+      },
+      {
+        "total": 1,
+        "com_indicacion_delete": 0,
+        "type": "InlineSkate"
+      },
+      {
+        "total": 5,
+        "com_indicacion_delete": 0,
+        "type": "Canoeing"
+      },
+      {
+        "total": 39,
+        "com_indicacion_delete": 1,
+        "type": "VirtualRide"
+      },
+      {
+        "total": 59,
+        "com_indicacion_delete": 1,
+        "type": "Hike"
+      },
+      {
+        "total": 13896,
+        "com_indicacion_delete": 106,
+        "type": "Run"
+      },
+      {
+        "total": 1,
+        "com_indicacion_delete": 1,
+        "type": "Skateboard"
+      },
+      {
+        "total": 24,
+        "com_indicacion_delete": 1,
+        "type": "StairStepper"
+      },
+      {
+        "total": 1632,
+        "com_indicacion_delete": 105,
+        "type": "Walk"
+      },
+      {
+        "total": 12,
+        "com_indicacion_delete": 0,
+        "type": "EBikeRide"
+      },
+      {
+        "total": 3,
+        "com_indicacion_delete": 0,
+        "type": "RockClimbing"
+      },
+      {
+        "total": 2564,
+        "com_indicacion_delete": 43,
+        "type": "WeightTraining"
+      },
+      {
+        "total": 30,
+        "com_indicacion_delete": 0,
+        "type": "Rowing"
+      },
+      {
+        "total": 846,
+        "com_indicacion_delete": 62,
+        "type": "Ride"
+      },
+      {
+        "total": 18,
+        "com_indicacion_delete": 2,
+        "type": "Soccer"
+      },
+      {
+        "total": 12,
+        "com_indicacion_delete": 0,
+        "type": "Crossfit"
+      },
+      {
+        "total": 109,
+        "com_indicacion_delete": 0,
+        "type": "Yoga"
+      },
+      {
+        "total": 277,
+        "com_indicacion_delete": 2,
+        "type": "Swim"
+      },
+      {
+        "total": 1,
+        "com_indicacion_delete": 0,
+        "type": "StandUpPaddling"
+      },
+      {
+        "total": 53,
+        "com_indicacion_delete": 0,
+        "type": "Elliptical"
+      }
+    ]
+  }
+}

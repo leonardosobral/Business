@@ -1,0 +1,39 @@
+{
+  "checks": {
+    "loaded_source_and_adapters_conserve_ids": true,
+    "gender_and_months_conserve_total": true,
+    "paired_ids_counts_and_unrounded_rate": true,
+    "public_compares_match_full_precision_sources": true,
+    "public_gender_generation_distance_quarter": true,
+    "contract_provenance_and_official_capture": true
+  },
+  "passed": 6,
+  "total_2026": 4574981,
+  "total_2025_q3": 3537379,
+  "paired": {
+    "concluintes_2025": 1191628,
+    "variacao_pct": "2.220995142779458018777672200",
+    "concluintes_2026": 1218094,
+    "iguais": 1,
+    "cresceram": 329,
+    "delta": 26466,
+    "cobertura_2026_pct": "26.625116038733275",
+    "cobertura_2025_pct": "33.6867494266235",
+    "cairam": 285,
+    "pares": 615,
+    "participacao_no_aumento_pct": "2.55068899250387"
+  },
+  "calendar": {
+    "2025": 5898,
+    "2026": 8179
+  },
+  "public_indicators": {
+    "femininas": "53.8",
+    "millennials": "46.1",
+    "distancias_curtas": "61.4",
+    "interior": "48.0",
+    "terceiro_trimestre": "43.2",
+    "concentracao_porte": "48.1"
+  },
+  "publication_pending": true
+}

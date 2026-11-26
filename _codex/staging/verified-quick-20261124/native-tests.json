@@ -1,0 +1,27 @@
+{
+  "timings": {
+    "run.cfm": 2.176,
+    "render.cfm?filter_status=unclassified&fixture_ready=1": 2.187,
+    "render.cfm?filter_status=unclassified": 2.177,
+    "render.cfm?test_denied=1": 0.037,
+    "render.cfm?case=csrf": 2.283,
+    "render.cfm?case=legacy": 2.235
+  },
+  "statuses": {
+    "run.cfm": 200,
+    "render.cfm?filter_status=unclassified&fixture_ready=1": 200,
+    "render.cfm?filter_status=unclassified": 200,
+    "render.cfm?test_denied=1": 403,
+    "render.cfm?case=csrf": 403,
+    "render.cfm?case=legacy": 409
+  },
+  "tests": {
+    "CHECKS": 24.0,
+    "READY": 0,
+    "UNCLASSIFIED": 128,
+    "OK": true,
+    "MANUAL_ID": 54048
+  },
+  "ok": true,
+  "stage_removed": true
+}

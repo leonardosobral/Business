@@ -1,0 +1,46 @@
+{
+  "source": {
+    "id": 452,
+    "version": 2,
+    "hash": "8e21ff6a2dbaa341009d9bf5d917e64b"
+  },
+  "run": {
+    "started_at": "2026-11-09 18:20:00.171625-03",
+    "duration_ms": 628,
+    "error_message": "",
+    "cell_version": 2,
+    "cell_id": "452",
+    "sql_sha256": "b8c0a5cab036055f0ee4d8bb63af8a94f6e8b33dc691aa6aa7a8b923797756ad",
+    "truncated": 0,
+    "row_count": 1,
+    "sql_text": "-- Diagnóstico operacional separado dos volumes editoriais congelados.\n-- Nenhuma identificação pessoal é retornada. O vínculo id_usuario é o atual da\n-- view BI e pode ter sido associado retrospectivamente; não prova causalidade.\nWITH inscritos AS MATERIALIZED (\n SELECT id_usuario,min(data_inscricao) AS inscrito_em\n FROM public.desafios WHERE desafio='circuitobrasilgigante'\n AND data_inscricao<TIMESTAMP '2026-10-01' AND id_usuario>0\n GROUP BY id_usuario\n), eventos AS MATERIALIZED (\n SELECT id_evento,id_agrega_evento,CASE WHEN id_evento=37310 THEN DATE '2026-05-03' ELSE data_final END AS data_final FROM public.tb_evento_corridas\n WHERE id_evento IN(29291,34236,32450,36245,34529,37310,39393)\n AND pais='BR' AND data_final>=DATE '2026-01-01' AND data_final<DATE '2026-10-01'\n), elegiveis AS MATERIALIZED (\n SELECT r.id_resultado,r.id_evento,r.id_usuario,e.data_final,e.id_agrega_evento\n FROM estudo.vw_resultados_2026 r JOIN eventos e USING(id_evento)\n WHERE r.status_final=0 AND r.homologado IS TRUE AND r.concluinte IS TRUE\n AND r.percurso BETWEEN 42 AND 42.2 AND r.tempo_total>TIME '00:00:00'\n AND r.pcd IS FALSE AND NOT(coalesce(r.modalidade,'') ~* '(CADEIR|DEFICI|ANDANTE|HAND|BIKE|GUIA|REVEZ|DUPLA|QUARTETO|OCTETO|TRAIL|(^|[^A-Z0-9])(PCD|ACD|DI|DV|DA|DMAI|DMS|CAD)([^A-Z0-9]|$))')\n), por_inscrito AS (\n SELECT i.id_usuario,count(DISTINCT e.id_evento) AS etapas,\n count(DISTINCT e.id_evento) FILTER(WHERE i.inscrito_em::date<=e.data_final) AS etapas_inscrito_antes_ou_dia\n FROM inscritos i LEFT JOIN elegiveis e USING(id_usuario) GROUP BY i.id_usuario\n), por_etapa AS (\n SELECT e.id_evento,e.id_agrega_evento,count(*) AS conclusoes_bi,\n count(*) FILTER(WHERE e.id_usuario>0) AS conclusoes_com_conta,\n count(*) FILTER(WHERE i.id_usuario IS NOT NULL) AS conclusoes_de_inscritos,\n count(DISTINCT i.id_usuario) AS inscritos_com_resultado\n FROM elegiveis e LEFT JOIN inscritos i USING(id_usuario)\n GROUP BY e.id_evento,e.id_agrega_evento\n)\nSELECT jsonb_build_object('consultado_em',current_timestamp,\n 'corte','2026-09-30','natureza','Adesão operacional; vínculo de resultado atual e possivelmente retrospectivo; sem inferência causal',\n 'inscritos',(SELECT count(*) FROM inscritos),\n 'com_resultado',(SELECT count(*) FROM por_inscrito WHERE etapas>=1),\n 'com_duas_ou_mais',(SELECT count(*) FROM por_inscrito WHERE etapas>=2),\n 'inscritos_antes_ou_dia_de_uma_etapa',(SELECT count(*) FROM por_inscrito WHERE etapas_inscrito_antes_ou_dia>=1),\n 'inscritos_antes_ou_dia_de_duas_etapas',(SELECT count(*) FROM por_inscrito WHERE etapas_inscrito_antes_ou_dia>=2),\n 'distribuicao',(SELECT jsonb_agg(to_jsonb(t) ORDER BY t.etapas) FROM (SELECT etapas,count(*) AS contas FROM por_inscrito GROUP BY etapas) t),\n 'etapas',(SELECT jsonb_agg(to_jsonb(t) ORDER BY t.id_evento) FROM por_etapa t))::text AS payload",
+    "status": "ok",
+    "note": "Mesma amostra/critério da revisão vigente. Nova fonte BI versionada após carga DataGrip; ainda candidato sem publicação. Floripa oficial210 permanece independente dos perfis BI.",
+    "finished_at": "2026-11-09 18:20:00.801144-03",
+    "frozen_at": "2026-11-09 18:20:00.804325-03",
+    "title": "Maratonas — recaptura Jan–Set — 09/11/2026 — célula 452",
+    "id": "308",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "truncated": false,
+    "status": "ok",
+    "started_at": "2026-11-09T18:20:00.171625-03:00",
+    "cell_id": 452,
+    "cell_version": 2,
+    "id": 308,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "payload"
+      ],
+      "rows": [
+        {
+          "payload": "{\"corte\": \"2026-09-30\", \"etapas\": [{\"id_evento\": 29291, \"conclusoes_bi\": 4266, \"id_agrega_evento\": 17, \"conclusoes_com_conta\": 474, \"conclusoes_de_inscritos\": 424, \"inscritos_com_resultado\": 418}, {\"id_evento\": 32450, \"conclusoes_bi\": 335, \"id_agrega_evento\": 14, \"conclusoes_com_conta\": 51, \"conclusoes_de_inscritos\": 51, \"inscritos_com_resultado\": 51}, {\"id_evento\": 34236, \"conclusoes_bi\": 7445, \"id_agrega_evento\": 26, \"conclusoes_com_conta\": 694, \"conclusoes_de_inscritos\": 634, \"inscritos_com_resultado\": 633}, {\"id_evento\": 34529, \"conclusoes_bi\": 3609, \"id_agrega_evento\": 28, \"conclusoes_com_conta\": 351, \"conclusoes_de_inscritos\": 279, \"inscritos_com_resultado\": 278}, {\"id_evento\": 36245, \"conclusoes_bi\": 1108, \"id_agrega_evento\": 15, \"conclusoes_com_conta\": 143, \"conclusoes_de_inscritos\": 114, \"inscritos_com_resultado\": 114}, {\"id_evento\": 37310, \"conclusoes_bi\": 2245, \"id_agrega_evento\": 1000, \"conclusoes_com_conta\": 246, \"conclusoes_de_inscritos\": 218, \"inscritos_com_resultado\": 217}, {\"id_evento\": 39393, \"conclusoes_bi\": 418, \"id_agrega_evento\": 9, \"conclusoes_com_conta\": 74, \"conclusoes_de_inscritos\": 72, \"inscritos_com_resultado\": 72}], \"natureza\": \"Adesão operacional; vínculo de resultado atual e possivelmente retrospectivo; sem inferência causal\", \"inscritos\": 5756, \"distribuicao\": [{\"contas\": 4194, \"etapas\": 0}, {\"contas\": 1382, \"etapas\": 1}, {\"contas\": 148, \"etapas\": 2}, {\"contas\": 27, \"etapas\": 3}, {\"contas\": 2, \"etapas\": 4}, {\"contas\": 2, \"etapas\": 5}, {\"contas\": 1, \"etapas\": 6}], \"com_resultado\": 1562, \"consultado_em\": \"2026-11-09T18:20:00.173747-03:00\", \"com_duas_ou_mais\": 180, \"inscritos_antes_ou_dia_de_uma_etapa\": 859, \"inscritos_antes_ou_dia_de_duas_etapas\": 102}"
+        }
+      ]
+    }
+  }
+}

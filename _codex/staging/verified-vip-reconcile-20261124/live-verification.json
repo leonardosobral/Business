@@ -1,0 +1,36 @@
+{
+  "list": {
+    "status": 200,
+    "verified": true
+  },
+  "quick": {
+    "status": 200,
+    "verified": true
+  },
+  "angelica": {
+    "status": 200,
+    "verified": true
+  },
+  "bastos": {
+    "status": 200,
+    "verified": true
+  },
+  "carina": {
+    "status": 200,
+    "verified": true
+  },
+  "reconcile": {
+    "status": 200,
+    "verified": true
+  },
+  "divergent": {
+    "status": 200,
+    "verified": true
+  },
+  "refund": {
+    "status": 200,
+    "verified": true
+  },
+  "ok": true,
+  "stage_removed": true
+}

@@ -1,0 +1,55 @@
+{
+  "publication": {
+    "contract_version": 18,
+    "year": 2026,
+    "paired_run": 329,
+    "payload_sha256": "a04b8ac9649bb5a230c0c3e36b07fcd5be75add96a474d0aa842632f19d45a85",
+    "run": 351,
+    "paired_revision": 3,
+    "id": 42,
+    "cell": 251
+  },
+  "runs": [
+    {
+      "revision": 3,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "391b0e338fff0088868fd4814e119db63fda8214a0cd38ae5e105dcbc0d537f4",
+      "id": 329,
+      "frozen": true,
+      "cell": 387
+    },
+    {
+      "revision": 42,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "a04b8ac9649bb5a230c0c3e36b07fcd5be75add96a474d0aa842632f19d45a85",
+      "id": 351,
+      "frozen": true,
+      "cell": 251
+    },
+    {
+      "revision": 7,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "584fee688f5826365ed33534eb7da4b6256c9037ef937bdd4b6ed8fab2180dd8",
+      "id": 352,
+      "frozen": true,
+      "cell": 420
+    },
+    {
+      "revision": 3,
+      "truncated": false,
+      "status": "ok",
+      "row_count": 1,
+      "payload_sha256": "2decc751a22220501a68972ca2291ac87626ff3ed212de82cdd1878b6b6f3637",
+      "id": 353,
+      "frozen": true,
+      "cell": 418
+    }
+  ],
+  "annual_latest_run": 353
+}

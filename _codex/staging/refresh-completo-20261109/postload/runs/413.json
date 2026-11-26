@@ -1,0 +1,101 @@
+{
+  "saved": {
+    "version": 2,
+    "updated_at": "2026-11-09 18:21:49.862785-03",
+    "id": "413"
+  },
+  "run": {
+    "started_at": "2026-11-09 18:21:49.877827-03",
+    "duration_ms": 22127,
+    "error_message": "",
+    "cell_version": 2,
+    "cell_id": "413",
+    "sql_sha256": "83df574ea8be7c5e6c3df826cccb5d61633520cf54a398708f962ecd17b98504",
+    "truncated": 0,
+    "row_count": 1,
+    "sql_text": "-- Auditoria da versão carregada em09/11; a view pública original fica como comparação histórica.\nWITH fato AS (SELECT count(*) AS n,count(DISTINCT id_resultado) AS ids,count(DISTINCT id_evento) AS eventos,count(*) FILTER(WHERE id_localidade=0) AS sem_localidade FROM estudo.fat_perfil_br_2026_20261109),\noriginal AS(SELECT count(*) AS n FROM public.vwbi_fat_perfil_br_2026),\nadaptado AS(SELECT count(*) AS n,count(DISTINCT id_resultado) AS ids FROM estudo.vwbi_perfil_br_2026),\nresultados AS(SELECT count(*) AS n,count(DISTINCT id_resultado) AS ids,count(*) FILTER(WHERE status_final=0 AND homologado IS TRUE AND concluinte IS TRUE) AS elegiveis FROM estudo.vw_resultados_2026),\nvalidacao AS(SELECT count(*) FILTER(WHERE r.id_resultado IS NULL) AS sem_resultado,count(*) FILTER(WHERE e.pais IS DISTINCT FROM 'BR' OR r.status_final IS DISTINCT FROM 0 OR r.homologado IS NOT TRUE OR r.concluinte IS NOT TRUE OR f.data_evento IS DISTINCT FROM e.data_final OR f.data_evento<DATE '2026-01-01' OR f.data_evento>=DATE '2026-10-01') AS divergencias FROM estudo.fat_perfil_br_2026_20261109 f LEFT JOIN public.tb_resultados r USING(id_resultado) LEFT JOIN public.tb_evento_corridas e ON e.id_evento=f.id_evento),\ngeracoes AS(SELECT id_geracao,count(*) AS participacoes FROM estudo.fat_perfil_br_2026_20261109 GROUP BY id_geracao)\nSELECT jsonb_build_object('fonte_fato','estudo.fat_perfil_br_2026_20261109','versao_carga',(SELECT jsonb_build_object('loaded_at',loaded_at,'snapshot_id',snapshot_id,'status',status) FROM estudo.fat_perfil_br_2026_20261109_audit),'capturado_em',transaction_timestamp(),'fato',(SELECT to_jsonb(f) FROM fato f),'view_original',(SELECT to_jsonb(o) FROM original o),'view_estudo',(SELECT to_jsonb(a) FROM adaptado a),'resultados_estudo',(SELECT to_jsonb(r) FROM resultados r),'validacao',(SELECT to_jsonb(v) FROM validacao v),'geracoes',(SELECT jsonb_agg(to_jsonb(g) ORDER BY id_geracao) FROM geracoes g)) AS payload;",
+    "status": "ok",
+    "note": "Candidato da renovação completa. Referências mensais atualizadas, critérios preservados. A publicação vigente não foi alterada.",
+    "finished_at": "2026-11-09 18:22:12.007171-03",
+    "frozen_at": "2026-11-09 18:22:12.009705-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 413",
+    "id": "316",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T18:21:49.877827-03:00",
+    "cell_id": 413,
+    "cell_version": 2,
+    "id": 316,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "payload"
+      ],
+      "rows": [
+        {
+          "payload": {
+            "view_estudo": {
+              "ids": 4574981,
+              "n": 4574981
+            },
+            "capturado_em": "2026-11-09T18:21:49.881633-03:00",
+            "geracoes": [
+              {
+                "id_geracao": 0,
+                "participacoes": 542648
+              },
+              {
+                "id_geracao": 1,
+                "participacoes": 186058
+              },
+              {
+                "id_geracao": 2,
+                "participacoes": 865564
+              },
+              {
+                "id_geracao": 3,
+                "participacoes": 2108020
+              },
+              {
+                "id_geracao": 4,
+                "participacoes": 828384
+              },
+              {
+                "id_geracao": 5,
+                "participacoes": 44307
+              }
+            ],
+            "fato": {
+              "eventos": 4966,
+              "ids": 4574981,
+              "sem_localidade": 160535,
+              "n": 4574981
+            },
+            "versao_carga": {
+              "snapshot_id": "308969104:308969104:",
+              "status": "activated",
+              "loaded_at": "2026-11-09T16:55:27.872241-03:00"
+            },
+            "view_original": {
+              "n": 4352383
+            },
+            "resultados_estudo": {
+              "elegiveis": 4574981,
+              "ids": 4574981,
+              "n": 4574981
+            },
+            "fonte_fato": "estudo.fat_perfil_br_2026_20261109",
+            "validacao": {
+              "sem_resultado": 0,
+              "divergencias": 0
+            }
+          }
+        }
+      ]
+    }
+  }
+}

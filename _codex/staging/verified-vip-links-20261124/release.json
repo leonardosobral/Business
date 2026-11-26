@@ -1,0 +1,56 @@
+{
+  "ok": true,
+  "backup": "/var/backups/business-verified-vip-links-co_8da2l",
+  "files": {
+    "services/VerifiedAdmin.cfc": {
+      "before": "34910b6e69d008e64bc55adbc29e5b55e0e485796be84b7da3cbdc70221c550c",
+      "after": "1cf36e3d8e881597de31559516d2a56bee4a4c37df83799ca4056cb246bfb3b2",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "portal/verificados/home.cfm": {
+      "before": "9589775ee05c9eb0ffcf9f0204bb9101299f4274ad5dfe7c077a3c848e2ca348",
+      "after": "d2685958afb3e3f5a52e136e4189aa17f97bec27540f8082f656c9825ed4bb65",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "portal/includes/verified_backend.cfm": {
+      "before": "fd6cabbb869bd47e445c0dc508257909cc8237568ffc675bc3f417b6b8fbc890",
+      "after": "c71d7267d1659e7343103f777ac5dff76a6869bd3461aaca370f97938edabc56",
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    }
+  },
+  "http_checks": [
+    {
+      "path": "/portal/verificados/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "path": "/portal/includes/verified_backend.cfm",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/portal/verificados/home.cfm",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/portal/verificados/verified.css",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "path": "/portal/verificados/verified.js",
+      "status": "200",
+      "ok": true
+    }
+  ],
+  "schema_changed": false,
+  "entitlements_changed": false
+}

@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "scope": "Local Node VM using actual read-only SQL delivery snapshots; no auth identity or pointers modified",
+  "pages": {
+    "publication41": 37,
+    "publication42": 37
+  },
+  "old": {
+    "publication": 41,
+    "source": 231,
+    "narrative": 239,
+    "pairs": 608
+  },
+  "fresh": {
+    "publication": 42,
+    "source": 329,
+    "narrative": 352,
+    "pairs": 615,
+    "paired_rate_exact": "2.220995142779458018777672200",
+    "paired_display": "+2,2%",
+    "calendar_display": "+38,7%"
+  },
+  "old_assets_identical": true,
+  "negative_cases": [
+    "missing_metadata",
+    "missing_narrative",
+    "unapproved_narrative",
+    "string_narrative_id",
+    "empty_methodology",
+    "review_status",
+    "source_id_wrong_type",
+    "revision_not_integer",
+    "cohort_count_mismatch",
+    "missing_count",
+    "empty_sample",
+    "invalid_rate",
+    "noninteger_sample"
+  ],
+  "sql_pair_join_checked": true,
+  "artifacts": {
+    "old_render_sha256": "7e732dec5bb4cef874acea1a0ae9ca7993f9f326276504928be69b66f864352a",
+    "fresh_render_sha256": "774fde7f1725fc30224ba0825d8a8f95c4edcdbe0de02f85449c047351cae081",
+    "fresh_csv_sha256": "b980db194cf831c694c2881dd71ec66929ec0c13ba3b516f865ccef76f2f5241"
+  },
+  "limits": [
+    "No browser/layout checks",
+    "No live CFML compilation",
+    "Actual SQL execution/capture is owned by parent; this harness only reads its JSON artifacts"
+  ]
+}

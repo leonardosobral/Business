@@ -1,0 +1,159 @@
+--- a/business/estudos/includes/StudyAccess.cfc
++++ b/business/estudos/includes/StudyAccess.cfc
+@@ -109,7 +109,7 @@
+             FROM selected s
+         ), paired_source AS (
+             SELECT r.id,r.cell_id,r.cell_version,jsonb_extract_path(r.result,'rows','0','payload') AS summary,
+-                a.payload AS publication
++                a.publicacao_id,a.payload AS publication
+             FROM authorized a
+             CROSS JOIN LATERAL jsonb_array_elements(CASE
+                 WHEN jsonb_typeof(jsonb_extract_path(a.payload,'meta','notebook_fontes'))='array'
+@@ -119,16 +119,19 @@
+                 AND r.cell_id=387 AND r.cell_version=CASE WHEN f->>'revisao' ~ '^[1-9][0-9]{0,8}$'
+                     THEN (f->>'revisao')::integer ELSE NULL END
+             WHERE f->>'celula'='387' AND r.frozen AND r.status='ok' AND NOT r.truncated AND r.row_count=1
+-                AND a.publicacao_id=41 AND jsonb_extract_path_text(a.payload,'meta','corte')='2026-09-30'
++                AND a.publicacao_id IN (41,42) AND jsonb_extract_path_text(a.payload,'meta','corte')='2026-09-30'
+                 AND jsonb_extract_path_text(a.payload,'meta','periodo_inicio')='2026-01-01'
+             LIMIT 1
+         ), paired_public AS (
+-            SELECT jsonb_extract_path(result,'rows','0','payload','release') AS narrative
+-            FROM estudo.notebook_runs
+-            WHERE id=239 AND cell_id=420 AND cell_version=5 AND frozen AND status='ok' AND NOT truncated AND row_count=1
++            SELECT approved_pairs.publication_id,r.id AS narrative_run,r.cell_version AS narrative_revision,
++                jsonb_extract_path(r.result,'rows','0','payload','release') AS narrative
++            FROM (VALUES (41::bigint,239::bigint,5::integer),
++                         (42::bigint,352::bigint,7::integer)) approved_pairs(publication_id,run_id,revision)
++            JOIN estudo.notebook_runs r ON r.id=approved_pairs.run_id AND r.cell_id=420 AND r.cell_version=approved_pairs.revision
++            WHERE r.frozen AND r.status='ok' AND NOT r.truncated AND r.row_count=1
+         ), paired_checked AS (
+-            SELECT p.*
+-            FROM paired_source p CROSS JOIN paired_public n
++            SELECT p.*,n.narrative_run,n.narrative_revision
++            FROM paired_source p JOIN paired_public n ON n.publication_id=p.publicacao_id
+             WHERE p.summary->>'periodo'='Jan–Set de2025 e2026'
+               AND (jsonb_extract_path_text(p.summary,'coorte_pareada','pares')) ~ '^[1-9][0-9]*$'
+               AND (jsonb_extract_path_text(p.summary,'coorte_pareada','concluintes_2025')) ~ '^[1-9][0-9]*$'
+@@ -144,7 +147,7 @@
+             SELECT (SELECT jsonb_build_object('status','disponivel','celula',cell_id,'execucao',id,'revisao',cell_version,
+                 'coletado_em',summary->'coletado_em','periodo',summary->'periodo','metodologia',summary->'metodologia',
+                 'fontes',summary->'fontes','coorte',summary->'coorte_pareada',
+-                'narrativa',jsonb_build_object('celula',420,'execucao',239,'revisao',5),
++                'narrativa',jsonb_build_object('celula',420,'execucao',narrative_run,'revisao',narrative_revision),
+                 'ressalva','Variação da soma de participações nas edições pareadas; não é a média das variações por prova. O pareamento não certifica captura completa nem isola crescimento real. Não conta pessoas únicas.')
+                 FROM paired_checked) AS metadata,
+                 (SELECT 'Notebook · célula ' || cell_id || ', revisão ' || cell_version || ', execução congelada ' || id
+--- a/business/estudos/leitor/parcial.js
++++ b/business/estudos/leitor/parcial.js
+@@ -66,7 +66,7 @@
+     try {
+       const meta=data.meta.comparativo_pareado;
+       if(meta?.status!=='disponivel'||meta.celula!==387||!Number.isInteger(meta.execucao)||!Number.isInteger(meta.revisao)
+-        ||meta.narrativa?.execucao!==239||typeof meta.metodologia!=='string'||!meta.metodologia.trim()
++        ||![239,352].includes(meta.narrativa?.execucao)||typeof meta.metodologia!=='string'||!meta.metodologia.trim()
+         ||typeof meta.coletado_em!=='string'||!/^\d{4}-\d{2}-\d{2}/.test(meta.coletado_em))throw new Error('Fonte pareada em revisão');
+       const sets=['comparativo_pareadas_concluintes','comparativo_pareadas_variacao','comparativo_pareadas_amostra'].map(get);
+       const numeric=(series,key)=>{const value=series.values.find(v=>v.label===key)?.value;if(typeof value!=='number'||!Number.isFinite(value))throw new Error('Valor pareado ausente');return value;};
+--- a/business/estudos/leitor/index.cfm
++++ b/business/estudos/leitor/index.cfm
+@@ -12,7 +12,7 @@
+ html=replace(html,'<body data-endpoint="dados.cfm">','<body data-endpoint="dados.cfm"><div class="reader-access"><a href="/estudos/">← Minha biblioteca</a><span>Prévia profissional · Janeiro–setembro de 2026 · Acesso pessoal</span></div>');
+ html=replace(html,'<div class="hero-footnote">EDIÇÃO DIGITAL <span>•</span> PRÉVIA EM CONSTRUÇÃO</div>','<div class="hero-footnote">EDIÇÃO DIGITAL <span>•</span> PRÉVIA PROFISSIONAL POR CONVITE</div>');
+ // Version presentation files together with the curated JSON contract.
+-for(asset in ['estudo.css','dados.js','parcial.js','estudo.js']) html=replace(html,'"' & asset & '"','"' & asset & '?v=q3-20261109-comparativo"','all');
++for(asset in ['estudo.css','dados.js','parcial.js','estudo.js']) html=replace(html,'"' & asset & '"','"' & asset & '?v=consumer-compatible-41-42-352"','all');
+ html=replace(html,'</head>','<style>.reader-access{background:##ffcb05;color:##242424;padding:12px 5%;display:flex;gap:20px;justify-content:space-between;font:600 14px Poppins,sans-serif}.reader-access a{color:inherit} .hero-footnote{font-size:13px} @media(max-width:600px){.reader-access{flex-wrap:wrap;font-size:12px}}</style></head>');
+ writeOutput(html);
+ </cfscript>
+--- a/business/estudo/anual/index.cfm
++++ b/business/estudo/anual/index.cfm
+@@ -5,7 +5,7 @@
+ html=replace(html,'<body data-endpoint="dados.cfm">','<body data-endpoint="/estudo/anual/dados.cfm" data-annual-draft="true"><aside class="annual-draft-banner"><strong>ANUAL 2026 · RASCUNHO INTERNO</strong><span>Base disponível: Jan–Set. Temas em revisão; não divulgar como fechamento anual.</span><a href="/estudo/">Notebook e fontes →</a></aside>');
+ html=replace(html,'<option value="2025">Edição 2025 · prévia</option>','');
+ html=replace(html,'<a href="##edicao-anual">Edição anual</a>','<a href="##plano-anual">Pendências</a><a href="##inscricoes-geral">Inscrições</a><a href="##faixas">CNA</a>');
+-for(asset in ['estudo.css','parcial.js','estudo.js']) html=replace(html,'"' & asset & '"','"' & asset & '?v=edicoes-20261010-1"','all');
++for(asset in ['estudo.css','parcial.js','estudo.js']) html=replace(html,'"' & asset & '"','"' & asset & '?v=consumer-compatible-41-42-352"','all');
+ for(asset in ['estudo.css','dados.js','graficos.js','parcial.js','estudo.js','navegacao.js']) html=replace(html,'"' & asset,'"/estudos/leitor/' & asset,'all');
+ html=replace(html,'"assets/','"/estudos/leitor/assets/','all');
+ writeOutput(html);
+--- a/portal/brasilquecorreprovas/imprensa/principal/index.cfm
++++ b/portal/brasilquecorreprovas/imprensa/principal/index.cfm
+@@ -1,4 +1,4 @@
+-<!--- Generated by reader-builder.py. Canonical sources SHA-256: {"Business/estudos/includes/StudyAccess.cfc":"9e4456eb30b7070dda3841418a658cb71be81a9a80c608175bd3fca680afb761","Business/estudos/lancamento/maratonas-detalhado.js":"618fd3dbb06d3a9207696c6d5653954a8b59a0755f385eec5471b1accf70a601","Business/estudos/lancamento/maratonas.cfm":"3c76cbf15d102f88fadbb97e90f229deaaf564a8cefd8c43f63ddb6a523fa656","Business/estudos/leitor/dados.js":"f85ccb100c95e77cabffd7c299cbdd88636480b90f25329cb0eb241d83697c21","Business/estudos/leitor/estudo.css":"727edacc1f80c820caed7b14980c187ce246e240c98fb8fc5175fbfae53abc89","Business/estudos/leitor/estudo.js":"7b0e006e7b07c97ec61610522e313cfd585907e89dbea8a56c77b58dc24ee5e6","Business/estudos/leitor/graficos.js":"5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b","Business/estudos/leitor/navegacao.js":"9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533","Business/estudos/leitor/pagina.html":"7d578434059ba9186544fadde9862090a12fcdd90708965c0c877aed82d6e787","Business/estudos/leitor/parcial.js":"aa0d9ae6c645f7abe2cb349f5456116fe5a87bd4bb2bc63f67b2695042d6a9c8","RoadRunners/brasilquecorreprovas/web/dados.js":"82477b26c45e604953d7d81a285ca744a356e5c63bb8c71e1cf6773aeeb366e3","RoadRunners/brasilquecorreprovas/web/estudo.css":"8654f347f385f7f719c7596f2765500318a3f08c9e05931b17d81a9d0ec40371","RoadRunners/brasilquecorreprovas/web/estudo.js":"00f8476db9ed5b9510925d64d2a39a5d2b5d98de48f405841c621d1602742141","RoadRunners/brasilquecorreprovas/web/graficos.js":"5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b","RoadRunners/brasilquecorreprovas/web/navegacao.js":"9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533","RoadRunners/brasilquecorreprovas/web/pagina.html":"583dae94c168deb218a1431bfe04a0a50f0cf2e949b1c3d1f7154462fa8fcabf","RoadRunners/brasilquecorreprovas/web/parcial.js":"fb2b355717b25d7a538bfc486c5e344284310e3ae8f538c60b7bed57b0984db9"} --->
++<!--- Generated by reader-builder.py. Canonical sources SHA-256: {"business/estudos/includes/StudyAccess.cfc":"4d88f7df60ba1eac4d226b4409577d65da23583a66e6a09188ccb67192d16fe7","business/estudos/leitor/dados.js":"f85ccb100c95e77cabffd7c299cbdd88636480b90f25329cb0eb241d83697c21","business/estudos/leitor/estudo.css":"727edacc1f80c820caed7b14980c187ce246e240c98fb8fc5175fbfae53abc89","business/estudos/leitor/estudo.js":"7b0e006e7b07c97ec61610522e313cfd585907e89dbea8a56c77b58dc24ee5e6","business/estudos/leitor/graficos.js":"5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b","business/estudos/leitor/navegacao.js":"9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533","business/estudos/leitor/pagina.html":"7d578434059ba9186544fadde9862090a12fcdd90708965c0c877aed82d6e787","business/estudos/leitor/parcial.js":"7e8cff726dcacb519f83bce925671bfc7e4d8e4267dafe65ebda659ba726a6b9","portal/brasilquecorreprovas/web/dados.js":"82477b26c45e604953d7d81a285ca744a356e5c63bb8c71e1cf6773aeeb366e3","portal/brasilquecorreprovas/web/estudo.css":"8654f347f385f7f719c7596f2765500318a3f08c9e05931b17d81a9d0ec40371","portal/brasilquecorreprovas/web/estudo.js":"00f8476db9ed5b9510925d64d2a39a5d2b5d98de48f405841c621d1602742141","portal/brasilquecorreprovas/web/graficos.js":"5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b","portal/brasilquecorreprovas/web/navegacao.js":"9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533","portal/brasilquecorreprovas/web/pagina.html":"583dae94c168deb218a1431bfe04a0a50f0cf2e949b1c3d1f7154462fa8fcabf","portal/brasilquecorreprovas/web/parcial.js":"fb2b355717b25d7a538bfc486c5e344284310e3ae8f538c60b7bed57b0984db9"} --->
+ <cfprocessingdirective pageencoding="utf-8"/>
+ <cfsetting showdebugoutput="false"/>
+ <cfscript>
+@@ -109,7 +109,7 @@
+   <script defer src="/brasilquecorreprovas/web/assets/chart.umd.min.js"></script>
+   <script defer src="https://business.roadrunners.run/estudos/leitor/dados.js?v=f85ccb100c95e7"></script>
+   <script defer src="https://business.roadrunners.run/estudos/leitor/graficos.js?v=5240e7253f25f7"></script>
+-  <script defer src="/brasilquecorreprovas/imprensa/principal/parcial-2026.js?v=aa0d9ae6c645f7"></script>
++  <script defer src="/brasilquecorreprovas/imprensa/principal/parcial-2026.js?v=7e8cff726dcacb"></script>
+   <script defer src="https://business.roadrunners.run/estudos/leitor/estudo.js?v=7b0e006e7b07c9"></script>
+   <script defer src="https://business.roadrunners.run/estudos/leitor/navegacao.js?v=9b3813a07a3717"></script>
+ <style>.press-reader-access{background:#ffcb05;color:#242424;padding:12px 5%;display:flex;gap:20px;justify-content:space-between;font:600 14px Poppins,sans-serif}.press-reader-access a{color:inherit}.hero-footnote{font-size:13px}@media(max-width:600px){.press-reader-access{flex-wrap:wrap;font-size:12px}}</style></head>
+--- a/portal/brasilquecorreprovas/imprensa/principal/dados.cfm
++++ b/portal/brasilquecorreprovas/imprensa/principal/dados.cfm
+@@ -1,4 +1,4 @@
+-<!--- Generated by reader-builder.py. Canonical sources SHA-256: {"Business/estudos/includes/StudyAccess.cfc":"9e4456eb30b7070dda3841418a658cb71be81a9a80c608175bd3fca680afb761","Business/estudos/lancamento/maratonas-detalhado.js":"618fd3dbb06d3a9207696c6d5653954a8b59a0755f385eec5471b1accf70a601","Business/estudos/lancamento/maratonas.cfm":"3c76cbf15d102f88fadbb97e90f229deaaf564a8cefd8c43f63ddb6a523fa656","Business/estudos/leitor/dados.js":"f85ccb100c95e77cabffd7c299cbdd88636480b90f25329cb0eb241d83697c21","Business/estudos/leitor/estudo.css":"727edacc1f80c820caed7b14980c187ce246e240c98fb8fc5175fbfae53abc89","Business/estudos/leitor/estudo.js":"7b0e006e7b07c97ec61610522e313cfd585907e89dbea8a56c77b58dc24ee5e6","Business/estudos/leitor/graficos.js":"5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b","Business/estudos/leitor/navegacao.js":"9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533","Business/estudos/leitor/pagina.html":"7d578434059ba9186544fadde9862090a12fcdd90708965c0c877aed82d6e787","Business/estudos/leitor/parcial.js":"aa0d9ae6c645f7abe2cb349f5456116fe5a87bd4bb2bc63f67b2695042d6a9c8","RoadRunners/brasilquecorreprovas/web/dados.js":"82477b26c45e604953d7d81a285ca744a356e5c63bb8c71e1cf6773aeeb366e3","RoadRunners/brasilquecorreprovas/web/estudo.css":"8654f347f385f7f719c7596f2765500318a3f08c9e05931b17d81a9d0ec40371","RoadRunners/brasilquecorreprovas/web/estudo.js":"00f8476db9ed5b9510925d64d2a39a5d2b5d98de48f405841c621d1602742141","RoadRunners/brasilquecorreprovas/web/graficos.js":"5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b","RoadRunners/brasilquecorreprovas/web/navegacao.js":"9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533","RoadRunners/brasilquecorreprovas/web/pagina.html":"583dae94c168deb218a1431bfe04a0a50f0cf2e949b1c3d1f7154462fa8fcabf","RoadRunners/brasilquecorreprovas/web/parcial.js":"fb2b355717b25d7a538bfc486c5e344284310e3ae8f538c60b7bed57b0984db9"} --->
++<!--- Generated by reader-builder.py. Canonical sources SHA-256: {"business/estudos/includes/StudyAccess.cfc":"4d88f7df60ba1eac4d226b4409577d65da23583a66e6a09188ccb67192d16fe7","business/estudos/leitor/dados.js":"f85ccb100c95e77cabffd7c299cbdd88636480b90f25329cb0eb241d83697c21","business/estudos/leitor/estudo.css":"727edacc1f80c820caed7b14980c187ce246e240c98fb8fc5175fbfae53abc89","business/estudos/leitor/estudo.js":"7b0e006e7b07c97ec61610522e313cfd585907e89dbea8a56c77b58dc24ee5e6","business/estudos/leitor/graficos.js":"5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b","business/estudos/leitor/navegacao.js":"9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533","business/estudos/leitor/pagina.html":"7d578434059ba9186544fadde9862090a12fcdd90708965c0c877aed82d6e787","business/estudos/leitor/parcial.js":"7e8cff726dcacb519f83bce925671bfc7e4d8e4267dafe65ebda659ba726a6b9","portal/brasilquecorreprovas/web/dados.js":"82477b26c45e604953d7d81a285ca744a356e5c63bb8c71e1cf6773aeeb366e3","portal/brasilquecorreprovas/web/estudo.css":"8654f347f385f7f719c7596f2765500318a3f08c9e05931b17d81a9d0ec40371","portal/brasilquecorreprovas/web/estudo.js":"00f8476db9ed5b9510925d64d2a39a5d2b5d98de48f405841c621d1602742141","portal/brasilquecorreprovas/web/graficos.js":"5240e7253f25f7215c03c97f6115de39e1c764d0e6c9fbc0a8d6b615b81ee40b","portal/brasilquecorreprovas/web/navegacao.js":"9b3813a07a37175b2fa28f100f99fcf56b18e42f25459b8da6bb781a7bcda533","portal/brasilquecorreprovas/web/pagina.html":"583dae94c168deb218a1431bfe04a0a50f0cf2e949b1c3d1f7154462fa8fcabf","portal/brasilquecorreprovas/web/parcial.js":"fb2b355717b25d7a538bfc486c5e344284310e3ae8f538c60b7bed57b0984db9"} --->
+ <cfprocessingdirective pageencoding="utf-8"/>
+ <cfsetting showdebugoutput="false"/>
+ <cfscript>
+@@ -36,7 +36,7 @@
+             FROM selected s
+         ), paired_source AS (
+             SELECT r.id,r.cell_id,r.cell_version,jsonb_extract_path(r.result,'rows','0','payload') AS summary,
+-                a.payload AS publication
++                a.publicacao_id,a.payload AS publication
+             FROM authorized a
+             CROSS JOIN LATERAL jsonb_array_elements(CASE
+                 WHEN jsonb_typeof(jsonb_extract_path(a.payload,'meta','notebook_fontes'))='array'
+@@ -46,16 +46,19 @@
+                 AND r.cell_id=387 AND r.cell_version=CASE WHEN f->>'revisao' ~ '^[1-9][0-9]{0,8}$'
+                     THEN (f->>'revisao')::integer ELSE NULL END
+             WHERE f->>'celula'='387' AND r.frozen AND r.status='ok' AND NOT r.truncated AND r.row_count=1
+-                AND a.publicacao_id=41 AND jsonb_extract_path_text(a.payload,'meta','corte')='2026-09-30'
++                AND a.publicacao_id IN (41,42) AND jsonb_extract_path_text(a.payload,'meta','corte')='2026-09-30'
+                 AND jsonb_extract_path_text(a.payload,'meta','periodo_inicio')='2026-01-01'
+             LIMIT 1
+         ), paired_public AS (
+-            SELECT jsonb_extract_path(result,'rows','0','payload','release') AS narrative
+-            FROM estudo.notebook_runs
+-            WHERE id=239 AND cell_id=420 AND cell_version=5 AND frozen AND status='ok' AND NOT truncated AND row_count=1
++            SELECT approved_pairs.publication_id,r.id AS narrative_run,r.cell_version AS narrative_revision,
++                jsonb_extract_path(r.result,'rows','0','payload','release') AS narrative
++            FROM (VALUES (41::bigint,239::bigint,5::integer),
++                         (42::bigint,352::bigint,7::integer)) approved_pairs(publication_id,run_id,revision)
++            JOIN estudo.notebook_runs r ON r.id=approved_pairs.run_id AND r.cell_id=420 AND r.cell_version=approved_pairs.revision
++            WHERE r.frozen AND r.status='ok' AND NOT r.truncated AND r.row_count=1
+         ), paired_checked AS (
+-            SELECT p.*
+-            FROM paired_source p CROSS JOIN paired_public n
++            SELECT p.*,n.narrative_run,n.narrative_revision
++            FROM paired_source p JOIN paired_public n ON n.publication_id=p.publicacao_id
+             WHERE p.summary->>'periodo'='Jan–Set de2025 e2026'
+               AND (jsonb_extract_path_text(p.summary,'coorte_pareada','pares')) ~ '^[1-9][0-9]*$'
+               AND (jsonb_extract_path_text(p.summary,'coorte_pareada','concluintes_2025')) ~ '^[1-9][0-9]*$'
+@@ -71,7 +74,7 @@
+             SELECT (SELECT jsonb_build_object('status','disponivel','celula',cell_id,'execucao',id,'revisao',cell_version,
+                 'coletado_em',summary->'coletado_em','periodo',summary->'periodo','metodologia',summary->'metodologia',
+                 'fontes',summary->'fontes','coorte',summary->'coorte_pareada',
+-                'narrativa',jsonb_build_object('celula',420,'execucao',239,'revisao',5),
++                'narrativa',jsonb_build_object('celula',420,'execucao',narrative_run,'revisao',narrative_revision),
+                 'ressalva','Variação da soma de participações nas edições pareadas; não é a média das variações por prova. O pareamento não certifica captura completa nem isola crescimento real. Não conta pessoas únicas.')
+                 FROM paired_checked) AS metadata,
+                 (SELECT 'Notebook · célula ' || cell_id || ', revisão ' || cell_version || ', execução congelada ' || id
+--- a/portal/brasilquecorreprovas/imprensa/principal/parcial-2026.js
++++ b/portal/brasilquecorreprovas/imprensa/principal/parcial-2026.js
+@@ -67,7 +67,7 @@
+     try {
+       const meta=data.meta.comparativo_pareado;
+       if(meta?.status!=='disponivel'||meta.celula!==387||!Number.isInteger(meta.execucao)||!Number.isInteger(meta.revisao)
+-        ||meta.narrativa?.execucao!==239||typeof meta.metodologia!=='string'||!meta.metodologia.trim()
++        ||![239,352].includes(meta.narrativa?.execucao)||typeof meta.metodologia!=='string'||!meta.metodologia.trim()
+         ||typeof meta.coletado_em!=='string'||!/^\d{4}-\d{2}-\d{2}/.test(meta.coletado_em))throw new Error('Fonte pareada em revisão');
+       const sets=['comparativo_pareadas_concluintes','comparativo_pareadas_variacao','comparativo_pareadas_amostra'].map(get);
+       const numeric=(series,key)=>{const value=series.values.find(v=>v.label===key)?.value;if(typeof value!=='number'||!Number.isFinite(value))throw new Error('Valor pareado ausente');return value;};

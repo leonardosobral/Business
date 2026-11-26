@@ -1,0 +1,12 @@
+{
+  "quick": {
+    "status": 200,
+    "verified": true
+  },
+  "guilherme": {
+    "status": 200,
+    "verified": true
+  },
+  "ok": true,
+  "stage_removed": true
+}

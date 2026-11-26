@@ -1,0 +1,34 @@
+{
+  "status": "reviewed",
+  "source_sha256": "1698a88aa60a20e0c34a919035b8962f9aa127ba3ba5351c20e37c01ef016e90",
+  "provenance": {
+    "public_cell": "420",
+    "public_run": "352",
+    "publication_id": "42",
+    "publication_run": "351"
+  },
+  "collection": "2026-11-09",
+  "version": "source-1698a88aa60a20",
+  "pdf_pages": 7,
+  "artworks": 10,
+  "legacy_aliases": 2,
+  "files": {
+    "portal/brasilquecorreprovas/2026/kit/convite-criadores.txt": "1f0196f0f4270d70a19a5d3fa7e2e4e095eab6d47cd116da770f352ebd64c296",
+    "portal/brasilquecorreprovas/2026/kit/distancias-curtas-1080x1350.png": "3101282b220c86e24602d219d044f3cbe345bb3c1d1e9deb75920120440dbacf",
+    "portal/brasilquecorreprovas/2026/kit/distancias-curtas-1920x1080.png": "96b37eaf8bdf81d48606e9c765a9309c21a7396b371f29752584fb89fd6db7c3",
+    "portal/brasilquecorreprovas/2026/kit/fevereiro-comparativo-1080x1350.png": "97286e2e8f5412750d7fb47f0952edf6aabedb71e78651dd7f67671dc816045f",
+    "portal/brasilquecorreprovas/2026/kit/fevereiro-comparativo-1920x1080.png": "fc004fa812bf70f92aae95d5d0faebbaa460b4d2219833982102a9f55493fe8c",
+    "portal/brasilquecorreprovas/2026/kit/fora-das-capitais-1080x1350.png": "a789f601ae76a32a57bca279a60493a6082eb5dfc36eb1dc55d681b023171f15",
+    "portal/brasilquecorreprovas/2026/kit/fora-das-capitais-1920x1080.png": "558bcc1ba09fb695cc90ef81b67379c7ab1069893247dca6b8e3cc53d09e74d1",
+    "portal/brasilquecorreprovas/2026/kit/index.html": "bdd89b6ce11cfa7a90762165565bdec5fd00d181881751b77e49ca0a2db0ea9e",
+    "portal/brasilquecorreprovas/2026/kit/legendas-e-fontes.txt": "64a3affbc2cf99b021763355a470d0cfa5e5be6c21b46b8c59f31cbe6a286fb5",
+    "portal/brasilquecorreprovas/2026/kit/panorama-publico-jan-set-2026.pdf": "0a2048406d1d62a7578c875bb0ae6e43cd0dbc409ae6b66d033ed5e0d5a5e4dd",
+    "portal/brasilquecorreprovas/2026/kit/participacao-feminina-1080x1350.png": "d37a5d4ee835c3350a50d5a1523ad6386ba795b7a9a57588cebf58abdb87bc12",
+    "portal/brasilquecorreprovas/2026/kit/participacao-feminina-1920x1080.png": "48eb965d9882a86311261f66a1c0a2d4f9007c36a8d3b11663d13ce93e8050e9",
+    "portal/brasilquecorreprovas/2026/kit/provas-cadastradas-1080x1350.png": "97286e2e8f5412750d7fb47f0952edf6aabedb71e78651dd7f67671dc816045f",
+    "portal/brasilquecorreprovas/2026/kit/provas-cadastradas-1920x1080.png": "fc004fa812bf70f92aae95d5d0faebbaa460b4d2219833982102a9f55493fe8c",
+    "portal/brasilquecorreprovas/2026/kit/release-imprensa-2026.txt": "059c9fb58d0517ce73d5e74f637a8a8d47f13abe99f8d304dce6936597b78fdd",
+    "portal/brasilquecorreprovas/2026/kit/resultados-comparativo-1080x1350.png": "029de68bff59c344d4292a364e18fd8375b8229db864c6c6264039d64db58535",
+    "portal/brasilquecorreprovas/2026/kit/resultados-comparativo-1920x1080.png": "86f741fd28ffb4078c4ec3b1870d17aee4cda02a6f7476baadf9ba5d92f77ce0"
+  }
+}

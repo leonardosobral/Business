@@ -1,0 +1,10 @@
+{
+  "stage": "/var/backups/ads-network-20261104-8vbv0lsx",
+  "manifest_sha256": "3fba87db56228edd2a7ecc039495264894a2c1ce2f5079ba9d9c02772148040a",
+  "candidate_hashes": {
+    "portal/banners/index.cfm": "d41dd35be57eb005e21bfa17b81ae3707ee8644d7995e72bc6f46b5e2b85654d",
+    "portal/banners/home.cfm": "b6ac3adec076253ead7b8f0aa72b29f5a0a3e697cdacb63147548335a5cb2979"
+  },
+  "backup": "/var/backups/ads-network-20261104-8vbv0lsx/baseline",
+  "runtime_files_changed": false
+}

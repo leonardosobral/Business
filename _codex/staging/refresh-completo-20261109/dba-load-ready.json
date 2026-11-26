@@ -1,0 +1,9 @@
+{
+  "candidate": "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/refresh-completo-20261109/dba-load-candidate/15-load-and-cutover.sql",
+  "file": "/Users/Shared/Projects/RunnerHub/Business/_codex/sql/2026-11-09_renovar_estudo_q3.sql",
+  "sha256": "46cf49e20c5598fe5ae26e82900d44ae97c05309e3e6965664dab6fd4f54e4df",
+  "executed": false,
+  "readonly_preflight": "dba-load-candidate/preflight-readonly.json",
+  "readonly_sample": "dba-load-candidate/validation-readonly.json",
+  "requires": "DataGrip: execute entire file, new connection, no pending transaction"
+}

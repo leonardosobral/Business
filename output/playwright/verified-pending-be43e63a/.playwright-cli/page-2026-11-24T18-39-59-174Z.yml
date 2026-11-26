@@ -1,0 +1,1667 @@
+- region [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - paragraph [ref=e5]: PORTAL · ROAD RUNNERS
+      - heading "Selos verificados" [level=1] [ref=e6]
+      - paragraph [ref=e7]: Veja por que cada pessoa tem o selo, até quando ele vale e o histórico de cada origem.
+    - generic [ref=e8]: Classificar um motivo não altera o selo
+  - generic "Resumo geral dos selos" [ref=e9]:
+    - link [ref=e10] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&PAGINA=1
+      - text: Selos ativos
+      - strong [ref=e11]: "418"
+    - link [ref=e12] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&FILTER%5FORIGIN=manual&PAGINA=1
+      - text: Sem vencimento
+      - strong [ref=e13]: "86"
+    - generic [ref=e14]:
+      - text: Ativos com prazo
+      - strong [ref=e15]: "332"
+    - link [ref=e16] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=1
+      - text: Motivo a classificar
+      - strong [ref=e17]: "61"
+  - navigation "Situação do selo" [ref=e18]:
+    - link "Ativos" [ref=e19] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&PAGINA=1
+    - link "A classificar" [ref=e20] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Divergências VIP (4)" [ref=e21] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=divergent&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Conferir VIP" [ref=e22] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=reconcile&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Inativos" [ref=e23] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=inactive&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Todos / histórico" [ref=e24] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=all&FILTER%5FLOGIC=any&PAGINA=1
+  - region [ref=e25]:
+    - heading "Informações para revisar os 61 pendentes" [level=2] [ref=e26]
+    - paragraph [ref=e27]: O motivo original destas concessões ainda não foi registrado. Os grupos abaixo ajudam a investigar; uma pessoa pode aparecer em vários deles.
+    - navigation "Filtrar informações dos pendentes" [ref=e28]:
+      - link [ref=e29] [cursor=pointer]:
+        - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=1
+        - strong [ref=e30]: "61"
+        - text: Todos os pendentes
+      - link [ref=e31] [cursor=pointer]:
+        - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FEVIDENCE=vip%5Funconfirmed&FILTER%5FLOGIC=any&PAGINA=1
+        - strong [ref=e32]: "57"
+        - text: TSD VIP/upgrade sem confirmação
+      - link [ref=e33] [cursor=pointer]:
+        - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FEVIDENCE=historic%5Fvip&FILTER%5FLOGIC=any&PAGINA=1
+        - strong [ref=e34]: "12"
+        - text: VIP antigo · Desafio 365
+      - link [ref=e35] [cursor=pointer]:
+        - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FEVIDENCE=basic&FILTER%5FLOGIC=any&PAGINA=1
+        - strong [ref=e36]: "12"
+        - text: TSD Básica confirmada
+      - link [ref=e37] [cursor=pointer]:
+        - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FEVIDENCE=none&FILTER%5FLOGIC=any&PAGINA=1
+        - strong [ref=e38]: "2"
+        - text: Sem cadastro de desafio
+      - link [ref=e39] [cursor=pointer]:
+        - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FEVIDENCE=bio&FILTER%5FLOGIC=any&PAGINA=1
+        - strong [ref=e40]: "26"
+        - text: Com bio no perfil
+      - link [ref=e41] [cursor=pointer]:
+        - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FEVIDENCE=social&FILTER%5FLOGIC=any&PAGINA=1
+        - strong [ref=e42]: "7"
+        - text: Com Instagram público
+    - paragraph [ref=e43]: VIP do Desafio 365 é histórico, sem comprovação de VIP vigente no Todo Santo Dia. A Básica não inclui selo. Inscrição sem confirmação não comprova pagamento.
+  - generic [ref=e44]:
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e47]: Buscar pessoa
+        - textbox "Buscar pessoa" [ref=e48]:
+          - /placeholder: Nome, e-mail, perfil ou ID
+      - generic [ref=e49]:
+        - generic [ref=e50]: Origem ou motivo
+        - combobox "Origem ou motivo" [ref=e51]:
+          - option "Todas as origens" [selected]
+          - option "Concessão permanente"
+          - option "Todo Santo Dia · VIP ativo"
+          - option "Todo Santo Dia · VIP/upgrade confirmado no cadastro"
+          - option "Todo Santo Dia · Upgrade VIP ativo"
+          - option "Compra anual ativa"
+          - option "Com estorno no histórico"
+          - option "Atleta de elite"
+          - option "Influencer / criador"
+          - option "Imprensa"
+          - option "Parceiro"
+          - option "Equipe"
+          - option "Cortesia"
+          - option "Outro motivo"
+          - option "Motivo não informado"
+      - button "Filtrar" [ref=e52] [cursor=pointer]
+      - link "Limpar" [ref=e53] [cursor=pointer]:
+        - /url: /portal/verificados/
+    - group [ref=e54]:
+      - generic "Filtros de cadastro" [ref=e55] [cursor=pointer]
+      - option "Todos" [selected]
+      - option "catarinensecorridaderua · catarinensecorridaderua"
+      - option "catarinensetrailrun · catarinensetrailrun"
+      - option "circuitobrasilgigante · circuitobrasilgigante"
+      - option "desafio365 · inscricao365"
+      - option "desafio365 · inscricao365vip"
+      - option "desafio365 · inscricao365Vip"
+      - option "desafio366 · inscricao366"
+      - option "desafio366 · inscricaotodosantodia"
+      - option "desafiofoco · foco"
+      - option "desafiosupra · /desafiosupra/inscricao/"
+      - option "foco · foco"
+      - option "todosantodia · desafiofoco"
+      - option "todosantodia · inscricao366"
+      - option "todosantodia · todosantodia"
+      - option "todosantodia · todosantodiaupg"
+      - option "todosantodia · todosantodiaupgrade"
+      - option "todosantodia · todosantodiavip"
+      - option "todosantodia · todosantodiavip1"
+      - option "· /connect/inscricao/"
+      - option "· /empresa/cadastro/"
+      - option "· /ts/inscricao/"
+      - option "Qualquer regra" [selected]
+      - option "Todas as regras"
+  - generic [ref=e56]:
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - heading "Classificação rápida" [level=2] [ref=e59]
+        - paragraph [ref=e60]: Marque as pessoas com o mesmo motivo e salve de uma vez. Apenas os perfis marcados nesta página serão classificados.
+      - status [ref=e61]: 0 selecionados
+    - group [ref=e62]:
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - generic [ref=e65]: Motivo em comum
+          - combobox "Motivo em comum" [ref=e66]:
+            - option "Escolha o motivo" [selected]
+            - option "Atleta de elite"
+            - option "Influencer / criador"
+            - option "Imprensa"
+            - option "Parceiro"
+            - option "Equipe"
+            - option "Cortesia"
+            - option "Outro motivo"
+        - generic [ref=e67]:
+          - generic [ref=e68]: Vínculo ou observação (opcional)
+          - textbox "Vínculo ou observação (opcional)" [ref=e69]
+        - button "Salvar selecionados" [disabled]
+  - generic [ref=e70]:
+    - heading "61 perfis encontrados" [level=2] [ref=e71]
+    - generic [ref=e72]: Uma pessoa pode ter mais de uma origem ativa.
+  - table [ref=e74]:
+    - rowgroup [ref=e75]:
+      - row [ref=e76]:
+        - columnheader [ref=e77]:
+          - checkbox "Selecionar todos os pendentes desta página" [ref=e78]
+        - columnheader "Pessoa" [ref=e79]
+        - columnheader "Origem e motivo do selo" [ref=e80]
+        - columnheader "Situação e validade" [ref=e81]
+        - columnheader "Detalhes" [ref=e82]
+    - rowgroup [ref=e84]:
+      - row [ref=e85]:
+        - cell [ref=e86]:
+          - checkbox "Selecionar ADILSON MARTINS" [ref=e88]
+        - cell "ADILSON MARTINS adilsom.sp@gmail.com Perfil 54048 · Usuário 108069" [ref=e89]:
+          - link "ADILSON MARTINS" [ref=e90] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54048&PAGINA=1#detalhes
+          - generic [ref=e91]: adilsom.sp@gmail.com
+          - text: Perfil 54048 · Usuário 108069
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e92]:
+          - generic [ref=e93]:
+            - generic [ref=e94]: Motivo não informado
+            - generic [ref=e95]: Concessão permanente
+          - generic [ref=e96]: TSD VIP/upgrade sem confirmação
+          - group [ref=e98]:
+            - generic "Cadastros e pedidos (1)" [ref=e99] [cursor=pointer]
+          - group [ref=e101]:
+            - generic [ref=e102]:
+              - combobox "Motivo do selo de ADILSON MARTINS" [ref=e103]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ADILSON MARTINS" [ref=e104] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ADILSON MARTINS" [ref=e105]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e106]:
+          - strong [ref=e107]: Sem vencimento
+        - cell [ref=e108]:
+          - link "Ver origens de ADILSON MARTINS" [ref=e109] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54048&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e110]:
+        - cell [ref=e111]:
+          - checkbox "Selecionar ÀDILSON MARTINS" [ref=e113]
+        - cell "ÀDILSON MARTINS adilsonmartins.vp@gmail.com Perfil 53980 · Usuário 107843" [ref=e114]:
+          - link "ÀDILSON MARTINS" [ref=e115] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53980&PAGINA=1#detalhes
+          - generic [ref=e116]: adilsonmartins.vp@gmail.com
+          - text: Perfil 53980 · Usuário 107843
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e117]:
+          - generic [ref=e118]:
+            - generic [ref=e119]: Motivo não informado
+            - generic [ref=e120]: Concessão permanente
+          - generic [ref=e121]: TSD VIP/upgrade sem confirmação
+          - group [ref=e123]:
+            - generic "Cadastros e pedidos (1)" [ref=e124] [cursor=pointer]
+          - group [ref=e126]:
+            - generic [ref=e127]:
+              - combobox "Motivo do selo de ÀDILSON MARTINS" [ref=e128]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ÀDILSON MARTINS" [ref=e129] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ÀDILSON MARTINS" [ref=e130]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e131]:
+          - strong [ref=e132]: Sem vencimento
+        - cell [ref=e133]:
+          - link "Ver origens de ÀDILSON MARTINS" [ref=e134] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53980&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e135]:
+        - cell [ref=e136]:
+          - checkbox "Selecionar ALEXANDRE SOUZA ALMEIDA" [ref=e138]
+        - cell "ALEXANDRE SOUZA ALMEIDA asouzaalmeida1@gmail.com Perfil 18894 · Usuário 22256 Resende · RJ" [ref=e139]:
+          - link "ALEXANDRE SOUZA ALMEIDA" [ref=e140] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18894&PAGINA=1#detalhes
+          - generic [ref=e141]: asouzaalmeida1@gmail.com
+          - text: Perfil 18894 · Usuário 22256
+          - generic [ref=e142]: Resende · RJ
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e143]:
+          - generic [ref=e144]:
+            - generic [ref=e145]: Motivo não informado
+            - generic [ref=e146]: Concessão permanente
+          - generic [ref=e147]: TSD VIP/upgrade sem confirmação
+          - group [ref=e149]:
+            - generic "Cadastros e pedidos (7)" [ref=e150] [cursor=pointer]
+          - group [ref=e152]:
+            - generic [ref=e153]:
+              - combobox "Motivo do selo de ALEXANDRE SOUZA ALMEIDA" [ref=e154]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ALEXANDRE SOUZA ALMEIDA" [ref=e155] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ALEXANDRE SOUZA ALMEIDA" [ref=e156]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e157]:
+          - strong [ref=e158]: Sem vencimento
+        - cell [ref=e159]:
+          - link "Ver origens de ALEXANDRE SOUZA ALMEIDA" [ref=e160] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18894&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e161]:
+        - cell [ref=e162]:
+          - checkbox "Selecionar ALEX BORGES" [ref=e164]
+        - cell "ALEX BORGES alexborges1@gmail.com Perfil 16022 · Usuário 16937 São Paulo · SP \"apaixonado por atividades físicas ao ar livre, especialmente ciclismo e corrida de rua. Essas práticas me ajudam a manter o equilíbrio físico e m Bio informada pelo atleta" [ref=e165]:
+          - link "ALEX BORGES" [ref=e166] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=16022&PAGINA=1#detalhes
+          - generic [ref=e167]: alexborges1@gmail.com
+          - text: Perfil 16022 · Usuário 16937
+          - generic [ref=e168]: São Paulo · SP
+          - paragraph [ref=e169]:
+            - text: "\"apaixonado por atividades físicas ao ar livre, especialmente ciclismo e corrida de rua. Essas práticas me ajudam a manter o equilíbrio físico e m"
+            - generic [ref=e170]: Bio informada pelo atleta
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e171]:
+          - generic [ref=e172]:
+            - generic [ref=e173]: Motivo não informado
+            - generic [ref=e174]: Concessão permanente
+          - generic [ref=e175]: TSD VIP/upgrade sem confirmação
+          - group [ref=e177]:
+            - generic "Cadastros e pedidos (5)" [ref=e178] [cursor=pointer]
+          - group [ref=e180]:
+            - generic [ref=e181]:
+              - combobox "Motivo do selo de ALEX BORGES" [ref=e182]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ALEX BORGES" [ref=e183] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ALEX BORGES" [ref=e184]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e185]:
+          - strong [ref=e186]: Sem vencimento
+        - cell [ref=e187]:
+          - link "Ver origens de ALEX BORGES" [ref=e188] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=16022&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e189]:
+        - cell [ref=e190]:
+          - checkbox "Selecionar ARLENE ECHEVERRIA" [ref=e192]
+        - cell "ARLENE ECHEVERRIA arlene.dnaanimal@gmail.com Perfil 15838 · Usuário 16515 Campo Grande · MS 🏃‍♀️365 dias. Bio informada pelo atleta" [ref=e193]:
+          - link "ARLENE ECHEVERRIA" [ref=e194] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=15838&PAGINA=1#detalhes
+          - generic [ref=e195]: arlene.dnaanimal@gmail.com
+          - text: Perfil 15838 · Usuário 16515
+          - generic [ref=e196]: Campo Grande · MS
+          - paragraph [ref=e197]:
+            - text: 🏃‍♀️365 dias.
+            - generic [ref=e198]: Bio informada pelo atleta
+        - cell "Motivo não informado Concessão permanente VIP antigo · Desafio 365 TSD Básica confirmada TSD VIP/upgrade sem confirmação" [ref=e199]:
+          - generic [ref=e200]:
+            - generic [ref=e201]: Motivo não informado
+            - generic [ref=e202]: Concessão permanente
+          - generic [ref=e203]:
+            - generic [ref=e204]: VIP antigo · Desafio 365
+            - generic [ref=e205]: TSD Básica confirmada
+            - generic [ref=e206]: TSD VIP/upgrade sem confirmação
+          - group [ref=e207]:
+            - generic "Cadastros e pedidos (7)" [ref=e208] [cursor=pointer]
+          - group [ref=e210]:
+            - generic [ref=e211]:
+              - combobox "Motivo do selo de ARLENE ECHEVERRIA" [ref=e212]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ARLENE ECHEVERRIA" [ref=e213] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ARLENE ECHEVERRIA" [ref=e214]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e215]:
+          - strong [ref=e216]: Sem vencimento
+        - cell [ref=e217]:
+          - link "Ver origens de ARLENE ECHEVERRIA" [ref=e218] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=15838&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e219]:
+        - cell [ref=e220]:
+          - checkbox "Selecionar ARMINDO KEHL" [ref=e222]
+        - cell "ARMINDO KEHL armindokehl@gmail.com Perfil 3003 · Usuário 8316 Sapucaia do Sul · RS" [ref=e223]:
+          - link "ARMINDO KEHL" [ref=e224] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=3003&PAGINA=1#detalhes
+          - generic [ref=e225]: armindokehl@gmail.com
+          - text: Perfil 3003 · Usuário 8316
+          - generic [ref=e226]: Sapucaia do Sul · RS
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e227]:
+          - generic [ref=e228]:
+            - generic [ref=e229]: Motivo não informado
+            - generic [ref=e230]: Concessão permanente
+          - generic [ref=e231]: TSD VIP/upgrade sem confirmação
+          - group [ref=e233]:
+            - generic "Cadastros e pedidos (1)" [ref=e234] [cursor=pointer]
+          - group [ref=e236]:
+            - generic [ref=e237]:
+              - combobox "Motivo do selo de ARMINDO KEHL" [ref=e238]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ARMINDO KEHL" [ref=e239] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ARMINDO KEHL" [ref=e240]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e241]:
+          - strong [ref=e242]: Sem vencimento
+        - cell [ref=e243]:
+          - link "Ver origens de ARMINDO KEHL" [ref=e244] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=3003&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e245]:
+        - cell [ref=e246]:
+          - checkbox "Selecionar BRUNO BARRETO BERGAMO" [ref=e248]
+        - cell "BRUNO BARRETO BERGAMO brunobergamo@gmail.com Perfil 53410 · Usuário 106018 Londrina · PR" [ref=e249]:
+          - link "BRUNO BARRETO BERGAMO" [ref=e250] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53410&PAGINA=1#detalhes
+          - generic [ref=e251]: brunobergamo@gmail.com
+          - text: Perfil 53410 · Usuário 106018
+          - generic [ref=e252]: Londrina · PR
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e253]:
+          - generic [ref=e254]:
+            - generic [ref=e255]: Motivo não informado
+            - generic [ref=e256]: Concessão permanente
+          - generic [ref=e257]: TSD VIP/upgrade sem confirmação
+          - group [ref=e259]:
+            - generic "Cadastros e pedidos (7)" [ref=e260] [cursor=pointer]
+          - group [ref=e262]:
+            - generic [ref=e263]:
+              - combobox "Motivo do selo de BRUNO BARRETO BERGAMO" [ref=e264]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de BRUNO BARRETO BERGAMO" [ref=e265] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de BRUNO BARRETO BERGAMO" [ref=e266]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e267]:
+          - strong [ref=e268]: Sem vencimento
+        - cell [ref=e269]:
+          - link "Ver origens de BRUNO BARRETO BERGAMO" [ref=e270] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53410&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e271]:
+        - cell [ref=e272]:
+          - checkbox "Selecionar BRUNO SCHWARZ" [ref=e274]
+        - 'cell "BRUNO SCHWARZ brunoschwarzadv@gmail.com Perfil 15402 · Usuário 15266 Rio do Sul · SC Instagram público: @bruno_schwarz" [ref=e275]':
+          - link "BRUNO SCHWARZ" [ref=e276] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=15402&PAGINA=1#detalhes
+          - generic [ref=e277]: brunoschwarzadv@gmail.com
+          - text: Perfil 15402 · Usuário 15266
+          - generic [ref=e278]: Rio do Sul · SC
+          - generic [ref=e279]: "Instagram público: @bruno_schwarz"
+        - cell "Motivo não informado Concessão permanente VIP antigo · Desafio 365 TSD VIP/upgrade sem confirmação" [ref=e280]:
+          - generic [ref=e281]:
+            - generic [ref=e282]: Motivo não informado
+            - generic [ref=e283]: Concessão permanente
+          - generic [ref=e284]:
+            - generic [ref=e285]: VIP antigo · Desafio 365
+            - generic [ref=e286]: TSD VIP/upgrade sem confirmação
+          - group [ref=e287]:
+            - generic "Cadastros e pedidos (4)" [ref=e288] [cursor=pointer]
+          - group [ref=e290]:
+            - generic [ref=e291]:
+              - combobox "Motivo do selo de BRUNO SCHWARZ" [ref=e292]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de BRUNO SCHWARZ" [ref=e293] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de BRUNO SCHWARZ" [ref=e294]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e295]:
+          - strong [ref=e296]: Sem vencimento
+        - cell [ref=e297]:
+          - link "Ver origens de BRUNO SCHWARZ" [ref=e298] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=15402&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e299]:
+        - cell [ref=e300]:
+          - checkbox "Selecionar Cezar Luiz Guimarães" [ref=e302]
+        - 'cell "Cezar Luiz Guimarães cezarluiz@gmail.com Perfil 22902 · Usuário 37129 Florianópolis · SC Corredor amador - 47 anos - Number One Running Bio informada pelo atleta Instagram público: @correquepassasc" [ref=e303]':
+          - link "Cezar Luiz Guimarães" [ref=e304] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=22902&PAGINA=1#detalhes
+          - generic [ref=e305]: cezarluiz@gmail.com
+          - text: Perfil 22902 · Usuário 37129
+          - generic [ref=e306]: Florianópolis · SC
+          - paragraph [ref=e307]:
+            - text: Corredor amador - 47 anos - Number One Running
+            - generic [ref=e308]: Bio informada pelo atleta
+          - generic [ref=e309]: "Instagram público: @correquepassasc"
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e310]:
+          - generic [ref=e311]:
+            - generic [ref=e312]: Motivo não informado
+            - generic [ref=e313]: Concessão permanente
+          - generic [ref=e314]: TSD VIP/upgrade sem confirmação
+          - group [ref=e316]:
+            - generic "Cadastros e pedidos (3)" [ref=e317] [cursor=pointer]
+          - group [ref=e319]:
+            - generic [ref=e320]:
+              - combobox "Motivo do selo de Cezar Luiz Guimarães" [ref=e321]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Cezar Luiz Guimarães" [ref=e322] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Cezar Luiz Guimarães" [ref=e323]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e324]:
+          - strong [ref=e325]: Sem vencimento
+        - cell [ref=e326]:
+          - link "Ver origens de Cezar Luiz Guimarães" [ref=e327] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=22902&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e328]:
+        - cell [ref=e329]:
+          - checkbox "Selecionar Débora Aparecida Simas" [ref=e331]
+        - 'cell "Débora Aparecida Simas simasdebora45@gmail.com Perfil 27813 · Usuário 47835 Barra Velha · SC 🏆 Recordista mundial de corrida em esteira 7 dias | 866,210 km 2026 🇧🇷 1ª brasileira a correr 1.000 km Bio informada pelo atleta Instagram público: ultra_deby" [ref=e332]':
+          - link "Débora Aparecida Simas" [ref=e333] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=27813&PAGINA=1#detalhes
+          - generic [ref=e334]: simasdebora45@gmail.com
+          - text: Perfil 27813 · Usuário 47835
+          - generic [ref=e335]: Barra Velha · SC
+          - paragraph [ref=e336]:
+            - text: 🏆 Recordista mundial de corrida em esteira 7 dias | 866,210 km 2026 🇧🇷 1ª brasileira a correr 1.000 km
+            - generic [ref=e337]: Bio informada pelo atleta
+          - generic [ref=e338]: "Instagram público: ultra_deby"
+        - cell "Motivo não informado Concessão permanente Sem cadastro de desafio" [ref=e339]:
+          - generic [ref=e340]:
+            - generic [ref=e341]: Motivo não informado
+            - generic [ref=e342]: Concessão permanente
+          - generic [ref=e343]: Sem cadastro de desafio
+          - group [ref=e345]:
+            - generic "Cadastros e pedidos (0)" [ref=e346] [cursor=pointer]
+          - group [ref=e348]:
+            - generic [ref=e349]:
+              - combobox "Motivo do selo de Débora Aparecida Simas" [ref=e350]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Débora Aparecida Simas" [ref=e351] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Débora Aparecida Simas" [ref=e352]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e353]:
+          - strong [ref=e354]: Sem vencimento
+        - cell [ref=e355]:
+          - link "Ver origens de Débora Aparecida Simas" [ref=e356] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=27813&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e357]:
+        - cell [ref=e358]:
+          - checkbox "Selecionar EDSON LUIS" [ref=e360]
+        - cell "EDSON LUIS edsonluisdobkowski@gmail.com Perfil 53490 · Usuário 106268 Jaraguá do Sul · SC" [ref=e361]:
+          - link "EDSON LUIS" [ref=e362] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53490&PAGINA=1#detalhes
+          - generic [ref=e363]: edsonluisdobkowski@gmail.com
+          - text: Perfil 53490 · Usuário 106268
+          - generic [ref=e364]: Jaraguá do Sul · SC
+        - cell "Motivo não informado Concessão permanente TSD Básica confirmada TSD VIP/upgrade sem confirmação" [ref=e365]:
+          - generic [ref=e366]:
+            - generic [ref=e367]: Motivo não informado
+            - generic [ref=e368]: Concessão permanente
+          - generic [ref=e369]:
+            - generic [ref=e370]: TSD Básica confirmada
+            - generic [ref=e371]: TSD VIP/upgrade sem confirmação
+          - group [ref=e372]:
+            - generic "Cadastros e pedidos (3)" [ref=e373] [cursor=pointer]
+          - group [ref=e375]:
+            - generic [ref=e376]:
+              - combobox "Motivo do selo de EDSON LUIS" [ref=e377]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de EDSON LUIS" [ref=e378] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de EDSON LUIS" [ref=e379]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e380]:
+          - strong [ref=e381]: Sem vencimento
+        - cell [ref=e382]:
+          - link "Ver origens de EDSON LUIS" [ref=e383] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53490&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e384]:
+        - cell [ref=e385]:
+          - checkbox "Selecionar ELESON SOUZA" [ref=e387]
+        - cell "ELESON SOUZA elesonbs@gmail.com Perfil 18593 · Usuário 21722 Camaçari · BA .. Bio informada pelo atleta" [ref=e388]:
+          - link "ELESON SOUZA" [ref=e389] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18593&PAGINA=1#detalhes
+          - generic [ref=e390]: elesonbs@gmail.com
+          - text: Perfil 18593 · Usuário 21722
+          - generic [ref=e391]: Camaçari · BA
+          - paragraph [ref=e392]:
+            - text: ..
+            - generic [ref=e393]: Bio informada pelo atleta
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e394]:
+          - generic [ref=e395]:
+            - generic [ref=e396]: Motivo não informado
+            - generic [ref=e397]: Concessão permanente
+          - generic [ref=e398]: TSD VIP/upgrade sem confirmação
+          - group [ref=e400]:
+            - generic "Cadastros e pedidos (5)" [ref=e401] [cursor=pointer]
+          - group [ref=e403]:
+            - generic [ref=e404]:
+              - combobox "Motivo do selo de ELESON SOUZA" [ref=e405]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ELESON SOUZA" [ref=e406] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ELESON SOUZA" [ref=e407]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e408]:
+          - strong [ref=e409]: Sem vencimento
+        - cell [ref=e410]:
+          - link "Ver origens de ELESON SOUZA" [ref=e411] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18593&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e412]:
+        - cell [ref=e413]:
+          - checkbox "Selecionar ELISÂNGELA DA SILVA" [ref=e415]
+        - cell "ELISÂNGELA DA SILVA angela-silvagdk@hotmail.com Perfil 53634 · Usuário 106855 Ponte Nova · MG" [ref=e416]:
+          - link "ELISÂNGELA DA SILVA" [ref=e417] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53634&PAGINA=1#detalhes
+          - generic [ref=e418]: angela-silvagdk@hotmail.com
+          - text: Perfil 53634 · Usuário 106855
+          - generic [ref=e419]: Ponte Nova · MG
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e420]:
+          - generic [ref=e421]:
+            - generic [ref=e422]: Motivo não informado
+            - generic [ref=e423]: Concessão permanente
+          - generic [ref=e424]: TSD VIP/upgrade sem confirmação
+          - group [ref=e426]:
+            - generic "Cadastros e pedidos (2)" [ref=e427] [cursor=pointer]
+          - group [ref=e429]:
+            - generic [ref=e430]:
+              - combobox "Motivo do selo de ELISÂNGELA DA SILVA" [ref=e431]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ELISÂNGELA DA SILVA" [ref=e432] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ELISÂNGELA DA SILVA" [ref=e433]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e434]:
+          - strong [ref=e435]: Sem vencimento
+        - cell [ref=e436]:
+          - link "Ver origens de ELISÂNGELA DA SILVA" [ref=e437] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53634&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e438]:
+        - cell [ref=e439]:
+          - checkbox "Selecionar ELIZA CRISTINA GIOVANETTI" [ref=e441]
+        - cell "ELIZA CRISTINA GIOVANETTI eliza.cristina095@gmail.com Perfil 53874 · Usuário 107584 Ponta Grossa · PR \"Todo Santo dia\" Bio informada pelo atleta" [ref=e442]:
+          - link "ELIZA CRISTINA GIOVANETTI" [ref=e443] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53874&PAGINA=1#detalhes
+          - generic [ref=e444]: eliza.cristina095@gmail.com
+          - text: Perfil 53874 · Usuário 107584
+          - generic [ref=e445]: Ponta Grossa · PR
+          - paragraph [ref=e446]:
+            - text: "\"Todo Santo dia\""
+            - generic [ref=e447]: Bio informada pelo atleta
+        - cell "Motivo não informado Concessão permanente TSD Básica confirmada TSD VIP/upgrade sem confirmação" [ref=e448]:
+          - generic [ref=e449]:
+            - generic [ref=e450]: Motivo não informado
+            - generic [ref=e451]: Concessão permanente
+          - generic [ref=e452]:
+            - generic [ref=e453]: TSD Básica confirmada
+            - generic [ref=e454]: TSD VIP/upgrade sem confirmação
+          - group [ref=e455]:
+            - generic "Cadastros e pedidos (3)" [ref=e456] [cursor=pointer]
+          - group [ref=e458]:
+            - generic [ref=e459]:
+              - combobox "Motivo do selo de ELIZA CRISTINA GIOVANETTI" [ref=e460]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ELIZA CRISTINA GIOVANETTI" [ref=e461] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ELIZA CRISTINA GIOVANETTI" [ref=e462]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e463]:
+          - strong [ref=e464]: Sem vencimento
+        - cell [ref=e465]:
+          - link "Ver origens de ELIZA CRISTINA GIOVANETTI" [ref=e466] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53874&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e467]:
+        - cell [ref=e468]:
+          - checkbox "Selecionar ERIKA PATRICIA" [ref=e470]
+        - cell "ERIKA PATRICIA eripaty1303@gmail.com Perfil 53511 · Usuário 106332 Jacareí · SP Oque você foca, expande. -Thaís Ribeiro Bio informada pelo atleta" [ref=e471]:
+          - link "ERIKA PATRICIA" [ref=e472] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53511&PAGINA=1#detalhes
+          - generic [ref=e473]: eripaty1303@gmail.com
+          - text: Perfil 53511 · Usuário 106332
+          - generic [ref=e474]: Jacareí · SP
+          - paragraph [ref=e475]:
+            - text: Oque você foca, expande. -Thaís Ribeiro
+            - generic [ref=e476]: Bio informada pelo atleta
+        - cell "Motivo não informado Concessão permanente TSD Básica confirmada TSD VIP/upgrade sem confirmação" [ref=e477]:
+          - generic [ref=e478]:
+            - generic [ref=e479]: Motivo não informado
+            - generic [ref=e480]: Concessão permanente
+          - generic [ref=e481]:
+            - generic [ref=e482]: TSD Básica confirmada
+            - generic [ref=e483]: TSD VIP/upgrade sem confirmação
+          - group [ref=e484]:
+            - generic "Cadastros e pedidos (3)" [ref=e485] [cursor=pointer]
+          - group [ref=e487]:
+            - generic [ref=e488]:
+              - combobox "Motivo do selo de ERIKA PATRICIA" [ref=e489]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ERIKA PATRICIA" [ref=e490] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ERIKA PATRICIA" [ref=e491]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e492]:
+          - strong [ref=e493]: Sem vencimento
+        - cell [ref=e494]:
+          - link "Ver origens de ERIKA PATRICIA" [ref=e495] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53511&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e496]:
+        - cell [ref=e497]:
+          - checkbox "Selecionar EVERTON OLIVA" [ref=e499]
+        - cell "EVERTON OLIVA everton_oliva@hotmail.com Perfil 53887 · Usuário 107619 Jundiai · SP" [ref=e500]:
+          - link "EVERTON OLIVA" [ref=e501] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53887&PAGINA=1#detalhes
+          - generic [ref=e502]: everton_oliva@hotmail.com
+          - text: Perfil 53887 · Usuário 107619
+          - generic [ref=e503]: Jundiai · SP
+        - cell "Motivo não informado Concessão permanente TSD Básica confirmada TSD VIP/upgrade sem confirmação" [ref=e504]:
+          - generic [ref=e505]:
+            - generic [ref=e506]: Motivo não informado
+            - generic [ref=e507]: Concessão permanente
+          - generic [ref=e508]:
+            - generic [ref=e509]: TSD Básica confirmada
+            - generic [ref=e510]: TSD VIP/upgrade sem confirmação
+          - group [ref=e511]:
+            - generic "Cadastros e pedidos (2)" [ref=e512] [cursor=pointer]
+          - group [ref=e514]:
+            - generic [ref=e515]:
+              - combobox "Motivo do selo de EVERTON OLIVA" [ref=e516]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de EVERTON OLIVA" [ref=e517] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de EVERTON OLIVA" [ref=e518]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e519]:
+          - strong [ref=e520]: Sem vencimento
+        - cell [ref=e521]:
+          - link "Ver origens de EVERTON OLIVA" [ref=e522] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53887&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e523]:
+        - cell [ref=e524]:
+          - checkbox "Selecionar Ewerton Martins Gerent" [ref=e526]
+        - 'cell "Ewerton Martins Gerent egerent@gmail.com Perfil 12418 · Usuário 11132 Biguaçu · SC Padre que corre 🙏🏻🏃🏻‍♂️‍➡️ Bio informada pelo atleta Instagram público: pegerent" [ref=e527]':
+          - link "Ewerton Martins Gerent" [ref=e528] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=12418&PAGINA=1#detalhes
+          - generic [ref=e529]: egerent@gmail.com
+          - text: Perfil 12418 · Usuário 11132
+          - generic [ref=e530]: Biguaçu · SC
+          - paragraph [ref=e531]:
+            - text: Padre que corre 🙏🏻🏃🏻‍♂️‍➡️
+            - generic [ref=e532]: Bio informada pelo atleta
+          - generic [ref=e533]: "Instagram público: pegerent"
+        - cell "Motivo não informado Concessão permanente TSD Básica confirmada TSD VIP/upgrade sem confirmação" [ref=e534]:
+          - generic [ref=e535]:
+            - generic [ref=e536]: Motivo não informado
+            - generic [ref=e537]: Concessão permanente
+          - generic [ref=e538]:
+            - generic [ref=e539]: TSD Básica confirmada
+            - generic [ref=e540]: TSD VIP/upgrade sem confirmação
+          - group [ref=e541]:
+            - generic "Cadastros e pedidos (5)" [ref=e542] [cursor=pointer]
+          - group [ref=e544]:
+            - generic [ref=e545]:
+              - combobox "Motivo do selo de Ewerton Martins Gerent" [ref=e546]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Ewerton Martins Gerent" [ref=e547] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Ewerton Martins Gerent" [ref=e548]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e549]:
+          - strong [ref=e550]: Sem vencimento
+        - cell [ref=e551]:
+          - link "Ver origens de Ewerton Martins Gerent" [ref=e552] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=12418&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e553]:
+        - cell [ref=e554]:
+          - checkbox "Selecionar FÁBIO DO CARMO GOMES" [ref=e556]
+        - cell "FÁBIO DO CARMO GOMES contato@fabiodocarmo.com Perfil 54371 · Usuário 109414 João Pessoa · PB" [ref=e557]:
+          - link "FÁBIO DO CARMO GOMES" [ref=e558] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54371&PAGINA=1#detalhes
+          - generic [ref=e559]: contato@fabiodocarmo.com
+          - text: Perfil 54371 · Usuário 109414
+          - generic [ref=e560]: João Pessoa · PB
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e561]:
+          - generic [ref=e562]:
+            - generic [ref=e563]: Motivo não informado
+            - generic [ref=e564]: Concessão permanente
+          - generic [ref=e565]: TSD VIP/upgrade sem confirmação
+          - group [ref=e567]:
+            - generic "Cadastros e pedidos (1)" [ref=e568] [cursor=pointer]
+          - group [ref=e570]:
+            - generic [ref=e571]:
+              - combobox "Motivo do selo de FÁBIO DO CARMO GOMES" [ref=e572]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de FÁBIO DO CARMO GOMES" [ref=e573] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de FÁBIO DO CARMO GOMES" [ref=e574]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e575]:
+          - strong [ref=e576]: Sem vencimento
+        - cell [ref=e577]:
+          - link "Ver origens de FÁBIO DO CARMO GOMES" [ref=e578] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54371&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e579]:
+        - cell [ref=e580]:
+          - checkbox "Selecionar FATIMA REIS" [ref=e582]
+        - cell "FATIMA REIS fatima.reis@gmail.com Perfil 54433 · Usuário 109765 Brasília · DF Corredora há mais ou menos dois anos...Viciei na corrida aos 67 anos depois de passar a vida toda odiando fazer atividade física... Bio informada pelo atleta" [ref=e583]:
+          - link "FATIMA REIS" [ref=e584] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54433&PAGINA=1#detalhes
+          - generic [ref=e585]: fatima.reis@gmail.com
+          - text: Perfil 54433 · Usuário 109765
+          - generic [ref=e586]: Brasília · DF
+          - paragraph [ref=e587]:
+            - text: Corredora há mais ou menos dois anos...Viciei na corrida aos 67 anos depois de passar a vida toda odiando fazer atividade física...
+            - generic [ref=e588]: Bio informada pelo atleta
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e589]:
+          - generic [ref=e590]:
+            - generic [ref=e591]: Motivo não informado
+            - generic [ref=e592]: Concessão permanente
+          - generic [ref=e593]: TSD VIP/upgrade sem confirmação
+          - group [ref=e595]:
+            - generic "Cadastros e pedidos (1)" [ref=e596] [cursor=pointer]
+          - group [ref=e598]:
+            - generic [ref=e599]:
+              - combobox "Motivo do selo de FATIMA REIS" [ref=e600]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de FATIMA REIS" [ref=e601] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de FATIMA REIS" [ref=e602]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e603]:
+          - strong [ref=e604]: Sem vencimento
+        - cell [ref=e605]:
+          - link "Ver origens de FATIMA REIS" [ref=e606] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54433&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e607]:
+        - cell [ref=e608]:
+          - checkbox "Selecionar FERNANDA PARADIZO" [ref=e610]
+        - cell "FERNANDA PARADIZO feparadizo@gmail.com Perfil 55758 · Usuário 116141 São Paulo · SP" [ref=e611]:
+          - link "FERNANDA PARADIZO" [ref=e612] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=55758&PAGINA=1#detalhes
+          - generic [ref=e613]: feparadizo@gmail.com
+          - text: Perfil 55758 · Usuário 116141
+          - generic [ref=e614]: São Paulo · SP
+        - cell "Motivo não informado Concessão permanente" [ref=e615]:
+          - generic [ref=e616]:
+            - generic [ref=e617]: Motivo não informado
+            - generic [ref=e618]: Concessão permanente
+          - group [ref=e619]:
+            - generic "Cadastros e pedidos (1)" [ref=e620] [cursor=pointer]
+          - group [ref=e622]:
+            - generic [ref=e623]:
+              - combobox "Motivo do selo de FERNANDA PARADIZO" [ref=e624]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de FERNANDA PARADIZO" [ref=e625] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de FERNANDA PARADIZO" [ref=e626]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e627]:
+          - strong [ref=e628]: Sem vencimento
+        - cell [ref=e629]:
+          - link "Ver origens de FERNANDA PARADIZO" [ref=e630] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=55758&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e631]:
+        - cell [ref=e632]:
+          - checkbox "Selecionar FERNANDO NAZARIO SOUSA" [ref=e634]
+        - cell "FERNANDO NAZARIO SOUSA fnazarios@gmail.com Perfil 8779 · Usuário 8030 guarulhos · SP" [ref=e635]:
+          - link "FERNANDO NAZARIO SOUSA" [ref=e636] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=8779&PAGINA=1#detalhes
+          - generic [ref=e637]: fnazarios@gmail.com
+          - text: Perfil 8779 · Usuário 8030
+          - generic [ref=e638]: guarulhos · SP
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e639]:
+          - generic [ref=e640]:
+            - generic [ref=e641]: Motivo não informado
+            - generic [ref=e642]: Concessão permanente
+          - generic [ref=e643]: TSD VIP/upgrade sem confirmação
+          - group [ref=e645]:
+            - generic "Cadastros e pedidos (4)" [ref=e646] [cursor=pointer]
+          - group [ref=e648]:
+            - generic [ref=e649]:
+              - combobox "Motivo do selo de FERNANDO NAZARIO SOUSA" [ref=e650]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de FERNANDO NAZARIO SOUSA" [ref=e651] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de FERNANDO NAZARIO SOUSA" [ref=e652]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e653]:
+          - strong [ref=e654]: Sem vencimento
+        - cell [ref=e655]:
+          - link "Ver origens de FERNANDO NAZARIO SOUSA" [ref=e656] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=8779&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e657]:
+        - cell [ref=e658]:
+          - checkbox "Selecionar GISLAINY CRISOSTOMO VELASCO" [ref=e660]
+        - cell "GISLAINY CRISOSTOMO VELASCO gislainycrisostomo@gmail.com Perfil 16548 · Usuário 17814 Goiânia · GO" [ref=e661]:
+          - link "GISLAINY CRISOSTOMO VELASCO" [ref=e662] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=16548&PAGINA=1#detalhes
+          - generic [ref=e663]: gislainycrisostomo@gmail.com
+          - text: Perfil 16548 · Usuário 17814
+          - generic [ref=e664]: Goiânia · GO
+        - cell "Motivo não informado Concessão permanente VIP antigo · Desafio 365 TSD VIP/upgrade sem confirmação" [ref=e665]:
+          - generic [ref=e666]:
+            - generic [ref=e667]: Motivo não informado
+            - generic [ref=e668]: Concessão permanente
+          - generic [ref=e669]:
+            - generic [ref=e670]: VIP antigo · Desafio 365
+            - generic [ref=e671]: TSD VIP/upgrade sem confirmação
+          - group [ref=e672]:
+            - generic "Cadastros e pedidos (3)" [ref=e673] [cursor=pointer]
+          - group [ref=e675]:
+            - generic [ref=e676]:
+              - combobox "Motivo do selo de GISLAINY CRISOSTOMO VELASCO" [ref=e677]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de GISLAINY CRISOSTOMO VELASCO" [ref=e678] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de GISLAINY CRISOSTOMO VELASCO" [ref=e679]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e680]:
+          - strong [ref=e681]: Sem vencimento
+        - cell [ref=e682]:
+          - link "Ver origens de GISLAINY CRISOSTOMO VELASCO" [ref=e683] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=16548&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e684]:
+        - cell [ref=e685]:
+          - checkbox "Selecionar GUSTAVO DE SOUZA" [ref=e687]
+        - cell "GUSTAVO DE SOUZA sgustavo38@gmail.com Perfil 55516 · Usuário 114796 Jaboticabal · SP Um sonhador correndo por aí! Bio informada pelo atleta" [ref=e688]:
+          - link "GUSTAVO DE SOUZA" [ref=e689] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=55516&PAGINA=1#detalhes
+          - generic [ref=e690]: sgustavo38@gmail.com
+          - text: Perfil 55516 · Usuário 114796
+          - generic [ref=e691]: Jaboticabal · SP
+          - paragraph [ref=e692]:
+            - text: Um sonhador correndo por aí!
+            - generic [ref=e693]: Bio informada pelo atleta
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e694]:
+          - generic [ref=e695]:
+            - generic [ref=e696]: Motivo não informado
+            - generic [ref=e697]: Concessão permanente
+          - generic [ref=e698]: TSD VIP/upgrade sem confirmação
+          - group [ref=e700]:
+            - generic "Cadastros e pedidos (1)" [ref=e701] [cursor=pointer]
+          - group [ref=e703]:
+            - generic [ref=e704]:
+              - combobox "Motivo do selo de GUSTAVO DE SOUZA" [ref=e705]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de GUSTAVO DE SOUZA" [ref=e706] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de GUSTAVO DE SOUZA" [ref=e707]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e708]:
+          - strong [ref=e709]: Sem vencimento
+        - cell [ref=e710]:
+          - link "Ver origens de GUSTAVO DE SOUZA" [ref=e711] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=55516&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e712]:
+        - cell [ref=e713]:
+          - checkbox "Selecionar Huellington Silveira" [ref=e715]
+        - cell "Huellington Silveira hsilveira88@hotmail.com Perfil 54089 · Usuário 108217 Santa Rita do Sapucaí · MG Tentando correr Bio informada pelo atleta" [ref=e716]:
+          - link "Huellington Silveira" [ref=e717] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54089&PAGINA=1#detalhes
+          - generic [ref=e718]: hsilveira88@hotmail.com
+          - text: Perfil 54089 · Usuário 108217
+          - generic [ref=e719]: Santa Rita do Sapucaí · MG
+          - paragraph [ref=e720]:
+            - text: Tentando correr
+            - generic [ref=e721]: Bio informada pelo atleta
+        - cell "Motivo não informado Concessão permanente TSD Básica confirmada TSD VIP/upgrade sem confirmação" [ref=e722]:
+          - generic [ref=e723]:
+            - generic [ref=e724]: Motivo não informado
+            - generic [ref=e725]: Concessão permanente
+          - generic [ref=e726]:
+            - generic [ref=e727]: TSD Básica confirmada
+            - generic [ref=e728]: TSD VIP/upgrade sem confirmação
+          - group [ref=e729]:
+            - generic "Cadastros e pedidos (3)" [ref=e730] [cursor=pointer]
+          - group [ref=e732]:
+            - generic [ref=e733]:
+              - combobox "Motivo do selo de Huellington Silveira" [ref=e734]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Huellington Silveira" [ref=e735] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Huellington Silveira" [ref=e736]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e737]:
+          - strong [ref=e738]: Sem vencimento
+        - cell [ref=e739]:
+          - link "Ver origens de Huellington Silveira" [ref=e740] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54089&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e741]:
+        - cell [ref=e742]:
+          - checkbox "Selecionar IGOR MONACO" [ref=e744]
+        - cell "IGOR MONACO igor-monaco@hotmail.com Perfil 53592 · Usuário 106665 São Carlos · AC" [ref=e745]:
+          - link "IGOR MONACO" [ref=e746] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53592&PAGINA=1#detalhes
+          - generic [ref=e747]: igor-monaco@hotmail.com
+          - text: Perfil 53592 · Usuário 106665
+          - generic [ref=e748]: São Carlos · AC
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e749]:
+          - generic [ref=e750]:
+            - generic [ref=e751]: Motivo não informado
+            - generic [ref=e752]: Concessão permanente
+          - generic [ref=e753]: TSD VIP/upgrade sem confirmação
+          - group [ref=e755]:
+            - generic "Cadastros e pedidos (1)" [ref=e756] [cursor=pointer]
+          - group [ref=e758]:
+            - generic [ref=e759]:
+              - combobox "Motivo do selo de IGOR MONACO" [ref=e760]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de IGOR MONACO" [ref=e761] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de IGOR MONACO" [ref=e762]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e763]:
+          - strong [ref=e764]: Sem vencimento
+        - cell [ref=e765]:
+          - link "Ver origens de IGOR MONACO" [ref=e766] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53592&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e767]:
+        - cell [ref=e768]:
+          - checkbox "Selecionar IGOR NUNES" [ref=e770]
+        - cell "IGOR NUNES igornunescunha@gmail.com Perfil 53774 · Usuário 107317 Rio de janeiro · AC" [ref=e771]:
+          - link "IGOR NUNES" [ref=e772] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53774&PAGINA=1#detalhes
+          - generic [ref=e773]: igornunescunha@gmail.com
+          - text: Perfil 53774 · Usuário 107317
+          - generic [ref=e774]: Rio de janeiro · AC
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e775]:
+          - generic [ref=e776]:
+            - generic [ref=e777]: Motivo não informado
+            - generic [ref=e778]: Concessão permanente
+          - generic [ref=e779]: TSD VIP/upgrade sem confirmação
+          - group [ref=e781]:
+            - generic "Cadastros e pedidos (1)" [ref=e782] [cursor=pointer]
+          - group [ref=e784]:
+            - generic [ref=e785]:
+              - combobox "Motivo do selo de IGOR NUNES" [ref=e786]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de IGOR NUNES" [ref=e787] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de IGOR NUNES" [ref=e788]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e789]:
+          - strong [ref=e790]: Sem vencimento
+        - cell [ref=e791]:
+          - link "Ver origens de IGOR NUNES" [ref=e792] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53774&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e793]:
+        - cell [ref=e794]:
+          - checkbox "Selecionar IGOR RICARDO SILVA" [ref=e796]
+        - 'cell "IGOR RICARDO SILVA noobless.go@gmail.com Perfil 9270 · Usuário 6102 Bastos · SP Instagram público: igorkuma.atleta" [ref=e797]':
+          - link "IGOR RICARDO SILVA" [ref=e798] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=9270&PAGINA=1#detalhes
+          - generic [ref=e799]: noobless.go@gmail.com
+          - text: Perfil 9270 · Usuário 6102
+          - generic [ref=e800]: Bastos · SP
+          - generic [ref=e801]: "Instagram público: igorkuma.atleta"
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e802]:
+          - generic [ref=e803]:
+            - generic [ref=e804]: Motivo não informado
+            - generic [ref=e805]: Concessão permanente
+          - generic [ref=e806]: TSD VIP/upgrade sem confirmação
+          - group [ref=e808]:
+            - generic "Cadastros e pedidos (1)" [ref=e809] [cursor=pointer]
+          - group [ref=e811]:
+            - generic [ref=e812]:
+              - combobox "Motivo do selo de IGOR RICARDO SILVA" [ref=e813]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de IGOR RICARDO SILVA" [ref=e814] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de IGOR RICARDO SILVA" [ref=e815]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e816]:
+          - strong [ref=e817]: Sem vencimento
+        - cell [ref=e818]:
+          - link "Ver origens de IGOR RICARDO SILVA" [ref=e819] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=9270&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e820]:
+        - cell [ref=e821]:
+          - checkbox "Selecionar ISABELA SOBRAL" [ref=e823]
+        - cell "ISABELA SOBRAL isasobral01@gmail.com Perfil 53988 · Usuário 107868 Curitiba · PR" [ref=e824]:
+          - link "ISABELA SOBRAL" [ref=e825] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53988&PAGINA=1#detalhes
+          - generic [ref=e826]: isasobral01@gmail.com
+          - text: Perfil 53988 · Usuário 107868
+          - generic [ref=e827]: Curitiba · PR
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e828]:
+          - generic [ref=e829]:
+            - generic [ref=e830]: Motivo não informado
+            - generic [ref=e831]: Concessão permanente
+          - generic [ref=e832]: TSD VIP/upgrade sem confirmação
+          - group [ref=e834]:
+            - generic "Cadastros e pedidos (1)" [ref=e835] [cursor=pointer]
+          - group [ref=e837]:
+            - generic [ref=e838]:
+              - combobox "Motivo do selo de ISABELA SOBRAL" [ref=e839]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ISABELA SOBRAL" [ref=e840] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ISABELA SOBRAL" [ref=e841]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e842]:
+          - strong [ref=e843]: Sem vencimento
+        - cell [ref=e844]:
+          - link "Ver origens de ISABELA SOBRAL" [ref=e845] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53988&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e846]:
+        - cell [ref=e847]:
+          - checkbox "Selecionar ISABEL DOMINGOS" [ref=e849]
+        - cell "ISABEL DOMINGOS isabel.dsmococa@gmail.com Perfil 18799 · Usuário 22105 Mogi Guaçu · SP Atleta Amadora Bio informada pelo atleta" [ref=e850]:
+          - link "ISABEL DOMINGOS" [ref=e851] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18799&PAGINA=1#detalhes
+          - generic [ref=e852]: isabel.dsmococa@gmail.com
+          - text: Perfil 18799 · Usuário 22105
+          - generic [ref=e853]: Mogi Guaçu · SP
+          - paragraph [ref=e854]:
+            - text: Atleta Amadora
+            - generic [ref=e855]: Bio informada pelo atleta
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e856]:
+          - generic [ref=e857]:
+            - generic [ref=e858]: Motivo não informado
+            - generic [ref=e859]: Concessão permanente
+          - generic [ref=e860]: TSD VIP/upgrade sem confirmação
+          - group [ref=e862]:
+            - generic "Cadastros e pedidos (3)" [ref=e863] [cursor=pointer]
+          - group [ref=e865]:
+            - generic [ref=e866]:
+              - combobox "Motivo do selo de ISABEL DOMINGOS" [ref=e867]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ISABEL DOMINGOS" [ref=e868] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ISABEL DOMINGOS" [ref=e869]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e870]:
+          - strong [ref=e871]: Sem vencimento
+        - cell [ref=e872]:
+          - link "Ver origens de ISABEL DOMINGOS" [ref=e873] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18799&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e874]:
+        - cell [ref=e875]:
+          - checkbox "Selecionar ISMAEL COMERLATO" [ref=e877]
+        - cell "ISMAEL COMERLATO ismacomerlato@gmail.com Perfil 53466 · Usuário 106178" [ref=e878]:
+          - link "ISMAEL COMERLATO" [ref=e879] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53466&PAGINA=1#detalhes
+          - generic [ref=e880]: ismacomerlato@gmail.com
+          - text: Perfil 53466 · Usuário 106178
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e881]:
+          - generic [ref=e882]:
+            - generic [ref=e883]: Motivo não informado
+            - generic [ref=e884]: Concessão permanente
+          - generic [ref=e885]: TSD VIP/upgrade sem confirmação
+          - group [ref=e887]:
+            - generic "Cadastros e pedidos (1)" [ref=e888] [cursor=pointer]
+          - group [ref=e890]:
+            - generic [ref=e891]:
+              - combobox "Motivo do selo de ISMAEL COMERLATO" [ref=e892]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de ISMAEL COMERLATO" [ref=e893] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de ISMAEL COMERLATO" [ref=e894]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e895]:
+          - strong [ref=e896]: Sem vencimento
+        - cell [ref=e897]:
+          - link "Ver origens de ISMAEL COMERLATO" [ref=e898] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53466&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e899]:
+        - cell [ref=e900]:
+          - checkbox "Selecionar JEAN CARLO SILVA COELHO" [ref=e902]
+        - cell "JEAN CARLO SILVA COELHO jeancarlocoelho@gmail.com Perfil 40197 · Usuário 75725 Gravataí · RS" [ref=e903]:
+          - link "JEAN CARLO SILVA COELHO" [ref=e904] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=40197&PAGINA=1#detalhes
+          - generic [ref=e905]: jeancarlocoelho@gmail.com
+          - text: Perfil 40197 · Usuário 75725
+          - generic [ref=e906]: Gravataí · RS
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e907]:
+          - generic [ref=e908]:
+            - generic [ref=e909]: Motivo não informado
+            - generic [ref=e910]: Concessão permanente
+          - generic [ref=e911]: TSD VIP/upgrade sem confirmação
+          - group [ref=e913]:
+            - generic "Cadastros e pedidos (2)" [ref=e914] [cursor=pointer]
+          - group [ref=e916]:
+            - generic [ref=e917]:
+              - combobox "Motivo do selo de JEAN CARLO SILVA COELHO" [ref=e918]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de JEAN CARLO SILVA COELHO" [ref=e919] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de JEAN CARLO SILVA COELHO" [ref=e920]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e921]:
+          - strong [ref=e922]: Sem vencimento
+        - cell [ref=e923]:
+          - link "Ver origens de JEAN CARLO SILVA COELHO" [ref=e924] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=40197&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e925]:
+        - cell [ref=e926]:
+          - checkbox "Selecionar JÉS CARLETE JUNIOR" [ref=e928]
+        - cell "JÉS CARLETE JUNIOR jescarletejunior@gmail.com Perfil 53555 · Usuário 106516 Paranacity · PR Advogado, Iniciante e apaixonado pela corrida de rua. Bio informada pelo atleta" [ref=e929]:
+          - link "JÉS CARLETE JUNIOR" [ref=e930] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53555&PAGINA=1#detalhes
+          - generic [ref=e931]: jescarletejunior@gmail.com
+          - text: Perfil 53555 · Usuário 106516
+          - generic [ref=e932]: Paranacity · PR
+          - paragraph [ref=e933]:
+            - text: Advogado, Iniciante e apaixonado pela corrida de rua.
+            - generic [ref=e934]: Bio informada pelo atleta
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e935]:
+          - generic [ref=e936]:
+            - generic [ref=e937]: Motivo não informado
+            - generic [ref=e938]: Concessão permanente
+          - generic [ref=e939]: TSD VIP/upgrade sem confirmação
+          - group [ref=e941]:
+            - generic "Cadastros e pedidos (1)" [ref=e942] [cursor=pointer]
+          - group [ref=e944]:
+            - generic [ref=e945]:
+              - combobox "Motivo do selo de JÉS CARLETE JUNIOR" [ref=e946]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de JÉS CARLETE JUNIOR" [ref=e947] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de JÉS CARLETE JUNIOR" [ref=e948]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e949]:
+          - strong [ref=e950]: Sem vencimento
+        - cell [ref=e951]:
+          - link "Ver origens de JÉS CARLETE JUNIOR" [ref=e952] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53555&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e953]:
+        - cell [ref=e954]:
+          - checkbox "Selecionar JESSICA CRISTINA" [ref=e956]
+        - cell "JESSICA CRISTINA jessicacrissilva04@gmail.com Perfil 34387 · Usuário 61884 Jundiaí · SP" [ref=e957]:
+          - link "JESSICA CRISTINA" [ref=e958] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=34387&PAGINA=1#detalhes
+          - generic [ref=e959]: jessicacrissilva04@gmail.com
+          - text: Perfil 34387 · Usuário 61884
+          - generic [ref=e960]: Jundiaí · SP
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e961]:
+          - generic [ref=e962]:
+            - generic [ref=e963]: Motivo não informado
+            - generic [ref=e964]: Concessão permanente
+          - generic [ref=e965]: TSD VIP/upgrade sem confirmação
+          - group [ref=e967]:
+            - generic "Cadastros e pedidos (6)" [ref=e968] [cursor=pointer]
+          - group [ref=e970]:
+            - generic [ref=e971]:
+              - combobox "Motivo do selo de JESSICA CRISTINA" [ref=e972]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de JESSICA CRISTINA" [ref=e973] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de JESSICA CRISTINA" [ref=e974]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e975]:
+          - strong [ref=e976]: Sem vencimento
+        - cell [ref=e977]:
+          - link "Ver origens de JESSICA CRISTINA" [ref=e978] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=34387&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e979]:
+        - cell [ref=e980]:
+          - checkbox "Selecionar JESSICA MARTINS" [ref=e982]
+        - cell "JESSICA MARTINS adm.jmartins@gmail.com Perfil 53970 · Usuário 107828 Campo Grande · MS" [ref=e983]:
+          - link "JESSICA MARTINS" [ref=e984] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53970&PAGINA=1#detalhes
+          - generic [ref=e985]: adm.jmartins@gmail.com
+          - text: Perfil 53970 · Usuário 107828
+          - generic [ref=e986]: Campo Grande · MS
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e987]:
+          - generic [ref=e988]:
+            - generic [ref=e989]: Motivo não informado
+            - generic [ref=e990]: Concessão permanente
+          - generic [ref=e991]: TSD VIP/upgrade sem confirmação
+          - group [ref=e993]:
+            - generic "Cadastros e pedidos (1)" [ref=e994] [cursor=pointer]
+          - group [ref=e996]:
+            - generic [ref=e997]:
+              - combobox "Motivo do selo de JESSICA MARTINS" [ref=e998]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de JESSICA MARTINS" [ref=e999] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de JESSICA MARTINS" [ref=e1000]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e1001]:
+          - strong [ref=e1002]: Sem vencimento
+        - cell [ref=e1003]:
+          - link "Ver origens de JESSICA MARTINS" [ref=e1004] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53970&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e1005]:
+        - cell [ref=e1006]:
+          - checkbox "Selecionar JÉSSICA MORAES CRUVINEL" [ref=e1008]
+        - cell "JÉSSICA MORAES CRUVINEL jessicacruvinel@gmail.com Perfil 53563 · Usuário 106544 Columbia · XX" [ref=e1009]:
+          - link "JÉSSICA MORAES CRUVINEL" [ref=e1010] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53563&PAGINA=1#detalhes
+          - generic [ref=e1011]: jessicacruvinel@gmail.com
+          - text: Perfil 53563 · Usuário 106544
+          - generic [ref=e1012]: Columbia · XX
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e1013]:
+          - generic [ref=e1014]:
+            - generic [ref=e1015]: Motivo não informado
+            - generic [ref=e1016]: Concessão permanente
+          - generic [ref=e1017]: TSD VIP/upgrade sem confirmação
+          - group [ref=e1019]:
+            - generic "Cadastros e pedidos (1)" [ref=e1020] [cursor=pointer]
+          - group [ref=e1022]:
+            - generic [ref=e1023]:
+              - combobox "Motivo do selo de JÉSSICA MORAES CRUVINEL" [ref=e1024]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de JÉSSICA MORAES CRUVINEL" [ref=e1025] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de JÉSSICA MORAES CRUVINEL" [ref=e1026]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e1027]:
+          - strong [ref=e1028]: Sem vencimento
+        - cell [ref=e1029]:
+          - link "Ver origens de JÉSSICA MORAES CRUVINEL" [ref=e1030] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53563&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e1031]:
+        - cell [ref=e1032]:
+          - checkbox "Selecionar João Pedro Faria" [ref=e1034]
+        - cell "João Pedro Faria joaopedrofaria1999@gmail.com Perfil 53222 · Usuário 105543 Penápolis · SP" [ref=e1035]:
+          - link "João Pedro Faria" [ref=e1036] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53222&PAGINA=1#detalhes
+          - generic [ref=e1037]: joaopedrofaria1999@gmail.com
+          - text: Perfil 53222 · Usuário 105543
+          - generic [ref=e1038]: Penápolis · SP
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e1039]:
+          - generic [ref=e1040]:
+            - generic [ref=e1041]: Motivo não informado
+            - generic [ref=e1042]: Concessão permanente
+          - generic [ref=e1043]: TSD VIP/upgrade sem confirmação
+          - group [ref=e1045]:
+            - generic "Cadastros e pedidos (1)" [ref=e1046] [cursor=pointer]
+          - group [ref=e1048]:
+            - generic [ref=e1049]:
+              - combobox "Motivo do selo de João Pedro Faria" [ref=e1050]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de João Pedro Faria" [ref=e1051] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de João Pedro Faria" [ref=e1052]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e1053]:
+          - strong [ref=e1054]: Sem vencimento
+        - cell [ref=e1055]:
+          - link "Ver origens de João Pedro Faria" [ref=e1056] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53222&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e1057]:
+        - cell [ref=e1058]:
+          - checkbox "Selecionar Juliana Rezende" [ref=e1060]
+        - cell "Juliana Rezende jrezende450@gmail.com Perfil 18600 · Usuário 21733 Limeira · SP" [ref=e1061]:
+          - link "Juliana Rezende" [ref=e1062] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18600&PAGINA=1#detalhes
+          - generic [ref=e1063]: jrezende450@gmail.com
+          - text: Perfil 18600 · Usuário 21733
+          - generic [ref=e1064]: Limeira · SP
+        - cell "Motivo não informado Concessão permanente TSD Básica confirmada TSD VIP/upgrade sem confirmação" [ref=e1065]:
+          - generic [ref=e1066]:
+            - generic [ref=e1067]: Motivo não informado
+            - generic [ref=e1068]: Concessão permanente
+          - generic [ref=e1069]:
+            - generic [ref=e1070]: TSD Básica confirmada
+            - generic [ref=e1071]: TSD VIP/upgrade sem confirmação
+          - group [ref=e1072]:
+            - generic "Cadastros e pedidos (5)" [ref=e1073] [cursor=pointer]
+          - group [ref=e1075]:
+            - generic [ref=e1076]:
+              - combobox "Motivo do selo de Juliana Rezende" [ref=e1077]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Juliana Rezende" [ref=e1078] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Juliana Rezende" [ref=e1079]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e1080]:
+          - strong [ref=e1081]: Sem vencimento
+        - cell [ref=e1082]:
+          - link "Ver origens de Juliana Rezende" [ref=e1083] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=18600&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e1084]:
+        - cell [ref=e1085]:
+          - checkbox "Selecionar KARLA SILVA" [ref=e1087]
+        - cell "KARLA SILVA karlacs@gmail.com Perfil 13937 · Usuário 12912 Florianópolis · SC" [ref=e1088]:
+          - link "KARLA SILVA" [ref=e1089] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=13937&PAGINA=1#detalhes
+          - generic [ref=e1090]: karlacs@gmail.com
+          - text: Perfil 13937 · Usuário 12912
+          - generic [ref=e1091]: Florianópolis · SC
+        - cell "Motivo não informado Concessão permanente Sem cadastro de desafio" [ref=e1092]:
+          - generic [ref=e1093]:
+            - generic [ref=e1094]: Motivo não informado
+            - generic [ref=e1095]: Concessão permanente
+          - generic [ref=e1096]: Sem cadastro de desafio
+          - group [ref=e1098]:
+            - generic "Cadastros e pedidos (0)" [ref=e1099] [cursor=pointer]
+          - group [ref=e1101]:
+            - generic [ref=e1102]:
+              - combobox "Motivo do selo de KARLA SILVA" [ref=e1103]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de KARLA SILVA" [ref=e1104] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de KARLA SILVA" [ref=e1105]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e1106]:
+          - strong [ref=e1107]: Sem vencimento
+        - cell [ref=e1108]:
+          - link "Ver origens de KARLA SILVA" [ref=e1109] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=13937&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e1110]:
+        - cell [ref=e1111]:
+          - checkbox "Selecionar Kiyoshi" [ref=e1113]
+        - cell "Kiyoshi kiyoshi.matsuda@gmail.com Perfil 53785 · Usuário 107341 Santa Maria · RS" [ref=e1114]:
+          - link "Kiyoshi" [ref=e1115] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53785&PAGINA=1#detalhes
+          - generic [ref=e1116]: kiyoshi.matsuda@gmail.com
+          - text: Perfil 53785 · Usuário 107341
+          - generic [ref=e1117]: Santa Maria · RS
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e1118]:
+          - generic [ref=e1119]:
+            - generic [ref=e1120]: Motivo não informado
+            - generic [ref=e1121]: Concessão permanente
+          - generic [ref=e1122]: TSD VIP/upgrade sem confirmação
+          - group [ref=e1124]:
+            - generic "Cadastros e pedidos (1)" [ref=e1125] [cursor=pointer]
+          - group [ref=e1127]:
+            - generic [ref=e1128]:
+              - combobox "Motivo do selo de Kiyoshi" [ref=e1129]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de Kiyoshi" [ref=e1130] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de Kiyoshi" [ref=e1131]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e1132]:
+          - strong [ref=e1133]: Sem vencimento
+        - cell [ref=e1134]:
+          - link "Ver origens de Kiyoshi" [ref=e1135] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=53785&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e1136]:
+        - cell [ref=e1137]:
+          - checkbox "Selecionar LEANDRO CORDEIRO" [ref=e1139]
+        - cell "LEANDRO CORDEIRO leohelo2023@gmail.com Perfil 54028 · Usuário 107994 Santa Barbara D oeste SP · SP Seu corpo alcança o que sua mente acredita. Bio informada pelo atleta" [ref=e1140]:
+          - link "LEANDRO CORDEIRO" [ref=e1141] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54028&PAGINA=1#detalhes
+          - generic [ref=e1142]: leohelo2023@gmail.com
+          - text: Perfil 54028 · Usuário 107994
+          - generic [ref=e1143]: Santa Barbara D oeste SP · SP
+          - paragraph [ref=e1144]:
+            - text: Seu corpo alcança o que sua mente acredita.
+            - generic [ref=e1145]: Bio informada pelo atleta
+        - cell "Motivo não informado Concessão permanente TSD VIP/upgrade sem confirmação" [ref=e1146]:
+          - generic [ref=e1147]:
+            - generic [ref=e1148]: Motivo não informado
+            - generic [ref=e1149]: Concessão permanente
+          - generic [ref=e1150]: TSD VIP/upgrade sem confirmação
+          - group [ref=e1152]:
+            - generic "Cadastros e pedidos (1)" [ref=e1153] [cursor=pointer]
+          - group [ref=e1155]:
+            - generic [ref=e1156]:
+              - combobox "Motivo do selo de LEANDRO CORDEIRO" [ref=e1157]:
+                - option "Escolha o motivo" [selected]
+                - option "Atleta de elite"
+                - option "Influencer / criador"
+                - option "Imprensa"
+                - option "Parceiro"
+                - option "Equipe"
+                - option "Cortesia"
+                - option "Outro motivo"
+              - button "Salvar motivo de LEANDRO CORDEIRO" [ref=e1158] [cursor=pointer]: Salvar
+            - textbox "Vínculo ou observação de LEANDRO CORDEIRO" [ref=e1159]:
+              - /placeholder: Vínculo ou observação (opcional)
+        - cell [ref=e1160]:
+          - strong [ref=e1161]: Sem vencimento
+        - cell [ref=e1162]:
+          - link "Ver origens de LEANDRO CORDEIRO" [ref=e1163] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGE%5FID=54028&PAGINA=1#detalhes
+            - text: Ver origens
+  - navigation "Páginas da lista" [ref=e1164]:
+    - generic [ref=e1165]: Página 1 de 2
+    - link "Próxima" [ref=e1167] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=2
+  - paragraph [ref=e1168]: VIP/upgrade confirmado no cadastro identifica o vínculo e sai da fila de motivos desconhecidos. Pagamento e validade dependem da conciliação financeira. Estornos ficam no histórico. Datas de pagamento no horário de Brasília.

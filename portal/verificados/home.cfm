@@ -8,7 +8,7 @@
 <section class="business-page verified-page" aria-labelledby="verified-title">
     <header class="verified-heading">
         <div><p class="verified-eyebrow">PORTAL · ROAD RUNNERS</p><h1 id="verified-title">Selos verificados</h1><p class="text-muted">Veja por que cada pessoa tem o selo, até quando ele vale e o histórico de cada origem.</p></div>
-        <span class="verified-readonly">Classificar um motivo não altera o selo</span>
+        <div class="d-flex align-items-center flex-wrap gap-2"><a class="btn btn-outline-secondary btn-sm" href="/portal/audiencia/?dias=7&amp;pagina=verified##audience-acquisition">Ver audiência da oferta</a><span class="verified-readonly">Classificar um motivo não altera o selo</span></div>
     </header>
     <cfif len(verifiedError)><div class="alert alert-danger" role="alert">#encodeForHTML(verifiedError)#</div></cfif>
     <cfif verifiedQuickCount GT 0 AND NOT len(verifiedError)><div class="alert alert-success" role="status">#verifiedQuickCount# <cfif verifiedQuickCount EQ 1>pessoa classificada<cfelse>pessoas classificadas</cfif>. Quem já tem motivo registrado saiu da fila “A classificar”.</div></cfif>

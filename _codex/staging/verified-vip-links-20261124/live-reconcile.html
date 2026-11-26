@@ -1,0 +1,349 @@
+<!doctype html><html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/assets/css/mdb.min.css"></head><body data-mdb-theme="dark" style="background:rgb(34,34,34);padding:20px">
+<link rel="stylesheet" href="/assets/css/business-ui.css"/>
+<link rel="stylesheet" href="/portal/verificados/verified.css?v=20261124"/>
+<script src="/portal/verificados/verified.js?v=20261124" defer></script>
+<section class="business-page verified-page" aria-labelledby="verified-title">
+    <header class="verified-heading">
+        <div><p class="verified-eyebrow">PORTAL · ROAD RUNNERS</p><h1 id="verified-title">Selos verificados</h1><p class="text-muted">Veja por que cada pessoa tem o selo, até quando ele vale e o histórico de cada origem.</p></div>
+        <span class="verified-readonly">Classificar um motivo não altera o selo</span>
+    </header>
+    
+    <div class="business-kpi-grid verified-kpis" aria-label="Resumo geral dos selos">
+        <a class="business-kpi" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><small>Selos ativos</small><strong>418</strong></a>
+        <a class="business-kpi" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;FILTER&#x25;5FORIGIN&#x3d;manual&amp;PAGINA&#x3d;1"><small>Sem vencimento</small><strong>128</strong></a>
+        <div class="business-kpi"><small>Ativos com prazo</small><strong>290</strong></div>
+        <a class="business-kpi verified-kpi-attention" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><small>Motivo a classificar</small><strong>61</strong></a>
+    </div>
+    <nav class="verified-tabs" aria-label="Situação do selo">
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Ativos</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">A classificar</a>
+        
+            <a aria-current="page" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Conferir VIP</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;inactive&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Inativos</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Todos / histórico</a>
+        
+    </nav>
+    <div class="alert alert-warning" role="status">O vínculo VIP está identificado. Falta conciliar o pagamento e a validade com o histórico do selo. O status confirmado do cadastro, sozinho, não comprova pagamento vigente; pode haver estorno. Os selos atuais foram preservados.</div>
+    <form method="get" action="/portal/verificados/" class="business-panel verified-filters">
+        <input type="hidden" name="filter_status" value="reconcile"/>
+        <div class="verified-filter-main">
+            <div><label for="verified-search">Buscar pessoa</label><input class="form-control" id="verified-search" name="user_busca" value="" placeholder="Nome, e-mail, perfil ou ID" maxlength="120"/></div>
+            <div><label for="verified-origin">Origem ou motivo</label><select id="verified-origin" class="form-select" name="filter_origin"><option value="">Todas as origens</option>
+                <option value="manual" >Concessão permanente</option><option value="vip" >Todo Santo Dia · VIP ativo</option><option value="registered_vip" >Todo Santo Dia · VIP/upgrade confirmado no cadastro</option><option value="upgrade" >Todo Santo Dia · Upgrade VIP ativo</option><option value="annual" >Compra anual ativa</option><option value="refunded" >Com estorno no histórico</option><option value="elite" >Atleta de elite</option><option value="influencer" >Influencer / criador</option><option value="imprensa" >Imprensa</option><option value="parceiro" >Parceiro</option><option value="equipe" >Equipe</option><option value="cortesia" >Cortesia</option><option value="outro" >Outro motivo</option><option value="nao_informado" >Motivo não informado</option>
+            </select></div>
+            <button class="btn btn-warning" type="submit">Filtrar</button><a class="btn btn-outline-secondary" href="/portal/verificados/">Limpar</a>
+        </div>
+        <details class="verified-advanced" ><summary>Filtros de cadastro</summary>
+            <p class="text-muted small">VIP e upgrade confirmados no Todo Santo Dia identificam um vínculo com o selo. Outros cadastros e permissões de conta não comprovam esse vínculo.</p>
+            <div class="verified-filter-main"><div><label for="filter-desafio">Desafio</label><input class="form-control" id="filter-desafio" name="filter_desafio" value=""/></div>
+                <div><label for="filter-produto">Produto no cadastro</label><select id="filter-produto" name="filter_produto" class="form-select"><option value="">Todos</option><option value="catarinensecorridaderua" >catarinensecorridaderua &middot; catarinensecorridaderua</option><option value="catarinensetrailrun" >catarinensetrailrun &middot; catarinensetrailrun</option><option value="circuitobrasilgigante" >circuitobrasilgigante &middot; circuitobrasilgigante</option><option value="inscricao365" >desafio365 &middot; inscricao365</option><option value="inscricao365vip" >desafio365 &middot; inscricao365vip</option><option value="inscricao365Vip" >desafio365 &middot; inscricao365Vip</option><option value="inscricao366" >desafio366 &middot; inscricao366</option><option value="inscricaotodosantodia" >desafio366 &middot; inscricaotodosantodia</option><option value="foco" >desafiofoco &middot; foco</option><option value="&#x2f;desafiosupra&#x2f;inscricao&#x2f;" >desafiosupra &middot; &#x2f;desafiosupra&#x2f;inscricao&#x2f;</option><option value="foco" >foco &middot; foco</option><option value="desafiofoco" >todosantodia &middot; desafiofoco</option><option value="inscricao366" >todosantodia &middot; inscricao366</option><option value="todosantodia" >todosantodia &middot; todosantodia</option><option value="todosantodiaupg" >todosantodia &middot; todosantodiaupg</option><option value="todosantodiaupgrade" >todosantodia &middot; todosantodiaupgrade</option><option value="todosantodiavip" >todosantodia &middot; todosantodiavip</option><option value="todosantodiavip1" >todosantodia &middot; todosantodiavip1</option><option value="&#x2f;connect&#x2f;inscricao&#x2f;" > &middot; &#x2f;connect&#x2f;inscricao&#x2f;</option><option value="&#x2f;empresa&#x2f;cadastro&#x2f;" > &middot; &#x2f;empresa&#x2f;cadastro&#x2f;</option><option value="&#x2f;ts&#x2f;inscricao&#x2f;" > &middot; &#x2f;ts&#x2f;inscricao&#x2f;</option></select></div>
+                <div><label for="filter-logic">Combinação</label><select id="filter-logic" name="filter_logic" class="form-select"><option value="any" selected>Qualquer regra</option><option value="all" >Todas as regras</option></select></div>
+            </div>
+            <div class="verified-flags"><label><input type="checkbox" name="filter_admin" value="true" /> Administrador</label><label><input type="checkbox" name="filter_dev" value="true" /> Desenvolvedor</label><label><input type="checkbox" name="filter_partner" value="true" /> Parceiro no cadastro</label></div>
+        </details>
+    </form>
+    <p class="verified-cleanup-link"><a href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Classificar os 61 motivos pendentes →</a></p> 
+        <form id="verified-bulk-form" class="business-panel verified-quick-panel" method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1" data-quick-form>
+            <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="9BCF2DC88BFCD873C0AC220DA20FA19E11917013E4ECB0FA30124FE0131A3B00"/>
+            <div class="verified-quick-heading"><div><h2>Classificação rápida</h2><p class="text-muted">Marque as pessoas com o mesmo motivo e salve de uma vez. Apenas os perfis marcados nesta página serão classificados.</p></div><span id="verified-selected-count" role="status" aria-live="polite">0 selecionados</span></div>
+            
+            <fieldset >
+                <div class="verified-quick-fields"><div><label for="bulk-category">Motivo em comum</label><select id="bulk-category" name="category" class="form-select" required data-quick-category><option value="">Escolha o motivo</option><option value="elite" >Atleta de elite</option><option value="influencer" >Influencer &#x2f; criador</option><option value="imprensa" >Imprensa</option><option value="parceiro" >Parceiro</option><option value="equipe" >Equipe</option><option value="cortesia" >Cortesia</option><option value="outro" >Outro motivo</option></select></div>
+                <div><label for="bulk-note">Vínculo ou observação <span data-note-optional>(opcional)</span></label><input id="bulk-note" name="note" class="form-control" maxlength="1800" value="" placeholder="Ex.: nome do veículo, canal ou parceria" data-quick-note/></div>
+                <button class="btn btn-warning" type="submit" id="verified-bulk-submit">Salvar selecionados</button></div>
+            </fieldset>
+        </form>
+    
+    <div class="verified-list-heading" id="lista-motivos"><h2>52 perfis encontrados</h2><span class="text-muted small">Uma pessoa pode ter mais de uma origem ativa.</span></div>
+    <div class="business-panel verified-table-wrap"><table class="table verified-table"><thead><tr><th class="verified-select-cell"><input type="checkbox" id="verified-select-all" aria-label="Selecionar todos os pendentes desta página" /></th><th>Pessoa</th><th>Origem e motivo do selo</th><th>Situação e validade</th><th><span class="visually-hidden">Detalhes</span></th></tr></thead><tbody>
+        <tr id="perfil-2732">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2732&amp;PAGINA&#x3d;1#detalhes">AMANDA MARTINS ALVES</a><small class="verified-email">amanda.fernandodenoronha&#x40;gmail.com</small><small class="text-muted">Perfil 2732 · Usuário 6014</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de AMANDA&#x20;MARTINS&#x20;ALVES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;2732&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-19279">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19279&amp;PAGINA&#x3d;1#detalhes">Anderson Cardoso Ferreira</a><small class="verified-email">andersoncardosof1981&#x40;gmail.com</small><small class="text-muted">Perfil 19279 · Usuário 23166</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Anderson&#x20;Cardoso&#x20;Ferreira" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19279&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16431">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16431&amp;PAGINA&#x3d;1#detalhes">ANDERSON DE ANDRADE</a><small class="verified-email">dinhomve&#x40;gmail.com</small><small class="text-muted">Perfil 16431 · Usuário 17598</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ANDERSON&#x20;DE&#x20;ANDRADE" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16431&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53839">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53839&amp;PAGINA&#x3d;1#detalhes">Andr&eacute; Rocha</a><small class="verified-email">andreisni&#x40;hotmail.com</small><small class="text-muted">Perfil 53839 · Usuário 107489</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Andr&eacute;&#x20;Rocha" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53839&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53854">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53854&amp;PAGINA&#x3d;1#detalhes">ANGELICA SANDES</a><small class="verified-email">angel.sandes&#x40;gmail.com</small><small class="text-muted">Perfil 53854 · Usuário 107531</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ANGELICA&#x20;SANDES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53854&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-3016">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;3016&amp;PAGINA&#x3d;1#detalhes">Artur Grochocki</a><small class="verified-email">arturcwgrochocki&#x40;gmail.com</small><small class="text-muted">Perfil 3016 · Usuário 17</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill ">Equipe</span><small class="text-muted">Concessão permanente</small><p class="verified-reason">Equipe</p><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Artur&#x20;Grochocki" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;3016&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-15644">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15644&amp;PAGINA&#x3d;1#detalhes">BASTOS &#x26d1;&#xfe0f;&#x1f1e7;&#x1f1f7;&#x1fae1;</a><small class="verified-email">basto1gbs&#x40;gmail.com</small><small class="text-muted">Perfil 15644 · Usuário 15979</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de BASTOS&#x20;&#x26d1;&#xfe0f;&#x1f1e7;&#x1f1f7;&#x1fae1;" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15644&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17923">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17923&amp;PAGINA&#x3d;1#detalhes">CARINA APARECIDA PEREIRA</a><small class="verified-email">carinaaparecidapereira67&#x40;gmail.com</small><small class="text-muted">Perfil 17923 · Usuário 20431</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de CARINA&#x20;APARECIDA&#x20;PEREIRA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17923&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-3303">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;3303&amp;PAGINA&#x3d;1#detalhes">CARLOS PIMENTA</a><small class="verified-email">pimenta.carlospimenta&#x40;gmail.com</small><small class="text-muted">Perfil 3303 · Usuário 14</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill ">Equipe</span><small class="text-muted">Concessão permanente</small><p class="verified-reason">Equipe</p><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de CARLOS&#x20;PIMENTA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;3303&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53857">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53857&amp;PAGINA&#x3d;1#detalhes">DEBORA MENEZES SA</a><small class="verified-email">deboramensa&#x40;gmail.com</small><small class="text-muted">Perfil 53857 · Usuário 107537</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de DEBORA&#x20;MENEZES&#x20;SA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53857&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-19432">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19432&amp;PAGINA&#x3d;1#detalhes">Deby Danoli</a><small class="verified-email">debydanoli&#x40;gmail.com</small><small class="text-muted">Perfil 19432 · Usuário 23893</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Deby&#x20;Danoli" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19432&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18744">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18744&amp;PAGINA&#x3d;1#detalhes">DINEUMA ABRANTES</a><small class="verified-email">dineumamcp&#x40;hotmail.com</small><small class="text-muted">Perfil 18744 · Usuário 22013</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de DINEUMA&#x20;ABRANTES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18744&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-54119">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54119&amp;PAGINA&#x3d;1#detalhes">ELISANGELA FRAGA</a><small class="verified-email">llisfraga&#x40;gmail.com</small><small class="text-muted">Perfil 54119 · Usuário 108359</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill ">Cortesia</span><small class="text-muted">Concessão permanente</small><p class="verified-reason">Cortesia</p><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ELISANGELA&#x20;FRAGA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;54119&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53850">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53850&amp;PAGINA&#x3d;1#detalhes">FABRICIO D&rsquo;AVILA</a><small class="verified-email">fabriciodavilla&#x40;gmail.com</small><small class="text-muted">Perfil 53850 · Usuário 107521</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de FABRICIO&#x20;D&rsquo;AVILA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53850&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18537">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18537&amp;PAGINA&#x3d;1#detalhes">Fl&aacute;vio Albuquerque</a><small class="verified-email">fa2304905&#x40;gmail.com</small><small class="text-muted">Perfil 18537 · Usuário 21596</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Fl&aacute;vio&#x20;Albuquerque" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18537&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53134">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53134&amp;PAGINA&#x3d;1#detalhes">FLAVIO JIMENEZ</a><small class="verified-email">flaviojvf&#x40;gmail.com</small><small class="text-muted">Perfil 53134 · Usuário 105299</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de FLAVIO&#x20;JIMENEZ" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53134&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53754">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53754&amp;PAGINA&#x3d;1#detalhes">FRANCIENE LOPES</a><small class="verified-email">franlopest&#x40;gmail.com</small><small class="text-muted">Perfil 53754 · Usuário 107255</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de FRANCIENE&#x20;LOPES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53754&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53296">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53296&amp;PAGINA&#x3d;1#detalhes">GABI LA ROSA</a><small class="verified-email">corregablarosa&#x40;gmail.com</small><small class="text-muted">Perfil 53296 · Usuário 105742</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small><small class="verified-pending">Cadastro com anotação de cancelamento/estorno</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de GABI&#x20;LA&#x20;ROSA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53296&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-95">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;95&amp;PAGINA&#x3d;1#detalhes">Geraldo Protta</a><small class="verified-email">geraldo&#x40;protta.com.br</small><small class="text-muted">Perfil 95 · Usuário 142</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill ">Equipe</span><small class="text-muted">Concessão permanente</small><p class="verified-reason">Equipe</p><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Geraldo&#x20;Protta" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;95&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53015">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53015&amp;PAGINA&#x3d;1#detalhes">GISELE LIMA</a><small class="verified-email">giselelima.personaltrainer&#x40;gmail.com</small><small class="text-muted">Perfil 53015 · Usuário 105013</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de GISELE&#x20;LIMA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53015&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-28882">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;28882&amp;PAGINA&#x3d;1#detalhes">GUILHERME NETO</a><small class="verified-email">guilherme090209&#x40;gmail.com</small><small class="text-muted">Perfil 28882 · Usuário 49983</small></td>
+            <td><div class="verified-origin-list"><span class="verified-pill ">Atleta de elite</span><small class="text-muted">Concessão permanente</small><p class="verified-reason">Atleta de elite &mdash; classifica&ccedil;&atilde;o autorizada por Leonardo Sobral em 24&#x2f;11&#x2f;2026. Resultado vinculado ao usu&aacute;rio 49983&#x3a; BSB City Half Marathon, 06&#x2f;11&#x2f;2022, 21 km, categoria ELITEM, 4&ordm; colocado &#x28;resultado 1831949&#x29;. Ficha CBAt 24936&#x3a; https&#x3a;&#x2f;&#x2f;cbat.org.br&#x2f;atletas&#x2f;24936&#x2f;guilherme-neto-de-sousa-ferreira.</p><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de GUILHERME&#x20;NETO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;28882&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18856">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18856&amp;PAGINA&#x3d;1#detalhes">ISRAEL BRANCO</a><small class="verified-email">israelbrancoo&#x40;gmail.com</small><small class="text-muted">Perfil 18856 · Usuário 22193</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de ISRAEL&#x20;BRANCO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18856&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17465">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17465&amp;PAGINA&#x3d;1#detalhes">IZABELA DE OLIVEIRA BULHOES</a><small class="verified-email">izabeladeoliveirabulhoes&#x40;gmail.com</small><small class="text-muted">Perfil 17465 · Usuário 19732</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de IZABELA&#x20;DE&#x20;OLIVEIRA&#x20;BULHOES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17465&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-9438">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;9438&amp;PAGINA&#x3d;1#detalhes">JEFERSON R. MENIN</a><small class="verified-email">menin10&#x40;hotmail.com</small><small class="text-muted">Perfil 9438 · Usuário 6603</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de JEFERSON&#x20;R.&#x20;MENIN" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;9438&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53820">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53820&amp;PAGINA&#x3d;1#detalhes">JHENYFER MONTEIRO SILVA</a><small class="verified-email">jhenyfersilva2406&#x40;gmail.com</small><small class="text-muted">Perfil 53820 · Usuário 107436</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de JHENYFER&#x20;MONTEIRO&#x20;SILVA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53820&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-15572">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15572&amp;PAGINA&#x3d;1#detalhes">JO&Atilde;O IMILDO TALINI DASSOLER</a><small class="verified-email">joaoimildodassoler&#x40;gmail.com</small><small class="text-muted">Perfil 15572 · Usuário 15696</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de JO&Atilde;O&#x20;IMILDO&#x20;TALINI&#x20;DASSOLER" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15572&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17888">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17888&amp;PAGINA&#x3d;1#detalhes">JOS&Eacute; XAVIER JUNIOR</a><small class="verified-email">xavier.ajem&#x40;gmail.com</small><small class="text-muted">Perfil 17888 · Usuário 20382</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de JOS&Eacute;&#x20;XAVIER&#x20;JUNIOR" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17888&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53025">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53025&amp;PAGINA&#x3d;1#detalhes">JULIO C&Eacute;SAR DA VANZZO ANSELMO</a><small class="verified-email">julio_davanzzo&#x40;hotmail.com</small><small class="text-muted">Perfil 53025 · Usuário 105037</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de JULIO&#x20;C&Eacute;SAR&#x20;DA&#x20;VANZZO&#x20;ANSELMO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53025&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18938">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18938&amp;PAGINA&#x3d;1#detalhes">K&Aacute;TIA CILENE</a><small class="verified-email">k.cilenes79&#x40;gmail.com</small><small class="text-muted">Perfil 18938 · Usuário 22325</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de K&Aacute;TIA&#x20;CILENE" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18938&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53789">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53789&amp;PAGINA&#x3d;1#detalhes">KELI PIERETTI</a><small class="verified-email">keliduran&#x40;yahoo.com.br</small><small class="text-muted">Perfil 53789 · Usuário 107350</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de KELI&#x20;PIERETTI" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53789&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-13813">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;13813&amp;PAGINA&#x3d;1#detalhes">LEONARDO BERGUERAND</a><small class="verified-email">lbx85p&#x40;gmail.com</small><small class="text-muted">Perfil 13813 · Usuário 12719</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de LEONARDO&#x20;BERGUERAND" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;13813&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53816">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53816&amp;PAGINA&#x3d;1#detalhes">LIZANDRA PEIXOTO</a><small class="verified-email">lizandra.farma&#x40;gmail.com</small><small class="text-muted">Perfil 53816 · Usuário 107428</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de LIZANDRA&#x20;PEIXOTO" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53816&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16236">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16236&amp;PAGINA&#x3d;1#detalhes">LUCIANA ANDRADE</a><small class="verified-email">luandrade.ief&#x40;gmail.com</small><small class="text-muted">Perfil 16236 · Usuário 17241</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de LUCIANA&#x20;ANDRADE" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16236&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18542">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18542&amp;PAGINA&#x3d;1#detalhes">Luciano Oliveira</a><small class="verified-email">luciano090179&#x40;gmail.com</small><small class="text-muted">Perfil 18542 · Usuário 21604</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Luciano&#x20;Oliveira" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18542&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-19144">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19144&amp;PAGINA&#x3d;1#detalhes">MA BRAGA</a><small class="verified-email">mabbraga79&#x40;gmail.com</small><small class="text-muted">Perfil 19144 · Usuário 22775</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de MA&#x20;BRAGA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19144&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-19288">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19288&amp;PAGINA&#x3d;1#detalhes">MARCOS GON&Ccedil;ALVES</a><small class="verified-email">marcos.jrr&#x40;gmail.com</small><small class="text-muted">Perfil 19288 · Usuário 23202</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de MARCOS&#x20;GON&Ccedil;ALVES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;19288&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-18996">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18996&amp;PAGINA&#x3d;1#detalhes">NELSON FONARI PALMA</a><small class="verified-email">fonaripalmanelson&#x40;gmail.com</small><small class="text-muted">Perfil 18996 · Usuário 22441</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de NELSON&#x20;FONARI&#x20;PALMA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;18996&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53067">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53067&amp;PAGINA&#x3d;1#detalhes">PAULO DIETER</a><small class="verified-email">paulodieter&#x40;gmail.com</small><small class="text-muted">Perfil 53067 · Usuário 105127</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de PAULO&#x20;DIETER" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53067&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53848">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53848&amp;PAGINA&#x3d;1#detalhes">PEDRO VINICIUS OLIVEIRA</a><small class="verified-email">agendapedro.o&#x40;gmail.com</small><small class="text-muted">Perfil 53848 · Usuário 107516</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de PEDRO&#x20;VINICIUS&#x20;OLIVEIRA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53848&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53794">
+            <td class="verified-select-cell"></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53794&amp;PAGINA&#x3d;1#detalhes">REJANE GRUNTOWSKI MENDES</a><small class="verified-email">rejanegmendes&#x40;gmail.com</small><small class="text-muted">Perfil 53794 · Usuário 107370</small></td>
+            <td><div class="verified-origin-list"><small class="text-muted">Concessão permanente</small><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small><small class="verified-pending">Conferir pagamento e validade</small></div> 
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de REJANE&#x20;GRUNTOWSKI&#x20;MENDES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53794&amp;PAGINA&#x3d;1#detalhes">Ver origens</a></td>
+        </tr> 
+    </tbody></table></div>
+    <a id="verified-bulk-jump" class="verified-bulk-jump" href="#verified-bulk-form" hidden>Voltar à classificação do lote ↑</a>
+    <nav class="verified-pagination" aria-label="Páginas da lista"><span>Página 1 de 2</span><div><a class="btn btn-outline-secondary" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2">Próxima</a></div></nav>
+    <p class="text-muted small">VIP/upgrade confirmado no cadastro identifica o vínculo e sai da fila de motivos desconhecidos. Pagamento e validade dependem da conciliação financeira. Estornos ficam no histórico. Datas de pagamento no horário de Brasília.</p>
+</section>
+</body></html>

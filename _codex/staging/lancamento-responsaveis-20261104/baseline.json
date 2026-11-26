@@ -1,0 +1,17 @@
+{
+  "estudos/includes/StudyAccess.cfc": {
+    "sha": "c3855f447122cbf9e8f84866215eb1adab35c7198db4825bf387df5a0a8e9340"
+  },
+  "estudos/lancamento/index.cfm": {
+    "sha": "52c0f7f6688d1ee39185aa180689e1f105d40fec966f3f709a0ea055e3755014"
+  },
+  "estudos/lancamento/lancamento.css": {
+    "sha": "6a98192fcc007b7ddbcc413336e174158493c85998281ccec53c9e2d6a0d023a"
+  },
+  "estudos/lancamento/checklist.cfm": {
+    "sha": "8fd0457b590e928b9f3d92c3719aa62ab09f738cf89d135ec210e9683afe05dd"
+  },
+  "estudos/lancamento/checklist.js": {
+    "sha": "829584699e374fb95eeebd90d098e4bb2d89c34181a155d8c0aac25cee3421c5"
+  }
+}

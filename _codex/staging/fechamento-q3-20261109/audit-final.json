@@ -1,0 +1,1567 @@
+{
+  "cells": [
+    {
+      "version": 2,
+      "id": 271,
+      "hash": "83af6da31212c7951741ef2d236bc51e"
+    },
+    {
+      "version": 1,
+      "id": 373,
+      "hash": "2b6ca4860dbd619b2271eb57da89a934"
+    },
+    {
+      "version": 1,
+      "id": 374,
+      "hash": "476a2159a62f8919a03b42e8deeb5e7c"
+    },
+    {
+      "version": 1,
+      "id": 375,
+      "hash": "d17c56ac114fa17e6f29c8d783183221"
+    },
+    {
+      "version": 1,
+      "id": 379,
+      "hash": "d728addf3e2307b990a95c1377f2d6f2"
+    },
+    {
+      "version": 2,
+      "id": 357,
+      "hash": "efaccda9d74bb49dc2f8b2e521cd171c"
+    },
+    {
+      "version": 1,
+      "id": 248,
+      "hash": "4e3c5fc9cb7e93b632a2a6de8f3ec388"
+    },
+    {
+      "version": 1,
+      "id": 250,
+      "hash": "2208204f589994146d594dc04667b91b"
+    },
+    {
+      "version": 1,
+      "id": 272,
+      "hash": "7affd264026ca3208c5491a9bffd1df3"
+    },
+    {
+      "version": 1,
+      "id": 273,
+      "hash": "216c792f5a31c677b89b64dca3dac703"
+    },
+    {
+      "version": 1,
+      "id": 276,
+      "hash": "4199717cd35e7d6486f4663a4698324d"
+    },
+    {
+      "version": 1,
+      "id": 329,
+      "hash": "b5a6bf24ba34b4e3ae0f6df68d5272e1"
+    },
+    {
+      "version": 2,
+      "id": 274,
+      "hash": "1c1eee1867fe4f11849292e741c54078"
+    },
+    {
+      "version": 1,
+      "id": 275,
+      "hash": "6deacf4b1902a5987046935bad98606c"
+    },
+    {
+      "version": 1,
+      "id": 277,
+      "hash": "d78f60a571d43dc85d39fce757b1d1f8"
+    },
+    {
+      "version": 1,
+      "id": 278,
+      "hash": "13cd472cb3391f56bb5d6ef86607e5ab"
+    },
+    {
+      "version": 1,
+      "id": 279,
+      "hash": "9052c0f7928da3a6685b272511085f98"
+    },
+    {
+      "version": 1,
+      "id": 330,
+      "hash": "23f69354f025747b3f88879b82c71435"
+    },
+    {
+      "version": 2,
+      "id": 331,
+      "hash": "97f47ec1ecd59739aa3fad87c7d822a1"
+    },
+    {
+      "version": 2,
+      "id": 335,
+      "hash": "a4410334f30db8a99e81ecb299799e23"
+    },
+    {
+      "version": 1,
+      "id": 342,
+      "hash": "07640b24afd5110a044c5972eed5576d"
+    },
+    {
+      "version": 2,
+      "id": 343,
+      "hash": "68702d4bda25751b024b54181207639a"
+    },
+    {
+      "version": 1,
+      "id": 336,
+      "hash": "c4db763d043305b022a54b823fa74ec8"
+    },
+    {
+      "version": 1,
+      "id": 280,
+      "hash": "ed7d48f9b1b3f2f15d8a4a772bee2b27"
+    },
+    {
+      "version": 1,
+      "id": 424,
+      "hash": "4d61e8aedbcf6db679669f305d6e3041"
+    },
+    {
+      "version": 1,
+      "id": 432,
+      "hash": "5a0ac0d65cd162e0a1461cc8624954e0"
+    },
+    {
+      "version": 1,
+      "id": 439,
+      "hash": "69e1994ea38880a2de860a93df92ad1d"
+    },
+    {
+      "version": 1,
+      "id": 440,
+      "hash": "a07bf65a0d4e5be986fb80daf22e7649"
+    },
+    {
+      "version": 2,
+      "id": 281,
+      "hash": "a3d87111c7ceb096ca9e2532ea02d1fe"
+    },
+    {
+      "version": 2,
+      "id": 446,
+      "hash": "afbc9bf2902894b9ef47e594911a79a4"
+    },
+    {
+      "version": 2,
+      "id": 282,
+      "hash": "b6fde714c0d98ebababb2e31973d5c42"
+    },
+    {
+      "version": 1,
+      "id": 285,
+      "hash": "86651ed15fc94fd36caf5cf23ac8d517"
+    },
+    {
+      "version": 1,
+      "id": 283,
+      "hash": "a5cb7f69cd91434aa3cdc53af1e32394"
+    },
+    {
+      "version": 1,
+      "id": 284,
+      "hash": "43a3b1957db4e0461e3ad124883a1346"
+    },
+    {
+      "version": 1,
+      "id": 286,
+      "hash": "cf1fe980271ac9bdcf89f107eb0a628e"
+    },
+    {
+      "version": 1,
+      "id": 287,
+      "hash": "3e370b96c3959c7ab64d853d49dc5f82"
+    },
+    {
+      "version": 2,
+      "id": 288,
+      "hash": "264c8e96ad8cd2b5534da107892341e6"
+    },
+    {
+      "version": 2,
+      "id": 338,
+      "hash": "60b601f997a26f71ec8af88b9d9a963f"
+    },
+    {
+      "version": 1,
+      "id": 339,
+      "hash": "ddca83f546db99ea2f9c04d3875a45c9"
+    },
+    {
+      "version": 1,
+      "id": 358,
+      "hash": "1903e44e406cbc5d6c119f2716887bff"
+    },
+    {
+      "version": 1,
+      "id": 289,
+      "hash": "abfdb54f4436ea2830f70e0653e155e8"
+    },
+    {
+      "version": 1,
+      "id": 290,
+      "hash": "c6759f4c834a393ceb3dc0a56e321ccf"
+    },
+    {
+      "version": 1,
+      "id": 291,
+      "hash": "7c4987de4189f901adaf7ffa014d9248"
+    },
+    {
+      "version": 1,
+      "id": 292,
+      "hash": "08804ba4e5ea5f9e9691d84df5ddbeab"
+    },
+    {
+      "version": 2,
+      "id": 359,
+      "hash": "9d58122f60f0e09bff491f1d15d6566d"
+    },
+    {
+      "version": 2,
+      "id": 293,
+      "hash": "a48a3c2146ac8691393247a7b6bd1b8b"
+    },
+    {
+      "version": 2,
+      "id": 298,
+      "hash": "7f63824507dec9b6f2bc6dfb5cad74ff"
+    },
+    {
+      "version": 2,
+      "id": 337,
+      "hash": "4e4546994070f3f5d8ab42d25886ed02"
+    },
+    {
+      "version": 1,
+      "id": 345,
+      "hash": "2ed5e48f6d88b5687841241823c4cab5"
+    },
+    {
+      "version": 1,
+      "id": 151,
+      "hash": "fad6e86abfd7b646f9493517f2dc710f"
+    },
+    {
+      "version": 1,
+      "id": 347,
+      "hash": "3b62f4ca1bfdcbba8abecff8975c0f5a"
+    },
+    {
+      "version": 34,
+      "id": 249,
+      "hash": "a2524afe61bdba0dea881f66200546ac"
+    },
+    {
+      "version": 2,
+      "id": 353,
+      "hash": "c8abb7b003ded9d0df009776b2ab4882"
+    },
+    {
+      "version": 1,
+      "id": 294,
+      "hash": "037bbc23a8a039f5b4eb3cdeb737f701"
+    },
+    {
+      "version": 1,
+      "id": 299,
+      "hash": "76a23b22db78789df4e6bf1bc0b40d5b"
+    },
+    {
+      "version": 1,
+      "id": 300,
+      "hash": "1a2d3b12110aedd1fcabc9023f2c2273"
+    },
+    {
+      "version": 1,
+      "id": 301,
+      "hash": "c03a05a69df34443bca1a1dee4a7a2ca"
+    },
+    {
+      "version": 1,
+      "id": 302,
+      "hash": "1c961b265c15a804f9a41d6a0d494077"
+    },
+    {
+      "version": 1,
+      "id": 303,
+      "hash": "9f4c168506a2adeb5c11b1b2e4aec530"
+    },
+    {
+      "version": 1,
+      "id": 304,
+      "hash": "4cef33fc7576508ba5b9e41f2c4b47c1"
+    },
+    {
+      "version": 1,
+      "id": 307,
+      "hash": "3ff1e5da26d56df3792f93dab6a51878"
+    },
+    {
+      "version": 1,
+      "id": 433,
+      "hash": "21582991003b3734c6fe2717f89657eb"
+    },
+    {
+      "version": 4,
+      "id": 305,
+      "hash": "c38e07b71c46506e2541d4356d156ac5"
+    },
+    {
+      "version": 2,
+      "id": 306,
+      "hash": "1e1ccbceea43f7cd02f96fa0a699786a"
+    },
+    {
+      "version": 1,
+      "id": 295,
+      "hash": "eaf5d2c523a2010cd4e500f0642fa870"
+    },
+    {
+      "version": 1,
+      "id": 296,
+      "hash": "175b500c0f461b16780492c6e018a1a1"
+    },
+    {
+      "version": 1,
+      "id": 297,
+      "hash": "854ed95870d8776eb11c8fa06363d53a"
+    },
+    {
+      "version": 1,
+      "id": 308,
+      "hash": "e69d2b3c2fdb8b9f15c517eb4713953a"
+    },
+    {
+      "version": 1,
+      "id": 309,
+      "hash": "fc1347989e54397e965d4000235cb110"
+    },
+    {
+      "version": 1,
+      "id": 310,
+      "hash": "dd1ed4d07be30edff993168d43fb77da"
+    },
+    {
+      "version": 3,
+      "id": 312,
+      "hash": "ad7c807bfb8c7775399d1c27603db1e4"
+    },
+    {
+      "version": 3,
+      "id": 451,
+      "hash": "8f1f34e744f758ffc7ab360751fe8c74"
+    },
+    {
+      "version": 1,
+      "id": 152,
+      "hash": "a9d77f3a97fab756299c5782d0160f7c"
+    },
+    {
+      "version": 1,
+      "id": 153,
+      "hash": "f741766bd1fc6b7c3ab5298b04dcfbbb"
+    },
+    {
+      "version": 1,
+      "id": 154,
+      "hash": "fda88a7efbb60d26675c3eb026ec5621"
+    },
+    {
+      "version": 1,
+      "id": 155,
+      "hash": "951f273ea1ead95dc6624d5bc6fecf39"
+    },
+    {
+      "version": 1,
+      "id": 156,
+      "hash": "a15f59bfa62e638ebc4ef5b650a57e67"
+    },
+    {
+      "version": 1,
+      "id": 157,
+      "hash": "70479bcf2cd1fe285030cc1753227272"
+    },
+    {
+      "version": 1,
+      "id": 158,
+      "hash": "6e34fff212b8de1d2a9a23207408ff2f"
+    },
+    {
+      "version": 1,
+      "id": 166,
+      "hash": "560f9f9e271f269b09b5554603080ebc"
+    },
+    {
+      "version": 1,
+      "id": 159,
+      "hash": "83da6dcfdd28d0d29953c3328fc37f7c"
+    },
+    {
+      "version": 1,
+      "id": 160,
+      "hash": "561f11ed892aee6c25dfdad18fa680d5"
+    },
+    {
+      "version": 1,
+      "id": 161,
+      "hash": "3daf4ec38150f6ab72dc4fc045d804aa"
+    },
+    {
+      "version": 1,
+      "id": 311,
+      "hash": "79d733b31f829b66e92a3edd699264b4"
+    },
+    {
+      "version": 1,
+      "id": 313,
+      "hash": "93082cfaf0c6fc7f2875a3019eead98a"
+    },
+    {
+      "version": 1,
+      "id": 164,
+      "hash": "49acd3451ce4f4429c6aa1aa4b2fac9f"
+    },
+    {
+      "version": 1,
+      "id": 165,
+      "hash": "eaeb79bfb3071bf1076523a69b0b64ea"
+    },
+    {
+      "version": 1,
+      "id": 314,
+      "hash": "cec8c4a7bdfe899e4301ee0baf2cd1ef"
+    },
+    {
+      "version": 1,
+      "id": 168,
+      "hash": "02ccfd3a0927a27c699bbf226afbc7d8"
+    },
+    {
+      "version": 1,
+      "id": 169,
+      "hash": "941971371e5661c853cb9467cbb1dfff"
+    },
+    {
+      "version": 1,
+      "id": 170,
+      "hash": "325fc81d1f8bacbd95292e9287d843be"
+    },
+    {
+      "version": 1,
+      "id": 171,
+      "hash": "a4e438cca37894cd7f6b2c2728f031c8"
+    },
+    {
+      "version": 1,
+      "id": 172,
+      "hash": "760b40394fe9909698ff8096c79abde2"
+    },
+    {
+      "version": 1,
+      "id": 173,
+      "hash": "20335ee5821363adee6defe319e70773"
+    },
+    {
+      "version": 1,
+      "id": 174,
+      "hash": "663edbc687e6559102d1f69074303b48"
+    },
+    {
+      "version": 1,
+      "id": 175,
+      "hash": "c6d8d8b6451ec75067c73ef7b5aca503"
+    },
+    {
+      "version": 1,
+      "id": 176,
+      "hash": "3e6337a7f9bf3d25ee1d822263e4153d"
+    },
+    {
+      "version": 1,
+      "id": 177,
+      "hash": "9ccda92d5c996ec4ed915a968317f932"
+    },
+    {
+      "version": 1,
+      "id": 178,
+      "hash": "57ca0268727dd9b4b56246e69acb2e2f"
+    },
+    {
+      "version": 1,
+      "id": 179,
+      "hash": "4dc7a1539e1727a00b5db9fc0709de58"
+    },
+    {
+      "version": 1,
+      "id": 180,
+      "hash": "cd1bf6c60918f2705fa6809bec2a5c92"
+    },
+    {
+      "version": 1,
+      "id": 181,
+      "hash": "f70193cc6ed9f295bfc5ccefc9b06ab7"
+    },
+    {
+      "version": 1,
+      "id": 182,
+      "hash": "532eb9ea130bdbcbd428c2b41272085a"
+    },
+    {
+      "version": 1,
+      "id": 183,
+      "hash": "c943d8f76c90429f3f144020b67517d9"
+    },
+    {
+      "version": 1,
+      "id": 184,
+      "hash": "445640ce0537b03b9c545aa292a4b1a6"
+    },
+    {
+      "version": 1,
+      "id": 185,
+      "hash": "dc270871c8eb4277b96faebfa80f6b89"
+    },
+    {
+      "version": 1,
+      "id": 186,
+      "hash": "9d42c8f967a640d0b6f2d96c234a3e33"
+    },
+    {
+      "version": 1,
+      "id": 187,
+      "hash": "ead0c36663c7d14b6960656b165884ad"
+    },
+    {
+      "version": 1,
+      "id": 188,
+      "hash": "8cfce5fef5bcf801f8ec2dce2c6980cd"
+    },
+    {
+      "version": 1,
+      "id": 189,
+      "hash": "330eb0e7072cfcd6fc8c9669a3cca1ff"
+    },
+    {
+      "version": 1,
+      "id": 190,
+      "hash": "b59585fab8a6827ba8a7f95bf86de35e"
+    },
+    {
+      "version": 1,
+      "id": 191,
+      "hash": "f55679ae171df23800c4bab3396ab43f"
+    },
+    {
+      "version": 1,
+      "id": 192,
+      "hash": "f9daa347089adf7fb848cd87ff4a58bd"
+    },
+    {
+      "version": 1,
+      "id": 253,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "version": 1,
+      "id": 193,
+      "hash": "2655bf81562a47faa68e4cca11f2ca58"
+    },
+    {
+      "version": 1,
+      "id": 194,
+      "hash": "a370210a6866417a1c9b453544d01e12"
+    },
+    {
+      "version": 1,
+      "id": 195,
+      "hash": "5a563aeee1c3c2c80800f7f6c16906de"
+    },
+    {
+      "version": 1,
+      "id": 196,
+      "hash": "9d77f0cd1632d80b6177a1c4a0c61a55"
+    },
+    {
+      "version": 1,
+      "id": 197,
+      "hash": "596c2bb512f0eea4cf2e08bc693a0315"
+    },
+    {
+      "version": 1,
+      "id": 198,
+      "hash": "58e6bdd972081967243e17d78ef8c4b5"
+    },
+    {
+      "version": 1,
+      "id": 199,
+      "hash": "768031603533164df72a0dd1b40dd5b4"
+    },
+    {
+      "version": 1,
+      "id": 200,
+      "hash": "40bac15c87f0cb861e294f82a6a1bfb9"
+    },
+    {
+      "version": 1,
+      "id": 201,
+      "hash": "b9e0e3678ff27134c85b4c9b0658d58c"
+    },
+    {
+      "version": 1,
+      "id": 202,
+      "hash": "f5e67e7756c0bf5802e2ea95bd76ce48"
+    },
+    {
+      "version": 1,
+      "id": 203,
+      "hash": "7cbbaf28bc6464a11bf9aab75b600e60"
+    },
+    {
+      "version": 1,
+      "id": 204,
+      "hash": "ba9713fa807054d1c73162090d4ccc99"
+    },
+    {
+      "version": 1,
+      "id": 205,
+      "hash": "16383b3f37cde9a38df0d7930cb50973"
+    },
+    {
+      "version": 1,
+      "id": 206,
+      "hash": "393a7eca93cb9e42aa5e96cfeddfd2ec"
+    },
+    {
+      "version": 1,
+      "id": 234,
+      "hash": "dd5dba926fb7173a43af9e5628a273d5"
+    },
+    {
+      "version": 1,
+      "id": 207,
+      "hash": "12a643002c508a2adc7f2e9ace1f9fe9"
+    },
+    {
+      "version": 1,
+      "id": 208,
+      "hash": "98f036835a9333b4cc8f340416550f0d"
+    },
+    {
+      "version": 1,
+      "id": 209,
+      "hash": "dff258f1ab6c272d181f9025bfd18cde"
+    },
+    {
+      "version": 1,
+      "id": 210,
+      "hash": "ccef5fce4ca629d0ed8718023ba1538b"
+    },
+    {
+      "version": 1,
+      "id": 211,
+      "hash": "aff0142bcff036150b418433ff944f16"
+    },
+    {
+      "version": 1,
+      "id": 212,
+      "hash": "172efe7dfde1dcb8b8b14b37e00ced9e"
+    },
+    {
+      "version": 1,
+      "id": 213,
+      "hash": "da2946e4aa008122d26cf1e52f871efa"
+    },
+    {
+      "version": 1,
+      "id": 214,
+      "hash": "9542665d864624b6ee91a1142cbebeda"
+    },
+    {
+      "version": 1,
+      "id": 215,
+      "hash": "df2536be8347d67c18a747d2667c1d3c"
+    },
+    {
+      "version": 1,
+      "id": 216,
+      "hash": "e868dfb42f1136f5e87c4cf3a1d959a9"
+    },
+    {
+      "version": 1,
+      "id": 217,
+      "hash": "de5ea55a3c6213684eef81814317c809"
+    },
+    {
+      "version": 1,
+      "id": 218,
+      "hash": "513a484e4ebf3919a8141d168aa3ae1e"
+    },
+    {
+      "version": 1,
+      "id": 219,
+      "hash": "f9ae21bef9aa1ac3d3b4523040342d48"
+    },
+    {
+      "version": 1,
+      "id": 220,
+      "hash": "22885d78d46bc72bcc903bf881546142"
+    },
+    {
+      "version": 1,
+      "id": 221,
+      "hash": "0ca988913dfcb596b5119b6d588a821f"
+    },
+    {
+      "version": 1,
+      "id": 222,
+      "hash": "60b6ddf655d2a0d18181e999070fd915"
+    },
+    {
+      "version": 1,
+      "id": 223,
+      "hash": "61fa26e6a98d6df0a39a2f3bad829f36"
+    },
+    {
+      "version": 1,
+      "id": 224,
+      "hash": "0a5a9b8fe456721862fedac38ccdf7d3"
+    },
+    {
+      "version": 1,
+      "id": 225,
+      "hash": "d9641d744dcaf99400a844156ed8797d"
+    },
+    {
+      "version": 1,
+      "id": 226,
+      "hash": "523736b88400168cd2d8e59def8c1a2b"
+    },
+    {
+      "version": 1,
+      "id": 227,
+      "hash": "2bc8a96d086b774644e5b34d57398a11"
+    },
+    {
+      "version": 1,
+      "id": 228,
+      "hash": "3c08b1041e9ef5b818d81574451840da"
+    },
+    {
+      "version": 2,
+      "id": 163,
+      "hash": "58f04e97f6ed81b8e54f189219766e82"
+    },
+    {
+      "version": 2,
+      "id": 162,
+      "hash": "2d9cb681869cd878dc2a3cdad68c7aab"
+    },
+    {
+      "version": 2,
+      "id": 167,
+      "hash": "d265583f80f421ebb0520bef544ab1c1"
+    },
+    {
+      "version": 1,
+      "id": 235,
+      "hash": "c293d4d1b08bdc197da3163039a8f4c3"
+    },
+    {
+      "version": 1,
+      "id": 229,
+      "hash": "dcfe24a17ae4f3a0c10f6d9c3df591d6"
+    },
+    {
+      "version": 1,
+      "id": 230,
+      "hash": "7a256ca968cee9619593d8d5da37c697"
+    },
+    {
+      "version": 1,
+      "id": 231,
+      "hash": "9025b308be3a54a8e92f8bcf93467a95"
+    },
+    {
+      "version": 1,
+      "id": 232,
+      "hash": "922e743d09582eac81c43a481cdf0d7a"
+    },
+    {
+      "version": 1,
+      "id": 233,
+      "hash": "588a041e992059d74589e62694988986"
+    },
+    {
+      "version": 1,
+      "id": 236,
+      "hash": "cfd78fdc6d9139660ac4d8298458e6ef"
+    },
+    {
+      "version": 1,
+      "id": 237,
+      "hash": "7fd24b18caa89f473353289d1d077af5"
+    },
+    {
+      "version": 1,
+      "id": 238,
+      "hash": "2c366349ccfa9ad2232d0c1111032e36"
+    },
+    {
+      "version": 1,
+      "id": 239,
+      "hash": "08eb05feba4ae277ad0dd4d988d43f7b"
+    },
+    {
+      "version": 1,
+      "id": 240,
+      "hash": "cc0a5fcae1260b160e54c9f2f20f8e37"
+    },
+    {
+      "version": 1,
+      "id": 241,
+      "hash": "cde81e07afb1bf2be47619e033b879cf"
+    },
+    {
+      "version": 1,
+      "id": 242,
+      "hash": "2c6c9d57be395668bc7be0704a5d1deb"
+    },
+    {
+      "version": 1,
+      "id": 243,
+      "hash": "96c017441a89bdb0f71460290df0fdde"
+    },
+    {
+      "version": 1,
+      "id": 315,
+      "hash": "bd71a0c131d65fa8cf0c39ceee47e258"
+    },
+    {
+      "version": 1,
+      "id": 355,
+      "hash": "ca3aeea6506c5c37c9dc70e8c981b3f4"
+    },
+    {
+      "version": 1,
+      "id": 360,
+      "hash": "40e042b3660f0d3645f5b608077f1ceb"
+    },
+    {
+      "version": 1,
+      "id": 361,
+      "hash": "8dffa590c1ab79de5e5f150f265b484f"
+    },
+    {
+      "version": 1,
+      "id": 362,
+      "hash": "9b9d2c9b0e9148abd7d0027be34f63bf"
+    },
+    {
+      "version": 1,
+      "id": 366,
+      "hash": "d09ce45c7bc47ccbfe9bd99b316888e6"
+    },
+    {
+      "version": 1,
+      "id": 367,
+      "hash": "8b31f498be53dbc36bf0d88ec7e7a45a"
+    },
+    {
+      "version": 1,
+      "id": 381,
+      "hash": "6d011692998315fc9f745e4f48aecbec"
+    },
+    {
+      "version": 2,
+      "id": 368,
+      "hash": "dc1828ab80ff95736e68f20d6280bdb0"
+    },
+    {
+      "version": 1,
+      "id": 254,
+      "hash": "51583d13c934e2d4806870a516f2144d"
+    },
+    {
+      "version": 1,
+      "id": 255,
+      "hash": "90887c3007712916e3b90004318b6fe7"
+    },
+    {
+      "version": 1,
+      "id": 257,
+      "hash": "81cbc51b0c2cd6bec86a4833dfdfda95"
+    },
+    {
+      "version": 1,
+      "id": 258,
+      "hash": "3f8bbb27dafe517fdf49b805ad33ebff"
+    },
+    {
+      "version": 1,
+      "id": 316,
+      "hash": "771c665d5f8cab209b03aadb873e1788"
+    },
+    {
+      "version": 1,
+      "id": 371,
+      "hash": "db6e6087b5e4cd33c93be1d46b440e2e"
+    },
+    {
+      "version": 1,
+      "id": 372,
+      "hash": "ec9b1e7805ae66b272a0b3458da8e60f"
+    },
+    {
+      "version": 12,
+      "id": 256,
+      "hash": "83d8424416d47abbc05e91a87a2230c8"
+    },
+    {
+      "version": 1,
+      "id": 365,
+      "hash": "c543ee2438276640641570ac6d2fd209"
+    },
+    {
+      "version": 1,
+      "id": 369,
+      "hash": "0a90ef6a1f53c50fc2340bb57d3ff566"
+    },
+    {
+      "version": 1,
+      "id": 370,
+      "hash": "320e094ebb05f6f298ec2653ba6ff525"
+    },
+    {
+      "version": 2,
+      "id": 259,
+      "hash": "40e042b3660f0d3645f5b608077f1ceb"
+    },
+    {
+      "version": 1,
+      "id": 260,
+      "hash": "79980c840313e80a5c05c4730605cc71"
+    },
+    {
+      "version": 1,
+      "id": 317,
+      "hash": "626015cb2bef6623120f06379ada6e29"
+    },
+    {
+      "version": 1,
+      "id": 318,
+      "hash": "5919ff168a7732cdfb44d195931c9036"
+    },
+    {
+      "version": 2,
+      "id": 264,
+      "hash": "73d5a0aa90f473685c6e8c3bfcbff5e4"
+    },
+    {
+      "version": 1,
+      "id": 266,
+      "hash": "81d8aa6c490071bbaebeb6e02de3ba11"
+    },
+    {
+      "version": 1,
+      "id": 319,
+      "hash": "b97b4c38a08571edb9554e16506fa72b"
+    },
+    {
+      "version": 1,
+      "id": 261,
+      "hash": "ad8e99f698ed898ac4d177dcc53bd877"
+    },
+    {
+      "version": 1,
+      "id": 262,
+      "hash": "1ba179a7e361b8e66d2c4ace939cc266"
+    },
+    {
+      "version": 1,
+      "id": 263,
+      "hash": "25570b694c58fb1774deb6c66ff8a3fd"
+    },
+    {
+      "version": 1,
+      "id": 320,
+      "hash": "7650b0497aa9e576f340a24048156d87"
+    },
+    {
+      "version": 1,
+      "id": 265,
+      "hash": "93956493b3e15c64eef4576d10767acd"
+    },
+    {
+      "version": 1,
+      "id": 376,
+      "hash": "32d7a2e7ca6c9a0b90f588a1ea8b8fb5"
+    },
+    {
+      "version": 1,
+      "id": 268,
+      "hash": "5e4e0bf1beaf143ece8679a3eb468498"
+    },
+    {
+      "version": 2,
+      "id": 267,
+      "hash": "00530b6afae006076c975af377969339"
+    },
+    {
+      "version": 1,
+      "id": 269,
+      "hash": "cc1dd898b7dbf7c0884949d44a2866d7"
+    },
+    {
+      "version": 1,
+      "id": 270,
+      "hash": "22a7b4e9b34d7dadd1bdc6829a84af6f"
+    },
+    {
+      "version": 1,
+      "id": 321,
+      "hash": "6eaeb02e7580ed14c22c07f1ee204efd"
+    },
+    {
+      "version": 1,
+      "id": 322,
+      "hash": "2da927f5d53bbd10bf907674dcb12cec"
+    },
+    {
+      "version": 1,
+      "id": 324,
+      "hash": "2e8b59f2bfba4c5ff1f24fa092630307"
+    },
+    {
+      "version": 3,
+      "id": 323,
+      "hash": "0a462a3fc15e784143fe2be428f8cb1e"
+    },
+    {
+      "version": 1,
+      "id": 397,
+      "hash": "fdf77b935e8c672611a3ec28ae6afe81"
+    },
+    {
+      "version": 1,
+      "id": 398,
+      "hash": "b537350ba8081926447f644060040966"
+    },
+    {
+      "version": 1,
+      "id": 405,
+      "hash": "5edb5eee08f563bf31b55631fe49f62b"
+    },
+    {
+      "version": 2,
+      "id": 407,
+      "hash": "5415f504da29056b98c8bdaf103759ad"
+    },
+    {
+      "version": 1,
+      "id": 412,
+      "hash": "58c439a5830304a847b6755215d2f3f5"
+    },
+    {
+      "version": 1,
+      "id": 414,
+      "hash": "e0a0c6cb01f141c6fd2bc014be2b5f8a"
+    },
+    {
+      "version": 1,
+      "id": 406,
+      "hash": "80351a309e9ba98d74a28742ae396b39"
+    },
+    {
+      "version": 1,
+      "id": 415,
+      "hash": "289b9d331fa8113a84c8d1dea6adb157"
+    },
+    {
+      "version": 1,
+      "id": 408,
+      "hash": "4d75194c86669ab9a79dedec31a74c3e"
+    },
+    {
+      "version": 1,
+      "id": 409,
+      "hash": "0b0a141d62b19df9b37537813cfb4c86"
+    },
+    {
+      "version": 1,
+      "id": 410,
+      "hash": "270099eff8efede7ed506f0346a59765"
+    },
+    {
+      "version": 8,
+      "id": 327,
+      "hash": "9af7b033c53bd94d962f0dab24a66452"
+    },
+    {
+      "version": 1,
+      "id": 422,
+      "hash": "147b2b29b86fad46596878b5e9e2a0f4"
+    },
+    {
+      "version": 2,
+      "id": 419,
+      "hash": "12df2be8e63420be235b8b48098ff892"
+    },
+    {
+      "version": 1,
+      "id": 325,
+      "hash": "9382ec44db5066f983d2488fed661c2c"
+    },
+    {
+      "version": 1,
+      "id": 326,
+      "hash": "37154b0537fa891b958ff632b0842c54"
+    },
+    {
+      "version": 1,
+      "id": 344,
+      "hash": "bb4411f36a10628e214bf69b75ee0614"
+    },
+    {
+      "version": 1,
+      "id": 328,
+      "hash": "bdfc9057faa476a68446c6fee36fcc6d"
+    },
+    {
+      "version": 1,
+      "id": 346,
+      "hash": "5e3ba96358a95b2fa81978e42c3402d6"
+    },
+    {
+      "version": 1,
+      "id": 348,
+      "hash": "9607fa2970ef7c761dbe5880250e84aa"
+    },
+    {
+      "version": 1,
+      "id": 349,
+      "hash": "aec4fe9f0bb44b21fe8d243e47901532"
+    },
+    {
+      "version": 1,
+      "id": 352,
+      "hash": "066e6d5d4b3923e42a03c744c9aa89c0"
+    },
+    {
+      "version": 1,
+      "id": 354,
+      "hash": "26c74f1de0413d24d0e0bf5a40a77d6d"
+    },
+    {
+      "version": 1,
+      "id": 332,
+      "hash": "1a5eb9ee3a13df8f640a5cee0e3c7069"
+    },
+    {
+      "version": 1,
+      "id": 333,
+      "hash": "b7cd042ac2a86965972e73129ff288ed"
+    },
+    {
+      "version": 1,
+      "id": 334,
+      "hash": "beab889bd0356027e042f4b546891f3a"
+    },
+    {
+      "version": 1,
+      "id": 356,
+      "hash": "4e1ceaa5c49d3d798bfc4ea0cfdd5003"
+    },
+    {
+      "version": 39,
+      "id": 251,
+      "hash": "ffe5674327153ebbad70ea13fb8746fe"
+    },
+    {
+      "version": 1,
+      "id": 341,
+      "hash": "82754e834ac182f378beee5a15a9b53c"
+    },
+    {
+      "version": 3,
+      "id": 340,
+      "hash": "760ecbaca02f83c2697371f2a720fe3e"
+    },
+    {
+      "version": 1,
+      "id": 363,
+      "hash": "5260eb380da4c90f235da4e9d7e34575"
+    },
+    {
+      "version": 1,
+      "id": 364,
+      "hash": "3be0100c05dd3f702ec20760a2373cba"
+    },
+    {
+      "version": 1,
+      "id": 377,
+      "hash": "a3c49bdba49c0cd2dd7ef99871e1400f"
+    },
+    {
+      "version": 1,
+      "id": 392,
+      "hash": "2316ec17531fcb6b5ebc826033d3e571"
+    },
+    {
+      "version": 1,
+      "id": 393,
+      "hash": "b3d4c79a6ed10a1ee2a1a60e2d94cda8"
+    },
+    {
+      "version": 1,
+      "id": 394,
+      "hash": "0b0ccb788b2d1f5e3def2ebd541f8727"
+    },
+    {
+      "version": 1,
+      "id": 395,
+      "hash": "2fb4adf25eff903db5d18e46784bf86c"
+    },
+    {
+      "version": 1,
+      "id": 396,
+      "hash": "635f354a4e63718b874cf4520034ecdd"
+    },
+    {
+      "version": 2,
+      "id": 380,
+      "hash": "42e95a7349ad3baa2330271fc76c5bdc"
+    },
+    {
+      "version": 1,
+      "id": 382,
+      "hash": "2fb2cba2c3ba33e7c7b60548b35dadad"
+    },
+    {
+      "version": 1,
+      "id": 383,
+      "hash": "d3d5da9b814a34a3724d6dfdd94415e5"
+    },
+    {
+      "version": 1,
+      "id": 388,
+      "hash": "231c756bc2c18bec90a4f301d1c50ba0"
+    },
+    {
+      "version": 1,
+      "id": 399,
+      "hash": "d71b0aec7d52f4027eaa1f1d3e843db0"
+    },
+    {
+      "version": 1,
+      "id": 400,
+      "hash": "4fd8112bba7921762f2fbd146fba5c97"
+    },
+    {
+      "version": 1,
+      "id": 401,
+      "hash": "27dd924690819226a584578b30ae78de"
+    },
+    {
+      "version": 1,
+      "id": 402,
+      "hash": "96ee22af41b989160c3c4b5620721b51"
+    },
+    {
+      "version": 1,
+      "id": 404,
+      "hash": "473ea54ed45ae1e364cd7f186e299349"
+    },
+    {
+      "version": 1,
+      "id": 423,
+      "hash": "d32767d51811080044ea67f5ec04f9ea"
+    },
+    {
+      "version": 1,
+      "id": 385,
+      "hash": "b0a9c7b87a8d2567915bbe7661679450"
+    },
+    {
+      "version": 1,
+      "id": 386,
+      "hash": "72187dcf955e02eddb46e0bcbb5bf83f"
+    },
+    {
+      "version": 1,
+      "id": 389,
+      "hash": "b1c9a3a8b6c7bc09f544ee428806f052"
+    },
+    {
+      "version": 1,
+      "id": 390,
+      "hash": "287ef975340f80ae02ffd7d10f9333f8"
+    },
+    {
+      "version": 1,
+      "id": 391,
+      "hash": "f6d953047d8495ef937895f3abae171c"
+    },
+    {
+      "version": 1,
+      "id": 403,
+      "hash": "577551a468117e453540f4dc1d8bd105"
+    },
+    {
+      "version": 1,
+      "id": 413,
+      "hash": "13cea4486605d353e5591e932050d7a0"
+    },
+    {
+      "version": 2,
+      "id": 378,
+      "hash": "3e14dbd8d6575d0dba68bf80be1e4d73"
+    },
+    {
+      "version": 2,
+      "id": 387,
+      "hash": "35703fc5a0cf344ed88976b5815cbad7"
+    },
+    {
+      "version": 2,
+      "id": 350,
+      "hash": "b60fc1ff64aba052abb2ceb22415541a"
+    },
+    {
+      "version": 1,
+      "id": 411,
+      "hash": "72503bd02eecf9e5b0e81d3d302acd55"
+    },
+    {
+      "version": 2,
+      "id": 351,
+      "hash": "0104c0e90e92d897637efed0b61d8e17"
+    },
+    {
+      "version": 3,
+      "id": 384,
+      "hash": "a4c7dae7b6dabd19a320f60f8ec9ac39"
+    },
+    {
+      "version": 1,
+      "id": 416,
+      "hash": "3e38c4e78f638cb2626e4c3661e7da03"
+    },
+    {
+      "version": 1,
+      "id": 417,
+      "hash": "62bc7b90c558db22a23f832444cd14cb"
+    },
+    {
+      "version": 1,
+      "id": 418,
+      "hash": "421256adea7cd84a1936c33dec688b95"
+    },
+    {
+      "version": 5,
+      "id": 420,
+      "hash": "088b39ccc4e183764d9384cd16f98cbb"
+    },
+    {
+      "version": 1,
+      "id": 421,
+      "hash": "b6a0d8faa015b640a7f39a598de181c7"
+    },
+    {
+      "version": 1,
+      "id": 425,
+      "hash": "9ab81399a65e68cfd017c19c50350c5f"
+    },
+    {
+      "version": 1,
+      "id": 426,
+      "hash": "bd5951fa76116a82cabc55fa3982906a"
+    },
+    {
+      "version": 1,
+      "id": 427,
+      "hash": "df0a1a6ff5c0eb6f11dba195ff0776ea"
+    },
+    {
+      "version": 1,
+      "id": 428,
+      "hash": "d9c5cd4e93a04a3c2bca23fbafb657de"
+    },
+    {
+      "version": 1,
+      "id": 429,
+      "hash": "6e1df3976fc2ab19cd461c43caf6d31f"
+    },
+    {
+      "version": 1,
+      "id": 430,
+      "hash": "ab3d2fbad06d0584a282235e5241714a"
+    },
+    {
+      "version": 1,
+      "id": 434,
+      "hash": "f725b0fa9757266d201b0abe862bcb79"
+    },
+    {
+      "version": 1,
+      "id": 435,
+      "hash": "712c09b61ea00e7d0a05b0a3f156f473"
+    },
+    {
+      "version": 1,
+      "id": 436,
+      "hash": "4d9bf6183610b411a8c667b00de205d2"
+    },
+    {
+      "version": 1,
+      "id": 441,
+      "hash": "6fe6c60f3c3af8e0af9eb43e9c867ee1"
+    },
+    {
+      "version": 1,
+      "id": 442,
+      "hash": "90bc9deeda2f4a7668c83afb2b1388da"
+    },
+    {
+      "version": 1,
+      "id": 444,
+      "hash": "c1dbe32a6b9e484f2d797364c6ea7f4e"
+    },
+    {
+      "version": 3,
+      "id": 445,
+      "hash": "a79ad29feb672b06d4f2c71318f7f715"
+    },
+    {
+      "version": 1,
+      "id": 447,
+      "hash": "f7fc1eb7d3ba0a83eca4a542f23e5dee"
+    },
+    {
+      "version": 1,
+      "id": 437,
+      "hash": "070c8b36b7bd1e3203d42e7cbf43eaef"
+    },
+    {
+      "version": 1,
+      "id": 438,
+      "hash": "46dcf9cbbf984d0b9d7b0cd49e0bfa5f"
+    },
+    {
+      "version": 1,
+      "id": 443,
+      "hash": "5db19967f9bfecfa18fea4c62dab4513"
+    },
+    {
+      "version": 2,
+      "id": 448,
+      "hash": "551941be935e42843ee6073baa3235e3"
+    },
+    {
+      "version": 2,
+      "id": 449,
+      "hash": "dc17262e8ef7770b0f7bcee677aadbd5"
+    },
+    {
+      "version": 2,
+      "id": 450,
+      "hash": "65396fcc130d254910c49bdc4e4ab3c0"
+    },
+    {
+      "version": 2,
+      "id": 452,
+      "hash": "8e21ff6a2dbaa341009d9bf5d917e64b"
+    },
+    {
+      "version": 2,
+      "id": 453,
+      "hash": "80c42f5347184a454d0f41b62ddf19f9"
+    }
+  ],
+  "scope": {
+    "version": 2,
+    "id": 419,
+    "content": "# Release Jan–Set 2026 — conteúdo fechado\n\nDecisão editorial de 10/10/2026. Fechar o que apresentar agora; normalizações da fonte podem continuar na próxima semana. Uma pendência de valor dentro do recorte aprovado aparece como **??**, nunca como zero ou estimativa. O anual mantém os temas adiados, sem se misturar às duas entregas Jan–Set.\n\n## Pública — seis perspectivas\n\n[Panorama público](https://roadrunners.run/brasilquecorreprovas/2026/): participação feminina; Millennials; distâncias curtas; interior versus capitais; peso do terceiro trimestre; concentração nas maiores provas. Percentuais e contexto de cada população. Sem volumes consolidados ou exportação da base profissional.\n\nO hotsite também explica o período, dá acesso ao kit, encaminha voucher/pedido profissional ou editorial e permite registrar interesse no anual. [Kit de divulgação](https://roadrunners.run/brasilquecorreprovas/2026/kit/): três pautas, artes verticais/horizontais, legendas/fontes e PDF público. Peças estáticas devem ser atualizadas se os percentuais forem revisados; nunca corrigir só o hotsite.\n\n## Profissional — completa dentro do recorte Jan–Set\n\n[Leitor no Business](https://business.roadrunners.run/estudos/leitor/?ano=2026). 37 páginas, com tabelas e CSV agregado, sem dados pessoais de atletas.\n\n| Capítulo | Pergunta / conteúdo apresentado |\n|---|---|\n| Panorama | Volume observado, perfil por gênero, distâncias e limites da base |\n| Mapeamento e coleta | Provas cadastradas, mapeadas e com resultado; cobertura do calendário conhecido sem dupla contagem |\n| Idades | Faixas, gênero, idades desconhecidas e data de referência 31/12 |\n| Gerações | Participação por geração, variações Alfa/Z em pontos percentuais e regra de proximidade das faixas |\n| Distâncias | Distribuição por distância, gênero e geração |\n| Ritmo | Tempos de 5 km, 10 km e meia maratona; população explicitada, sem ranking de atletas |\n| Geografia | Regiões, UFs, cidades, capital/interior e perfis regionais |\n| Calendário | Meses, trimestres, estações e comparação de Jan–Set 2025/2026; captura não equivale a crescimento de mercado |\n| Porte | Distribuição, mediana e concentração das participações por prova |\n| Maratonas | Dez maiores elegíveis na coleta; composição, tempos, sub4/sub3/sub2h30, melhores grupos e pódio parcial |\n| Road Runners | Perfil e atividades das contas cadastradas até o corte; atributos atuais não são crescimento anual |\n| Edição anual | Temas em preparação e interesse no produto separado |\n| Fontes e critérios | Período, populações, coletas, ausências, fontes e limites de comparação |\n\n## Guardados no anual\n\nPreços por categoria geral/kits/lotes; CNA; distribuição nacional de 42 km; auditoria cadastral de maratonas; quarto trimestre; possíveis verticais. Floripa já está recuperada no quadro revisado das dez maratonas. A correção da importação operacional não retira esse quadro da prévia. 2025 permanece comparação dinâmica, sem retomar a reprodução estática.\n\n## Regras para ?? e futuras correções\n\n- Valor explicitamente ausente na saída: JSON null. Na apresentação: **??**, com nota de revisão. Zero confirmado continua zero. Gráficos não inventam barra ou fatia.\n- A ausência não autoriza inferir por diferença, interpolar ou reaproveitar o valor de 2025.\n- CSV mantém ausência numérica em branco e conserva as notas e fontes; ?? é marca visual, não número.\n- Falha de acesso ou indisponibilidade do endpoint continua sendo erro/repetição de carga; não simular uma edição carregada com dados inventados.\n- Atualizar as queries temáticas aqui no notebook, sempre lendo a revisão atual antes de salvar. Conferir, congelar e só então montar outro pacote. Sem sobrescrever correções do DBA.\n- A publicação Q3 está fixada na 41/run233; a seleção profissional tem 113 séries. O anual segue sua saída própria (célula418), sem trocar o Q3 automaticamente.\n\n## Fechamento editorial versus divulgação\n\nConteúdo e apresentação fechados para revisão da equipe. A fonte pode ser normalizada e outra versão publicada sem reabrir o escopo. Responsáveis, destinatários e disparos continuam sob a equipe; não houve envio de convites, anúncio da parceria ou ativação de venda. [Central de materiais e cronograma](https://business.roadrunners.run/estudos/lancamento/).\n\n\n## Fechamento do lançamento — 09/11/2026\n\nEscopo Jan–Set mantido: público enxuto, profissional com os capítulos revisados e anual em preparação. O kit vigente tem cinco pautas, dez artes e PDF público de sete páginas. A execução interna atual é a v6; versões anteriores ficam preservadas.\n\nO leitor profissional e a leitura de imprensa de 2026 passam a destacar no calendário as edições pareadas e o calendário cadastrado, sem aumentar as 37 páginas. Fonte da coorte: célula 387 revisão 2, congelamento 231, já referenciada no pacote 41/run233. Narrativa pública: célula 420 revisão 5, congelamento 239. As séries derivadas de entrega comparativo_pareadas_amostra, comparativo_pareadas_concluintes e comparativo_pareadas_variacao preservam quantidades, taxa sem arredondamento e proveniência nos CSVs. Nenhuma consulta analítica foi reexecutada ou substituída por esta revisão de apresentação.\n\nA variação soma os concluintes de cada ano antes de dividir; não é média das variações de provas. Os dois indicadores usam universos distintos, sujeitos à captura. Não são pessoas únicas, censo ou medida isolada do crescimento real. Referência ausente/inválida mostra revisão, sem transformar ausência em zero nem impedir a leitura dos demais capítulos.\n\nMaratonas detalhado é apoio editorial separado, em revisão web. O capítulo das dez maiores elegíveis permanece na prévia principal. Preços/kits/lotes, CNA, ritmo nacional dos 42 km, auditoria cadastral e Q4 continuam no rascunho anual.\n\nLeo e Carlos são responsáveis conjuntos pelo lançamento, editorial, convites e suporte, conforme confirmação de 09/11. Piloto real, seleção de destinatários, aprovação final das peças, contrato/comunicação ABRACEO e decisões de acesso da imprensa continuam acompanhados na central; revisão técnica não valida essas etapas nem envia convites.\n"
+  },
+  "product": {
+    "status": "ACTIVE",
+    "publication": 41
+  },
+  "validation_events": 0,
+  "runs": [
+    {
+      "status": "ok",
+      "id": 231,
+      "frozen": true
+    },
+    {
+      "status": "ok",
+      "id": 233,
+      "frozen": true
+    },
+    {
+      "status": "ok",
+      "id": 239,
+      "frozen": true
+    }
+  ],
+  "steps": [
+    {
+      "notes": "PRÓXIMO PASSO: Leo e Carlos prepararem o acompanhamento de pedidos, dúvidas e repercussão entre 14 e 20/11.\n\nPRONTO\n• Cinco pautas no kit, com comparativos, fontes, artes e sugestões para Instagram e YouTube.\n• Release e convite curto centralizados; leitura profissional disponível para aprofundamento.\n• Gestão de pedidos, vouchers e acessos no Business.\n\nFALTA APÓS A ESTREIA\n• Acompanhar solicitações, resgates, dificuldades de leitura e dúvidas sobre os critérios.\n• Responder à imprensa e apoiar entrevistas, análises e reviews que surgirem.\n• Registrar matérias e publicações, feedback dos leitores e novas pautas.\n• Ajustar materiais quando houver correção de fonte e manter a fonte das queries no notebook.\n• Preparar uma segunda onda de divulgação com base no retorno real, com responsável e data definidos.",
+      "responsible": "Leo e Carlos",
+      "version": 553,
+      "step": "continuidade"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: concluir a aprovação do contrato e alinhar a comunicação com a ABRACEO até 12/11.\n\nPRONTO\n• Fluxo de primeiro acesso dos associados, pré-cadastros e vouchers preparado no Business.\n• Proposta da prévia por convite e do anual vendido separadamente já refletida nos materiais internos.\n• Benefício de 50% na compra antecipada do anual configurado e testado no primeiro acesso por voucher e CNPJ em 04/11.\n\nFALTA\n• Concluir a revisão e obter a aprovação das partes sobre o contrato.\n• Confirmar público elegível, responsabilidades, contrapartidas, uso das marcas e autorização da comunicação conjunta.\n• Ratificar no contrato os termos do benefício de 50% já configurado: público elegível, compra antecipada do anual, prazo e comunicação aos associados.\n• Validar prazo de resgate até 24/11 e a primeira onda de associados. Registrar aqui a aprovação e quem a confirmou.",
+      "responsible": "",
+      "version": 540,
+      "step": "contrato-abraceo"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: confirmar 6/1 e 11/1 conforme o fechamento e a revisão da edição anual de 2026.\n\nPRONTO\n• Notebook centralizado como fonte de queries e resultados congelados; base dinâmica e leitura web da prévia já disponíveis.\n• Produto anual separado da prévia, atualmente em rascunho.\n• Proposta: compra antecipada em 06/01/2027 e abertura geral em 11/01/2027.\n\nFALTA PARA JANEIRO\n• Fechar o quarto trimestre e o ano completo, revisar os recortes e gerar os congelamentos finais no notebook.\n• Nutrir e revisar os temas reservados ao anual: inscrições/categorias/kits/lotes, CNA e desempenho nacional dos 42 km.\n• Confirmar escopo, oferta, datas, benefício e acesso após o pagamento; validar a leitura final antes da estreia.\n• Gerar o PDF final depois da aprovação da versão web, se fizer parte da entrega.\n• Datas de janeiro continuam propostas. Estas pendências são do anual, não do recorte de três trimestres lançado em novembro.",
+      "responsible": "",
+      "version": 520,
+      "step": "edicao-anual"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: Leo e Carlos confirmarem horário e canais da divulgação de 13/11.\n\nPRONTO\n• Hotsite público com destaques e caminhos para solicitar acesso.\n• Kit, release, convite curto, artes para Instagram/YouTube e legendas disponíveis nos endereços atuais.\n• Chamada principal atualizada: +2,1% nas mesmas provas versus +33,9% no calendário cadastrado, comparando janeiro a setembro dos dois anos.\n\nFALTA PARA COLOCAR NA RUA\n• Confirmar a liberação das etapas de preparação e o texto autorizado sobre a parceria.\n• Fechar horário, perfis/canais, lista de imprensa e primeira onda de criadores e organizadores.\n• Publicar post principal e stories, encaminhar o release e enviar os convites autorizados com os links corretos.\n• Conferir o caminho do público geral ao pedido de acesso e organizar o suporte no dia.\n• Envios e postagens continuam pendentes de execução pela equipe; os materiais preparados não significam divulgação já realizada.",
+      "responsible": "Leo e Carlos",
+      "version": 552,
+      "step": "lancamento"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: concluir o piloto com convidados e revisar a abertura temporária da área de imprensa.\n\nPRONTO (04/11)\n• Hotsite, kit e central publicados; materiais preparados para 13/11 e links principais respondendo.\n• Área de imprensa oferece quatro edições: estudo principal e maratonas, 2025 e prévia 2026.\n• Cronograma e acompanhamento compartilhado funcionando no desktop e celular.\n• Primeiro acesso ABRACEO corrigido em 04/11: voucher e CNPJ registram o direito à compra antecipada do anual com 50%, sem duplicidade. Os 95 vouchers e seus vencimentos foram preservados.\n\nFALTA ATÉ 12/11\n• Conferir com convidados do piloto se o resgate confirma o benefício anual de 50% na conta. A regra já passou nos testes técnicos; falta a validação com leitores reais.\n• Definir se a imprensa continuará com acesso temporariamente aberto, sem login/código, ou voltará ao convite; testar o fluxo escolhido antes de divulgar.\n• Concluir o piloto com não administradores e revisar login, resgate, leitura e exportações.\n• Conferir aprovação do contrato, comunicação da parceria, chamadas, links e destinatários. Registrar a liberação final.\n\nCONFERÊNCIA TÉCNICA (09/11)\n• Comparativo publicado no Business e imprensa, com fontes e CSV; 37 páginas preservadas. Desktop e celular 390px conferidos. Metadados públicos e guia/v6 alinhados. Acesso administrativo aos PDFs e bloqueios anônimos conferidos. Leo e Carlos responsáveis; falta o piloto real e a liberação editorial/contratual.",
+      "responsible": "Leo e Carlos",
+      "version": 550,
+      "step": "liberacao"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: Leo e Carlos fazerem a conferência editorial final e fecharem as listas do piloto e de criadores.\n\nCONCLUÍDO (09/11)\n• Escopo Jan–Set separado em público enxuto, profissional e anual em preparação; mapa publicado nesta central.\n• Leitor profissional e imprensa com +2,1% nos concluintes das mesmas provas versus +33,9% no calendário, com 608 pares, contagens, fonte e CSV sem arredondamento. As 37 páginas foram preservadas.\n• Fontes conferidas: Q3 publicação 41/run233; coorte 231; narrativa pública 239. Queries analíticas e congelamentos preservados; revisão registrada na nota 419 do notebook.\n• Guia de 1 página atualizado e execução v6 com cinco pautas, dez artes, PDF público de 7 páginas e chamadas atuais. V5 e demais históricos preservados.\n• Descrição e imagem de compartilhamento do hotsite corrigidas.\n• Leo e Carlos confirmados para lançamento, editorial, convites e suporte.\n\nFALTA PARA ENCERRAR A ETAPA\n• Aprovação editorial final da leitura e das chamadas por Leo e Carlos.\n• Selecionar 5–10 leitores piloto e 5–8 criadores; aprovar destinatários e contatos.\n• Confirmar horário, canais e primeira onda de divulgação de 13/11.\n\nESCOPO PRESERVADO\n• Profissional: panorama/coleta, idades, gerações, distâncias, ritmo de 5/10/21 km, geografia, calendário, porte, dez maiores maratonas, perfil RR, fontes e CSVs.\n• Anual: preços/descontos/kits/lotes, CNA, ritmo nacional de 42 km, revisão cadastral e Q4. Maratonas detalhado: apoio separado, em revisão web.\n\nATÉ 12/11\nPiloto real nos dois caminhos (Business/imprensa), decisão sobre imprensa temporariamente aberta e indexação do hotsite, contrato/comunicação ABRACEO. Benefício de 50% já corrigido; resgate dos 95 vouchers até 24/11. Nenhum convite ou post enviado nesta revisão.",
+      "responsible": "Leo e Carlos",
+      "version": 549,
+      "step": "organizar"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: selecionar 5–10 leitores e autorizar os convites para testar o acesso completo.\n\nPRONTO (04/11)\n• Login Google, biblioteca, leitor profissional e gestão de convites no Business.\n• Primeiro acesso ABRACEO por CNPJ/voucher preparado; 95 vouchers nominais prontos, com resgate até 24/11. A regra de 50% na compra antecipada do anual foi corrigida e testada em 04/11; o benefício fica registrado no resgate.\n• Testes técnicos administrativos já executados em desktop e celular.\n\nFALTA\n• Ativar as campanhas de piloto/editorial quando houver autorização: ambas estão em rascunho e sem vouchers emitidos.\n• Testar com convidados reais: conta Google, e-mail correto, resgate, retorno posterior à biblioteca, gráficos e exportações, também no celular.\n• Conferir o primeiro acesso dos representantes e registrar problemas e correções.\n• Na conferência de 04/11: zero resgates, zero acessos concedidos e zero representantes declarados. O piloto com convidados ainda precisa acontecer.\n\n09/11: Leo e Carlos responsáveis. Leitor atualizado e conferido no Business e imprensa, inclusive a 390px. A validação técnica não substitui os 5–10 convidados reais.",
+      "responsible": "Leo e Carlos",
+      "version": 551,
+      "step": "piloto"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: fechar oferta, licença e checkout do anual durante novembro e dezembro.\n\nPRONTO\n• Funil definido: prévia pública enxuta → convite/conta Business → leitura profissional → oferta anual.\n• Produto anual de 2026 cadastrado em rascunho; infraestrutura de pagamento já existe no Business.\n• Primeiro acesso ABRACEO já registra o benefício de 50% na compra antecipada do anual quando o convite é resgatado (correção de 04/11).\n• Hipóteses de preço e benefício estão na central, ainda sujeitas à validação comercial.\n\nFALTA\n• Aprovar preço, licença, condições da oferta e público elegível à compra antecipada com 50% de desconto.\n• Integrar o benefício de 50% registrado no resgate à oferta/checkout do anual e validar a compra antecipada quando a venda for aberta.\n• Configurar a oferta do estudo no pagamento e testar compra, confirmação e liberação de leitura.\n• Preparar a comunicação com quem usou a prévia e os materiais comerciais antes do recesso.\n• Este trabalho prepara janeiro; não impede a estreia da prévia de 13/11.",
+      "responsible": "",
+      "version": 542,
+      "step": "venda-anual"
+    }
+  ],
+  "v5_sha256": "2f886359df22602ee7fa84029b48bd764bcf348f56ff71ceaa3e7ceb316fc1e8"
+}

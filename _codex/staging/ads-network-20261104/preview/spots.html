@@ -1,0 +1,33 @@
+<!doctype html><html lang="pt-br"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/mdb.min.css"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/style.css"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/cores_admin.css"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/business-ui.css"><body data-mdb-theme="dark" class="bg-dark-subtle"><main style="max-width:1250px;margin:20px auto;padding:16px">
+<link rel="stylesheet" href="https://business.roadrunners.run/assets/css/portal-banner-dashboard.css?v=rr-neutral-20261026"/>
+<section class="banner-dashboard">
+
+<header class="banner-header"><div><div class="banner-eyebrow">Administração · rede de publicidade</div><h1 class="h3">Sites e spots</h1><p>Cadastre onde os banners podem aparecer e copie o código de instalação.</p></div><a href="/portal/banners/" class="btn btn-outline-info">Voltar aos banners</a></header>
+<nav class="nav nav-tabs mb-4" aria-label="Cadastro da rede"><a class="nav-link" href="?tab=sites">Sites</a><a class="nav-link active" href="?tab=spots" aria-current="page">Spots</a><a class="nav-link" href="?tab=install">Código de instalação</a></nav>
+
+<section class="banner-panel"><h2 class="h5">Cadastrar spot</h2>
+<form method="post" action="?tab=spots" class="row g-3">
+<input type="hidden" name="csrf" value="synthetic-preview"/><input type="hidden" name="action" value="spot"/>
+<input type="hidden" name="id" value=""/><input type="hidden" name="version" value="0"/>
+<div class="col-md-6"><label for="inv-name">Nome</label><input id="inv-name" name="name" class="form-control" required minlength="2" maxlength="120" value=""/></div>
+<div class="col-md-6"><label for="inv-key">Identificador para instalação</label><input id="inv-key" name="key" class="form-control" required pattern="[a-z][a-z0-9-]{1,49}" maxlength="50" value=""/><small>Ex.: lateral-home. Depois de criado, permanece igual.</small></div>
+
+<div class="col-md-6"><label for="inv-site">Site</label><select id="inv-site" name="site_id" class="form-select" required><option value="">Selecione</option><option value="00000000-0000-4000-8000-000000000001">Site de demonstra&ccedil;&atilde;o</option></select></div>
+<div class="col-md-6"><label for="inv-page">Tipo de página</label><select id="inv-page" name="page_key" class="form-select"><option value="" selected>Geral / outras páginas</option><option value="home">Página inicial</option><option value="search">Busca</option><option value="state">Listagem de estado</option><option value="event">Página de evento</option><option value="athlete">Perfil de atleta</option></select></div>
+<div class="col-md-4"><label for="inv-region">Contexto regional da página</label><select id="inv-region" name="region_code" class="form-select"><option value="">Nacional / sem UF definida</option><option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option><option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option><option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option><option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option><option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option><option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option><option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option><option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option><option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option></select></div>
+<div class="col-md-4"><label for="inv-width">Largura de referência (px)</label><input id="inv-width" class="form-control" type="number" name="width" min="50" max="2400" required value="300"/></div>
+<div class="col-md-4"><label for="inv-height">Altura de referência (px)</label><input id="inv-height" class="form-control" type="number" name="height" min="50" max="2400" required value="250"/></div>
+<p class="small text-muted">A UF descreve o conteúdo da página, não a localização do visitante. Sem UF, concorrem banners de abrangência nacional. Use spots diferentes para páginas de estados diferentes. A imagem se adapta à largura disponível.</p>
+
+<div class="col-md-6"><label for="inv-status">Status</label><select id="inv-status" name="status" class="form-select"><option value="ACTIVE" selected>Ativo</option><option value="INACTIVE">Inativo</option></select><small>Inativar interrompe novas entregas neste spot.</small></div>
+<div class="col-12 d-flex gap-2"><button type="submit" class="btn btn-info">Salvar spot</button><a class="btn btn-outline-light" href="?tab=spots">Novo cadastro</a></div>
+</form></section>
+<section class="banner-panel"><h2 class="h5">Spots cadastrados</h2>
+<div class="table-responsive"><table class="table"><thead><tr><th>Nome</th><th>Site / contexto</th><th>Status</th><th>Ações</th></tr></thead><tbody>
+<tr><td><strong>Lateral da p&aacute;gina inicial</strong><small class="d-block">lateral-home</small></td><td>Site de demonstra&ccedil;&atilde;o<small class="d-block">home · SC · 300 × 250</small></td><td>Ativo</td><td><a class="btn btn-sm btn-outline-info" href="?tab=spots&amp;edit=00000000-0000-4000-8000-000000000002">Editar</a> <a class="btn btn-sm btn-outline-light" href="?tab=install&amp;spot=00000000-0000-4000-8000-000000000002">Código</a></td></tr>
+</tbody></table></div></section>
+</section>
+<script>
+document.querySelectorAll('[data-copy-code]').forEach(button=>button.addEventListener('click',async()=>{const field=document.getElementById(button.dataset.copyCode);const status=button.parentElement.querySelector('[data-copy-status]');try{await navigator.clipboard.writeText(field.value);status.textContent='Código copiado.';}catch(_){field.focus();field.select();status.textContent='Código selecionado. Use Ctrl+C ou ⌘C.';}}));
+</script>
+</main></body></html>

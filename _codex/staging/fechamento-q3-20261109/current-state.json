@@ -1,0 +1,4642 @@
+{
+  "cells": [
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T14:07:19.079671-03:00",
+        "cell_version": 2,
+        "id": 58
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-09-30T14:07:19.076354-03:00",
+      "id": 271,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T14:07:19.079671-03:00",
+        "cell_version": 2,
+        "id": 58,
+        "frozen": true
+      },
+      "hash": "83af6da31212c7951741ef2d236bc51e"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:03:30.74117-03:00",
+        "cell_version": 1,
+        "id": 183
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:03:30.736788-03:00",
+      "id": 373,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:03:30.74117-03:00",
+        "cell_version": 1,
+        "id": 183,
+        "frozen": true
+      },
+      "hash": "2b6ca4860dbd619b2271eb57da89a934"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:03:34.709146-03:00",
+        "cell_version": 1,
+        "id": 184
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:03:34.706306-03:00",
+      "id": 374,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:03:34.709146-03:00",
+        "cell_version": 1,
+        "id": 184,
+        "frozen": true
+      },
+      "hash": "476a2159a62f8919a03b42e8deeb5e7c"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:03:38.616216-03:00",
+        "cell_version": 1,
+        "id": 185
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:03:38.612901-03:00",
+      "id": 375,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:03:38.616216-03:00",
+        "cell_version": 1,
+        "id": 185,
+        "frozen": true
+      },
+      "hash": "d17c56ac114fa17e6f29c8d783183221"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:04:49.262314-03:00",
+        "cell_version": 1,
+        "id": 189
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:04:49.258053-03:00",
+      "id": 379,
+      "section": 47,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:04:49.262314-03:00",
+        "cell_version": 1,
+        "id": 189,
+        "frozen": true
+      },
+      "hash": "d728addf3e2307b990a95c1377f2d6f2"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:10:35.675609-03:00",
+        "cell_version": 2,
+        "id": 219
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-06T23:10:35.667774-03:00",
+      "id": 357,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:10:35.675609-03:00",
+        "cell_version": 2,
+        "id": 219,
+        "frozen": true
+      },
+      "hash": "efaccda9d74bb49dc2f8b2e521cd171c"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "web-bqc-2025-note",
+      "version": 1,
+      "updated_at": "2026-09-28T23:48:24.784401-03:00",
+      "id": 248,
+      "section": 54,
+      "last_run": null,
+      "hash": "4e3c5fc9cb7e93b632a2a6de8f3ec388"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "web-bqc-2026-note",
+      "version": 1,
+      "updated_at": "2026-09-28T23:48:24.787128-03:00",
+      "id": 250,
+      "section": 55,
+      "last_run": null,
+      "hash": "2208204f589994146d594dc04667b91b"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T14:08:51.826068-03:00",
+      "id": 272,
+      "section": 40,
+      "last_run": null,
+      "hash": "7affd264026ca3208c5491a9bffd1df3"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T22:14:08.340534-03:00",
+        "cell_version": 1,
+        "id": 59
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T22:14:08.329921-03:00",
+      "id": 273,
+      "section": 49,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T22:14:08.340534-03:00",
+        "cell_version": 1,
+        "id": 59,
+        "frozen": true
+      },
+      "hash": "216c792f5a31c677b89b64dca3dac703"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T22:20:48.234489-03:00",
+        "cell_version": 1,
+        "id": 62
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T22:20:48.230178-03:00",
+      "id": 276,
+      "section": 49,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T22:20:48.234489-03:00",
+        "cell_version": 1,
+        "id": 62,
+        "frozen": true
+      },
+      "hash": "4199717cd35e7d6486f4663a4698324d"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-03T08:09:13.236371-03:00",
+        "cell_version": 1,
+        "id": 129
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-03T08:09:13.227858-03:00",
+      "id": 329,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-03T08:09:13.236371-03:00",
+        "cell_version": 1,
+        "id": 129,
+        "frozen": true
+      },
+      "hash": "b5a6bf24ba34b4e3ae0f6df68d5272e1"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T22:17:55.054585-03:00",
+        "cell_version": 2,
+        "id": 60
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-09-30T22:17:55.046205-03:00",
+      "id": 274,
+      "section": 43,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T22:17:55.054585-03:00",
+        "cell_version": 2,
+        "id": 60,
+        "frozen": true
+      },
+      "hash": "1c1eee1867fe4f11849292e741c54078"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T22:19:03.253821-03:00",
+        "cell_version": 1,
+        "id": 61
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T22:19:03.24857-03:00",
+      "id": 275,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T22:19:03.253821-03:00",
+        "cell_version": 1,
+        "id": 61,
+        "frozen": true
+      },
+      "hash": "6deacf4b1902a5987046935bad98606c"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T22:27:47.557286-03:00",
+      "id": 277,
+      "section": 43,
+      "last_run": null,
+      "hash": "d78f60a571d43dc85d39fce757b1d1f8"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T22:27:47.560893-03:00",
+      "id": 278,
+      "section": 46,
+      "last_run": null,
+      "hash": "13cd472cb3391f56bb5d6ef86607e5ab"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T22:41:43.976821-03:00",
+      "id": 279,
+      "section": 49,
+      "last_run": null,
+      "hash": "9052c0f7928da3a6685b272511085f98"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-03T08:21:16.280858-03:00",
+        "cell_version": 1,
+        "id": 132
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-03T08:21:16.269264-03:00",
+      "id": 330,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-03T08:21:16.280858-03:00",
+        "cell_version": 1,
+        "id": 132,
+        "frozen": true
+      },
+      "hash": "23f69354f025747b3f88879b82c71435"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-03T10:26:20.986087-03:00",
+        "cell_version": 2,
+        "id": 134
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-03T10:26:20.977068-03:00",
+      "id": 331,
+      "section": 47,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-03T10:26:20.986087-03:00",
+        "cell_version": 2,
+        "id": 134,
+        "frozen": true
+      },
+      "hash": "97f47ec1ecd59739aa3fad87c7d822a1"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-03T12:40:29.353956-03:00",
+      "id": 335,
+      "section": 47,
+      "last_run": null,
+      "hash": "a4410334f30db8a99e81ecb299799e23"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T12:01:47.151048-03:00",
+      "id": 342,
+      "section": 60,
+      "last_run": null,
+      "hash": "07640b24afd5110a044c5972eed5576d"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:09:57.882601-03:00",
+        "cell_version": 2,
+        "id": 216
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-06T23:09:57.875074-03:00",
+      "id": 343,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:09:57.882601-03:00",
+        "cell_version": 2,
+        "id": 216,
+        "frozen": true
+      },
+      "hash": "68702d4bda25751b024b54181207639a"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T10:25:36.739125-03:00",
+        "cell_version": 1,
+        "id": 144
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T10:25:36.702301-03:00",
+      "id": 336,
+      "section": 58,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T10:25:36.739125-03:00",
+        "cell_version": 1,
+        "id": 144,
+        "frozen": true
+      },
+      "hash": "c4db763d043305b022a54b823fa74ec8"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T22:50:50.143004-03:00",
+        "cell_version": 1,
+        "id": 65
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T22:50:50.13742-03:00",
+      "id": 280,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T22:50:50.143004-03:00",
+        "cell_version": 1,
+        "id": 65,
+        "frozen": true
+      },
+      "hash": "ed7d48f9b1b3f2f15d8a4a772bee2b27"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:15:55.208972-03:00",
+        "cell_version": 1,
+        "id": 241
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:15:54.647596-03:00",
+      "id": 424,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:15:55.208972-03:00",
+        "cell_version": 1,
+        "id": 241,
+        "frozen": true
+      },
+      "hash": "4d61e8aedbcf6db679669f305d6e3041"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:47:19.599001-03:00",
+        "cell_version": 1,
+        "id": 248
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:47:18.737827-03:00",
+      "id": 432,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:47:19.599001-03:00",
+        "cell_version": 1,
+        "id": 248,
+        "frozen": true
+      },
+      "hash": "5a0ac0d65cd162e0a1461cc8624954e0"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T16:15:55.990646-03:00",
+        "cell_version": 1,
+        "id": 254
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T16:15:55.100845-03:00",
+      "id": 439,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T16:15:55.990646-03:00",
+        "cell_version": 1,
+        "id": 254,
+        "frozen": true
+      },
+      "hash": "69e1994ea38880a2de860a93df92ad1d"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T16:15:57.860919-03:00",
+        "cell_version": 1,
+        "id": 255
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T16:15:57.035923-03:00",
+      "id": 440,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T16:15:57.860919-03:00",
+        "cell_version": 1,
+        "id": 255,
+        "frozen": true
+      },
+      "hash": "a07bf65a0d4e5be986fb80daf22e7649"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T22:55:59.786809-03:00",
+        "cell_version": 2,
+        "id": 67
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-09-30T22:55:59.782757-03:00",
+      "id": 281,
+      "section": 48,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T22:55:59.786809-03:00",
+        "cell_version": 2,
+        "id": 67,
+        "frozen": true
+      },
+      "hash": "a3d87111c7ceb096ca9e2532ea02d1fe"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T16:49:24.965233-03:00",
+        "cell_version": 2,
+        "id": 261
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-19T16:49:24.452661-03:00",
+      "id": 446,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T16:49:24.965233-03:00",
+        "cell_version": 2,
+        "id": 261,
+        "frozen": true
+      },
+      "hash": "afbc9bf2902894b9ef47e594911a79a4"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T22:58:52.29977-03:00",
+        "cell_version": 2,
+        "id": 69
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-09-30T22:58:52.296265-03:00",
+      "id": 282,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T22:58:52.29977-03:00",
+        "cell_version": 2,
+        "id": 69,
+        "frozen": true
+      },
+      "hash": "b6fde714c0d98ebababb2e31973d5c42"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T23:08:53.528354-03:00",
+      "id": 285,
+      "section": 50,
+      "last_run": null,
+      "hash": "86651ed15fc94fd36caf5cf23ac8d517"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T23:00:54.269147-03:00",
+        "cell_version": 1,
+        "id": 70
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T23:00:54.254262-03:00",
+      "id": 283,
+      "section": 48,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T23:00:54.269147-03:00",
+        "cell_version": 1,
+        "id": 70,
+        "frozen": true
+      },
+      "hash": "a5cb7f69cd91434aa3cdc53af1e32394"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T23:00:54.298876-03:00",
+        "cell_version": 1,
+        "id": 71
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T23:00:54.294395-03:00",
+      "id": 284,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T23:00:54.298876-03:00",
+        "cell_version": 1,
+        "id": 71,
+        "frozen": true
+      },
+      "hash": "43a3b1957db4e0461e3ad124883a1346"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T23:08:53.531647-03:00",
+      "id": 286,
+      "section": 48,
+      "last_run": null,
+      "hash": "cf1fe980271ac9bdcf89f107eb0a628e"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T23:30:15.08219-03:00",
+        "cell_version": 1,
+        "id": 75
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T23:30:15.076126-03:00",
+      "id": 287,
+      "section": 44,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T23:30:15.08219-03:00",
+        "cell_version": 1,
+        "id": 75,
+        "frozen": true
+      },
+      "hash": "3e370b96c3959c7ab64d853d49dc5f82"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T23:31:11.69503-03:00",
+        "cell_version": 2,
+        "id": 77
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-09-30T23:31:11.690168-03:00",
+      "id": 288,
+      "section": 45,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T23:31:11.69503-03:00",
+        "cell_version": 2,
+        "id": 77,
+        "frozen": true
+      },
+      "hash": "264c8e96ad8cd2b5534da107892341e6"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T11:17:32.857278-03:00",
+        "cell_version": 2,
+        "id": 146
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-05T11:17:32.849578-03:00",
+      "id": 338,
+      "section": 58,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T11:17:32.857278-03:00",
+        "cell_version": 2,
+        "id": 146,
+        "frozen": true
+      },
+      "hash": "60b601f997a26f71ec8af88b9d9a963f"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T11:20:15.297116-03:00",
+      "id": 339,
+      "section": 59,
+      "last_run": null,
+      "hash": "ddca83f546db99ea2f9c04d3875a45c9"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:12:20.218047-03:00",
+        "cell_version": 1,
+        "id": 227
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:58:18.934127-03:00",
+      "id": 358,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:12:20.218047-03:00",
+        "cell_version": 1,
+        "id": 227,
+        "frozen": true
+      },
+      "hash": "1903e44e406cbc5d6c119f2716887bff"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T23:47:02.679955-03:00",
+      "id": 289,
+      "section": 44,
+      "last_run": null,
+      "hash": "abfdb54f4436ea2830f70e0653e155e8"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T23:47:02.684164-03:00",
+      "id": 290,
+      "section": 45,
+      "last_run": null,
+      "hash": "c6759f4c834a393ceb3dc0a56e321ccf"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T23:47:02.690794-03:00",
+        "cell_version": 1,
+        "id": 82
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T23:47:02.686597-03:00",
+      "id": 291,
+      "section": 45,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T23:47:02.690794-03:00",
+        "cell_version": 1,
+        "id": 82,
+        "frozen": true
+      },
+      "hash": "7c4987de4189f901adaf7ffa014d9248"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T00:05:17.508679-03:00",
+        "cell_version": 1,
+        "id": 83
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T00:05:17.504483-03:00",
+      "id": 292,
+      "section": 38,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T00:05:17.508679-03:00",
+        "cell_version": 1,
+        "id": 83,
+        "frozen": true
+      },
+      "hash": "08804ba4e5ea5f9e9691d84df5ddbeab"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:10:44.027936-03:00",
+        "cell_version": 2,
+        "id": 220
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-06T23:10:44.023467-03:00",
+      "id": 359,
+      "section": 45,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:10:44.027936-03:00",
+        "cell_version": 2,
+        "id": 220,
+        "frozen": true
+      },
+      "hash": "9d58122f60f0e09bff491f1d15d6566d"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-01T00:15:38.892139-03:00",
+      "id": 293,
+      "section": 38,
+      "last_run": null,
+      "hash": "a48a3c2146ac8691393247a7b6bd1b8b"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T07:10:30.840074-03:00",
+        "cell_version": 2,
+        "id": 92
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-01T07:10:30.829069-03:00",
+      "id": 298,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T07:10:30.840074-03:00",
+        "cell_version": 2,
+        "id": 92,
+        "frozen": true
+      },
+      "hash": "7f63824507dec9b6f2bc6dfb5cad74ff"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-05T11:20:11.024895-03:00",
+      "id": 337,
+      "section": 58,
+      "last_run": null,
+      "hash": "4e4546994070f3f5d8ab42d25886ed02"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T14:54:27.906779-03:00",
+        "cell_version": 1,
+        "id": 155
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:54:27.897827-03:00",
+      "id": 345,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T14:54:27.906779-03:00",
+        "cell_version": 1,
+        "id": 155,
+        "frozen": true
+      },
+      "hash": "2ed5e48f6d88b5687841241823c4cab5"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p00-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.224295-03:00",
+      "id": 151,
+      "section": 37,
+      "last_run": null,
+      "hash": "fad6e86abfd7b646f9493517f2dc710f"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:12:22.585759-03:00",
+        "cell_version": 1,
+        "id": 228
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:56:58.054139-03:00",
+      "id": 347,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:12:22.585759-03:00",
+        "cell_version": 1,
+        "id": 228,
+        "frozen": true
+      },
+      "hash": "3b62f4ca1bfdcbba8abecff8975c0f5a"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:35:03.080865-03:00",
+        "cell_version": 34,
+        "id": 205
+      },
+      "source_key": "web-bqc-2025-payload",
+      "version": 34,
+      "updated_at": "2026-10-05T15:35:03.061752-03:00",
+      "id": 249,
+      "section": 54,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:35:03.080865-03:00",
+        "cell_version": 34,
+        "id": 205,
+        "frozen": true
+      },
+      "hash": "a2524afe61bdba0dea881f66200546ac"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:10:21.051986-03:00",
+        "cell_version": 2,
+        "id": 218
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-06T23:10:21.046198-03:00",
+      "id": 353,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:10:21.051986-03:00",
+        "cell_version": 2,
+        "id": 218,
+        "frozen": true
+      },
+      "hash": "c8abb7b003ded9d0df009776b2ab4882"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T07:06:35.798764-03:00",
+        "cell_version": 1,
+        "id": 87
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T07:06:35.773264-03:00",
+      "id": 294,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T07:06:35.798764-03:00",
+        "cell_version": 1,
+        "id": 87,
+        "frozen": true
+      },
+      "hash": "037bbc23a8a039f5b4eb3cdeb737f701"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T07:28:15.543933-03:00",
+      "id": 299,
+      "section": 40,
+      "last_run": null,
+      "hash": "76a23b22db78789df4e6bf1bc0b40d5b"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T08:24:36.622294-03:00",
+        "cell_version": 1,
+        "id": 97
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T08:24:36.614944-03:00",
+      "id": 300,
+      "section": 46,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T08:24:36.622294-03:00",
+        "cell_version": 1,
+        "id": 97,
+        "frozen": true
+      },
+      "hash": "1a2d3b12110aedd1fcabc9023f2c2273"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T08:24:52.341116-03:00",
+        "cell_version": 1,
+        "id": 98
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T08:24:52.330284-03:00",
+      "id": 301,
+      "section": 48,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T08:24:52.341116-03:00",
+        "cell_version": 1,
+        "id": 98,
+        "frozen": true
+      },
+      "hash": "c03a05a69df34443bca1a1dee4a7a2ca"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T08:25:50.02081-03:00",
+        "cell_version": 1,
+        "id": 99
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T08:25:50.016349-03:00",
+      "id": 302,
+      "section": 46,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T08:25:50.02081-03:00",
+        "cell_version": 1,
+        "id": 99,
+        "frozen": true
+      },
+      "hash": "1c961b265c15a804f9a41d6a0d494077"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T08:35:14.505887-03:00",
+      "id": 303,
+      "section": 46,
+      "last_run": null,
+      "hash": "9f4c168506a2adeb5c11b1b2e4aec530"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T08:35:14.50862-03:00",
+      "id": 304,
+      "section": 48,
+      "last_run": null,
+      "hash": "4cef33fc7576508ba5b9e41f2c4b47c1"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T09:49:48.04681-03:00",
+      "id": 307,
+      "section": 50,
+      "last_run": null,
+      "hash": "3ff1e5da26d56df3792f93dab6a51878"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:47:55.132517-03:00",
+        "cell_version": 1,
+        "id": 249
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:47:54.397892-03:00",
+      "id": 433,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:47:55.132517-03:00",
+        "cell_version": 1,
+        "id": 249,
+        "frozen": true
+      },
+      "hash": "21582991003b3734c6fe2717f89657eb"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T09:44:58.491528-03:00",
+        "cell_version": 4,
+        "id": 104
+      },
+      "source_key": null,
+      "version": 4,
+      "updated_at": "2026-10-01T09:44:58.480919-03:00",
+      "id": 305,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T09:44:58.491528-03:00",
+        "cell_version": 4,
+        "id": 104,
+        "frozen": true
+      },
+      "hash": "c38e07b71c46506e2541d4356d156ac5"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T09:45:03.894367-03:00",
+        "cell_version": 2,
+        "id": 105
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-01T09:45:03.878544-03:00",
+      "id": 306,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T09:45:03.894367-03:00",
+        "cell_version": 2,
+        "id": 105,
+        "frozen": true
+      },
+      "hash": "1e1ccbceea43f7cd02f96fa0a699786a"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T07:07:58.762266-03:00",
+        "cell_version": 1,
+        "id": 88
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T07:07:58.740875-03:00",
+      "id": 295,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T07:07:58.762266-03:00",
+        "cell_version": 1,
+        "id": 88,
+        "frozen": true
+      },
+      "hash": "eaf5d2c523a2010cd4e500f0642fa870"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T07:08:09.865601-03:00",
+        "cell_version": 1,
+        "id": 89
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T07:08:09.845601-03:00",
+      "id": 296,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T07:08:09.865601-03:00",
+        "cell_version": 1,
+        "id": 89,
+        "frozen": true
+      },
+      "hash": "175b500c0f461b16780492c6e018a1a1"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T07:08:23.41316-03:00",
+        "cell_version": 1,
+        "id": 90
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T07:08:23.397603-03:00",
+      "id": 297,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T07:08:23.41316-03:00",
+        "cell_version": 1,
+        "id": 90,
+        "frozen": true
+      },
+      "hash": "854ed95870d8776eb11c8fa06363d53a"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T12:56:33.122376-03:00",
+        "cell_version": 1,
+        "id": 110
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T12:56:33.103056-03:00",
+      "id": 308,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T12:56:33.122376-03:00",
+        "cell_version": 1,
+        "id": 110,
+        "frozen": true
+      },
+      "hash": "e69d2b3c2fdb8b9f15c517eb4713953a"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T13:02:58.113732-03:00",
+        "cell_version": 1,
+        "id": 111
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T13:02:58.100141-03:00",
+      "id": 309,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T13:02:58.113732-03:00",
+        "cell_version": 1,
+        "id": 111,
+        "frozen": true
+      },
+      "hash": "fc1347989e54397e965d4000235cb110"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T13:13:41.505508-03:00",
+        "cell_version": 1,
+        "id": 113
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T13:13:41.486-03:00",
+      "id": 310,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T13:13:41.505508-03:00",
+        "cell_version": 1,
+        "id": 113,
+        "frozen": true
+      },
+      "hash": "dd1ed4d07be30edff993168d43fb77da"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T15:26:11.476865-03:00",
+        "cell_version": 3,
+        "id": 117
+      },
+      "source_key": null,
+      "version": 3,
+      "updated_at": "2026-10-01T15:26:11.4723-03:00",
+      "id": 312,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T15:26:11.476865-03:00",
+        "cell_version": 3,
+        "id": 117,
+        "frozen": true
+      },
+      "hash": "ad7c807bfb8c7775399d1c27603db1e4"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 3,
+      "updated_at": "2026-10-23T18:41:18.262032-03:00",
+      "id": 451,
+      "section": 67,
+      "last_run": null,
+      "hash": "8f1f34e744f758ffc7ab360751fe8c74"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p00-mapa",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.228668-03:00",
+      "id": 152,
+      "section": 37,
+      "last_run": null,
+      "hash": "a9d77f3a97fab756299c5782d0160f7c"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p03-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.22952-03:00",
+      "id": 153,
+      "section": 38,
+      "last_run": null,
+      "hash": "f741766bd1fc6b7c3ab5298b04dcfbbb"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p03-genero-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.230252-03:00",
+      "id": 154,
+      "section": 38,
+      "last_run": null,
+      "hash": "fda88a7efbb60d26675c3eb026ec5621"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:31:40.577141-03:00",
+        "cell_version": 1,
+        "id": 6
+      },
+      "source_key": "pdf-2025-p03-genero",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.230809-03:00",
+      "id": 155,
+      "section": 38,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:31:40.577141-03:00",
+        "cell_version": 1,
+        "id": 6,
+        "frozen": true
+      },
+      "hash": "951f273ea1ead95dc6624d5bc6fecf39"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p03-total-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.231307-03:00",
+      "id": 156,
+      "section": 38,
+      "last_run": null,
+      "hash": "a15f59bfa62e638ebc4ef5b650a57e67"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:32:48.853189-03:00",
+        "cell_version": 1,
+        "id": 7
+      },
+      "source_key": "pdf-2025-p03-total",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.231724-03:00",
+      "id": 157,
+      "section": 38,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:32:48.853189-03:00",
+        "cell_version": 1,
+        "id": 7,
+        "frozen": true
+      },
+      "hash": "70479bcf2cd1fe285030cc1753227272"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p03-eventos-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.232102-03:00",
+      "id": 158,
+      "section": 38,
+      "last_run": null,
+      "hash": "6e34fff212b8de1d2a9a23207408ff2f"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p05-historico-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.235731-03:00",
+      "id": 166,
+      "section": 40,
+      "last_run": null,
+      "hash": "560f9f9e271f269b09b5554603080ebc"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:33:28.366959-03:00",
+        "cell_version": 1,
+        "id": 8
+      },
+      "source_key": "pdf-2025-p03-eventos",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.232501-03:00",
+      "id": 159,
+      "section": 38,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:33:28.366959-03:00",
+        "cell_version": 1,
+        "id": 8,
+        "frozen": true
+      },
+      "hash": "83da6dcfdd28d0d29953c3328fc37f7c"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p03-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.232882-03:00",
+      "id": 160,
+      "section": 38,
+      "last_run": null,
+      "hash": "561f11ed892aee6c25dfdad18fa680d5"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p04-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.233353-03:00",
+      "id": 161,
+      "section": 39,
+      "last_run": null,
+      "hash": "3daf4ec38150f6ab72dc4fc045d804aa"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T13:27:35.606875-03:00",
+      "id": 311,
+      "section": 57,
+      "last_run": null,
+      "hash": "79d733b31f829b66e92a3edd699264b4"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T15:23:25.456322-03:00",
+        "cell_version": 1,
+        "id": 116
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T15:23:25.449081-03:00",
+      "id": 313,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T15:23:25.456322-03:00",
+        "cell_version": 1,
+        "id": 116,
+        "frozen": true
+      },
+      "hash": "93082cfaf0c6fc7f2875a3019eead98a"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p04-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.234821-03:00",
+      "id": 164,
+      "section": 39,
+      "last_run": null,
+      "hash": "49acd3451ce4f4429c6aa1aa4b2fac9f"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p05-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.235337-03:00",
+      "id": 165,
+      "section": 40,
+      "last_run": null,
+      "hash": "eaeb79bfb3071bf1076523a69b0b64ea"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T15:27:40.76934-03:00",
+        "cell_version": 1,
+        "id": 118
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T15:27:40.76437-03:00",
+      "id": 314,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T15:27:40.76934-03:00",
+        "cell_version": 1,
+        "id": 118,
+        "frozen": true
+      },
+      "hash": "cec8c4a7bdfe899e4301ee0baf2cd1ef"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p05-bi-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.236703-03:00",
+      "id": 168,
+      "section": 40,
+      "last_run": null,
+      "hash": "02ccfd3a0927a27c699bbf226afbc7d8"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:41:47.581466-03:00",
+        "cell_version": 1,
+        "id": 12
+      },
+      "source_key": "pdf-2025-p05-bi",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.237026-03:00",
+      "id": 169,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:41:47.581466-03:00",
+        "cell_version": 1,
+        "id": 12,
+        "frozen": true
+      },
+      "hash": "941971371e5661c853cb9467cbb1dfff"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p05-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.237387-03:00",
+      "id": 170,
+      "section": 40,
+      "last_run": null,
+      "hash": "325fc81d1f8bacbd95292e9287d843be"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p06-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.237893-03:00",
+      "id": 171,
+      "section": 41,
+      "last_run": null,
+      "hash": "a4e438cca37894cd7f6b2c2728f031c8"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p06-detalhe-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.238212-03:00",
+      "id": 172,
+      "section": 41,
+      "last_run": null,
+      "hash": "760b40394fe9909698ff8096c79abde2"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:42:07.533077-03:00",
+        "cell_version": 1,
+        "id": 13
+      },
+      "source_key": "pdf-2025-p06-detalhe",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.238553-03:00",
+      "id": 173,
+      "section": 41,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:42:07.533077-03:00",
+        "cell_version": 1,
+        "id": 13,
+        "frozen": true
+      },
+      "hash": "20335ee5821363adee6defe319e70773"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p06-padrao-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.238912-03:00",
+      "id": 174,
+      "section": 41,
+      "last_run": null,
+      "hash": "663edbc687e6559102d1f69074303b48"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:42:12.135901-03:00",
+        "cell_version": 1,
+        "id": 14
+      },
+      "source_key": "pdf-2025-p06-padrao",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.239368-03:00",
+      "id": 175,
+      "section": 41,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:42:12.135901-03:00",
+        "cell_version": 1,
+        "id": 14,
+        "frozen": true
+      },
+      "hash": "c6d8d8b6451ec75067c73ef7b5aca503"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p06-faixas-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.239756-03:00",
+      "id": 176,
+      "section": 41,
+      "last_run": null,
+      "hash": "3e6337a7f9bf3d25ee1d822263e4153d"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:42:25.630758-03:00",
+        "cell_version": 1,
+        "id": 15
+      },
+      "source_key": "pdf-2025-p06-faixas",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.240125-03:00",
+      "id": 177,
+      "section": 41,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:42:25.630758-03:00",
+        "cell_version": 1,
+        "id": 15,
+        "frozen": true
+      },
+      "hash": "9ccda92d5c996ec4ed915a968317f932"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p06-sexo-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.240512-03:00",
+      "id": 178,
+      "section": 41,
+      "last_run": null,
+      "hash": "57ca0268727dd9b4b56246e69acb2e2f"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:42:30.01158-03:00",
+        "cell_version": 1,
+        "id": 16
+      },
+      "source_key": "pdf-2025-p06-sexo",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.240974-03:00",
+      "id": 179,
+      "section": 41,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:42:30.01158-03:00",
+        "cell_version": 1,
+        "id": 16,
+        "frozen": true
+      },
+      "hash": "4dc7a1539e1727a00b5db9fc0709de58"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p06-presenca-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.241368-03:00",
+      "id": 180,
+      "section": 41,
+      "last_run": null,
+      "hash": "cd1bf6c60918f2705fa6809bec2a5c92"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:42:34.868361-03:00",
+        "cell_version": 1,
+        "id": 17
+      },
+      "source_key": "pdf-2025-p06-presenca",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.24178-03:00",
+      "id": 181,
+      "section": 41,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:42:34.868361-03:00",
+        "cell_version": 1,
+        "id": 17,
+        "frozen": true
+      },
+      "hash": "f70193cc6ed9f295bfc5ccefc9b06ab7"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p06-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.242145-03:00",
+      "id": 182,
+      "section": 41,
+      "last_run": null,
+      "hash": "532eb9ea130bdbcbd428c2b41272085a"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p07-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.242735-03:00",
+      "id": 183,
+      "section": 42,
+      "last_run": null,
+      "hash": "c943d8f76c90429f3f144020b67517d9"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p07-geracoes-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.243108-03:00",
+      "id": 184,
+      "section": 42,
+      "last_run": null,
+      "hash": "445640ce0537b03b9c545aa292a4b1a6"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:42:49.831567-03:00",
+        "cell_version": 1,
+        "id": 18
+      },
+      "source_key": "pdf-2025-p07-geracoes",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.24352-03:00",
+      "id": 185,
+      "section": 42,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:42:49.831567-03:00",
+        "cell_version": 1,
+        "id": 18,
+        "frozen": true
+      },
+      "hash": "dc270871c8eb4277b96faebfa80f6b89"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p07-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.243992-03:00",
+      "id": 186,
+      "section": 42,
+      "last_run": null,
+      "hash": "9d42c8f967a640d0b6f2d96c234a3e33"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p08-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.244714-03:00",
+      "id": 187,
+      "section": 43,
+      "last_run": null,
+      "hash": "ead0c36663c7d14b6960656b165884ad"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p08-tempos-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.245128-03:00",
+      "id": 188,
+      "section": 43,
+      "last_run": null,
+      "hash": "8cfce5fef5bcf801f8ec2dce2c6980cd"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:43:40.868165-03:00",
+        "cell_version": 1,
+        "id": 19
+      },
+      "source_key": "pdf-2025-p08-tempos",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.24559-03:00",
+      "id": 189,
+      "section": 43,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:43:40.868165-03:00",
+        "cell_version": 1,
+        "id": 19,
+        "frozen": true
+      },
+      "hash": "330eb0e7072cfcd6fc8c9669a3cca1ff"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p08-sexo-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.246072-03:00",
+      "id": 190,
+      "section": 43,
+      "last_run": null,
+      "hash": "b59585fab8a6827ba8a7f95bf86de35e"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:44:08.482555-03:00",
+        "cell_version": 1,
+        "id": 20
+      },
+      "source_key": "pdf-2025-p08-sexo",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.246466-03:00",
+      "id": 191,
+      "section": 43,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:44:08.482555-03:00",
+        "cell_version": 1,
+        "id": 20,
+        "frozen": true
+      },
+      "hash": "f55679ae171df23800c4bab3396ab43f"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p08-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.247014-03:00",
+      "id": 192,
+      "section": 43,
+      "last_run": null,
+      "hash": "f9daa347089adf7fb848cd87ff4a58bd"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T10:36:35.433169-03:00",
+      "id": 253,
+      "section": 37,
+      "last_run": null,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p09-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.247669-03:00",
+      "id": 193,
+      "section": 44,
+      "last_run": null,
+      "hash": "2655bf81562a47faa68e4cca11f2ca58"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p09-regioes-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.248074-03:00",
+      "id": 194,
+      "section": 44,
+      "last_run": null,
+      "hash": "a370210a6866417a1c9b453544d01e12"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:44:20.567298-03:00",
+        "cell_version": 1,
+        "id": 21
+      },
+      "source_key": "pdf-2025-p09-regioes",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.248516-03:00",
+      "id": 195,
+      "section": 44,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:44:20.567298-03:00",
+        "cell_version": 1,
+        "id": 21,
+        "frozen": true
+      },
+      "hash": "5a563aeee1c3c2c80800f7f6c16906de"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p09-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.249015-03:00",
+      "id": 196,
+      "section": 44,
+      "last_run": null,
+      "hash": "9d77f0cd1632d80b6177a1c4a0c61a55"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p10-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.249582-03:00",
+      "id": 197,
+      "section": 45,
+      "last_run": null,
+      "hash": "596c2bb512f0eea4cf2e08bc693a0315"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p10-ufs-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.250235-03:00",
+      "id": 198,
+      "section": 45,
+      "last_run": null,
+      "hash": "58e6bdd972081967243e17d78ef8c4b5"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:45:00.098094-03:00",
+        "cell_version": 1,
+        "id": 22
+      },
+      "source_key": "pdf-2025-p10-ufs",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.250877-03:00",
+      "id": 199,
+      "section": 45,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:45:00.098094-03:00",
+        "cell_version": 1,
+        "id": 22,
+        "frozen": true
+      },
+      "hash": "768031603533164df72a0dd1b40dd5b4"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p10-cidades-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.251285-03:00",
+      "id": 200,
+      "section": 45,
+      "last_run": null,
+      "hash": "40bac15c87f0cb861e294f82a6a1bfb9"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:45:06.467639-03:00",
+        "cell_version": 1,
+        "id": 23
+      },
+      "source_key": "pdf-2025-p10-cidades",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.251779-03:00",
+      "id": 201,
+      "section": 45,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:45:06.467639-03:00",
+        "cell_version": 1,
+        "id": 23,
+        "frozen": true
+      },
+      "hash": "b9e0e3678ff27134c85b4c9b0658d58c"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p10-capital-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.252215-03:00",
+      "id": 202,
+      "section": 45,
+      "last_run": null,
+      "hash": "f5e67e7756c0bf5802e2ea95bd76ce48"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:45:11.927142-03:00",
+        "cell_version": 1,
+        "id": 24
+      },
+      "source_key": "pdf-2025-p10-capital",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.252625-03:00",
+      "id": 203,
+      "section": 45,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:45:11.927142-03:00",
+        "cell_version": 1,
+        "id": 24,
+        "frozen": true
+      },
+      "hash": "7cbbaf28bc6464a11bf9aab75b600e60"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p10-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.252975-03:00",
+      "id": 204,
+      "section": 45,
+      "last_run": null,
+      "hash": "ba9713fa807054d1c73162090d4ccc99"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p11-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.253623-03:00",
+      "id": 205,
+      "section": 46,
+      "last_run": null,
+      "hash": "16383b3f37cde9a38df0d7930cb50973"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p11-calendario-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.25405-03:00",
+      "id": 206,
+      "section": 46,
+      "last_run": null,
+      "hash": "393a7eca93cb9e42aa5e96cfeddfd2ec"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p07-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.006134-03:00",
+      "id": 234,
+      "section": 42,
+      "last_run": null,
+      "hash": "dd5dba926fb7173a43af9e5628a273d5"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:45:23.512717-03:00",
+        "cell_version": 1,
+        "id": 25
+      },
+      "source_key": "pdf-2025-p11-calendario",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.254485-03:00",
+      "id": 207,
+      "section": 46,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:45:23.512717-03:00",
+        "cell_version": 1,
+        "id": 25,
+        "frozen": true
+      },
+      "hash": "12a643002c508a2adc7f2e9ace1f9fe9"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p11-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.254871-03:00",
+      "id": 208,
+      "section": 46,
+      "last_run": null,
+      "hash": "98f036835a9333b4cc8f340416550f0d"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p12-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.255331-03:00",
+      "id": 209,
+      "section": 47,
+      "last_run": null,
+      "hash": "dff258f1ab6c272d181f9025bfd18cde"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p12-ranking-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.255697-03:00",
+      "id": 210,
+      "section": 47,
+      "last_run": null,
+      "hash": "ccef5fce4ca629d0ed8718023ba1538b"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:45:28.810901-03:00",
+        "cell_version": 1,
+        "id": 26
+      },
+      "source_key": "pdf-2025-p12-ranking",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.256163-03:00",
+      "id": 211,
+      "section": 47,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:45:28.810901-03:00",
+        "cell_version": 1,
+        "id": 26,
+        "frozen": true
+      },
+      "hash": "aff0142bcff036150b418433ff944f16"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p12-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.256613-03:00",
+      "id": 212,
+      "section": 47,
+      "last_run": null,
+      "hash": "172efe7dfde1dcb8b8b14b37e00ced9e"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p13-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.257711-03:00",
+      "id": 213,
+      "section": 48,
+      "last_run": null,
+      "hash": "da2946e4aa008122d26cf1e52f871efa"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p13-limites-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.258341-03:00",
+      "id": 214,
+      "section": 48,
+      "last_run": null,
+      "hash": "9542665d864624b6ee91a1142cbebeda"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:45:45.274717-03:00",
+        "cell_version": 1,
+        "id": 27
+      },
+      "source_key": "pdf-2025-p13-limites",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.258863-03:00",
+      "id": 215,
+      "section": 48,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:45:45.274717-03:00",
+        "cell_version": 1,
+        "id": 27,
+        "frozen": true
+      },
+      "hash": "df2536be8347d67c18a747d2667c1d3c"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p13-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.259577-03:00",
+      "id": 216,
+      "section": 48,
+      "last_run": null,
+      "hash": "e868dfb42f1136f5e87c4cf3a1d959a9"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p14-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.260492-03:00",
+      "id": 217,
+      "section": 49,
+      "last_run": null,
+      "hash": "de5ea55a3c6213684eef81814317c809"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p14-cna-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.260896-03:00",
+      "id": 218,
+      "section": 49,
+      "last_run": null,
+      "hash": "513a484e4ebf3919a8141d168aa3ae1e"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:45:48.048287-03:00",
+        "cell_version": 1,
+        "id": 28
+      },
+      "source_key": "pdf-2025-p14-cna",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.261348-03:00",
+      "id": 219,
+      "section": 49,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:45:48.048287-03:00",
+        "cell_version": 1,
+        "id": 28,
+        "frozen": true
+      },
+      "hash": "f9ae21bef9aa1ac3d3b4523040342d48"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p14-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.261858-03:00",
+      "id": 220,
+      "section": 49,
+      "last_run": null,
+      "hash": "22885d78d46bc72bcc903bf881546142"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p15-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.262354-03:00",
+      "id": 221,
+      "section": 50,
+      "last_run": null,
+      "hash": "0ca988913dfcb596b5119b6d588a821f"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p15-esportes-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.262726-03:00",
+      "id": 222,
+      "section": 50,
+      "last_run": null,
+      "hash": "60b6ddf655d2a0d18181e999070fd915"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:46:14.480885-03:00",
+        "cell_version": 1,
+        "id": 29
+      },
+      "source_key": "pdf-2025-p15-esportes",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.263115-03:00",
+      "id": 223,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:46:14.480885-03:00",
+        "cell_version": 1,
+        "id": 29,
+        "frozen": true
+      },
+      "hash": "61fa26e6a98d6df0a39a2f3bad829f36"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p15-pdf",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.263495-03:00",
+      "id": 224,
+      "section": 50,
+      "last_run": null,
+      "hash": "0a5a9b8fe456721862fedac38ccdf7d3"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p99-intro",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.264102-03:00",
+      "id": 225,
+      "section": 51,
+      "last_run": null,
+      "hash": "d9641d744dcaf99400a844156ed8797d"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p99-qualidade-nota",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.264608-03:00",
+      "id": 226,
+      "section": 51,
+      "last_run": null,
+      "hash": "523736b88400168cd2d8e59def8c1a2b"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:46:30.556224-03:00",
+        "cell_version": 1,
+        "id": 30
+      },
+      "source_key": "pdf-2025-p99-qualidade",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.264962-03:00",
+      "id": 227,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:46:30.556224-03:00",
+        "cell_version": 1,
+        "id": 30,
+        "frozen": true
+      },
+      "hash": "2bc8a96d086b774644e5b34d57398a11"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p99-matriz",
+      "version": 1,
+      "updated_at": "2026-09-28T14:31:05.265424-03:00",
+      "id": 228,
+      "section": 51,
+      "last_run": null,
+      "hash": "3c08b1041e9ef5b818d81574451840da"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:41:08.261718-03:00",
+        "cell_version": 2,
+        "id": 10
+      },
+      "source_key": "pdf-2025-p04-faixas",
+      "version": 2,
+      "updated_at": "2026-09-28T14:40:34.303883-03:00",
+      "id": 163,
+      "section": 39,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T15:34:59.850591-03:00",
+        "cell_version": 2,
+        "id": 31,
+        "frozen": false
+      },
+      "hash": "58f04e97f6ed81b8e54f189219766e82"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p04-faixas-nota",
+      "version": 2,
+      "updated_at": "2026-09-28T14:40:34.30504-03:00",
+      "id": 162,
+      "section": 39,
+      "last_run": null,
+      "hash": "2d9cb681869cd878dc2a3cdad68c7aab"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-28T14:41:32.201302-03:00",
+        "cell_version": 2,
+        "id": 11
+      },
+      "source_key": "pdf-2025-p05-historico",
+      "version": 2,
+      "updated_at": "2026-09-28T14:40:34.305524-03:00",
+      "id": 167,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-28T14:41:32.201302-03:00",
+        "cell_version": 2,
+        "id": 11,
+        "frozen": true
+      },
+      "hash": "d265583f80f421ebb0520bef544ab1c1"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p08-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.006568-03:00",
+      "id": 235,
+      "section": 43,
+      "last_run": null,
+      "hash": "c293d4d1b08bdc197da3163039a8f4c3"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p00-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.000992-03:00",
+      "id": 229,
+      "section": 37,
+      "last_run": null,
+      "hash": "dcfe24a17ae4f3a0c10f6d9c3df591d6"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p03-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.003094-03:00",
+      "id": 230,
+      "section": 38,
+      "last_run": null,
+      "hash": "7a256ca968cee9619593d8d5da37c697"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p04-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.003727-03:00",
+      "id": 231,
+      "section": 39,
+      "last_run": null,
+      "hash": "9025b308be3a54a8e92f8bcf93467a95"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p05-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.004742-03:00",
+      "id": 232,
+      "section": 40,
+      "last_run": null,
+      "hash": "922e743d09582eac81c43a481cdf0d7a"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p06-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.005153-03:00",
+      "id": 233,
+      "section": 41,
+      "last_run": null,
+      "hash": "588a041e992059d74589e62694988986"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p09-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.007117-03:00",
+      "id": 236,
+      "section": 44,
+      "last_run": null,
+      "hash": "cfd78fdc6d9139660ac4d8298458e6ef"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p10-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.007509-03:00",
+      "id": 237,
+      "section": 45,
+      "last_run": null,
+      "hash": "7fd24b18caa89f473353289d1d077af5"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p11-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.008012-03:00",
+      "id": 238,
+      "section": 46,
+      "last_run": null,
+      "hash": "2c366349ccfa9ad2232d0c1111032e36"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p12-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.008369-03:00",
+      "id": 239,
+      "section": 47,
+      "last_run": null,
+      "hash": "08eb05feba4ae277ad0dd4d988d43f7b"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p13-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.008756-03:00",
+      "id": 240,
+      "section": 48,
+      "last_run": null,
+      "hash": "cc0a5fcae1260b160e54c9f2f20f8e37"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p14-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.009104-03:00",
+      "id": 241,
+      "section": 49,
+      "last_run": null,
+      "hash": "cde81e07afb1bf2be47619e033b879cf"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p15-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.009468-03:00",
+      "id": 242,
+      "section": 50,
+      "last_run": null,
+      "hash": "2c6c9d57be395668bc7be0704a5d1deb"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "pdf-2025-p99-coleta-20260928",
+      "version": 1,
+      "updated_at": "2026-09-28T14:51:11.010006-03:00",
+      "id": 243,
+      "section": 51,
+      "last_run": null,
+      "hash": "96c017441a89bdb0f71460290df0fdde"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T15:28:29.307495-03:00",
+        "cell_version": 1,
+        "id": 119
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T15:28:29.302319-03:00",
+      "id": 315,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T15:28:29.307495-03:00",
+        "cell_version": 1,
+        "id": 119,
+        "frozen": true
+      },
+      "hash": "bd71a0c131d65fa8cf0c39ceee47e258"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T14:57:56.058391-03:00",
+        "cell_version": 1,
+        "id": 165
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:57:56.049254-03:00",
+      "id": 355,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T14:57:56.058391-03:00",
+        "cell_version": 1,
+        "id": 165,
+        "frozen": true
+      },
+      "hash": "ca3aeea6506c5c37c9dc70e8c981b3f4"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T14:58:43.678342-03:00",
+        "cell_version": 1,
+        "id": 170
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:58:43.672842-03:00",
+      "id": 360,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T14:58:43.678342-03:00",
+        "cell_version": 1,
+        "id": 170,
+        "frozen": true
+      },
+      "hash": "40e042b3660f0d3645f5b608077f1ceb"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T14:58:44.788352-03:00",
+        "cell_version": 1,
+        "id": 171
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:58:44.780554-03:00",
+      "id": 361,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T14:58:44.788352-03:00",
+        "cell_version": 1,
+        "id": 171,
+        "frozen": true
+      },
+      "hash": "8dffa590c1ab79de5e5f150f265b484f"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:58:51.084126-03:00",
+      "id": 362,
+      "section": 50,
+      "last_run": {
+        "status": "error",
+        "started_at": "2026-10-05T14:58:51.087473-03:00",
+        "cell_version": 1,
+        "id": 172,
+        "frozen": false
+      },
+      "hash": "9b9d2c9b0e9148abd7d0027be34f63bf"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:02:57.857147-03:00",
+        "cell_version": 1,
+        "id": 176
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:02:57.851185-03:00",
+      "id": 366,
+      "section": 58,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:02:57.857147-03:00",
+        "cell_version": 1,
+        "id": 176,
+        "frozen": true
+      },
+      "hash": "d09ce45c7bc47ccbfe9bd99b316888e6"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:02:58.777083-03:00",
+        "cell_version": 1,
+        "id": 177
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:02:58.76699-03:00",
+      "id": 367,
+      "section": 58,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:02:58.777083-03:00",
+        "cell_version": 1,
+        "id": 177,
+        "frozen": true
+      },
+      "hash": "8b31f498be53dbc36bf0d88ec7e7a45a"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:09:39.661477-03:00",
+      "id": 381,
+      "section": 51,
+      "last_run": {
+        "status": "error",
+        "started_at": "2026-10-05T15:09:39.685134-03:00",
+        "cell_version": 1,
+        "id": 191,
+        "frozen": false
+      },
+      "hash": "6d011692998315fc9f745e4f48aecbec"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:11:22.101678-03:00",
+        "cell_version": 2,
+        "id": 222
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-06T23:11:22.094957-03:00",
+      "id": 368,
+      "section": 60,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:11:22.101678-03:00",
+        "cell_version": 2,
+        "id": 222,
+        "frozen": true
+      },
+      "hash": "dc1828ab80ff95736e68f20d6280bdb0"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T12:25:52.34573-03:00",
+      "id": 254,
+      "section": 48,
+      "last_run": null,
+      "hash": "51583d13c934e2d4806870a516f2144d"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T12:25:57.028042-03:00",
+        "cell_version": 1,
+        "id": 34
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T12:25:52.349306-03:00",
+      "id": 255,
+      "section": 48,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T12:25:57.028042-03:00",
+        "cell_version": 1,
+        "id": 34,
+        "frozen": true
+      },
+      "hash": "90887c3007712916e3b90004318b6fe7"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T12:53:42.344917-03:00",
+        "cell_version": 1,
+        "id": 40
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T12:53:42.338373-03:00",
+      "id": 257,
+      "section": 47,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T12:53:42.344917-03:00",
+        "cell_version": 1,
+        "id": 40,
+        "frozen": true
+      },
+      "hash": "81cbc51b0c2cd6bec86a4833dfdfda95"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T12:54:39.61715-03:00",
+      "id": 258,
+      "section": 47,
+      "last_run": null,
+      "hash": "3f8bbb27dafe517fdf49b805ad33ebff"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T15:50:54.59063-03:00",
+      "id": 316,
+      "section": 51,
+      "last_run": null,
+      "hash": "771c665d5f8cab209b03aadb873e1788"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:03:20.69461-03:00",
+        "cell_version": 1,
+        "id": 181
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:03:20.691585-03:00",
+      "id": 371,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:03:20.69461-03:00",
+        "cell_version": 1,
+        "id": 181,
+        "frozen": true
+      },
+      "hash": "db6e6087b5e4cd33c93be1d46b440e2e"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:03:26.102433-03:00",
+        "cell_version": 1,
+        "id": 182
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:03:26.09942-03:00",
+      "id": 372,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:03:26.102433-03:00",
+        "cell_version": 1,
+        "id": 182,
+        "frozen": true
+      },
+      "hash": "ec9b1e7805ae66b272a0b3458da8e60f"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 12,
+      "updated_at": "2026-10-06T23:24:07.799164-03:00",
+      "id": 256,
+      "section": 37,
+      "last_run": null,
+      "hash": "83d8424416d47abbc05e91a87a2230c8"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:02:53.724273-03:00",
+        "cell_version": 1,
+        "id": 175
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:02:53.718215-03:00",
+      "id": 365,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:02:53.724273-03:00",
+        "cell_version": 1,
+        "id": 175,
+        "frozen": true
+      },
+      "hash": "c543ee2438276640641570ac6d2fd209"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:03:07.817097-03:00",
+        "cell_version": 1,
+        "id": 179
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:03:07.813815-03:00",
+      "id": 369,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:03:07.817097-03:00",
+        "cell_version": 1,
+        "id": 179,
+        "frozen": true
+      },
+      "hash": "0a90ef6a1f53c50fc2340bb57d3ff566"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:03:15.298927-03:00",
+        "cell_version": 1,
+        "id": 180
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:03:15.296169-03:00",
+      "id": 370,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:03:15.298927-03:00",
+        "cell_version": 1,
+        "id": 180,
+        "frozen": true
+      },
+      "hash": "320e094ebb05f6f298ec2653ba6ff525"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T12:55:11.694886-03:00",
+        "cell_version": 2,
+        "id": 41
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-09-30T12:55:11.687869-03:00",
+      "id": 259,
+      "section": 47,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T12:55:11.694886-03:00",
+        "cell_version": 2,
+        "id": 41,
+        "frozen": true
+      },
+      "hash": "40e042b3660f0d3645f5b608077f1ceb"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T12:55:12.223533-03:00",
+        "cell_version": 1,
+        "id": 42
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T12:55:12.219517-03:00",
+      "id": 260,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T12:55:12.223533-03:00",
+        "cell_version": 1,
+        "id": 42,
+        "frozen": true
+      },
+      "hash": "79980c840313e80a5c05c4730605cc71"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T21:18:40.148262-03:00",
+      "id": 317,
+      "section": 57,
+      "last_run": null,
+      "hash": "626015cb2bef6623120f06379ada6e29"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T21:18:40.152847-03:00",
+      "id": 318,
+      "section": 57,
+      "last_run": null,
+      "hash": "5919ff168a7732cdfb44d195931c9036"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T13:12:50.849849-03:00",
+        "cell_version": 2,
+        "id": 48
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-09-30T13:12:50.842877-03:00",
+      "id": 264,
+      "section": 48,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T13:12:50.849849-03:00",
+        "cell_version": 2,
+        "id": 48,
+        "frozen": true
+      },
+      "hash": "73d5a0aa90f473685c6e8c3bfcbff5e4"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T13:14:48.631295-03:00",
+        "cell_version": 1,
+        "id": 49
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T13:14:48.624711-03:00",
+      "id": 266,
+      "section": 48,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T13:14:48.631295-03:00",
+        "cell_version": 1,
+        "id": 49,
+        "frozen": true
+      },
+      "hash": "81d8aa6c490071bbaebeb6e02de3ba11"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T21:18:40.155994-03:00",
+      "id": 319,
+      "section": 57,
+      "last_run": null,
+      "hash": "b97b4c38a08571edb9554e16506fa72b"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T13:03:22.735014-03:00",
+        "cell_version": 1,
+        "id": 46
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T13:03:22.730819-03:00",
+      "id": 261,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T13:03:22.735014-03:00",
+        "cell_version": 1,
+        "id": 46,
+        "frozen": true
+      },
+      "hash": "ad8e99f698ed898ac4d177dcc53bd877"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T13:04:47.737211-03:00",
+      "id": 262,
+      "section": 57,
+      "last_run": null,
+      "hash": "1ba179a7e361b8e66d2c4ace939cc266"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T13:04:47.739857-03:00",
+      "id": 263,
+      "section": 37,
+      "last_run": null,
+      "hash": "25570b694c58fb1774deb6c66ff8a3fd"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T21:18:40.157969-03:00",
+      "id": 320,
+      "section": 57,
+      "last_run": null,
+      "hash": "7650b0497aa9e576f340a24048156d87"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T13:14:48.621845-03:00",
+      "id": 265,
+      "section": 48,
+      "last_run": null,
+      "hash": "93956493b3e15c64eef4576d10767acd"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:03:42.793254-03:00",
+        "cell_version": 1,
+        "id": 186
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:03:42.790147-03:00",
+      "id": 376,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:03:42.793254-03:00",
+        "cell_version": 1,
+        "id": 186,
+        "frozen": true
+      },
+      "hash": "32d7a2e7ca6c9a0b90f588a1ea8b8fb5"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T13:52:47.546193-03:00",
+        "cell_version": 1,
+        "id": 51
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T13:52:47.540527-03:00",
+      "id": 268,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T13:52:47.546193-03:00",
+        "cell_version": 1,
+        "id": 51,
+        "frozen": true
+      },
+      "hash": "5e4e0bf1beaf143ece8679a3eb468498"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-09-30T13:53:59.146051-03:00",
+        "cell_version": 2,
+        "id": 52
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-09-30T13:53:59.133059-03:00",
+      "id": 267,
+      "section": 45,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-09-30T13:53:59.146051-03:00",
+        "cell_version": 2,
+        "id": 52,
+        "frozen": true
+      },
+      "hash": "00530b6afae006076c975af377969339"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T13:56:05.737828-03:00",
+      "id": 269,
+      "section": 45,
+      "last_run": null,
+      "hash": "cc1dd898b7dbf7c0884949d44a2866d7"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-09-30T13:56:05.74013-03:00",
+      "id": 270,
+      "section": 40,
+      "last_run": null,
+      "hash": "22a7b4e9b34d7dadd1bdc6829a84af6f"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T21:18:40.159246-03:00",
+      "id": 321,
+      "section": 57,
+      "last_run": null,
+      "hash": "6eaeb02e7580ed14c22c07f1ee204efd"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T21:18:40.160866-03:00",
+      "id": 322,
+      "section": 57,
+      "last_run": null,
+      "hash": "2da927f5d53bbd10bf907674dcb12cec"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-01T21:38:05.401284-03:00",
+      "id": 324,
+      "section": 57,
+      "last_run": null,
+      "hash": "2e8b59f2bfba4c5ff1f24fa092630307"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-01T21:32:14.77761-03:00",
+        "cell_version": 3,
+        "id": 125
+      },
+      "source_key": null,
+      "version": 3,
+      "updated_at": "2026-10-01T21:32:14.731528-03:00",
+      "id": 323,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-01T21:32:14.77761-03:00",
+        "cell_version": 3,
+        "id": 125,
+        "frozen": true
+      },
+      "hash": "0a462a3fc15e784143fe2be428f8cb1e"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T20:28:23.288165-03:00",
+      "id": 397,
+      "section": 61,
+      "last_run": null,
+      "hash": "fdf77b935e8c672611a3ec28ae6afe81"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T20:28:23.563-03:00",
+        "cell_version": 1,
+        "id": 208
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T20:28:23.296829-03:00",
+      "id": 398,
+      "section": 61,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T20:28:23.563-03:00",
+        "cell_version": 1,
+        "id": 208,
+        "frozen": true
+      },
+      "hash": "b537350ba8081926447f644060040966"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T19:32:50.147526-03:00",
+        "cell_version": 1,
+        "id": 213
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T19:32:50.138359-03:00",
+      "id": 405,
+      "section": 47,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T19:32:50.147526-03:00",
+        "cell_version": 1,
+        "id": 213,
+        "frozen": true
+      },
+      "hash": "5edb5eee08f563bf31b55631fe49f62b"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-06T21:33:40.438011-03:00",
+      "id": 407,
+      "section": 63,
+      "last_run": null,
+      "hash": "5415f504da29056b98c8bdaf103759ad"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T22:50:46.745001-03:00",
+      "id": 412,
+      "section": 63,
+      "last_run": null,
+      "hash": "58c439a5830304a847b6755215d2f3f5"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:14:06.254287-03:00",
+        "cell_version": 1,
+        "id": 230
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T23:14:06.198495-03:00",
+      "id": 414,
+      "section": 63,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:14:06.254287-03:00",
+        "cell_version": 1,
+        "id": 230,
+        "frozen": true
+      },
+      "hash": "e0a0c6cb01f141c6fd2bc014be2b5f8a"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T19:41:47.051165-03:00",
+      "id": 406,
+      "section": 47,
+      "last_run": null,
+      "hash": "80351a309e9ba98d74a28742ae396b39"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T23:24:07.816193-03:00",
+      "id": 415,
+      "section": 63,
+      "last_run": null,
+      "hash": "289b9d331fa8113a84c8d1dea6adb157"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T21:33:00.137719-03:00",
+      "id": 408,
+      "section": 63,
+      "last_run": null,
+      "hash": "4d75194c86669ab9a79dedec31a74c3e"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T21:33:00.138852-03:00",
+      "id": 409,
+      "section": 63,
+      "last_run": null,
+      "hash": "0b0a141d62b19df9b37537813cfb4c86"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T21:33:00.140086-03:00",
+      "id": 410,
+      "section": 63,
+      "last_run": null,
+      "hash": "270099eff8efede7ed506f0346a59765"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 8,
+      "updated_at": "2026-10-06T23:24:07.811793-03:00",
+      "id": 327,
+      "section": 51,
+      "last_run": null,
+      "hash": "9af7b033c53bd94d962f0dab24a66452"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "bqc-2026-q3-escopo-final",
+      "version": 1,
+      "updated_at": "2026-10-10T10:09:38.29398-03:00",
+      "id": 419,
+      "section": 64,
+      "last_run": null,
+      "hash": "909c4c2d8cdeff954c44a4e5eac69e6e"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:14:53.758971-03:00",
+      "id": 422,
+      "section": 66,
+      "last_run": null,
+      "hash": "147b2b29b86fad46596878b5e9e2a0f4"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-03T07:56:58.417479-03:00",
+        "cell_version": 1,
+        "id": 127
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-03T07:56:58.381133-03:00",
+      "id": 325,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-03T07:56:58.417479-03:00",
+        "cell_version": 1,
+        "id": 127,
+        "frozen": true
+      },
+      "hash": "9382ec44db5066f983d2488fed661c2c"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-03T07:56:58.397147-03:00",
+      "id": 326,
+      "section": 51,
+      "last_run": null,
+      "hash": "37154b0537fa891b958ff632b0842c54"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T14:54:27.255356-03:00",
+        "cell_version": 1,
+        "id": 154
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:54:27.247845-03:00",
+      "id": 344,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T14:54:27.255356-03:00",
+        "cell_version": 1,
+        "id": 154,
+        "frozen": true
+      },
+      "hash": "bb4411f36a10628e214bf69b75ee0614"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-03T07:59:28.673416-03:00",
+        "cell_version": 1,
+        "id": 128
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-03T07:59:28.652356-03:00",
+      "id": 328,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-03T07:59:28.673416-03:00",
+        "cell_version": 1,
+        "id": 128,
+        "frozen": true
+      },
+      "hash": "bdfc9057faa476a68446c6fee36fcc6d"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T14:56:51.866816-03:00",
+        "cell_version": 1,
+        "id": 156
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:56:51.844048-03:00",
+      "id": 346,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T14:56:51.866816-03:00",
+        "cell_version": 1,
+        "id": 156,
+        "frozen": true
+      },
+      "hash": "5e3ba96358a95b2fa81978e42c3402d6"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T14:57:04.935238-03:00",
+        "cell_version": 1,
+        "id": 158
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:57:04.913575-03:00",
+      "id": 348,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T14:57:04.935238-03:00",
+        "cell_version": 1,
+        "id": 158,
+        "frozen": true
+      },
+      "hash": "9607fa2970ef7c761dbe5880250e84aa"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T14:57:20.928557-03:00",
+        "cell_version": 1,
+        "id": 159
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:57:20.906496-03:00",
+      "id": 349,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T14:57:20.928557-03:00",
+        "cell_version": 1,
+        "id": 159,
+        "frozen": true
+      },
+      "hash": "aec4fe9f0bb44b21fe8d243e47901532"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T14:57:39.802037-03:00",
+        "cell_version": 1,
+        "id": 162
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:57:39.780796-03:00",
+      "id": 352,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T14:57:39.802037-03:00",
+        "cell_version": 1,
+        "id": 162,
+        "frozen": true
+      },
+      "hash": "066e6d5d4b3923e42a03c744c9aa89c0"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T14:57:54.716502-03:00",
+        "cell_version": 1,
+        "id": 164
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:57:54.690842-03:00",
+      "id": 354,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T14:57:54.716502-03:00",
+        "cell_version": 1,
+        "id": 164,
+        "frozen": true
+      },
+      "hash": "26c74f1de0413d24d0e0bf5a40a77d6d"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-03T10:47:51.43304-03:00",
+      "id": 332,
+      "section": 47,
+      "last_run": null,
+      "hash": "1a5eb9ee3a13df8f640a5cee0e3c7069"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-03T12:08:18.332219-03:00",
+        "cell_version": 1,
+        "id": 137
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-03T12:08:18.314545-03:00",
+      "id": 333,
+      "section": 47,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-03T12:08:18.332219-03:00",
+        "cell_version": 1,
+        "id": 137,
+        "frozen": true
+      },
+      "hash": "b7cd042ac2a86965972e73129ff288ed"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-03T12:08:22.971967-03:00",
+        "cell_version": 1,
+        "id": 138
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-03T12:08:22.968776-03:00",
+      "id": 334,
+      "section": 47,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-03T12:08:22.971967-03:00",
+        "cell_version": 1,
+        "id": 138,
+        "frozen": true
+      },
+      "hash": "beab889bd0356027e042f4b546891f3a"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T14:58:05.856025-03:00",
+        "cell_version": 1,
+        "id": 166
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T14:58:05.846419-03:00",
+      "id": 356,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T14:58:05.856025-03:00",
+        "cell_version": 1,
+        "id": 166,
+        "frozen": true
+      },
+      "hash": "4e1ceaa5c49d3d798bfc4ea0cfdd5003"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:20:06.899204-03:00",
+        "cell_version": 39,
+        "id": 233
+      },
+      "source_key": "web-bqc-2026-payload",
+      "version": 39,
+      "updated_at": "2026-10-06T23:20:06.886804-03:00",
+      "id": 251,
+      "section": 55,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:20:06.899204-03:00",
+        "cell_version": 39,
+        "id": 233,
+        "frozen": true
+      },
+      "hash": "ffe5674327153ebbad70ea13fb8746fe"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T11:42:23.890187-03:00",
+        "cell_version": 1,
+        "id": 148
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T11:42:23.878223-03:00",
+      "id": 341,
+      "section": 60,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T11:42:23.890187-03:00",
+        "cell_version": 1,
+        "id": 148,
+        "frozen": true
+      },
+      "hash": "82754e834ac182f378beee5a15a9b53c"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T11:57:57.618846-03:00",
+        "cell_version": 3,
+        "id": 151
+      },
+      "source_key": null,
+      "version": 3,
+      "updated_at": "2026-10-05T11:57:57.598385-03:00",
+      "id": 340,
+      "section": 58,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T11:57:57.618846-03:00",
+        "cell_version": 3,
+        "id": 151,
+        "frozen": true
+      },
+      "hash": "760ecbaca02f83c2697371f2a720fe3e"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:02:49.32799-03:00",
+        "cell_version": 1,
+        "id": 173
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:02:49.320568-03:00",
+      "id": 363,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:02:49.32799-03:00",
+        "cell_version": 1,
+        "id": 173,
+        "frozen": true
+      },
+      "hash": "5260eb380da4c90f235da4e9d7e34575"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:02:52.075814-03:00",
+        "cell_version": 1,
+        "id": 174
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:02:52.068081-03:00",
+      "id": 364,
+      "section": 47,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:02:52.075814-03:00",
+        "cell_version": 1,
+        "id": 174,
+        "frozen": true
+      },
+      "hash": "3be0100c05dd3f702ec20760a2373cba"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:03:47.320573-03:00",
+        "cell_version": 1,
+        "id": 187
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:03:47.317332-03:00",
+      "id": 377,
+      "section": 50,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:03:47.320573-03:00",
+        "cell_version": 1,
+        "id": 187,
+        "frozen": true
+      },
+      "hash": "a3c49bdba49c0cd2dd7ef99871e1400f"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:24:39.514072-03:00",
+        "cell_version": 1,
+        "id": 200
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:24:39.450896-03:00",
+      "id": 392,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:24:39.514072-03:00",
+        "cell_version": 1,
+        "id": 200,
+        "frozen": true
+      },
+      "hash": "2316ec17531fcb6b5ebc826033d3e571"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:42:10.44041-03:00",
+      "id": 393,
+      "section": 40,
+      "last_run": null,
+      "hash": "b3d4c79a6ed10a1ee2a1a60e2d94cda8"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:42:10.444173-03:00",
+      "id": 394,
+      "section": 51,
+      "last_run": null,
+      "hash": "0b0ccb788b2d1f5e3def2ebd541f8727"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T20:20:56.279142-03:00",
+      "id": 395,
+      "section": 61,
+      "last_run": null,
+      "hash": "2fb4adf25eff903db5d18e46784bf86c"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T20:20:56.488903-03:00",
+        "cell_version": 1,
+        "id": 207
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T20:20:56.28842-03:00",
+      "id": 396,
+      "section": 61,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T20:20:56.488903-03:00",
+        "cell_version": 1,
+        "id": 207,
+        "frozen": true
+      },
+      "hash": "635f354a4e63718b874cf4520034ecdd"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:11:54.796339-03:00",
+        "cell_version": 2,
+        "id": 225
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-06T23:11:54.791898-03:00",
+      "id": 380,
+      "section": 40,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:11:54.796339-03:00",
+        "cell_version": 2,
+        "id": 225,
+        "frozen": true
+      },
+      "hash": "42e95a7349ad3baa2330271fc76c5bdc"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:10:20.711897-03:00",
+      "id": 382,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:10:20.718184-03:00",
+        "cell_version": 1,
+        "id": 192,
+        "frozen": false
+      },
+      "hash": "2fb2cba2c3ba33e7c7b60548b35dadad"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:12:57.349943-03:00",
+        "cell_version": 1,
+        "id": 229
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:11:40.932344-03:00",
+      "id": 383,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:12:57.349943-03:00",
+        "cell_version": 1,
+        "id": 229,
+        "frozen": true
+      },
+      "hash": "d3d5da9b814a34a3724d6dfdd94415e5"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:17:01.93085-03:00",
+      "id": 388,
+      "section": 51,
+      "last_run": null,
+      "hash": "231c756bc2c18bec90a4f301d1c50ba0"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T20:57:16.62255-03:00",
+      "id": 399,
+      "section": 62,
+      "last_run": null,
+      "hash": "d71b0aec7d52f4027eaa1f1d3e843db0"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T20:57:16.775434-03:00",
+        "cell_version": 1,
+        "id": 209
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T20:57:16.633037-03:00",
+      "id": 400,
+      "section": 62,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T20:57:16.775434-03:00",
+        "cell_version": 1,
+        "id": 209,
+        "frozen": true
+      },
+      "hash": "4fd8112bba7921762f2fbd146fba5c97"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T19:10:20.286055-03:00",
+      "id": 401,
+      "section": 61,
+      "last_run": null,
+      "hash": "27dd924690819226a584578b30ae78de"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T19:10:20.570142-03:00",
+        "cell_version": 1,
+        "id": 210
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T19:10:20.297026-03:00",
+      "id": 402,
+      "section": 61,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T19:10:20.570142-03:00",
+        "cell_version": 1,
+        "id": 210,
+        "frozen": true
+      },
+      "hash": "96ee22af41b989160c3c4b5620721b51"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T19:27:16.228597-03:00",
+        "cell_version": 1,
+        "id": 212
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T19:27:16.223832-03:00",
+      "id": 404,
+      "section": 47,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T19:27:16.228597-03:00",
+        "cell_version": 1,
+        "id": 212,
+        "frozen": true
+      },
+      "hash": "473ea54ed45ae1e364cd7f186e299349"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:15:00.713544-03:00",
+        "cell_version": 1,
+        "id": 240
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:15:00.123757-03:00",
+      "id": 423,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:15:00.713544-03:00",
+        "cell_version": 1,
+        "id": 240,
+        "frozen": true
+      },
+      "hash": "d32767d51811080044ea67f5ec04f9ea"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:15:07.159761-03:00",
+        "cell_version": 1,
+        "id": 195
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:15:07.132392-03:00",
+      "id": 385,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:15:07.159761-03:00",
+        "cell_version": 1,
+        "id": 195,
+        "frozen": true
+      },
+      "hash": "b0a9c7b87a8d2567915bbe7661679450"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:15:08.01108-03:00",
+      "id": 386,
+      "section": 51,
+      "last_run": null,
+      "hash": "72187dcf955e02eddb46e0bcbb5bf83f"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:21:07.697124-03:00",
+        "cell_version": 1,
+        "id": 197
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:21:07.677948-03:00",
+      "id": 389,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:21:07.697124-03:00",
+        "cell_version": 1,
+        "id": 197,
+        "frozen": true
+      },
+      "hash": "b1c9a3a8b6c7bc09f544ee428806f052"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:21:08.751751-03:00",
+        "cell_version": 1,
+        "id": 198
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:21:08.693204-03:00",
+      "id": 390,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:21:08.751751-03:00",
+        "cell_version": 1,
+        "id": 198,
+        "frozen": true
+      },
+      "hash": "287ef975340f80ae02ffd7d10f9333f8"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-05T15:24:38.447052-03:00",
+        "cell_version": 1,
+        "id": 199
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-05T15:24:38.428746-03:00",
+      "id": 391,
+      "section": 51,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-05T15:24:38.447052-03:00",
+        "cell_version": 1,
+        "id": 199,
+        "frozen": true
+      },
+      "hash": "f6d953047d8495ef937895f3abae171c"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T19:17:58.418151-03:00",
+      "id": 403,
+      "section": 47,
+      "last_run": null,
+      "hash": "577551a468117e453540f4dc1d8bd105"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:09:31.686063-03:00",
+        "cell_version": 1,
+        "id": 215
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T23:09:31.679641-03:00",
+      "id": 413,
+      "section": 63,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:09:31.686063-03:00",
+        "cell_version": 1,
+        "id": 215,
+        "frozen": true
+      },
+      "hash": "13cea4486605d353e5591e932050d7a0"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:11:12.857693-03:00",
+        "cell_version": 2,
+        "id": 221
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-06T23:11:12.852375-03:00",
+      "id": 378,
+      "section": 45,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:11:12.857693-03:00",
+        "cell_version": 2,
+        "id": 221,
+        "frozen": true
+      },
+      "hash": "3e14dbd8d6575d0dba68bf80be1e4d73"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:14:29.791897-03:00",
+        "cell_version": 2,
+        "id": 231
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-06T23:14:29.772159-03:00",
+      "id": 387,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:14:29.791897-03:00",
+        "cell_version": 2,
+        "id": 231,
+        "frozen": true
+      },
+      "hash": "35703fc5a0cf344ed88976b5815cbad7"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:11:50.924677-03:00",
+        "cell_version": 2,
+        "id": 224
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-06T23:11:50.921296-03:00",
+      "id": 350,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:11:50.924677-03:00",
+        "cell_version": 2,
+        "id": 224,
+        "frozen": true
+      },
+      "hash": "b60fc1ff64aba052abb2ceb22415541a"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-06T21:33:00.141605-03:00",
+      "id": 411,
+      "section": 63,
+      "last_run": null,
+      "hash": "72503bd02eecf9e5b0e81d3d302acd55"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:10:06.444368-03:00",
+        "cell_version": 2,
+        "id": 217
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-06T23:10:06.434694-03:00",
+      "id": 351,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:10:06.444368-03:00",
+        "cell_version": 2,
+        "id": 217,
+        "frozen": true
+      },
+      "hash": "0104c0e90e92d897637efed0b61d8e17"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-06T23:12:09.810389-03:00",
+        "cell_version": 3,
+        "id": 226
+      },
+      "source_key": null,
+      "version": 3,
+      "updated_at": "2026-10-06T23:12:09.806014-03:00",
+      "id": 384,
+      "section": 57,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-06T23:12:09.810389-03:00",
+        "cell_version": 3,
+        "id": 226,
+        "frozen": true
+      },
+      "hash": "a4c7dae7b6dabd19a320f60f8ec9ac39"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "bqc-2026-edicoes-nota",
+      "version": 1,
+      "updated_at": "2026-10-10T09:57:17.999316-03:00",
+      "id": 416,
+      "section": 64,
+      "last_run": null,
+      "hash": "3e38c4e78f638cb2626e4c3661e7da03"
+    },
+    {
+      "last_frozen": null,
+      "source_key": "bqc-2026-anual-nota",
+      "version": 1,
+      "updated_at": "2026-10-10T09:57:18.002765-03:00",
+      "id": 417,
+      "section": 65,
+      "last_run": null,
+      "hash": "62bc7b90c558db22a23f832444cd14cb"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-10T09:57:18.019782-03:00",
+        "cell_version": 1,
+        "id": 234
+      },
+      "source_key": "bqc-2026-anual-output",
+      "version": 1,
+      "updated_at": "2026-10-10T09:57:18.003593-03:00",
+      "id": 418,
+      "section": 65,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-10T09:57:18.019782-03:00",
+        "cell_version": 1,
+        "id": 234,
+        "frozen": true
+      },
+      "hash": "421256adea7cd84a1936c33dec688b95"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-13T10:37:53.18123-03:00",
+        "cell_version": 5,
+        "id": 239
+      },
+      "source_key": "bqc-publico-narrativa-q3",
+      "version": 5,
+      "updated_at": "2026-10-13T10:37:53.166106-03:00",
+      "id": 420,
+      "section": 64,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-13T10:37:53.18123-03:00",
+        "cell_version": 5,
+        "id": 239,
+        "frozen": true
+      },
+      "hash": "088b39ccc4e183764d9384cd16f98cbb"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-13T10:20:52.130963-03:00",
+        "cell_version": 1,
+        "id": 237
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-13T10:20:52.107699-03:00",
+      "id": 421,
+      "section": 64,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-13T10:20:52.130963-03:00",
+        "cell_version": 1,
+        "id": 237,
+        "frozen": true
+      },
+      "hash": "b6a0d8faa015b640a7f39a598de181c7"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:16:07.986912-03:00",
+        "cell_version": 1,
+        "id": 242
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:16:07.42414-03:00",
+      "id": 425,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:16:07.986912-03:00",
+        "cell_version": 1,
+        "id": 242,
+        "frozen": true
+      },
+      "hash": "9ab81399a65e68cfd017c19c50350c5f"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:16:23.871738-03:00",
+        "cell_version": 1,
+        "id": 243
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:16:23.315215-03:00",
+      "id": 426,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:16:23.871738-03:00",
+        "cell_version": 1,
+        "id": 243,
+        "frozen": true
+      },
+      "hash": "bd5951fa76116a82cabc55fa3982906a"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:17:55.217838-03:00",
+        "cell_version": 1,
+        "id": 244
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:17:54.601167-03:00",
+      "id": 427,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:17:55.217838-03:00",
+        "cell_version": 1,
+        "id": 244,
+        "frozen": true
+      },
+      "hash": "df0a1a6ff5c0eb6f11dba195ff0776ea"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:19:42.729095-03:00",
+        "cell_version": 1,
+        "id": 245
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:19:42.184073-03:00",
+      "id": 428,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:19:42.729095-03:00",
+        "cell_version": 1,
+        "id": 245,
+        "frozen": true
+      },
+      "hash": "d9c5cd4e93a04a3c2bca23fbafb657de"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:20:26.310843-03:00",
+        "cell_version": 1,
+        "id": 246
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:20:25.690153-03:00",
+      "id": 429,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:20:26.310843-03:00",
+        "cell_version": 1,
+        "id": 246,
+        "frozen": true
+      },
+      "hash": "6e1df3976fc2ab19cd461c43caf6d31f"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:21:41.21036-03:00",
+      "id": 430,
+      "section": 66,
+      "last_run": null,
+      "hash": "ab3d2fbad06d0584a282235e5241714a"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:48:41.762676-03:00",
+        "cell_version": 1,
+        "id": 250
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:48:41.23828-03:00",
+      "id": 434,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:48:41.762676-03:00",
+        "cell_version": 1,
+        "id": 250,
+        "frozen": true
+      },
+      "hash": "f725b0fa9757266d201b0abe862bcb79"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:48:43.336061-03:00",
+        "cell_version": 1,
+        "id": 251
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:48:42.819901-03:00",
+      "id": 435,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:48:43.336061-03:00",
+        "cell_version": 1,
+        "id": 251,
+        "frozen": true
+      },
+      "hash": "712c09b61ea00e7d0a05b0a3f156f473"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:48:46.341497-03:00",
+        "cell_version": 1,
+        "id": 252
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:48:45.730434-03:00",
+      "id": 436,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:48:46.341497-03:00",
+        "cell_version": 1,
+        "id": 252,
+        "frozen": true
+      },
+      "hash": "4d9bf6183610b411a8c667b00de205d2"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T16:21:25.856696-03:00",
+        "cell_version": 1,
+        "id": 256
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T16:21:25.309871-03:00",
+      "id": 441,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T16:21:25.856696-03:00",
+        "cell_version": 1,
+        "id": 256,
+        "frozen": true
+      },
+      "hash": "6fe6c60f3c3af8e0af9eb43e9c867ee1"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T16:21:27.382981-03:00",
+        "cell_version": 1,
+        "id": 257
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T16:21:26.888805-03:00",
+      "id": 442,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T16:21:27.382981-03:00",
+        "cell_version": 1,
+        "id": 257,
+        "frozen": true
+      },
+      "hash": "90bc9deeda2f4a7668c83afb2b1388da"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T16:39:18.85954-03:00",
+        "cell_version": 1,
+        "id": 258
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T16:39:18.136714-03:00",
+      "id": 444,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T16:39:18.85954-03:00",
+        "cell_version": 1,
+        "id": 258,
+        "frozen": true
+      },
+      "hash": "c1dbe32a6b9e484f2d797364c6ea7f4e"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T16:43:03.724394-03:00",
+        "cell_version": 3,
+        "id": 260
+      },
+      "source_key": null,
+      "version": 3,
+      "updated_at": "2026-10-19T16:43:03.118604-03:00",
+      "id": 445,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T16:43:03.724394-03:00",
+        "cell_version": 3,
+        "id": 260,
+        "frozen": true
+      },
+      "hash": "a79ad29feb672b06d4f2c71318f7f715"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T16:50:53.240238-03:00",
+      "id": 447,
+      "section": 66,
+      "last_run": null,
+      "hash": "f7fc1eb7d3ba0a83eca4a542f23e5dee"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T15:48:49.077401-03:00",
+        "cell_version": 1,
+        "id": 253
+      },
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:48:48.186288-03:00",
+      "id": 437,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T15:48:49.077401-03:00",
+        "cell_version": 1,
+        "id": 253,
+        "frozen": true
+      },
+      "hash": "070c8b36b7bd1e3203d42e7cbf43eaef"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T15:49:30.478995-03:00",
+      "id": 438,
+      "section": 66,
+      "last_run": null,
+      "hash": "46dcf9cbbf984d0b9d7b0cd49e0bfa5f"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 1,
+      "updated_at": "2026-10-19T16:23:01.974844-03:00",
+      "id": 443,
+      "section": 66,
+      "last_run": null,
+      "hash": "5db19967f9bfecfa18fea4c62dab4513"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-19T16:59:07.808648-03:00",
+      "id": 448,
+      "section": 66,
+      "last_run": null,
+      "hash": "551941be935e42843ee6073baa3235e3"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-19T17:15:36.070902-03:00",
+        "cell_version": 2,
+        "id": 263
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-19T17:15:35.471999-03:00",
+      "id": 449,
+      "section": 66,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-19T17:15:36.070902-03:00",
+        "cell_version": 2,
+        "id": 263,
+        "frozen": true
+      },
+      "hash": "dc17262e8ef7770b0f7bcee677aadbd5"
+    },
+    {
+      "last_frozen": null,
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-19T17:22:05.755888-03:00",
+      "id": 450,
+      "section": 66,
+      "last_run": null,
+      "hash": "65396fcc130d254910c49bdc4e4ab3c0"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-23T18:37:36.417596-03:00",
+        "cell_version": 2,
+        "id": 265
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-23T18:37:35.669959-03:00",
+      "id": 452,
+      "section": 67,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-23T18:37:36.417596-03:00",
+        "cell_version": 2,
+        "id": 265,
+        "frozen": true
+      },
+      "hash": "8e21ff6a2dbaa341009d9bf5d917e64b"
+    },
+    {
+      "last_frozen": {
+        "started_at": "2026-10-23T18:39:07.622809-03:00",
+        "cell_version": 2,
+        "id": 266
+      },
+      "source_key": null,
+      "version": 2,
+      "updated_at": "2026-10-23T18:39:05.34394-03:00",
+      "id": 453,
+      "section": 67,
+      "last_run": {
+        "status": "ok",
+        "started_at": "2026-10-23T18:39:07.622809-03:00",
+        "cell_version": 2,
+        "id": 266,
+        "frozen": true
+      },
+      "hash": "80c42f5347184a454d0f41b62ddf19f9"
+    }
+  ],
+  "checklist": [
+    {
+      "notes": "PRÓXIMO PASSO: definir quem acompanha pedidos de acesso, dúvidas e repercussão entre 14 e 20/11.\n\nPRONTO\n• Cinco pautas no kit, com comparativos, fontes, artes e sugestões para Instagram e YouTube.\n• Release e convite curto centralizados; leitura profissional disponível para aprofundamento.\n• Gestão de pedidos, vouchers e acessos no Business.\n\nFALTA APÓS A ESTREIA\n• Acompanhar solicitações, resgates, dificuldades de leitura e dúvidas sobre os critérios.\n• Responder à imprensa e apoiar entrevistas, análises e reviews que surgirem.\n• Registrar matérias e publicações, feedback dos leitores e novas pautas.\n• Ajustar materiais quando houver correção de fonte e manter a fonte das queries no notebook.\n• Preparar uma segunda onda de divulgação com base no retorno real, com responsável e data definidos.",
+      "responsible": "",
+      "version": 518,
+      "step": "continuidade"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: concluir a aprovação do contrato e alinhar a comunicação com a ABRACEO até 12/11.\n\nPRONTO\n• Fluxo de primeiro acesso dos associados, pré-cadastros e vouchers preparado no Business.\n• Proposta da prévia por convite e do anual vendido separadamente já refletida nos materiais internos.\n• Benefício de 50% na compra antecipada do anual configurado e testado no primeiro acesso por voucher e CNPJ em 04/11.\n\nFALTA\n• Concluir a revisão e obter a aprovação das partes sobre o contrato.\n• Confirmar público elegível, responsabilidades, contrapartidas, uso das marcas e autorização da comunicação conjunta.\n• Ratificar no contrato os termos do benefício de 50% já configurado: público elegível, compra antecipada do anual, prazo e comunicação aos associados.\n• Validar prazo de resgate até 24/11 e a primeira onda de associados. Registrar aqui a aprovação e quem a confirmou.",
+      "responsible": "",
+      "version": 540,
+      "step": "contrato-abraceo"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: confirmar 6/1 e 11/1 conforme o fechamento e a revisão da edição anual de 2026.\n\nPRONTO\n• Notebook centralizado como fonte de queries e resultados congelados; base dinâmica e leitura web da prévia já disponíveis.\n• Produto anual separado da prévia, atualmente em rascunho.\n• Proposta: compra antecipada em 06/01/2027 e abertura geral em 11/01/2027.\n\nFALTA PARA JANEIRO\n• Fechar o quarto trimestre e o ano completo, revisar os recortes e gerar os congelamentos finais no notebook.\n• Nutrir e revisar os temas reservados ao anual: inscrições/categorias/kits/lotes, CNA e desempenho nacional dos 42 km.\n• Confirmar escopo, oferta, datas, benefício e acesso após o pagamento; validar a leitura final antes da estreia.\n• Gerar o PDF final depois da aprovação da versão web, se fizer parte da entrega.\n• Datas de janeiro continuam propostas. Estas pendências são do anual, não do recorte de três trimestres lançado em novembro.",
+      "responsible": "",
+      "version": 520,
+      "step": "edicao-anual"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: confirmar horário, canais e responsáveis pela divulgação de 13/11.\n\nPRONTO\n• Hotsite público com destaques e caminhos para solicitar acesso.\n• Kit, release, convite curto, artes para Instagram/YouTube e legendas disponíveis nos endereços atuais.\n• Chamada principal atualizada: +2,1% nas mesmas provas versus +33,9% no calendário cadastrado, comparando janeiro a setembro dos dois anos.\n\nFALTA PARA COLOCAR NA RUA\n• Confirmar a liberação das etapas de preparação e o texto autorizado sobre a parceria.\n• Fechar horário, perfis/canais, lista de imprensa e primeira onda de criadores e organizadores.\n• Publicar post principal e stories, encaminhar o release e enviar os convites autorizados com os links corretos.\n• Conferir o caminho do público geral ao pedido de acesso e organizar o suporte no dia.\n• Envios e postagens continuam pendentes de execução pela equipe; os materiais preparados não significam divulgação já realizada.",
+      "responsible": "",
+      "version": 517,
+      "step": "lancamento"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: concluir o piloto com convidados e revisar a abertura temporária da área de imprensa.\n\nPRONTO (04/11)\n• Hotsite, kit e central publicados; materiais preparados para 13/11 e links principais respondendo.\n• Área de imprensa oferece quatro edições: estudo principal e maratonas, 2025 e prévia 2026.\n• Cronograma e acompanhamento compartilhado funcionando no desktop e celular.\n• Primeiro acesso ABRACEO corrigido em 04/11: voucher e CNPJ registram o direito à compra antecipada do anual com 50%, sem duplicidade. Os 95 vouchers e seus vencimentos foram preservados.\n\nFALTA ATÉ 12/11\n• Conferir com convidados do piloto se o resgate confirma o benefício anual de 50% na conta. A regra já passou nos testes técnicos; falta a validação com leitores reais.\n• Definir se a imprensa continuará com acesso temporariamente aberto, sem login/código, ou voltará ao convite; testar o fluxo escolhido antes de divulgar.\n• Concluir o piloto com não administradores e revisar login, resgate, leitura e exportações.\n• Conferir aprovação do contrato, comunicação da parceria, chamadas, links e destinatários. Registrar a liberação final.",
+      "responsible": "",
+      "version": 541,
+      "step": "liberacao"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: definir o dono do lançamento e fechar as listas do piloto e de criadores.\n\nPRONTO (04/11)\n• Prévia de janeiro a setembro de 2026 no Business, com 37 páginas, fontes e exportações agregadas.\n• Hotsite público e comparativos: +2,1% de concluintes nas mesmas provas e +33,9% no calendário cadastrado, com universos distintos.\n• Kit com dez artes, PDF de sete páginas, legendas, release e convite curto atualizados para 13/11.\n• Central com materiais, cronograma e histórico de acompanhamento.\n\nFALTA\n• Nomear responsáveis por lançamento, aprovação editorial, convites e suporte.\n• Selecionar 5–10 leitores para o piloto e a primeira lista de 5–8 criadores/influenciadores.\n• Aprovação editorial final das chamadas e dos destinatários. Registrar as decisões aqui.",
+      "responsible": "",
+      "version": 513,
+      "step": "organizar"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: selecionar 5–10 leitores e autorizar os convites para testar o acesso completo.\n\nPRONTO (04/11)\n• Login Google, biblioteca, leitor profissional e gestão de convites no Business.\n• Primeiro acesso ABRACEO por CNPJ/voucher preparado; 95 vouchers nominais prontos, com resgate até 24/11. A regra de 50% na compra antecipada do anual foi corrigida e testada em 04/11; o benefício fica registrado no resgate.\n• Testes técnicos administrativos já executados em desktop e celular.\n\nFALTA\n• Ativar as campanhas de piloto/editorial quando houver autorização: ambas estão em rascunho e sem vouchers emitidos.\n• Testar com convidados reais: conta Google, e-mail correto, resgate, retorno posterior à biblioteca, gráficos e exportações, também no celular.\n• Conferir o primeiro acesso dos representantes e registrar problemas e correções.\n• Na conferência de 04/11: zero resgates, zero acessos concedidos e zero representantes declarados. O piloto com convidados ainda precisa acontecer.",
+      "responsible": "",
+      "version": 539,
+      "step": "piloto"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: fechar oferta, licença e checkout do anual durante novembro e dezembro.\n\nPRONTO\n• Funil definido: prévia pública enxuta → convite/conta Business → leitura profissional → oferta anual.\n• Produto anual de 2026 cadastrado em rascunho; infraestrutura de pagamento já existe no Business.\n• Primeiro acesso ABRACEO já registra o benefício de 50% na compra antecipada do anual quando o convite é resgatado (correção de 04/11).\n• Hipóteses de preço e benefício estão na central, ainda sujeitas à validação comercial.\n\nFALTA\n• Aprovar preço, licença, condições da oferta e público elegível à compra antecipada com 50% de desconto.\n• Integrar o benefício de 50% registrado no resgate à oferta/checkout do anual e validar a compra antecipada quando a venda for aberta.\n• Configurar a oferta do estudo no pagamento e testar compra, confirmação e liberação de leitura.\n• Preparar a comunicação com quem usou a prévia e os materiais comerciais antes do recesso.\n• Este trabalho prepara janeiro; não impede a estreia da prévia de 13/11.",
+      "responsible": "",
+      "version": 542,
+      "step": "venda-anual"
+    }
+  ],
+  "products": [
+    {
+      "meta": {
+        "corte": "2026-09-30",
+        "escopo_trimestres": 3,
+        "coletado_em": "2026-10-06T23:09:57.88483-03:00",
+        "versao": 3
+      },
+      "code": "previa-2026-q3",
+      "status": "ACTIVE",
+      "publication": 41,
+      "published_at": "2026-10-06T23:20:59.658419-03:00",
+      "series_count": 137,
+      "run": 233
+    },
+    {
+      "meta": {
+        "corte": null,
+        "escopo_trimestres": null,
+        "coletado_em": null,
+        "versao": null
+      },
+      "code": "anual-2026",
+      "status": "DRAFT",
+      "publication": null,
+      "published_at": null,
+      "series_count": null,
+      "run": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "runtime_changed": false,
+  "patch_created": false,
+  "hypothesis_800kb_cap": "discarded_by_runtime_evidence",
+  "checks_passed": 11,
+  "runtime_sha256": "4f1069361d9c399d402589ebc77238ddc93b52824f7337de6cbb827b2964ae19",
+  "getRun_226_bytes": 4311180,
+  "getRun_226_sha256": "8f8b992ce0294013a30649d7789615defcb3319ee2e8de68bd2396317097e998",
+  "temporary_remote_components_removed": true,
+  "persistent_database_test_writes": false,
+  "candidate_removed_because_identical": true
+}

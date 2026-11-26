@@ -1,0 +1,3 @@
+## Calendário 2026
+
+Derivação auditada: célula 275 rev1, congelamento 61, originado da saída 56. Meses e trimestres do parcial mantêm as contagens anteriores. Q3 incompleto até 26/09; Q4 fora do corte. A distribuição tem denominador próprio de 4.214.040, diferente do total Jan–Ago usado no comparativo de crescimento. A regra de estações da fonte antiga continua pendente. Detalhes na nota de P08/P14 desta mesma revisão.

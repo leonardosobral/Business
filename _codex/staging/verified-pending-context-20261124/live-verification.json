@@ -1,0 +1,40 @@
+{
+  "list": {
+    "status": 200,
+    "verified": true
+  },
+  "quick": {
+    "status": 200,
+    "verified": true
+  },
+  "page2": {
+    "status": 200,
+    "verified": true
+  },
+  "historic": {
+    "status": 200,
+    "verified": true
+  },
+  "none": {
+    "status": 200,
+    "verified": true
+  },
+  "debora": {
+    "status": 200,
+    "verified": true
+  },
+  "solange": {
+    "status": 200,
+    "verified": true
+  },
+  "divergent": {
+    "status": 200,
+    "verified": true
+  },
+  "angelica": {
+    "status": 200,
+    "verified": true
+  },
+  "ok": true,
+  "stage_removed": true
+}

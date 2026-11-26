@@ -1,0 +1,10 @@
+{
+  "published": [
+    "portal/includes/seo_semrush_archive_backend.cfm",
+    "portal/conteudo/seo_semrush_archive.cfm",
+    "portal/seo/arquivo.cfm",
+    "portal/conteudo/seo_semrush.cfm"
+  ],
+  "backup": "/var/backups/seo-semrush-archive-20261104/baseline",
+  "published_at": "2026-11-04T16:35:43.115398+00:00"
+}

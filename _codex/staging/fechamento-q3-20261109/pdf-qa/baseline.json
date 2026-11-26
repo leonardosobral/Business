@@ -1,0 +1,20 @@
+{
+  "review_date": "2026-11-09",
+  "pdfs": [
+    {
+      "filename": "brasil-que-corre-provas-guia-rapido-q3.pdf",
+      "business_sha256": "e26b1dda261cbfb428d35131180d9861dc55ac4a2c49d61f33dba0431127dccb",
+      "rr_sha256": "e26b1dda261cbfb428d35131180d9861dc55ac4a2c49d61f33dba0431127dccb",
+      "production_sha256": "e26b1dda261cbfb428d35131180d9861dc55ac4a2c49d61f33dba0431127dccb",
+      "production_verified_by": "ssh sha256sum 2026-11-09; all three hashes identical"
+    },
+    {
+      "filename": "brasil-que-corre-provas-lancamento-q3-execucao-v5.pdf",
+      "business_sha256": "2f886359df22602ee7fa84029b48bd764bcf348f56ff71ceaa3e7ceb316fc1e8",
+      "rr_sha256": "2f886359df22602ee7fa84029b48bd764bcf348f56ff71ceaa3e7ceb316fc1e8",
+      "production_sha256": "2f886359df22602ee7fa84029b48bd764bcf348f56ff71ceaa3e7ceb316fc1e8",
+      "production_verified_by": "ssh sha256sum 2026-11-09; all three hashes identical"
+    }
+  ],
+  "v5_source_sha256": "350451b13061d27751a79bb8a764f1d739fe948c537b7418277e475d86727309"
+}

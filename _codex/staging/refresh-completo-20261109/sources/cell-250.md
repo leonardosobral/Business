@@ -1,0 +1,1 @@
+Ponte para o snapshot 2026 v3 já usado pela web. Não recalcula números, datas de corte ou coortes. Para renovar a prévia, revise as consultas de origem e gere outro congelamento.

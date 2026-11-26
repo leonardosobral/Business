@@ -1,0 +1,10 @@
+{
+  "active_grants_missing_benefit": 0,
+  "campaign_id": 27,
+  "annual_product": 2,
+  "backfilled": 1,
+  "dry_run_rolled_back": true,
+  "benefit_percent": 50,
+  "campaign_version": 2,
+  "revoked_benefit_preserved": true
+}

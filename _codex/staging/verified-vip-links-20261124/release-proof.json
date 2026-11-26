@@ -1,0 +1,36 @@
+{
+  "tested_at": "2026-11-24T18:00:43.291475+00:00",
+  "native": {
+    "timings": {
+      "run.cfm": 45.505,
+      "render.cfm?filter_status=unclassified&fixture_ready=1": 2.958,
+      "render.cfm?filter_status=all&page_id=53854&user_busca=53854": 3.225,
+      "render.cfm?test_denied=1": 0.042,
+      "render.cfm?case=csrf": 2.791,
+      "render.cfm?case=legacy": 2.787
+    },
+    "statuses": {
+      "run.cfm": 200,
+      "render.cfm?filter_status=unclassified&fixture_ready=1": 200,
+      "render.cfm?filter_status=all&page_id=53854&user_busca=53854": 200,
+      "render.cfm?test_denied=1": 403,
+      "render.cfm?case=csrf": 403,
+      "render.cfm?case=legacy": 409
+    },
+    "tests": {
+      "CHECKS": 106.0,
+      "READY": 1,
+      "UNCLASSIFIED": 61,
+      "RECONCILE": 52,
+      "OK": true,
+      "MANUAL_ID": 54048
+    },
+    "ok": true,
+    "stage_removed": true
+  },
+  "hashes": {
+    "services/VerifiedAdmin.cfc": "1cf36e3d8e881597de31559516d2a56bee4a4c37df83799ca4056cb246bfb3b2",
+    "portal/verificados/home.cfm": "d2685958afb3e3f5a52e136e4189aa17f97bec27540f8082f656c9825ed4bb65",
+    "portal/includes/verified_backend.cfm": "c71d7267d1659e7343103f777ac5dff76a6869bd3461aaca370f97938edabc56"
+  }
+}

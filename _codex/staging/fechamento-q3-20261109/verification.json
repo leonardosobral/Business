@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-09",
+  "saved_step": "organizar",
+  "revision_before": 513,
+  "revision_after": 543,
+  "other_seven_steps_preserved": true,
+  "responsible_preserved": true,
+  "runtime_files_changed": [],
+  "notebook_queries_changed": false,
+  "new_collects_executed": false,
+  "reader_pages": 37,
+  "reader_empty_states": 0,
+  "cohort_featured_in_professional_reader": false,
+  "public_publication_run": 239,
+  "professional_publication": 41,
+  "professional_run": 233,
+  "cleanup": {
+    "tabs_closed": [
+      "283510020",
+      "283510023"
+    ],
+    "remaining_owned_tabs": [],
+    "bridge_cleanup": "finally",
+    "temporary_server_started": false
+  }
+}

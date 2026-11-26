@@ -1,0 +1,26 @@
+{
+  "product_id": 1,
+  "publication_id": 41,
+  "publication_run": 233,
+  "public_run": 239,
+  "public_revision": 5,
+  "paired_cell": 387,
+  "public_cell": 420,
+  "annual_cell": 418,
+  "view_definition": " SELECT ((r.result -> 'rows'::text) -> 0) -> 'payload'::text AS payload\n   FROM estudo.notebook_runs r\n     JOIN estudo.produtos p ON p.codigo = 'previa-2026-q3'::text AND p.status = 'ACTIVE'::text AND p.publicacao_id = 41\n  WHERE r.id = 239 AND r.cell_id = 420 AND r.frozen AND r.status = 'ok'::text AND NOT r.truncated AND r.row_count = 1;",
+  "view_sha256": "ee05be7bd4b56685eb01cd0e9c7fcc3a4a0f54fc8a80604e59b52717157252e4",
+  "security_barrier": true,
+  "destination2026": {
+    "ano": 2026,
+    "publicacao_id": 41,
+    "cell_id": 251,
+    "versao": 22
+  },
+  "destination2025": {
+    "ano": 2025,
+    "publicacao_id": 37,
+    "cell_id": 249,
+    "versao": 19
+  },
+  "contract_version": 17
+}

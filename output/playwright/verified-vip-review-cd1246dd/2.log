@@ -1,0 +1,263 @@
+### Page
+- Page URL: http://127.0.0.1:64099/detail.html
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- region [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - paragraph [ref=e5]: PORTAL · ROAD RUNNERS
+      - heading "Selos verificados" [level=1] [ref=e6]
+      - paragraph [ref=e7]: Veja por que cada pessoa tem o selo, até quando ele vale e o histórico de cada origem.
+    - generic [ref=e8]: Classificar um motivo não altera o selo
+  - generic "Resumo geral dos selos" [ref=e9]:
+    - link [ref=e10] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&PAGINA=1
+      - text: Selos ativos
+      - strong [ref=e11]: "418"
+    - link [ref=e12] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&FILTER%5FORIGIN=manual&PAGINA=1
+      - text: Sem vencimento
+      - strong [ref=e13]: "86"
+    - generic [ref=e14]:
+      - text: Ativos com prazo
+      - strong [ref=e15]: "332"
+    - link [ref=e16] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=1
+      - text: Motivo a classificar
+      - strong [ref=e17]: "61"
+  - navigation "Situação do selo" [ref=e18]:
+    - link "Ativos" [ref=e19] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&PAGINA=1
+    - link "A classificar" [ref=e20] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Divergências VIP (4)" [ref=e21] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=divergent&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Conferir VIP" [ref=e22] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=reconcile&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Inativos" [ref=e23] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=inactive&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Todos / histórico" [ref=e24] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=all&FILTER%5FLOGIC=any&PAGINA=1
+  - status [ref=e25]: Estes cadastros VIP apresentam divergência na consulta à Pagar.me. Foram separados para revisão e ficaram fora da conciliação. Seus selos e validades foram preservados.
+  - generic [ref=e26]:
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e29]: Buscar pessoa
+        - textbox "Buscar pessoa" [ref=e30]:
+          - /placeholder: Nome, e-mail, perfil ou ID
+      - generic [ref=e31]:
+        - generic [ref=e32]: Origem ou motivo
+        - combobox "Origem ou motivo" [ref=e33]:
+          - option "Todas as origens" [selected]
+          - option "Concessão permanente"
+          - option "Todo Santo Dia · VIP ativo"
+          - option "Todo Santo Dia · VIP/upgrade confirmado no cadastro"
+          - option "Todo Santo Dia · Upgrade VIP ativo"
+          - option "Compra anual ativa"
+          - option "Com estorno no histórico"
+          - option "Atleta de elite"
+          - option "Influencer / criador"
+          - option "Imprensa"
+          - option "Parceiro"
+          - option "Equipe"
+          - option "Cortesia"
+          - option "Outro motivo"
+          - option "Motivo não informado"
+      - button "Filtrar" [ref=e34] [cursor=pointer]
+      - link "Limpar" [ref=e35] [cursor=pointer]:
+        - /url: /portal/verificados/
+    - group [ref=e36]:
+      - generic "Filtros de cadastro" [ref=e37] [cursor=pointer]
+      - option "Todos" [selected]
+      - option "catarinensecorridaderua · catarinensecorridaderua"
+      - option "catarinensetrailrun · catarinensetrailrun"
+      - option "circuitobrasilgigante · circuitobrasilgigante"
+      - option "desafio365 · inscricao365"
+      - option "desafio365 · inscricao365vip"
+      - option "desafio365 · inscricao365Vip"
+      - option "desafio366 · inscricao366"
+      - option "desafio366 · inscricaotodosantodia"
+      - option "desafiofoco · foco"
+      - option "desafiosupra · /desafiosupra/inscricao/"
+      - option "foco · foco"
+      - option "todosantodia · desafiofoco"
+      - option "todosantodia · inscricao366"
+      - option "todosantodia · todosantodia"
+      - option "todosantodia · todosantodiaupg"
+      - option "todosantodia · todosantodiaupgrade"
+      - option "todosantodia · todosantodiavip"
+      - option "todosantodia · todosantodiavip1"
+      - option "· /connect/inscricao/"
+      - option "· /empresa/cadastro/"
+      - option "· /ts/inscricao/"
+      - option "Qualquer regra" [selected]
+      - option "Todas as regras"
+  - article [ref=e38]:
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - paragraph [ref=e41]: ORIGENS DO SELO · PERFIL 53015
+        - heading "GISELE LIMA" [level=2] [ref=e42]
+        - paragraph [ref=e43]:
+          - generic [ref=e44]: Sem vencimento
+          - link "Abrir perfil ↗" [ref=e45] [cursor=pointer]:
+            - /url: https://roadrunners.run/atleta/giselelima/
+      - link "Fechar detalhes" [ref=e46] [cursor=pointer]:
+        - /url: /portal/verificados/?FILTER%5FSTATUS=divergent&FILTER%5FLOGIC=any&PAGINA=1
+    - generic [ref=e47]:
+      - strong [ref=e48]: Revisão VIP pendente
+      - paragraph [ref=e49]: Somente tentativas VIP recusadas.
+      - paragraph [ref=e50]: Este perfil ficou fora da conciliação. O selo anterior foi preservado.
+    - generic [ref=e52]:
+      - heading "Concessão permanente" [level=3] [ref=e53]
+      - paragraph [ref=e54]:
+        - generic [ref=e55]: Origem ativa
+      - paragraph [ref=e56]: Vínculo Todo Santo Dia identificado no cadastro.
+      - paragraph [ref=e57]: A concessão permanente está preservada. Os registros VIP e a conciliação aparecem abaixo.
+    - region "Vínculos confirmados no cadastro" [ref=e58]:
+      - heading "Vínculos Todo Santo Dia" [level=3] [ref=e59]
+      - generic [ref=e61]:
+        - heading "Todo Santo Dia · VIP" [level=3] [ref=e62]
+        - paragraph [ref=e63]:
+          - generic [ref=e64]: Confirmado no cadastro
+        - paragraph [ref=e65]: Cadastro em 31/12/2025 10:04. Esta data não é a data do pagamento.
+        - paragraph [ref=e66]: "Conferir pagamento e validade: este vínculo ainda não foi conciliado com o histórico do selo."
+        - paragraph [ref=e67]: "Referência no cadastro: VIPLPMICH"
+    - group [ref=e68]:
+      - generic "Classificar a concessão permanente" [ref=e69] [cursor=pointer]
+      - option "Motivo não informado" [selected]
+      - option "Atleta de elite"
+      - option "Influencer / criador"
+      - option "Imprensa"
+      - option "Parceiro"
+      - option "Equipe"
+      - option "Cortesia"
+      - option "Outro motivo"
+  - paragraph [ref=e70]:
+    - link "Classificar os 61 motivos pendentes →" [ref=e71] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=1
+  - generic [ref=e72]:
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - heading "Classificação rápida" [level=2] [ref=e75]
+        - paragraph [ref=e76]: Marque as pessoas com o mesmo motivo e salve de uma vez. Apenas os perfis marcados nesta página serão classificados.
+      - status [ref=e77]: 0 selecionados
+    - group [ref=e78]:
+      - generic [ref=e79]:
+        - generic [ref=e80]:
+          - generic [ref=e81]: Motivo em comum
+          - combobox "Motivo em comum" [ref=e82]:
+            - option "Escolha o motivo" [selected]
+            - option "Atleta de elite"
+            - option "Influencer / criador"
+            - option "Imprensa"
+            - option "Parceiro"
+            - option "Equipe"
+            - option "Cortesia"
+            - option "Outro motivo"
+        - generic [ref=e83]:
+          - generic [ref=e84]: Vínculo ou observação (opcional)
+          - textbox "Vínculo ou observação (opcional)" [ref=e85]
+        - button "Salvar selecionados" [disabled]
+  - generic [ref=e86]:
+    - heading "4 perfis encontrados" [level=2] [ref=e87]
+    - generic [ref=e88]: Uma pessoa pode ter mais de uma origem ativa.
+  - table [ref=e90]:
+    - rowgroup [ref=e91]:
+      - row [ref=e92]:
+        - columnheader [ref=e93]:
+          - checkbox "Selecionar todos os pendentes desta página" [disabled] [ref=e94]
+        - columnheader "Pessoa" [ref=e95]
+        - columnheader "Origem e motivo do selo" [ref=e96]
+        - columnheader "Situação e validade" [ref=e97]
+        - columnheader "Detalhes" [ref=e98]
+    - rowgroup [ref=e100]:
+      - row [ref=e101]:
+        - cell [ref=e102]
+        - cell "GABI LA ROSA corregablarosa@gmail.com Perfil 53296 · Usuário 105742" [ref=e103]:
+          - link "GABI LA ROSA" [ref=e104] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=divergent&FILTER%5FLOGIC=any&PAGE%5FID=53296&PAGINA=1#detalhes
+          - generic [ref=e105]: corregablarosa@gmail.com
+          - text: Perfil 53296 · Usuário 105742
+        - cell "Concessão permanente Todo Santo Dia · Upgrade VIP Confirmado no cadastro Pedido estornado; upgrade no cadastro requer revisão Cadastro com anotação de cancelamento/estorno" [ref=e106]:
+          - generic [ref=e107]:
+            - generic [ref=e108]: Concessão permanente
+            - generic [ref=e109]: Todo Santo Dia · Upgrade VIP
+            - generic [ref=e110]: Confirmado no cadastro
+            - generic [ref=e111]: Pedido estornado; upgrade no cadastro requer revisão
+            - generic [ref=e112]: Cadastro com anotação de cancelamento/estorno
+        - cell [ref=e113]:
+          - strong [ref=e114]: Sem vencimento
+        - cell [ref=e115]:
+          - link "Ver origens de GABI LA ROSA" [ref=e116] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=divergent&FILTER%5FLOGIC=any&PAGE%5FID=53296&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e117]:
+        - cell [ref=e118]
+        - cell "GISELE LIMA giselelima.personaltrainer@gmail.com Perfil 53015 · Usuário 105013" [ref=e119]:
+          - link "GISELE LIMA" [ref=e120] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=divergent&FILTER%5FLOGIC=any&PAGE%5FID=53015&PAGINA=1#detalhes
+          - generic [ref=e121]: giselelima.personaltrainer@gmail.com
+          - text: Perfil 53015 · Usuário 105013
+        - cell "Concessão permanente Todo Santo Dia · VIP Confirmado no cadastro Somente tentativas VIP recusadas" [ref=e122]:
+          - generic [ref=e123]:
+            - generic [ref=e124]: Concessão permanente
+            - generic [ref=e125]: Todo Santo Dia · VIP
+            - generic [ref=e126]: Confirmado no cadastro
+            - generic [ref=e127]: Somente tentativas VIP recusadas
+        - cell [ref=e128]:
+          - strong [ref=e129]: Sem vencimento
+        - cell [ref=e130]:
+          - link "Ver origens de GISELE LIMA" [ref=e131] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=divergent&FILTER%5FLOGIC=any&PAGE%5FID=53015&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e132]:
+        - cell [ref=e133]
+        - cell "PAULO DIETER paulodieter@gmail.com Perfil 53067 · Usuário 105127" [ref=e134]:
+          - link "PAULO DIETER" [ref=e135] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=divergent&FILTER%5FLOGIC=any&PAGE%5FID=53067&PAGINA=1#detalhes
+          - generic [ref=e136]: paulodieter@gmail.com
+          - text: Perfil 53067 · Usuário 105127
+        - cell "Concessão permanente Todo Santo Dia · VIP Confirmado no cadastro Pagamento confirmado somente da Básica" [ref=e137]:
+          - generic [ref=e138]:
+            - generic [ref=e139]: Concessão permanente
+            - generic [ref=e140]: Todo Santo Dia · VIP
+            - generic [ref=e141]: Confirmado no cadastro
+            - generic [ref=e142]: Pagamento confirmado somente da Básica
+        - cell [ref=e143]:
+          - strong [ref=e144]: Sem vencimento
+        - cell [ref=e145]:
+          - link "Ver origens de PAULO DIETER" [ref=e146] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=divergent&FILTER%5FLOGIC=any&PAGE%5FID=53067&PAGINA=1#detalhes
+            - text: Ver origens
+      - row [ref=e147]:
+        - cell [ref=e148]
+        - cell "WANESSA SANTOS ssantoswanessa@gmail.com Perfil 53742 · Usuário 107204" [ref=e149]:
+          - link "WANESSA SANTOS" [ref=e150] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=divergent&FILTER%5FLOGIC=any&PAGE%5FID=53742&PAGINA=1#detalhes
+          - generic [ref=e151]: ssantoswanessa@gmail.com
+          - text: Perfil 53742 · Usuário 107204
+        - cell "Concessão permanente Todo Santo Dia · VIP Confirmado no cadastro Nenhum pedido Todo Santo Dia localizado pelos vínculos consultados" [ref=e152]:
+          - generic [ref=e153]:
+            - generic [ref=e154]: Concessão permanente
+            - generic [ref=e155]: Todo Santo Dia · VIP
+            - generic [ref=e156]: Confirmado no cadastro
+            - generic [ref=e157]: Nenhum pedido Todo Santo Dia localizado pelos vínculos consultados
+        - cell [ref=e158]:
+          - strong [ref=e159]: Sem vencimento
+        - cell [ref=e160]:
+          - link "Ver origens de WANESSA SANTOS" [ref=e161] [cursor=pointer]:
+            - /url: /portal/verificados/?FILTER%5FSTATUS=divergent&FILTER%5FLOGIC=any&PAGE%5FID=53742&PAGINA=1#detalhes
+            - text: Ver origens
+  - navigation "Páginas da lista" [ref=e162]:
+    - generic [ref=e163]: Página 1 de 1
+  - paragraph [ref=e164]: VIP/upgrade confirmado no cadastro identifica o vínculo e sai da fila de motivos desconhecidos. Pagamento e validade dependem da conciliação financeira. Estornos ficam no histórico. Datas de pagamento no horário de Brasília.
+```
+
+
+╔════════════════════════════════════════════════════════════════════╗
+║ Update available for @playwright/cli: 0.1.18 → 0.1.25              ║
+║ Run `npm install -g @playwright/cli@latest` (global) or            ║
+║ `npm install --save-dev @playwright/cli@latest` (local) to update. ║
+╚════════════════════════════════════════════════════════════════════╝
+

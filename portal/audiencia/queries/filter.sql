@@ -9,10 +9,11 @@ WITH regional AS NOT MATERIALIZED (
       AND e.occurred_at <= now()
       AND e.environment = :environment
       AND (:include_internal = true OR e.is_internal = false)
+      AND (:page_family <> 'verified' OR (e.page_family = 'other' AND e.page_path = '/verificado/'))
 ), filtered AS NOT MATERIALIZED (
     SELECT * FROM regional
     WHERE (:uf = '' OR audience_uf = :uf)
-      AND (:page_family = '' OR page_family = :page_family)
+      AND (:page_family IN ('', 'verified') OR page_family = :page_family)
       AND (:device_class = '' OR device_class = :device_class)
 ), page_identity AS (
     -- Only the original page opening identifies the page, never video modals.
@@ -20,6 +21,8 @@ WITH regional AS NOT MATERIALIZED (
     SELECT page_view_id, max(content_type) AS page_content_type,
            max(content_id) AS page_content_id
     FROM regional WHERE event_kind = 'page_view'
+      -- For the offer, content_id names the entry point, not a distinct destination.
+      AND content_type IS DISTINCT FROM 'verified_offer'
     GROUP BY page_view_id
 ), page_metrics AS (
     SELECT f.page_view_id, visitor_id, session_id, page_family, page_path,

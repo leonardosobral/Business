@@ -1,0 +1,933 @@
+{
+  "views": {
+    "estudo.vwbi_perfil_br_2026": " SELECT tbbi_fat_perfil_br_2026.id_fat_perfil_br_2026,\n    tbbi_fat_perfil_br_2026.id_evento,\n    tbbi_fat_perfil_br_2026.id_resultado,\n    tbbi_fat_perfil_br_2026.data_evento,\n    tbbi_fat_perfil_br_2026.percurso,\n    tbbi_fat_perfil_br_2026.sexo,\n    tbbi_fat_perfil_br_2026.tempo_total,\n    EXTRACT(epoch FROM tbbi_fat_perfil_br_2026.tempo_total)::integer AS tempo_total_segundos,\n    tbbi_fat_perfil_br_2026.idade_range,\n    tbbi_fat_perfil_br_2026.id_usuario,\n    tbbi_fat_perfil_br_2026.id_atleta_strava,\n    tbbi_fat_perfil_br_2026.pcd,\n    tbbi_fat_perfil_br_2026.evento_homologado,\n    tbbi_fat_perfil_br_2026.resultado_homologado,\n    dd.id_data,\n    dd.data_referencia,\n    dd.ano,\n    dd.mes,\n    dd.mes_extenso,\n    dd.dia,\n    dd.dia_do_ano,\n    dd.dia_da_semana,\n    dd.semana_calendario,\n    dd.data_formatada,\n    dd.trimestre,\n    dd.trimestre_ano,\n    dd.mes_ano,\n    dd.ano_semana_calendario,\n    dd.tipo_dia_semana,\n    dd.feriado_nacional,\n    dd.calendario_inicio_semana,\n    dd.calendario_final_semana,\n    tbbi_fat_perfil_br_2026.id_localidade,\n    dl.nome_pais,\n    dl.regiao,\n    dl.estado,\n    dl.nome_estado,\n    dl.nome_cidade,\n    dl.capital,\n    dl.id_paises_iso3166,\n    dg.id_geracao,\n    dg.nome_geracao,\n    df.id_faixa,\n    df.nome_faixa,\n    dfc.id_cbat_categoria,\n    dfc.nome_cbat_categoria,\n    ni.id_organizacao,\n    ni.agrupamento,\n    ni.nome_padrao,\n    ni.nome_original,\n    dc.id_cronometragem,\n    dc.nome_cronometragem\n   FROM tbbi_fat_perfil_br_2026\n     LEFT JOIN tbbi_dim_data dd ON dd.id_data = tbbi_fat_perfil_br_2026.id_data\n     LEFT JOIN tbbi_dim_localidade dl ON dl.id_localidade = tbbi_fat_perfil_br_2026.id_localidade\n     LEFT JOIN tbbi_dim_geracoes dg ON dg.id_geracao = tbbi_fat_perfil_br_2026.id_geracao\n     LEFT JOIN tbbi_dim_faixas df ON df.id_faixa = tbbi_fat_perfil_br_2026.id_faixa\n     LEFT JOIN tbbi_dim_cbat_categorias dfc ON dfc.id_cbat_categoria = tbbi_fat_perfil_br_2026.id_cbat_categoria\n     LEFT JOIN tbbi_dim_organizacao_2026 ni ON ni.id_organizacao = tbbi_fat_perfil_br_2026.id_organizador\n     LEFT JOIN tbbi_dim_cronometragem dc ON dc.id_cronometragem = tbbi_fat_perfil_br_2026.id_cronometrador;",
+    "estudo.vw_resultados_2026": " SELECT v.id_resultado,\n    r.num_peito,\n    r.nome,\n    r.data_nascimento,\n    v.id_evento,\n    r.modalidade,\n    r.pace,\n    v.percurso,\n    v.sexo::character varying AS sexo,\n    r.tempo_bruto,\n    v.tempo_total,\n    r.classificacao_categoria,\n    r.classificacao_sexo,\n    r.classificacao_total,\n    r.velocidade_media,\n    r.equipe,\n    r.nome_categoria,\n    v.id_usuario,\n    r.id_categoria,\n    v.resultado_homologado AS homologado,\n    r.concluinte,\n    r.chave_processamento,\n    r.chave_verificacao,\n    r.nacionalidade,\n    r.status_final,\n    r.hora_largada,\n    r.tempo_f1_categoria,\n    r.tempo_f1_sexo,\n    r.tempo_f1_total,\n    r.posicao_ranking,\n    r.classificacao_pais,\n    v.pcd,\n    r.nome_full_text,\n    v.idade_range,\n    r.nome_normalizado,\n    r.origem_resultado\n   FROM estudo.vwbi_perfil_br_2026 v\n     LEFT JOIN tb_resultados r ON r.id_resultado = v.id_resultado\n  WHERE v.data_evento >= '2026-01-01'::date AND v.data_evento < '2026-10-01'::date;",
+    "vwbi_fat_perfil_br_2026": " SELECT tbbi_fat_perfil_br_2026.id_fat_perfil_br_2026,\n    tbbi_fat_perfil_br_2026.id_evento,\n    tbbi_fat_perfil_br_2026.id_resultado,\n    tbbi_fat_perfil_br_2026.data_evento,\n    tbbi_fat_perfil_br_2026.percurso,\n    tbbi_fat_perfil_br_2026.sexo,\n    tbbi_fat_perfil_br_2026.tempo_total,\n    EXTRACT(epoch FROM tbbi_fat_perfil_br_2026.tempo_total)::integer AS tempo_total_segundos,\n    tbbi_fat_perfil_br_2026.idade_range,\n    tbbi_fat_perfil_br_2026.id_usuario,\n    tbbi_fat_perfil_br_2026.id_atleta_strava,\n    tbbi_fat_perfil_br_2026.pcd,\n    tbbi_fat_perfil_br_2026.evento_homologado,\n    tbbi_fat_perfil_br_2026.resultado_homologado,\n    dd.id_data,\n    dd.data_referencia,\n    dd.ano,\n    dd.mes,\n    dd.mes_extenso,\n    dd.dia,\n    dd.dia_do_ano,\n    dd.dia_da_semana,\n    dd.semana_calendario,\n    dd.data_formatada,\n    dd.trimestre,\n    dd.trimestre_ano,\n    dd.mes_ano,\n    dd.ano_semana_calendario,\n    dd.tipo_dia_semana,\n    dd.feriado_nacional,\n    dd.calendario_inicio_semana,\n    dd.calendario_final_semana,\n    dl.id_localidade,\n    dl.nome_pais,\n    dl.regiao,\n    dl.estado,\n    dl.nome_estado,\n    dl.nome_cidade,\n    dl.capital,\n    dl.id_paises_iso3166,\n    dg.id_geracao,\n    dg.nome_geracao,\n    df.id_faixa,\n    df.nome_faixa,\n    dfc.id_cbat_categoria,\n    dfc.nome_cbat_categoria,\n    ni.id_organizacao,\n    ni.agrupamento,\n    ni.nome_padrao,\n    ni.nome_original,\n    dc.id_cronometragem,\n    dc.nome_cronometragem\n   FROM tbbi_fat_perfil_br_2026\n     JOIN tbbi_dim_data dd ON dd.id_data = tbbi_fat_perfil_br_2026.id_data\n     JOIN tbbi_dim_localidade dl ON dl.id_localidade = tbbi_fat_perfil_br_2026.id_localidade\n     JOIN tbbi_dim_geracoes dg ON dg.id_geracao = tbbi_fat_perfil_br_2026.id_geracao\n     JOIN tbbi_dim_faixas df ON df.id_faixa = tbbi_fat_perfil_br_2026.id_faixa\n     JOIN tbbi_dim_cbat_categorias dfc ON dfc.id_cbat_categoria = tbbi_fat_perfil_br_2026.id_cbat_categoria\n     JOIN tbbi_dim_organizacao_2026 ni ON ni.id_organizacao = tbbi_fat_perfil_br_2026.id_organizador\n     JOIN tbbi_dim_cronometragem dc ON dc.id_cronometragem = tbbi_fat_perfil_br_2026.id_cronometrador;",
+    "estudo.vw_resultados_comparativo_2025_2026": " SELECT r.id_resultado,\n    r.num_peito,\n    r.nome,\n    r.data_nascimento,\n    r.id_evento,\n    r.modalidade,\n    r.pace,\n    r.percurso,\n    r.sexo,\n    r.tempo_bruto,\n    r.tempo_total,\n    r.classificacao_categoria,\n    r.classificacao_sexo,\n    r.classificacao_total,\n    r.velocidade_media,\n    r.equipe,\n    r.nome_categoria,\n    r.id_usuario,\n    r.id_categoria,\n    r.homologado,\n    r.concluinte,\n    r.chave_processamento,\n    r.chave_verificacao,\n    r.nacionalidade,\n    r.status_final,\n    r.hora_largada,\n    r.tempo_f1_categoria,\n    r.tempo_f1_sexo,\n    r.tempo_f1_total,\n    r.posicao_ranking,\n    r.classificacao_pais,\n    r.pcd,\n    r.nome_full_text,\n    r.idade_range,\n    r.nome_normalizado,\n    r.origem_resultado\n   FROM tb_resultados r\n     JOIN tb_evento_corridas e USING (id_evento)\n  WHERE e.pais::text = 'BR'::text AND e.data_final >= '2025-01-01'::date AND e.data_final < '2026-01-01'::date\nUNION ALL\n SELECT vw_resultados_2026.id_resultado,\n    vw_resultados_2026.num_peito,\n    vw_resultados_2026.nome,\n    vw_resultados_2026.data_nascimento,\n    vw_resultados_2026.id_evento,\n    vw_resultados_2026.modalidade,\n    vw_resultados_2026.pace,\n    vw_resultados_2026.percurso,\n    vw_resultados_2026.sexo,\n    vw_resultados_2026.tempo_bruto,\n    vw_resultados_2026.tempo_total,\n    vw_resultados_2026.classificacao_categoria,\n    vw_resultados_2026.classificacao_sexo,\n    vw_resultados_2026.classificacao_total,\n    vw_resultados_2026.velocidade_media,\n    vw_resultados_2026.equipe,\n    vw_resultados_2026.nome_categoria,\n    vw_resultados_2026.id_usuario,\n    vw_resultados_2026.id_categoria,\n    vw_resultados_2026.homologado,\n    vw_resultados_2026.concluinte,\n    vw_resultados_2026.chave_processamento,\n    vw_resultados_2026.chave_verificacao,\n    vw_resultados_2026.nacionalidade,\n    vw_resultados_2026.status_final,\n    vw_resultados_2026.hora_largada,\n    vw_resultados_2026.tempo_f1_categoria,\n    vw_resultados_2026.tempo_f1_sexo,\n    vw_resultados_2026.tempo_f1_total,\n    vw_resultados_2026.posicao_ranking,\n    vw_resultados_2026.classificacao_pais,\n    vw_resultados_2026.pcd,\n    vw_resultados_2026.nome_full_text,\n    vw_resultados_2026.idade_range,\n    vw_resultados_2026.nome_normalizado,\n    vw_resultados_2026.origem_resultado\n   FROM estudo.vw_resultados_2026;"
+  },
+  "columns": [
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_resultado"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "num_peito"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nome"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "date",
+      "default": null,
+      "name": "data_nascimento"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_evento"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "modalidade"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "time",
+      "default": null,
+      "name": "pace"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "numeric",
+      "default": null,
+      "name": "percurso"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "sexo"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "time",
+      "default": null,
+      "name": "tempo_bruto"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "time",
+      "default": null,
+      "name": "tempo_total"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "numeric",
+      "default": null,
+      "name": "classificacao_categoria"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "numeric",
+      "default": null,
+      "name": "classificacao_sexo"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "numeric",
+      "default": null,
+      "name": "classificacao_total"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "numeric",
+      "default": null,
+      "name": "velocidade_media"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "equipe"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nome_categoria"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_usuario"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_categoria"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "bool",
+      "default": null,
+      "name": "homologado"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "bool",
+      "default": null,
+      "name": "concluinte"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "uuid",
+      "default": null,
+      "name": "chave_processamento"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "uuid",
+      "default": null,
+      "name": "chave_verificacao"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nacionalidade"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "status_final"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "time",
+      "default": null,
+      "name": "hora_largada"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "time",
+      "default": null,
+      "name": "tempo_f1_categoria"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "time",
+      "default": null,
+      "name": "tempo_f1_sexo"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "time",
+      "default": null,
+      "name": "tempo_f1_total"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "posicao_ranking"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "classificacao_pais"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "bool",
+      "default": null,
+      "name": "pcd"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "tsvector",
+      "default": null,
+      "name": "nome_full_text"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4range",
+      "default": null,
+      "name": "idade_range"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "text",
+      "default": null,
+      "name": "nome_normalizado"
+    },
+    {
+      "table": "vw_resultados_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "origem_resultado"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_fat_perfil_br_2026"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_evento"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_resultado"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "date",
+      "default": null,
+      "name": "data_evento"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "numeric",
+      "default": null,
+      "name": "percurso"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "sexo"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "time",
+      "default": null,
+      "name": "tempo_total"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "tempo_total_segundos"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4range",
+      "default": null,
+      "name": "idade_range"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_usuario"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_atleta_strava"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "bool",
+      "default": null,
+      "name": "pcd"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "bool",
+      "default": null,
+      "name": "evento_homologado"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "bool",
+      "default": null,
+      "name": "resultado_homologado"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_data"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "date",
+      "default": null,
+      "name": "data_referencia"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "ano"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "mes"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "mes_extenso"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "dia"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "dia_do_ano"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "dia_da_semana"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "semana_calendario"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "data_formatada"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "trimestre"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "trimestre_ano"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "mes_ano"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "ano_semana_calendario"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "tipo_dia_semana"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "feriado_nacional"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "calendario_inicio_semana"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "calendario_final_semana"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_localidade"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nome_pais"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "regiao"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "estado"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nome_estado"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nome_cidade"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "bool",
+      "default": null,
+      "name": "capital"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_paises_iso3166"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_geracao"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nome_geracao"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_faixa"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nome_faixa"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_cbat_categoria"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nome_cbat_categoria"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_organizacao"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "agrupamento"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nome_padrao"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nome_original"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "int4",
+      "default": null,
+      "name": "id_cronometragem"
+    },
+    {
+      "table": "vwbi_perfil_br_2026",
+      "null": "YES",
+      "schema": "estudo",
+      "type": "varchar",
+      "default": null,
+      "name": "nome_cronometragem"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "int4",
+      "default": "nextval('tbbi_fat_perfil_br_2026_id_fat_perfil_br_2026_seq'::regclass)",
+      "name": "id_fat_perfil_br_2026"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "int4",
+      "default": null,
+      "name": "id_data"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "int4",
+      "default": null,
+      "name": "id_localidade"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "int4",
+      "default": null,
+      "name": "id_evento"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "int4",
+      "default": null,
+      "name": "id_organizador"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "int4",
+      "default": null,
+      "name": "id_cronometrador"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "int4",
+      "default": null,
+      "name": "id_resultado"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "int4",
+      "default": null,
+      "name": "id_geracao"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "int4",
+      "default": null,
+      "name": "id_cbat_categoria"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "int4",
+      "default": null,
+      "name": "id_faixa"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "date",
+      "default": null,
+      "name": "data_evento"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "numeric",
+      "default": null,
+      "name": "percurso"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "NO",
+      "schema": "public",
+      "type": "varchar",
+      "default": null,
+      "name": "sexo"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "YES",
+      "schema": "public",
+      "type": "time",
+      "default": null,
+      "name": "tempo_total"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "YES",
+      "schema": "public",
+      "type": "int4range",
+      "default": null,
+      "name": "idade_range"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "YES",
+      "schema": "public",
+      "type": "int4",
+      "default": null,
+      "name": "id_usuario"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "YES",
+      "schema": "public",
+      "type": "int4",
+      "default": null,
+      "name": "id_atleta_strava"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "YES",
+      "schema": "public",
+      "type": "bool",
+      "default": "false",
+      "name": "pcd"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "YES",
+      "schema": "public",
+      "type": "bool",
+      "default": "true",
+      "name": "evento_homologado"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "null": "YES",
+      "schema": "public",
+      "type": "bool",
+      "default": "true",
+      "name": "resultado_homologado"
+    }
+  ],
+  "functions": [
+    {
+      "identity": "get_id_categoria_cbat(int4range)",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_id_categoria_cbat(p_faixa_atleta int4range)\n RETURNS integer\n LANGUAGE sql\n IMMUTABLE\nAS $function$\r\nSELECT\r\n    CASE\r\n        WHEN p_faixa_atleta IS NULL THEN 0\r\n        WHEN p_faixa_atleta && int4range(13, 20, '[)') THEN 1\r\n        WHEN p_faixa_atleta && int4range(20, 25, '[)') THEN 2\r\n        WHEN p_faixa_atleta && int4range(25, 30, '[)') THEN 3\r\n        WHEN p_faixa_atleta && int4range(30, 35, '[)') THEN 4\r\n        WHEN p_faixa_atleta && int4range(35, 40, '[)') THEN 5\r\n        WHEN p_faixa_atleta && int4range(40, 45, '[)') THEN 6\r\n        WHEN p_faixa_atleta && int4range(45, 50, '[)') THEN 7\r\n        WHEN p_faixa_atleta && int4range(50, 55, '[)') THEN 8\r\n        WHEN p_faixa_atleta && int4range(55, 60, '[)') THEN 9\r\n        WHEN p_faixa_atleta && int4range(60, 65, '[)') THEN 10\r\n        WHEN p_faixa_atleta && int4range(65, 70, '[)') THEN 11\r\n        WHEN p_faixa_atleta && int4range(70, null, '[)') THEN 12\r\n        ELSE 0\r\n    END;\r\n$function$\n",
+      "hash": "aa6fe20f75af7d049cc0cb1bb49fbfc5"
+    },
+    {
+      "identity": "get_id_dim_faixa(numeric,time without time zone)",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_id_dim_faixa(p_percurso numeric, p_tempo_total time without time zone)\n RETURNS integer\n LANGUAGE plpgsql\nAS $function$\r\nDECLARE\r\n\r\nvar_id_dim_faixa       integer;\r\nBEGIN\r\n    var_id_dim_faixa := 0;\r\n\r\n    if p_tempo_total is null then\r\n        return var_id_dim_faixa;\r\n    end if;\r\n\r\n    if p_percurso >= 5 and p_percurso < 6 then\r\n        CASE\r\n            WHEN p_tempo_total < TIME '00:15:00' THEN var_id_dim_faixa := 1; -- Faixa Preta < 15 min\r\n            WHEN p_tempo_total < TIME '00:17:00' THEN var_id_dim_faixa := 2; -- Faixa Marrom < 17 min\r\n            WHEN p_tempo_total < TIME '00:20:00' THEN var_id_dim_faixa := 3; -- Faixa Vermelha < 20 min\r\n            WHEN p_tempo_total < TIME '00:22:00' THEN var_id_dim_faixa := 4; -- Faixa Azul < 22 min\r\n            WHEN p_tempo_total < TIME '00:25:00' THEN var_id_dim_faixa := 5; -- Faixa Amarela < 25 min\r\n            WHEN p_tempo_total < TIME '00:27:00' THEN var_id_dim_faixa := 6; -- Faixa Laranja < 27 min\r\n            WHEN p_tempo_total < TIME '00:30:00' THEN var_id_dim_faixa := 7; -- Faixa Branca < 30 min\r\n            ELSE var_id_dim_faixa := 8;\r\n        END CASE;\r\n        RETURN var_id_dim_faixa;\r\n    end if;\r\n\r\n    if p_percurso >= 10 and p_percurso < 11 then\r\n        CASE\r\n            WHEN p_tempo_total < TIME '00:35:00' THEN var_id_dim_faixa := 9; -- Faixa Preta < 35 min\r\n            WHEN p_tempo_total < TIME '00:40:00' THEN var_id_dim_faixa := 10; -- Faixa Marrom < 37 min\r\n            WHEN p_tempo_total < TIME '00:42:00' THEN var_id_dim_faixa := 11; -- Faixa Vermelha < 40 min\r\n            WHEN p_tempo_total < TIME '00:45:00' THEN var_id_dim_faixa := 12; -- Faixa Azul < 45 min\r\n            WHEN p_tempo_total < TIME '00:50:00' THEN var_id_dim_faixa := 13; -- Faixa Amarela < 50 min\r\n            WHEN p_tempo_total < TIME '00:55:00' THEN var_id_dim_faixa := 14; -- Faixa Laranja < 55 min\r\n            WHEN p_tempo_total < TIME '01:00:00' THEN var_id_dim_faixa := 15; -- Faixa Branca < 60 min\r\n            ELSE var_id_dim_faixa := 16;\r\n        END CASE;\r\n        RETURN var_id_dim_faixa;\r\n    end if;\r\n\r\n    if p_percurso >= 21 and p_percurso < 22 then\r\n        CASE\r\n            WHEN p_tempo_total < TIME '01:20:00' THEN var_id_dim_faixa := 17; -- Faixa Preta < 1h20\r\n            WHEN p_tempo_total < TIME '01:25:00' THEN var_id_dim_faixa := 18; -- Faixa Marrom < 1h25\r\n            WHEN p_tempo_total < TIME '01:30:00' THEN var_id_dim_faixa := 19; -- Faixa Vermelha < 1h30\r\n            WHEN p_tempo_total < TIME '01:40:00' THEN var_id_dim_faixa := 20; -- Faixa Azul < 1h35\r\n            WHEN p_tempo_total < TIME '01:45:00' THEN var_id_dim_faixa := 21;-- Faixa Amarela < 1h40\r\n            WHEN p_tempo_total < TIME '01:50:00' THEN var_id_dim_faixa := 22; -- Faixa Laranja < 1h45\r\n            WHEN p_tempo_total < TIME '02:00:00' THEN var_id_dim_faixa := 23; -- Faixa Branca < 1h50\r\n            ELSE var_id_dim_faixa := 24;\r\n        END CASE;\r\n        RETURN var_id_dim_faixa;\r\n    end if;\r\n\r\n    if p_percurso >= 42 and p_percurso < 43 then\r\n        CASE\r\n            WHEN p_tempo_total < TIME '02:30:00' THEN var_id_dim_faixa := 25; -- Faixa Preta < 2h30\r\n            WHEN p_tempo_total < TIME '02:45:00' THEN var_id_dim_faixa := 26;\r\n            WHEN p_tempo_total < TIME '03:00:00' THEN var_id_dim_faixa := 27;\r\n            WHEN p_tempo_total < TIME '03:15:00' THEN var_id_dim_faixa := 28;\r\n            WHEN p_tempo_total < TIME '03:30:00' THEN var_id_dim_faixa := 29;\r\n            WHEN p_tempo_total < TIME '03:45:00' THEN var_id_dim_faixa := 30;\r\n            WHEN p_tempo_total < TIME '04:00:00' THEN var_id_dim_faixa := 31;\r\n            ELSE var_id_dim_faixa := 32;\r\n        END CASE;\r\n        RETURN var_id_dim_faixa;\r\n    end if;\r\n\r\n    return var_id_dim_faixa;\r\n\r\nEND\r\n$function$\n",
+      "hash": "547a306bfba2b1bd9fe072b76869608d"
+    },
+    {
+      "identity": "get_id_geracao(int4range,integer)",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_id_geracao(p_faixa_idade int4range, p_ano_referencia integer)\n RETURNS integer\n LANGUAGE plpgsql\n IMMUTABLE\nAS $function$\nDECLARE\n    v_inferior integer;\n    v_superior_exclusivo integer;\n    v_nascimento_mais_antigo integer;\n    v_nascimento_mais_recente integer;\n    v_geracao_mais_antiga integer;\n    v_geracao_mais_recente integer;\n    v_nascimento_central integer;\nBEGIN\n    IF p_faixa_idade IS NULL OR p_ano_referencia IS NULL\n       OR p_ano_referencia NOT BETWEEN 1900 AND 9999\n       OR isempty(p_faixa_idade) OR lower_inf(p_faixa_idade) THEN\n        RETURN 0;\n    END IF;\n\n    v_inferior := lower(p_faixa_idade);\n    v_superior_exclusivo := upper(p_faixa_idade);\n    IF v_inferior < 14 OR v_inferior > 120\n       OR v_superior_exclusivo IS NULL OR v_superior_exclusivo > 121 THEN\n        RETURN 0;\n    END IF;\n\n    -- [14,20) contém 14–19. Em 2026, os nascimentos são 2007–2012.\n    v_nascimento_mais_antigo := p_ano_referencia - (v_superior_exclusivo - 1);\n    v_nascimento_mais_recente := p_ano_referencia - v_inferior;\n    v_geracao_mais_antiga := CASE\n        WHEN v_nascimento_mais_antigo < 1946 THEN 0\n        WHEN v_nascimento_mais_antigo < 1965 THEN 1\n        WHEN v_nascimento_mais_antigo < 1981 THEN 2\n        WHEN v_nascimento_mais_antigo < 1997 THEN 3\n        WHEN v_nascimento_mais_antigo < 2010 THEN 4\n        ELSE 5 END;\n    v_geracao_mais_recente := CASE\n        WHEN v_nascimento_mais_recente < 1946 THEN 0\n        WHEN v_nascimento_mais_recente < 1965 THEN 1\n        WHEN v_nascimento_mais_recente < 1981 THEN 2\n        WHEN v_nascimento_mais_recente < 1997 THEN 3\n        WHEN v_nascimento_mais_recente < 2010 THEN 4\n        ELSE 5 END;\n\n    IF v_geracao_mais_antiga = v_geracao_mais_recente THEN\n        RETURN v_geracao_mais_antiga;\n    END IF;\n    -- Os IDs 0–5 seguem a ordem das coortes; diferença 1 = duas coortes vizinhas.\n    IF v_geracao_mais_recente - v_geracao_mais_antiga <> 1 THEN\n        RETURN 0;\n    END IF;\n\n    -- Divisão inteira positiva: floor, com preferência pela idade menor no empate.\n    v_nascimento_central := p_ano_referencia\n        - (v_inferior + v_superior_exclusivo - 1) / 2;\n    RETURN CASE\n        WHEN v_nascimento_central < 1946 THEN 0\n        WHEN v_nascimento_central < 1965 THEN 1\n        WHEN v_nascimento_central < 1981 THEN 2\n        WHEN v_nascimento_central < 1997 THEN 3\n        WHEN v_nascimento_central < 2010 THEN 4\n        ELSE 5 END;\nEND;\n$function$\n",
+      "hash": "4ceab31871e33e5eb841c16d6e37cd82"
+    },
+    {
+      "identity": "get_id_geracao(int4range,integer,date,date)",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_id_geracao(p_faixa_idade int4range, p_ano_referencia integer, p_data_nascimento date, p_data_evento date)\n RETURNS integer\n LANGUAGE sql\n IMMUTABLE\nAS $function$\nSELECT CASE\n    WHEN p_ano_referencia IS NULL OR p_ano_referencia NOT BETWEEN 1900 AND 9999\n      OR (p_data_evento IS NOT NULL\n          AND extract(year FROM p_data_evento)::integer <> p_ano_referencia) THEN 0\n    WHEN p_data_nascimento IS NOT NULL AND p_data_evento IS NOT NULL\n      AND p_data_nascimento <= p_data_evento\n      AND p_ano_referencia - extract(year FROM p_data_nascimento)::integer BETWEEN 0 AND 120\n    THEN public.get_id_geracao(\n        int4range(\n            p_ano_referencia - extract(year FROM p_data_nascimento)::integer,\n            p_ano_referencia - extract(year FROM p_data_nascimento)::integer + 1,\n            '[)'\n        ),p_ano_referencia\n    )\n    ELSE public.get_id_geracao(p_faixa_idade,p_ano_referencia)\nEND;\n$function$\n",
+      "hash": "221972b658c5e11554e75a9b361da415"
+    }
+  ],
+  "tables": [
+    {
+      "table": "tbbi_dim_data",
+      "owner": "runner_dba",
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ]
+    },
+    {
+      "table": "tbbi_dim_localidade",
+      "owner": "runner_dba",
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ]
+    },
+    {
+      "table": "tbbi_dim_organizacao_2026",
+      "owner": "runner_dba",
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ]
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "owner": "runner_dba",
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ]
+    }
+  ]
+}

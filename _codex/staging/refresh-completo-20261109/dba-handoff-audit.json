@@ -1,0 +1,68 @@
+{
+  "public_definition": " SELECT ((r.result -> 'rows'::text) -> 0) -> 'payload'::text AS payload\n   FROM estudo.notebook_runs r\n     JOIN estudo.produtos p ON p.codigo = 'previa-2026-q3'::text AND p.status = 'ACTIVE'::text AND p.publicacao_id = 41\n  WHERE r.id = 239 AND r.cell_id = 420 AND r.frozen AND r.status = 'ok'::text AND NOT r.truncated AND r.row_count = 1;",
+  "cells": [
+    {
+      "sha256": "0c1897fea8debbd21719794de34a098c8ca2483eef7f2ccb445ea9431a400356",
+      "version": 4,
+      "id": 419,
+      "lang": "markdown",
+      "type": "markdown"
+    },
+    {
+      "sha256": "e01b5846690c210713d1763c00e91fc0ed7c6c857a5da4b92849619f19a0f86e",
+      "version": 1,
+      "id": 455,
+      "lang": "markdown",
+      "type": "markdown"
+    },
+    {
+      "sha256": "d9907382d2de1c9d396d4edb0d23c907c89aa0e74bca62cfa6783c99b34c6a08",
+      "version": 1,
+      "id": 456,
+      "lang": "sql",
+      "type": "code"
+    },
+    {
+      "sha256": "e118270312a8746eab5163ca325cc649edf71d1c8b86e59c3c19b687e560a503",
+      "version": 1,
+      "id": 457,
+      "lang": "markdown",
+      "type": "markdown"
+    },
+    {
+      "sha256": "46cf49e20c5598fe5ae26e82900d44ae97c05309e3e6965664dab6fd4f54e4df",
+      "version": 1,
+      "id": 458,
+      "lang": "sql",
+      "type": "code"
+    }
+  ],
+  "products": [
+    {
+      "code": "previa-2026-q3",
+      "status": "ACTIVE",
+      "publication": 41
+    },
+    {
+      "code": "anual-2026",
+      "status": "DRAFT",
+      "publication": null
+    }
+  ],
+  "validation_events": 0,
+  "new_fact_visible": false,
+  "steps": [
+    {
+      "notes": "PRÓXIMO PASSO: executar a carga adaptada no DataGrip; recalcular, validar e liberar a nova edição.\n\nPRONTO (04/11)\n• Hotsite, kit e central publicados; materiais preparados para 13/11 e links principais respondendo.\n• Área de imprensa oferece quatro edições: estudo principal e maratonas, 2025 e prévia 2026.\n• Cronograma e acompanhamento compartilhado funcionando no desktop e celular.\n• Primeiro acesso ABRACEO corrigido em 04/11: voucher e CNPJ registram o direito à compra antecipada do anual com 50%, sem duplicidade. Os 95 vouchers e seus vencimentos foram preservados.\n\nFALTA ATÉ 12/11\n• Conferir com convidados do piloto se o resgate confirma o benefício anual de 50% na conta. A regra já passou nos testes técnicos; falta a validação com leitores reais.\n• Definir se a imprensa continuará com acesso temporariamente aberto, sem login/código, ou voltará ao convite; testar o fluxo escolhido antes de divulgar.\n• Concluir o piloto com não administradores e revisar login, resgate, leitura e exportações.\n• Conferir aprovação do contrato, comunicação da parceria, chamadas, links e destinatários. Registrar a liberação final.\n\nCONFERÊNCIA TÉCNICA (09/11)\n• Comparativo publicado no Business e imprensa, com fontes e CSV; 37 páginas preservadas. Desktop e celular 390px conferidos. Metadados públicos e guia/v6 alinhados. Acesso administrativo aos PDFs e bloqueios anônimos conferidos. Leo e Carlos responsáveis; falta o piloto real e a liberação editorial/contratual.\n\nRENOVAÇÃO DAS FONTES (09/11)\nSQL do DBA recebido e adaptado. Falta executar no DataGrip: _codex/sql/2026-11-09_renovar_estudo_q3.sql. Depois, recalcular e publicar leitor/kit juntos. Original e adaptação estão no notebook, Fontes BI do DBA.",
+      "responsible": "Leo e Carlos",
+      "version": 557,
+      "step": "liberacao"
+    },
+    {
+      "notes": "PRÓXIMO PASSO: executar a carga no DataGrip e concluir a conferência editorial com Leo e Carlos.\n\nCONCLUÍDO (09/11)\n• Escopo Jan–Set separado em público enxuto, profissional e anual em preparação; mapa publicado nesta central.\n• Leitor profissional e imprensa com +2,1% nos concluintes das mesmas provas versus +33,9% no calendário, com 608 pares, contagens, fonte e CSV sem arredondamento. As 37 páginas foram preservadas.\n• Fontes conferidas: Q3 publicação 41/run233; coorte 231; narrativa pública 239. Queries analíticas e congelamentos preservados; revisão registrada na nota 419 do notebook.\n• Guia de 1 página atualizado e execução v6 com cinco pautas, dez artes, PDF público de 7 páginas e chamadas atuais. V5 e demais históricos preservados.\n• Descrição e imagem de compartilhamento do hotsite corrigidas.\n• Leo e Carlos confirmados para lançamento, editorial, convites e suporte.\n\nFALTA PARA ENCERRAR A ETAPA\n• Aprovação editorial final da leitura e das chamadas por Leo e Carlos.\n• Selecionar 5–10 leitores piloto e 5–8 criadores; aprovar destinatários e contatos.\n• Confirmar horário, canais e primeira onda de divulgação de 13/11.\n\nESCOPO PRESERVADO\n• Profissional: panorama/coleta, idades, gerações, distâncias, ritmo de 5/10/21 km, geografia, calendário, porte, dez maiores maratonas, perfil RR, fontes e CSVs.\n• Anual: preços/descontos/kits/lotes, CNA, ritmo nacional de 42 km, revisão cadastral e Q4. Maratonas detalhado: apoio separado, em revisão web.\n\nATÉ 12/11\nPiloto real nos dois caminhos (Business/imprensa), decisão sobre imprensa temporariamente aberta e indexação do hotsite, contrato/comunicação ABRACEO. Benefício de 50% já corrigido; resgate dos 95 vouchers até 24/11. Nenhum convite ou post enviado nesta revisão.\n\nRENOVAÇÃO DAS FONTES (09/11)\nSQL do DBA recebido e adaptado. Falta executar no DataGrip: _codex/sql/2026-11-09_renovar_estudo_q3.sql. Depois, recalcular e publicar leitor/kit juntos. Original e adaptação estão no notebook, Fontes BI do DBA.",
+      "responsible": "Leo e Carlos",
+      "version": 556,
+      "step": "organizar"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "actor": 139,
+  "run_sizes": [
+    {
+      "bytes": 12195,
+      "max_row_bytes": 554,
+      "id": 171,
+      "cell": 361,
+      "rows": 22
+    },
+    {
+      "bytes": 3791,
+      "max_row_bytes": 3755,
+      "id": 224,
+      "cell": 350,
+      "rows": 1
+    },
+    {
+      "bytes": 2207,
+      "max_row_bytes": 2171,
+      "id": 173,
+      "cell": 363,
+      "rows": 1
+    },
+    {
+      "bytes": 38148,
+      "max_row_bytes": 38112,
+      "id": 174,
+      "cell": 364,
+      "rows": 1
+    },
+    {
+      "bytes": 6130,
+      "max_row_bytes": 177,
+      "id": 187,
+      "cell": 377,
+      "rows": 35
+    },
+    {
+      "bytes": 58814,
+      "max_row_bytes": 58778,
+      "id": 176,
+      "cell": 366,
+      "rows": 1
+    },
+    {
+      "bytes": 301580,
+      "max_row_bytes": 301544,
+      "id": 177,
+      "cell": 367,
+      "rows": 1
+    },
+    {
+      "bytes": 15676,
+      "max_row_bytes": 195,
+      "id": 221,
+      "cell": 378,
+      "rows": 92
+    },
+    {
+      "bytes": 422125,
+      "max_row_bytes": 422089,
+      "id": 222,
+      "cell": 368,
+      "rows": 1
+    },
+    {
+      "bytes": 671,
+      "max_row_bytes": 635,
+      "id": 215,
+      "cell": 413,
+      "rows": 1
+    },
+    {
+      "bytes": 316293,
+      "max_row_bytes": 316257,
+      "id": 216,
+      "cell": 343,
+      "rows": 1
+    },
+    {
+      "bytes": 4311180,
+      "max_row_bytes": 4311144,
+      "id": 226,
+      "cell": 384,
+      "rows": 1
+    },
+    {
+      "bytes": 3879793,
+      "max_row_bytes": 3879757,
+      "id": 229,
+      "cell": 383,
+      "rows": 1
+    },
+    {
+      "bytes": 660645,
+      "max_row_bytes": 660609,
+      "id": 233,
+      "cell": 251,
+      "rows": 1
+    },
+    {
+      "bytes": 659,
+      "max_row_bytes": 191,
+      "id": 237,
+      "cell": 421,
+      "rows": 3
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+## Tela web 2026 — Valores de inscrição
+
+Fonte: célula 336 rev1, execução congelada 144, coleta em 05/10/2026. Saída: célula 251 rev29, congelamento 145, contrato 12. Calendário anual 01/01–31/12/2026, inclusive futuras; BR/rua ativo e elegível ao ranking, por data_final. Uma prova = id_evento. Não confirma realização ou categoria geral. Nada altera o panorama, crescimento, coortes ou corte até 26/09.
+
+Regra confirmada pelo responsável: separar preços simbólicos e gratuitos. Média, mediana e faixas usam valor_inscricao > R$ 0,01. Quatro valores de R$ 0,01 ficaram fora; não se classifica PCD ou gratuidade por preço. Zeros, negativos e ausentes não integram a amostra paga. Há 2.980 provas analisadas, mediana R$ 60,00, média R$ 75,97. Mediana exata = média das duas posições centrais quando n é par. Não há ponderação por inscrições ou concluintes; taxas adicionais não somadas. Kits, distâncias, lotes e descontos restritos podem afetar o campo resumido.
+
+Cobertura: 2.984/10.040 (29,7211155378486056%), 7.056 sem valor. Cobertura conta campo não nulo, incluindo os quatro simbólicos. Os 67,6% do painel Conteúdo eram outro universo: 1.543/2.282 provas futuras de todas as modalidades em 05/10, 739 ausentes. Não transportar esse percentual para o ano todo.
+
+### Pendência de qualidade para revisão no notebook
+
+375 preços resumidos divergem do menor positivo nas opções JSON de inscrição. Auditoria por id_evento na fonte congelada 144; 378 casos no conjunto de divergências/simbólicos (sobreposição conservada). Por exemplo, Mountain Do Campos do Jordão: campo 590, opções com menor 295 e categoria geral 450; o mínimo de opções não deve substituir o preço geral automaticamente. La Mision e eventos classificados como rua também exigem revisão de modalidade/categoria. Sem correções operacionais nesta coleta. A captura é atual, não uma reconstrução histórica dos lotes de 2026. Amostra incompleta, sem extrapolação nacional ou comparação com 2025.
+
+Para atualizar: ler a revisão atual antes de salvar a consulta, executar, conferir e congelar nova fonte; revisar a saída 2026 para selecionar a nova execução e publicar pelo serviço oficial, com a publicação vigente como guarda. O pacote atual mantém os demais congelamentos; não seleciona automaticamente a última consulta executada. CSVs conservam valores exatos, bases e fontes; a web lê JSONB congelado.
+
+
+### Ressalva adicional — Ticket Sports e normalização (05/10/2026)
+
+O PDF Perfil do Atleta Brasileiro Ticket Sports 2025/2026, fornecido pelo responsável (arquivo 1768256633148Perfil_do_atleta-Ticket-Sports_2025-2026_v2.pdf), página 20, informa ticket médio presencial de 2025 = R$125,53, virtual = R$99,36 e uma linha Média = R$112,45. O universo do relatório inclui atletas com inscrição na plataforma (p.3), modalidades diversas (p.15) e valores de vendas. O quadro não explicita composição das taxas, ponderação ou exclusões de categorias especiais. Não tratar R$125,53 como preço da categoria geral, nem comparar com preço mínimo por evento de 2026 como variação anual. SHA256 do arquivo: 454645e7b404194efa1617c8ff2939db3c7db22e268716759162ed44a02dcbdd.
+
+A tela passou a identificar mediana/média de entrada e preços resumidos no cadastro. A exclusão até R$0,01 não elimina os demais descontos; mediana é resistente a extremos, mas não corrige mistura de categorias. Não multiplicar preços baixos por dois nem escolher um piso arbitrário para aproximar a Ticket Sports.
+
+Auditoria complementar célula338/rev2, congelamento146, coleta 2026-10-05T11:17:32.859676-03:00; mesmo calendário elegível anual: 3.050 provas com opções capturadas, 24.115 opções; 1.652 provas têm indícios textuais PCD/idoso/60+/kids/meia-entrada/50%; 1.030 têm kit/chip no rótulo; 490 têm a chave lote. As contagens se sobrepõem, podem ter falsos positivos/negativos e não quantificam quais mínimos são descontados ou vendas efetivas. É coleta posterior apenas para diagnóstico; não atualiza a fonte144 ou os números publicados. Consulta e resultado em _codex/docs/brasil_que_corre_provas/inscricoes_2026_10_05/contexto_ticket_sports/.
+
+Exemplos da captura: #46594 7° Corrida da AACC: resumo R$4,00, opção Pessoa com Deficiência Masculino - PCD; opções do kit básico PCD/idoso R$30,00. #43134 4ª Corrida do Bombeiro – Circuito Diamantina: resumo R$7,50 para CORRIDA KIDS SEM CAMISETA com necessidades especiais; outra opção kids R$15,00; corrida adulto com desconto R$49,95. #42644 1ª Corrida PRF MS: resumo R$2,50 em LOTE PRF SINDICALIZADOS, restrição Somente com cupom; não corresponde à inscrição pública regular. Rótulos citados como capturados, sem confirmar política vigente ou identificar pessoas. Há também eventos de trail classificados como rua: auditar modalidade do cadastro.
+
+Próxima normalização proposta: preservar valor bruto e registrar cada opção por evento, modalidade/distância, categoria/elegibilidade, kit/chip, lote, data de coleta, moeda e taxas. Separar adulto geral, categorias especiais/descontos/cupons, kids e caminhada; desconhecidos ficam sem classificação. Kits básicos e completos e lotes devem ter recortes próprios. Mediana por prova só depois de definir a opção comparável; ticket médio vendido depende de quantidade de vendas por opção e não pode ser obtido dos preços ofertados. A proposta ainda não é um filtro novo aprovado nem um indicador calculado.

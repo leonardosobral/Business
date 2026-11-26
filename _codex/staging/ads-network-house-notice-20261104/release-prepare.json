@@ -1,0 +1,9 @@
+{
+  "stage": "/var/backups/ads-network-20261104-5ny93v75",
+  "manifest_sha256": "76e260bb878daaa9f90c7fe46808345574d5ec477f26be779a3253f3ce973ee4",
+  "candidate_hashes": {
+    "portal/includes/banner_management_backend.cfm": "79e355cfbe3a773f47482e2be66632e68db90b68855602d0c95b9d404421308e"
+  },
+  "backup": "/var/backups/ads-network-20261104-5ny93v75/baseline",
+  "runtime_files_changed": false
+}

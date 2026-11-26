@@ -1,0 +1,7 @@
+Correção publicada em 17/11/2026: backend de Eventos executado antes do HTML estrutural.
+Arquivos publicados: eventos/index.cfm e eventos/home.cfm.
+Reprodução com cabeçalho real, autenticação sintética de teste restrita ao loopback e ações fictícias: versão antiga retorna HTTP 200 truncado; nova versão retorna HTTP 302 nas ações aprovar, negar e solicitar, 403 em acesso negado e 400 em validação. GET completo em ambas.
+Handler real de aprovação também executado em transação revertida, com redirecionamento capturado e sem erro.
+Node: 3 testes do painel aprovados; sintaxe do fixture HTTP de delegação válida; diff sem erros. A suíte completa de delegação não foi executada.
+Chrome autenticado, após publicação: página completa, 3 vínculos já ativos e 35 solicitações pendentes. Não foram aprovadas outras provas.
+Limpeza: todos os diretórios de teste remotos removidos em finally e ausência verificada; aba temporária do Chrome fechada e retorno à aba anterior conferido; Chrome pessoal e aba Business fixada preservados. Nenhum servidor ou navegador de automação iniciado.

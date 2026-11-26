@@ -1,0 +1,1 @@
+{"https_enabled": true, "config_sha256": "16fbf75ce885dc148e1fec6434e9a65340e31c552f4fe8d9a5a33b5698b4f836", "certificate": "subject=CN = ads.roadrunners.run\nnotBefore=Nov  4 15:06:06 2026 GMT\nnotAfter=Feb  2 15:06:05 2027 GMT\n", "renewal_hook": "/etc/letsencrypt/renewal-hooks/deploy/ads-network-apache", "backup": "/var/backups/ads-network-vhost-20261104-r_tbkef3"}

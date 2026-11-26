@@ -1,0 +1,53 @@
+{
+  "tested_at": "2026-11-24T17:09:23.761738+00:00",
+  "native": {
+    "timings": {
+      "run.cfm": 2.297,
+      "render.cfm?filter_status=unclassified&fixture_ready=1": 2.342,
+      "render.cfm?filter_status=unclassified": 2.18,
+      "render.cfm?test_denied=1": 0.052,
+      "render.cfm?case=csrf": 2.415,
+      "render.cfm?case=legacy": 2.41
+    },
+    "statuses": {
+      "run.cfm": 200,
+      "render.cfm?filter_status=unclassified&fixture_ready=1": 200,
+      "render.cfm?filter_status=unclassified": 200,
+      "render.cfm?test_denied=1": 403,
+      "render.cfm?case=csrf": 403,
+      "render.cfm?case=legacy": 409
+    },
+    "tests": {
+      "CHECKS": 27.0,
+      "READY": 1,
+      "UNCLASSIFIED": 107,
+      "OK": true,
+      "MANUAL_ID": 54048
+    },
+    "ok": true,
+    "stage_removed": true
+  },
+  "sql": {
+    "ok": true,
+    "checks": [
+      "initial migration",
+      "idempotence",
+      "admin authorization",
+      "permanent-only",
+      "category validation",
+      "reason validation",
+      "concurrent revision",
+      "append-only history",
+      "no entitlement mutation",
+      "restricted grants",
+      "elite category accepted",
+      "idempotent named classification",
+      "other history preserved"
+    ],
+    "temporary_cluster_removed": true
+  },
+  "hashes": {
+    "services/VerifiedAdmin.cfc": "34910b6e69d008e64bc55adbc29e5b55e0e485796be84b7da3cbdc70221c550c",
+    "portal/verificados/home.cfm": "9589775ee05c9eb0ffcf9f0204bb9101299f4274ad5dfe7c077a3c848e2ca348"
+  }
+}

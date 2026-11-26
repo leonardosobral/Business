@@ -1,0 +1,167 @@
+{
+  "matrix": [
+    {
+      "two_args": 0,
+      "four_args": 0,
+      "n": 542436
+    },
+    {
+      "two_args": 0,
+      "four_args": 1,
+      "n": 39827
+    },
+    {
+      "two_args": 0,
+      "four_args": 2,
+      "n": 86551
+    },
+    {
+      "two_args": 0,
+      "four_args": 3,
+      "n": 184100
+    },
+    {
+      "two_args": 0,
+      "four_args": 4,
+      "n": 86589
+    },
+    {
+      "two_args": 0,
+      "four_args": 5,
+      "n": 8263
+    },
+    {
+      "two_args": 1,
+      "four_args": 0,
+      "n": 8
+    },
+    {
+      "two_args": 1,
+      "four_args": 1,
+      "n": 145266
+    },
+    {
+      "two_args": 1,
+      "four_args": 2,
+      "n": 11924
+    },
+    {
+      "two_args": 1,
+      "four_args": 3,
+      "n": 3
+    },
+    {
+      "two_args": 2,
+      "four_args": 0,
+      "n": 5
+    },
+    {
+      "two_args": 2,
+      "four_args": 1,
+      "n": 857
+    },
+    {
+      "two_args": 2,
+      "four_args": 2,
+      "n": 712575
+    },
+    {
+      "two_args": 2,
+      "four_args": 3,
+      "n": 16268
+    },
+    {
+      "two_args": 2,
+      "four_args": 4,
+      "n": 7
+    },
+    {
+      "two_args": 2,
+      "four_args": 5,
+      "n": 2
+    },
+    {
+      "two_args": 3,
+      "four_args": 0,
+      "n": 19
+    },
+    {
+      "two_args": 3,
+      "four_args": 1,
+      "n": 28
+    },
+    {
+      "two_args": 3,
+      "four_args": 2,
+      "n": 54302
+    },
+    {
+      "two_args": 3,
+      "four_args": 3,
+      "n": 1900705
+    },
+    {
+      "two_args": 3,
+      "four_args": 4,
+      "n": 1486
+    },
+    {
+      "two_args": 3,
+      "four_args": 5,
+      "n": 8
+    },
+    {
+      "two_args": 4,
+      "four_args": 0,
+      "n": 77
+    },
+    {
+      "two_args": 4,
+      "four_args": 1,
+      "n": 1
+    },
+    {
+      "two_args": 4,
+      "four_args": 3,
+      "n": 5764
+    },
+    {
+      "two_args": 4,
+      "four_args": 4,
+      "n": 731399
+    },
+    {
+      "two_args": 4,
+      "four_args": 5,
+      "n": 5208
+    },
+    {
+      "two_args": 5,
+      "four_args": 0,
+      "n": 58
+    },
+    {
+      "two_args": 5,
+      "four_args": 3,
+      "n": 1
+    },
+    {
+      "two_args": 5,
+      "four_args": 4,
+      "n": 8576
+    },
+    {
+      "two_args": 5,
+      "four_args": 5,
+      "n": 30791
+    }
+  ],
+  "capturado_em": "2026-11-09T16:09:09.456556-03:00",
+  "summary": {
+    "groups": 4953,
+    "with_plausible_birth": 1569824,
+    "different_two_vs_four": 509932,
+    "n": 4573104
+  },
+  "read_only": "on"
+}

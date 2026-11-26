@@ -1,0 +1,78 @@
+{
+  "ownedTab": "283508553",
+  "desktop": {
+    "checked": 0,
+    "notesFilled": true,
+    "rows": 8,
+    "scrollWidth": 1533,
+    "width": 1533
+  },
+  "expanded": {
+    "clientHeight": 393,
+    "grid": "220px 886px",
+    "notes": 846,
+    "open": true,
+    "scrollHeight": 393,
+    "width": 886
+  },
+  "mobile": {
+    "editorColumns": "308px",
+    "notes": 774,
+    "notesFont": "16px",
+    "open": true,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  "observationsSaved": [
+    {
+      "step": "etapa-organizar",
+      "revision": "513",
+      "characters": 774,
+      "validated": false
+    },
+    {
+      "step": "etapa-piloto",
+      "revision": "514",
+      "characters": 871,
+      "validated": false
+    },
+    {
+      "step": "etapa-contrato-abraceo",
+      "revision": "515",
+      "characters": 846,
+      "validated": false
+    },
+    {
+      "step": "etapa-liberacao",
+      "revision": "516",
+      "characters": 920,
+      "validated": false
+    },
+    {
+      "step": "etapa-lancamento",
+      "revision": "517",
+      "characters": 945,
+      "validated": false
+    },
+    {
+      "step": "etapa-continuidade",
+      "revision": "518",
+      "characters": 805,
+      "validated": false
+    },
+    {
+      "step": "etapa-venda-anual",
+      "revision": "519",
+      "characters": 876,
+      "validated": false
+    },
+    {
+      "step": "etapa-edicao-anual",
+      "revision": "520",
+      "characters": 936,
+      "validated": false
+    }
+  ],
+  "tab_closed_verified": true,
+  "viewport_restored": true
+}

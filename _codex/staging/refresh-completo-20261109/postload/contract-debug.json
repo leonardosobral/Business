@@ -1,0 +1,12 @@
+{
+  "definition": "CREATE OR REPLACE FUNCTION estudo.web_payload_conferido(p_ano integer, p_run bigint)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE d estudo.web_destinos; r estudo.notebook_runs; b estudo.web_bases; p jsonb; a jsonb; z jsonb;\nBEGIN\n SELECT * INTO d FROM estudo.web_destinos WHERE ano=p_ano;\n SELECT * INTO r FROM estudo.notebook_runs WHERE id=p_run;\n IF d.ano IS NULL OR r.id IS NULL OR r.cell_id<>d.cell_id OR r.status<>'ok' OR NOT r.frozen OR r.truncated OR r.row_count<>1\n   OR r.result->'columns'<>'[\"payload\"]'::jsonb OR jsonb_array_length(r.result->'rows')<>1 THEN\n  RAISE EXCEPTION 'Escolha um congelamento completo da celula de saida desta edicao';\n END IF;\n p:=r.result->'rows'->0->'payload';\n IF NOT (p->'meta' ? 'contrato_versao') OR p->'meta'->'contrato_versao'='1'::jsonb THEN\n  SELECT * INTO b FROM estudo.web_bases WHERE ano=p_ano;\n ELSIF p->'meta'->>'contrato_versao' ~ '^[0-9]{1,9}$' THEN\n  SELECT ano,payload,contrato INTO b FROM estudo.web_base_versoes WHERE ano=p_ano AND versao=(p->'meta'->>'contrato_versao')::integer;\n ELSE RAISE EXCEPTION 'Versao de contrato desconhecida';\n END IF;\n IF b.ano IS NULL THEN RAISE EXCEPTION 'Contrato da edicao inexistente'; END IF;\n IF octet_length(p::text)>5000000 OR NOT estudo.web_json_valido(p,b.contrato) OR p->'meta'->>'ano'<>p_ano::text THEN\n  RAISE EXCEPTION 'Pacote fora do contrato publico';\n END IF;\n -- Definitions/categories stay fixed in this contract; editorial notes may evolve.\n SELECT jsonb_agg(x-'ressalva' ORDER BY x->>'id') INTO a FROM jsonb_array_elements(p->'series') x;\n SELECT jsonb_agg(x-'ressalva' ORDER BY x->>'id') INTO z FROM jsonb_array_elements(b.payload->'series') x;\n IF a IS DISTINCT FROM z THEN RAISE EXCEPTION 'A referencia e as categorias da edicao devem ser preservadas'; END IF;\n SELECT jsonb_agg(jsonb_build_array(x->'serie',x->'categoria') ORDER BY x->>'serie',x->>'categoria') INTO a FROM jsonb_array_elements(p->'comparacoes') x;\n SELECT jsonb_agg(jsonb_build_array(x->'serie',x->'categoria') ORDER BY x->>'serie',x->>'categoria') INTO z FROM jsonb_array_elements(b.payload->'comparacoes') x;\n IF a IS DISTINCT FROM z THEN RAISE EXCEPTION 'Categorias ausentes ou duplicadas no pacote'; END IF;\n RETURN p;\nEND;$function$\n",
+  "run": {
+    "truncated": false,
+    "status": "ok",
+    "row_count": 1,
+    "version": 41,
+    "id": 345,
+    "frozen": true,
+    "cell": 251
+  }
+}

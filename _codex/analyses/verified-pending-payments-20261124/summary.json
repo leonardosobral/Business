@@ -1,0 +1,27 @@
+{
+  "profiles": 57,
+  "with_orders": 33,
+  "orders": 105,
+  "stats": {
+    "confirmed": 36,
+    "unconfirmed": 63,
+    "refunded_or_partial": 6,
+    "identity_review": 1
+  },
+  "confirmed_by_product": {
+    "inscricao365": 14,
+    "todosantodia": 13,
+    "inscricao365vip": 9
+  },
+  "approved_cents_by_product": {
+    "inscricao365": 53865,
+    "todosantodia": 59860,
+    "inscricao365vip": 60114
+  },
+  "ambiguous_profiles": [
+    15398
+  ],
+  "identity_review_profiles": [
+    53887
+  ]
+}

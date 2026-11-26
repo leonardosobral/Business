@@ -1,0 +1,1431 @@
+<!doctype html><html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/assets/css/mdb.min.css"></head><body data-mdb-theme="dark" style="background:rgb(34,34,34);padding:20px">
+<link rel="stylesheet" href="/assets/css/business-ui.css"/>
+<link rel="stylesheet" href="/portal/verificados/verified.css?v=20261124-context"/>
+<script src="/portal/verificados/verified.js?v=20261124" defer></script>
+<section class="business-page verified-page" aria-labelledby="verified-title">
+    <header class="verified-heading">
+        <div><p class="verified-eyebrow">PORTAL · ROAD RUNNERS</p><h1 id="verified-title">Selos verificados</h1><p class="text-muted">Veja por que cada pessoa tem o selo, até quando ele vale e o histórico de cada origem.</p></div>
+        <span class="verified-readonly">Classificar um motivo não altera o selo</span>
+    </header>
+    
+    <div class="business-kpi-grid verified-kpis" aria-label="Resumo geral dos selos">
+        <a class="business-kpi" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><small>Selos ativos</small><strong>418</strong></a>
+        <a class="business-kpi" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;FILTER&#x25;5FORIGIN&#x3d;manual&amp;PAGINA&#x3d;1"><small>Sem vencimento</small><strong>86</strong></a>
+        <div class="business-kpi"><small>Ativos com prazo</small><strong>332</strong></div>
+        <a class="business-kpi verified-kpi-attention" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><small>Motivo a classificar</small><strong>61</strong></a>
+    </div>
+    <nav class="verified-tabs" aria-label="Situação do selo">
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;active&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Ativos</a>
+        
+            <a aria-current="page" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">A classificar</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;divergent&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Divergências VIP (4)</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;reconcile&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Conferir VIP</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;inactive&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Inativos</a>
+        
+            <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;all&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Todos / histórico</a>
+        
+    </nav>
+    
+        <section class="business-panel verified-evidence-overview" aria-labelledby="evidence-title">
+            <h2 id="evidence-title">Informações para revisar os 61 pendentes</h2>
+            <p class="text-muted">O motivo original destas concessões ainda não foi registrado. Os grupos abaixo ajudam a investigar; uma pessoa pode aparecer em vários deles.</p>
+            <nav class="verified-evidence-filters" aria-label="Filtrar informações dos pendentes">
+                <a aria-current="page" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><strong>61</strong> Todos os pendentes</a>
+                
+                    <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FEVIDENCE&#x3d;vip&#x25;5Funconfirmed&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><strong>57</strong> TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</a>
+                
+                    <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FEVIDENCE&#x3d;historic&#x25;5Fvip&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><strong>12</strong> VIP antigo &middot; Desafio 365</a>
+                
+                    <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FEVIDENCE&#x3d;basic&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><strong>12</strong> TSD B&aacute;sica confirmada</a>
+                
+                    <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FEVIDENCE&#x3d;none&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><strong>2</strong> Sem cadastro de desafio</a>
+                
+                    <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FEVIDENCE&#x3d;bio&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><strong>26</strong> Com bio no perfil</a>
+                
+                    <a  href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FEVIDENCE&#x3d;social&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1"><strong>7</strong> Com Instagram p&uacute;blico</a>
+                
+            </nav>
+            <p class="small text-muted">VIP do Desafio 365 é histórico, sem comprovação de VIP vigente no Todo Santo Dia. A Básica não inclui selo. Inscrição sem confirmação não comprova pagamento.</p>
+        </section>
+    
+    <form method="get" action="/portal/verificados/" class="business-panel verified-filters">
+        <input type="hidden" name="filter_evidence" value=""/>
+        <input type="hidden" name="filter_status" value="unclassified"/>
+        <div class="verified-filter-main">
+            <div><label for="verified-search">Buscar pessoa</label><input class="form-control" id="verified-search" name="user_busca" value="" placeholder="Nome, e-mail, perfil ou ID" maxlength="120"/></div>
+            <div><label for="verified-origin">Origem ou motivo</label><select id="verified-origin" class="form-select" name="filter_origin"><option value="">Todas as origens</option>
+                <option value="manual" >Concessão permanente</option><option value="vip" >Todo Santo Dia · VIP ativo</option><option value="registered_vip" >Todo Santo Dia · VIP/upgrade confirmado no cadastro</option><option value="upgrade" >Todo Santo Dia · Upgrade VIP ativo</option><option value="annual" >Compra anual ativa</option><option value="refunded" >Com estorno no histórico</option><option value="elite" >Atleta de elite</option><option value="influencer" >Influencer / criador</option><option value="imprensa" >Imprensa</option><option value="parceiro" >Parceiro</option><option value="equipe" >Equipe</option><option value="cortesia" >Cortesia</option><option value="outro" >Outro motivo</option><option value="nao_informado" >Motivo não informado</option>
+            </select></div>
+            <button class="btn btn-warning" type="submit">Filtrar</button><a class="btn btn-outline-secondary" href="/portal/verificados/">Limpar</a>
+        </div>
+        <details class="verified-advanced" ><summary>Filtros de cadastro</summary>
+            <p class="text-muted small">VIP e upgrade confirmados no Todo Santo Dia identificam um vínculo com o selo. Outros cadastros e permissões de conta não comprovam esse vínculo.</p>
+            <div class="verified-filter-main"><div><label for="filter-desafio">Desafio</label><input class="form-control" id="filter-desafio" name="filter_desafio" value=""/></div>
+                <div><label for="filter-produto">Produto no cadastro</label><select id="filter-produto" name="filter_produto" class="form-select"><option value="">Todos</option><option value="catarinensecorridaderua" >catarinensecorridaderua &middot; catarinensecorridaderua</option><option value="catarinensetrailrun" >catarinensetrailrun &middot; catarinensetrailrun</option><option value="circuitobrasilgigante" >circuitobrasilgigante &middot; circuitobrasilgigante</option><option value="inscricao365" >desafio365 &middot; inscricao365</option><option value="inscricao365vip" >desafio365 &middot; inscricao365vip</option><option value="inscricao365Vip" >desafio365 &middot; inscricao365Vip</option><option value="inscricao366" >desafio366 &middot; inscricao366</option><option value="inscricaotodosantodia" >desafio366 &middot; inscricaotodosantodia</option><option value="foco" >desafiofoco &middot; foco</option><option value="&#x2f;desafiosupra&#x2f;inscricao&#x2f;" >desafiosupra &middot; &#x2f;desafiosupra&#x2f;inscricao&#x2f;</option><option value="foco" >foco &middot; foco</option><option value="desafiofoco" >todosantodia &middot; desafiofoco</option><option value="inscricao366" >todosantodia &middot; inscricao366</option><option value="todosantodia" >todosantodia &middot; todosantodia</option><option value="todosantodiaupg" >todosantodia &middot; todosantodiaupg</option><option value="todosantodiaupgrade" >todosantodia &middot; todosantodiaupgrade</option><option value="todosantodiavip" >todosantodia &middot; todosantodiavip</option><option value="todosantodiavip1" >todosantodia &middot; todosantodiavip1</option><option value="&#x2f;connect&#x2f;inscricao&#x2f;" > &middot; &#x2f;connect&#x2f;inscricao&#x2f;</option><option value="&#x2f;empresa&#x2f;cadastro&#x2f;" > &middot; &#x2f;empresa&#x2f;cadastro&#x2f;</option><option value="&#x2f;ts&#x2f;inscricao&#x2f;" > &middot; &#x2f;ts&#x2f;inscricao&#x2f;</option></select></div>
+                <div><label for="filter-logic">Combinação</label><select id="filter-logic" name="filter_logic" class="form-select"><option value="any" selected>Qualquer regra</option><option value="all" >Todas as regras</option></select></div>
+            </div>
+            <div class="verified-flags"><label><input type="checkbox" name="filter_admin" value="true" /> Administrador</label><label><input type="checkbox" name="filter_dev" value="true" /> Desenvolvedor</label><label><input type="checkbox" name="filter_partner" value="true" /> Parceiro no cadastro</label></div>
+        </details>
+    </form>
+    
+        <form id="verified-bulk-form" class="business-panel verified-quick-panel" method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" data-quick-form>
+            <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/>
+            <div class="verified-quick-heading"><div><h2>Classificação rápida</h2><p class="text-muted">Marque as pessoas com o mesmo motivo e salve de uma vez. Apenas os perfis marcados nesta página serão classificados.</p></div><span id="verified-selected-count" role="status" aria-live="polite">0 selecionados</span></div>
+            
+            <fieldset >
+                <div class="verified-quick-fields"><div><label for="bulk-category">Motivo em comum</label><select id="bulk-category" name="category" class="form-select" required data-quick-category><option value="">Escolha o motivo</option><option value="elite" >Atleta de elite</option><option value="influencer" >Influencer &#x2f; criador</option><option value="imprensa" >Imprensa</option><option value="parceiro" >Parceiro</option><option value="equipe" >Equipe</option><option value="cortesia" >Cortesia</option><option value="outro" >Outro motivo</option></select></div>
+                <div><label for="bulk-note">Vínculo ou observação <span data-note-optional>(opcional)</span></label><input id="bulk-note" name="note" class="form-control" maxlength="1800" value="" placeholder="Ex.: nome do veículo, canal ou parceria" data-quick-note/></div>
+                <button class="btn btn-warning" type="submit" id="verified-bulk-submit">Salvar selecionados</button></div>
+            </fieldset>
+        </form>
+    
+    <div class="verified-list-heading" id="lista-motivos"><h2>61 perfis encontrados</h2><span class="text-muted small">Uma pessoa pode ter mais de uma origem ativa.</span></div>
+    <div class="business-panel verified-table-wrap"><table class="table verified-table"><thead><tr><th class="verified-select-cell"><input type="checkbox" id="verified-select-all" aria-label="Selecionar todos os pendentes desta página" /></th><th>Pessoa</th><th>Origem e motivo do selo</th><th>Situação e validade</th><th><span class="visually-hidden">Detalhes</span></th></tr></thead><tbody>
+        <tr id="perfil-53020">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53020:0" class="verified-row-select" aria-label="Selecionar LILIANE&#x20;SANTOS" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53020&amp;PAGINA&#x3d;2#detalhes">LILIANE SANTOS</a><small class="verified-email">biomed.lilianesantos&#x40;gmail.com</small><small class="text-muted">Perfil 53020 · Usuário 105029</small>
+                <small class="verified-email">Coelho Neto &middot; MA</small> <p class="verified-bio-preview">&#x1f3c3;&#x1f3fb;&zwj;&#x2640;&#xfe0f;&#x1f90d;<small class="verified-email text-muted">Bio informada pelo atleta</small></p> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (1)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">&#x1f3c3;&#x1f3fb;&zwj;&#x2640;&#xfe0f;&#x1f90d;</p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p class="small">Conta 105029 · criada em 17&#x2f;12&#x2f;2025</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (1)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 17&#x2f;12&#x2f;2025 08&#x3a;12<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (0)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <p class="text-muted">Nenhuma inscrição encontrada no legado.</p> 
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (0)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <p class="text-muted">Nenhum evento financeiro localizado pelos vínculos consultados.</p> 
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="53020:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de LILIANE&#x20;SANTOS" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de LILIANE&#x20;SANTOS">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de LILIANE&#x20;SANTOS" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de LILIANE&#x20;SANTOS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53020&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16004">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="16004:0" class="verified-row-select" aria-label="Selecionar Luciano&#x20;Jatob&aacute;" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16004&amp;PAGINA&#x3d;2#detalhes">Luciano Jatob&aacute;</a><small class="verified-email">ljatoba&#x40;gmail.com</small><small class="text-muted">Perfil 16004 · Usuário 16902</small>
+                <small class="verified-email">Maca&eacute; &middot; RJ</small> <p class="verified-bio-preview">Basically, run...<small class="verified-email text-muted">Bio informada pelo atleta</small></p> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>VIP antigo &middot; Desafio 365</span><span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (6)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">Basically, run...</p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p class="small">Conta 16902 · criada em 04&#x2f;12&#x2f;2024</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (4)</h4>
+        <article class="verified-context-record">
+            <strong>circuitobrasilgigante &middot; circuitobrasilgigante</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 08&#x2f;04&#x2f;2026 07&#x3a;50<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">circuitobrasilgigante &#x2f; circuitobrasilgigante</small>
+        </article><article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 31&#x2f;12&#x2f;2025 17&#x3a;23<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; VIP</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 04&#x2f;12&#x2f;2024 19&#x3a;16<br/>Refer&ecirc;ncia&#x3a; QNY2ET6HDN</p>
+            
+            <small class="text-muted">desafio365 &#x2f; inscricao365vip</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 366 &middot; Inscri&ccedil;&atilde;o</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 01&#x2f;01&#x2f;2024 00&#x3a;00<br/>Refer&ecirc;ncia&#x3a; 8032958</p>
+            
+            <small class="text-muted">desafio366 &#x2f; inscricao366</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; VIP</strong><p>Confirmada no cadastro (C)<br/>04&#x2f;12&#x2f;2024 19&#x3a;16<br/>Refer&ecirc;ncia&#x3a; QNY2ET6HDN</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (1)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_6PjxbnkcWmsBJoB2</p><small class="text-muted">Último evento local: </small>
+        </article>
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="16004:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Luciano&#x20;Jatob&aacute;" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Luciano&#x20;Jatob&aacute;">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Luciano&#x20;Jatob&aacute;" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Luciano&#x20;Jatob&aacute;" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16004&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-61389">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="61389:0" class="verified-row-select" aria-label="Selecionar Luiz&#x20;Carlos&#x20;Santos" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;61389&amp;PAGINA&#x3d;2#detalhes">Luiz Carlos Santos</a><small class="verified-email">olddogboy74&#x40;gmail.com</small><small class="text-muted">Perfil 61389 · Usuário 132299</small>
+                
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (1)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="text-muted">Perfil sem bio.</p> <p class="small">Conta 132299 · criada em 27&#x2f;06&#x2f;2026</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (1)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 27&#x2f;06&#x2f;2026 23&#x3a;59<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (0)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <p class="text-muted">Nenhuma inscrição encontrada no legado.</p> 
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (0)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <p class="text-muted">Nenhum evento financeiro localizado pelos vínculos consultados.</p> 
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="61389:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Luiz&#x20;Carlos&#x20;Santos" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Luiz&#x20;Carlos&#x20;Santos">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Luiz&#x20;Carlos&#x20;Santos" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Luiz&#x20;Carlos&#x20;Santos" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;61389&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17625">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="17625:0" class="verified-row-select" aria-label="Selecionar Machado&#x20;Motiva" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17625&amp;PAGINA&#x3d;2#detalhes">Machado Motiva</a><small class="verified-email">diigomachado&#x40;gmail.com</small><small class="text-muted">Perfil 17625 · Usuário 19977</small>
+                <small class="verified-email">Salvador &middot; BA</small> <p class="verified-bio-preview">Encontre seu motivo&#x21; Viva de Prop&oacute;sito&#x21; E siga Siempre Adelante&#x21; Siempre Adelante&#x21; &#x1f680;&#x1fa93;<small class="verified-email text-muted">Bio informada pelo atleta</small></p> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>VIP antigo &middot; Desafio 365</span><span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (3)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">Encontre seu motivo&#x21; Viva de Prop&oacute;sito&#x21; E siga Siempre Adelante&#x21; Siempre Adelante&#x21; &#x1f680;&#x1fa93;</p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p class="small">Conta 19977 · criada em 24&#x2f;12&#x2f;2024</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (2)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 17&#x2f;12&#x2f;2025 11&#x3a;07<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; VIP</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 24&#x2f;12&#x2f;2024 09&#x3a;12<br/>Refer&ecirc;ncia&#x3a; V45YFMF041</p>
+            
+            <small class="text-muted">desafio365 &#x2f; inscricao365vip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; VIP</strong><p>Confirmada no cadastro (C)<br/>24&#x2f;12&#x2f;2024 09&#x3a;12<br/>Refer&ecirc;ncia&#x3a; V45YFMF041</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (0)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <p class="text-muted">Nenhum evento financeiro localizado pelos vínculos consultados.</p> 
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="17625:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Machado&#x20;Motiva" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Machado&#x20;Motiva">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Machado&#x20;Motiva" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Machado&#x20;Motiva" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17625&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53138">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53138:0" class="verified-row-select" aria-label="Selecionar MARCELO&#x20;MAD" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53138&amp;PAGINA&#x3d;2#detalhes">MARCELO MAD</a><small class="verified-email">stenbueno&#x40;gmail.com</small><small class="text-muted">Perfil 53138 · Usuário 105308</small>
+                <small class="verified-email">Itu &middot; SP</small> <p class="verified-bio-preview">NON DUCOR, DUCO<small class="verified-email text-muted">Bio informada pelo atleta</small></p> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (1)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">NON DUCOR, DUCO</p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p class="small">Conta 105308 · criada em 18&#x2f;12&#x2f;2025</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (1)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 18&#x2f;12&#x2f;2025 06&#x3a;39<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (0)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <p class="text-muted">Nenhuma inscrição encontrada no legado.</p> 
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (0)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <p class="text-muted">Nenhum evento financeiro localizado pelos vínculos consultados.</p> 
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="53138:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de MARCELO&#x20;MAD" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de MARCELO&#x20;MAD">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de MARCELO&#x20;MAD" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de MARCELO&#x20;MAD" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53138&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17459">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="17459:0" class="verified-row-select" aria-label="Selecionar MARIANE&#x20;CASTILHO&#x20;AMORIM&#x20;" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17459&amp;PAGINA&#x3d;2#detalhes">MARIANE CASTILHO AMORIM </a><small class="verified-email">mari.castilho.amorim&#x40;gmail.com</small><small class="text-muted">Perfil 17459 · Usuário 19726</small>
+                <small class="verified-email">S&atilde;o Jos&eacute; do Rio Preto &middot; SP</small> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (6)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="text-muted">Perfil sem bio.</p> <p class="small">Conta 19726 · criada em 23&#x2f;12&#x2f;2024</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (3)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Upgrade para VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 26&#x2f;01&#x2f;2026 07&#x3a;06<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiaupg</small>
+        </article><article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 27&#x2f;12&#x2f;2025 10&#x3a;00<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodia</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; Inscri&ccedil;&atilde;o</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 23&#x2f;12&#x2f;2024 12&#x3a;01<br/>Refer&ecirc;ncia&#x3a; 6VE8F4XIZK</p>
+            
+            <small class="text-muted">desafio365 &#x2f; inscricao365</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; Inscri&ccedil;&atilde;o</strong><p>Confirmada no cadastro (C)<br/>23&#x2f;12&#x2f;2024 12&#x3a;01<br/>Refer&ecirc;ncia&#x3a; 6VE8F4XIZK</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (2)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_0EQBXWmt74fMb63Y</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_9rb4z0F18szD3vm5</p><small class="text-muted">Último evento local: </small>
+        </article>
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="17459:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de MARIANE&#x20;CASTILHO&#x20;AMORIM&#x20;" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de MARIANE&#x20;CASTILHO&#x20;AMORIM&#x20;">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de MARIANE&#x20;CASTILHO&#x20;AMORIM&#x20;" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de MARIANE&#x20;CASTILHO&#x20;AMORIM&#x20;" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17459&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53867">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53867:0" class="verified-row-select" aria-label="Selecionar MAURILIA&#x20;CANDIA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53867&amp;PAGINA&#x3d;2#detalhes">MAURILIA CANDIA</a><small class="verified-email">maurilia04&#x40;gmail.com</small><small class="text-muted">Perfil 53867 · Usuário 107567</small>
+                <small class="verified-email">Campo Grande &middot; MS</small> <p class="verified-bio-preview">Tentando me salvar todos os dias&#x21;<small class="verified-email text-muted">Bio informada pelo atleta</small></p> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (1)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">Tentando me salvar todos os dias&#x21;</p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p class="small">Conta 107567 · criada em 31&#x2f;12&#x2f;2025</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (1)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 12&#x2f;01&#x2f;2026 03&#x3a;55<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (0)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <p class="text-muted">Nenhuma inscrição encontrada no legado.</p> 
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (0)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <p class="text-muted">Nenhum evento financeiro localizado pelos vínculos consultados.</p> 
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="53867:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de MAURILIA&#x20;CANDIA" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de MAURILIA&#x20;CANDIA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de MAURILIA&#x20;CANDIA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de MAURILIA&#x20;CANDIA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53867&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53385">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53385:0" class="verified-row-select" aria-label="Selecionar MICHEL&#x20;GUIDINI" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53385&amp;PAGINA&#x3d;2#detalhes">MICHEL GUIDINI</a><small class="verified-email">GUIDINIVAZ&#x40;HOTMAIL.COM</small><small class="text-muted">Perfil 53385 · Usuário 105958</small>
+                <small class="verified-email">Governador Valadares  &middot; MG</small> <p class="verified-bio-preview">Sou um triatleta amador a procura ter uma qualidade de vida em busca de uma melhor longevidade e que Deus nos aben&ccedil;oe &#x1f64c;&#x1f3fb;&#x1f64f;&#x1f3fb;&#x1f3c3;&#x1f3fb;&zwj;&#x2642;&#xfe0f;&#x1f3ca;&#x1f6b4;&zwj;&#x2642;&#xfe0f;<small class="verified-email text-muted">Bio informada pelo atleta</small></p> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (10)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">Sou um triatleta amador a procura ter uma qualidade de vida em busca de uma melhor longevidade e que Deus nos aben&ccedil;oe &#x1f64c;&#x1f3fb;&#x1f64f;&#x1f3fb;&#x1f3c3;&#x1f3fb;&zwj;&#x2642;&#xfe0f;&#x1f3ca;&#x1f6b4;&zwj;&#x2642;&#xfe0f;</p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p class="small">Conta 105958 · criada em 22&#x2f;12&#x2f;2025</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (2)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 26&#x2f;12&#x2f;2025 11&#x3a;30<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodia</small>
+        </article><article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Upgrade para VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 26&#x2f;12&#x2f;2025 11&#x3a;28<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiaupg</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (0)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <p class="text-muted">Nenhuma inscrição encontrada no legado.</p> 
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (8)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_9Eb8knS6DszQjvyk</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_9qoRZpL6TRFGZMeA</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_AEMZ7pOuyCVGqL5m</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_aPX0mqwHqSpZErMy</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_Oq5RolxuyiRqoW3j</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_OQDpYQtg9I8epAjz</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_wMXAQD6Cg2syalD8</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_YoMyBAa1inH6BPDm</p><small class="text-muted">Último evento local: </small>
+        </article>
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="53385:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de MICHEL&#x20;GUIDINI" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de MICHEL&#x20;GUIDINI">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de MICHEL&#x20;GUIDINI" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de MICHEL&#x20;GUIDINI" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53385&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17638">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="17638:0" class="verified-row-select" aria-label="Selecionar &#x40;PAREIDEFUMARVIREIATLETA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17638&amp;PAGINA&#x3d;2#detalhes">&#x40;PAREIDEFUMARVIREIATLETA</a><small class="verified-email">vasconcelos.ivan&#x40;gmail.com</small><small class="text-muted">Perfil 17638 · Usuário 20005</small>
+                <small class="verified-email">S&atilde;o Paulo &middot; SP</small> <p class="verified-bio-preview">De fumante sedent&aacute;rio a maratonista&#x21;&#x21;<small class="verified-email text-muted">Bio informada pelo atleta</small></p> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD B&aacute;sica confirmada</span><span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (26)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">De fumante sedent&aacute;rio a maratonista&#x21;&#x21;</p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p class="small">Conta 20005 · criada em 24&#x2f;12&#x2f;2024<br/>Assessoria informada: &#x23;PareiDeFumarVireiAtleta</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (4)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Upgrade para VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 17&#x2f;03&#x2f;2026 08&#x3a;36<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiaupg</small>
+        </article><article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 25&#x2f;12&#x2f;2025 11&#x3a;06<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodia</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; Inscri&ccedil;&atilde;o</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 02&#x2f;01&#x2f;2025 01&#x3a;34<br/>Refer&ecirc;ncia&#x3a; D4OKI2IYP8</p>
+            
+            <small class="text-muted">desafio365 &#x2f; inscricao365</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 366 &middot; Inscri&ccedil;&atilde;o</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 01&#x2f;01&#x2f;2024 00&#x3a;00<br/>Refer&ecirc;ncia&#x3a; 8033676</p>
+            
+            <small class="text-muted">desafio366 &#x2f; inscricao366</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; Inscri&ccedil;&atilde;o</strong><p>Confirmada no cadastro (C)<br/>02&#x2f;01&#x2f;2025 01&#x3a;34<br/>Refer&ecirc;ncia&#x3a; D4OKI2IYP8</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (21)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_3KDVgk4UNIYpVMve</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_5Qr4WY1iOvcmRwKR</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Pagamento conciliado</p>
+            
+            <p class="verified-order">or_8G7BR484uGSgRrpZ</p><small class="text-muted">Último evento local:  · Conferência API registrada: 25&#x2f;09&#x2f;2026 21&#x3a;26</small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_9AlmaBAtXJsWLr4J</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_AJ1qg5pTmcKPXwma</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_akNwB8pNCzUXB0oy</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_GygdWkPf0qHKEdMr</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_Jy7XQAHyVIvvXjD8</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_knoqlroFyaCwe2m3</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_nGVolLWkCYTO1PZg</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Estorno conciliado</p>
+            <p class="verified-pending">Este pedido tem eventos de pagamento e cancelamento. Revisar a situação atual.</p>
+            <p class="verified-order">or_nLpYDRNCRTrvx1kV</p><small class="text-muted">Último evento local:  · Conferência API registrada: 25&#x2f;09&#x2f;2026 21&#x3a;26</small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Upgrade para VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_O4zRnRdJtwU57doW</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Estorno conciliado</p>
+            <p class="verified-pending">Este pedido tem eventos de pagamento e cancelamento. Revisar a situação atual.</p>
+            <p class="verified-order">or_p7QLrkbiZIJ1GNdE</p><small class="text-muted">Último evento local:  · Conferência API registrada: 25&#x2f;09&#x2f;2026 21&#x3a;26</small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_pjW2N8JsnF5vV8rk</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_QYMNPQwHo7h2yLn4</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_R5MDO4bgUri8XmvJ</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_Renq0v5ikHL2P23b</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Pagamento conciliado</p>
+            
+            <p class="verified-order">or_vGWo0QukquEVx0AE</p><small class="text-muted">Último evento local:  · Conferência API registrada: 25&#x2f;09&#x2f;2026 21&#x3a;14</small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_vlnzEQWAUjFz4PNk</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Estorno conciliado</p>
+            <p class="verified-pending">Este pedido tem eventos de pagamento e cancelamento. Revisar a situação atual.</p>
+            <p class="verified-order">or_W4eyREBhBU1XmYMG</p><small class="text-muted">Último evento local:  · Conferência API registrada: 25&#x2f;09&#x2f;2026 21&#x3a;26</small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Há evento de falha no pagamento</p>
+            
+            <p class="verified-order">or_YoeO44u4bhYaO4kP</p><small class="text-muted">Último evento local: </small>
+        </article>
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="17638:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de &#x40;PAREIDEFUMARVIREIATLETA" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de &#x40;PAREIDEFUMARVIREIATLETA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de &#x40;PAREIDEFUMARVIREIATLETA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de &#x40;PAREIDEFUMARVIREIATLETA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17638&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17441">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="17441:0" class="verified-row-select" aria-label="Selecionar Patr&iacute;cia&#x20;Helena&#x20;Lins&#x20;Marques&#x20;" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17441&amp;PAGINA&#x3d;2#detalhes">Patr&iacute;cia Helena Lins Marques </a><small class="verified-email">plinsmarques2&#x40;gmail.com</small><small class="text-muted">Perfil 17441 · Usuário 19696</small>
+                <small class="verified-email">Uberaba &middot; MG</small> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>VIP antigo &middot; Desafio 365</span><span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (3)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="text-muted">Perfil sem bio.</p> <p class="small">Conta 19696 · criada em 23&#x2f;12&#x2f;2024</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (2)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 30&#x2f;12&#x2f;2025 08&#x3a;24<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; VIP</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 23&#x2f;12&#x2f;2024 09&#x3a;17<br/>Refer&ecirc;ncia&#x3a; 1V49I9CK52</p>
+            
+            <small class="text-muted">desafio365 &#x2f; inscricao365vip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; VIP</strong><p>Confirmada no cadastro (C)<br/>23&#x2f;12&#x2f;2024 09&#x3a;17<br/>Refer&ecirc;ncia&#x3a; 1V49I9CK52</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (0)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <p class="text-muted">Nenhum evento financeiro localizado pelos vínculos consultados.</p> 
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="17441:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Patr&iacute;cia&#x20;Helena&#x20;Lins&#x20;Marques&#x20;" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Patr&iacute;cia&#x20;Helena&#x20;Lins&#x20;Marques&#x20;">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Patr&iacute;cia&#x20;Helena&#x20;Lins&#x20;Marques&#x20;" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Patr&iacute;cia&#x20;Helena&#x20;Lins&#x20;Marques&#x20;" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17441&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17997">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="17997:0" class="verified-row-select" aria-label="Selecionar Priscila&#x20;Freitas&#x20;de&#x20;Souza&#x20;Gomes" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17997&amp;PAGINA&#x3d;2#detalhes">Priscila Freitas de Souza Gomes</a><small class="verified-email">priscazinha&#x40;gmail.com</small><small class="text-muted">Perfil 17997 · Usuário 20561</small>
+                <small class="verified-email">Presidente Prudente &middot; SP</small> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD B&aacute;sica confirmada</span><span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (5)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="text-muted">Perfil sem bio.</p> <p class="small">Conta 20561 · criada em 26&#x2f;12&#x2f;2024<br/>Assessoria informada: Iron3tri </p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (3)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Upgrade para VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 25&#x2f;04&#x2f;2026 14&#x3a;08<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiaupg</small>
+        </article><article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 16&#x2f;12&#x2f;2025 21&#x3a;29<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodia</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; Inscri&ccedil;&atilde;o</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 26&#x2f;12&#x2f;2024 18&#x3a;17<br/>Refer&ecirc;ncia&#x3a; 97POS1SWK3</p>
+            
+            <small class="text-muted">desafio365 &#x2f; inscricao365</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; Inscri&ccedil;&atilde;o</strong><p>Confirmada no cadastro (C)<br/>26&#x2f;12&#x2f;2024 18&#x3a;17<br/>Refer&ecirc;ncia&#x3a; 97POS1SWK3</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (1)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Pagamento conciliado</p>
+            
+            <p class="verified-order">or_MbgVA12FNBF9jD3o</p><small class="text-muted">Último evento local:  · Conferência API registrada: 26&#x2f;09&#x2f;2026 00&#x3a;27</small>
+        </article>
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="17997:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Priscila&#x20;Freitas&#x20;de&#x20;Souza&#x20;Gomes" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Priscila&#x20;Freitas&#x20;de&#x20;Souza&#x20;Gomes">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Priscila&#x20;Freitas&#x20;de&#x20;Souza&#x20;Gomes" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Priscila&#x20;Freitas&#x20;de&#x20;Souza&#x20;Gomes" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17997&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-15398">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="15398:0" class="verified-row-select" aria-label="Selecionar PROF.&#x20;LUCIANO&#x20;MEIRELES" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15398&amp;PAGINA&#x3d;2#detalhes">PROF. LUCIANO MEIRELES</a><small class="verified-email">mslucianomeireles&#x40;gmail.com</small><small class="text-muted">Perfil 15398 · Usuário 15258</small>
+                <small class="verified-email">Jo&atilde;o Pessoa &middot; PB</small> <p class="verified-bio-preview">Professor e maratonista, um apaixonado por corridas de rua.<small class="verified-email text-muted">Bio informada pelo atleta</small></p> <small class="verified-email">Instagram público: luciano.runner</small>
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>VIP antigo &middot; Desafio 365</span><span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (4)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">Professor e maratonista, um apaixonado por corridas de rua.</p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p>Instagram público: luciano.runner</p> <p class="small">Conta 15258 · criada em 27&#x2f;11&#x2f;2024<br/>Assessoria informada: CORRE DEF UFPB</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (3)</h4>
+        <article class="verified-context-record">
+            <strong>circuitobrasilgigante &middot; circuitobrasilgigante</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 08&#x2f;04&#x2f;2026 10&#x3a;09<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">circuitobrasilgigante &#x2f; circuitobrasilgigante</small>
+        </article><article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 18&#x2f;12&#x2f;2025 17&#x3a;18<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; VIP</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 04&#x2f;12&#x2f;2024 18&#x3a;39<br/>Refer&ecirc;ncia&#x3a; UPD365VIP</p>
+            <p class="verified-pending">H&aacute; anota&ccedil;&atilde;o de upgrade.</p>
+            <small class="text-muted">desafio365 &#x2f; inscricao365vip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; VIP</strong><p>Confirmada no cadastro (C)<br/>04&#x2f;12&#x2f;2024 18&#x3a;39<br/>Refer&ecirc;ncia&#x3a; UPD365VIP</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (0)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <p class="text-muted">Nenhum evento financeiro localizado pelos vínculos consultados.</p> 
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="15398:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de PROF.&#x20;LUCIANO&#x20;MEIRELES" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de PROF.&#x20;LUCIANO&#x20;MEIRELES">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de PROF.&#x20;LUCIANO&#x20;MEIRELES" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de PROF.&#x20;LUCIANO&#x20;MEIRELES" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15398&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53877">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53877:0" class="verified-row-select" aria-label="Selecionar RAFAEL&#x20;BARROS" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53877&amp;PAGINA&#x3d;2#detalhes">RAFAEL BARROS</a><small class="verified-email">rafa.dracena01&#x40;gmail.com</small><small class="text-muted">Perfil 53877 · Usuário 107590</small>
+                <small class="verified-email">Dracena  &middot; SP</small> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (1)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="text-muted">Perfil sem bio.</p> <p class="small">Conta 107590 · criada em 31&#x2f;12&#x2f;2025</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (1)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 04&#x2f;01&#x2f;2026 01&#x3a;58<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (0)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <p class="text-muted">Nenhuma inscrição encontrada no legado.</p> 
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (0)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <p class="text-muted">Nenhum evento financeiro localizado pelos vínculos consultados.</p> 
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="53877:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de RAFAEL&#x20;BARROS" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de RAFAEL&#x20;BARROS">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de RAFAEL&#x20;BARROS" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de RAFAEL&#x20;BARROS" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53877&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17705">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="17705:0" class="verified-row-select" aria-label="Selecionar RAFAEL&#x20;PAZETO&#x20;" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17705&amp;PAGINA&#x3d;2#detalhes">RAFAEL PAZETO </a><small class="verified-email">rafarengasjb&#x40;gmail.com</small><small class="text-muted">Perfil 17705 · Usuário 20092</small>
+                <small class="verified-email">Parana&iacute;ba &middot; MS</small> <p class="verified-bio-preview">Um simples pai correndo para inspirar seus dois filhos pequenos a manterem o esfor&ccedil;o continuo em prol aos seus objetivos. <small class="verified-email text-muted">Bio informada pelo atleta</small></p> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>VIP antigo &middot; Desafio 365</span><span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (3)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">Um simples pai correndo para inspirar seus dois filhos pequenos a manterem o esfor&ccedil;o continuo em prol aos seus objetivos. </p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p class="small">Conta 20092 · criada em 24&#x2f;12&#x2f;2024</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (2)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 31&#x2f;12&#x2f;2025 23&#x3a;37<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; VIP</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 09&#x2f;03&#x2f;2025 17&#x3a;38<br/>Refer&ecirc;ncia&#x3a; E7D4LFLSKW</p>
+            
+            <small class="text-muted">desafio365 &#x2f; inscricao365vip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; VIP</strong><p>Confirmada no cadastro (C)<br/>09&#x2f;03&#x2f;2025 17&#x3a;38<br/>Refer&ecirc;ncia&#x3a; E7D4LFLSKW</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (0)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <p class="text-muted">Nenhum evento financeiro localizado pelos vínculos consultados.</p> 
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="17705:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de RAFAEL&#x20;PAZETO&#x20;" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de RAFAEL&#x20;PAZETO&#x20;">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de RAFAEL&#x20;PAZETO&#x20;" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de RAFAEL&#x20;PAZETO&#x20;" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17705&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53154">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53154:0" class="verified-row-select" aria-label="Selecionar RAFAEL&#x20;PRETTI" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53154&amp;PAGINA&#x3d;2#detalhes">RAFAEL PRETTI</a><small class="verified-email">rafael.pretti&#x40;gmail.com</small><small class="text-muted">Perfil 53154 · Usuário 105348</small>
+                <small class="verified-email">Belo Horizonte &middot; MG</small> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (3)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="text-muted">Perfil sem bio.</p> <p class="small">Conta 105348 · criada em 18&#x2f;12&#x2f;2025</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (1)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 18&#x2f;12&#x2f;2025 10&#x3a;00<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (0)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <p class="text-muted">Nenhuma inscrição encontrada no legado.</p> 
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (2)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_nWlaQwYLuxCn94Vo</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_qeyBmOpecOt1NpLz</p><small class="text-muted">Último evento local: </small>
+        </article>
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="53154:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de RAFAEL&#x20;PRETTI" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de RAFAEL&#x20;PRETTI">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de RAFAEL&#x20;PRETTI" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de RAFAEL&#x20;PRETTI" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53154&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17169">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="17169:0" class="verified-row-select" aria-label="Selecionar Rosana&#x20;Domingues&#x20;Reis&#x20;Lazari" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17169&amp;PAGINA&#x3d;2#detalhes">Rosana Domingues Reis Lazari</a><small class="verified-email">rosana.dreis.lazari&#x40;gmail.com</small><small class="text-muted">Perfil 17169 · Usuário 19095</small>
+                <small class="verified-email">Mogi Mirim &middot; SP</small> <p class="verified-bio-preview">Respiro corrida &#x1f3c3; &#x1f3c3; &#x1f3c3; <small class="verified-email text-muted">Bio informada pelo atleta</small></p> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>VIP antigo &middot; Desafio 365</span><span>TSD B&aacute;sica confirmada</span><span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (8)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">Respiro corrida &#x1f3c3; &#x1f3c3; &#x1f3c3; </p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p class="small">Conta 19095 · criada em 17&#x2f;12&#x2f;2024</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (3)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Upgrade para VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 28&#x2f;06&#x2f;2026 12&#x3a;02<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiaupg</small>
+        </article><article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 17&#x2f;12&#x2f;2025 08&#x3a;12<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodia</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; VIP</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 17&#x2f;12&#x2f;2024 19&#x3a;58<br/>Refer&ecirc;ncia&#x3a; P4ECNJC54X</p>
+            
+            <small class="text-muted">desafio365 &#x2f; inscricao365vip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; VIP</strong><p>Confirmada no cadastro (C)<br/>17&#x2f;12&#x2f;2024 19&#x3a;58<br/>Refer&ecirc;ncia&#x3a; P4ECNJC54X</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (4)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Estorno conciliado</p>
+            <p class="verified-pending">Este pedido tem eventos de pagamento e cancelamento. Revisar a situação atual.</p>
+            <p class="verified-order">or_4EqNl0XU0SPBlQ6Z</p><small class="text-muted">Último evento local:  · Conferência API registrada: 26&#x2f;09&#x2f;2026 00&#x3a;03</small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Estorno conciliado</p>
+            <p class="verified-pending">Este pedido tem eventos de pagamento e cancelamento. Revisar a situação atual.</p>
+            <p class="verified-order">or_kbE7QJ6lUyiNQ842</p><small class="text-muted">Último evento local:  · Conferência API registrada: 26&#x2f;09&#x2f;2026 00&#x3a;03</small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Upgrade para VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_kPJ0WNbIKEF1N9EW</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Pagamento conciliado</p>
+            
+            <p class="verified-order">or_YKALqElfVUl428BJ</p><small class="text-muted">Último evento local:  · Conferência API registrada: 26&#x2f;09&#x2f;2026 00&#x3a;03</small>
+        </article>
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="17169:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Rosana&#x20;Domingues&#x20;Reis&#x20;Lazari" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Rosana&#x20;Domingues&#x20;Reis&#x20;Lazari">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Rosana&#x20;Domingues&#x20;Reis&#x20;Lazari" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Rosana&#x20;Domingues&#x20;Reis&#x20;Lazari" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17169&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-15635">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="15635:0" class="verified-row-select" aria-label="Selecionar SANDOVAL&#x20;JUNIOR&#x20;OLIVEIRA" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15635&amp;PAGINA&#x3d;2#detalhes">SANDOVAL JUNIOR OLIVEIRA</a><small class="verified-email">juniordoassurua&#x40;gmail.com</small><small class="text-muted">Perfil 15635 · Usuário 15926</small>
+                <small class="verified-email">Irec&ecirc; &middot; BA</small> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>VIP antigo &middot; Desafio 365</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (4)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="text-muted">Perfil sem bio.</p> <p class="small">Conta 15926 · criada em 28&#x2f;11&#x2f;2024<br/>Assessoria informada: Correr por a&iacute; </p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (3)</h4>
+        <article class="verified-context-record">
+            <strong>circuitobrasilgigante &middot; circuitobrasilgigante</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 16&#x2f;05&#x2f;2026 11&#x3a;56<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">circuitobrasilgigante &#x2f; circuitobrasilgigante</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; VIP</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 06&#x2f;12&#x2f;2024 09&#x3a;55<br/>Refer&ecirc;ncia&#x3a; OQXGECDS7N</p>
+            
+            <small class="text-muted">desafio365 &#x2f; inscricao365vip</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 366 &middot; Inscri&ccedil;&atilde;o</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 01&#x2f;01&#x2f;2024 00&#x3a;00<br/>Refer&ecirc;ncia&#x3a; 8033106</p>
+            
+            <small class="text-muted">desafio366 &#x2f; inscricao366</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; VIP</strong><p>Confirmada no cadastro (C)<br/>06&#x2f;12&#x2f;2024 09&#x3a;55<br/>Refer&ecirc;ncia&#x3a; OQXGECDS7N</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (0)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <p class="text-muted">Nenhum evento financeiro localizado pelos vínculos consultados.</p> 
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="15635:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de SANDOVAL&#x20;JUNIOR&#x20;OLIVEIRA" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de SANDOVAL&#x20;JUNIOR&#x20;OLIVEIRA">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de SANDOVAL&#x20;JUNIOR&#x20;OLIVEIRA" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de SANDOVAL&#x20;JUNIOR&#x20;OLIVEIRA" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;15635&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-16181">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="16181:0" class="verified-row-select" aria-label="Selecionar SOLANGE&#x20;THUMS&#x20;AHMANN" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16181&amp;PAGINA&#x3d;2#detalhes">SOLANGE THUMS AHMANN</a><small class="verified-email">solangethumssol&#x40;gmail.com</small><small class="text-muted">Perfil 16181 · Usuário 17162</small>
+                <small class="verified-email">Blumenau &middot; SC</small> <p class="verified-bio-preview">Desafio 365 dias <small class="verified-email text-muted">Bio informada pelo atleta</small></p> <small class="verified-email">Instagram público: Solange Thums ahmann </small>
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>VIP antigo &middot; Desafio 365</span><span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (10)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">Desafio 365 dias </p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p>Instagram público: Solange Thums ahmann </p> <p class="small">Conta 17162 · criada em 05&#x2f;12&#x2f;2024<br/>Assessoria informada: FORTIUS</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (5)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 31&#x2f;05&#x2f;2026 15&#x3a;47<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio Supra 2024 &middot; &#x2f;desafiosupra&#x2f;inscricao&#x2f;</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (sem_cbat)</span></p>
+            <p class="text-muted">Cadastro: 31&#x2f;01&#x2f;2026 07&#x3a;41<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">desafiosupra &#x2f; &#x2f;desafiosupra&#x2f;inscricao&#x2f;</small>
+        </article><article class="verified-context-record">
+            <strong>Catarinense de Trail Run &middot; catarinensetrailrun</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (sem_cbat)</span></p>
+            <p class="text-muted">Cadastro: 31&#x2f;01&#x2f;2026 07&#x3a;28<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">catarinensetrailrun &#x2f; catarinensetrailrun</small>
+        </article><article class="verified-context-record">
+            <strong>Catarinense de Corrida de Rua &middot; catarinensecorridaderua</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (sem_cbat)</span></p>
+            <p class="text-muted">Cadastro: 02&#x2f;12&#x2f;2025 04&#x3a;29<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">catarinensecorridaderua &#x2f; catarinensecorridaderua</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (sem_cbat)</span></p>
+            <p class="text-muted">Cadastro: 31&#x2f;12&#x2f;2024 10&#x3a;31<br/>Refer&ecirc;ncia&#x3a; PV7EI2RTJQ</p>
+            
+            <small class="text-muted">desafio365 &#x2f; inscricao365vip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; VIP</strong><p>Confirmada no cadastro (C)<br/>31&#x2f;12&#x2f;2024 10&#x3a;31<br/>Refer&ecirc;ncia&#x3a; PV7EI2RTJQ</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (4)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_5Ovgampf0FD6V4GP</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_924OmZEukBtX7W1w</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_omM3mxMHRaFlOXAB</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_yR63YzjcgbHKL8Je</p><small class="text-muted">Último evento local: </small>
+        </article>
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="16181:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de SOLANGE&#x20;THUMS&#x20;AHMANN" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de SOLANGE&#x20;THUMS&#x20;AHMANN">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de SOLANGE&#x20;THUMS&#x20;AHMANN" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de SOLANGE&#x20;THUMS&#x20;AHMANN" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;16181&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53125">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53125:0" class="verified-row-select" aria-label="Selecionar Vagner&#x20;Marques&#x20;da&#x20;Costa" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53125&amp;PAGINA&#x3d;2#detalhes">Vagner Marques da Costa</a><small class="verified-email">consultor.vagnermarques&#x40;gmail.com</small><small class="text-muted">Perfil 53125 · Usuário 105268</small>
+                <small class="verified-email">S&atilde;o Paulo &middot; SP</small> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD B&aacute;sica confirmada</span><span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (5)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="text-muted">Perfil sem bio.</p> <p class="small">Conta 105268 · criada em 17&#x2f;12&#x2f;2025</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (2)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Upgrade para VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 09&#x2f;06&#x2f;2026 11&#x3a;16<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiaupg</small>
+        </article><article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 17&#x2f;12&#x2f;2025 21&#x3a;40<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodia</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (0)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <p class="text-muted">Nenhuma inscrição encontrada no legado.</p> 
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (3)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade B&aacute;sica</strong>
+            <p>Pagamento conciliado</p>
+            
+            <p class="verified-order">or_1l5drmGhAps7z43z</p><small class="text-muted">Último evento local:  · Conferência API registrada: 25&#x2f;09&#x2f;2026 23&#x3a;09</small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Upgrade para VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_EwzmAwJUvtwxoJZX</p><small class="text-muted">Último evento local: </small>
+        </article><article class="verified-context-record"><strong>Todo Santo Dia &middot; Upgrade para VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_Gy1nLykt5c17zb35</p><small class="text-muted">Último evento local: </small>
+        </article>
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="53125:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Vagner&#x20;Marques&#x20;da&#x20;Costa" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Vagner&#x20;Marques&#x20;da&#x20;Costa">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Vagner&#x20;Marques&#x20;da&#x20;Costa" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Vagner&#x20;Marques&#x20;da&#x20;Costa" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53125&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-53439">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="53439:0" class="verified-row-select" aria-label="Selecionar Vin&iacute;cius&#x20;Gusm&atilde;o" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53439&amp;PAGINA&#x3d;2#detalhes">Vin&iacute;cius Gusm&atilde;o</a><small class="verified-email">vigusmed&#x40;gmail.com</small><small class="text-muted">Perfil 53439 · Usuário 106109</small>
+                <small class="verified-email">San Francisco &middot; XX</small> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (2)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="text-muted">Perfil sem bio.</p> <p class="small">Conta 106109 · criada em 23&#x2f;12&#x2f;2025</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (1)</h4>
+        <article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 23&#x2f;12&#x2f;2025 04&#x3a;14<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (0)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <p class="text-muted">Nenhuma inscrição encontrada no legado.</p> 
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (1)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <article class="verified-context-record"><strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p>Pedido criado; sem aprovação registrada</p>
+            
+            <p class="verified-order">or_JOr1mEJTrwtyk1vX</p><small class="text-muted">Último evento local: </small>
+        </article>
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="53439:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Vin&iacute;cius&#x20;Gusm&atilde;o" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Vin&iacute;cius&#x20;Gusm&atilde;o">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Vin&iacute;cius&#x20;Gusm&atilde;o" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Vin&iacute;cius&#x20;Gusm&atilde;o" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;53439&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr><tr id="perfil-17480">
+            <td class="verified-select-cell"><label><input type="checkbox" form="verified-bulk-form" name="selection" value="17480:0" class="verified-row-select" aria-label="Selecionar Wagner&#x20;de&#x20;Fran&ccedil;a" /><span class="verified-mobile-label">Selecionar para classificar</span></label></td>
+            <td><a class="verified-person" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17480&amp;PAGINA&#x3d;2#detalhes">Wagner de Fran&ccedil;a</a><small class="verified-email">olavocaldas2015&#x40;gmail.com</small><small class="text-muted">Perfil 17480 · Usuário 19753</small>
+                <small class="verified-email">S&atilde;o Paulo &middot; SP</small> <p class="verified-bio-preview">N&atilde;o h&aacute; linha de chegada&#x21;<small class="verified-email text-muted">Bio informada pelo atleta</small></p> 
+            </td>
+            <td><div class="verified-origin-list"><span class="verified-pill is-attention">Motivo n&atilde;o informado</span><small class="text-muted">Concessão permanente</small></div>
+                <div class="verified-context-tags">
+                    <span>VIP antigo &middot; Desafio 365</span><span>TSD VIP&#x2f;upgrade sem confirma&ccedil;&atilde;o</span>
+                </div>
+                <details class="verified-row-evidence"><summary>Cadastros e pedidos (4)</summary>
+<div class="verified-context">
+    <details class="verified-context-section"><summary>Perfil e conta</summary>
+        <p class="verified-context-bio">N&atilde;o h&aacute; linha de chegada&#x21;</p><p class="text-muted small">Bio informada pelo atleta; não é comprovação externa.</p> <p class="small">Conta 19753 · criada em 23&#x2f;12&#x2f;2024</p>
+    </details>
+    <div class="verified-context-section">
+        <h4>Inscrições nos desafios (3)</h4>
+        <article class="verified-context-record">
+            <strong>circuitobrasilgigante &middot; circuitobrasilgigante</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 13&#x2f;06&#x2f;2026 17&#x3a;31<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">circuitobrasilgigante &#x2f; circuitobrasilgigante</small>
+        </article><article class="verified-context-record">
+            <strong>Todo Santo Dia &middot; Anuidade VIP</strong>
+            <p><span class="verified-pill is-attention">Sem confirmação (I)</span></p>
+            <p class="text-muted">Cadastro: 17&#x2f;12&#x2f;2025 09&#x3a;12<br/>Sem refer&ecirc;ncia de pedido</p>
+            
+            <small class="text-muted">todosantodia &#x2f; todosantodiavip</small>
+        </article><article class="verified-context-record">
+            <strong>Desafio 365 &middot; VIP</strong>
+            <p><span class="verified-pill">Confirmada no cadastro (C)</span></p>
+            <p class="text-muted">Cadastro: 04&#x2f;03&#x2f;2025 19&#x3a;12<br/>Refer&ecirc;ncia&#x3a; GJLQTN5SLQ</p>
+            
+            <small class="text-muted">desafio365 &#x2f; inscricao365vip</small>
+        </article>
+        <p class="text-muted small">Confirmação no cadastro e data de inscrição não comprovam pagamento atual. A inscrição Básica não inclui selo.</p>
+    </div>
+    <details class="verified-context-section"><summary>Histórico legado CNA (1)</summary>
+        <p class="text-muted small">Pode repetir inscrições acima. Registros antigos não comprovam VIP vigente no Todo Santo Dia.</p>
+        <article class="verified-context-record"><strong>Desafio 365 &middot; VIP</strong><p>Confirmada no cadastro (C)<br/>04&#x2f;03&#x2f;2025 19&#x3a;12<br/>Refer&ecirc;ncia&#x3a; GJLQTN5SLQ</p></article>
+    </details>
+    <details class="verified-context-section"><summary>Histórico financeiro disponível (0)</summary>
+        <p class="text-muted small">Eventos Pagar.me já registrados no sistema para estas contas e produtos de desafios. Esta tela não faz nova consulta à API; ausência de evento não comprova ausência de pagamento.</p>
+        <p class="text-muted">Nenhum evento financeiro localizado pelos vínculos consultados.</p> 
+    </details>
+</div>
+</details>
+                
+                    <form method="post" action="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;2" class="verified-inline-form" data-quick-form>
+                        <input type="hidden" name="verified_action" value="quick"/><input type="hidden" name="verified_csrf" value="3DF8FB16C3DF898953947E8C62486794070B959BD7F6B779CEBF3D5982D50E5F"/><input type="hidden" name="selection" value="17480:0"/>
+                        <fieldset >
+                            <div class="verified-inline-controls"><select class="form-select form-select-sm" name="category" aria-label="Motivo do selo de Wagner&#x20;de&#x20;Fran&ccedil;a" required data-quick-category><option value="">Escolha o motivo</option><option value="elite">Atleta de elite</option><option value="influencer">Influencer &#x2f; criador</option><option value="imprensa">Imprensa</option><option value="parceiro">Parceiro</option><option value="equipe">Equipe</option><option value="cortesia">Cortesia</option><option value="outro">Outro motivo</option></select><button type="submit" class="btn btn-sm btn-warning" aria-label="Salvar motivo de Wagner&#x20;de&#x20;Fran&ccedil;a">Salvar</button></div>
+                            <input class="form-control form-control-sm" name="note" maxlength="1800" placeholder="Vínculo ou observação (opcional)" aria-label="Vínculo ou observação de Wagner&#x20;de&#x20;Fran&ccedil;a" data-quick-note/>
+                        </fieldset>
+                    </form>
+                
+            </td>
+            <td><strong>Sem vencimento</strong></td>
+            <td><a class="btn btn-sm btn-outline-warning" aria-label="Ver origens de Wagner&#x20;de&#x20;Fran&ccedil;a" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGE&#x25;5FID&#x3d;17480&amp;PAGINA&#x3d;2#detalhes">Ver origens</a></td>
+        </tr> 
+    </tbody></table></div>
+    <a id="verified-bulk-jump" class="verified-bulk-jump" href="#verified-bulk-form" hidden>Voltar à classificação do lote ↑</a>
+    <nav class="verified-pagination" aria-label="Páginas da lista"><span>Página 2 de 2</span><div><a class="btn btn-outline-secondary" href="&#x2f;portal&#x2f;verificados&#x2f;&#x3f;FILTER&#x25;5FSTATUS&#x3d;unclassified&amp;FILTER&#x25;5FLOGIC&#x3d;any&amp;PAGINA&#x3d;1">Anterior</a></div></nav>
+    <p class="text-muted small">VIP/upgrade confirmado no cadastro identifica o vínculo e sai da fila de motivos desconhecidos. Pagamento e validade dependem da conciliação financeira. Estornos ficam no histórico. Datas de pagamento no horário de Brasília.</p>
+</section>
+</body></html>

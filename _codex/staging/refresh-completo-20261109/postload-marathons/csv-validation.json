@@ -1,0 +1,12 @@
+{
+  "csv_roundtrip_counts_and_nulls": true,
+  "files": {
+    "maratonas-selecao-2025.csv": 50,
+    "maratonas-selecao-2026.csv": 39,
+    "pairs": 17,
+    "indicators": 486,
+    "age_audit": 80
+  },
+  "no_pdfs_generated": true,
+  "canonical_runtime_unchanged": true
+}

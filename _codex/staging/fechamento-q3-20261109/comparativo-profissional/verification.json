@@ -1,0 +1,58 @@
+{
+  "final_candidates_verified": true,
+  "business_files": [
+    "estudos/includes/StudyAccess.cfc",
+    "estudos/leitor/parcial.js",
+    "estudos/leitor/estudo.css",
+    "estudos/leitor/index.cfm"
+  ],
+  "portal_files": [
+    "brasilquecorreprovas/imprensa/principal/index.cfm",
+    "brasilquecorreprovas/imprensa/principal/dados.cfm",
+    "brasilquecorreprovas/imprensa/principal/parcial-2026.js",
+    "brasilquecorreprovas/imprensa/principal/estudo-2026.css"
+  ],
+  "frozen_source": {
+    "publication": 41,
+    "run": 233,
+    "paired_pointer_in_publication": {
+      "cell": 387,
+      "revision": 2,
+      "run": 231
+    },
+    "public_narrative": {
+      "cell": 420,
+      "revision": 5,
+      "run": 239
+    }
+  },
+  "verified": {
+    "reader_pages": 37,
+    "unrelated_page_snapshots_preserved": 36,
+    "previous_series_preserved": 113,
+    "previous_comparisons_preserved": 702,
+    "new_series": 3,
+    "new_comparisons": 4,
+    "missing_invalid_reader_cases": 7,
+    "sql_metadata_fallback_cases": [
+      "json_null",
+      "scalar",
+      "invalid_pointer"
+    ],
+    "exact_csv_preserved": true,
+    "js_syntax": true,
+    "git_diff_check": true,
+    "independent_review": "No residual static blockers after metadata validation and SQL operator fixes"
+  },
+  "pending_root": [
+    "Compile final CFML candidates in combined release prepare",
+    "Publish scoped runtime",
+    "Verify authenticated HTTP/desktop/mobile and RR Teams hold"
+  ],
+  "cleanup": {
+    "persistent_processes_started": 0,
+    "isolated_compile_temp_directory_removed": true,
+    "ssh_commands_completed": true,
+    "temporary_sql_bridges": "finally cleanup in shared helper"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "status": "PASS",
+  "review_date": "2026-11-09",
+  "facts": {
+    "snapshot": 42,
+    "main_run": 351,
+    "main_cell": 251,
+    "public_run": 352,
+    "public_cell": 420,
+    "cohort_run": 329,
+    "pairs": 615,
+    "cutoff": "2026-09-30",
+    "collection": "2026-11-09",
+    "matched": "2,2%",
+    "calendar": "38,7%",
+    "volume": "29,3%",
+    "women_before": "52,5%",
+    "women_after": "53,8%",
+    "short": "61,4%",
+    "interior": "48,0%"
+  },
+  "pdfs": [
+    {
+      "filename": "brasil-que-corre-provas-guia-rapido-q3.pdf",
+      "sha256": "3b03f015d455874262c94a42ad3bb03e4316ef7d89161631086734d0b0944a20",
+      "bytes": 42175,
+      "pages": 1,
+      "text_characters": 2065,
+      "embedded_fonts": [
+        "LibreFranklin-Thin",
+        "Poppins-Bold",
+        "Poppins-Regular",
+        "Poppins-SemiBold"
+      ],
+      "links": [
+        {
+          "page": 1,
+          "url": "https://roadrunners.run/brasilquecorreprovas/2026/"
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/"
+        },
+        {
+          "page": 1,
+          "url": "https://roadrunners.run/brasilquecorreprovas/2026/kit/"
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/#gestao"
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudo/"
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=execucao-v7"
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=execucao-v6"
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=execucao-v5"
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=conselho-v2"
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/#pdfs"
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/"
+        }
+      ]
+    },
+    {
+      "filename": "brasil-que-corre-provas-lancamento-q3-execucao-v7.pdf",
+      "sha256": "16a57cf624dda9fae1c66eebff5c83a64a9dab56edcf780720e0c8f1fbf1cac3",
+      "bytes": 47929,
+      "pages": 8,
+      "text_characters": 6408,
+      "embedded_fonts": [
+        "LibreFranklin-Thin",
+        "Poppins-Regular",
+        "Poppins-SemiBold"
+      ],
+      "links": [
+        {
+          "page": 3,
+          "url": "https://roadrunners.run/brasilquecorreprovas/2026/kit/"
+        },
+        {
+          "page": 8,
+          "url": "https://roadrunners.run/brasilquecorreprovas/2026/"
+        },
+        {
+          "page": 8,
+          "url": "https://business.roadrunners.run/estudos/"
+        }
+      ]
+    }
+  ],
+  "visual_review": {
+    "reviewed": true,
+    "guide_pages": [
+      1
+    ],
+    "execution_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "findings": "All 9 rendered pages inspected; legible, no clipping or text overlap."
+  },
+  "router_check": "Only one additive v7 route; admin guard and v6/v5 mappings byte-for-byte preserved.",
+  "preservation_check": "Runtime index/router/guide/v6/v5 and historical source generators unchanged.",
+  "scope": "Internal guide and execution only; no Maratonas PDF, DB operations, publication or Git.",
+  "integration_limits": "Central index remains unchanged and still points to v6; controller coordinates its v7 link. Authenticated download and deployed headers remain to be verified after coordinated publication.",
+  "resources": "No browser/server/driver/watcher/background process created; finite rendering commands exited."
+}

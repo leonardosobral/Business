@@ -1,0 +1,63 @@
+{
+  "tabId": "283508649",
+  "desktop": {
+    "benefitText": "50% na compra antecipada do anual.",
+    "scrollWidth": 1408,
+    "width": 1408
+  },
+  "mobile": {
+    "benefitWidth": 350,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  "managementCampaign50": true,
+  "notes": {
+    "notes": [
+      {
+        "revision": "513",
+        "staleZero": false,
+        "step": "organizar"
+      },
+      {
+        "revision": "539",
+        "staleZero": false,
+        "step": "piloto"
+      },
+      {
+        "revision": "540",
+        "staleZero": false,
+        "step": "contrato-abraceo"
+      },
+      {
+        "revision": "541",
+        "staleZero": false,
+        "step": "liberacao"
+      },
+      {
+        "revision": "517",
+        "staleZero": false,
+        "step": "lancamento"
+      },
+      {
+        "revision": "518",
+        "staleZero": false,
+        "step": "continuidade"
+      },
+      {
+        "revision": "542",
+        "staleZero": false,
+        "step": "venda-anual"
+      },
+      {
+        "revision": "520",
+        "staleZero": false,
+        "step": "edicao-anual"
+      }
+    ],
+    "validated": 0
+  },
+  "test_tab_closed_verified": true,
+  "viewport_restored": true,
+  "proof_tab": "283508654",
+  "proof_tab_closed_verified": true
+}

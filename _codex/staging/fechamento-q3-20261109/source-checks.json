@@ -1,0 +1,14 @@
+{
+  "public_view_definition": " SELECT ((r.result -> 'rows'::text) -> 0) -> 'payload'::text AS payload\n   FROM estudo.notebook_runs r\n     JOIN estudo.produtos p ON p.codigo = 'previa-2026-q3'::text AND p.status = 'ACTIVE'::text AND p.publicacao_id = 41\n  WHERE r.id = 239 AND r.cell_id = 420 AND r.frozen AND r.status = 'ok'::text AND NOT r.truncated AND r.row_count = 1;",
+  "null_numeric_values": 0,
+  "selected_series": 113,
+  "comparisons": 702,
+  "campaign": {
+    "ready": 95,
+    "status": "ACTIVE",
+    "last_redemption_day": "2026-11-24",
+    "vouchers": 95,
+    "discount": 50,
+    "redeemed": 0
+  }
+}

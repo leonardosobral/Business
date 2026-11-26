@@ -1,0 +1,565 @@
+{
+  "run": {
+    "started_at": "2026-11-09 18:21:48.552038-03",
+    "duration_ms": 14322,
+    "error_message": "",
+    "cell_version": 1,
+    "cell_id": "358",
+    "sql_sha256": "74f43eb227eb20515930523059f6d5842c43c4d5ca95694b4f58d12790c1de49",
+    "truncated": 0,
+    "row_count": 1,
+    "sql_text": "-- P02/P03 — elegibilidade 14+ na população com status0/homologação; não altera totais.\n-- Pré-agregação antes de interpretar faixas; nascimento em31/12 tem prioridade.\nWITH entradas AS(\n SELECT r.sexo,r.idade_range,r.concluinte,e.tipo_corrida,e.data_final<DATE '2026-10-01' AS ate30set,\n 2026-extract(year FROM r.data_nascimento)::integer AS idade_31dez,\n coalesce(r.data_nascimento<=e.data_final AND 2026-extract(year FROM r.data_nascimento)::integer BETWEEN 0 AND 120,false) AS nascimento_plausivel\n FROM public.tb_resultados r JOIN public.tb_evento_corridas e USING(id_evento)\n WHERE e.pais='BR' AND e.data_final>=DATE '2026-01-01' AND e.data_final<DATE '2026-10-01'\n AND r.status_final=0 AND r.homologado IS TRUE\n), base AS(\n SELECT coalesce(sexo,'N/A') AS sexo,idade_range,concluinte,tipo_corrida,ate30set,idade_31dez,nascimento_plausivel,count(*) AS n\n FROM entradas GROUP BY sexo,idade_range,concluinte,tipo_corrida,ate30set,idade_31dez,nascimento_plausivel\n),\nnormalizados AS (\n SELECT *,CASE WHEN nascimento_plausivel THEN int4range(idade_31dez,idade_31dez+1,'[)')\n WHEN idade_range IS NOT NULL AND idade_range<>'empty'::int4range AND lower(idade_range)>=0 AND lower(idade_range)<=120 AND (upper(idade_range) IS NULL OR upper(idade_range)<=121) THEN idade_range END AS faixa,\n CASE WHEN nascimento_plausivel THEN 'Nascimento plausível'\n WHEN idade_range IS NULL THEN 'Sem idade informada'\n WHEN idade_range<>'empty'::int4range AND lower(idade_range)>=0 AND lower(idade_range)<=120 AND (upper(idade_range) IS NULL OR upper(idade_range)<=121) THEN 'Faixa da categoria'\n ELSE 'Dado inválido' END AS origem\n FROM base\n), classificados AS (\n SELECT *,CASE WHEN faixa IS NULL THEN CASE WHEN origem='Sem idade informada' THEN 'Sem idade informada' ELSE 'Dado inválido' END\n WHEN faixa<@int4range(0,14,'[)') THEN 'Menos de 14'\n WHEN lower(faixa)>=14 THEN '14+ identificados'\n ELSE 'Faixa cruza 14' END AS corte14\n FROM normalizados\n),periodos AS(SELECT '2026 · até 30/09' AS escopo,false AS completo), universos AS(SELECT 'Todas as modalidades' AS universo UNION ALL SELECT 'Rua/trail'),\nidades AS(\n SELECT p.escopo,2026 AS ano,u.universo,\n CASE WHEN c.concluinte IS TRUE THEN 'Conclusão registrada' WHEN c.concluinte IS FALSE THEN 'Conclusão falsa' ELSE 'Conclusão desconhecida' END AS conclusao,\n c.corte14,c.origem,c.sexo,sum(c.n)::bigint AS n\n FROM classificados c CROSS JOIN periodos p CROSS JOIN universos u\n WHERE (p.completo OR c.ate30set) AND (u.universo='Todas as modalidades' OR c.tipo_corrida IN('rua','trail'))\n GROUP BY p.escopo,u.universo,c.concluinte,c.corte14,c.origem,c.sexo\n)\nSELECT jsonb_build_object('ano',2026,'coletado_em',current_timestamp,'idades',(SELECT jsonb_agg(to_jsonb(i) ORDER BY escopo,universo,conclusao,corte14,origem,sexo) FROM idades i)) AS payload;",
+    "status": "ok",
+    "note": "Renovação completa solicitada em 09/11/2026. Mesmos critérios e corte da revisão vigente; pacote candidato, ainda não publicado. A data de coleta não amplia a janela de eventos.",
+    "finished_at": "2026-11-09 18:22:02.877395-03",
+    "frozen_at": "2026-11-09 18:22:02.880546-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 358",
+    "id": "315",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T18:21:48.552038-03:00",
+    "cell_id": 358,
+    "cell_version": 1,
+    "id": 315,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "payload"
+      ],
+      "rows": [
+        {
+          "payload": {
+            "ano": 2026,
+            "idades": [
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Faixa da categoria",
+                "n": 15,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Faixa da categoria",
+                "n": 23,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Nascimento plausível",
+                "n": 123,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Nascimento plausível",
+                "n": 106,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Nascimento plausível",
+                "n": 1,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "Sem idade informada",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Sem idade informada",
+                "n": 5,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "Sem idade informada",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Sem idade informada",
+                "n": 1,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Faixa da categoria",
+                "n": 1347507,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Faixa da categoria",
+                "n": 1180413,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Faixa da categoria",
+                "n": 91,
+                "sexo": "X"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Nascimento plausível",
+                "n": 864051,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Nascimento plausível",
+                "n": 698656,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Nascimento plausível",
+                "n": 835,
+                "sexo": "X"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Dado inválido",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Dado inválido",
+                "n": 12,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Dado inválido",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Dado inválido",
+                "n": 68,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Faixa cruza 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Faixa da categoria",
+                "n": 47281,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Faixa cruza 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Faixa da categoria",
+                "n": 44375,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Faixa cruza 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Faixa da categoria",
+                "n": 57,
+                "sexo": "X"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Faixa da categoria",
+                "n": 1817,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Faixa da categoria",
+                "n": 2107,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Nascimento plausível",
+                "n": 2583,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Nascimento plausível",
+                "n": 3698,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Nascimento plausível",
+                "n": 1,
+                "sexo": "X"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Sem idade informada",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Sem idade informada",
+                "n": 199239,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Sem idade informada",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Sem idade informada",
+                "n": 181622,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Sem idade informada",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Rua/trail",
+                "origem": "Sem idade informada",
+                "n": 568,
+                "sexo": "X"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Faixa da categoria",
+                "n": 15,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Faixa da categoria",
+                "n": 23,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Nascimento plausível",
+                "n": 123,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Nascimento plausível",
+                "n": 106,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Nascimento plausível",
+                "n": 1,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "Sem idade informada",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Sem idade informada",
+                "n": 5,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão falsa",
+                "corte14": "Sem idade informada",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Sem idade informada",
+                "n": 1,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Faixa da categoria",
+                "n": 1347507,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Faixa da categoria",
+                "n": 1180413,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Faixa da categoria",
+                "n": 91,
+                "sexo": "X"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Nascimento plausível",
+                "n": 864051,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Nascimento plausível",
+                "n": 698656,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "14+ identificados",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Nascimento plausível",
+                "n": 835,
+                "sexo": "X"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Dado inválido",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Dado inválido",
+                "n": 12,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Dado inválido",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Dado inválido",
+                "n": 68,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Faixa cruza 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Faixa da categoria",
+                "n": 47281,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Faixa cruza 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Faixa da categoria",
+                "n": 44375,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Faixa cruza 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Faixa da categoria",
+                "n": 57,
+                "sexo": "X"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Faixa da categoria",
+                "n": 1817,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Faixa da categoria",
+                "n": 2107,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Nascimento plausível",
+                "n": 2583,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Nascimento plausível",
+                "n": 3698,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Menos de 14",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Nascimento plausível",
+                "n": 1,
+                "sexo": "X"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Sem idade informada",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Sem idade informada",
+                "n": 199239,
+                "sexo": "F"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Sem idade informada",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Sem idade informada",
+                "n": 181622,
+                "sexo": "M"
+              },
+              {
+                "conclusao": "Conclusão registrada",
+                "corte14": "Sem idade informada",
+                "ano": 2026,
+                "escopo": "2026 · até 30/09",
+                "universo": "Todas as modalidades",
+                "origem": "Sem idade informada",
+                "n": 568,
+                "sexo": "X"
+              }
+            ],
+            "coletado_em": "2026-11-09T18:21:48.555784-03:00"
+          }
+        }
+      ]
+    }
+  }
+}

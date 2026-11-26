@@ -1,0 +1,8 @@
+{
+  "prod": {
+    "public_payment_flag": false
+  },
+  "dev": {
+    "public_payment_flag": false
+  }
+}

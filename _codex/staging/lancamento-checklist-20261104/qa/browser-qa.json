@@ -1,0 +1,20 @@
+{
+  "tabId": "283508529",
+  "desktop": {
+    "checkboxes": 8,
+    "checked": 0,
+    "enabled": true,
+    "firstSection": "cronograma",
+    "release": true,
+    "scrollWidth": 1533,
+    "width": 1533
+  },
+  "mobile": {
+    "cardColumns": "350px",
+    "enabled": true,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  "tab_closed_verified": true,
+  "viewport_restored": true
+}

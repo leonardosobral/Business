@@ -1,0 +1,62 @@
+{
+  "result": {
+    "checks": [
+      {
+        "ok": true,
+        "detail": "status=ok length=4500171 error=",
+        "name": "one JSON row over datasource cap is complete"
+      },
+      {
+        "ok": true,
+        "detail": "",
+        "name": "bigint decimal NULL and unicode remain exact"
+      },
+      {
+        "ok": true,
+        "detail": "",
+        "name": "1001 rows truncate to first 1000"
+      },
+      {
+        "ok": true,
+        "detail": "rows=1 length=2600051 error=",
+        "name": "5MB payload budget excludes whole overflowing row"
+      },
+      {
+        "ok": true,
+        "detail": "",
+        "name": "single row above budget returns empty complete JSON and truncates"
+      },
+      {
+        "ok": true,
+        "detail": "",
+        "name": "zero rows preserve columns"
+      },
+      {
+        "ok": true,
+        "detail": "chars=4296566 expected_chars=4296550 bytes=4311180 sha=8f8b992ce0294013a30649d7789615defcb3319ee2e8de68bd2396317097e998 expected_sha=8f8b992ce0294013a30649d7789615defcb3319ee2e8de68bd2396317097e998 frozen=1 truncated=0 status=ok rows=1 error= ids=226,384",
+        "name": "getRun reconstructs frozen 4.3MB result"
+      },
+      {
+        "ok": true,
+        "detail": "status=error",
+        "name": "getRun preserves NULL result and metadata"
+      },
+      {
+        "ok": true,
+        "detail": "",
+        "name": "101 columns are rejected"
+      },
+      {
+        "ok": true,
+        "detail": "",
+        "name": "SQL function guard remains active"
+      },
+      {
+        "ok": true,
+        "detail": "",
+        "name": "role restored after test transactions"
+      }
+    ]
+  },
+  "temporary_directory_removed": true
+}

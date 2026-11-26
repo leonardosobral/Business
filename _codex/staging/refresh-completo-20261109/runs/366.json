@@ -1,0 +1,2534 @@
+{
+  "run": {
+    "started_at": "2026-11-09 15:45:39.267303-03",
+    "duration_ms": 64,
+    "error_message": "",
+    "cell_version": 1,
+    "cell_id": "366",
+    "sql_sha256": "bfb5bd2518959fe7a131e055a3492cebf2d90f5076324c3943ade06cb9113b0a",
+    "truncated": 0,
+    "row_count": 1,
+    "sql_text": "-- 2026: preço resumido, uma prova = um id_evento. Sem consultas de resultados.\n-- Calendário anual BR/rua ativo, ranking nulo ou diferente de false, data_final.\n-- Não certifica realização, categoria geral, preço efetivamente pago ou taxas.\nWITH eventos AS MATERIALIZED (\n SELECT e.id_evento,e.nome_evento,e.data_final,e.valor_inscricao,e.precos\n FROM public.tb_evento_corridas e\n WHERE e.ativo IS TRUE AND e.pais='BR' AND e.tipo_corrida='rua'\n AND (e.ranking IS NULL OR e.ranking<>'false')\n AND e.data_final>=DATE '2026-01-01' AND e.data_final<DATE '2026-10-01'\n), opcoes AS (\n SELECT e.id_evento,min(CASE WHEN jsonb_typeof(t.value->'valor')='number' THEN (t.value->>'valor')::numeric END) FILTER (WHERE coalesce(t.value->>'moeda','BRL')='BRL' AND CASE WHEN jsonb_typeof(t.value->'valor')='number' THEN (t.value->>'valor')::numeric>0 ELSE false END) AS menor_json\n FROM eventos e CROSS JOIN LATERAL jsonb_array_elements(CASE WHEN jsonb_typeof(e.precos)='array' THEN e.precos ELSE '[]'::jsonb END)t\n GROUP BY e.id_evento\n), pagas AS (\n SELECT id_evento,valor_inscricao,row_number() OVER (ORDER BY valor_inscricao,id_evento) AS posicao,count(*) OVER () AS n\n FROM eventos WHERE valor_inscricao>0.01\n), resumo AS (\n SELECT count(*) AS calendario,count(valor_inscricao) AS informadas,count(*) FILTER(WHERE valor_inscricao IS NULL) AS ausentes,\n count(*) FILTER(WHERE valor_inscricao=0.01) AS simbolicas,count(*) FILTER(WHERE valor_inscricao=0) AS zeradas,count(*) FILTER(WHERE valor_inscricao<0) AS negativas,\n (SELECT count(*) FROM pagas) AS analisadas,\n (SELECT avg(valor_inscricao)::text FROM pagas) AS media,\n (SELECT avg(valor_inscricao)::text FROM pagas WHERE posicao IN ((n+1)/2,(n+2)/2)) AS mediana,\n (count(valor_inscricao)*100.0/nullif(count(*),0))::text AS cobertura,\n (count(*) FILTER(WHERE valor_inscricao IS NULL)*100.0/nullif(count(*),0))::text AS ausencia,\n count(*) FILTER(WHERE o.menor_json IS NOT NULL AND e.valor_inscricao IS NOT NULL AND o.menor_json<>e.valor_inscricao) AS divergencias_json\n FROM eventos e LEFT JOIN opcoes o USING(id_evento)\n), limites AS (SELECT column1 AS ordem,column2 AS rotulo,column3 AS inferior,column4 AS superior FROM (VALUES\n (1,'Até R$ 50',0.01::numeric,50::numeric),\n (2,'Acima de R$ 50 até R$ 100',50,100),\n (3,'Acima de R$ 100 até R$ 150',100,150),\n (4,'Acima de R$ 150 até R$ 200',150,200),\n (5,'Acima de R$ 200',200,NULL))t\n), faixas AS (\n SELECT l.ordem,l.rotulo,count(p.id_evento) AS contagem,(count(p.id_evento)*100.0/nullif((SELECT analisadas FROM resumo),0))::text AS percentual\n FROM limites l LEFT JOIN pagas p ON p.valor_inscricao>l.inferior AND (l.superior IS NULL OR p.valor_inscricao<=l.superior)\n GROUP BY l.ordem,l.rotulo\n)\nSELECT jsonb_build_object('ano',2026,'inicio','2026-01-01','fim','2026-09-30','coletado_em',current_timestamp,\n 'regra','Calendário anual BR/rua ativo; ranking nulo ou diferente de false; data_final em 2026, somente até 30/09. Uma prova = id_evento. Campo valor_inscricao, descrito como menor valor positivo publicado; pode refletir lotes, kits, distâncias ou descontos restritos. Não equivale ao preço geral ou ao gasto efetivo; taxas adicionais não somadas. Média e mediana não ponderadas, valores acima de R$ 0,01; simbólicos, zeros, negativos e ausentes fora da amostra paga. Não identifica automaticamente PCD ou gratuidade. Cadastro não certifica realização; amostra não representa o mercado. Corte anual de preços não altera o corte de resultados até 30/09.',\n 'resumo',(SELECT to_jsonb(resumo) FROM resumo),\n 'faixas',(SELECT jsonb_agg(to_jsonb(faixas) ORDER BY ordem) FROM faixas),\n 'auditoria',(SELECT coalesce(jsonb_agg(jsonb_build_object('id_evento',e.id_evento,'nome_evento',e.nome_evento,'data_final',e.data_final,'valor_inscricao',e.valor_inscricao::text,'menor_json',o.menor_json::text,'valor_simbolico',e.valor_inscricao=0.01,'valor_nao_positivo',e.valor_inscricao<=0,'opcoes_divergentes',o.menor_json IS NOT NULL AND e.valor_inscricao IS NOT NULL AND o.menor_json<>e.valor_inscricao) ORDER BY e.id_evento),'[]'::jsonb) FROM eventos e LEFT JOIN opcoes o USING(id_evento) WHERE e.valor_inscricao<=0.01 OR (o.menor_json IS NOT NULL AND e.valor_inscricao IS NOT NULL AND o.menor_json<>e.valor_inscricao))) AS payload;",
+    "status": "ok",
+    "note": "Renovação completa solicitada em 09/11/2026. Mesmos critérios e corte da revisão vigente; pacote candidato, ainda não publicado. A data de coleta não amplia a janela de eventos.",
+    "finished_at": "2026-11-09 15:45:39.333279-03",
+    "frozen_at": "2026-11-09 15:45:39.33882-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 366",
+    "id": "271",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T15:45:39.267303-03:00",
+    "cell_id": 366,
+    "cell_version": 1,
+    "id": 271,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "payload"
+      ],
+      "rows": [
+        {
+          "payload": {
+            "regra": "Calendário anual BR/rua ativo; ranking nulo ou diferente de false; data_final em 2026, somente até 30/09. Uma prova = id_evento. Campo valor_inscricao, descrito como menor valor positivo publicado; pode refletir lotes, kits, distâncias ou descontos restritos. Não equivale ao preço geral ou ao gasto efetivo; taxas adicionais não somadas. Média e mediana não ponderadas, valores acima de R$ 0,01; simbólicos, zeros, negativos e ausentes fora da amostra paga. Não identifica automaticamente PCD ou gratuidade. Cadastro não certifica realização; amostra não representa o mercado. Corte anual de preços não altera o corte de resultados até 30/09.",
+            "ano": 2026,
+            "auditoria": [
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "13° Maratona EM MOVIMENTO EM GOIANIA",
+                "menor_json": "180",
+                "valor_inscricao": "40.00",
+                "id_evento": 36246,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "MARATONA DE BONITO",
+                "menor_json": "120",
+                "valor_inscricao": "100.00",
+                "id_evento": 36665,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "MARATONA FILA 2026",
+                "menor_json": "279.9",
+                "valor_inscricao": "137.45",
+                "id_evento": 36974,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "Maratona de Criciúma 2026",
+                "menor_json": "159",
+                "valor_inscricao": "129.00",
+                "id_evento": 37006,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "MOUNTAIN DO CAMPOS DO JORDÃO 2026",
+                "menor_json": "295",
+                "valor_inscricao": "590.00",
+                "id_evento": 37009,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Barra Run 2026",
+                "menor_json": "110",
+                "valor_inscricao": "95.00",
+                "id_evento": 38213,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "12ª CORRIDA DA AME",
+                "menor_json": "65.22",
+                "valor_inscricao": "59.29",
+                "id_evento": 38362,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "CORRIDA PELA VIDA AGOSTO VERDE",
+                "menor_json": "50",
+                "valor_inscricao": "49.90",
+                "id_evento": 38364,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "Eco Run - Londrina 2026",
+                "menor_json": "169.99",
+                "valor_inscricao": "69.99",
+                "id_evento": 38510,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "Blue Run 2026 - Salvador",
+                "menor_json": "99.99",
+                "valor_inscricao": "69.99",
+                "id_evento": 38511,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "Eco Run - Curitiba 2026",
+                "menor_json": "139.99",
+                "valor_inscricao": "69.99",
+                "id_evento": 38512,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "Eco Run - Belo Horizonte 2026",
+                "menor_json": "129.99",
+                "valor_inscricao": "49.99",
+                "id_evento": 38513,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "Eco Run - Piracicaba 2026",
+                "menor_json": "129.99",
+                "valor_inscricao": "99.99",
+                "id_evento": 38514,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "Eco Run - Pindamonhagaba 2026",
+                "menor_json": "129.99",
+                "valor_inscricao": "59.99",
+                "id_evento": 38515,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-12",
+                "nome_evento": "WTR ROTA VULCÂNICA 2026",
+                "menor_json": "125",
+                "valor_inscricao": "105.00",
+                "id_evento": 38575,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "2ª CORRIDA COM O SENHOR BOM JESUS",
+                "menor_json": "70",
+                "valor_inscricao": "47.50",
+                "id_evento": 38671,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "SRUN - Limeira - 2026",
+                "menor_json": "169.99",
+                "valor_inscricao": "49.99",
+                "id_evento": 38983,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "41ª CORRIDA INTEGRAÇÃO CAMPINAS - 2026",
+                "menor_json": "94.9",
+                "valor_inscricao": "84.90",
+                "id_evento": 39405,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "42ª MEIA MARATONA BELA VISTA COUNTRY CLUB",
+                "menor_json": "15",
+                "valor_inscricao": "30.00",
+                "id_evento": 39406,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "3ª CORRIDA E CAMINHADA SEBO NAS CANELAS UP CALÇADOS ACTIVITTA",
+                "menor_json": "69.9",
+                "valor_inscricao": "79.90",
+                "id_evento": 39699,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "Corrida Santa Cruz Em Movimento",
+                "menor_json": "35",
+                "valor_inscricao": "70.00",
+                "id_evento": 39732,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "1ª Corrida Mente Equilibrada",
+                "menor_json": "49.95",
+                "valor_inscricao": "44.95",
+                "id_evento": 39814,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "MEIA MARATONA DE LIMEIRA",
+                "menor_json": "114.9",
+                "valor_inscricao": "104.90",
+                "id_evento": 39841,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-19",
+                "nome_evento": "3ª Corrida SolidÁria Apae Navegantes",
+                "menor_json": "30",
+                "valor_inscricao": "25.00",
+                "id_evento": 40095,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-09",
+                "nome_evento": "Choco Run Ribeirão Pires 2026",
+                "menor_json": "85.9",
+                "valor_inscricao": "45.90",
+                "id_evento": 40113,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-19",
+                "nome_evento": "MEIA MARATONA EU AMO RECIFE - 13ª EDIÇÃO",
+                "menor_json": "159",
+                "valor_inscricao": "139.00",
+                "id_evento": 40180,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "PROJETO SANTANA BORA CORRER - CASTANHAL PA",
+                "menor_json": "79",
+                "valor_inscricao": "69.00",
+                "id_evento": 40183,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "VASCORRIDA 2026 - FLORIPA",
+                "menor_json": "60",
+                "valor_inscricao": "45.00",
+                "id_evento": 40184,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "CIRCUITO DESBRAVA - SALVADOR 2026",
+                "menor_json": "50",
+                "valor_inscricao": "89.00",
+                "id_evento": 40187,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-22",
+                "nome_evento": "OCIO NIGHT RUN 2026  corridA e Caminhada",
+                "menor_json": "75",
+                "valor_inscricao": "105.00",
+                "id_evento": 40188,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "1º CORRIDA E CAMINHADA BENEFICENTE APAE DE MATINHOS",
+                "menor_json": "59",
+                "valor_inscricao": "99.00",
+                "id_evento": 40247,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "PROJETO SANTANA BORA CORRER - PARAGOMINAS",
+                "menor_json": "79",
+                "valor_inscricao": "69.00",
+                "id_evento": 40354,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "Carioca Family Run 2026",
+                "menor_json": "129.9",
+                "valor_inscricao": "59.90",
+                "id_evento": 40356,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "DESAFIO 15K CASA ESPORTIVA 2026",
+                "menor_json": "114.9",
+                "valor_inscricao": "104.90",
+                "id_evento": 40463,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-15",
+                "nome_evento": "CORRIDA MUNDO LIVRE 2026",
+                "menor_json": "79.9",
+                "valor_inscricao": "49.90",
+                "id_evento": 40464,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "PARQUE SHOPPING RUN 2026 - MACEIÓ ALAGOAS",
+                "menor_json": "100",
+                "valor_inscricao": "120.00",
+                "id_evento": 40625,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-25",
+                "nome_evento": "1ª Corrida Get Running",
+                "menor_json": "62.45",
+                "valor_inscricao": "44.95",
+                "id_evento": 40897,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "5ª CORRIDA MONTE BOM JESUS - CMBJ",
+                "menor_json": "90",
+                "valor_inscricao": "80.00",
+                "id_evento": 40927,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "CORRIDAS UNIMED CIRCUITO SC - 2026 - ETAPA BLUMENAU",
+                "menor_json": "90",
+                "valor_inscricao": "45.00",
+                "id_evento": 40930,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "LUPO SPORT CORRE FLORIANÓPOLIS",
+                "menor_json": "139.9",
+                "valor_inscricao": "129.90",
+                "id_evento": 40932,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "10ª CORRIDA UNIMED CASCAVEL - 2026",
+                "menor_json": "62",
+                "valor_inscricao": "59.50",
+                "id_evento": 40933,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "CORRIDA MOVIMENTO MOVIMENTA",
+                "menor_json": "49.95",
+                "valor_inscricao": "69.95",
+                "id_evento": 40936,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "CORRIDA SEVAN RUN MONTE MOR 6K - 2026",
+                "menor_json": "119.9",
+                "valor_inscricao": "95.90",
+                "id_evento": 40937,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "7° CIRCUITO SAMEL PLANOS DE SAÚDE DE CORRIDA MANAUS - AM",
+                "menor_json": "99",
+                "valor_inscricao": "120.00",
+                "id_evento": 40957,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "CORRIDA FIT COMPANY NO PARAÍSO - 2ª Edição",
+                "menor_json": "42.45",
+                "valor_inscricao": "84.90",
+                "id_evento": 41132,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "26ª CORRIDA DUQUE DE CAXIAS 2026",
+                "menor_json": "45",
+                "valor_inscricao": "35.00",
+                "id_evento": 41135,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "CORRIDA SOLIDARIA AGROMIL PETS 2026",
+                "menor_json": "99",
+                "valor_inscricao": "65.00",
+                "id_evento": 41158,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "BOP RUN - BOP GAMES BELO HORIZONTE 2026",
+                "menor_json": "161.7",
+                "valor_inscricao": "150.70",
+                "id_evento": 41407,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Circuito Sesc de Corridas 2026 - Etapa Itabirito",
+                "menor_json": "23.99",
+                "valor_inscricao": "20.00",
+                "id_evento": 41411,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "CORRIDA FENAE DO PESSOAL DA CAIXA",
+                "menor_json": "86",
+                "valor_inscricao": "80.00",
+                "id_evento": 41415,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "2ª CORRIDA PASSOS PELA VIDA",
+                "menor_json": "116.63",
+                "valor_inscricao": "109.00",
+                "id_evento": 41416,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "3a CORRIDA DAS BALEIAS, Barra de ibiraquera Imbituba.",
+                "menor_json": "5",
+                "valor_inscricao": "50.00",
+                "id_evento": 41417,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "Circuito Sesc de Corridas 2026 - Etapa Manhuaçu",
+                "menor_json": "23.99",
+                "valor_inscricao": "20.00",
+                "id_evento": 41418,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "LET'S RUN",
+                "menor_json": "49.9",
+                "valor_inscricao": "54.89",
+                "id_evento": 41421,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-09",
+                "nome_evento": "1ª CORRIDA E CAMINHADA SÃO JOÃO BOSCO",
+                "menor_json": "105.93",
+                "valor_inscricao": "99.00",
+                "id_evento": 41424,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-31",
+                "nome_evento": "NYSA RUNNING PELA VIDA",
+                "menor_json": "97.9",
+                "valor_inscricao": "55.00",
+                "id_evento": 41573,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "VALE RACE 2026 - 2ª EDIÇÃO",
+                "menor_json": "50",
+                "valor_inscricao": "45.00",
+                "id_evento": 41707,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-22",
+                "nome_evento": "CIRCUITO DE CORRIDAS TV ATALAIA - 2ª ETAPA",
+                "menor_json": "119.9",
+                "valor_inscricao": "59.95",
+                "id_evento": 41717,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "CORRIDA DO SOLDADO 2026",
+                "menor_json": "51.81",
+                "valor_inscricao": "60.00",
+                "id_evento": 41866,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "Meia Maratona Farol A Farol - 2026",
+                "menor_json": "75",
+                "valor_inscricao": "10.00",
+                "id_evento": 41909,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "Viii Corrida Academia Power Fitness",
+                "menor_json": "49.95",
+                "valor_inscricao": "44.95",
+                "id_evento": 41962,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "Rio S21K - Rio de Janeiro - 2026",
+                "menor_json": "199.99",
+                "valor_inscricao": "179.99",
+                "id_evento": 41999,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-09",
+                "nome_evento": "1ª Corrida Da VestuÁrio Sport",
+                "menor_json": "50",
+                "valor_inscricao": "80.00",
+                "id_evento": 42143,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "2ª Corrida Oab - Subseção Guarabira",
+                "menor_json": "55",
+                "valor_inscricao": "47.45",
+                "id_evento": 42190,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "Corrida Do Produtor Rural",
+                "menor_json": "44.99",
+                "valor_inscricao": "39.95",
+                "id_evento": 42193,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "10ª CORRIDA E CAMINHADA DA UNESP DRACENA",
+                "menor_json": "75",
+                "valor_inscricao": "40.00",
+                "id_evento": 42234,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "10ª Corrida De Aniversário Dos Amigos Do Asfalto",
+                "menor_json": "55",
+                "valor_inscricao": "50.00",
+                "id_evento": 42265,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Liga Run",
+                "menor_json": "160",
+                "valor_inscricao": "150.00",
+                "id_evento": 42280,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-26",
+                "nome_evento": "PDR Mountain Challenge 2026",
+                "menor_json": "170",
+                "valor_inscricao": "220.00",
+                "id_evento": 42377,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-22",
+                "nome_evento": "CORRE GYM -POMBAL",
+                "menor_json": "33.75",
+                "valor_inscricao": "42.50",
+                "id_evento": 42439,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Laquis Run",
+                "menor_json": "47.5",
+                "valor_inscricao": "42.50",
+                "id_evento": 42514,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-26",
+                "nome_evento": "3ª CORRIDA GLOSSY",
+                "menor_json": "250",
+                "valor_inscricao": "109.00",
+                "id_evento": 42608,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "CORRIDA TOCA RAUL BARREIRO BH",
+                "menor_json": "66",
+                "valor_inscricao": "60.00",
+                "id_evento": 42611,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "CORRIDA NU VAI BEM - ETAPA SALVADOR",
+                "menor_json": "109.9",
+                "valor_inscricao": "54.95",
+                "id_evento": 42641,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "CORRIDA DAS MARÉS 2026",
+                "menor_json": "54.99",
+                "valor_inscricao": "109.99",
+                "id_evento": 42645,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "PATIFARIA RUNNERS 5KM ...OU QUASE ISSO!!",
+                "menor_json": "49.99",
+                "valor_inscricao": "29.99",
+                "id_evento": 42874,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "2º CORRIDA KAIRÓS RUN",
+                "menor_json": "89.99",
+                "valor_inscricao": "99.99",
+                "id_evento": 42876,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-09",
+                "nome_evento": "1ª CORRIDA DOS PAIS",
+                "menor_json": "87.89",
+                "valor_inscricao": "59.90",
+                "id_evento": 42879,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-26",
+                "nome_evento": "II CORRIDA NOTURNA ROTAM 9ºBPM",
+                "menor_json": "79.9",
+                "valor_inscricao": "59.90",
+                "id_evento": 42941,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "LUPO SPORT CORRE CACOAL",
+                "menor_json": "129",
+                "valor_inscricao": "119.00",
+                "id_evento": 42950,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "2ª CORRIDA DAS ORQUÍDEAS",
+                "menor_json": "109.9",
+                "valor_inscricao": "99.90",
+                "id_evento": 42987,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "MARATONA DE NITERÓI 2026",
+                "menor_json": "110",
+                "valor_inscricao": "100.00",
+                "id_evento": 43078,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "Mml Urban Run",
+                "menor_json": "60",
+                "valor_inscricao": "80.00",
+                "id_evento": 43092,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-19",
+                "nome_evento": "2ª CORRIDA E CAMINHADA DA GUARDA DE NAZARÉ - GUARDA RUN 2026 - ETAPA 2",
+                "menor_json": "59.5",
+                "valor_inscricao": "54.50",
+                "id_evento": 43248,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "CORRIDA HE-MAN",
+                "menor_json": "145",
+                "valor_inscricao": "125.00",
+                "id_evento": 43257,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-09",
+                "nome_evento": "BONISSIMA RUN 2026 - ETAPA INVERNO",
+                "menor_json": "160",
+                "valor_inscricao": "150.00",
+                "id_evento": 43263,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "1ª CORRIDA MAÇONICA DA CIDADE DE SÃO FRACISCO DO OESTE  RN",
+                "menor_json": "29.5",
+                "valor_inscricao": "45.00",
+                "id_evento": 43301,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "2ª Corrida Da Advocacia",
+                "menor_json": "27.5",
+                "valor_inscricao": "25.00",
+                "id_evento": 43338,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "2 Corrida Do CafÉ",
+                "menor_json": "95",
+                "valor_inscricao": "115.00",
+                "id_evento": 43344,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "TopÁzio Run Fest",
+                "menor_json": "25",
+                "valor_inscricao": "45.00",
+                "id_evento": 43364,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Top Run 2026",
+                "menor_json": "124.99",
+                "valor_inscricao": "109.99",
+                "id_evento": 43365,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "Ii Meia Maratona Das 4 Pontes Indaial-sc",
+                "menor_json": "75",
+                "valor_inscricao": "65.00",
+                "id_evento": 43409,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "1ª CORRIDA DA INDEPENDÊNCIA DR. SEVERIANO NO CORRE",
+                "menor_json": "37.5",
+                "valor_inscricao": "32.50",
+                "id_evento": 43422,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "C6 BANK LAUF RUN 2026",
+                "menor_json": "250",
+                "valor_inscricao": "200.00",
+                "id_evento": 43445,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "MEIA MARATONA DE GUARATUBA 2026",
+                "menor_json": "54.95",
+                "valor_inscricao": "49.95",
+                "id_evento": 43449,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "TRAIL IN MOTION 18 - ESTÂNCIA OURO FINO 2026",
+                "menor_json": "120",
+                "valor_inscricao": "110.00",
+                "id_evento": 43450,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "3º KR RUN",
+                "menor_json": "54.95",
+                "valor_inscricao": "49.95",
+                "id_evento": 43452,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-08",
+                "nome_evento": "DIVON + IMPULSO - O CORRE",
+                "menor_json": "79.9",
+                "valor_inscricao": "69.90",
+                "id_evento": 43461,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-08",
+                "nome_evento": "CIRCUITO S3 – ETAPA SÃO BENTO/PB",
+                "menor_json": "34.95",
+                "valor_inscricao": "44.95",
+                "id_evento": 43519,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "2ª Corrida Da Pedra Do Navio",
+                "menor_json": "85",
+                "valor_inscricao": "75.00",
+                "id_evento": 43547,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "1ª Corrida Exclusive Run",
+                "menor_json": "99.9",
+                "valor_inscricao": "79.90",
+                "id_evento": 43548,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "Travessia de Copa - Rio de Janeiro 2026",
+                "menor_json": "149.99",
+                "valor_inscricao": "139.99",
+                "id_evento": 43616,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-22",
+                "nome_evento": "3ª CORRIDA AMIGOS DA APAE PINHAIS",
+                "menor_json": "69.9",
+                "valor_inscricao": "79.90",
+                "id_evento": 43635,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "CORRIDA GRANADO PINK RECIFE 2026",
+                "menor_json": "189.9",
+                "valor_inscricao": "169.90",
+                "id_evento": 43679,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "4º CORRIDA E CAMINHADA DO AGOSTIN",
+                "menor_json": "109",
+                "valor_inscricao": "49.90",
+                "id_evento": 43682,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-19",
+                "nome_evento": "BRASIL KIDS RUN - SHOPPING PLAZA RIO DAS OSTRAS",
+                "menor_json": "59.99",
+                "valor_inscricao": "129.00",
+                "id_evento": 43686,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "4ª Corrida da Radiopatrulha  - 75 ANOS do BPRP",
+                "menor_json": "139",
+                "valor_inscricao": "119.00",
+                "id_evento": 43696,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "43ª CICORRE ETAPA VÁRZEA",
+                "menor_json": "65",
+                "valor_inscricao": "70.00",
+                "id_evento": 43723,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "1ª Corrida Sempre Mais Em Movimento",
+                "menor_json": "54.55",
+                "valor_inscricao": "49.95",
+                "id_evento": 43823,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "Elas Correm",
+                "menor_json": "87",
+                "valor_inscricao": "67.00",
+                "id_evento": 43832,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "Meia Maratona ChÃo Batido",
+                "menor_json": "45",
+                "valor_inscricao": "40.00",
+                "id_evento": 43871,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-19",
+                "nome_evento": "Circuitinho das Estações - Rio de Janeiro 2026",
+                "menor_json": "159.99",
+                "valor_inscricao": "49.99",
+                "id_evento": 43881,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "4ª CORRIDA DA PRIMAVERA",
+                "menor_json": "40",
+                "valor_inscricao": "30.00",
+                "id_evento": 43928,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "1ª CORRIDA DO HORTIVERDI - ESPECIAL 73 ANOS",
+                "menor_json": "54.5",
+                "valor_inscricao": "49.50",
+                "id_evento": 43930,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "MOTIVAÇÃO RUN",
+                "menor_json": "50",
+                "valor_inscricao": "81.00",
+                "id_evento": 43933,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "CORRIDA DE RUA  NATUREZA - EDIÇÃO PARANAGUÁ 2026",
+                "menor_json": "59.95",
+                "valor_inscricao": "49.95",
+                "id_evento": 43936,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-29",
+                "nome_evento": "XTERRA SERRA DO MAR",
+                "menor_json": "59.9",
+                "valor_inscricao": "79.50",
+                "id_evento": 43940,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "CORRIDA UMA ODISSÉIA PANDORA",
+                "menor_json": "139",
+                "valor_inscricao": "129.00",
+                "id_evento": 43944,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "2º DESAFIO POCRANE RUN AND WALK 2026",
+                "menor_json": "85",
+                "valor_inscricao": "55.00",
+                "id_evento": 43946,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "BLUE SERIES ALPHAVILLE 2026",
+                "menor_json": "229",
+                "valor_inscricao": "179.00",
+                "id_evento": 43947,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "NILÓPOLIS 79 ANOS  - Corrida e Caminhada Solidária",
+                "menor_json": "79.99",
+                "valor_inscricao": "59.99",
+                "id_evento": 43950,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-15",
+                "nome_evento": "CORRIDA MARISTA NIGHT RUN",
+                "menor_json": "130",
+                "valor_inscricao": "50.00",
+                "id_evento": 43951,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-15",
+                "nome_evento": "NIGHT RUN - MIGUEL PEREIRA",
+                "menor_json": "120",
+                "valor_inscricao": "110.00",
+                "id_evento": 43952,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "BILFOR RUN 2ª EDIÇÃO APUCARANA PR",
+                "menor_json": "84.9",
+                "valor_inscricao": "49.90",
+                "id_evento": 43993,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-22",
+                "nome_evento": "2ª ANHUMAS NIGHT RUN",
+                "menor_json": "74.9",
+                "valor_inscricao": "59.90",
+                "id_evento": 43994,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-15",
+                "nome_evento": "1ª CORRIDA NOTURNA NG TELECOM MANDAGUARI PR",
+                "menor_json": "59.9",
+                "valor_inscricao": "79.90",
+                "id_evento": 43995,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-02",
+                "nome_evento": "Circuito Aabb De Corridas 2026 – Serrinha Bahia",
+                "menor_json": "80",
+                "valor_inscricao": "55.00",
+                "id_evento": 44055,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "Corrida Pela Vida 2026 - Huop",
+                "menor_json": "40",
+                "valor_inscricao": "35.00",
+                "id_evento": 44105,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "CORRIDA E SAMBA - ETAPA ARARUAMA",
+                "menor_json": "59.9",
+                "valor_inscricao": "44.90",
+                "id_evento": 44170,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "CORRIDA ITATIAIA 2026",
+                "menor_json": "125",
+                "valor_inscricao": "115.00",
+                "id_evento": 44172,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-22",
+                "nome_evento": "BRASÃO NIGHT RUN - 2ª EDIÇÃO",
+                "menor_json": "75",
+                "valor_inscricao": "95.00",
+                "id_evento": 44176,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "CORRE QUE TEM COOKIES 2026",
+                "menor_json": "134.91",
+                "valor_inscricao": "116.91",
+                "id_evento": 44179,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "Jardim Praia Mar Running",
+                "menor_json": "40",
+                "valor_inscricao": "30.00",
+                "id_evento": 44230,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-19",
+                "nome_evento": "CIRCUITO MARES 2026 - ETAPA ILHABELA",
+                "menor_json": "100",
+                "valor_inscricao": "104.50",
+                "id_evento": 44273,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "CORRIDA DO BOB ESPONJA | MANAUS",
+                "menor_json": "95.9",
+                "valor_inscricao": "85.90",
+                "id_evento": 44276,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "CORRIDA + FIT EM MOVIMENTO",
+                "menor_json": "90",
+                "valor_inscricao": "110.00",
+                "id_evento": 44277,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-12",
+                "nome_evento": "Viii Corrida Coronel Fontoura Pmpa",
+                "menor_json": "80",
+                "valor_inscricao": "75.00",
+                "id_evento": 44322,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "1ª Corrida De AniversÁrio GoianÉsia Runners",
+                "menor_json": "32.5",
+                "valor_inscricao": "45.00",
+                "id_evento": 44547,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "Corrida Guerra",
+                "menor_json": "40",
+                "valor_inscricao": "35.00",
+                "id_evento": 44548,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-08",
+                "nome_evento": "Corre Dos Magos 1ª EdiÇÃo",
+                "menor_json": "47.5",
+                "valor_inscricao": "45.00",
+                "id_evento": 44553,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "2ª CORRIDA ULTRA POPULAR",
+                "menor_json": "120",
+                "valor_inscricao": "110.00",
+                "id_evento": 44844,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-26",
+                "nome_evento": "DC RUN - 2026 - UBERABAMG",
+                "menor_json": "50",
+                "valor_inscricao": "49.50",
+                "id_evento": 44847,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "2ª CORRIDA DROGALIDER UBERLÂNDIA",
+                "menor_json": "54.95",
+                "valor_inscricao": "49.90",
+                "id_evento": 44848,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "3ª MEIA MARATONA RIO NEGRO \"ENTRE PONTES\"",
+                "menor_json": "35",
+                "valor_inscricao": "30.00",
+                "id_evento": 44850,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "CORRIDA E CAMINHADA DO ANIVERSÁRIO DE SÃO MIGUEL PAULISTA - 466 ANOS",
+                "menor_json": "46.49",
+                "valor_inscricao": "44.49",
+                "id_evento": 44853,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "CORRIDA POWER RANGER",
+                "menor_json": "135",
+                "valor_inscricao": "125.00",
+                "id_evento": 44865,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "22ª MEIA MARATONA DE SÃO BERNARDO DO CAMPO",
+                "menor_json": "65.45",
+                "valor_inscricao": "60.45",
+                "id_evento": 44868,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "MEIA MARATONA ROCAM - 2026",
+                "menor_json": "90",
+                "valor_inscricao": "100.00",
+                "id_evento": 44870,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-22",
+                "nome_evento": "SUNSET RUN PARQUE UNA 2026",
+                "menor_json": "59",
+                "valor_inscricao": "54.50",
+                "id_evento": 44871,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-15",
+                "nome_evento": "CORRIDA E CAMINHADA DA PADROEIRA DE IPATINGA 2026",
+                "menor_json": "90",
+                "valor_inscricao": "55.00",
+                "id_evento": 44875,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "2ª Smt Run - Corrida Pela Paz No Trânsito",
+                "menor_json": "50",
+                "valor_inscricao": "47.50",
+                "id_evento": 44885,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Meia Maratona Magic 2026",
+                "menor_json": "79.95",
+                "valor_inscricao": "74.95",
+                "id_evento": 44897,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": true,
+                "data_final": "2026-08-30",
+                "nome_evento": "39ª Corrida Duque De Caxias – 2026",
+                "menor_json": "100",
+                "valor_inscricao": "0.01",
+                "id_evento": 44898,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-15",
+                "nome_evento": "2° EDIÇÃO CORRIDA ARARA EM MOVIMENTO",
+                "menor_json": "23.99",
+                "valor_inscricao": "20.00",
+                "id_evento": 44924,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "2ª B.e.7even Run 2026",
+                "menor_json": "59.9",
+                "valor_inscricao": "54.90",
+                "id_evento": 44937,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "CORRIDA E CAMINHADA CONECTANDO VIDAS – PADRE FABRÍCIO",
+                "menor_json": "34.95",
+                "valor_inscricao": "29.95",
+                "id_evento": 44939,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "Corrida Do Corretor De ImÓveis De MarabÁ",
+                "menor_json": "65",
+                "valor_inscricao": "55.00",
+                "id_evento": 44940,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "CORRE DO FRIO CURITIBA",
+                "menor_json": "99.9",
+                "valor_inscricao": "79.90",
+                "id_evento": 44989,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-26",
+                "nome_evento": "4ª Corrida Solidária da Aciu e Caminhada - 2026",
+                "menor_json": "52.25",
+                "valor_inscricao": "47.50",
+                "id_evento": 45064,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Circuito da Longevidade Bradesco Seguros - Porto Alegre 2026",
+                "menor_json": "69.9",
+                "valor_inscricao": "49.90",
+                "id_evento": 45076,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Ii Corrida Beneficente Pelo Autismo",
+                "menor_json": "35",
+                "valor_inscricao": "30.00",
+                "id_evento": 45098,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Redex Run - 2ª EdiÇÃo 2026",
+                "menor_json": "54.5",
+                "valor_inscricao": "44.50",
+                "id_evento": 45146,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-07",
+                "nome_evento": "CUIDAR FAZ BEM, CORRER TAMBÉM",
+                "menor_json": "22.5",
+                "valor_inscricao": "35.00",
+                "id_evento": 45147,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "BIO RUN",
+                "menor_json": "40",
+                "valor_inscricao": "45.00",
+                "id_evento": 45187,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Nutrirun Alphaville – 8ª Edição | 2026",
+                "menor_json": "92",
+                "valor_inscricao": "79.50",
+                "id_evento": 45232,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-19",
+                "nome_evento": "ROCK MUSIC 2026",
+                "menor_json": "99.9",
+                "valor_inscricao": "89.90",
+                "id_evento": 45288,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-05",
+                "nome_evento": "MARATA NIGHT RUN",
+                "menor_json": "94.9",
+                "valor_inscricao": "84.90",
+                "id_evento": 45292,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "2ª CORRIDA E CAMINHADA QUEBRANDO O SILÊNCIO - 2026",
+                "menor_json": "27.5",
+                "valor_inscricao": "22.50",
+                "id_evento": 45313,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "CORRIDA 100% JESUS",
+                "menor_json": "70",
+                "valor_inscricao": "60.00",
+                "id_evento": 45320,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-15",
+                "nome_evento": "II CORRIDA DO TRIBUNAL DE JUSTIÇA DO AMAZONAS - 2026",
+                "menor_json": "60",
+                "valor_inscricao": "119.00",
+                "id_evento": 45321,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "Corrida Água E Terra",
+                "menor_json": "50",
+                "valor_inscricao": "47.50",
+                "id_evento": 45344,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "BOTUJURU TRAIL EXPERIENCE",
+                "menor_json": "49.95",
+                "valor_inscricao": "39.95",
+                "id_evento": 45399,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "CIRCUITO CAPIXABA DE MONTANHAS -  ETAPA MATILDE",
+                "menor_json": "62.5",
+                "valor_inscricao": "57.00",
+                "id_evento": 45408,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "ULTRA DA GRATIDÃO 2026",
+                "menor_json": "59.9",
+                "valor_inscricao": "79.90",
+                "id_evento": 45414,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "MEIA MARATONA LAGHETTO 2026",
+                "menor_json": "77.5",
+                "valor_inscricao": "50.00",
+                "id_evento": 45419,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-09",
+                "nome_evento": "FRESH RUN SUPER MUFFATO 2026 - Maringá",
+                "menor_json": "57.45",
+                "valor_inscricao": "59.90",
+                "id_evento": 45424,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "ALL LIMITS - LAGOA DOS INGLESES 2026",
+                "menor_json": "120",
+                "valor_inscricao": "110.00",
+                "id_evento": 45430,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "Corrida Vörr // Edição Savassi",
+                "menor_json": "93.5",
+                "valor_inscricao": "90.00",
+                "id_evento": 45455,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-26",
+                "nome_evento": "1ª CORRIDA DE BAR EM BAR SCS",
+                "menor_json": "99",
+                "valor_inscricao": "90.00",
+                "id_evento": 45457,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "1º Corrida Mercantil Real - Rio Preto da Eva",
+                "menor_json": "82.5",
+                "valor_inscricao": "65.00",
+                "id_evento": 45478,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "CORRIDA COMEPI 2026",
+                "menor_json": "95",
+                "valor_inscricao": "80.00",
+                "id_evento": 45479,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "CORRIDA JUNTOS PELA VIDA",
+                "menor_json": "86.29",
+                "valor_inscricao": "79.90",
+                "id_evento": 45480,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-26",
+                "nome_evento": "2ª edição Corrida Smile run kids",
+                "menor_json": "49.45",
+                "valor_inscricao": "44.95",
+                "id_evento": 45482,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "2ª CORRIDA FEMININA CORRE DELAS 6K - VOTUPORANGA-SP",
+                "menor_json": "52.25",
+                "valor_inscricao": "47.50",
+                "id_evento": 45483,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "CORRIDA ABC - ETAPA UBERABA",
+                "menor_json": "77",
+                "valor_inscricao": "70.00",
+                "id_evento": 45486,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "CORRIDA ETAPA TORNADO",
+                "menor_json": "84.7",
+                "valor_inscricao": "77.00",
+                "id_evento": 45487,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "CORRIDA PHARLAB 2026",
+                "menor_json": "54.45",
+                "valor_inscricao": "44.50",
+                "id_evento": 45488,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "Corrida Rara BH 2026 | 2ª Edição",
+                "menor_json": "33.94",
+                "valor_inscricao": "59.90",
+                "id_evento": 45489,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-19",
+                "nome_evento": "Corrida e caminha plenitude",
+                "menor_json": "21.99",
+                "valor_inscricao": "18.00",
+                "id_evento": 45491,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "1ª CORRIDA E CAMINHADA APAE TATUI SP",
+                "menor_json": "121",
+                "valor_inscricao": "89.90",
+                "id_evento": 45492,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "1ª Corrida e Caminhada Luz da Visão ITAPEVA/SP",
+                "menor_json": "44",
+                "valor_inscricao": "40.00",
+                "id_evento": 45493,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "1ª CORRIDA PEDESTRE PRATIQUE RUN - NHANDEARA-SP",
+                "menor_json": "49.5",
+                "valor_inscricao": "45.00",
+                "id_evento": 45494,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Circuito da Família 2026",
+                "menor_json": "99",
+                "valor_inscricao": "90.00",
+                "id_evento": 45495,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "CORRIDA EU AMO JIPA 2026",
+                "menor_json": "93.5",
+                "valor_inscricao": "81.73",
+                "id_evento": 45496,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "II Corrida e Caminhada Rural Circuito Roda DÁgua",
+                "menor_json": "31.49",
+                "valor_inscricao": "27.50",
+                "id_evento": 45497,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-07",
+                "nome_evento": "Corrida de Aniversário",
+                "menor_json": "99",
+                "valor_inscricao": "90.00",
+                "id_evento": 45498,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "CORRIDA DE PEDESTRES DA INDEPENDÊNCIA SALTO DE PIRAPORA SP",
+                "menor_json": "49.39",
+                "valor_inscricao": "44.90",
+                "id_evento": 45500,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-05",
+                "nome_evento": "CORRIDA 5KMS | 5 BARES",
+                "menor_json": "187",
+                "valor_inscricao": "170.00",
+                "id_evento": 45502,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "1ª CORRIDA DE RUA “JOSÉ ROBERTO CASSOLI” - PIRANGI-SP",
+                "menor_json": "44",
+                "valor_inscricao": "40.00",
+                "id_evento": 45503,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "CORRIDA ABC - ETAPA UBERLÂNDIA",
+                "menor_json": "77",
+                "valor_inscricao": "70.00",
+                "id_evento": 45504,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "CORRIDA DE PEDESTRES PORANGABA SP",
+                "menor_json": "54.89",
+                "valor_inscricao": "49.90",
+                "id_evento": 45506,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "CORRIDA EJE - CHAMA QUE NÃO SE APAGA - 2ª edição",
+                "menor_json": "87.99",
+                "valor_inscricao": "79.99",
+                "id_evento": 45507,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-29",
+                "nome_evento": "Duvália RUN 6ª Corrida Cervejeira de PE",
+                "menor_json": "176",
+                "valor_inscricao": "160.00",
+                "id_evento": 45509,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "1ª Corrida - Alameda do Frio",
+                "menor_json": "66",
+                "valor_inscricao": "60.00",
+                "id_evento": 45510,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "Corrida da Polícia Civil",
+                "menor_json": "82.5",
+                "valor_inscricao": "75.00",
+                "id_evento": 45513,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "MY'S RUN - Corrida My Fitness INVERNO",
+                "menor_json": "64.9",
+                "valor_inscricao": "79.00",
+                "id_evento": 45516,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-22",
+                "nome_evento": "1ª CORRIDA LILÁS – JUNTOS PELA PROTEÇÃO DAS MULHERES - FERNANDÓPOLIS-SP",
+                "menor_json": "60.5",
+                "valor_inscricao": "55.00",
+                "id_evento": 45518,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "2ª CORRIDA e CAMINHADA DO PROTETOR PILAR DO SUL - 2026",
+                "menor_json": "60.39",
+                "valor_inscricao": "84.90",
+                "id_evento": 45528,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "3° CORRIDA - MENOS PACE E MAIS RESENHA",
+                "menor_json": "31.89",
+                "valor_inscricao": "27.90",
+                "id_evento": 45530,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "Corrida do Galo 2026",
+                "menor_json": "174.9",
+                "valor_inscricao": "159.00",
+                "id_evento": 45531,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-16",
+                "nome_evento": "Corrida e Caminhada Salmodiar",
+                "menor_json": "69.89",
+                "valor_inscricao": "63.54",
+                "id_evento": 45532,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "2ª Corrida Vila Araguaya",
+                "menor_json": "60.5",
+                "valor_inscricao": "55.00",
+                "id_evento": 45535,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "Corrida Duque de Caxias 2026",
+                "menor_json": "55",
+                "valor_inscricao": "50.00",
+                "id_evento": 45550,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "CORRIDA DAS ROSAS",
+                "menor_json": "82.5",
+                "valor_inscricao": "75.00",
+                "id_evento": 45551,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "4ª CORRIDA DA INDEPENDÊNCIA DE ÁGUA BRANCA/PB",
+                "menor_json": "35",
+                "valor_inscricao": "50.00",
+                "id_evento": 45568,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "4ª CORRIDA DE RUA DA SAPATTU SPORT ASSIS SP",
+                "menor_json": "59.9",
+                "valor_inscricao": "49.90",
+                "id_evento": 45570,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "NO SEU RITMO",
+                "menor_json": "69.95",
+                "valor_inscricao": "96.90",
+                "id_evento": 45592,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-12",
+                "nome_evento": "1ª CORRIDA DA ADMINISTRAÇÃO DO AMAZONAS",
+                "menor_json": "85",
+                "valor_inscricao": "75.00",
+                "id_evento": 45597,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "18ª PROVA PEDESTRE UNIMED JUNDIAÍ E UNIMED KIDS - 2026",
+                "menor_json": "85",
+                "valor_inscricao": "70.00",
+                "id_evento": 45598,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "XI CORRIDA DA OABAP",
+                "menor_json": "60",
+                "valor_inscricao": "50.00",
+                "id_evento": 45599,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "DISCOVER TRAIL - PALMEIRA 2026",
+                "menor_json": "89",
+                "valor_inscricao": "164.00",
+                "id_evento": 45650,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "GELOBEL RUN 2026",
+                "menor_json": "109.9",
+                "valor_inscricao": "89.90",
+                "id_evento": 45652,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-26",
+                "nome_evento": "2ª BEER RUN IMIGRAÇÃO - LAGER ZERO CARBO",
+                "menor_json": "59.95",
+                "valor_inscricao": "49.95",
+                "id_evento": 45653,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "IV CORRIDA E CAMINHADA FCAVR - REGISTRO SP",
+                "menor_json": "65.89",
+                "valor_inscricao": "59.90",
+                "id_evento": 45665,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Corrida dos Médicos",
+                "menor_json": "65.89",
+                "valor_inscricao": "59.90",
+                "id_evento": 45666,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-22",
+                "nome_evento": "Jenipapo Experience 2026",
+                "menor_json": "90",
+                "valor_inscricao": "80.00",
+                "id_evento": 45739,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "Corrida Gilson é Diferente",
+                "menor_json": "39.9",
+                "valor_inscricao": "39.99",
+                "id_evento": 45748,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "1ª Corrida De São Miguel Arcanjo",
+                "menor_json": "35",
+                "valor_inscricao": "30.00",
+                "id_evento": 45753,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "CLIMB THE CITY RUN 2026",
+                "menor_json": "40",
+                "valor_inscricao": "50.00",
+                "id_evento": 45915,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-27",
+                "nome_evento": "HOUSE FIT RUN",
+                "menor_json": "80",
+                "valor_inscricao": "70.00",
+                "id_evento": 45922,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "1ª Corrida Especial- Apae 50 Anos- Francisco Beltrão",
+                "menor_json": "50",
+                "valor_inscricao": "45.00",
+                "id_evento": 45931,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "CORREGIBA 2026",
+                "menor_json": "37.5",
+                "valor_inscricao": "30.00",
+                "id_evento": 45943,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "Corrida Da Laranja",
+                "menor_json": "35",
+                "valor_inscricao": "30.00",
+                "id_evento": 45944,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-12",
+                "nome_evento": "BALNEÁRIO SHOPPING NIGHT RUN",
+                "menor_json": "149.9",
+                "valor_inscricao": "119.90",
+                "id_evento": 45950,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-06",
+                "nome_evento": "3ª Desafio Ideal Run",
+                "menor_json": "59.9",
+                "valor_inscricao": "69.90",
+                "id_evento": 45956,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "1ª Corrida Do Padroeiro Sao Francisco De Assis",
+                "menor_json": "85.9",
+                "valor_inscricao": "69.90",
+                "id_evento": 46024,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-13",
+                "nome_evento": "SkyFit Run",
+                "menor_json": "69.9",
+                "valor_inscricao": "49.90",
+                "id_evento": 46103,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "1ª CORRIDA EQUIPE RUN",
+                "menor_json": "63.64",
+                "valor_inscricao": "70.00",
+                "id_evento": 46108,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-30",
+                "nome_evento": "SÓ VIM PELA BANANA",
+                "menor_json": "17.5",
+                "valor_inscricao": "21.49",
+                "id_evento": 46117,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-15",
+                "nome_evento": "RUNNING FOR RAMEN 5K | 2ª EDIÇÃO",
+                "menor_json": "119",
+                "valor_inscricao": "130.90",
+                "id_evento": 46133,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-07",
+                "nome_evento": "CORRIDA 07 DE SETEMBRO",
+                "menor_json": "49.99",
+                "valor_inscricao": "59.99",
+                "id_evento": 46350,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-08-23",
+                "nome_evento": "1° CIRCUITO CORRE JAPERI & QUEIMADOS",
+                "menor_json": "29.99",
+                "valor_inscricao": "33.98",
+                "id_evento": 46364,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": false,
+                "data_final": "2026-09-20",
+                "nome_evento": "CORRE BARUERI KIDS -  PARQUE DA JUVENTUDE",
+                "menor_json": "59.9",
+                "valor_inscricao": "49.90",
+                "id_evento": 46393,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": true
+              },
+              {
+                "valor_simbolico": true,
+                "data_final": "2026-09-06",
+                "nome_evento": "2ª Corrida Solidária da Transalvador – 34 Anos",
+                "menor_json": "0.01",
+                "valor_inscricao": "0.01",
+                "id_evento": 47315,
+                "valor_nao_positivo": false,
+                "opcoes_divergentes": false
+              }
+            ],
+            "faixas": [
+              {
+                "contagem": 530,
+                "percentual": "37.3239436619718310",
+                "ordem": 1,
+                "rotulo": "Até R$ 50"
+              },
+              {
+                "contagem": 658,
+                "percentual": "46.3380281690140845",
+                "ordem": 2,
+                "rotulo": "Acima de R$ 50 até R$ 100"
+              },
+              {
+                "contagem": 166,
+                "percentual": "11.6901408450704225",
+                "ordem": 3,
+                "rotulo": "Acima de R$ 100 até R$ 150"
+              },
+              {
+                "contagem": 35,
+                "percentual": "2.4647887323943662",
+                "ordem": 4,
+                "rotulo": "Acima de R$ 150 até R$ 200"
+              },
+              {
+                "contagem": 31,
+                "percentual": "2.1830985915492958",
+                "ordem": 5,
+                "rotulo": "Acima de R$ 200"
+              }
+            ],
+            "resumo": {
+              "ausencia": "82.1916092673763306",
+              "mediana": "60.0000000000000000",
+              "ausentes": 6563,
+              "informadas": 1422,
+              "zeradas": 0,
+              "negativas": 0,
+              "analisadas": 1420,
+              "calendario": 7985,
+              "divergencias_json": 243,
+              "media": "74.7706619718309859",
+              "cobertura": "17.8083907326236694",
+              "simbolicas": 2
+            },
+            "inicio": "2026-01-01",
+            "coletado_em": "2026-11-09T15:45:39.269205-03:00",
+            "fim": "2026-09-30"
+          }
+        }
+      ]
+    }
+  }
+}

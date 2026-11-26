@@ -1,0 +1,23 @@
+{
+  "before": {
+    "portal/conteudo/seo_semrush.cfm": "3b55964db87789da4ff9810c8f6a23181ca99d981582730f2bf00c2a7c107d7b"
+  },
+  "watch": {
+    "portal/conteudo/seo.cfm": "db68bb5e2742309c4a2d00e40562b874ed3e36066a679507fc6be60ae5dd2c3c",
+    "portal/includes/seo_semrush_data.cfm": "7f028c358db0ac9a8a1f214723050bfaa9510cbe6b928e1576d6364d1540a47d",
+    "includes/backend/require_admin.cfm": "c2f9659ac3db941cc543a9f86d5b39b573c365a36ca2d3fba5a58675f6e017d6",
+    "includes/backend/backend_login.cfm": "1e3bbcc53135f74cd5e8e75735053f3ded0d0f0201243fd8831d3356f1fd40da",
+    "portal/seo/index.cfm": "26d987d49984a957e85696ede50a00402fd15f7989e9702dc6cb99b56f4c03a0"
+  },
+  "local": {
+    "portal/conteudo/seo_semrush.cfm": "3b55964db87789da4ff9810c8f6a23181ca99d981582730f2bf00c2a7c107d7b",
+    "portal/conteudo/seo_semrush_archive.cfm": null,
+    "portal/includes/seo_semrush_archive_backend.cfm": null,
+    "portal/seo/arquivo.cfm": null,
+    "portal/conteudo/seo.cfm": "1d6d39f89638460c09d94ef6c01ea1f2f77c1dbb4307ca40d10a241e4a097a28",
+    "portal/includes/seo_semrush_data.cfm": "7f028c358db0ac9a8a1f214723050bfaa9510cbe6b928e1576d6364d1540a47d",
+    "includes/backend/require_admin.cfm": "c2f9659ac3db941cc543a9f86d5b39b573c365a36ca2d3fba5a58675f6e017d6",
+    "includes/backend/backend_login.cfm": "1e3bbcc53135f74cd5e8e75735053f3ded0d0f0201243fd8831d3356f1fd40da",
+    "portal/seo/index.cfm": "26d987d49984a957e85696ede50a00402fd15f7989e9702dc6cb99b56f4c03a0"
+  }
+}

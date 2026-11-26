@@ -1,0 +1,7 @@
+Publicado em 17/11/2026.
+Agendas e Desafios não herdam papéis globais durante simulação/delegação; acessos próprios de Partner e das contas responsáveis pelos desafios preservados.
+Teams continua pessoal: admin em simulação recebe uma orientação com retorno ao seletor, sem carregar dados ou executar ações globais. Login comum continua listando seus próprios Teams.
+36 verificações HTTP passaram antes e depois da publicação, em transação somente leitura.
+Chrome real: menu Movnow sem Agendas/Desafios; links diretos de Agendas, Catarinense de Rua e Trail bloqueados; Meus Teams abriu a orientação sem erro. Aba temporária fechada, abas pessoais preservadas.
+Backup: /var/backups/business-movnow-access-20261117-t6e9hkue
+Sete hashes publicados confirmados; todas as sondas temporárias removidas; nenhum serviço de teste mantido.

@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "checks": [
+    "initial migration",
+    "idempotence",
+    "admin authorization",
+    "permanent-only",
+    "category validation",
+    "reason validation",
+    "concurrent revision",
+    "append-only history",
+    "no entitlement mutation",
+    "restricted grants",
+    "elite category accepted",
+    "idempotent named classification",
+    "other history preserved"
+  ],
+  "temporary_cluster_removed": true
+}

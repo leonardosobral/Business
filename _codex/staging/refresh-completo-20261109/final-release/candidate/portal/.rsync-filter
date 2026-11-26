@@ -1,0 +1,10 @@
+# RR Teams remains withheld until the owner's explicit release authorization.
+# All routine RR rsync publications MUST use -F; never override these exclusions.
+- /teams/***
+- /api/profile/teams.cfm
+- /services/teams/***
+- /services/ProfileTeams*.cfc
+- /includes/backend/profile_teams_context.cfm
+- /includes/estrutura/profile_team_*.cfm
+- /assets/css/profile-teams.css
+- /assets/js/profile-teams.js

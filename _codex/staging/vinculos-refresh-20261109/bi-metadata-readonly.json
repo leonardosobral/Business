@@ -1,0 +1,1264 @@
+{
+  "relations": [
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "i",
+      "size": 172032,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 2585,
+      "truncate": true,
+      "name": "tbbi_dim_organizacao_2025_agrupamento_nome_original_index"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "S",
+      "size": 8192,
+      "acl": [
+        "runner_dba=rwU/runner_dba",
+        "runner=rU/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 1,
+      "truncate": true,
+      "name": "tbbi_fat_resultado_id_fat_resultado_seq"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "i",
+      "size": 16384,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 0,
+      "truncate": true,
+      "name": "tbbi_dim_cbat_categorias_pk"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 286720,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 2585,
+      "truncate": true,
+      "name": "tbbi_dim_organizacao_2026"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "S",
+      "size": 8192,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 1,
+      "truncate": true,
+      "name": "tbbi_fat_perfil_br_2026_id_fat_perfil_br_2026_seq"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "i",
+      "size": 180224,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 7305,
+      "truncate": true,
+      "name": "tbbi_dim_data_pk"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "i",
+      "size": 147456,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 5571,
+      "truncate": true,
+      "name": "tbbi_dim_localidade_pk"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "i",
+      "size": 180224,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 7305,
+      "truncate": true,
+      "name": "tbbi_dim_data_id_data_uindex"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "i",
+      "size": 147456,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 5571,
+      "truncate": true,
+      "name": "tbbi_dim_localidade_id_localidade_uindex"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 621584384,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 4505031,
+      "truncate": true,
+      "name": "tbbi_fat_perfil_br_2026"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "v",
+      "size": 0,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=r/runner_dba",
+        "akkio_user=r/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": -1,
+      "truncate": true,
+      "name": "vwbi_fat_perfil_br_2026"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "S",
+      "size": 8192,
+      "acl": [
+        "runner_dba=rwU/runner_dba",
+        "runner=rU/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 1,
+      "truncate": true,
+      "name": "tbbi_fat_perfil_br_2025_id_fat_perfil_br_2025_seq"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "i",
+      "size": 16384,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 84,
+      "truncate": true,
+      "name": "tbbi_dim_organizador_pk"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "i",
+      "size": 16384,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 0,
+      "truncate": true,
+      "name": "tbbi_dim_cronometragem_pk"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "i",
+      "size": 16384,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 0,
+      "truncate": true,
+      "name": "tbbi_dim_faixas_pk"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 24576,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": -1,
+      "truncate": true,
+      "name": "tbbi_dim_faixas"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 24576,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": -1,
+      "truncate": true,
+      "name": "tbbi_dim_geracoes"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "i",
+      "size": 16384,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 0,
+      "truncate": true,
+      "name": "tbbi_dim_geracoes_pk"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "S",
+      "size": 8192,
+      "acl": [
+        "runner_dba=rwU/runner_dba",
+        "runner=rU/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 1,
+      "truncate": true,
+      "name": "tbbi_dim_data_id_data_seq"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "S",
+      "size": 8192,
+      "acl": [
+        "runner_dba=rwU/runner_dba",
+        "runner=rU/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 1,
+      "truncate": true,
+      "name": "tbbi_dim_localidade_id_localidade_seq"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 1654784,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 7305,
+      "truncate": true,
+      "name": "tbbi_dim_data"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 458752,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 2585,
+      "truncate": true,
+      "name": "tbbi_dim_organizacao_2025"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 1024000,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 5571,
+      "truncate": true,
+      "name": "tbbi_dim_localidade"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 24576,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": -1,
+      "truncate": true,
+      "name": "tbbi_dim_cbat_categorias"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 1226194944,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 5186289,
+      "truncate": true,
+      "name": "tbbi_fat_perfil_br_2025"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 97181696,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 685494,
+      "truncate": true,
+      "name": "tbbi_fat_resultado"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 24576,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 84,
+      "truncate": true,
+      "name": "tbbi_dim_organizador"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "r",
+      "size": 24576,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": -1,
+      "truncate": true,
+      "name": "tbbi_dim_cronometragem"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "v",
+      "size": 0,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=r/runner_dba",
+        "akkio_user=r/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": -1,
+      "truncate": true,
+      "name": "vwbi_fat_perfil_br_2025"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "m",
+      "size": 272220160,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "akkio_user=r/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 1278659,
+      "truncate": true,
+      "name": "vwbi_fat_perfil_br_2025_treinos"
+    },
+    {
+      "owner": "runner_dba",
+      "delete": true,
+      "kind": "i",
+      "size": 221184,
+      "acl": null,
+      "insert": true,
+      "update": true,
+      "select": true,
+      "estimate": 5571,
+      "truncate": true,
+      "name": "tbbi_dim_localidade_estado_nome_cidade_index"
+    }
+  ],
+  "roles": [
+    {
+      "bypassrls": false,
+      "superuser": true,
+      "createdb": false,
+      "name": "runner_dba"
+    }
+  ],
+  "stats": [
+    {
+      "n_live_tup": 0,
+      "relname": "tbbi_dim_data",
+      "last_autovacuum": null,
+      "last_autoanalyze": null,
+      "n_tup_ins": 0,
+      "last_analyze": null,
+      "n_tup_upd": 0,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    },
+    {
+      "n_live_tup": 0,
+      "relname": "tbbi_dim_localidade",
+      "last_autovacuum": null,
+      "last_autoanalyze": null,
+      "n_tup_ins": 0,
+      "last_analyze": null,
+      "n_tup_upd": 0,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    },
+    {
+      "n_live_tup": 0,
+      "relname": "tbbi_fat_resultado",
+      "last_autovacuum": null,
+      "last_autoanalyze": null,
+      "n_tup_ins": 0,
+      "last_analyze": null,
+      "n_tup_upd": 0,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    },
+    {
+      "n_live_tup": 0,
+      "relname": "tbbi_dim_organizador",
+      "last_autovacuum": null,
+      "last_autoanalyze": null,
+      "n_tup_ins": 0,
+      "last_analyze": null,
+      "n_tup_upd": 0,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    },
+    {
+      "n_live_tup": 0,
+      "relname": "tbbi_dim_cronometragem",
+      "last_autovacuum": null,
+      "last_autoanalyze": null,
+      "n_tup_ins": 0,
+      "last_analyze": null,
+      "n_tup_upd": 0,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    },
+    {
+      "n_live_tup": 0,
+      "relname": "tbbi_dim_faixas",
+      "last_autovacuum": null,
+      "last_autoanalyze": null,
+      "n_tup_ins": 0,
+      "last_analyze": null,
+      "n_tup_upd": 0,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    },
+    {
+      "n_live_tup": 0,
+      "relname": "tbbi_dim_geracoes",
+      "last_autovacuum": null,
+      "last_autoanalyze": null,
+      "n_tup_ins": 0,
+      "last_analyze": null,
+      "n_tup_upd": 0,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    },
+    {
+      "n_live_tup": 0,
+      "relname": "tbbi_dim_organizacao_2025",
+      "last_autovacuum": null,
+      "last_autoanalyze": null,
+      "n_tup_ins": 0,
+      "last_analyze": null,
+      "n_tup_upd": 0,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    },
+    {
+      "n_live_tup": 0,
+      "relname": "tbbi_dim_cbat_categorias",
+      "last_autovacuum": null,
+      "last_autoanalyze": null,
+      "n_tup_ins": 0,
+      "last_analyze": null,
+      "n_tup_upd": 0,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    },
+    {
+      "n_live_tup": 0,
+      "relname": "tbbi_fat_perfil_br_2025",
+      "last_autovacuum": null,
+      "last_autoanalyze": null,
+      "n_tup_ins": 0,
+      "last_analyze": null,
+      "n_tup_upd": 3,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    },
+    {
+      "n_live_tup": 2585,
+      "relname": "tbbi_dim_organizacao_2026",
+      "last_autovacuum": "2026-10-06T07:24:43.193611-03:00",
+      "last_autoanalyze": "2026-10-06T07:24:43.207078-03:00",
+      "n_tup_ins": 2585,
+      "last_analyze": null,
+      "n_tup_upd": 0,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    },
+    {
+      "n_live_tup": 4505031,
+      "relname": "tbbi_fat_perfil_br_2026",
+      "last_autovacuum": "2026-10-06T09:45:49.437933-03:00",
+      "last_autoanalyze": "2026-10-06T23:03:56.269676-03:00",
+      "n_tup_ins": 4502542,
+      "last_analyze": null,
+      "n_tup_upd": 860031,
+      "n_tup_del": 0,
+      "last_vacuum": null
+    }
+  ],
+  "columns": [
+    {
+      "table": "tbbi_dim_cbat_categorias",
+      "column": "id_cbat_categoria",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_cbat_categorias",
+      "column": "nome_cbat_categoria",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_cronometragem",
+      "column": "id_cronometragem",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_cronometragem",
+      "column": "nome_cronometragem",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "id_data",
+      "nullable": "NO",
+      "type": "integer",
+      "default": "nextval('tbbi_dim_data_id_data_seq'::regclass)"
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "data_referencia",
+      "nullable": "NO",
+      "type": "date",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "ano",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "mes",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "mes_extenso",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "dia",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "dia_do_ano",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "dia_da_semana",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "semana_calendario",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "data_formatada",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "trimestre",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "trimestre_ano",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "mes_ano",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "ano_semana_calendario",
+      "nullable": "YES",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "tipo_dia_semana",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "feriado_nacional",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "calendario_inicio_semana",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_data",
+      "column": "calendario_final_semana",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_faixas",
+      "column": "id_faixa",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_faixas",
+      "column": "nome_faixa",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_geracoes",
+      "column": "id_geracao",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_geracoes",
+      "column": "nome_geracao",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_localidade",
+      "column": "id_localidade",
+      "nullable": "NO",
+      "type": "integer",
+      "default": "nextval('tbbi_dim_localidade_id_localidade_seq'::regclass)"
+    },
+    {
+      "table": "tbbi_dim_localidade",
+      "column": "nome_pais",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_localidade",
+      "column": "regiao",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_localidade",
+      "column": "estado",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_localidade",
+      "column": "nome_estado",
+      "nullable": "YES",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_localidade",
+      "column": "nome_cidade",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_localidade",
+      "column": "capital",
+      "nullable": "NO",
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "table": "tbbi_dim_localidade",
+      "column": "id_paises_iso3166",
+      "nullable": "NO",
+      "type": "integer",
+      "default": "0"
+    },
+    {
+      "table": "tbbi_dim_organizacao_2025",
+      "column": "id_organizacao",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_organizacao_2025",
+      "column": "agrupamento",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_organizacao_2025",
+      "column": "nome_padrao",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_organizacao_2025",
+      "column": "nome_original",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_organizacao_2026",
+      "column": "id_organizacao",
+      "nullable": "YES",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_organizacao_2026",
+      "column": "agrupamento",
+      "nullable": "YES",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_organizacao_2026",
+      "column": "nome_padrao",
+      "nullable": "YES",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_organizacao_2026",
+      "column": "nome_original",
+      "nullable": "YES",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_organizador",
+      "column": "id_organizador",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_dim_organizador",
+      "column": "nome_organizador",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_fat_perfil_br_2026",
+      "nullable": "NO",
+      "type": "integer",
+      "default": "nextval('tbbi_fat_perfil_br_2026_id_fat_perfil_br_2026_seq'::regclass)"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_data",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_localidade",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_evento",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_organizador",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_cronometrador",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_resultado",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_geracao",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_cbat_categoria",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_faixa",
+      "nullable": "NO",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "data_evento",
+      "nullable": "NO",
+      "type": "date",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "percurso",
+      "nullable": "NO",
+      "type": "numeric",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "sexo",
+      "nullable": "NO",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "tempo_total",
+      "nullable": "YES",
+      "type": "time without time zone",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "idade_range",
+      "nullable": "YES",
+      "type": "int4range",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_usuario",
+      "nullable": "YES",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "id_atleta_strava",
+      "nullable": "YES",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "pcd",
+      "nullable": "YES",
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "evento_homologado",
+      "nullable": "YES",
+      "type": "boolean",
+      "default": "true"
+    },
+    {
+      "table": "tbbi_fat_perfil_br_2026",
+      "column": "resultado_homologado",
+      "nullable": "YES",
+      "type": "boolean",
+      "default": "true"
+    }
+  ],
+  "user": "runner_dba",
+  "functions": [
+    {
+      "definition": "CREATE OR REPLACE FUNCTION public.bi_cria_filtro(filtro jsonb)\n RETURNS character varying\n LANGUAGE plpgsql\nAS $function$\r\ndeclare\r\n    p_where  boolean := false;\r\n    p_virgula varchar := '';\r\n    p_estado varchar;\r\n    i_estado varchar;\r\n    p_cidade varchar;\r\n    i_cidade varchar;\r\n    p_categoria varchar;\r\n    i_categoria varchar;\r\n    p_percurso varchar;\r\n    i_percurso varchar;\r\n    p_sql    varchar;\r\n    i varchar;\r\n\r\nbegin\r\n\r\n   p_estado := filtro->'estado';\r\n\r\n    if p_estado is not null then\r\n       FOREACH i IN ARRAY string_to_array(trim(p_estado,'\"'),',') LOOP\r\n            i_estado := concat(i_estado,p_virgula,quote_literal(i));\r\n            p_virgula := ',';\r\n       END LOOP;\r\n        if p_where = false then\r\n           p_sql    := concat(p_sql,' where ');\r\n           p_where  := true;\r\n        else\r\n           p_sql := concat(p_sql,' and ');\r\n        end if;\r\n        p_sql := concat(p_sql,' estado in (', i_estado,')');\r\n    end if;\r\n\r\n    p_cidade := filtro->'cidade';\r\n    p_virgula := '';\r\n    if p_cidade is not null then\r\n       FOREACH i IN ARRAY string_to_array(trim(p_cidade,'\"'),',') LOOP\r\n            i_cidade := concat(i_cidade,p_virgula,quote_literal(i));\r\n            p_virgula := ',';\r\n       END LOOP;\r\n        if p_where = false then\r\n           p_sql    := concat(p_sql,' where ');\r\n           p_where  := true;\r\n        else\r\n           p_sql := concat(p_sql,' and ');\r\n        end if;\r\n        p_sql := concat(p_sql,' cidade in (', i_cidade,')');\r\n    end if;\r\n\r\n   p_categoria := filtro->'categoria';\r\n   p_virgula := '';\r\n   if p_categoria is not null then\r\n       FOREACH i IN ARRAY string_to_array(trim(p_categoria,'\"'),',') LOOP\r\n            i_categoria := concat(i_categoria,p_virgula,quote_literal(i));\r\n            p_virgula := ',';\r\n       END LOOP;\r\n        if p_where = false then\r\n           p_sql    := concat(p_sql,' where ');\r\n           p_where  := true;\r\n        else\r\n           p_sql := concat(p_sql,' and ');\r\n        end if;\r\n        p_sql := concat(p_sql,' nome_categoria in (', i_categoria,')');\r\n    end if;\r\n\r\n    p_percurso := filtro->'percurso';\r\n    p_virgula := '';\r\n    if p_percurso is not null then\r\n       FOREACH i IN ARRAY string_to_array(trim(p_percurso,'\"'),',') LOOP\r\n            i_percurso := concat(i_percurso,p_virgula,i);\r\n            p_percurso := ',';\r\n       END LOOP;\r\n        if p_where = false then\r\n           p_sql    := concat(p_sql,' where ');\r\n           p_where  := true;\r\n        else\r\n           p_sql := concat(p_sql,' and ');\r\n        end if;\r\n        p_sql := concat(p_sql,' percurso in (', i_percurso,')');\r\n    end if;\r\n\r\n    return p_sql;\r\n\r\nend;\r\n$function$\n",
+      "owner": "runner_dba",
+      "args": "filtro jsonb",
+      "schema": "public",
+      "kind": "f",
+      "security_definer": false,
+      "name": "bi_cria_filtro"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION public.bi_filtro_categoria()\n RETURNS json\n LANGUAGE plpgsql\nAS $function$\r\ndeclare\r\n    ret_json json;\r\n    p_sql varchar;\r\nbegin\r\n\r\n   p_sql := 'select json_agg(row_to_json(linha)) from (select distinct nome_categoria as categoria from tb_resultados where length(nome_categoria) > 3 order by 1) linha';\r\n\r\n   EXECUTE p_sql into ret_json;\r\n\r\n   return ret_json;\r\nend;\r\n$function$\n",
+      "owner": "runner_dba",
+      "args": "",
+      "schema": "public",
+      "kind": "f",
+      "security_definer": false,
+      "name": "bi_filtro_categoria"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION public.bi_filtro_cidade(p_estado character varying DEFAULT NULL::character varying, OUT uf character varying, OUT nome_cidade character varying)\n RETURNS SETOF record\n LANGUAGE plpgsql\nAS $function$\r\ndeclare\r\n    p_sql varchar;\r\n    rec_return record;\r\nbegin\r\n   p_sql := 'select uf,nome_cidade from tb_cidades ';\r\n   if p_estado is not null then\r\n      p_sql := p_sql || ' where uf = ' || quote_literal(p_estado);\r\n   end if;\r\n   p_sql := p_sql || 'order by uf,nome_cidade';\r\n\r\n   --EXECUTE p_sql into rec_return;\r\n\r\n   --return rec_return;\r\n\r\n    return query execute p_sql;\r\n\r\nend;\r\n$function$\n",
+      "owner": "runner_dba",
+      "args": "p_estado character varying, OUT uf character varying, OUT nome_cidade character varying",
+      "schema": "public",
+      "kind": "f",
+      "security_definer": false,
+      "name": "bi_filtro_cidade"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION public.bi_filtro_data(p_data_ini date DEFAULT NULL::date, p_data_fim date DEFAULT NULL::date, OUT tipo_filtro text, OUT vlr_filtro character varying, OUT seq integer, OUT ordem integer)\n RETURNS SETOF record\n LANGUAGE plpgsql\nAS $function$\r\ndeclare\r\n    p_sql varchar;\r\n    rec_return record;\r\nbegin\r\n   if p_data_ini is null then\r\n      p_data_ini := '2010-01-01'::date;\r\n   end if;\r\n   if p_data_fim is null then\r\n      p_data_fim := '2029-12-31'::date;\r\n   end if;\r\n   p_sql := 'select distinct ' || '''Ano''' || ' as tipo_filtro, ano::varchar as vlr_filtro, ano::integer as seq, 1 as ordem from tbbi_dim_data ';\r\n   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';\r\n   p_sql := p_sql || ' union all ';\r\n   p_sql := p_sql || 'select distinct ' ||'''Trimestre''' || ' as tipo_filtro, trimestre::varchar as vlr_filtro, replace(trimestre,' || '''T''' || ',' || '''' || '''' || ')::integer as seq, 2 as ordem from tbbi_dim_data  ';\r\n   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';\r\n   p_sql := p_sql || ' union all ';\r\n   p_sql := p_sql || 'select distinct ' ||'''Mês''' || ' as tipo_filtro, mes_extenso::varchar as vlr_filtro, mes as seq, 3 as ordem from tbbi_dim_data ';\r\n   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';\r\n   p_sql := p_sql || ' union all ';\r\n   p_sql := p_sql || 'select distinct ' ||'''Semana''' || ' as tipo_filtro, semana_calendario::varchar as vlr_filtro, semana_calendario as seq, 4 as ordem from tbbi_dim_data ';\r\n   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';\r\n   p_sql := p_sql || ' union all ';\r\n   p_sql := p_sql || 'select distinct ' ||'''Dia Semana''' || ' as tipo_filtro, dia_da_semana as vlr_filtro, date_part(' || '''' || 'dow'|| '''' ||',data_referencia)::integer as seq, 5 as ordem from tbbi_dim_data ';\r\n   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';\r\n   p_sql := p_sql || ' union all ';\r\n   p_sql := p_sql || 'select distinct ' ||'''Tipo Dia Semana''' || ' as tipo_filtro, tipo_dia_semana as vlr_filtro, 1 as seq, 6 as ordem from tbbi_dim_data ';\r\n   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';\r\n   p_sql := p_sql || ' union all ';\r\n   p_sql := p_sql || 'select distinct ' || '''Feriado''' || ' as tipo_filtro, feriado_nacional as vlr_filtro, 1 as seq, 7 as ordem from tbbi_dim_data ';\r\n   p_sql := p_sql || ' where data_referencia between ' || quote_literal(p_data_ini) || '::date and ' || quote_literal(p_data_fim) ||'::date';\r\n    p_sql := p_sql || ' order by 4,3';\r\n\r\n    return query execute p_sql;\r\n\r\nend;\r\n$function$\n",
+      "owner": "runner_dba",
+      "args": "p_data_ini date, p_data_fim date, OUT tipo_filtro text, OUT vlr_filtro character varying, OUT seq integer, OUT ordem integer",
+      "schema": "public",
+      "kind": "f",
+      "security_definer": false,
+      "name": "bi_filtro_data"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION public.bi_filtro_estado(OUT uf text, OUT nome_uf text)\n RETURNS SETOF record\n LANGUAGE sql\nAS $function$\r\n   select uf,nome_uf from tb_uf order by uf;\r\n$function$\n",
+      "owner": "runner_dba",
+      "args": "OUT uf text, OUT nome_uf text",
+      "schema": "public",
+      "kind": "f",
+      "security_definer": false,
+      "name": "bi_filtro_estado"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION public.bi_filtro_percurso()\n RETURNS json\n LANGUAGE plpgsql\nAS $function$\r\ndeclare\r\n    ret_json json;\r\n    p_sql varchar;\r\nbegin\r\n\r\n   p_sql := 'select json_agg(row_to_json(linha)) from (select distinct percurso from tb_resultados order by 1) linha';\r\n\r\n   EXECUTE p_sql into ret_json;\r\n\r\n   return ret_json;\r\nend;\r\n$function$\n",
+      "owner": "runner_dba",
+      "args": "",
+      "schema": "public",
+      "kind": "f",
+      "security_definer": false,
+      "name": "bi_filtro_percurso"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION public.bi_kpi_conta_concluintes(filtro jsonb)\n RETURNS integer\n LANGUAGE plpgsql\nAS $function$\r\ndeclare\r\n    contador integer;\r\n    p_where  varchar;\r\n    p_query  varchar := 'select count(*) ' ||\r\n                        'from tb_evento_corridas eve inner join tb_resultados res on ' ||\r\n                        'res.id_evento = eve.id_evento';\r\nbegin\r\n\r\n   p_where  := bi_cria_filtro(filtro);\r\n   p_query  := concat(p_query,p_where,' and eve.homologado = true and res.homologado = true and res.concluinte = true ');\r\n\r\n   --RAISE exception 'Value: %', p_sql;\r\n\r\n    EXECUTE p_query  INTO contador;\r\n\r\n    return contador;\r\nend;\r\n$function$\n",
+      "owner": "runner_dba",
+      "args": "filtro jsonb",
+      "schema": "public",
+      "kind": "f",
+      "security_definer": false,
+      "name": "bi_kpi_conta_concluintes"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION public.bi_kpi_conta_eventos(filtro jsonb)\n RETURNS integer\n LANGUAGE plpgsql\nAS $function$\r\ndeclare\r\n    contador integer;\r\n    p_where  varchar;\r\n    p_query  varchar := 'select count(distinct eve.id_evento) ' ||\r\n                        'from tb_evento_corridas eve inner join tb_resultados res on ' ||\r\n                        'res.id_evento = eve.id_evento';\r\nbegin\r\n\r\n   p_where  := bi_cria_filtro(filtro);\r\n   p_query  := concat(p_query,p_where);\r\n\r\n   --RAISE exception 'Value: %', p_sql;\r\n\r\n    EXECUTE p_query  INTO contador;\r\n\r\n    return contador;\r\nend;\r\n$function$\n",
+      "owner": "runner_dba",
+      "args": "filtro jsonb",
+      "schema": "public",
+      "kind": "f",
+      "security_definer": false,
+      "name": "bi_kpi_conta_eventos"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION public.bi_tab_lista_topnpace(filtro jsonb, p_top integer)\n RETURNS json\n LANGUAGE plpgsql\nAS $function$\r\ndeclare\r\n    ret_json json;\r\n    p_query  varchar := 'select nome, pace ' ||\r\n                    'from tb_evento_corridas eve inner join tb_resultados res on ' ||\r\n                    'res.id_evento = eve.id_evento ';\r\nbegin\r\n   p_query := concat(p_query, bi_cria_filtro(filtro), ' order by pace limit ', p_top);\r\n   p_query := concat('select json_agg(row_to_json(linha)) from (', p_query,') linha');\r\n\r\n   EXECUTE p_query into ret_json;\r\n\r\n   return ret_json;\r\nend;\r\n$function$\n",
+      "owner": "runner_dba",
+      "args": "filtro jsonb, p_top integer",
+      "schema": "public",
+      "kind": "f",
+      "security_definer": false,
+      "name": "bi_tab_lista_topnpace"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION public.business_delegation_capabilities_valid(proposal jsonb)\n RETURNS boolean\n LANGUAGE plpgsql\n STABLE\n SET search_path TO 'pg_catalog', 'public'\nAS $function$\nDECLARE item jsonb; codes text[] := ARRAY[]::text[]; code text;\nBEGIN\n IF proposal IS NULL OR jsonb_typeof(proposal)<>'array' THEN RETURN false; END IF;\n FOR item IN SELECT value FROM jsonb_array_elements(proposal) LOOP\n  IF jsonb_typeof(item)<>'string' THEN RETURN false; END IF;\n  code=item#>>'{}';\n  IF code=ANY(codes) OR code NOT IN('ads.campaigns.view','ads.campaigns.manage','ads.payments.view','ads.credits.purchase','events.view','events.manage','events.links.request')\n   OR NOT EXISTS(SELECT 1 FROM public.tb_business_permissoes WHERE codigo=code) THEN RETURN false; END IF;\n  codes=array_append(codes,code);\n END LOOP;\n RETURN true;\nEND $function$\n",
+      "owner": "runner_dba",
+      "args": "proposal jsonb",
+      "schema": "public",
+      "kind": "f",
+      "security_definer": false,
+      "name": "business_delegation_capabilities_valid"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION gorunners.st_combinebbox(gorunners.box3d, gorunners.box3d)\n RETURNS gorunners.box3d\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE COST 50\nAS '$libdir/postgis-3', $function$BOX3D_combine_BOX3D$function$\n",
+      "owner": "gorunners_dba",
+      "args": "gorunners.box3d, gorunners.box3d",
+      "schema": "gorunners",
+      "kind": "f",
+      "security_definer": false,
+      "name": "st_combinebbox"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION gorunners.st_combinebbox(gorunners.box3d, gorunners.geometry)\n RETURNS gorunners.box3d\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE COST 50\nAS '$libdir/postgis-3', $function$BOX3D_combine$function$\n",
+      "owner": "gorunners_dba",
+      "args": "gorunners.box3d, gorunners.geometry",
+      "schema": "gorunners",
+      "kind": "f",
+      "security_definer": false,
+      "name": "st_combinebbox"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION gorunners.st_combinebbox(gorunners.box2d, gorunners.geometry)\n RETURNS gorunners.box2d\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE\nAS '$libdir/postgis-3', $function$BOX2D_combine$function$\n",
+      "owner": "gorunners_dba",
+      "args": "gorunners.box2d, gorunners.geometry",
+      "schema": "gorunners",
+      "kind": "f",
+      "security_definer": false,
+      "name": "st_combinebbox"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION gorunners.pgis_geometry_union_parallel_combinefn(internal, internal)\n RETURNS internal\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE\nAS '$libdir/postgis-3', $function$pgis_geometry_union_parallel_combinefn$function$\n",
+      "owner": "gorunners_dba",
+      "args": "internal, internal",
+      "schema": "gorunners",
+      "kind": "f",
+      "security_definer": false,
+      "name": "pgis_geometry_union_parallel_combinefn"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION gorunners.pgis_asmvt_combinefn(internal, internal)\n RETURNS internal\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE COST 250\nAS '$libdir/postgis-3', $function$pgis_asmvt_combinefn$function$\n",
+      "owner": "gorunners_dba",
+      "args": "internal, internal",
+      "schema": "gorunners",
+      "kind": "f",
+      "security_definer": false,
+      "name": "pgis_asmvt_combinefn"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION gorunners.st_asbinary(gorunners.geometry, text)\n RETURNS bytea\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT COST 50\nAS '$libdir/postgis-3', $function$LWGEOM_asBinary$function$\n",
+      "owner": "gorunners_dba",
+      "args": "gorunners.geometry, text",
+      "schema": "gorunners",
+      "kind": "f",
+      "security_definer": false,
+      "name": "st_asbinary"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION gorunners.st_asbinary(gorunners.geometry)\n RETURNS bytea\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT COST 50\nAS '$libdir/postgis-3', $function$LWGEOM_asBinary$function$\n",
+      "owner": "gorunners_dba",
+      "args": "gorunners.geometry",
+      "schema": "gorunners",
+      "kind": "f",
+      "security_definer": false,
+      "name": "st_asbinary"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION gorunners.st_asbinary(gorunners.geography)\n RETURNS bytea\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE STRICT COST 50\nAS '$libdir/postgis-3', $function$LWGEOM_asBinary$function$\n",
+      "owner": "gorunners_dba",
+      "args": "gorunners.geography",
+      "schema": "gorunners",
+      "kind": "f",
+      "security_definer": false,
+      "name": "st_asbinary"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION gorunners.st_asbinary(gorunners.geography, text)\n RETURNS bytea\n LANGUAGE c\n IMMUTABLE PARALLEL SAFE COST 50\nAS '$libdir/postgis-3', $function$LWGEOM_asBinary$function$\n",
+      "owner": "gorunners_dba",
+      "args": "gorunners.geography, text",
+      "schema": "gorunners",
+      "kind": "f",
+      "security_definer": false,
+      "name": "st_asbinary"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION ads.reverse_click_debit(p_reference_entry_id uuid, p_idempotency_key text, p_created_by integer DEFAULT NULL::integer, p_reason text DEFAULT NULL::text)\n RETURNS TABLE(ledger_entry_id uuid, balance_after numeric, result_status text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE\n    original ads.credit_ledger%ROWTYPE;\n    existing_reversal ads.credit_ledger%ROWTYPE;\n    existing_idempotency ads.credit_ledger%ROWTYPE;\n    balance ads.account_balances%ROWTYPE;\n    budget ads.campaign_budget_state%ROWTYPE;\n    original_business_day date;\n    current_business_day date := ads.business_date(clock_timestamp());\n    v_reversal_amount numeric(14, 2);\n    new_balance numeric(14, 2);\n    new_ledger_id uuid;\n    metrics_updated integer;\nBEGIN\n    IF nullif(trim(p_idempotency_key), '') IS NULL THEN\n        RAISE EXCEPTION 'idempotency_key e obrigatoria';\n    END IF;\n\n    PERFORM pg_advisory_xact_lock(\n        hashtextextended(p_reference_entry_id::text, 91005)\n    );\n\n    SELECT ledger.*\n      INTO original\n      FROM ads.credit_ledger ledger\n     WHERE ledger.ledger_entry_id = p_reference_entry_id;\n\n    IF NOT FOUND\n       OR original.entry_type <> 'DEBIT'\n       OR original.source_type <> 'CLICK' THEN\n        RAISE EXCEPTION 'Debito CPC original nao encontrado';\n    END IF;\n\n    SELECT ledger.*\n      INTO existing_idempotency\n      FROM ads.credit_ledger ledger\n     WHERE ledger.idempotency_key = trim(p_idempotency_key);\n\n    IF FOUND THEN\n        IF existing_idempotency.reference_entry_id\n           IS DISTINCT FROM p_reference_entry_id THEN\n            RAISE EXCEPTION\n                'idempotency_key ja usada para outro lancamento';\n        END IF;\n\n        RETURN QUERY\n        SELECT existing_idempotency.ledger_entry_id,\n               existing_idempotency.balance_after,\n               'already_recorded'::text;\n        RETURN;\n    END IF;\n\n    SELECT ledger.*\n      INTO existing_reversal\n      FROM ads.credit_ledger ledger\n     WHERE ledger.reference_entry_id = p_reference_entry_id\n       AND ledger.entry_type = 'REVERSAL';\n\n    IF FOUND THEN\n        RETURN QUERY\n        SELECT existing_reversal.ledger_entry_id,\n               existing_reversal.balance_after,\n               'already_reversed'::text;\n        RETURN;\n    END IF;\n\n    -- Ordem financeira: balance -> budget. O recibo original e imutavel.\n    SELECT stored.*\n      INTO balance\n      FROM ads.account_balances stored\n     WHERE stored.account_id = original.account_id\n       AND stored.currency = original.currency\n     FOR UPDATE;\n\n    SELECT stored.*\n      INTO budget\n      FROM ads.campaign_budget_state stored\n     WHERE stored.campaign_id = original.campaign_id\n       AND stored.account_id = original.account_id\n       AND stored.currency = original.currency\n     FOR UPDATE;\n\n    IF balance.account_id IS NULL OR budget.campaign_id IS NULL THEN\n        RAISE EXCEPTION 'Saldo ou estado de orcamento ausente para estorno';\n    END IF;\n\n    IF budget.spent_date > current_business_day THEN\n        RAISE EXCEPTION 'spent_date futuro impede estorno';\n    ELSIF budget.spent_date < current_business_day THEN\n        UPDATE ads.campaign_budget_state target\n           SET spent_today = 0,\n               spent_date = current_business_day,\n               version = target.version + 1,\n               updated_at = clock_timestamp()\n         WHERE target.campaign_id = budget.campaign_id\n         RETURNING target.* INTO budget;\n    END IF;\n\n    v_reversal_amount := -original.amount;\n    original_business_day := ads.business_date(original.occurred_at);\n\n    IF budget.spent_total < v_reversal_amount THEN\n        RAISE EXCEPTION 'Estorno excede gasto total materializado';\n    END IF;\n\n    IF original_business_day = budget.spent_date\n       AND budget.spent_today < v_reversal_amount THEN\n        RAISE EXCEPTION 'Estorno excede gasto diario materializado';\n    END IF;\n\n    new_balance := balance.available_balance + v_reversal_amount;\n\n    UPDATE ads.account_balances target\n       SET available_balance = new_balance,\n           version = target.version + 1,\n           updated_at = clock_timestamp()\n     WHERE target.account_id = balance.account_id;\n\n    UPDATE ads.campaign_budget_state target\n       SET spent_total = target.spent_total - v_reversal_amount,\n           spent_today =\n               CASE\n                   WHEN original_business_day = target.spent_date\n                   THEN target.spent_today - v_reversal_amount\n                   ELSE target.spent_today\n               END,\n           version = target.version + 1,\n           updated_at = clock_timestamp()\n     WHERE target.campaign_id = budget.campaign_id;\n\n    INSERT INTO ads.credit_ledger (\n        account_id,\n        campaign_id,\n        delivery_id,\n        event_id,\n        advertisement_id,\n        creative_id,\n        placement_id,\n        billing_model,\n        ad_type,\n        price_snapshot,\n        entry_type,\n        source_type,\n        amount,\n        currency,\n        balance_after,\n        idempotency_key,\n        reference_entry_id,\n        occurred_at,\n        created_by,\n        metadata\n    )\n    VALUES (\n        original.account_id,\n        original.campaign_id,\n        original.delivery_id,\n        original.event_id,\n        original.advertisement_id,\n        original.creative_id,\n        original.placement_id,\n        original.billing_model,\n        original.ad_type,\n        original.price_snapshot,\n        'REVERSAL',\n        'REVERSAL',\n        v_reversal_amount,\n        original.currency,\n        new_balance,\n        trim(p_idempotency_key),\n        original.ledger_entry_id,\n        clock_timestamp(),\n        p_created_by,\n        jsonb_build_object('reason', p_reason)\n    )\n    RETURNING credit_ledger.ledger_entry_id INTO new_ledger_id;\n\n    UPDATE ads.daily_metrics metrics\n       SET reversal_count = metrics.reversal_count + 1,\n           reversal_amount = metrics.reversal_amount + v_reversal_amount,\n           cost = metrics.cost - v_reversal_amount,\n           updated_at = clock_timestamp()\n     WHERE metrics.metric_date = original_business_day\n       AND metrics.account_id = original.account_id\n       AND metrics.campaign_id = original.campaign_id\n       AND metrics.advertisement_id = original.advertisement_id\n       AND metrics.creative_id = original.creative_id\n       AND metrics.placement_id = original.placement_id\n       AND metrics.currency = original.currency\n       AND metrics.cost >= v_reversal_amount;\n\n    GET DIAGNOSTICS metrics_updated = ROW_COUNT;\n\n    IF metrics_updated <> 1 THEN\n        RAISE EXCEPTION\n            'Metrica financeira original ausente ou insuficiente para estorno';\n    END IF;\n\n    RETURN QUERY\n    SELECT new_ledger_id, new_balance, 'reversed'::text;\nEND;\n$function$\n",
+      "owner": "ads_owner",
+      "args": "p_reference_entry_id uuid, p_idempotency_key text, p_created_by integer, p_reason text",
+      "schema": "ads",
+      "kind": "f",
+      "security_definer": true,
+      "name": "reverse_click_debit"
+    },
+    {
+      "definition": "CREATE OR REPLACE FUNCTION public.fn_perfilrun_links_limite()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n    PERFORM 1\n    FROM public.tb_paginas\n    WHERE id_pagina = NEW.id_pagina\n    FOR UPDATE;\n\n    IF (\n        SELECT count(*)\n        FROM public.tb_perfilrun_links\n        WHERE id_pagina = NEW.id_pagina\n    ) >= 30 THEN\n        RAISE EXCEPTION 'perfilrun_links_limit_exceeded'\n            USING ERRCODE = 'check_violation';\n    END IF;\n\n    RETURN NEW;\nEND;\n$function$\n",
+      "owner": "runner_dba",
+      "args": "",
+      "schema": "public",
+      "kind": "f",
+      "security_definer": false,
+      "name": "fn_perfilrun_links_limite"
+    }
+  ],
+  "db": "runnerhub"
+}

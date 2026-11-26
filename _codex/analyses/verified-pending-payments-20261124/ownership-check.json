@@ -1,0 +1,288 @@
+{
+  "constraints": [
+    {
+      "definition": "FOREIGN KEY (actor_id) REFERENCES tb_usuarios(id)"
+    },
+    {
+      "definition": "PRIMARY KEY (id)"
+    }
+  ],
+  "owners": [
+    {
+      "order_id": "or_09XWA6eT7ir8rQdK",
+      "users_json": "[16515]"
+    },
+    {
+      "order_id": "or_0EQBXWmt74fMb63Y",
+      "users_json": "[19726]"
+    },
+    {
+      "order_id": "or_1l5drmGhAps7z43z",
+      "users_json": "[105268]"
+    },
+    {
+      "order_id": "or_3KDVgk4UNIYpVMve",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_4EqNl0XU0SPBlQ6Z",
+      "users_json": "[19095]"
+    },
+    {
+      "order_id": "or_5Ovgampf0FD6V4GP",
+      "users_json": "[17162]"
+    },
+    {
+      "order_id": "or_5Qr4WY1iOvcmRwKR",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_6PjxbnkcWmsBJoB2",
+      "users_json": "[16902]"
+    },
+    {
+      "order_id": "or_7bWpe6af0fOVrKJl",
+      "users_json": "[108217]"
+    },
+    {
+      "order_id": "or_7OegZbf3oSo5ga5G",
+      "users_json": "[106018]"
+    },
+    {
+      "order_id": "or_7ykjBq8uw7iQ2rVn",
+      "users_json": "[61884]"
+    },
+    {
+      "order_id": "or_8G7BR484uGSgRrpZ",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_8lPDXyK7CdiJQpbR",
+      "users_json": "[107614]"
+    },
+    {
+      "order_id": "or_924OmZEukBtX7W1w",
+      "users_json": "[17162]"
+    },
+    {
+      "order_id": "or_9AlmaBAtXJsWLr4J",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_9Eb8knS6DszQjvyk",
+      "users_json": "[105958]"
+    },
+    {
+      "order_id": "or_9qoRZpL6TRFGZMeA",
+      "users_json": "[105958]"
+    },
+    {
+      "order_id": "or_9rb4z0F18szD3vm5",
+      "users_json": "[19726]"
+    },
+    {
+      "order_id": "or_AEMZ7pOuyCVGqL5m",
+      "users_json": "[105958]"
+    },
+    {
+      "order_id": "or_AJ1qg5pTmcKPXwma",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_akNwB8pNCzUXB0oy",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_aP31omRFDmu3qze4",
+      "users_json": "[106018]"
+    },
+    {
+      "order_id": "or_aPX0mqwHqSpZErMy",
+      "users_json": "[105958]"
+    },
+    {
+      "order_id": "or_bRv9L2qsDVSLA0qE",
+      "users_json": "[16515]"
+    },
+    {
+      "order_id": "or_dkJRGQYFbfr4znaB",
+      "users_json": "[61884]"
+    },
+    {
+      "order_id": "or_e3z7lWJurMupB98b",
+      "users_json": "[107584]"
+    },
+    {
+      "order_id": "or_EwzmAwJUvtwxoJZX",
+      "users_json": "[105268]"
+    },
+    {
+      "order_id": "or_Gy1nLykt5c17zb35",
+      "users_json": "[105268]"
+    },
+    {
+      "order_id": "or_GygdWkPf0qHKEdMr",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_JOr1mEJTrwtyk1vX",
+      "users_json": "[106109]"
+    },
+    {
+      "order_id": "or_Jy7XQAHyVIvvXjD8",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_k7BAantW4FxVNb19",
+      "users_json": "[106018]"
+    },
+    {
+      "order_id": "or_kbE7QJ6lUyiNQ842",
+      "users_json": "[19095]"
+    },
+    {
+      "order_id": "or_knoqlroFyaCwe2m3",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_KodEyQSLkfMMED1k",
+      "users_json": "[16937]"
+    },
+    {
+      "order_id": "or_kPJ0WNbIKEF1N9EW",
+      "users_json": "[19095]"
+    },
+    {
+      "order_id": "or_MbgVA12FNBF9jD3o",
+      "users_json": "[20561]"
+    },
+    {
+      "order_id": "or_nGVolLWkCYTO1PZg",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_nLpYDRNCRTrvx1kV",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_nWlaQwYLuxCn94Vo",
+      "users_json": "[105348]"
+    },
+    {
+      "order_id": "or_O4zRnRdJtwU57doW",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_omM3mxMHRaFlOXAB",
+      "users_json": "[17162]"
+    },
+    {
+      "order_id": "or_Oq5RolxuyiRqoW3j",
+      "users_json": "[105958]"
+    },
+    {
+      "order_id": "or_OQDpYQtg9I8epAjz",
+      "users_json": "[105958]"
+    },
+    {
+      "order_id": "or_p7QLrkbiZIJ1GNdE",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_pjW2N8JsnF5vV8rk",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_qeyBmOpecOt1NpLz",
+      "users_json": "[105348]"
+    },
+    {
+      "order_id": "or_QNX0anvImYu9qb46",
+      "users_json": "[106332]"
+    },
+    {
+      "order_id": "or_QYMNPQwHo7h2yLn4",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_R5MDO4bgUri8XmvJ",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_r89AVz0IdtJJMvoL",
+      "users_json": "[11132]"
+    },
+    {
+      "order_id": "or_Renq0v5ikHL2P23b",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_V4GK1LNhvcKAvgeZ",
+      "users_json": "[22256]"
+    },
+    {
+      "order_id": "or_vbo9AMpsPu6O98Dm",
+      "users_json": "[61884]"
+    },
+    {
+      "order_id": "or_vGWo0QukquEVx0AE",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_vlnzEQWAUjFz4PNk",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_W4eyREBhBU1XmYMG",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_wMXAQD6Cg2syalD8",
+      "users_json": "[105958]"
+    },
+    {
+      "order_id": "or_xgJMYzxt8SmKjzXQ",
+      "users_json": "[21722]"
+    },
+    {
+      "order_id": "or_Xo6OM5VFrUZDp4Zd",
+      "users_json": "[16937]"
+    },
+    {
+      "order_id": "or_y9j65GbIjI1RGbzg",
+      "users_json": "[106018]"
+    },
+    {
+      "order_id": "or_YK6aQ1qsrKcWaXgz",
+      "users_json": "[106268]"
+    },
+    {
+      "order_id": "or_YKALqElfVUl428BJ",
+      "users_json": "[19095]"
+    },
+    {
+      "order_id": "or_YoeO44u4bhYaO4kP",
+      "users_json": "[20005]"
+    },
+    {
+      "order_id": "or_YoMyBAa1inH6BPDm",
+      "users_json": "[105958]"
+    },
+    {
+      "order_id": "or_YqGBx6qIlpILR3Za",
+      "users_json": "[61884]"
+    },
+    {
+      "order_id": "or_yR63YzjcgbHKL8Je",
+      "users_json": "[17162]"
+    },
+    {
+      "order_id": "or_zG2Lwlosas0Rd6Jm",
+      "users_json": "[21733]"
+    },
+    {
+      "order_id": "or_ZV9KazOc5uxGgb21",
+      "users_json": "[22256]"
+    }
+  ]
+}

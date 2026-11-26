@@ -1,0 +1,149 @@
+{
+  "run": {
+    "started_at": "2026-11-09 15:47:54.591539-03",
+    "duration_ms": 2963,
+    "error_message": "",
+    "cell_version": 1,
+    "cell_id": "376",
+    "sql_sha256": "d66e8311f42a05fce69a14e6fe95f537eebfe121ad0b34821a429b4ece86abc4",
+    "truncated": 0,
+    "row_count": 22,
+    "sql_text": "-- Partitionnement mensuel, mêmes filtres que la source280. Pas de filtre delete implicite.\n WITH b AS MATERIALIZED(SELECT type,strava_raw->>'aspect_type' AS aspect FROM public.tb_strava_activities WHERE activity_date>=DATE '2026-09-01' AND activity_date<DATE '2026-10-01')\n SELECT type,count(*) AS total,count(*) FILTER(WHERE aspect='delete') AS com_indicacion_delete FROM b GROUP BY type",
+    "status": "ok",
+    "note": "Renovação completa solicitada em 09/11/2026. Mesmos critérios e corte da revisão vigente; pacote candidato, ainda não publicado. A data de coleta não amplia a janela de eventos.",
+    "finished_at": "2026-11-09 15:47:57.555393-03",
+    "frozen_at": "2026-11-09 15:47:57.558487-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 376",
+    "id": "285",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T15:47:54.591539-03:00",
+    "cell_id": 376,
+    "cell_version": 1,
+    "id": 285,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "type",
+        "total",
+        "com_indicacion_delete"
+      ],
+      "rows": [
+        {
+          "total": 1,
+          "com_indicacion_delete": 0,
+          "type": "Velomobile"
+        },
+        {
+          "total": 52,
+          "com_indicacion_delete": 0,
+          "type": "VirtualRun"
+        },
+        {
+          "total": 1156,
+          "com_indicacion_delete": 18,
+          "type": "Workout"
+        },
+        {
+          "total": 1,
+          "com_indicacion_delete": 0,
+          "type": "InlineSkate"
+        },
+        {
+          "total": 5,
+          "com_indicacion_delete": 0,
+          "type": "Canoeing"
+        },
+        {
+          "total": 41,
+          "com_indicacion_delete": 1,
+          "type": "VirtualRide"
+        },
+        {
+          "total": 59,
+          "com_indicacion_delete": 1,
+          "type": "Hike"
+        },
+        {
+          "total": 14017,
+          "com_indicacion_delete": 108,
+          "type": "Run"
+        },
+        {
+          "total": 1,
+          "com_indicacion_delete": 1,
+          "type": "Skateboard"
+        },
+        {
+          "total": 24,
+          "com_indicacion_delete": 1,
+          "type": "StairStepper"
+        },
+        {
+          "total": 1665,
+          "com_indicacion_delete": 105,
+          "type": "Walk"
+        },
+        {
+          "total": 12,
+          "com_indicacion_delete": 0,
+          "type": "EBikeRide"
+        },
+        {
+          "total": 3,
+          "com_indicacion_delete": 0,
+          "type": "RockClimbing"
+        },
+        {
+          "total": 2588,
+          "com_indicacion_delete": 43,
+          "type": "WeightTraining"
+        },
+        {
+          "total": 30,
+          "com_indicacion_delete": 0,
+          "type": "Rowing"
+        },
+        {
+          "total": 873,
+          "com_indicacion_delete": 64,
+          "type": "Ride"
+        },
+        {
+          "total": 18,
+          "com_indicacion_delete": 2,
+          "type": "Soccer"
+        },
+        {
+          "total": 12,
+          "com_indicacion_delete": 0,
+          "type": "Crossfit"
+        },
+        {
+          "total": 109,
+          "com_indicacion_delete": 0,
+          "type": "Yoga"
+        },
+        {
+          "total": 283,
+          "com_indicacion_delete": 2,
+          "type": "Swim"
+        },
+        {
+          "total": 1,
+          "com_indicacion_delete": 0,
+          "type": "StandUpPaddling"
+        },
+        {
+          "total": 53,
+          "com_indicacion_delete": 0,
+          "type": "Elliptical"
+        }
+      ]
+    }
+  }
+}

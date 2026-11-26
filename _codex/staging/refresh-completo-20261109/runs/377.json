@@ -1,0 +1,363 @@
+{
+  "saved": {
+    "version": 2,
+    "updated_at": "2026-11-09 15:54:53.142161-03",
+    "id": "377"
+  },
+  "run": {
+    "started_at": "2026-11-09 15:54:53.151982-03",
+    "duration_ms": 10,
+    "error_message": "",
+    "cell_version": 2,
+    "cell_id": "377",
+    "sql_sha256": "a8ee3768832ec246b355608f67ab6c9a8ca531f620ccb064b29915f992737bcd",
+    "truncated": 0,
+    "row_count": 35,
+    "sql_text": "-- Somme exacte des neuf partitions mensuelles congelées. Types nuls séparés; indication delete exclue des activités publiées.\nWITH r AS(SELECT x.value FROM estudo.notebook_runs n CROSS JOIN LATERAL jsonb_array_elements(n.result->'rows')x WHERE n.id IN(277,278,279,280,281,282,283,284,285) AND n.frozen AND n.status='ok' AND NOT n.truncated),\na AS(SELECT value->>'type' AS type,sum((value->>'total')::bigint) AS total,sum((value->>'com_indicacion_delete')::bigint) AS deleted FROM r GROUP BY value->>'type'),\nb AS(SELECT sum(total) AS registros_jan_set,sum(total) FILTER(WHERE type IS NULL) AS tipo_nulo,sum(total-deleted) FILTER(WHERE type IS NOT NULL) AS denominador FROM a)\nSELECT a.type,a.total-a.deleted AS total,a.deleted AS com_indicacao_delete,b.*,100*(a.total-a.deleted)/nullif(b.denominador,0) AS percentual FROM a CROSS JOIN b WHERE type IS NOT NULL ORDER BY total DESC",
+    "status": "ok",
+    "note": "Candidato da renovação completa. Referências mensais atualizadas, critérios preservados. A publicação vigente não foi alterada.",
+    "finished_at": "2026-11-09 15:54:53.163322-03",
+    "frozen_at": "2026-11-09 15:54:53.166915-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 377",
+    "id": "298",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T15:54:53.151982-03:00",
+    "cell_id": 377,
+    "cell_version": 2,
+    "id": 298,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "type",
+        "total",
+        "com_indicacao_delete",
+        "registros_jan_set",
+        "tipo_nulo",
+        "denominador",
+        "percentual"
+      ],
+      "rows": [
+        {
+          "total": 206267,
+          "percentual": 66.1171515392407,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Run",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 2942
+        },
+        {
+          "total": 36262,
+          "percentual": 11.623479030169374,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "WeightTraining",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 408
+        },
+        {
+          "total": 25846,
+          "percentual": 8.284717859295064,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Walk",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 836
+        },
+        {
+          "total": 17607,
+          "percentual": 5.643775723462362,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Workout",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 594
+        },
+        {
+          "total": 15943,
+          "percentual": 5.11039452258536,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Ride",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 470
+        },
+        {
+          "total": 4701,
+          "percentual": 1.506866000794943,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Swim",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 78
+        },
+        {
+          "total": 1184,
+          "percentual": 0.37952123908555896,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Yoga",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 37
+        },
+        {
+          "total": 673,
+          "percentual": 0.21572448809508546,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "VirtualRun",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 9
+        },
+        {
+          "total": 666,
+          "percentual": 0.2134806969856269,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "VirtualRide",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 24
+        },
+        {
+          "total": 633,
+          "percentual": 0.20290282461246523,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Elliptical",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 8
+        },
+        {
+          "total": 515,
+          "percentual": 0.16507891733873553,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Hike",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 10
+        },
+        {
+          "total": 466,
+          "percentual": 0.14937237957252575,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Crossfit",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 6
+        },
+        {
+          "total": 362,
+          "percentual": 0.11603605451771312,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "StairStepper",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 4
+        },
+        {
+          "total": 337,
+          "percentual": 0.10802251484107549,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Rowing",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 2
+        },
+        {
+          "total": 133,
+          "percentual": 0.04263203107971228,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Soccer",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 23
+        },
+        {
+          "total": 112,
+          "percentual": 0.035900657751336655,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "EBikeRide",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 7
+        },
+        {
+          "total": 54,
+          "percentual": 0.01730924570153732,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "RockClimbing",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 38,
+          "percentual": 0.012180580308489224,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "InlineSkate",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 36,
+          "percentual": 0.011539497134358211,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Canoeing",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 23,
+          "percentual": 0.007372456502506636,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Sail",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 1
+        },
+        {
+          "total": 22,
+          "percentual": 0.007051914915441129,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "StandUpPaddling",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 2
+        },
+        {
+          "total": 16,
+          "percentual": 0.005128665393048094,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "AlpineSki",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 14,
+          "percentual": 0.004487582218917082,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Kayaking",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 13,
+          "percentual": 0.004167040631851577,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Wheelchair",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 12,
+          "percentual": 0.0038464990447860704,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Surfing",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 9,
+          "percentual": 0.002884874283589553,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Velomobile",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 7,
+          "percentual": 0.002243791109458541,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Kitesurf",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 5,
+          "percentual": 0.0016027079353275295,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Handcycle",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 5,
+          "percentual": 0.0016027079353275295,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "WaterSport",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 3,
+          "percentual": 0.0009616247611965176,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Skateboard",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 2
+        },
+        {
+          "total": 3,
+          "percentual": 0.0009616247611965176,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Snowshoe",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 2,
+          "percentual": 0.0006410831741310118,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Snowboard",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 1,
+          "percentual": 0.0003205415870655059,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "IceSkate",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 1,
+          "percentual": 0.0003205415870655059,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "NordicSki",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        },
+        {
+          "total": 1,
+          "percentual": 0.0003205415870655059,
+          "registros_jan_set": 317435,
+          "denominador": 311972,
+          "type": "Golf",
+          "tipo_nulo": null,
+          "com_indicacao_delete": 0
+        }
+      ]
+    }
+  }
+}

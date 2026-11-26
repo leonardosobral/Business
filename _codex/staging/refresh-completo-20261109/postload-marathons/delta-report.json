@@ -1,0 +1,605 @@
+{
+  "published": false,
+  "cutoff": "2026-09-30",
+  "load": {
+    "views_before": {
+      "estudo.vwbi_perfil_br_2026": " SELECT tbbi_fat_perfil_br_2026.id_fat_perfil_br_2026,\n    tbbi_fat_perfil_br_2026.id_evento,\n    tbbi_fat_perfil_br_2026.id_resultado,\n    tbbi_fat_perfil_br_2026.data_evento,\n    tbbi_fat_perfil_br_2026.percurso,\n    tbbi_fat_perfil_br_2026.sexo,\n    tbbi_fat_perfil_br_2026.tempo_total,\n    EXTRACT(epoch FROM tbbi_fat_perfil_br_2026.tempo_total)::integer AS tempo_total_segundos,\n    tbbi_fat_perfil_br_2026.idade_range,\n    tbbi_fat_perfil_br_2026.id_usuario,\n    tbbi_fat_perfil_br_2026.id_atleta_strava,\n    tbbi_fat_perfil_br_2026.pcd,\n    tbbi_fat_perfil_br_2026.evento_homologado,\n    tbbi_fat_perfil_br_2026.resultado_homologado,\n    dd.id_data,\n    dd.data_referencia,\n    dd.ano,\n    dd.mes,\n    dd.mes_extenso,\n    dd.dia,\n    dd.dia_do_ano,\n    dd.dia_da_semana,\n    dd.semana_calendario,\n    dd.data_formatada,\n    dd.trimestre,\n    dd.trimestre_ano,\n    dd.mes_ano,\n    dd.ano_semana_calendario,\n    dd.tipo_dia_semana,\n    dd.feriado_nacional,\n    dd.calendario_inicio_semana,\n    dd.calendario_final_semana,\n    tbbi_fat_perfil_br_2026.id_localidade,\n    dl.nome_pais,\n    dl.regiao,\n    dl.estado,\n    dl.nome_estado,\n    dl.nome_cidade,\n    dl.capital,\n    dl.id_paises_iso3166,\n    dg.id_geracao,\n    dg.nome_geracao,\n    df.id_faixa,\n    df.nome_faixa,\n    dfc.id_cbat_categoria,\n    dfc.nome_cbat_categoria,\n    ni.id_organizacao,\n    ni.agrupamento,\n    ni.nome_padrao,\n    ni.nome_original,\n    dc.id_cronometragem,\n    dc.nome_cronometragem\n   FROM tbbi_fat_perfil_br_2026\n     LEFT JOIN tbbi_dim_data dd ON dd.id_data = tbbi_fat_perfil_br_2026.id_data\n     LEFT JOIN tbbi_dim_localidade dl ON dl.id_localidade = tbbi_fat_perfil_br_2026.id_localidade\n     LEFT JOIN tbbi_dim_geracoes dg ON dg.id_geracao = tbbi_fat_perfil_br_2026.id_geracao\n     LEFT JOIN tbbi_dim_faixas df ON df.id_faixa = tbbi_fat_perfil_br_2026.id_faixa\n     LEFT JOIN tbbi_dim_cbat_categorias dfc ON dfc.id_cbat_categoria = tbbi_fat_perfil_br_2026.id_cbat_categoria\n     LEFT JOIN tbbi_dim_organizacao_2026 ni ON ni.id_organizacao = tbbi_fat_perfil_br_2026.id_organizador\n     LEFT JOIN tbbi_dim_cronometragem dc ON dc.id_cronometragem = tbbi_fat_perfil_br_2026.id_cronometrador;",
+      "estudo.vw_resultados_2026": " SELECT v.id_resultado,\n    r.num_peito,\n    r.nome,\n    r.data_nascimento,\n    v.id_evento,\n    r.modalidade,\n    r.pace,\n    v.percurso,\n    v.sexo::character varying AS sexo,\n    r.tempo_bruto,\n    v.tempo_total,\n    r.classificacao_categoria,\n    r.classificacao_sexo,\n    r.classificacao_total,\n    r.velocidade_media,\n    r.equipe,\n    r.nome_categoria,\n    v.id_usuario,\n    r.id_categoria,\n    v.resultado_homologado AS homologado,\n    r.concluinte,\n    r.chave_processamento,\n    r.chave_verificacao,\n    r.nacionalidade,\n    r.status_final,\n    r.hora_largada,\n    r.tempo_f1_categoria,\n    r.tempo_f1_sexo,\n    r.tempo_f1_total,\n    r.posicao_ranking,\n    r.classificacao_pais,\n    v.pcd,\n    r.nome_full_text,\n    v.idade_range,\n    r.nome_normalizado,\n    r.origem_resultado\n   FROM estudo.vwbi_perfil_br_2026 v\n     LEFT JOIN tb_resultados r ON r.id_resultado = v.id_resultado\n  WHERE v.data_evento >= '2026-01-01'::date AND v.data_evento < '2026-10-01'::date;",
+      "public.vwbi_fat_perfil_br_2026": " SELECT tbbi_fat_perfil_br_2026.id_fat_perfil_br_2026,\n    tbbi_fat_perfil_br_2026.id_evento,\n    tbbi_fat_perfil_br_2026.id_resultado,\n    tbbi_fat_perfil_br_2026.data_evento,\n    tbbi_fat_perfil_br_2026.percurso,\n    tbbi_fat_perfil_br_2026.sexo,\n    tbbi_fat_perfil_br_2026.tempo_total,\n    EXTRACT(epoch FROM tbbi_fat_perfil_br_2026.tempo_total)::integer AS tempo_total_segundos,\n    tbbi_fat_perfil_br_2026.idade_range,\n    tbbi_fat_perfil_br_2026.id_usuario,\n    tbbi_fat_perfil_br_2026.id_atleta_strava,\n    tbbi_fat_perfil_br_2026.pcd,\n    tbbi_fat_perfil_br_2026.evento_homologado,\n    tbbi_fat_perfil_br_2026.resultado_homologado,\n    dd.id_data,\n    dd.data_referencia,\n    dd.ano,\n    dd.mes,\n    dd.mes_extenso,\n    dd.dia,\n    dd.dia_do_ano,\n    dd.dia_da_semana,\n    dd.semana_calendario,\n    dd.data_formatada,\n    dd.trimestre,\n    dd.trimestre_ano,\n    dd.mes_ano,\n    dd.ano_semana_calendario,\n    dd.tipo_dia_semana,\n    dd.feriado_nacional,\n    dd.calendario_inicio_semana,\n    dd.calendario_final_semana,\n    dl.id_localidade,\n    dl.nome_pais,\n    dl.regiao,\n    dl.estado,\n    dl.nome_estado,\n    dl.nome_cidade,\n    dl.capital,\n    dl.id_paises_iso3166,\n    dg.id_geracao,\n    dg.nome_geracao,\n    df.id_faixa,\n    df.nome_faixa,\n    dfc.id_cbat_categoria,\n    dfc.nome_cbat_categoria,\n    ni.id_organizacao,\n    ni.agrupamento,\n    ni.nome_padrao,\n    ni.nome_original,\n    dc.id_cronometragem,\n    dc.nome_cronometragem\n   FROM tbbi_fat_perfil_br_2026\n     JOIN tbbi_dim_data dd ON dd.id_data = tbbi_fat_perfil_br_2026.id_data\n     JOIN tbbi_dim_localidade dl ON dl.id_localidade = tbbi_fat_perfil_br_2026.id_localidade\n     JOIN tbbi_dim_geracoes dg ON dg.id_geracao = tbbi_fat_perfil_br_2026.id_geracao\n     JOIN tbbi_dim_faixas df ON df.id_faixa = tbbi_fat_perfil_br_2026.id_faixa\n     JOIN tbbi_dim_cbat_categorias dfc ON dfc.id_cbat_categoria = tbbi_fat_perfil_br_2026.id_cbat_categoria\n     JOIN tbbi_dim_organizacao_2026 ni ON ni.id_organizacao = tbbi_fat_perfil_br_2026.id_organizador\n     JOIN tbbi_dim_cronometragem dc ON dc.id_cronometragem = tbbi_fat_perfil_br_2026.id_cronometrador;",
+      "estudo.vw_resultados_comparativo_2025_2026": " SELECT r.id_resultado,\n    r.num_peito,\n    r.nome,\n    r.data_nascimento,\n    r.id_evento,\n    r.modalidade,\n    r.pace,\n    r.percurso,\n    r.sexo,\n    r.tempo_bruto,\n    r.tempo_total,\n    r.classificacao_categoria,\n    r.classificacao_sexo,\n    r.classificacao_total,\n    r.velocidade_media,\n    r.equipe,\n    r.nome_categoria,\n    r.id_usuario,\n    r.id_categoria,\n    r.homologado,\n    r.concluinte,\n    r.chave_processamento,\n    r.chave_verificacao,\n    r.nacionalidade,\n    r.status_final,\n    r.hora_largada,\n    r.tempo_f1_categoria,\n    r.tempo_f1_sexo,\n    r.tempo_f1_total,\n    r.posicao_ranking,\n    r.classificacao_pais,\n    r.pcd,\n    r.nome_full_text,\n    r.idade_range,\n    r.nome_normalizado,\n    r.origem_resultado\n   FROM tb_resultados r\n     JOIN tb_evento_corridas e USING (id_evento)\n  WHERE e.pais::text = 'BR'::text AND e.data_final >= '2025-01-01'::date AND e.data_final < '2026-01-01'::date\nUNION ALL\n SELECT vw_resultados_2026.id_resultado,\n    vw_resultados_2026.num_peito,\n    vw_resultados_2026.nome,\n    vw_resultados_2026.data_nascimento,\n    vw_resultados_2026.id_evento,\n    vw_resultados_2026.modalidade,\n    vw_resultados_2026.pace,\n    vw_resultados_2026.percurso,\n    vw_resultados_2026.sexo,\n    vw_resultados_2026.tempo_bruto,\n    vw_resultados_2026.tempo_total,\n    vw_resultados_2026.classificacao_categoria,\n    vw_resultados_2026.classificacao_sexo,\n    vw_resultados_2026.classificacao_total,\n    vw_resultados_2026.velocidade_media,\n    vw_resultados_2026.equipe,\n    vw_resultados_2026.nome_categoria,\n    vw_resultados_2026.id_usuario,\n    vw_resultados_2026.id_categoria,\n    vw_resultados_2026.homologado,\n    vw_resultados_2026.concluinte,\n    vw_resultados_2026.chave_processamento,\n    vw_resultados_2026.chave_verificacao,\n    vw_resultados_2026.nacionalidade,\n    vw_resultados_2026.status_final,\n    vw_resultados_2026.hora_largada,\n    vw_resultados_2026.tempo_f1_categoria,\n    vw_resultados_2026.tempo_f1_sexo,\n    vw_resultados_2026.tempo_f1_total,\n    vw_resultados_2026.posicao_ranking,\n    vw_resultados_2026.classificacao_pais,\n    vw_resultados_2026.pcd,\n    vw_resultados_2026.nome_full_text,\n    vw_resultados_2026.idade_range,\n    vw_resultados_2026.nome_normalizado,\n    vw_resultados_2026.origem_resultado\n   FROM estudo.vw_resultados_2026;"
+    },
+    "snapshot_id": "308969104:308969104:",
+    "activated_at": "2026-11-09T16:55:58.42464-03:00",
+    "status": "activated",
+    "quality": {
+      "null_pcd": 0,
+      "unresolved_timer": 4549136,
+      "null_event_homologated": 4504100,
+      "zero_time": 86,
+      "fact": 4574981,
+      "null_time": 0,
+      "eligible": 4574981,
+      "missing_date_dimension": 0,
+      "unresolved_locality": 160535,
+      "null_sex": 0,
+      "unresolved_organizer": 3102395,
+      "null_distance": 0
+    },
+    "loaded_at": "2026-11-09T16:55:27.872241-03:00",
+    "singleton": true,
+    "function_contract": {
+      "get_id_geracao(int4range,integer)": "4ceab31871e33e5eb841c16d6e37cd82",
+      "get_id_dim_faixa(numeric,time without time zone)": "547a306bfba2b1bd9fe072b76869608d",
+      "get_id_categoria_cbat(int4range)": "aa6fe20f75af7d049cc0cb1bb49fbfc5",
+      "get_id_geracao(int4range,integer,date,date)": "221972b658c5e11554e75a9b361da415"
+    },
+    "activated_views": {
+      "estudo.vwbi_perfil_br_2026": "5960d1f7eebb55b41f3211ea7e3d71c4",
+      "estudo.vw_resultados_2026": "5524665b7c60ed7455fceb7d36b56aca"
+    },
+    "source_script_sha256": "d9907382d2de1c9d396d4edb0d23c907c89aa0e74bca62cfa6783c99b34c6a08",
+    "monthly_rows": [
+      {
+        "month": "2026-01-01",
+        "rows": 158051
+      },
+      {
+        "month": "2026-02-01",
+        "rows": 165059
+      },
+      {
+        "month": "2026-03-01",
+        "rows": 566764
+      },
+      {
+        "month": "2026-04-01",
+        "rows": 459228
+      },
+      {
+        "month": "2026-05-01",
+        "rows": 719782
+      },
+      {
+        "month": "2026-06-01",
+        "rows": 529639
+      },
+      {
+        "month": "2026-07-01",
+        "rows": 509871
+      },
+      {
+        "month": "2026-08-01",
+        "rows": 742946
+      },
+      {
+        "month": "2026-09-01",
+        "rows": 723641
+      }
+    ]
+  },
+  "sources": {
+    "441": {
+      "run": 295,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:54.071079-03"
+    },
+    "436": {
+      "run": 294,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:52.633375-03"
+    },
+    "444": {
+      "run": 296,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:55.286256-03"
+    },
+    "425": {
+      "run": 292,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:45.816865-03"
+    },
+    "434": {
+      "run": 293,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:51.302528-03"
+    },
+    "423": {
+      "run": 291,
+      "revision": 1,
+      "started_at": "2026-11-09 15:52:27.497931-03"
+    },
+    "437": {
+      "run": 305,
+      "revision": 1,
+      "started_at": "2026-11-09 18:19:56.237708-03"
+    },
+    "426": {
+      "run": 303,
+      "revision": 1,
+      "started_at": "2026-11-09 18:19:51.924112-03"
+    },
+    "446": {
+      "run": 343,
+      "revision": 4,
+      "started_at": "2026-11-09 18:31:19.180511-03"
+    },
+    "427": {
+      "run": 339,
+      "revision": 3,
+      "started_at": "2026-11-09 18:31:12.809605-03"
+    },
+    "424": {
+      "run": 301,
+      "revision": 1,
+      "started_at": "2026-11-09 18:19:36.981874-03"
+    },
+    "432": {
+      "run": 341,
+      "revision": 3,
+      "started_at": "2026-11-09 18:31:16.019327-03"
+    },
+    "428": {
+      "run": 324,
+      "revision": 2,
+      "started_at": "2026-11-09 18:24:38.447301-03"
+    },
+    "445": {
+      "run": 342,
+      "revision": 5,
+      "started_at": "2026-11-09 18:31:17.62935-03"
+    },
+    "453": {
+      "run": 344,
+      "revision": 4,
+      "started_at": "2026-11-09 18:31:20.769856-03"
+    },
+    "452": {
+      "run": 308,
+      "revision": 2,
+      "started_at": "2026-11-09 18:20:00.171625-03"
+    },
+    "429": {
+      "run": 340,
+      "revision": 3,
+      "started_at": "2026-11-09 18:31:14.538989-03"
+    },
+    "435": {
+      "run": 304,
+      "revision": 1,
+      "started_at": "2026-11-09 18:19:54.400857-03"
+    },
+    "442": {
+      "run": 306,
+      "revision": 1,
+      "started_at": "2026-11-09 18:19:58.130314-03"
+    }
+  },
+  "years": {
+    "2025": {
+      "inventory_before": 100,
+      "inventory_after": 100,
+      "new_candidates": [],
+      "missing_candidates": [],
+      "changed_existing_candidates": [
+        {
+          "id_evento": 25698,
+          "name": "8ª Maratona Nilson Lima de Uberlandia 2025",
+          "changes": {
+            "id_agrega_evento": {
+              "before": 705,
+              "after": 18
+            }
+          }
+        }
+      ],
+      "curation_preserved": true,
+      "selected_events": 41,
+      "editorial_before": 54234,
+      "editorial_after": 54234,
+      "profile_before": 54234,
+      "profile_after": 54234,
+      "age_missing_before": 23596,
+      "age_missing_after": 23596
+    },
+    "2026": {
+      "inventory_before": 94,
+      "inventory_after": 96,
+      "new_candidates": [
+        {
+          "ano": 2026,
+          "linhas42": 246,
+          "sem_tempo": 0,
+          "mediana_segundos": 14195.884,
+          "id_agrega_evento": null,
+          "ranking": null,
+          "estado": "RN",
+          "data_final": "2026-01-31",
+          "menor_tempo": "02:52:48.905",
+          "nome_evento": "Maratona Rota do Sol Nascente",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "modalidade_excluida": 168,
+          "cidade": "Mossoró",
+          "participacoes": 78,
+          "resultado_completo": true,
+          "masculino": 70,
+          "id_evento": 35906,
+          "url_hotsite": "",
+          "coletado_em": "2026-11-09T18:19:51.92576-03:00",
+          "percurso_cadastrado": false,
+          "modalidades": "42.2KM DUPLA | 42.2KM DUPLA MISTA | 42.2KM QUARTETO | 42.2KM QUARTETO MISTO | 42.2KM SOLO",
+          "url_resultado": "https://apcrono.com.br/maratona-rota-do-sol-nascente-2026/",
+          "pcd_desconhecido": 0,
+          "conclusoes42": 246,
+          "sub4": 42,
+          "sub3": 3,
+          "feminino": 8,
+          "sub2_auditar": 0
+        },
+        {
+          "ano": 2026,
+          "linhas42": 26,
+          "sem_tempo": 0,
+          "mediana_segundos": 13990.065999999999,
+          "id_agrega_evento": 1775,
+          "ranking": null,
+          "estado": "GO",
+          "data_final": "2026-09-27",
+          "menor_tempo": "02:39:36.434",
+          "nome_evento": "MARATONA DR. GORDON 2026",
+          "tipo_corrida": "rua",
+          "ativo": true,
+          "modalidade_excluida": 0,
+          "cidade": "Rio Verde",
+          "participacoes": 26,
+          "resultado_completo": true,
+          "masculino": 23,
+          "id_evento": 49893,
+          "url_hotsite": "https://correagora.com.br/event/v2/p0oTZYIWmVydb6E9DLBt",
+          "coletado_em": "2026-11-09T18:19:51.92576-03:00",
+          "percurso_cadastrado": false,
+          "modalidades": "42KM",
+          "url_resultado": "https://resultados.racetag.com.br/clubcrono/#/maratona-dr-gordon-2026",
+          "pcd_desconhecido": 0,
+          "conclusoes42": 26,
+          "sub4": 15,
+          "sub3": 2,
+          "feminino": 3,
+          "sub2_auditar": 0
+        }
+      ],
+      "missing_candidates": [],
+      "changed_existing_candidates": [
+        {
+          "id_evento": 34529,
+          "name": "Maratona Internacional de Floripa 2026",
+          "changes": {
+            "participacoes": {
+              "before": 3594,
+              "after": 3609
+            },
+            "feminino": {
+              "before": 1127,
+              "after": 1131
+            },
+            "masculino": {
+              "before": 2467,
+              "after": 2478
+            },
+            "sub3": {
+              "before": 126,
+              "after": 127
+            },
+            "sub4": {
+              "before": 1685,
+              "after": 1692
+            },
+            "modalidades": {
+              "before": "42K ELITE | 42K GERAL | CAD - CADEIRANTE | DV - DEFICIENCIA VISUAL 42K | PCD 42K",
+              "after": "42K ELITE | 42K GERAL | CAD - CADEIRANTE | DV - DEFICIENCIA VISUAL 42K | PACER 42K | PCD 42K"
+            }
+          }
+        },
+        {
+          "id_evento": 36245,
+          "name": "Maratona de Salvador 2026",
+          "changes": {
+            "sub3": {
+              "before": 26,
+              "after": 31
+            },
+            "sub4": {
+              "before": 362,
+              "after": 414
+            }
+          }
+        },
+        {
+          "id_evento": 39188,
+          "name": "9ª MARATONA NILSON LIMA DE UBERLANDIA 2026",
+          "changes": {
+            "id_agrega_evento": {
+              "before": 705,
+              "after": 18
+            }
+          }
+        },
+        {
+          "id_evento": 43072,
+          "name": "4ª Maratona de Santa Maria",
+          "changes": {
+            "participacoes": {
+              "before": 0,
+              "after": 244
+            },
+            "feminino": {
+              "before": null,
+              "after": 54
+            },
+            "masculino": {
+              "before": null,
+              "after": 190
+            },
+            "sub3": {
+              "before": null,
+              "after": 46
+            },
+            "sub4": {
+              "before": null,
+              "after": 146
+            },
+            "modalidades": {
+              "before": null,
+              "after": "42.195K | 42K"
+            }
+          }
+        }
+      ],
+      "curation_preserved": true,
+      "selected_events": 39,
+      "editorial_before": 61452,
+      "editorial_after": 61452,
+      "profile_before": 61454,
+      "profile_after": 61469,
+      "age_missing_before": 1156,
+      "age_missing_after": 1170
+    }
+  },
+  "issues": [],
+  "lineage_correction": "Intermediate derived freezes using historical2025 references were superseded; retained in attempt-history. Final SQL uses original→new source mapping, checked by regression tests.",
+  "adoption_before": {
+    "notes": [
+      "Contas cadastradas no circuito até 30/09; resultados de provas até 30/09 associados na consulta atual.",
+      "Status I é o cadastro existente; não significa conclusão de etapa.",
+      "Associações podem ser retroativas; zero resultados associados não significa que a pessoa não correu.",
+      "Recorrência deduplica conta e evento. Indicador operacional não comprova conversão causada pelo circuito.",
+      "Floripa operacional usa o BI com 3.594; volume editorial usa a captura oficial com 3.592. Não combinar os dois denominadores."
+    ],
+    "status": "I",
+    "queried_at": "2026-10-23T18:37:36.421326-03:00",
+    "registered": 5756,
+    "source_run": 265,
+    "source_cell": 452,
+    "two_or_more": 164,
+    "with_result": 1519,
+    "distribution": [
+      {
+        "stages": 0,
+        "accounts": 4237
+      },
+      {
+        "stages": 1,
+        "accounts": 1355
+      },
+      {
+        "stages": 2,
+        "accounts": 140
+      },
+      {
+        "stages": 3,
+        "accounts": 19
+      },
+      {
+        "stages": 4,
+        "accounts": 2
+      },
+      {
+        "stages": 5,
+        "accounts": 2
+      },
+      {
+        "stages": 6,
+        "accounts": 1
+      }
+    ],
+    "result_cutoff": "2026-09-30",
+    "registration_cutoff": "2026-09-30",
+    "registered_before_or_same_day_one": 810,
+    "registered_before_or_same_day_two": 89
+  },
+  "adoption_after": {
+    "corte": "2026-09-30",
+    "etapas": [
+      {
+        "id_evento": 29291,
+        "conclusoes_bi": 4266,
+        "id_agrega_evento": 17,
+        "conclusoes_com_conta": 474,
+        "conclusoes_de_inscritos": 424,
+        "inscritos_com_resultado": 418
+      },
+      {
+        "id_evento": 32450,
+        "conclusoes_bi": 335,
+        "id_agrega_evento": 14,
+        "conclusoes_com_conta": 51,
+        "conclusoes_de_inscritos": 51,
+        "inscritos_com_resultado": 51
+      },
+      {
+        "id_evento": 34236,
+        "conclusoes_bi": 7445,
+        "id_agrega_evento": 26,
+        "conclusoes_com_conta": 694,
+        "conclusoes_de_inscritos": 634,
+        "inscritos_com_resultado": 633
+      },
+      {
+        "id_evento": 34529,
+        "conclusoes_bi": 3609,
+        "id_agrega_evento": 28,
+        "conclusoes_com_conta": 351,
+        "conclusoes_de_inscritos": 279,
+        "inscritos_com_resultado": 278
+      },
+      {
+        "id_evento": 36245,
+        "conclusoes_bi": 1108,
+        "id_agrega_evento": 15,
+        "conclusoes_com_conta": 143,
+        "conclusoes_de_inscritos": 114,
+        "inscritos_com_resultado": 114
+      },
+      {
+        "id_evento": 37310,
+        "conclusoes_bi": 2245,
+        "id_agrega_evento": 1000,
+        "conclusoes_com_conta": 246,
+        "conclusoes_de_inscritos": 218,
+        "inscritos_com_resultado": 217
+      },
+      {
+        "id_evento": 39393,
+        "conclusoes_bi": 418,
+        "id_agrega_evento": 9,
+        "conclusoes_com_conta": 74,
+        "conclusoes_de_inscritos": 72,
+        "inscritos_com_resultado": 72
+      }
+    ],
+    "natureza": "Adesão operacional; vínculo de resultado atual e possivelmente retrospectivo; sem inferência causal",
+    "inscritos": 5756,
+    "distribuicao": [
+      {
+        "contas": 4194,
+        "etapas": 0
+      },
+      {
+        "contas": 1382,
+        "etapas": 1
+      },
+      {
+        "contas": 148,
+        "etapas": 2
+      },
+      {
+        "contas": 27,
+        "etapas": 3
+      },
+      {
+        "contas": 2,
+        "etapas": 4
+      },
+      {
+        "contas": 2,
+        "etapas": 5
+      },
+      {
+        "contas": 1,
+        "etapas": 6
+      }
+    ],
+    "com_resultado": 1562,
+    "consultado_em": "2026-11-09T18:20:00.173747-03:00",
+    "com_duas_ou_mais": 180,
+    "inscritos_antes_ou_dia_de_uma_etapa": 859,
+    "inscritos_antes_ou_dia_de_duas_etapas": 102
+  },
+  "paired_2025_2026": {
+    "n2026": 45801,
+    "fator": 1.1342215398330897,
+    "pares": 17,
+    "n2025": 40381
+  },
+  "paired_2024_2025": {
+    "cr2024": 37010,
+    "cobertura_volume2025": 88.24906884979902,
+    "pares": 20,
+    "delta_cr": -9,
+    "variacao_registros": 29.35055809302451,
+    "n2024": 37001,
+    "n2025": 47861
+  },
+  "editorial_queue": [
+    {
+      "year": "2025",
+      "id_evento": 23728,
+      "name": "Maratona Internacional de Olinda 2025",
+      "date": "2025-06-08",
+      "eligible": 467,
+      "ranking": "false",
+      "reason": "Explicit prior exclusion preserved: ranking=false na base; revisar antes de incluir",
+      "approved": false
+    },
+    {
+      "year": "2025",
+      "id_evento": 25395,
+      "name": "Maratona Internacional de Blumenau 2025",
+      "date": "2025-07-06",
+      "eligible": 298,
+      "ranking": null,
+      "reason": "Explicit prior exclusion preserved: percurso curto informado pela CR; fora do recorte de desempenho",
+      "approved": false
+    },
+    {
+      "year": "2025",
+      "id_evento": 26514,
+      "name": "Maratona Fila 2025",
+      "date": "2025-08-24",
+      "eligible": 508,
+      "ranking": null,
+      "reason": "Explicit prior exclusion preserved: percurso curto informado pela CR; fora do recorte de desempenho",
+      "approved": false
+    },
+    {
+      "year": "2025",
+      "id_evento": 28391,
+      "name": "1ª Maratona Piauí Crono",
+      "date": "2025-03-23",
+      "eligible": 118,
+      "ranking": "false",
+      "reason": "Explicit prior exclusion preserved: ranking=false na base; revisar antes de incluir",
+      "approved": false
+    },
+    {
+      "year": "2025",
+      "id_evento": 28612,
+      "name": "Maratona de Niterói 2025",
+      "date": "2025-09-14",
+      "eligible": 558,
+      "ranking": null,
+      "reason": "Explicit prior exclusion preserved: percurso curto informado pela CR; fora do recorte de desempenho",
+      "approved": false
+    },
+    {
+      "year": "2026",
+      "id_evento": 35906,
+      "name": "Maratona Rota do Sol Nascente",
+      "date": "2026-01-31",
+      "eligible": 78,
+      "ranking": null,
+      "reason": "New inventory candidate outside preserved editorial whitelist; identity/distance/modalities/source require review",
+      "approved": false
+    },
+    {
+      "year": "2026",
+      "id_evento": 49893,
+      "name": "MARATONA DR. GORDON 2026",
+      "date": "2026-09-27",
+      "eligible": 26,
+      "ranking": null,
+      "reason": "New inventory candidate outside preserved editorial whitelist; identity/distance/modalities/source require review",
+      "approved": false
+    }
+  ]
+}

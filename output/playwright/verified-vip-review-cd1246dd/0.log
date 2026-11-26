@@ -1,0 +1,20 @@
+### Browser `verified-vip-review-cd1246dd` opened with pid 40302.
+### Ran Playwright code
+```js
+await page.goto('http://127.0.0.1:64099/detail.html');
+```
+### Page
+- Page URL: http://127.0.0.1:64099/detail.html
+- Console: 1 errors, 0 warnings
+### Snapshot
+- [Snapshot](.playwright-cli/page-2026-11-24T18-18-46-610Z.yml)
+### Events
+- New console entries: .playwright-cli/console-2026-11-24T18-18-46-524Z.log#L1
+
+
+╔════════════════════════════════════════════════════════════════════╗
+║ Update available for @playwright/cli: 0.1.18 → 0.1.25              ║
+║ Run `npm install -g @playwright/cli@latest` (global) or            ║
+║ `npm install --save-dev @playwright/cli@latest` (local) to update. ║
+╚════════════════════════════════════════════════════════════════════╝
+

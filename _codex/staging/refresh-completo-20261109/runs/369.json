@@ -1,0 +1,179 @@
+{
+  "run": {
+    "started_at": "2026-11-09 15:47:17.527389-03",
+    "duration_ms": 6669,
+    "error_message": "",
+    "cell_version": 1,
+    "cell_id": "369",
+    "sql_sha256": "4399755f5de88f609097964b9c8dcf3656d8028e142dec4eeb43fe6615f83e56",
+    "truncated": 0,
+    "row_count": 28,
+    "sql_text": "-- Partitionnement mensuel, mêmes filtres que la source280. Pas de filtre delete implicite.\n WITH b AS MATERIALIZED(SELECT type,strava_raw->>'aspect_type' AS aspect FROM public.tb_strava_activities WHERE activity_date>=DATE '2026-02-01' AND activity_date<DATE '2026-03-01')\n SELECT type,count(*) AS total,count(*) FILTER(WHERE aspect='delete') AS com_indicacion_delete FROM b GROUP BY type",
+    "status": "ok",
+    "note": "Renovação completa solicitada em 09/11/2026. Mesmos critérios e corte da revisão vigente; pacote candidato, ainda não publicado. A data de coleta não amplia a janela de eventos.",
+    "finished_at": "2026-11-09 15:47:24.197736-03",
+    "frozen_at": "2026-11-09 15:47:24.200843-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 369",
+    "id": "278",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T15:47:17.527389-03:00",
+    "cell_id": 369,
+    "cell_version": 1,
+    "id": 278,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "type",
+        "total",
+        "com_indicacion_delete"
+      ],
+      "rows": [
+        {
+          "total": 1,
+          "com_indicacion_delete": 0,
+          "type": "Velomobile"
+        },
+        {
+          "total": 99,
+          "com_indicacion_delete": 0,
+          "type": "VirtualRun"
+        },
+        {
+          "total": 1,
+          "com_indicacion_delete": 0,
+          "type": "Kayaking"
+        },
+        {
+          "total": 9,
+          "com_indicacion_delete": 0,
+          "type": "InlineSkate"
+        },
+        {
+          "total": 6,
+          "com_indicacion_delete": 0,
+          "type": "Canoeing"
+        },
+        {
+          "total": 29962,
+          "com_indicacion_delete": 442,
+          "type": "Run"
+        },
+        {
+          "total": 7,
+          "com_indicacion_delete": 0,
+          "type": "Sail"
+        },
+        {
+          "total": 1,
+          "com_indicacion_delete": 1,
+          "type": "Skateboard"
+        },
+        {
+          "total": 40,
+          "com_indicacion_delete": 0,
+          "type": "StairStepper"
+        },
+        {
+          "total": 3809,
+          "com_indicacion_delete": 86,
+          "type": "Walk"
+        },
+        {
+          "total": 7,
+          "com_indicacion_delete": 0,
+          "type": "RockClimbing"
+        },
+        {
+          "total": 5556,
+          "com_indicacion_delete": 39,
+          "type": "WeightTraining"
+        },
+        {
+          "total": 1,
+          "com_indicacion_delete": 0,
+          "type": "Snowshoe"
+        },
+        {
+          "total": 2,
+          "com_indicacion_delete": 0,
+          "type": "AlpineSki"
+        },
+        {
+          "total": 63,
+          "com_indicacion_delete": 0,
+          "type": "Rowing"
+        },
+        {
+          "total": 2715,
+          "com_indicacion_delete": 32,
+          "type": "Ride"
+        },
+        {
+          "total": 11,
+          "com_indicacion_delete": 0,
+          "type": "Soccer"
+        },
+        {
+          "total": 1,
+          "com_indicacion_delete": 0,
+          "type": "Golf"
+        },
+        {
+          "total": 7,
+          "com_indicacion_delete": 2,
+          "type": "StandUpPaddling"
+        },
+        {
+          "total": 2766,
+          "com_indicacion_delete": 65,
+          "type": "Workout"
+        },
+        {
+          "total": 110,
+          "com_indicacion_delete": 1,
+          "type": "VirtualRide"
+        },
+        {
+          "total": 61,
+          "com_indicacion_delete": 0,
+          "type": "Hike"
+        },
+        {
+          "total": 13,
+          "com_indicacion_delete": 0,
+          "type": "EBikeRide"
+        },
+        {
+          "total": 2,
+          "com_indicacion_delete": 0,
+          "type": "Wheelchair"
+        },
+        {
+          "total": 90,
+          "com_indicacion_delete": 0,
+          "type": "Crossfit"
+        },
+        {
+          "total": 180,
+          "com_indicacion_delete": 5,
+          "type": "Yoga"
+        },
+        {
+          "total": 778,
+          "com_indicacion_delete": 13,
+          "type": "Swim"
+        },
+        {
+          "total": 111,
+          "com_indicacion_delete": 0,
+          "type": "Elliptical"
+        }
+      ]
+    }
+  }
+}

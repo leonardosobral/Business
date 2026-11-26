@@ -1,0 +1,21 @@
+{
+  "runtime": {
+    "estudos/lancamento/index.cfm": "9f80c3e46f7a229e41ce43bcacf6f3d8eac84bae69458a609e654c25026d81db",
+    "estudos/lancamento/arquivo.cfm": "bcd6479c906a2526ef9b61d2896dde73580c754b3a8a5746cea0090ac5845dcd",
+    "estudos/lancamento/arquivos/brasil-que-corre-provas-guia-rapido-q3.pdf": "fd32ac5fc63d3f42ede6955f9e66875b3b4f18cf844b05c2193ee1d78ab3b4a6",
+    "estudos/lancamento/arquivos/brasil-que-corre-provas-lancamento-q3-execucao-v6.pdf": "8af695d422c70e62c603126c3839ed97b31d41bd91cd3afb8ec0ae78c1696f68",
+    "estudos/lancamento/arquivos/brasil-que-corre-provas-lancamento-q3-execucao-v5.pdf": "2f886359df22602ee7fa84029b48bd764bcf348f56ff71ceaa3e7ceb316fc1e8"
+  },
+  "generators": {
+    "gerar_pdf_guia_rapido.py": "b8c26e5dc4ef5e4a1f43b28e7bd98e549b9553c51379c32346de392033315b72",
+    "gerar_pdf_execucao_v6.py": "90c8854627dfff8ca6134d8739971e127a44ac9af4f43fb9111e9a60382c2916"
+  },
+  "fonts": {
+    "LibreFranklin-400.ttf": "fb40136489d01767226935deddfdf62540222d955ba9ed16fc34be7e9050eaf4",
+    "LibreFranklin-700.ttf": "62ac7a038728520b21c3865571f127288da3072297edb735970e5c5a11971ba3",
+    "LibreFranklin-900.ttf": "3ef6c324f66edb25820871106fdfd845df8b6d94d212feff41a5e09d88ed0731",
+    "Poppins-400.ttf": "1ccebf12edbc45ca58f02f76280ed01266d13d896085da28f5dc033fb41cb663",
+    "Poppins-600.ttf": "d349ce83b3a8d4a63224f86a621aec7ba8f3983eb2ecf4e044bad11a242a5098",
+    "Poppins-700.ttf": "dbf66e8bc1e859b05d05ea14d0eb994f9c230083d7fc38817634c2fefa796fad"
+  }
+}

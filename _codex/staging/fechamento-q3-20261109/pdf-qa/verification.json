@@ -1,0 +1,184 @@
+{
+  "review_date": "2026-11-09",
+  "status": "PASS",
+  "candidates": [
+    {
+      "filename": "brasil-que-corre-provas-guia-rapido-q3.pdf",
+      "sha256": "fd32ac5fc63d3f42ede6955f9e66875b3b4f18cf844b05c2193ee1d78ab3b4a6",
+      "bytes": 42171,
+      "pages": 1,
+      "text_characters": 2069,
+      "links": [
+        {
+          "page": 1,
+          "url": "https://roadrunners.run/brasilquecorreprovas/2026/",
+          "rectangle": [
+            26.0,
+            323.2756,
+            275.0,
+            368.2756
+          ]
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/",
+          "rectangle": [
+            26.0,
+            271.2756,
+            275.0,
+            316.2756
+          ]
+        },
+        {
+          "page": 1,
+          "url": "https://roadrunners.run/brasilquecorreprovas/2026/kit/",
+          "rectangle": [
+            26.0,
+            219.2756,
+            275.0,
+            264.2756
+          ]
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/#gestao",
+          "rectangle": [
+            26.0,
+            167.2756,
+            275.0,
+            212.2756
+          ]
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudo/",
+          "rectangle": [
+            26.0,
+            115.2756,
+            275.0,
+            160.2756
+          ]
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=execucao-v6",
+          "rectangle": [
+            296.0,
+            323.2756,
+            545.0,
+            368.2756
+          ]
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=execucao-v5",
+          "rectangle": [
+            296.0,
+            271.2756,
+            545.0,
+            316.2756
+          ]
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=conselho-v2",
+          "rectangle": [
+            296.0,
+            219.2756,
+            545.0,
+            264.2756
+          ]
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=conselho-v1",
+          "rectangle": [
+            296.0,
+            167.2756,
+            545.0,
+            212.2756
+          ]
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=estrategia-inicial",
+          "rectangle": [
+            296.0,
+            115.2756,
+            545.0,
+            160.2756
+          ]
+        },
+        {
+          "page": 1,
+          "url": "https://business.roadrunners.run/estudos/lancamento/",
+          "rectangle": [
+            27.0,
+            11.27559,
+            590.0,
+            27.27559
+          ]
+        }
+      ]
+    },
+    {
+      "filename": "brasil-que-corre-provas-lancamento-q3-execucao-v6.pdf",
+      "sha256": "8af695d422c70e62c603126c3839ed97b31d41bd91cd3afb8ec0ae78c1696f68",
+      "bytes": 47951,
+      "pages": 8,
+      "text_characters": 6414,
+      "links": [
+        {
+          "page": 3,
+          "url": "https://roadrunners.run/brasilquecorreprovas/2026/kit/",
+          "rectangle": [
+            56.0,
+            93.0,
+            1224.0,
+            469.0
+          ]
+        },
+        {
+          "page": 8,
+          "url": "https://roadrunners.run/brasilquecorreprovas/2026/",
+          "rectangle": [
+            56.0,
+            51.0,
+            630.0,
+            80.0
+          ]
+        },
+        {
+          "page": 8,
+          "url": "https://business.roadrunners.run/estudos/",
+          "rectangle": [
+            635.0,
+            51.0,
+            1224.0,
+            80.0
+          ]
+        }
+      ]
+    }
+  ],
+  "visual_review": {
+    "reviewed": true,
+    "guide_pages": [
+      1
+    ],
+    "execution_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "findings": "All 9 rendered pages inspected; no clipping, overlap, unreadable glyphs or broken hierarchy."
+  },
+  "v5_preservation": "Source and PDFs in RR output, Business runtime and saved baseline remain byte-for-byte unchanged.",
+  "temporary_resources": "No browser, server, driver, watcher or background process created; finite rendering commands exited.",
+  "integration_requirement": "Controller must map doc=execucao-v6 to the new filename and verify authenticated download after publication."
+}

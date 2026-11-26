@@ -1,0 +1,29 @@
+{
+  "timings": {
+    "run.cfm": 30.722,
+    "render.cfm?filter_status=unclassified&fixture_ready=1": 3.09,
+    "render.cfm?filter_status=divergent&page_id=53015": 3.575,
+    "render.cfm?test_denied=1": 0.037,
+    "render.cfm?case=csrf": 2.971,
+    "render.cfm?case=legacy": 2.985
+  },
+  "statuses": {
+    "run.cfm": 200,
+    "render.cfm?filter_status=unclassified&fixture_ready=1": 200,
+    "render.cfm?filter_status=divergent&page_id=53015": 200,
+    "render.cfm?test_denied=1": 403,
+    "render.cfm?case=csrf": 403,
+    "render.cfm?case=legacy": 409
+  },
+  "tests": {
+    "CHECKS": 64.0,
+    "READY": 1,
+    "UNCLASSIFIED": 61,
+    "RECONCILE": 6,
+    "OK": true,
+    "DIVERGENT": 4,
+    "MANUAL_ID": 54048
+  },
+  "ok": true,
+  "stage_removed": true
+}

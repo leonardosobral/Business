@@ -1,0 +1,677 @@
+{
+  "current_view_columns": [
+    {
+      "position": 1,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_fat_perfil_br_2026"
+    },
+    {
+      "position": 2,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_evento"
+    },
+    {
+      "position": 3,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_resultado"
+    },
+    {
+      "position": 4,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "date",
+      "name": "data_evento"
+    },
+    {
+      "position": 5,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "numeric",
+      "name": "percurso"
+    },
+    {
+      "position": 6,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(1)",
+      "name": "sexo"
+    },
+    {
+      "position": 7,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "time without time zone",
+      "name": "tempo_total"
+    },
+    {
+      "position": 8,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "tempo_total_segundos"
+    },
+    {
+      "position": 9,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "int4range",
+      "name": "idade_range"
+    },
+    {
+      "position": 10,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_usuario"
+    },
+    {
+      "position": 11,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_atleta_strava"
+    },
+    {
+      "position": 12,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "boolean",
+      "name": "pcd"
+    },
+    {
+      "position": 13,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "boolean",
+      "name": "evento_homologado"
+    },
+    {
+      "position": 14,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "boolean",
+      "name": "resultado_homologado"
+    },
+    {
+      "position": 15,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_data"
+    },
+    {
+      "position": 16,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "date",
+      "name": "data_referencia"
+    },
+    {
+      "position": 17,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "ano"
+    },
+    {
+      "position": 18,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "mes"
+    },
+    {
+      "position": 19,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(24)",
+      "name": "mes_extenso"
+    },
+    {
+      "position": 20,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "dia"
+    },
+    {
+      "position": 21,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "dia_do_ano"
+    },
+    {
+      "position": 22,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(24)",
+      "name": "dia_da_semana"
+    },
+    {
+      "position": 23,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "semana_calendario"
+    },
+    {
+      "position": 24,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(10)",
+      "name": "data_formatada"
+    },
+    {
+      "position": 25,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(8)",
+      "name": "trimestre"
+    },
+    {
+      "position": 26,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(12)",
+      "name": "trimestre_ano"
+    },
+    {
+      "position": 27,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(12)",
+      "name": "mes_ano"
+    },
+    {
+      "position": 28,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(24)",
+      "name": "ano_semana_calendario"
+    },
+    {
+      "position": 29,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(24)",
+      "name": "tipo_dia_semana"
+    },
+    {
+      "position": 30,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(24)",
+      "name": "feriado_nacional"
+    },
+    {
+      "position": 31,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(24)",
+      "name": "calendario_inicio_semana"
+    },
+    {
+      "position": 32,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(24)",
+      "name": "calendario_final_semana"
+    },
+    {
+      "position": 33,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_localidade"
+    },
+    {
+      "position": 34,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(128)",
+      "name": "nome_pais"
+    },
+    {
+      "position": 35,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(64)",
+      "name": "regiao"
+    },
+    {
+      "position": 36,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying",
+      "name": "estado"
+    },
+    {
+      "position": 37,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(128)",
+      "name": "nome_estado"
+    },
+    {
+      "position": 38,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(128)",
+      "name": "nome_cidade"
+    },
+    {
+      "position": 39,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "boolean",
+      "name": "capital"
+    },
+    {
+      "position": 40,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_paises_iso3166"
+    },
+    {
+      "position": 41,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_geracao"
+    },
+    {
+      "position": 42,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(128)",
+      "name": "nome_geracao"
+    },
+    {
+      "position": 43,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_faixa"
+    },
+    {
+      "position": 44,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(128)",
+      "name": "nome_faixa"
+    },
+    {
+      "position": 45,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_cbat_categoria"
+    },
+    {
+      "position": 46,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(128)",
+      "name": "nome_cbat_categoria"
+    },
+    {
+      "position": 47,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_organizacao"
+    },
+    {
+      "position": 48,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying",
+      "name": "agrupamento"
+    },
+    {
+      "position": 49,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying",
+      "name": "nome_padrao"
+    },
+    {
+      "position": 50,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying",
+      "name": "nome_original"
+    },
+    {
+      "position": 51,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "integer",
+      "name": "id_cronometragem"
+    },
+    {
+      "position": 52,
+      "relation": "estudo.vwbi_perfil_br_2026",
+      "type": "character varying(128)",
+      "name": "nome_cronometragem"
+    },
+    {
+      "position": 1,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "integer",
+      "name": "id_resultado"
+    },
+    {
+      "position": 2,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "integer",
+      "name": "num_peito"
+    },
+    {
+      "position": 3,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "character varying",
+      "name": "nome"
+    },
+    {
+      "position": 4,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "date",
+      "name": "data_nascimento"
+    },
+    {
+      "position": 5,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "integer",
+      "name": "id_evento"
+    },
+    {
+      "position": 6,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "character varying",
+      "name": "modalidade"
+    },
+    {
+      "position": 7,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "time without time zone",
+      "name": "pace"
+    },
+    {
+      "position": 8,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "numeric",
+      "name": "percurso"
+    },
+    {
+      "position": 9,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "character varying",
+      "name": "sexo"
+    },
+    {
+      "position": 10,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "time without time zone",
+      "name": "tempo_bruto"
+    },
+    {
+      "position": 11,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "time without time zone",
+      "name": "tempo_total"
+    },
+    {
+      "position": 12,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "numeric",
+      "name": "classificacao_categoria"
+    },
+    {
+      "position": 13,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "numeric",
+      "name": "classificacao_sexo"
+    },
+    {
+      "position": 14,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "numeric",
+      "name": "classificacao_total"
+    },
+    {
+      "position": 15,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "numeric",
+      "name": "velocidade_media"
+    },
+    {
+      "position": 16,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "character varying",
+      "name": "equipe"
+    },
+    {
+      "position": 17,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "character varying",
+      "name": "nome_categoria"
+    },
+    {
+      "position": 18,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "integer",
+      "name": "id_usuario"
+    },
+    {
+      "position": 19,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "integer",
+      "name": "id_categoria"
+    },
+    {
+      "position": 20,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "boolean",
+      "name": "homologado"
+    },
+    {
+      "position": 21,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "boolean",
+      "name": "concluinte"
+    },
+    {
+      "position": 22,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "uuid",
+      "name": "chave_processamento"
+    },
+    {
+      "position": 23,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "uuid",
+      "name": "chave_verificacao"
+    },
+    {
+      "position": 24,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "character varying(8)",
+      "name": "nacionalidade"
+    },
+    {
+      "position": 25,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "integer",
+      "name": "status_final"
+    },
+    {
+      "position": 26,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "time without time zone",
+      "name": "hora_largada"
+    },
+    {
+      "position": 27,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "time without time zone",
+      "name": "tempo_f1_categoria"
+    },
+    {
+      "position": 28,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "time without time zone",
+      "name": "tempo_f1_sexo"
+    },
+    {
+      "position": 29,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "time without time zone",
+      "name": "tempo_f1_total"
+    },
+    {
+      "position": 30,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "integer",
+      "name": "posicao_ranking"
+    },
+    {
+      "position": 31,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "integer",
+      "name": "classificacao_pais"
+    },
+    {
+      "position": 32,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "boolean",
+      "name": "pcd"
+    },
+    {
+      "position": 33,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "tsvector",
+      "name": "nome_full_text"
+    },
+    {
+      "position": 34,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "int4range",
+      "name": "idade_range"
+    },
+    {
+      "position": 35,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "text",
+      "name": "nome_normalizado"
+    },
+    {
+      "position": 36,
+      "relation": "estudo.vw_resultados_2026",
+      "type": "character varying(30)",
+      "name": "origem_resultado"
+    }
+  ],
+  "actor": "runner_dba",
+  "source_script_sha256": "d9907382d2de1c9d396d4edb0d23c907c89aa0e74bca62cfa6783c99b34c6a08",
+  "functions": [
+    {
+      "expected_md5": "aa6fe20f75af7d049cc0cb1bb49fbfc5",
+      "actual_md5": "aa6fe20f75af7d049cc0cb1bb49fbfc5",
+      "matches": true,
+      "signature": "public.get_id_categoria_cbat(int4range)"
+    },
+    {
+      "expected_md5": "547a306bfba2b1bd9fe072b76869608d",
+      "actual_md5": "547a306bfba2b1bd9fe072b76869608d",
+      "matches": true,
+      "signature": "public.get_id_dim_faixa(numeric,time without time zone)"
+    },
+    {
+      "expected_md5": "4ceab31871e33e5eb841c16d6e37cd82",
+      "actual_md5": "4ceab31871e33e5eb841c16d6e37cd82",
+      "matches": true,
+      "signature": "public.get_id_geracao(int4range,integer)"
+    },
+    {
+      "expected_md5": "221972b658c5e11554e75a9b361da415",
+      "actual_md5": "221972b658c5e11554e75a9b361da415",
+      "matches": true,
+      "signature": "public.get_id_geracao(int4range,integer,date,date)"
+    }
+  ],
+  "months": [
+    {
+      "eligible": 158051,
+      "month": "2026-01-01"
+    },
+    {
+      "eligible": 165059,
+      "month": "2026-02-01"
+    },
+    {
+      "eligible": 566764,
+      "month": "2026-03-01"
+    },
+    {
+      "eligible": 459228,
+      "month": "2026-04-01"
+    },
+    {
+      "eligible": 719782,
+      "month": "2026-05-01"
+    },
+    {
+      "eligible": 529639,
+      "month": "2026-06-01"
+    },
+    {
+      "eligible": 509871,
+      "month": "2026-07-01"
+    },
+    {
+      "eligible": 742644,
+      "month": "2026-08-01"
+    },
+    {
+      "eligible": 722066,
+      "month": "2026-09-01"
+    }
+  ],
+  "can_create_in_estudo": true,
+  "transaction_read_only": "on",
+  "ambiguous_start_date_dimension": 0,
+  "duplicate_dimension_ids": [
+    {
+      "dimension": "tbbi_dim_cbat_categorias",
+      "duplicate_keys": 0
+    },
+    {
+      "dimension": "tbbi_dim_cronometragem",
+      "duplicate_keys": 0
+    },
+    {
+      "dimension": "tbbi_dim_data",
+      "duplicate_keys": 0
+    },
+    {
+      "dimension": "tbbi_dim_faixas",
+      "duplicate_keys": 0
+    },
+    {
+      "dimension": "tbbi_dim_geracoes",
+      "duplicate_keys": 0
+    },
+    {
+      "dimension": "tbbi_dim_localidade",
+      "duplicate_keys": 0
+    },
+    {
+      "dimension": "tbbi_dim_organizacao_2026",
+      "duplicate_keys": 0
+    }
+  ],
+  "missing_start_date_dimension": 0,
+  "generation": [
+    {
+      "eligible": 542603,
+      "generation_id": 0
+    },
+    {
+      "eligible": 185979,
+      "generation_id": 1
+    },
+    {
+      "eligible": 865352,
+      "generation_id": 2
+    },
+    {
+      "eligible": 2106841,
+      "generation_id": 3
+    },
+    {
+      "eligible": 828057,
+      "generation_id": 4
+    },
+    {
+      "eligible": 44272,
+      "generation_id": 5
+    }
+  ],
+  "nulls_and_universe": {
+    "null_pcd": 0,
+    "null_start_date": 0,
+    "sex_over_varchar1": 0,
+    "null_event_homologated": 4502223,
+    "unique_results": 4573104,
+    "zero_time": 86,
+    "null_time": 0,
+    "kids": 0,
+    "eligible": 4573104,
+    "false_event_homologated": 0,
+    "null_sex": 0,
+    "null_id": 0,
+    "null_distance": 0,
+    "other_event_types": 0,
+    "null_modality": 0
+  },
+  "target_exists": false,
+  "range": "[2026-01-01,2026-10-01)"
+}

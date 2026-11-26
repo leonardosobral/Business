@@ -1,0 +1,3 @@
+# Limites CNA conferidos — 30/09/2026
+
+Fonte original: célula 219 rev1, preservada. Recálculo conjunto na célula 274 rev2, congelamento 60. Auditoria 59 e casos de fronteira 62. Nota completa na célula 277, seção P08 deste mesmo caderno: limites exatos, elegibilidade, tempos inválidos e ressalva PCD. A web 2025 usa saída 63; 2026 usa saída 64, conservando suas contagens anteriores. Nenhum limite candidato foi escolhido só pela aparência do PDF.

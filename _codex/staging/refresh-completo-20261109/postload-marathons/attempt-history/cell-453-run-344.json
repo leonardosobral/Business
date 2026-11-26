@@ -1,0 +1,772 @@
+{
+  "source_before": {
+    "version": 3,
+    "id": 453,
+    "content": "-- Renovação candidata09/11; curadoria/capturas externas preservadas; entradas=[{\"cell\": 425, \"revision\": 1, \"run\": 292, \"started_at\": \"2026-11-09 15:52:45.816865-03\"}, {\"cell\": 426, \"revision\": 1, \"run\": 303, \"started_at\": \"2026-11-09 18:19:51.924112-03\"}, {\"cell\": 427, \"revision\": 2, \"run\": 323, \"started_at\": \"2026-11-09 18:24:36.917672-03\"}, {\"cell\": 428, \"revision\": 2, \"run\": 324, \"started_at\": \"2026-11-09 18:24:38.447301-03\"}, {\"cell\": 429, \"revision\": 2, \"run\": 325, \"started_at\": \"2026-11-09 18:24:40.032492-03\"}, {\"cell\": 436, \"revision\": 1, \"run\": 294, \"started_at\": \"2026-11-09 15:52:52.633375-03\"}, {\"cell\": 437, \"revision\": 1, \"run\": 305, \"started_at\": \"2026-11-09 18:19:56.237708-03\"}, {\"cell\": 452, \"revision\": 2, \"run\": 308, \"started_at\": \"2026-11-09 18:20:00.171625-03\"}]\n-- Encarte Brasil Gigante: derivação dos congelamentos existentes, sem recontar o estudo principal.\n-- Seção nova; referências2025 precedem o anúncio do circuito em07/04/2026.\n-- João Pessoa é agregador14/evento32450:335 no inventário243, versus332 no balanço oficial.\n-- Paraná estreia em2026; Aracaju fora do corte. Comparação descritiva, sem atribuição causal.\nWITH fonte AS MATERIALIZED (\n SELECT id,cell_id,cell_version,sql_sha256,frozen_at,result,\n CASE WHEN jsonb_typeof(result->'rows'->0->'payload')='string' THEN (result->'rows'->0->>'payload')::jsonb ELSE result->'rows'->0->'payload' END AS payload\n FROM estudo.notebook_runs WHERE id IN(210,242,303,323,324,325,252,305,308)\n AND status='ok' AND frozen AND NOT truncated\n), seed AS (SELECT ordinality AS ord,value AS j FROM jsonb_array_elements('[{\"id\": \"sao-paulo\", \"label\": \"São Paulo\", \"aggregator\": 17, \"event2025\": 22582, \"event2026\": 29291, \"official_date_2026\": \"2026-04-12\", \"registered_date_2026\": \"2026-04-12\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": []}, {\"id\": \"parana\", \"label\": \"Paraná\", \"aggregator\": 1000, \"event2025\": null, \"event2026\": 37310, \"official_date_2026\": \"2026-05-03\", \"registered_date_2026\": \"2026-04-28\", \"comparable\": false, \"pending\": false, \"new\": true, \"quality_notes\": [\"Estreia em 2026: não existe base de 2025 para calcular variação.\", \"Data oficial dos 42 km: 03/05; cadastro/fonte congelada registra 28/04. Ambos pertencem ao segundo trimestre.\"]}, {\"id\": \"porto-alegre\", \"label\": \"Porto Alegre\", \"aggregator\": 26, \"event2025\": 24998, \"event2026\": 34236, \"official_date_2026\": \"2026-05-31\", \"registered_date_2026\": \"2026-05-31\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": []}, {\"id\": \"campo-grande\", \"label\": \"Campo Grande\", \"aggregator\": 9, \"event2025\": 27747, \"event2026\": 39393, \"official_date_2026\": \"2026-07-05\", \"registered_date_2026\": \"2026-07-05\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": []}, {\"id\": \"joao-pessoa\", \"label\": \"João Pessoa Internacional\", \"aggregator\": 14, \"event2025\": 27532, \"event2026\": 32450, \"official_date_2026\": \"2026-08-02\", \"registered_date_2026\": \"2026-08-02\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": [\"Agregador 14: Internacional de agosto; não confundir com o agregador 12, realizado em abril.\", \"Inventário congelado 243 contém 335 concluintes; balanço oficial informa 332. Divergência de três a conciliar.\", \"Não consta da seleção geral 245; entra somente neste encarte, pelos mesmos filtros convencionais do inventário.\"]}, {\"id\": \"floripa\", \"label\": \"Floripa\", \"aggregator\": 28, \"event2025\": 22792, \"event2026\": 34529, \"official_date_2026\": \"2026-08-30\", \"registered_date_2026\": \"2026-08-30\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": [\"2025: 5.137 concluintes convencionais no congelamento 252; 5.152 incluindo modalidades excluídas no inventário 242.\", \"2026 substitui integralmente o BI (3.609) pelos 3.592 classificados Geral/Elite da captura oficial 210.\", \"A variação de volume é descritiva; não comprova efeito do circuito nem captura completa equivalente entre anos.\"]}, {\"id\": \"salvador\", \"label\": \"Salvador\", \"aggregator\": 15, \"event2025\": 24016, \"event2026\": 36245, \"official_date_2026\": \"2026-09-27\", \"registered_date_2026\": \"2026-09-27\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": []}, {\"id\": \"aracaju\", \"label\": \"Aracaju\", \"aggregator\": 77, \"event2025\": 25481, \"event2026\": 39399, \"official_date_2026\": \"2026-11-01\", \"registered_date_2026\": \"2026-11-01\", \"comparable\": false, \"pending\": true, \"new\": false, \"quality_notes\": [\"Etapas de 2025 e 2026 no quarto trimestre: fora dos consolidados janeiro–setembro.\", \"Cadastro 2026 identificado pelo agregador 77; não realizado até o corte.\"]}]'::jsonb) WITH ORDINALITY),\nraw_details AS (\n SELECT f.id AS source_run,f.cell_id AS source_cell,v.value AS j\n FROM fonte f CROSS JOIN LATERAL jsonb_array_elements(f.payload->'provas') v WHERE f.id IN(252,305)\n), metrics AS (\n SELECT (j->>'id_evento')::int AS event_id,\n jsonb_build_object('total',(j->>'total')::int,'female',(j->>'feminino')::int,'male',(j->>'masculino')::int,\n 'sub3',(j->>'sub3')::int,'sub4',(j->>'sub4')::int,'median_seconds',(j->>'mediana')::numeric,\n 'source_run',source_run,'source_cell',source_cell,'date_registered',j->>'data') AS m\n FROM raw_details WHERE (j->>'id_evento')::int<>34529\n UNION ALL\n SELECT 34529,jsonb_build_object('total',(j->>'concluintes')::int,'female',(j->>'feminino')::int,\n 'male',(j->>'masculino')::int,'sub3',(j->>'sub3')::int,'sub4',(j->>'sub4')::int,\n 'median_seconds',(j->>'mediano_segundos')::numeric,'source_run',210,'source_cell',402,'date_registered','2026-08-30')\n FROM (SELECT payload->'classificados_geral_elite' AS j FROM fonte WHERE id=210) f\n UNION ALL\n SELECT 32450,jsonb_build_object('total',(j->>'participacoes')::int,'female',(j->>'feminino')::int,\n 'male',(j->>'masculino')::int,'sub3',(j->>'sub3')::int,'sub4',(j->>'sub4')::int,\n 'median_seconds',(j->>'mediana_segundos')::numeric,'source_run',303,'source_cell',426,'date_registered',j->>'data_final')\n FROM (SELECT v.value AS j FROM fonte f CROSS JOIN LATERAL jsonb_array_elements(f.result->'rows') v\n WHERE f.id=303 AND (v.value->>'id_evento')::int=32450) f\n), stages AS (\n SELECT s.ord,s.j||jsonb_build_object('metrics2025',a.m,'metrics2026',b.m,\n 'delta',CASE WHEN (s.j->>'comparable')::boolean THEN jsonb_build_object(\n 'absolute',(b.m->>'total')::int-(a.m->>'total')::int,\n 'percent',100*((b.m->>'total')::numeric/(a.m->>'total')::numeric-1)) ELSE NULL END) AS j\n FROM seed s LEFT JOIN metrics a ON a.event_id=(s.j->>'event2025')::int\n LEFT JOIN metrics b ON b.event_id=(s.j->>'event2026')::int\n), paired AS (\n SELECT j->>'id' AS id,(j->'metrics2025'->>'total')::int AS n2025,(j->'metrics2026'->>'total')::int AS n2026\n FROM stages WHERE (j->>'comparable')::boolean\n), summary_groups AS (\n SELECT 'cohort' AS kind,p.* FROM paired p\n UNION ALL SELECT 'without_floripa',p.* FROM paired p WHERE id<>'floripa'\n UNION ALL SELECT 'without_joao_pessoa',p.* FROM paired p WHERE id<>'joao-pessoa'\n), summaries AS (\n SELECT kind,jsonb_build_object('pairs',count(*),'base_total',sum(n2025),'total',sum(n2026),'absolute',sum(n2026)-sum(n2025),\n 'percent',100*(sum(n2026)::numeric/sum(n2025)-1),'growing',count(*) FILTER(WHERE n2026>n2025),\n 'declining',count(*) FILTER(WHERE n2026<n2025)) AS j FROM summary_groups GROUP BY kind\n), other_pairs AS (\n SELECT v.value AS j FROM fonte f CROSS JOIN LATERAL jsonb_array_elements(f.payload->'pares') v\n WHERE f.id=325 AND (v.value->>'agregador')::int NOT IN(17,1000,26,9,14,28,15,77)\n), other_groups AS (\n SELECT 'all' AS kind,j FROM other_pairs UNION ALL SELECT 'without_nb',j FROM other_pairs WHERE (j->>'agregador')::int<>39\n), benchmarks AS (\n SELECT kind,jsonb_build_object('pairs',count(*),'base_total',sum((j->>'n2025')::int),'total',sum((j->>'n2026')::int),\n 'absolute',sum((j->>'n2026')::int)-sum((j->>'n2025')::int),\n 'percent',100*(sum((j->>'n2026')::numeric)/sum((j->>'n2025')::numeric)-1),'source_run',325,\n 'events',jsonb_agg(jsonb_build_object('aggregator',(j->>'agregador')::int,'event2025',(j->>'id2025')::int,\n 'event2026',(j->>'id2026')::int,'label',j->>'nome_evento','base_total',(j->>'n2025')::int,'total',(j->>'n2026')::int)\n ORDER BY CAST(j->>'n2026' AS int) DESC)) AS j FROM other_groups GROUP BY kind\n), adoption AS (SELECT payload AS j FROM fonte WHERE id=308)\nSELECT jsonb_build_object(\n 'meta','{\"title\": \"Encarte · Circuito Brasil Gigante\", \"year\": 2026, \"cutoff\": \"2026-09-30\", \"baseline_year\": 2025, \"announcement_date\": \"2026-04-07\", \"ceremony_date\": \"2026-04-11\", \"source_runs\": [210, 242, 303, 323, 324, 325, 252, 305, 308], \"source_cells\": [402, 425, 426, 427, 428, 429, 436, 437, 452], \"source_section\": 66, \"book\": 6, \"unit\": \"conclusões de maratona, não pessoas únicas\", \"status\": \"reviewed\", \"notes\": [\"2025 é a referência anterior ao lançamento do circuito, não uma edição do Brasil Gigante.\", \"Comparações somam conclusões nos pares antes de calcular a variação, não média dos percentuais.\", \"Benchmark é descritivo; não é grupo de controle causal.\", \"Os seis pares dependem de cobertura equivalente; a diferença oficial de João Pessoa permanece aberta.\"], \"notebook_section\": 67, \"methodology_cell\": 451, \"adoption_run\": 308, \"adoption_cell\": 452, \"external_sources\": [{\"title\": \"Lançamento e calendário\", \"url\": \"https://circuitobrasilgigante.com.br/noticias/circuito-de-oito-maratonas-brasil-gigante-e-lancado-para-democratizar-as-provas-de-42-km-no-pais-2/?lang=pt-br\"}, {\"title\": \"Balanço João Pessoa\", \"url\": \"https://circuitobrasilgigante.com.br/noticias/joao-pessoa-marca-a-quinta-etapa-do-brasil-gigante-que-reune-corredores-em-jornada-pelas-oito-maratonas/\"}, {\"title\": \"Regulamento Paraná\", \"url\": \"https://www.maratonainternacionalpr.com.br/_files/ugd/4113c7_bb907a07911d44439d2933c673860efe.pdf\"}, {\"title\": \"Regras e retroatividade\", \"url\": \"https://circuitobrasilgigante.com.br/sobre/\"}]}'::jsonb||jsonb_build_object('source_versions',(SELECT jsonb_agg(jsonb_build_object('run',id,'cell',cell_id,'version',cell_version,'sql_sha256',sql_sha256,'frozen_at',frozen_at) ORDER BY id) FROM fonte)),\n 'stages',(SELECT jsonb_agg(j ORDER BY ord) FROM stages),\n 'cohort',(SELECT j FROM summaries WHERE kind='cohort'),\n 'subtotal',(SELECT jsonb_build_object('stages2026',count(*) FILTER(WHERE j->'metrics2026'<>'null'::jsonb AND NOT (j->>'pending')::boolean),\n 'total2026',sum((j->'metrics2026'->>'total')::int) FILTER(WHERE NOT (j->>'pending')::boolean),\n 'female2026',sum((j->'metrics2026'->>'female')::int) FILTER(WHERE NOT (j->>'pending')::boolean),\n 'sub4_2026',sum((j->'metrics2026'->>'sub4')::int) FILTER(WHERE NOT (j->>'pending')::boolean),\n 'total2025_comparable',sum((j->'metrics2025'->>'total')::int) FILTER(WHERE (j->>'comparable')::boolean),\n 'new2026',sum((j->'metrics2026'->>'total')::int) FILTER(WHERE (j->>'new')::boolean),\n 'pending',count(*) FILTER(WHERE (j->>'pending')::boolean)) FROM stages),\n 'benchmark',(SELECT jsonb_object_agg(kind,j) FROM benchmarks),\n 'sensitivity',(SELECT jsonb_object_agg(kind,j) FROM summaries WHERE kind<>'cohort'),\n 'adoption',(SELECT jsonb_build_object('registered',(j->>'inscritos')::int,'with_result',(j->>'com_resultado')::int,\n 'two_or_more',(j->>'com_duas_ou_mais')::int,'registered_before_or_same_day_one',(j->>'inscritos_antes_ou_dia_de_uma_etapa')::int,\n 'registered_before_or_same_day_two',(j->>'inscritos_antes_ou_dia_de_duas_etapas')::int,'queried_at',j->>'consultado_em',\n 'registration_cutoff','2026-09-30','result_cutoff','2026-09-30','status','I','source_run',308,'source_cell',452,\n 'distribution',(SELECT jsonb_agg(jsonb_build_object('stages',(v.value->>'etapas')::int,'accounts',(v.value->>'contas')::int)\n ORDER BY CAST(v.value->>'etapas' AS int)) FROM jsonb_array_elements(j->'distribuicao') v),\n 'notes','[\"Contas cadastradas no circuito até 30/09; resultados de provas até 30/09 associados na consulta atual.\", \"Status I é o cadastro existente; não significa conclusão de etapa.\", \"Associações podem ser retroativas; zero resultados associados não significa que a pessoa não correu.\", \"Recorrência deduplica conta e evento. Indicador operacional não comprova conversão causada pelo circuito.\", \"Floripa operacional usa o BI com 3.609; volume editorial usa a captura oficial com 3.592. Não combinar os dois denominadores.\"]'::jsonb) FROM adoption)\n) AS payload\n\n",
+    "hash": "93e3c7dc21f7dad845017acaa33db4f9"
+  },
+  "sql_sha256": "702e0d31dedc1e9da85d057bc2cf9adcc9493c14470b83974795dbdd33c6a313",
+  "run": {
+    "started_at": "2026-11-09 18:31:20.769856-03",
+    "duration_ms": 17,
+    "error_message": "",
+    "cell_version": 4,
+    "cell_id": "453",
+    "sql_sha256": "23321dd39a59d261b50c0a0f9ce1c1647c86090a39d596cb3175417da640dd48",
+    "truncated": 0,
+    "row_count": 1,
+    "sql_text": "-- Renovação candidata09/11; curadoria/capturas externas preservadas; entradas=[{\"cell\": 425, \"revision\": 1, \"run\": 292, \"started_at\": \"2026-11-09 15:52:45.816865-03\"}, {\"cell\": 426, \"revision\": 1, \"run\": 303, \"started_at\": \"2026-11-09 18:19:51.924112-03\"}, {\"cell\": 427, \"revision\": 3, \"run\": 339, \"started_at\": \"2026-11-09 18:31:12.809605-03\"}, {\"cell\": 428, \"revision\": 2, \"run\": 324, \"started_at\": \"2026-11-09 18:24:38.447301-03\"}, {\"cell\": 429, \"revision\": 3, \"run\": 340, \"started_at\": \"2026-11-09 18:31:14.538989-03\"}, {\"cell\": 436, \"revision\": 1, \"run\": 294, \"started_at\": \"2026-11-09 15:52:52.633375-03\"}, {\"cell\": 437, \"revision\": 1, \"run\": 305, \"started_at\": \"2026-11-09 18:19:56.237708-03\"}, {\"cell\": 452, \"revision\": 2, \"run\": 308, \"started_at\": \"2026-11-09 18:20:00.171625-03\"}]\n-- Encarte Brasil Gigante: derivação dos congelamentos existentes, sem recontar o estudo principal.\n-- Seção nova; referências2025 precedem o anúncio do circuito em07/04/2026.\n-- João Pessoa é agregador14/evento32450:335 no inventário243, versus332 no balanço oficial.\n-- Paraná estreia em2026; Aracaju fora do corte. Comparação descritiva, sem atribuição causal.\nWITH fonte AS MATERIALIZED (\n SELECT id,cell_id,cell_version,sql_sha256,frozen_at,result,\n CASE WHEN jsonb_typeof(result->'rows'->0->'payload')='string' THEN (result->'rows'->0->>'payload')::jsonb ELSE result->'rows'->0->'payload' END AS payload\n FROM estudo.notebook_runs WHERE id IN(210,292,303,339,324,340,294,305,308)\n AND status='ok' AND frozen AND NOT truncated\n), seed AS (SELECT ordinality AS ord,value AS j FROM jsonb_array_elements('[{\"id\": \"sao-paulo\", \"label\": \"São Paulo\", \"aggregator\": 17, \"event2025\": 22582, \"event2026\": 29291, \"official_date_2026\": \"2026-04-12\", \"registered_date_2026\": \"2026-04-12\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": []}, {\"id\": \"parana\", \"label\": \"Paraná\", \"aggregator\": 1000, \"event2025\": null, \"event2026\": 37310, \"official_date_2026\": \"2026-05-03\", \"registered_date_2026\": \"2026-04-28\", \"comparable\": false, \"pending\": false, \"new\": true, \"quality_notes\": [\"Estreia em 2026: não existe base de 2025 para calcular variação.\", \"Data oficial dos 42 km: 03/05; cadastro/fonte congelada registra 28/04. Ambos pertencem ao segundo trimestre.\"]}, {\"id\": \"porto-alegre\", \"label\": \"Porto Alegre\", \"aggregator\": 26, \"event2025\": 24998, \"event2026\": 34236, \"official_date_2026\": \"2026-05-31\", \"registered_date_2026\": \"2026-05-31\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": []}, {\"id\": \"campo-grande\", \"label\": \"Campo Grande\", \"aggregator\": 9, \"event2025\": 27747, \"event2026\": 39393, \"official_date_2026\": \"2026-07-05\", \"registered_date_2026\": \"2026-07-05\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": []}, {\"id\": \"joao-pessoa\", \"label\": \"João Pessoa Internacional\", \"aggregator\": 14, \"event2025\": 27532, \"event2026\": 32450, \"official_date_2026\": \"2026-08-02\", \"registered_date_2026\": \"2026-08-02\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": [\"Agregador 14: Internacional de agosto; não confundir com o agregador 12, realizado em abril.\", \"Inventário congelado 243 contém 335 concluintes; balanço oficial informa 332. Divergência de três a conciliar.\", \"Não consta da seleção geral 245; entra somente neste encarte, pelos mesmos filtros convencionais do inventário.\"]}, {\"id\": \"floripa\", \"label\": \"Floripa\", \"aggregator\": 28, \"event2025\": 22792, \"event2026\": 34529, \"official_date_2026\": \"2026-08-30\", \"registered_date_2026\": \"2026-08-30\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": [\"2025: 5.137 concluintes convencionais no congelamento 294; 5.152 incluindo modalidades excluídas no inventário 292.\", \"2026 substitui integralmente o BI (3.609) pelos 3.592 classificados Geral/Elite da captura oficial 210.\", \"A variação de volume é descritiva; não comprova efeito do circuito nem captura completa equivalente entre anos.\"]}, {\"id\": \"salvador\", \"label\": \"Salvador\", \"aggregator\": 15, \"event2025\": 24016, \"event2026\": 36245, \"official_date_2026\": \"2026-09-27\", \"registered_date_2026\": \"2026-09-27\", \"comparable\": true, \"pending\": false, \"new\": false, \"quality_notes\": []}, {\"id\": \"aracaju\", \"label\": \"Aracaju\", \"aggregator\": 77, \"event2025\": 25481, \"event2026\": 39399, \"official_date_2026\": \"2026-11-01\", \"registered_date_2026\": \"2026-11-01\", \"comparable\": false, \"pending\": true, \"new\": false, \"quality_notes\": [\"Etapas de 2025 e 2026 no quarto trimestre: fora dos consolidados janeiro–setembro.\", \"Cadastro 2026 identificado pelo agregador 77; não realizado até o corte.\"]}]'::jsonb) WITH ORDINALITY),\nraw_details AS (\n SELECT f.id AS source_run,f.cell_id AS source_cell,v.value AS j\n FROM fonte f CROSS JOIN LATERAL jsonb_array_elements(f.payload->'provas') v WHERE f.id IN(294,305)\n), metrics AS (\n SELECT (j->>'id_evento')::int AS event_id,\n jsonb_build_object('total',(j->>'total')::int,'female',(j->>'feminino')::int,'male',(j->>'masculino')::int,\n 'sub3',(j->>'sub3')::int,'sub4',(j->>'sub4')::int,'median_seconds',(j->>'mediana')::numeric,\n 'source_run',source_run,'source_cell',source_cell,'date_registered',j->>'data') AS m\n FROM raw_details WHERE (j->>'id_evento')::int<>34529\n UNION ALL\n SELECT 34529,jsonb_build_object('total',(j->>'concluintes')::int,'female',(j->>'feminino')::int,\n 'male',(j->>'masculino')::int,'sub3',(j->>'sub3')::int,'sub4',(j->>'sub4')::int,\n 'median_seconds',(j->>'mediano_segundos')::numeric,'source_run',210,'source_cell',402,'date_registered','2026-08-30')\n FROM (SELECT payload->'classificados_geral_elite' AS j FROM fonte WHERE id=210) f\n UNION ALL\n SELECT 32450,jsonb_build_object('total',(j->>'participacoes')::int,'female',(j->>'feminino')::int,\n 'male',(j->>'masculino')::int,'sub3',(j->>'sub3')::int,'sub4',(j->>'sub4')::int,\n 'median_seconds',(j->>'mediana_segundos')::numeric,'source_run',303,'source_cell',426,'date_registered',j->>'data_final')\n FROM (SELECT v.value AS j FROM fonte f CROSS JOIN LATERAL jsonb_array_elements(f.result->'rows') v\n WHERE f.id=303 AND (v.value->>'id_evento')::int=32450) f\n), stages AS (\n SELECT s.ord,s.j||jsonb_build_object('metrics2025',a.m,'metrics2026',b.m,\n 'delta',CASE WHEN (s.j->>'comparable')::boolean THEN jsonb_build_object(\n 'absolute',(b.m->>'total')::int-(a.m->>'total')::int,\n 'percent',100*((b.m->>'total')::numeric/(a.m->>'total')::numeric-1)) ELSE NULL END) AS j\n FROM seed s LEFT JOIN metrics a ON a.event_id=(s.j->>'event2025')::int\n LEFT JOIN metrics b ON b.event_id=(s.j->>'event2026')::int\n), paired AS (\n SELECT j->>'id' AS id,(j->'metrics2025'->>'total')::int AS n2025,(j->'metrics2026'->>'total')::int AS n2026\n FROM stages WHERE (j->>'comparable')::boolean\n), summary_groups AS (\n SELECT 'cohort' AS kind,p.* FROM paired p\n UNION ALL SELECT 'without_floripa',p.* FROM paired p WHERE id<>'floripa'\n UNION ALL SELECT 'without_joao_pessoa',p.* FROM paired p WHERE id<>'joao-pessoa'\n), summaries AS (\n SELECT kind,jsonb_build_object('pairs',count(*),'base_total',sum(n2025),'total',sum(n2026),'absolute',sum(n2026)-sum(n2025),\n 'percent',100*(sum(n2026)::numeric/sum(n2025)-1),'growing',count(*) FILTER(WHERE n2026>n2025),\n 'declining',count(*) FILTER(WHERE n2026<n2025)) AS j FROM summary_groups GROUP BY kind\n), other_pairs AS (\n SELECT v.value AS j FROM fonte f CROSS JOIN LATERAL jsonb_array_elements(f.payload->'pares') v\n WHERE f.id=340 AND (v.value->>'agregador')::int NOT IN(17,1000,26,9,14,28,15,77)\n), other_groups AS (\n SELECT 'all' AS kind,j FROM other_pairs UNION ALL SELECT 'without_nb',j FROM other_pairs WHERE (j->>'agregador')::int<>39\n), benchmarks AS (\n SELECT kind,jsonb_build_object('pairs',count(*),'base_total',sum((j->>'n2025')::int),'total',sum((j->>'n2026')::int),\n 'absolute',sum((j->>'n2026')::int)-sum((j->>'n2025')::int),\n 'percent',100*(sum((j->>'n2026')::numeric)/sum((j->>'n2025')::numeric)-1),'source_run',340,\n 'events',jsonb_agg(jsonb_build_object('aggregator',(j->>'agregador')::int,'event2025',(j->>'id2025')::int,\n 'event2026',(j->>'id2026')::int,'label',j->>'nome_evento','base_total',(j->>'n2025')::int,'total',(j->>'n2026')::int)\n ORDER BY CAST(j->>'n2026' AS int) DESC)) AS j FROM other_groups GROUP BY kind\n), adoption AS (SELECT payload AS j FROM fonte WHERE id=308)\nSELECT jsonb_build_object(\n 'meta','{\"title\": \"Encarte · Circuito Brasil Gigante\", \"year\": 2026, \"cutoff\": \"2026-09-30\", \"baseline_year\": 2025, \"announcement_date\": \"2026-04-07\", \"ceremony_date\": \"2026-04-11\", \"source_runs\": [210, 292, 303, 339, 324, 340, 294, 305, 308], \"source_cells\": [402, 425, 426, 427, 428, 429, 436, 437, 452], \"source_section\": 66, \"book\": 6, \"unit\": \"conclusões de maratona, não pessoas únicas\", \"status\": \"reviewed\", \"notes\": [\"2025 é a referência anterior ao lançamento do circuito, não uma edição do Brasil Gigante.\", \"Comparações somam conclusões nos pares antes de calcular a variação, não média dos percentuais.\", \"Benchmark é descritivo; não é grupo de controle causal.\", \"Os seis pares dependem de cobertura equivalente; a diferença oficial de João Pessoa permanece aberta.\"], \"notebook_section\": 67, \"methodology_cell\": 451, \"adoption_run\": 308, \"adoption_cell\": 452, \"external_sources\": [{\"title\": \"Lançamento e calendário\", \"url\": \"https://circuitobrasilgigante.com.br/noticias/circuito-de-oito-maratonas-brasil-gigante-e-lancado-para-democratizar-as-provas-de-42-km-no-pais-2/?lang=pt-br\"}, {\"title\": \"Balanço João Pessoa\", \"url\": \"https://circuitobrasilgigante.com.br/noticias/joao-pessoa-marca-a-quinta-etapa-do-brasil-gigante-que-reune-corredores-em-jornada-pelas-oito-maratonas/\"}, {\"title\": \"Regulamento Paraná\", \"url\": \"https://www.maratonainternacionalpr.com.br/_files/ugd/4113c7_bb907a07911d44439d2933c673860efe.pdf\"}, {\"title\": \"Regras e retroatividade\", \"url\": \"https://circuitobrasilgigante.com.br/sobre/\"}]}'::jsonb||jsonb_build_object('source_versions',(SELECT jsonb_agg(jsonb_build_object('run',id,'cell',cell_id,'version',cell_version,'sql_sha256',sql_sha256,'frozen_at',frozen_at) ORDER BY id) FROM fonte)),\n 'stages',(SELECT jsonb_agg(j ORDER BY ord) FROM stages),\n 'cohort',(SELECT j FROM summaries WHERE kind='cohort'),\n 'subtotal',(SELECT jsonb_build_object('stages2026',count(*) FILTER(WHERE j->'metrics2026'<>'null'::jsonb AND NOT (j->>'pending')::boolean),\n 'total2026',sum((j->'metrics2026'->>'total')::int) FILTER(WHERE NOT (j->>'pending')::boolean),\n 'female2026',sum((j->'metrics2026'->>'female')::int) FILTER(WHERE NOT (j->>'pending')::boolean),\n 'sub4_2026',sum((j->'metrics2026'->>'sub4')::int) FILTER(WHERE NOT (j->>'pending')::boolean),\n 'total2025_comparable',sum((j->'metrics2025'->>'total')::int) FILTER(WHERE (j->>'comparable')::boolean),\n 'new2026',sum((j->'metrics2026'->>'total')::int) FILTER(WHERE (j->>'new')::boolean),\n 'pending',count(*) FILTER(WHERE (j->>'pending')::boolean)) FROM stages),\n 'benchmark',(SELECT jsonb_object_agg(kind,j) FROM benchmarks),\n 'sensitivity',(SELECT jsonb_object_agg(kind,j) FROM summaries WHERE kind<>'cohort'),\n 'adoption',(SELECT jsonb_build_object('registered',(j->>'inscritos')::int,'with_result',(j->>'com_resultado')::int,\n 'two_or_more',(j->>'com_duas_ou_mais')::int,'registered_before_or_same_day_one',(j->>'inscritos_antes_ou_dia_de_uma_etapa')::int,\n 'registered_before_or_same_day_two',(j->>'inscritos_antes_ou_dia_de_duas_etapas')::int,'queried_at',j->>'consultado_em',\n 'registration_cutoff','2026-09-30','result_cutoff','2026-09-30','status','I','source_run',308,'source_cell',452,\n 'distribution',(SELECT jsonb_agg(jsonb_build_object('stages',(v.value->>'etapas')::int,'accounts',(v.value->>'contas')::int)\n ORDER BY CAST(v.value->>'etapas' AS int)) FROM jsonb_array_elements(j->'distribuicao') v),\n 'notes','[\"Contas cadastradas no circuito até 30/09; resultados de provas até 30/09 associados na consulta atual.\", \"Status I é o cadastro existente; não significa conclusão de etapa.\", \"Associações podem ser retroativas; zero resultados associados não significa que a pessoa não correu.\", \"Recorrência deduplica conta e evento. Indicador operacional não comprova conversão causada pelo circuito.\", \"Floripa operacional usa o BI com 3.609; volume editorial usa a captura oficial com 3.592. Não combinar os dois denominadores.\"]'::jsonb) FROM adoption)\n) AS payload",
+    "status": "ok",
+    "note": "Referências novas e curadoria literal preservada. Não publica HTML/produtos. Capturas externas mantêm suas datas. Principal2025 histórico205; demais temas com fontes próprias.",
+    "finished_at": "2026-11-09 18:31:20.788694-03",
+    "frozen_at": "2026-11-09 18:31:20.792309-03",
+    "title": "Maratonas — derivação renovada — 09/11/2026 — célula 453",
+    "id": "344",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "truncated": false,
+    "status": "ok",
+    "started_at": "2026-11-09T18:31:20.769856-03:00",
+    "cell_id": 453,
+    "cell_version": 4,
+    "id": 344,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "payload"
+      ],
+      "rows": [
+        {
+          "payload": {
+            "meta": {
+              "ceremony_date": "2026-04-11",
+              "announcement_date": "2026-04-07",
+              "unit": "conclusões de maratona, não pessoas únicas",
+              "source_versions": [
+                {
+                  "version": 1,
+                  "run": 210,
+                  "frozen_at": "2026-10-06T19:10:20.727137-03:00",
+                  "cell": 402,
+                  "sql_sha256": "24c58d3244e3cba86f0ef06c35ad2799c15917a5794912d0e79f1f43f61fc8fd"
+                },
+                {
+                  "version": 1,
+                  "run": 292,
+                  "frozen_at": "2026-11-09T15:52:50.212469-03:00",
+                  "cell": 425,
+                  "sql_sha256": "2ccb6bc79e5ac2ba7dce5fa2870398e4938143964f413b8c120a2e0730be20bf"
+                },
+                {
+                  "version": 1,
+                  "run": 294,
+                  "frozen_at": "2026-11-09T15:52:52.983468-03:00",
+                  "cell": 436,
+                  "sql_sha256": "f47f6ff8e51bfd8b7d90b37c17b316e1ab7150b2eb859adfda5c7e447e4ab0e3"
+                },
+                {
+                  "version": 1,
+                  "run": 303,
+                  "frozen_at": "2026-11-09T18:19:52.810833-03:00",
+                  "cell": 426,
+                  "sql_sha256": "dd8611ad9a8e4f24d6faeaeb016405e8359b5587a8db16222f4091bf66725c89"
+                },
+                {
+                  "version": 1,
+                  "run": 305,
+                  "frozen_at": "2026-11-09T18:19:56.699316-03:00",
+                  "cell": 437,
+                  "sql_sha256": "2d05ed45a25e3b0d274b9514364103a7b05de92a6b0b6e3d3d78b9f60739dbf7"
+                },
+                {
+                  "version": 2,
+                  "run": 308,
+                  "frozen_at": "2026-11-09T18:20:00.804325-03:00",
+                  "cell": 452,
+                  "sql_sha256": "b8c0a5cab036055f0ee4d8bb63af8a94f6e8b33dc691aa6aa7a8b923797756ad"
+                },
+                {
+                  "version": 2,
+                  "run": 324,
+                  "frozen_at": "2026-11-09T18:24:38.458685-03:00",
+                  "cell": 428,
+                  "sql_sha256": "f8ece9d7803105e670cf5952689472eea1c17df6bceb74a9c01213ed03c9e0c2"
+                },
+                {
+                  "version": 3,
+                  "run": 339,
+                  "frozen_at": "2026-11-09T18:31:12.823391-03:00",
+                  "cell": 427,
+                  "sql_sha256": "7136de6704ffb3256aba151a99630a8180f23b29b8608429c9a7ce3de28a3d11"
+                },
+                {
+                  "version": 3,
+                  "run": 340,
+                  "frozen_at": "2026-11-09T18:31:14.557959-03:00",
+                  "cell": 429,
+                  "sql_sha256": "bb8bd77780326b77df66183ea6d13c18c085c8dff7f8a64a924333cfa7067187"
+                }
+              ],
+              "cutoff": "2026-09-30",
+              "source_runs": [
+                210,
+                292,
+                303,
+                339,
+                324,
+                340,
+                294,
+                305,
+                308
+              ],
+              "source_section": 66,
+              "adoption_cell": 452,
+              "source_cells": [
+                402,
+                425,
+                426,
+                427,
+                428,
+                429,
+                436,
+                437,
+                452
+              ],
+              "notes": [
+                "2025 é a referência anterior ao lançamento do circuito, não uma edição do Brasil Gigante.",
+                "Comparações somam conclusões nos pares antes de calcular a variação, não média dos percentuais.",
+                "Benchmark é descritivo; não é grupo de controle causal.",
+                "Os seis pares dependem de cobertura equivalente; a diferença oficial de João Pessoa permanece aberta."
+              ],
+              "status": "reviewed",
+              "adoption_run": 308,
+              "year": 2026,
+              "baseline_year": 2025,
+              "book": 6,
+              "title": "Encarte · Circuito Brasil Gigante",
+              "external_sources": [
+                {
+                  "title": "Lançamento e calendário",
+                  "url": "https://circuitobrasilgigante.com.br/noticias/circuito-de-oito-maratonas-brasil-gigante-e-lancado-para-democratizar-as-provas-de-42-km-no-pais-2/?lang=pt-br"
+                },
+                {
+                  "title": "Balanço João Pessoa",
+                  "url": "https://circuitobrasilgigante.com.br/noticias/joao-pessoa-marca-a-quinta-etapa-do-brasil-gigante-que-reune-corredores-em-jornada-pelas-oito-maratonas/"
+                },
+                {
+                  "title": "Regulamento Paraná",
+                  "url": "https://www.maratonainternacionalpr.com.br/_files/ugd/4113c7_bb907a07911d44439d2933c673860efe.pdf"
+                },
+                {
+                  "title": "Regras e retroatividade",
+                  "url": "https://circuitobrasilgigante.com.br/sobre/"
+                }
+              ],
+              "methodology_cell": 451,
+              "notebook_section": 67
+            },
+            "subtotal": {
+              "sub4_2026": 9157,
+              "female2026": 4875,
+              "stages2026": 7,
+              "new2026": 2245,
+              "total2026": 19409,
+              "pending": 1,
+              "total2025_comparable": 17545
+            },
+            "stages": [
+              {
+                "new": false,
+                "delta": {
+                  "absolute": -590,
+                  "percent": -12.1499176276771
+                },
+                "event2026": 29291,
+                "comparable": true,
+                "metrics2025": {
+                  "total": 4856,
+                  "sub4": 1842,
+                  "sub3": 117,
+                  "source_cell": 436,
+                  "date_registered": "2025-04-06",
+                  "source_run": 294,
+                  "male": 4087,
+                  "female": 769,
+                  "median_seconds": 15241
+                },
+                "pending": false,
+                "metrics2026": {
+                  "total": 4266,
+                  "sub4": 1401,
+                  "sub3": 102,
+                  "source_cell": 437,
+                  "date_registered": "2026-04-12",
+                  "source_run": 305,
+                  "male": 3552,
+                  "female": 714,
+                  "median_seconds": 15543
+                },
+                "quality_notes": [],
+                "event2025": 22582,
+                "aggregator": 17,
+                "official_date_2026": "2026-04-12",
+                "label": "São Paulo",
+                "id": "sao-paulo",
+                "registered_date_2026": "2026-04-12"
+              },
+              {
+                "new": true,
+                "delta": null,
+                "event2026": 37310,
+                "comparable": false,
+                "metrics2025": null,
+                "pending": false,
+                "metrics2026": {
+                  "total": 2245,
+                  "sub4": 932,
+                  "sub3": 44,
+                  "source_cell": 437,
+                  "date_registered": "2026-04-28",
+                  "source_run": 305,
+                  "male": 1681,
+                  "female": 564,
+                  "median_seconds": 15032
+                },
+                "quality_notes": [
+                  "Estreia em 2026: não existe base de 2025 para calcular variação.",
+                  "Data oficial dos 42 km: 03/05; cadastro/fonte congelada registra 28/04. Ambos pertencem ao segundo trimestre."
+                ],
+                "event2025": null,
+                "aggregator": 1000,
+                "official_date_2026": "2026-05-03",
+                "label": "Paraná",
+                "id": "parana",
+                "registered_date_2026": "2026-04-28"
+              },
+              {
+                "new": false,
+                "delta": {
+                  "absolute": 1676,
+                  "percent": 29.05182873981626
+                },
+                "event2026": 34236,
+                "comparable": true,
+                "metrics2025": {
+                  "total": 5769,
+                  "sub4": 3473,
+                  "sub3": 438,
+                  "source_cell": 436,
+                  "date_registered": "2025-06-08",
+                  "source_run": 294,
+                  "male": 4289,
+                  "female": 1480,
+                  "median_seconds": 13881
+                },
+                "pending": false,
+                "metrics2026": {
+                  "total": 7445,
+                  "sub4": 4407,
+                  "sub3": 545,
+                  "source_cell": 437,
+                  "date_registered": "2026-05-31",
+                  "source_run": 305,
+                  "male": 5318,
+                  "female": 2127,
+                  "median_seconds": 13983
+                },
+                "quality_notes": [],
+                "event2025": 24998,
+                "aggregator": 26,
+                "official_date_2026": "2026-05-31",
+                "label": "Porto Alegre",
+                "id": "porto-alegre",
+                "registered_date_2026": "2026-05-31"
+              },
+              {
+                "new": false,
+                "delta": {
+                  "absolute": 124,
+                  "percent": 42.17687074829932
+                },
+                "event2026": 39393,
+                "comparable": true,
+                "metrics2025": {
+                  "total": 294,
+                  "sub4": 115,
+                  "sub3": 10,
+                  "source_cell": 436,
+                  "date_registered": "2025-07-06",
+                  "source_run": 294,
+                  "male": 249,
+                  "female": 45,
+                  "median_seconds": 15178.14
+                },
+                "pending": false,
+                "metrics2026": {
+                  "total": 418,
+                  "sub4": 177,
+                  "sub3": 12,
+                  "source_cell": 437,
+                  "date_registered": "2026-07-05",
+                  "source_run": 305,
+                  "male": 326,
+                  "female": 92,
+                  "median_seconds": 14924
+                },
+                "quality_notes": [],
+                "event2025": 27747,
+                "aggregator": 9,
+                "official_date_2026": "2026-07-05",
+                "label": "Campo Grande",
+                "id": "campo-grande",
+                "registered_date_2026": "2026-07-05"
+              },
+              {
+                "new": false,
+                "delta": {
+                  "absolute": -49,
+                  "percent": -12.760416666666666
+                },
+                "event2026": 32450,
+                "comparable": true,
+                "metrics2025": {
+                  "total": 384,
+                  "sub4": 138,
+                  "sub3": 11,
+                  "source_cell": 436,
+                  "date_registered": "2025-08-03",
+                  "source_run": 294,
+                  "male": 325,
+                  "female": 59,
+                  "median_seconds": 15397.682
+                },
+                "pending": false,
+                "metrics2026": {
+                  "total": 335,
+                  "sub4": 144,
+                  "sub3": 14,
+                  "source_cell": 426,
+                  "date_registered": "2026-08-02",
+                  "source_run": 303,
+                  "male": 267,
+                  "female": 68,
+                  "median_seconds": 14922
+                },
+                "quality_notes": [
+                  "Agregador 14: Internacional de agosto; não confundir com o agregador 12, realizado em abril.",
+                  "Inventário congelado 243 contém 335 concluintes; balanço oficial informa 332. Divergência de três a conciliar.",
+                  "Não consta da seleção geral 245; entra somente neste encarte, pelos mesmos filtros convencionais do inventário."
+                ],
+                "event2025": 27532,
+                "aggregator": 14,
+                "official_date_2026": "2026-08-02",
+                "label": "João Pessoa Internacional",
+                "id": "joao-pessoa",
+                "registered_date_2026": "2026-08-02"
+              },
+              {
+                "new": false,
+                "delta": {
+                  "absolute": -1545,
+                  "percent": -30.075919797547208
+                },
+                "event2026": 34529,
+                "comparable": true,
+                "metrics2025": {
+                  "total": 5137,
+                  "sub4": 2416,
+                  "sub3": 204,
+                  "source_cell": 436,
+                  "date_registered": "2025-08-31",
+                  "source_run": 294,
+                  "male": 3653,
+                  "female": 1484,
+                  "median_seconds": 14575
+                },
+                "pending": false,
+                "metrics2026": {
+                  "total": 3592,
+                  "sub4": 1682,
+                  "sub3": 124,
+                  "source_cell": 402,
+                  "date_registered": "2026-08-30",
+                  "source_run": 210,
+                  "male": 2465,
+                  "female": 1127,
+                  "median_seconds": 14595
+                },
+                "quality_notes": [
+                  "2025: 5.137 concluintes convencionais no congelamento 294; 5.152 incluindo modalidades excluídas no inventário 292.",
+                  "2026 substitui integralmente o BI (3.609) pelos 3.592 classificados Geral/Elite da captura oficial 210.",
+                  "A variação de volume é descritiva; não comprova efeito do circuito nem captura completa equivalente entre anos."
+                ],
+                "event2025": 22792,
+                "aggregator": 28,
+                "official_date_2026": "2026-08-30",
+                "label": "Floripa",
+                "id": "floripa",
+                "registered_date_2026": "2026-08-30"
+              },
+              {
+                "new": false,
+                "delta": {
+                  "absolute": 3,
+                  "percent": 0.27149321266968
+                },
+                "event2026": 36245,
+                "comparable": true,
+                "metrics2025": {
+                  "total": 1105,
+                  "sub4": 432,
+                  "sub3": 48,
+                  "source_cell": 436,
+                  "date_registered": "2025-09-21",
+                  "source_run": 294,
+                  "male": 919,
+                  "female": 186,
+                  "median_seconds": 15133
+                },
+                "pending": false,
+                "metrics2026": {
+                  "total": 1108,
+                  "sub4": 414,
+                  "sub3": 31,
+                  "source_cell": 437,
+                  "date_registered": "2026-09-27",
+                  "source_run": 305,
+                  "male": 925,
+                  "female": 183,
+                  "median_seconds": 15156.5
+                },
+                "quality_notes": [],
+                "event2025": 24016,
+                "aggregator": 15,
+                "official_date_2026": "2026-09-27",
+                "label": "Salvador",
+                "id": "salvador",
+                "registered_date_2026": "2026-09-27"
+              },
+              {
+                "new": false,
+                "delta": null,
+                "event2026": 39399,
+                "comparable": false,
+                "metrics2025": {
+                  "total": 1363,
+                  "sub4": 461,
+                  "sub3": 22,
+                  "source_cell": 436,
+                  "date_registered": "2025-10-26",
+                  "source_run": 294,
+                  "male": 1095,
+                  "female": 268,
+                  "median_seconds": 15667
+                },
+                "pending": true,
+                "metrics2026": null,
+                "quality_notes": [
+                  "Etapas de 2025 e 2026 no quarto trimestre: fora dos consolidados janeiro–setembro.",
+                  "Cadastro 2026 identificado pelo agregador 77; não realizado até o corte."
+                ],
+                "event2025": 25481,
+                "aggregator": 77,
+                "official_date_2026": "2026-11-01",
+                "label": "Aracaju",
+                "id": "aracaju",
+                "registered_date_2026": "2026-11-01"
+              }
+            ],
+            "benchmark": {
+              "all": {
+                "total": 28972,
+                "absolute": 5752,
+                "events": [
+                  {
+                    "total": 14120,
+                    "aggregator": 19,
+                    "base_total": 13132,
+                    "label": "Maratona Internacional do Rio de Janeiro 2025",
+                    "event2026": 43066,
+                    "event2025": 24999
+                  },
+                  {
+                    "total": 6642,
+                    "aggregator": 21,
+                    "base_total": 5386,
+                    "label": "SP City Marathon 2025",
+                    "event2026": 33486,
+                    "event2025": 26867
+                  },
+                  {
+                    "total": 5210,
+                    "aggregator": 39,
+                    "base_total": 1765,
+                    "label": "New Balance 42k Porto Alegre",
+                    "event2026": 34235,
+                    "event2025": 22590
+                  },
+                  {
+                    "total": 857,
+                    "aggregator": 40,
+                    "base_total": 426,
+                    "label": "Meia e Maratona Cidade de Florianópolis 2025",
+                    "event2026": 37815,
+                    "event2025": 26983
+                  },
+                  {
+                    "total": 559,
+                    "aggregator": 12,
+                    "base_total": 858,
+                    "label": "Maratona de João Pessoa 2025",
+                    "event2026": 34840,
+                    "event2025": 22586
+                  },
+                  {
+                    "total": 501,
+                    "aggregator": 1397,
+                    "base_total": 683,
+                    "label": "1ª MARATONA DE SÃO JOSÉ",
+                    "event2026": 36973,
+                    "event2025": 29387
+                  },
+                  {
+                    "total": 404,
+                    "aggregator": 72,
+                    "base_total": 449,
+                    "label": "Maratona de Londrina 2025",
+                    "event2026": 36250,
+                    "event2025": 26768
+                  },
+                  {
+                    "total": 370,
+                    "aggregator": 708,
+                    "base_total": 187,
+                    "label": "2ª Maratona Internacional de Goiânia",
+                    "event2026": 37874,
+                    "event2025": 27771
+                  },
+                  {
+                    "total": 101,
+                    "aggregator": 65,
+                    "base_total": 110,
+                    "label": "Maratona de Torres 2025",
+                    "event2026": 43073,
+                    "event2025": 25733
+                  },
+                  {
+                    "total": 96,
+                    "aggregator": 27,
+                    "base_total": 100,
+                    "label": "Maratona de Tubarão 2025",
+                    "event2026": 37307,
+                    "event2025": 25727
+                  },
+                  {
+                    "total": 60,
+                    "aggregator": 859,
+                    "base_total": 76,
+                    "label": "8ª Jipa City Marathon",
+                    "event2026": 33976,
+                    "event2025": 31973
+                  },
+                  {
+                    "total": 52,
+                    "aggregator": 1422,
+                    "base_total": 48,
+                    "label": "Maratona de Capão da Canoa",
+                    "event2026": 43074,
+                    "event2025": 28617
+                  }
+                ],
+                "percent": 24.771748492678725,
+                "base_total": 23220,
+                "source_run": 340,
+                "pairs": 12
+              },
+              "without_nb": {
+                "total": 23762,
+                "absolute": 2307,
+                "events": [
+                  {
+                    "total": 14120,
+                    "aggregator": 19,
+                    "base_total": 13132,
+                    "label": "Maratona Internacional do Rio de Janeiro 2025",
+                    "event2026": 43066,
+                    "event2025": 24999
+                  },
+                  {
+                    "total": 6642,
+                    "aggregator": 21,
+                    "base_total": 5386,
+                    "label": "SP City Marathon 2025",
+                    "event2026": 33486,
+                    "event2025": 26867
+                  },
+                  {
+                    "total": 857,
+                    "aggregator": 40,
+                    "base_total": 426,
+                    "label": "Meia e Maratona Cidade de Florianópolis 2025",
+                    "event2026": 37815,
+                    "event2025": 26983
+                  },
+                  {
+                    "total": 559,
+                    "aggregator": 12,
+                    "base_total": 858,
+                    "label": "Maratona de João Pessoa 2025",
+                    "event2026": 34840,
+                    "event2025": 22586
+                  },
+                  {
+                    "total": 501,
+                    "aggregator": 1397,
+                    "base_total": 683,
+                    "label": "1ª MARATONA DE SÃO JOSÉ",
+                    "event2026": 36973,
+                    "event2025": 29387
+                  },
+                  {
+                    "total": 404,
+                    "aggregator": 72,
+                    "base_total": 449,
+                    "label": "Maratona de Londrina 2025",
+                    "event2026": 36250,
+                    "event2025": 26768
+                  },
+                  {
+                    "total": 370,
+                    "aggregator": 708,
+                    "base_total": 187,
+                    "label": "2ª Maratona Internacional de Goiânia",
+                    "event2026": 37874,
+                    "event2025": 27771
+                  },
+                  {
+                    "total": 101,
+                    "aggregator": 65,
+                    "base_total": 110,
+                    "label": "Maratona de Torres 2025",
+                    "event2026": 43073,
+                    "event2025": 25733
+                  },
+                  {
+                    "total": 96,
+                    "aggregator": 27,
+                    "base_total": 100,
+                    "label": "Maratona de Tubarão 2025",
+                    "event2026": 37307,
+                    "event2025": 25727
+                  },
+                  {
+                    "total": 60,
+                    "aggregator": 859,
+                    "base_total": 76,
+                    "label": "8ª Jipa City Marathon",
+                    "event2026": 33976,
+                    "event2025": 31973
+                  },
+                  {
+                    "total": 52,
+                    "aggregator": 1422,
+                    "base_total": 48,
+                    "label": "Maratona de Capão da Canoa",
+                    "event2026": 43074,
+                    "event2025": 28617
+                  }
+                ],
+                "percent": 10.75273828944302,
+                "base_total": 21455,
+                "source_run": 340,
+                "pairs": 11
+              }
+            },
+            "sensitivity": {
+              "without_floripa": {
+                "total": 13572,
+                "absolute": 1164,
+                "growing": 3,
+                "percent": 9.381044487427467,
+                "base_total": 12408,
+                "declining": 2,
+                "pairs": 5
+              },
+              "without_joao_pessoa": {
+                "total": 16829,
+                "absolute": -332,
+                "growing": 3,
+                "percent": -1.9346191946856244,
+                "base_total": 17161,
+                "declining": 2,
+                "pairs": 5
+              }
+            },
+            "adoption": {
+              "result_cutoff": "2026-09-30",
+              "distribution": [
+                {
+                  "stages": 0,
+                  "accounts": 4194
+                },
+                {
+                  "stages": 1,
+                  "accounts": 1382
+                },
+                {
+                  "stages": 2,
+                  "accounts": 148
+                },
+                {
+                  "stages": 3,
+                  "accounts": 27
+                },
+                {
+                  "stages": 4,
+                  "accounts": 2
+                },
+                {
+                  "stages": 5,
+                  "accounts": 2
+                },
+                {
+                  "stages": 6,
+                  "accounts": 1
+                }
+              ],
+              "registered_before_or_same_day_one": 859,
+              "source_cell": 452,
+              "registered_before_or_same_day_two": 102,
+              "notes": [
+                "Contas cadastradas no circuito até 30/09; resultados de provas até 30/09 associados na consulta atual.",
+                "Status I é o cadastro existente; não significa conclusão de etapa.",
+                "Associações podem ser retroativas; zero resultados associados não significa que a pessoa não correu.",
+                "Recorrência deduplica conta e evento. Indicador operacional não comprova conversão causada pelo circuito.",
+                "Floripa operacional usa o BI com 3.609; volume editorial usa a captura oficial com 3.592. Não combinar os dois denominadores."
+              ],
+              "status": "I",
+              "with_result": 1562,
+              "registration_cutoff": "2026-09-30",
+              "registered": 5756,
+              "two_or_more": 180,
+              "source_run": 308,
+              "queried_at": "2026-11-09T18:20:00.173747-03:00"
+            },
+            "cohort": {
+              "total": 17164,
+              "absolute": -381,
+              "growing": 3,
+              "percent": -2.1715588486748363,
+              "base_total": 17545,
+              "declining": 3,
+              "pairs": 6
+            }
+          }
+        }
+      ]
+    }
+  }
+}

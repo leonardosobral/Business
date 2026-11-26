@@ -1,0 +1,19 @@
+{
+  "widths": [
+    1728,
+    1440,
+    1280,
+    1024,
+    390
+  ],
+  "desktop_editor_px": 512,
+  "desktop_list_at_1728_px": 944,
+  "desktop_list_at_1440_px": 656,
+  "desktop_list_at_1280_px": 496,
+  "page_horizontal_overflow": false,
+  "stacked_below_1200": true,
+  "sticky_after_page_scroll_top_px": 76,
+  "editor_content_scrollable": true,
+  "preview_tab_closed": true,
+  "preview_server_closed": true
+}

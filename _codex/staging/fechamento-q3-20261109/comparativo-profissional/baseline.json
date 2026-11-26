@@ -1,0 +1,22 @@
+{
+  "estudos/leitor/parcial.js": {
+    "production_sha256": "01af7cb837958d1a04d8a146e87a2bed78b34be9ff60bbbd28d2f33578a78764",
+    "local_sha256": "01af7cb837958d1a04d8a146e87a2bed78b34be9ff60bbbd28d2f33578a78764",
+    "matches": true
+  },
+  "estudos/leitor/estudo.js": {
+    "production_sha256": "7b0e006e7b07c97ec61610522e313cfd585907e89dbea8a56c77b58dc24ee5e6",
+    "local_sha256": "7b0e006e7b07c97ec61610522e313cfd585907e89dbea8a56c77b58dc24ee5e6",
+    "matches": true
+  },
+  "estudos/leitor/estudo.css": {
+    "production_sha256": "98d40d39e18e24b690ad61fff7b53f966c64ac885623ee8b998885e0f8eab705",
+    "local_sha256": "98d40d39e18e24b690ad61fff7b53f966c64ac885623ee8b998885e0f8eab705",
+    "matches": true
+  },
+  "estudos/includes/StudyAccess.cfc": {
+    "production_sha256": "17cd897a9bc6c8fa2ef6b0afdbd145cc34de405ce386d59c5976acd8b43847c9",
+    "local_sha256": "17cd897a9bc6c8fa2ef6b0afdbd145cc34de405ce386d59c5976acd8b43847c9",
+    "matches": true
+  }
+}

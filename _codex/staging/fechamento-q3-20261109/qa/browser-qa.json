@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-09",
+  "desktop": {
+    "browser": "Chrome",
+    "width": 1446,
+    "pages": 37,
+    "empty_states": 0,
+    "canvas_nodes": 46,
+    "paired_values_visible": true,
+    "source_details_opened": true,
+    "overflow": false
+  },
+  "mobile": {
+    "browser": "in-app browser",
+    "width": 390,
+    "height": 844,
+    "cards_width": 322,
+    "stacked": true,
+    "overflow": false,
+    "note": "Chrome extension viewport override did not change actual layout; mobile validated in IAB."
+  },
+  "press": {
+    "same_values": true
+  },
+  "pdf_v6": {
+    "authenticated_viewer_title": "O Brasil que Corre Provas | Lançar a prévia Jan-Set | v6",
+    "navigation_note": "PDF navigation wait timed out; subsequent accessibility read confirmed viewer title and correct URL."
+  },
+  "teams_hold": {
+    "menu_teams_links": 0,
+    "public_profile_loaded": true,
+    "public_profile_teams_links": 0,
+    "public_profile_teams_visible": false,
+    "settings_loaded": true,
+    "settings_forms": 2,
+    "teams_fields": 0,
+    "teams_visible": false,
+    "get_post_404_checks": 10
+  },
+  "cleanup": {
+    "temporary_test_server_started": false,
+    "Chrome_only_owned_tabs_closed": true,
+    "IAB_only_owned_tab_closed": true,
+    "IAB_viewport_reset": true,
+    "Chrome_viewport_reset": true
+  }
+}

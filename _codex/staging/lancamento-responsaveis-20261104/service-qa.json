@@ -1,0 +1,17 @@
+{
+  "author_and_time": true,
+  "details_preserve_validation": true,
+  "validation_preserves_details": true,
+  "invalid_step_and_version_rejected": true,
+  "non_admin_write_rejected": true,
+  "qa_writes_rolled_back": true,
+  "verified_identity_required": true,
+  "multiline_unicode_quotes": true,
+  "save_and_reload": true,
+  "length_limits": true,
+  "clear_fields": true,
+  "stale_write_conflict": true,
+  "no_op_no_new_revision": true,
+  "steps": 8,
+  "output_encoding": true
+}

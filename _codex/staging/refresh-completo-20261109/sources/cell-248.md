@@ -1,0 +1,1 @@
+Integra totais e 33 valores de sete congelamentos revisados tecnicamente. Fontes restantes permanecem explicitamente identificadas no snapshot inicial; não certifica equivalência metodológica com o PDF.

@@ -1,0 +1,61 @@
+{
+  "account": {
+    "expectedEmail": true,
+    "adminControlsAbsent": true
+  },
+  "before": {
+    "readerRedirect": "https://business.roadrunners.run/estudos/",
+    "accessLinkHidden": true
+  },
+  "redemption": {
+    "success": true,
+    "readLinkAvailable": true
+  },
+  "benefit": {
+    "visible": true,
+    "annualSeparate": true
+  },
+  "repeat": {
+    "librarySelected": true,
+    "success": true
+  },
+  "reader": {
+    "renderedPages": 37,
+    "has615": true,
+    "has22": true,
+    "has387": true,
+    "unavailable": false,
+    "charts": {
+      "lastFooter": "ROAD RUNNERS / BASE CONGELADA\nPÁGINA 37 / 37",
+      "rendered": 46,
+      "total": 46
+    }
+  },
+  "annualBoundary": {
+    "url": "https://business.roadrunners.run/estudo/anual/",
+    "readerAbsent": true,
+    "message": "- generic [active]: Rascunho anual disponível somente para administradores."
+  },
+  "returnVisit": {
+    "readLinkAvailable": true,
+    "adminTabAbsent": true,
+    "sameAccount": true,
+    "benefitPreserved": true
+  },
+  "export": {
+    "browserButtonClicked": true,
+    "contentRows": 706,
+    "columns": 12,
+    "contentValidated": true,
+    "browserDownloadConfirmed": true,
+    "confirmationSource": "User confirmed the CSV downloaded and opened normally"
+  },
+  "overall": {
+    "singleAccountPassed": true,
+    "fullPilotStepCompleted": false,
+    "minimumReadersPlanned": 5,
+    "readersTested": 1,
+    "annualRemainsDraft": true,
+    "mailOrMarketingOptInChanged": false
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "functions": [
+    {
+      "signature": "estudo.web_json_valido(jsonb,jsonb)",
+      "name": "web_json_valido"
+    }
+  ]
+}

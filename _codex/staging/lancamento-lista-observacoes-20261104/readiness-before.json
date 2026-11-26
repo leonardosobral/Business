@@ -1,0 +1,80 @@
+{
+  "declared_representatives": 0,
+  "checklist": [],
+  "products": [
+    {
+      "code": "previa-2026-q3",
+      "status": "ACTIVE",
+      "publication": 41
+    },
+    {
+      "code": "anual-2026",
+      "status": "DRAFT",
+      "publication": null
+    }
+  ],
+  "pending_requests": 0,
+  "active_accesses": 0,
+  "campaigns": [
+    {
+      "ready": 0,
+      "code": "piloto",
+      "status": "DRAFT",
+      "benefit": 50,
+      "last_redemption_day": null,
+      "vouchers": 0,
+      "redeemed": 0
+    },
+    {
+      "ready": 0,
+      "code": "abraceo",
+      "status": "DRAFT",
+      "benefit": 50,
+      "last_redemption_day": null,
+      "vouchers": 0,
+      "redeemed": 0
+    },
+    {
+      "ready": 0,
+      "code": "editorial",
+      "status": "DRAFT",
+      "benefit": 50,
+      "last_redemption_day": null,
+      "vouchers": 0,
+      "redeemed": 0
+    },
+    {
+      "ready": 95,
+      "code": "abraceo-primeiro-acesso",
+      "status": "ACTIVE",
+      "benefit": 0,
+      "last_redemption_day": "2026-11-24",
+      "vouchers": 95,
+      "redeemed": 0
+    }
+  ],
+  "validations": [],
+  "public_http": [
+    {
+      "url": "https://roadrunners.run/brasilquecorreprovas/2026/",
+      "status": 200,
+      "temporary_press_open": false,
+      "has_2_1": false,
+      "has_33_9": false
+    },
+    {
+      "url": "https://roadrunners.run/brasilquecorreprovas/2026/kit/",
+      "status": 200,
+      "temporary_press_open": false,
+      "has_2_1": true,
+      "has_33_9": true
+    },
+    {
+      "url": "https://roadrunners.run/brasilquecorreprovas/imprensa/",
+      "status": 200,
+      "temporary_press_open": true,
+      "has_2_1": false,
+      "has_33_9": false
+    }
+  ]
+}

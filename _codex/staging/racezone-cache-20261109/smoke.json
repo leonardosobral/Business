@@ -1,0 +1,60 @@
+{
+  "http": "200 0.113950",
+  "returncode": 0,
+  "transport_error": "",
+  "resolved_to_empty_input_message": true,
+  "classes": [
+    {
+      "name": "cfparse2ecfm2083463583$funcRACEZONENAMELOOKUP.class",
+      "size": 4241,
+      "java_class": true
+    },
+    {
+      "name": "cfparse2ecfm2083463583$func_CF_ANONYMOUSCLOSURE_8595.class",
+      "size": 3118,
+      "java_class": true
+    },
+    {
+      "name": "cfparse2ecfm2083463583$funcARRAYTOQUERY.class",
+      "size": 2628,
+      "java_class": true
+    },
+    {
+      "name": "cfparse2ecfm2083463583$func_CF_ANONYMOUSCLOSURE_8456.class",
+      "size": 3118,
+      "java_class": true
+    },
+    {
+      "name": "cfparse2ecfm2083463583.class",
+      "size": 60038,
+      "java_class": true
+    },
+    {
+      "name": "cfparse2ecfm2083463583$funcRACEZONEAWARDMODALITY.class",
+      "size": 5073,
+      "java_class": true
+    },
+    {
+      "name": "cfparse2ecfm2083463583$func_CF_ANONYMOUSCLOSURE_8594.class",
+      "size": 2807,
+      "java_class": true
+    },
+    {
+      "name": "cfparse2ecfm2083463583$func_CF_ANONYMOUSCLOSURE_8455.class",
+      "size": 2807,
+      "java_class": true
+    },
+    {
+      "name": "cfparse2ecfm2083463583$funcRACEZONENAMEINDEX.class",
+      "size": 6583,
+      "java_class": true
+    }
+  ],
+  "new_importer_errors": [],
+  "source_hashes": {
+    "api/racezone/index.cfm": "9ecd2f699542a1f35b38ce332cbf79843e9570be4d26e5861c3640dccc826dc4",
+    "api/racezone/parse.cfm": "a76787780747d3b614b76c7f8158e5f1ca8b2297f1d49c75c8fa6ff784223df5",
+    "api/racezone/resolve_url.cfm": "8a2e315966fd6da1af2200ad154afb5cbe2fa96744f06769413f33255b5a2bc7",
+    "includes/seo-web-tools-head.cfm": "7b2cc14091a460e8a052d132cf8f20ba2b174a4ed4a57e3b3f37a82af71bf01b"
+  }
+}

@@ -1,0 +1,2235 @@
+{
+  "types": [
+    "object"
+  ],
+  "keys": {
+    "comparacoes": {
+      "types": [
+        "array"
+      ],
+      "items": {
+        "types": [
+          "object"
+        ],
+        "keys": {
+          "atual": {
+            "types": [
+              "null",
+              "object"
+            ],
+            "keys": {
+              "base_rotulo": {
+                "types": [
+                  "string"
+                ]
+              },
+              "casas_decimais": {
+                "types": [
+                  "number"
+                ]
+              },
+              "contagem": {
+                "types": [
+                  "null",
+                  "number"
+                ]
+              },
+              "denominador": {
+                "types": [
+                  "null",
+                  "number"
+                ]
+              },
+              "fonte": {
+                "types": [
+                  "string"
+                ]
+              },
+              "nota": {
+                "types": [
+                  "string"
+                ]
+              },
+              "numerador": {
+                "types": [
+                  "null",
+                  "number"
+                ]
+              },
+              "populacao": {
+                "types": [
+                  "null",
+                  "number"
+                ]
+              },
+              "unidade": {
+                "types": [
+                  "string"
+                ]
+              },
+              "valor": {
+                "types": [
+                  "null",
+                  "number",
+                  "string"
+                ]
+              }
+            },
+            "required": [
+              "fonte",
+              "nota",
+              "valor"
+            ]
+          },
+          "categoria": {
+            "types": [
+              "string"
+            ]
+          },
+          "serie": {
+            "types": [
+              "string"
+            ]
+          },
+          "status": {
+            "types": [
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "atual",
+          "categoria",
+          "serie",
+          "status"
+        ]
+      }
+    },
+    "comparativo": {
+      "types": [
+        "object"
+      ],
+      "keys": {
+        "aviso": {
+          "types": [
+            "string"
+          ]
+        },
+        "mensais": {
+          "types": [
+            "array"
+          ],
+          "items": {
+            "types": [
+              "object"
+            ],
+            "keys": {
+              "mes": {
+                "types": [
+                  "number"
+                ]
+              },
+              "parcial": {
+                "types": [
+                  "boolean"
+                ]
+              },
+              "resultados_2025": {
+                "types": [
+                  "number"
+                ]
+              },
+              "resultados_2026": {
+                "types": [
+                  "number"
+                ]
+              },
+              "rotulo": {
+                "types": [
+                  "string"
+                ]
+              },
+              "variacao_percentual": {
+                "types": [
+                  "number"
+                ]
+              }
+            },
+            "required": [
+              "mes",
+              "parcial",
+              "resultados_2025",
+              "resultados_2026",
+              "rotulo",
+              "variacao_percentual"
+            ]
+          }
+        },
+        "meses_completos": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "resultados_2025": {
+              "types": [
+                "number"
+              ]
+            },
+            "resultados_2026": {
+              "types": [
+                "number"
+              ]
+            },
+            "rotulo": {
+              "types": [
+                "string"
+              ]
+            },
+            "variacao_percentual": {
+              "types": [
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "resultados_2025",
+            "resultados_2026",
+            "rotulo",
+            "variacao_percentual"
+          ]
+        },
+        "mulheres": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "contagem_2025": {
+              "types": [
+                "number"
+              ]
+            },
+            "contagem_2026": {
+              "types": [
+                "number"
+              ]
+            },
+            "denominador_2025": {
+              "types": [
+                "number"
+              ]
+            },
+            "denominador_2026": {
+              "types": [
+                "number"
+              ]
+            },
+            "diferenca_pp": {
+              "types": [
+                "number"
+              ]
+            },
+            "percentual_2025": {
+              "types": [
+                "number"
+              ]
+            },
+            "percentual_2026": {
+              "types": [
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "contagem_2025",
+            "contagem_2026",
+            "denominador_2025",
+            "denominador_2026",
+            "diferenca_pp",
+            "percentual_2025",
+            "percentual_2026"
+          ]
+        },
+        "periodo": {
+          "types": [
+            "string"
+          ]
+        },
+        "provas": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "aviso": {
+              "types": [
+                "string"
+              ]
+            },
+            "definicoes": {
+              "types": [
+                "object"
+              ],
+              "keys": {
+                "concluintes_estudo": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "provas_cadastradas": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "provas_com_concluintes_elegiveis": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "provas_com_resultado_coletado": {
+                  "types": [
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "concluintes_estudo",
+                "provas_cadastradas",
+                "provas_com_concluintes_elegiveis",
+                "provas_com_resultado_coletado"
+              ]
+            },
+            "mensais": {
+              "types": [
+                "array"
+              ],
+              "items": {
+                "types": [
+                  "object"
+                ],
+                "keys": {
+                  "cadastradas_2025": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "cadastradas_2026": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "coletadas_2025": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "coletadas_2026": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "elegiveis_2025": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "elegiveis_2026": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "mes": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "parcial": {
+                    "types": [
+                      "boolean"
+                    ]
+                  },
+                  "rotulo": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "variacao_cadastradas": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "variacao_coletadas": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "variacao_elegiveis": {
+                    "types": [
+                      "number"
+                    ]
+                  }
+                },
+                "required": [
+                  "cadastradas_2025",
+                  "cadastradas_2026",
+                  "coletadas_2025",
+                  "coletadas_2026",
+                  "elegiveis_2025",
+                  "elegiveis_2026",
+                  "mes",
+                  "parcial",
+                  "rotulo",
+                  "variacao_cadastradas",
+                  "variacao_coletadas",
+                  "variacao_elegiveis"
+                ]
+              }
+            },
+            "meses_completos": {
+              "types": [
+                "object"
+              ],
+              "keys": {
+                "cadastradas_2025": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "cadastradas_2026": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "coletadas_2025": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "coletadas_2026": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "elegiveis_2025": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "elegiveis_2026": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "rotulo": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "variacao_cadastradas": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "variacao_coletadas": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "variacao_elegiveis": {
+                  "types": [
+                    "number"
+                  ]
+                }
+              },
+              "required": [
+                "cadastradas_2025",
+                "cadastradas_2026",
+                "coletadas_2025",
+                "coletadas_2026",
+                "elegiveis_2025",
+                "elegiveis_2026",
+                "rotulo",
+                "variacao_cadastradas",
+                "variacao_coletadas",
+                "variacao_elegiveis"
+              ]
+            }
+          },
+          "required": [
+            "aviso",
+            "definicoes",
+            "mensais",
+            "meses_completos"
+          ]
+        },
+        "ultima_data_2025": {
+          "types": [
+            "string"
+          ]
+        },
+        "ultima_data_2026": {
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "required": [
+        "aviso",
+        "mensais",
+        "meses_completos",
+        "mulheres",
+        "periodo",
+        "provas",
+        "ultima_data_2025",
+        "ultima_data_2026"
+      ]
+    },
+    "conciliacao": {
+      "types": [
+        "object"
+      ],
+      "keys": {
+        "notebook_em_conciliacao": {
+          "types": [
+            "number"
+          ]
+        },
+        "pendente": {
+          "types": [
+            "number"
+          ]
+        }
+      },
+      "required": [
+        "notebook_em_conciliacao",
+        "pendente"
+      ]
+    },
+    "meta": {
+      "types": [
+        "object"
+      ],
+      "keys": {
+        "ano": {
+          "types": [
+            "number"
+          ]
+        },
+        "auditoria_bi": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "coletado_em": {
+              "types": [
+                "string"
+              ]
+            },
+            "execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "revisao": {
+              "types": [
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "celula",
+            "coletado_em",
+            "execucao",
+            "revisao"
+          ]
+        },
+        "bi_fonte_versionada": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "activated_at": {
+              "types": [
+                "string"
+              ]
+            },
+            "auditoria": {
+              "types": [
+                "object"
+              ],
+              "keys": {
+                "celula": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "coletado_em": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "execucao": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "revisao": {
+                  "types": [
+                    "number"
+                  ]
+                }
+              },
+              "required": [
+                "celula",
+                "coletado_em",
+                "execucao",
+                "revisao"
+              ]
+            },
+            "hash_auditoria": {
+              "types": [
+                "string"
+              ]
+            },
+            "hashes_adaptadores": {
+              "types": [
+                "object"
+              ],
+              "keys": {
+                "estudo.vw_resultados_2026": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "estudo.vwbi_perfil_br_2026": {
+                  "types": [
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "estudo.vw_resultados_2026",
+                "estudo.vwbi_perfil_br_2026"
+              ]
+            },
+            "hashes_funcoes": {
+              "types": [
+                "object"
+              ],
+              "keys": {
+                "get_id_categoria_cbat(int4range)": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "get_id_dim_faixa(numeric,time without time zone)": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "get_id_geracao(int4range,integer)": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "get_id_geracao(int4range,integer,date,date)": {
+                  "types": [
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "get_id_categoria_cbat(int4range)",
+                "get_id_dim_faixa(numeric,time without time zone)",
+                "get_id_geracao(int4range,integer)",
+                "get_id_geracao(int4range,integer,date,date)"
+              ]
+            },
+            "loaded_at": {
+              "types": [
+                "string"
+              ]
+            },
+            "relacao": {
+              "types": [
+                "string"
+              ]
+            },
+            "schema": {
+              "types": [
+                "string"
+              ]
+            },
+            "sha256_rotina": {
+              "types": [
+                "string"
+              ]
+            },
+            "snapshot_id": {
+              "types": [
+                "string"
+              ]
+            },
+            "status": {
+              "types": [
+                "string"
+              ]
+            },
+            "tabela": {
+              "types": [
+                "string"
+              ]
+            },
+            "validacoes": {
+              "types": [
+                "object"
+              ],
+              "keys": {
+                "controles": {
+                  "types": [
+                    "object"
+                  ],
+                  "keys": {
+                    "activated_view_hashes_match": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "active_bi_uses_version": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "active_results_use_version": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "active_views_keep_all_rows": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "audit_activated": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "comparison_definition_preserved": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "expected_columns": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "fact_matches_load_receipt": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "functions_unchanged": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "indexes_valid": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "monthly_rows_match_load": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "public_fact_count_preserved": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "public_view_definition_preserved": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "reader_grants": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "script_hash_matches_received": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "unique_result_ids": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "version_bi_uses_new_fact": {
+                      "types": [
+                        "boolean"
+                      ]
+                    },
+                    "window_preserved": {
+                      "types": [
+                        "boolean"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "activated_view_hashes_match",
+                    "active_bi_uses_version",
+                    "active_results_use_version",
+                    "active_views_keep_all_rows",
+                    "audit_activated",
+                    "comparison_definition_preserved",
+                    "expected_columns",
+                    "fact_matches_load_receipt",
+                    "functions_unchanged",
+                    "indexes_valid",
+                    "monthly_rows_match_load",
+                    "public_fact_count_preserved",
+                    "public_view_definition_preserved",
+                    "reader_grants",
+                    "script_hash_matches_received",
+                    "unique_result_ids",
+                    "version_bi_uses_new_fact",
+                    "window_preserved"
+                  ]
+                },
+                "quantidade": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "verificado_em": {
+                  "types": [
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "controles",
+                "quantidade",
+                "verificado_em"
+              ]
+            }
+          },
+          "required": [
+            "activated_at",
+            "auditoria",
+            "hash_auditoria",
+            "hashes_adaptadores",
+            "hashes_funcoes",
+            "loaded_at",
+            "relacao",
+            "schema",
+            "sha256_rotina",
+            "snapshot_id",
+            "status",
+            "tabela",
+            "validacoes"
+          ]
+        },
+        "coletado_em": {
+          "types": [
+            "string"
+          ]
+        },
+        "contrato_versao": {
+          "types": [
+            "number"
+          ]
+        },
+        "corte": {
+          "types": [
+            "string"
+          ]
+        },
+        "escopo_trimestres": {
+          "types": [
+            "number"
+          ]
+        },
+        "estado": {
+          "types": [
+            "string"
+          ]
+        },
+        "geracoes_metodo": {
+          "types": [
+            "string"
+          ]
+        },
+        "geracoes_regra": {
+          "types": [
+            "string"
+          ]
+        },
+        "inscricoes": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "analisadas": {
+              "types": [
+                "number"
+              ]
+            },
+            "ausencia": {
+              "types": [
+                "string"
+              ]
+            },
+            "ausentes": {
+              "types": [
+                "number"
+              ]
+            },
+            "calendario": {
+              "types": [
+                "number"
+              ]
+            },
+            "celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "cobertura": {
+              "types": [
+                "string"
+              ]
+            },
+            "coletado_em": {
+              "types": [
+                "string"
+              ]
+            },
+            "divergencias_json": {
+              "types": [
+                "number"
+              ]
+            },
+            "execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "fim": {
+              "types": [
+                "string"
+              ]
+            },
+            "informadas": {
+              "types": [
+                "number"
+              ]
+            },
+            "inicio": {
+              "types": [
+                "string"
+              ]
+            },
+            "media": {
+              "types": [
+                "string"
+              ]
+            },
+            "mediana": {
+              "types": [
+                "string"
+              ]
+            },
+            "negativas": {
+              "types": [
+                "number"
+              ]
+            },
+            "revisao": {
+              "types": [
+                "number"
+              ]
+            },
+            "simbolicas": {
+              "types": [
+                "number"
+              ]
+            },
+            "zeradas": {
+              "types": [
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "analisadas",
+            "ausencia",
+            "ausentes",
+            "calendario",
+            "celula",
+            "cobertura",
+            "coletado_em",
+            "divergencias_json",
+            "execucao",
+            "fim",
+            "informadas",
+            "inicio",
+            "media",
+            "mediana",
+            "negativas",
+            "revisao",
+            "simbolicas",
+            "zeradas"
+          ]
+        },
+        "inscricoes_geral": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "analisadas": {
+              "types": [
+                "number"
+              ]
+            },
+            "calendario": {
+              "types": [
+                "number"
+              ]
+            },
+            "celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "cobertura": {
+              "types": [
+                "string"
+              ]
+            },
+            "coletado_em": {
+              "types": [
+                "string"
+              ]
+            },
+            "com_opcoes": {
+              "types": [
+                "number"
+              ]
+            },
+            "execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "fim": {
+              "types": [
+                "string"
+              ]
+            },
+            "inicio": {
+              "types": [
+                "string"
+              ]
+            },
+            "media": {
+              "types": [
+                "string"
+              ]
+            },
+            "mediana": {
+              "types": [
+                "string"
+              ]
+            },
+            "revisao": {
+              "types": [
+                "number"
+              ]
+            },
+            "sem_geral_identificado": {
+              "types": [
+                "number"
+              ]
+            },
+            "sem_opcoes": {
+              "types": [
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "analisadas",
+            "calendario",
+            "celula",
+            "cobertura",
+            "coletado_em",
+            "com_opcoes",
+            "execucao",
+            "fim",
+            "inicio",
+            "media",
+            "mediana",
+            "revisao",
+            "sem_geral_identificado",
+            "sem_opcoes"
+          ]
+        },
+        "mapeamento": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "coletado_em": {
+              "types": [
+                "string"
+              ]
+            },
+            "corte": {
+              "types": [
+                "string"
+              ]
+            },
+            "destaque_categoria": {
+              "types": [
+                "string"
+              ]
+            },
+            "diagnosticos_historicos": {
+              "types": [
+                "object"
+              ],
+              "keys": {
+                "nota": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "referencia_execucao": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "referencia_publicacao": {
+                  "types": [
+                    "number"
+                  ]
+                }
+              },
+              "required": [
+                "nota",
+                "referencia_execucao",
+                "referencia_publicacao"
+              ]
+            },
+            "execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "formula_stats_percentual": {
+              "types": [
+                "string"
+              ]
+            },
+            "revisao": {
+              "types": [
+                "number"
+              ]
+            },
+            "sobreposicao_azul_vermelho": {
+              "types": [
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "celula",
+            "coletado_em",
+            "corte",
+            "destaque_categoria",
+            "diagnosticos_historicos",
+            "execucao",
+            "formula_stats_percentual",
+            "revisao",
+            "sobreposicao_azul_vermelho"
+          ]
+        },
+        "maratonas": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "bloqueadas": {
+              "types": [
+                "array"
+              ],
+              "items": {
+                "types": [
+                  "null"
+                ]
+              }
+            },
+            "celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "coletado_em": {
+              "types": [
+                "string"
+              ]
+            },
+            "concluintes": {
+              "types": [
+                "number"
+              ]
+            },
+            "corte": {
+              "types": [
+                "string"
+              ]
+            },
+            "elegiveis_podio": {
+              "types": [
+                "number"
+              ]
+            },
+            "eventos": {
+              "types": [
+                "number"
+              ]
+            },
+            "execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "floripa": {
+              "types": [
+                "object"
+              ],
+              "keys": {
+                "captura": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "celula": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "concluintes": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "execucao": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "incorporado_em": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "nota": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "referencia": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "revisao": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "status": {
+                  "types": [
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "captura",
+                "celula",
+                "concluintes",
+                "execucao",
+                "incorporado_em",
+                "nota",
+                "referencia",
+                "revisao",
+                "status"
+              ]
+            },
+            "revisao": {
+              "types": [
+                "number"
+              ]
+            },
+            "top10_concluintes": {
+              "types": [
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "bloqueadas",
+            "celula",
+            "coletado_em",
+            "concluintes",
+            "corte",
+            "elegiveis_podio",
+            "eventos",
+            "execucao",
+            "floripa",
+            "revisao",
+            "top10_concluintes"
+          ]
+        },
+        "maratonas_cadastro": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "coletado_em": {
+              "types": [
+                "string"
+              ]
+            },
+            "corte": {
+              "types": [
+                "string"
+              ]
+            },
+            "execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "revisao": {
+              "types": [
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "celula",
+            "coletado_em",
+            "corte",
+            "execucao",
+            "revisao"
+          ]
+        },
+        "maratonas_destaques": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "coletado_em": {
+              "types": [
+                "string"
+              ]
+            },
+            "corte": {
+              "types": [
+                "string"
+              ]
+            },
+            "derivado_em": {
+              "types": [
+                "string"
+              ]
+            },
+            "execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "fonte_celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "fonte_execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "fonte_revisao": {
+              "types": [
+                "number"
+              ]
+            },
+            "outros": {
+              "types": [
+                "number"
+              ]
+            },
+            "provas": {
+              "types": [
+                "number"
+              ]
+            },
+            "revisao": {
+              "types": [
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "celula",
+            "coletado_em",
+            "corte",
+            "derivado_em",
+            "execucao",
+            "fonte_celula",
+            "fonte_execucao",
+            "fonte_revisao",
+            "outros",
+            "provas",
+            "revisao"
+          ]
+        },
+        "maratonas_referencia_externa": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "revisao": {
+              "types": [
+                "number"
+              ]
+            },
+            "url": {
+              "types": [
+                "string"
+              ]
+            },
+            "verificado_em": {
+              "types": [
+                "string"
+              ]
+            }
+          },
+          "required": [
+            "celula",
+            "execucao",
+            "revisao",
+            "url",
+            "verificado_em"
+          ]
+        },
+        "maratonas_revisao": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "casos": {
+              "types": [
+                "array"
+              ],
+              "items": {
+                "types": [
+                  "object"
+                ],
+                "keys": {
+                  "ativo": {
+                    "types": [
+                      "boolean"
+                    ]
+                  },
+                  "cidade": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "coletado_em": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "congelamento_referencia": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "data_final": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "elegiveis": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "estado": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "evidencia": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "grupo": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "id_evento": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "linhas_brutas": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "modalidades": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "object"
+                      ],
+                      "keys": {
+                        "elegiveis": {
+                          "types": [
+                            "number"
+                          ]
+                        },
+                        "id_evento": {
+                          "types": [
+                            "number"
+                          ]
+                        },
+                        "linhas": {
+                          "types": [
+                            "number"
+                          ]
+                        },
+                        "mediana_segundos": {
+                          "types": [
+                            "null",
+                            "number"
+                          ]
+                        },
+                        "menor_segundos": {
+                          "types": [
+                            "null",
+                            "number"
+                          ]
+                        },
+                        "modalidade": {
+                          "types": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "elegiveis",
+                        "id_evento",
+                        "linhas",
+                        "mediana_segundos",
+                        "menor_segundos",
+                        "modalidade"
+                      ]
+                    }
+                  },
+                  "nome_evento": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "percursos": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "null",
+                        "object"
+                      ],
+                      "keys": {
+                        "bloqueado": {
+                          "types": [
+                            "boolean"
+                          ]
+                        },
+                        "km": {
+                          "types": [
+                            "number"
+                          ]
+                        },
+                        "tipo": {
+                          "types": [
+                            "string"
+                          ]
+                        },
+                        "unidade": {
+                          "types": [
+                            "string"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "bloqueado",
+                        "km",
+                        "tipo",
+                        "unidade"
+                      ]
+                    }
+                  },
+                  "prioridade": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "proximo_passo": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "ranking": {
+                    "types": [
+                      "null"
+                    ]
+                  },
+                  "referencias": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "string"
+                      ]
+                    }
+                  },
+                  "situacao": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "tag": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "tipo_corrida": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "url_hotsite": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "url_inscricao": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "url_regulamento": {
+                    "types": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "url_resultado": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "url_wiclax": {
+                    "types": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "verificado_em": {
+                    "types": [
+                      "string"
+                    ]
+                  }
+                },
+                "required": [
+                  "ativo",
+                  "cidade",
+                  "coletado_em",
+                  "congelamento_referencia",
+                  "data_final",
+                  "elegiveis",
+                  "estado",
+                  "evidencia",
+                  "grupo",
+                  "id_evento",
+                  "linhas_brutas",
+                  "modalidades",
+                  "nome_evento",
+                  "percursos",
+                  "prioridade",
+                  "proximo_passo",
+                  "ranking",
+                  "referencias",
+                  "situacao",
+                  "tag",
+                  "tipo_corrida",
+                  "url_hotsite",
+                  "url_inscricao",
+                  "url_regulamento",
+                  "url_resultado",
+                  "url_wiclax",
+                  "verificado_em"
+                ]
+              }
+            },
+            "celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "celula_auditoria": {
+              "types": [
+                "number"
+              ]
+            },
+            "corte": {
+              "types": [
+                "string"
+              ]
+            },
+            "execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "fonte_auditoria": {
+              "types": [
+                "number"
+              ]
+            },
+            "linhas_por_regra": {
+              "types": [
+                "number"
+              ]
+            },
+            "regra": {
+              "types": [
+                "string"
+              ]
+            },
+            "resumo": {
+              "types": [
+                "array"
+              ],
+              "items": {
+                "types": [
+                  "object"
+                ],
+                "keys": {
+                  "eventos": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "grupo": {
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "linhas_por_regra": {
+                    "types": [
+                      "number"
+                    ]
+                  },
+                  "situacao": {
+                    "types": [
+                      "string"
+                    ]
+                  }
+                },
+                "required": [
+                  "eventos",
+                  "grupo",
+                  "linhas_por_regra",
+                  "situacao"
+                ]
+              }
+            },
+            "revisao": {
+              "types": [
+                "number"
+              ]
+            },
+            "total": {
+              "types": [
+                "number"
+              ]
+            },
+            "verificado_em": {
+              "types": [
+                "string"
+              ]
+            }
+          },
+          "required": [
+            "casos",
+            "celula",
+            "celula_auditoria",
+            "corte",
+            "execucao",
+            "fonte_auditoria",
+            "linhas_por_regra",
+            "regra",
+            "resumo",
+            "revisao",
+            "total",
+            "verificado_em"
+          ]
+        },
+        "metodologia": {
+          "types": [
+            "string"
+          ]
+        },
+        "notebook_fontes": {
+          "types": [
+            "array"
+          ],
+          "items": {
+            "types": [
+              "object"
+            ],
+            "keys": {
+              "celula": {
+                "types": [
+                  "number"
+                ]
+              },
+              "coletado_em": {
+                "types": [
+                  "string"
+                ]
+              },
+              "execucao": {
+                "types": [
+                  "number"
+                ]
+              },
+              "revisao": {
+                "types": [
+                  "number"
+                ]
+              }
+            },
+            "required": [
+              "celula",
+              "coletado_em",
+              "execucao",
+              "revisao"
+            ]
+          }
+        },
+        "origem": {
+          "types": [
+            "string"
+          ]
+        },
+        "parcial": {
+          "types": [
+            "boolean"
+          ]
+        },
+        "perfil": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "coletado_em": {
+              "types": [
+                "string"
+              ]
+            },
+            "contas": {
+              "types": [
+                "number"
+              ]
+            },
+            "corte": {
+              "types": [
+                "string"
+              ]
+            },
+            "execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "regra_peso": {
+              "types": [
+                "string"
+              ]
+            },
+            "revisao": {
+              "types": [
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "celula",
+            "coletado_em",
+            "contas",
+            "corte",
+            "execucao",
+            "regra_peso",
+            "revisao"
+          ]
+        },
+        "periodo_fim_exclusivo": {
+          "types": [
+            "string"
+          ]
+        },
+        "periodo_inicio": {
+          "types": [
+            "string"
+          ]
+        },
+        "porte": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "ano": {
+              "types": [
+                "number"
+              ]
+            },
+            "calendario": {
+              "types": [
+                "number"
+              ]
+            },
+            "celula": {
+              "types": [
+                "number"
+              ]
+            },
+            "coletado_em": {
+              "types": [
+                "string"
+              ]
+            },
+            "concentracao": {
+              "types": [
+                "string"
+              ]
+            },
+            "execucao": {
+              "types": [
+                "number"
+              ]
+            },
+            "fim": {
+              "types": [
+                "string"
+              ]
+            },
+            "inicio": {
+              "types": [
+                "string"
+              ]
+            },
+            "maiores_participacoes": {
+              "types": [
+                "number"
+              ]
+            },
+            "maiores_provas": {
+              "types": [
+                "number"
+              ]
+            },
+            "media": {
+              "types": [
+                "string"
+              ]
+            },
+            "mediana": {
+              "types": [
+                "string"
+              ]
+            },
+            "participacoes": {
+              "types": [
+                "number"
+              ]
+            },
+            "provas": {
+              "types": [
+                "number"
+              ]
+            },
+            "revisao": {
+              "types": [
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "ano",
+            "calendario",
+            "celula",
+            "coletado_em",
+            "concentracao",
+            "execucao",
+            "fim",
+            "inicio",
+            "maiores_participacoes",
+            "maiores_provas",
+            "media",
+            "mediana",
+            "participacoes",
+            "provas",
+            "revisao"
+          ]
+        },
+        "totais_fontes": {
+          "types": [
+            "object"
+          ],
+          "keys": {
+            "eventos": {
+              "types": [
+                "string"
+              ]
+            },
+            "resultados": {
+              "types": [
+                "string"
+              ]
+            }
+          },
+          "required": [
+            "eventos",
+            "resultados"
+          ]
+        },
+        "ultima_data_evento": {
+          "types": [
+            "string"
+          ]
+        },
+        "versao": {
+          "types": [
+            "number"
+          ]
+        }
+      },
+      "required": [
+        "ano",
+        "auditoria_bi",
+        "bi_fonte_versionada",
+        "coletado_em",
+        "contrato_versao",
+        "corte",
+        "escopo_trimestres",
+        "estado",
+        "geracoes_metodo",
+        "geracoes_regra",
+        "inscricoes",
+        "inscricoes_geral",
+        "mapeamento",
+        "maratonas",
+        "maratonas_cadastro",
+        "maratonas_destaques",
+        "maratonas_referencia_externa",
+        "maratonas_revisao",
+        "metodologia",
+        "notebook_fontes",
+        "origem",
+        "parcial",
+        "perfil",
+        "periodo_fim_exclusivo",
+        "periodo_inicio",
+        "porte",
+        "totais_fontes",
+        "ultima_data_evento",
+        "versao"
+      ]
+    },
+    "series": {
+      "types": [
+        "array"
+      ],
+      "items": {
+        "types": [
+          "object"
+        ],
+        "keys": {
+          "casas_decimais": {
+            "types": [
+              "null",
+              "number"
+            ]
+          },
+          "filtros": {
+            "types": [
+              "object"
+            ],
+            "keys": {
+              "ano": {
+                "types": [
+                  "number"
+                ]
+              }
+            },
+            "required": []
+          },
+          "id": {
+            "types": [
+              "string"
+            ]
+          },
+          "pagina_pdf": {
+            "types": [
+              "null"
+            ]
+          },
+          "ressalva": {
+            "types": [
+              "string"
+            ]
+          },
+          "status": {
+            "types": [
+              "string"
+            ]
+          },
+          "unidade": {
+            "types": [
+              "string"
+            ]
+          },
+          "valores": {
+            "types": [
+              "array"
+            ],
+            "items": {
+              "types": [
+                "object"
+              ],
+              "keys": {
+                "rotulo": {
+                  "types": [
+                    "string"
+                  ]
+                },
+                "valor": {
+                  "types": [
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "rotulo",
+                "valor"
+              ]
+            }
+          }
+        },
+        "required": [
+          "casas_decimais",
+          "filtros",
+          "id",
+          "pagina_pdf",
+          "ressalva",
+          "status",
+          "unidade",
+          "valores"
+        ]
+      }
+    },
+    "totais_atuais": {
+      "types": [
+        "object"
+      ],
+      "keys": {
+        "eventos": {
+          "types": [
+            "number"
+          ]
+        },
+        "resultados": {
+          "types": [
+            "number"
+          ]
+        }
+      },
+      "required": [
+        "eventos",
+        "resultados"
+      ]
+    }
+  },
+  "required": [
+    "comparacoes",
+    "comparativo",
+    "conciliacao",
+    "meta",
+    "series",
+    "totais_atuais"
+  ]
+}

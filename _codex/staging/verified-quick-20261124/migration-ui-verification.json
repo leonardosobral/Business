@@ -1,0 +1,13 @@
+{
+  "quick": {
+    "status": 200,
+    "verified": true
+  },
+  "ok": true,
+  "stage_removed": true,
+  "forms_enabled": 41,
+  "selectable_profiles_on_page": 40,
+  "migration_notice_absent": true,
+  "read_only": true,
+  "submitted_classifications": 0
+}

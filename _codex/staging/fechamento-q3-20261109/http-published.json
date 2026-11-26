@@ -1,0 +1,114 @@
+{
+  "http": [
+    {
+      "site": "business",
+      "path": "/estudos/leitor/dados.cfm?ano=2026",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "site": "business",
+      "path": "/estudos/lancamento/",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "site": "business",
+      "path": "/estudos/lancamento/arquivo.cfm?doc=execucao-v6",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "site": "business",
+      "path": "/estudos/lancamento/arquivos/brasil-que-corre-provas-lancamento-q3-execucao-v6.pdf",
+      "method": "GET",
+      "status": 403
+    },
+    {
+      "site": "portal",
+      "path": "/brasilquecorreprovas/2026/",
+      "method": "GET",
+      "status": 200,
+      "metadata": "current-comparison"
+    },
+    {
+      "site": "portal",
+      "path": "/brasilquecorreprovas/2026/kit/provas-cadastradas-1920x1080.png?v=20261104-edicoes-calendario",
+      "method": "GET",
+      "status": 200,
+      "sha256": "1c9c1ac6a26911111ba81377b1215d19796c1519548d3cf14fd5209e10a960b6"
+    },
+    {
+      "site": "portal",
+      "path": "/brasilquecorreprovas/imprensa/principal/dados.cfm?ano=2026",
+      "method": "GET",
+      "status": 200,
+      "series": 116,
+      "comparisons": 706,
+      "paired_races": 608,
+      "source": 231,
+      "narrative": 239
+    },
+    {
+      "site": "portal",
+      "path": "/teams/",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "site": "portal",
+      "path": "/teams/",
+      "method": "POST",
+      "status": 404
+    },
+    {
+      "site": "portal",
+      "path": "/teams/meu-team/",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "site": "portal",
+      "path": "/teams/meu-team/",
+      "method": "POST",
+      "status": 404
+    },
+    {
+      "site": "portal",
+      "path": "/teams/entrar/",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "site": "portal",
+      "path": "/teams/entrar/",
+      "method": "POST",
+      "status": 404
+    },
+    {
+      "site": "portal",
+      "path": "/teams/convidar/",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "site": "portal",
+      "path": "/teams/convidar/",
+      "method": "POST",
+      "status": 404
+    },
+    {
+      "site": "portal",
+      "path": "/api/profile/teams.cfm",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "site": "portal",
+      "path": "/api/profile/teams.cfm",
+      "method": "POST",
+      "status": 404
+    }
+  ],
+  "teams_templates": "withheld"
+}

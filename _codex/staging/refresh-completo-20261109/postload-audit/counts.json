@@ -1,0 +1,66 @@
+{
+  "months": [
+    {
+      "month": "2026-01-01",
+      "rows": 158051
+    },
+    {
+      "month": "2026-02-01",
+      "rows": 165059
+    },
+    {
+      "month": "2026-03-01",
+      "rows": 566764
+    },
+    {
+      "month": "2026-04-01",
+      "rows": 459228
+    },
+    {
+      "month": "2026-05-01",
+      "rows": 719782
+    },
+    {
+      "month": "2026-06-01",
+      "rows": 529639
+    },
+    {
+      "month": "2026-07-01",
+      "rows": 509871
+    },
+    {
+      "month": "2026-08-01",
+      "rows": 742946
+    },
+    {
+      "month": "2026-09-01",
+      "rows": 723641
+    }
+  ],
+  "counts": [
+    {
+      "name": "public.tbbi_fat_perfil_br_2026",
+      "rows": 4502542
+    },
+    {
+      "name": "estudo.vw_resultados_2026",
+      "rows": 4574981
+    },
+    {
+      "name": "estudo.vwbi_perfil_br_2026",
+      "rows": 4574981
+    }
+  ],
+  "capturado_em": "2026-11-09T18:19:16.562671-03:00",
+  "timeout": "45s",
+  "fact": {
+    "first_date": "2026-01-02",
+    "events": 4966,
+    "last_date": "2026-09-30",
+    "unique_ids": 4574981,
+    "null_ids": 0,
+    "outside_window": 0,
+    "rows": 4574981
+  },
+  "read_only": "on"
+}

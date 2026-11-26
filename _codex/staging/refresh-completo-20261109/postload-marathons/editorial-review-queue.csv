@@ -1,0 +1,8 @@
+﻿year;id_evento;name;date;eligible;ranking;reason;approved
+2025;23728;Maratona Internacional de Olinda 2025;2025-06-08;467;false;"Explicit prior exclusion preserved: ranking=false na base; revisar antes de incluir";False
+2025;25395;Maratona Internacional de Blumenau 2025;2025-07-06;298;;"Explicit prior exclusion preserved: percurso curto informado pela CR; fora do recorte de desempenho";False
+2025;26514;Maratona Fila 2025;2025-08-24;508;;"Explicit prior exclusion preserved: percurso curto informado pela CR; fora do recorte de desempenho";False
+2025;28391;1ª Maratona Piauí Crono;2025-03-23;118;false;"Explicit prior exclusion preserved: ranking=false na base; revisar antes de incluir";False
+2025;28612;Maratona de Niterói 2025;2025-09-14;558;;"Explicit prior exclusion preserved: percurso curto informado pela CR; fora do recorte de desempenho";False
+2026;35906;Maratona Rota do Sol Nascente;2026-01-31;78;;"New inventory candidate outside preserved editorial whitelist; identity/distance/modalities/source require review";False
+2026;49893;MARATONA DR. GORDON 2026;2026-09-27;26;;"New inventory candidate outside preserved editorial whitelist; identity/distance/modalities/source require review";False

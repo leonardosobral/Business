@@ -1,0 +1,28 @@
+{
+  "created": [
+    {
+      "version": 1,
+      "id": "455"
+    },
+    {
+      "version": 1,
+      "id": "456"
+    },
+    {
+      "version": 1,
+      "id": "457"
+    },
+    {
+      "version": 1,
+      "id": "458"
+    }
+  ],
+  "load_executed": false,
+  "note": {
+    "version": 4,
+    "updated_at": "2026-11-09 16:21:18.004347-03",
+    "id": "419"
+  },
+  "original_sha256": "d9907382d2de1c9d396d4edb0d23c907c89aa0e74bca62cfa6783c99b34c6a08",
+  "adapted_sha256": "46cf49e20c5598fe5ae26e82900d44ae97c05309e3e6965664dab6fd4f54e4df"
+}

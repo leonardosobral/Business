@@ -1,0 +1,13 @@
+{
+  "data_rows": 706,
+  "columns": 12,
+  "bytes": 524172,
+  "sha256": "b980db194cf831c694c2881dd71ec66929ec0c13ba3b516f865ccef76f2f5241",
+  "source": "Authenticated non-admin reader payload; canonical dados.js exporter",
+  "paired_rows": 4,
+  "exact_paired_rate_preserved": true,
+  "annual_only_series_excluded": true,
+  "browser_export_button_clicked": true,
+  "browser_download_confirmed": true,
+  "download_confirmation_source": "User confirmed completion and successful open"
+}

@@ -1,0 +1,3764 @@
+{
+  "source": {
+    "id": 437,
+    "version": 1,
+    "hash": "070c8b36b7bd1e3203d42e7cbf43eaef"
+  },
+  "run": {
+    "started_at": "2026-11-09 18:19:56.237708-03",
+    "duration_ms": 451,
+    "error_message": "",
+    "cell_version": 1,
+    "cell_id": "437",
+    "sql_sha256": "2d05ed45a25e3b0d274b9514364103a7b05de92a6b0b6e3d3d78b9f60739dbf7",
+    "truncated": 0,
+    "row_count": 1,
+    "sql_text": "-- Ampliação do vertical: seleção congelada 245. Mesmos filtros convencionais.\n-- Perfil usa a base atual; Floripa 2026 permanece com 3594 nesta leitura, sem imputar nascimento à captura oficial3592.\n-- Não somar a população de perfil com a seleção oficial; denominadores próprios explícitos.\nWITH base AS MATERIALIZED (\n SELECT r.id_evento,r.id_resultado,r.sexo,extract(epoch FROM r.tempo_total) AS segundos,e.nome_evento,e.estado,e.cidade,e.data_final\n FROM estudo.vw_resultados_2026 r JOIN public.tb_evento_corridas e USING(id_evento)\n WHERE r.status_final=0 AND r.homologado IS TRUE  AND r.id_evento IN(43066,34236,33486,34235,29291,34529,38863,37310,34841,39421,35868,33490,36245,37815,43078,40448,34840,36973,39393,36249,36250,37874,31176,39461,37868,38234,37322,40597,31179,34131,36246,33713,43073,37307,37006,43077,33976,36665,43074) AND r.percurso BETWEEN 42 AND 42.2 AND r.concluinte IS TRUE AND r.tempo_total>TIME '00:00:00' AND r.pcd IS FALSE AND NOT(coalesce(r.modalidade,'') ~* '(CADEIR|DEFICI|ANDANTE|HAND|BIKE|GUIA|REVEZ|DUPLA|QUARTETO|OCTETO|TRAIL|(^|[^A-Z0-9])(PCD|ACD|DI|DV|DA|DMAI|DMS|CAD)([^A-Z0-9]|$))')\n), ordenados AS (\n SELECT *,row_number() OVER(PARTITION BY id_evento ORDER BY segundos,id_resultado) AS posicao,count(*) OVER(PARTITION BY id_evento) AS n FROM base\n), agregado AS (\n SELECT id_evento,max(nome_evento) AS nome,max(estado) AS uf,max(cidade) AS cidade,max(data_final)::text AS data,\n count(*) AS total,count(*) FILTER(WHERE sexo='F') AS feminino,count(*) FILTER(WHERE sexo='M') AS masculino,\n min(segundos) AS minimo,avg(segundos) AS media,percentile_cont(.5) WITHIN GROUP(ORDER BY segundos) AS mediana,\n count(*) FILTER(WHERE segundos<9000) AS sub2h30,count(*) FILTER(WHERE segundos<10800) AS sub3,count(*) FILTER(WHERE segundos<14400) AS sub4,\n avg(segundos) FILTER(WHERE posicao<=10) AS top10,avg(segundos) FILTER(WHERE posicao<=100) AS top100,\n avg(segundos) FILTER(WHERE posicao<=ceil(n*.05)) AS top5pct,avg(segundos) FILTER(WHERE posicao<=ceil(n*.10)) AS top10pct,avg(segundos) FILTER(WHERE posicao<=ceil(n*.50)) AS top50pct\n FROM ordenados GROUP BY id_evento\n), bins AS (\n SELECT id_evento,coalesce(nullif(sexo,''),'N/A') AS sexo,CASE WHEN segundos<9000 THEN '01 · <2h30' WHEN segundos<10800 THEN '02 · 2h30–3h' WHEN segundos<12600 THEN '03 · 3h–3h30' WHEN segundos<14400 THEN '04 · 3h30–4h' WHEN segundos<16200 THEN '05 · 4h–4h30' WHEN segundos<18000 THEN '06 · 4h30–5h' WHEN segundos<21600 THEN '07 · 5h–6h' ELSE '08 · 6h+' END AS faixa,count(*) AS total FROM base GROUP BY 1,2,3\n)\nSELECT 2026 AS ano,jsonb_build_object('provas',(SELECT jsonb_agg(to_jsonb(a) ORDER BY a.total DESC) FROM agregado a),'tempos',(SELECT jsonb_agg(to_jsonb(b) ORDER BY id_evento,sexo,faixa) FROM bins b)) AS payload",
+    "status": "ok",
+    "note": "Mesma amostra/critério da revisão vigente. Nova fonte BI versionada após carga DataGrip; ainda candidato sem publicação. Floripa oficial210 permanece independente dos perfis BI.",
+    "finished_at": "2026-11-09 18:19:56.693308-03",
+    "frozen_at": "2026-11-09 18:19:56.699316-03",
+    "title": "Maratonas — recaptura Jan–Set — 09/11/2026 — célula 437",
+    "id": "305",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "truncated": false,
+    "status": "ok",
+    "started_at": "2026-11-09T18:19:56.237708-03:00",
+    "cell_id": 437,
+    "cell_version": 1,
+    "id": 305,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "ano",
+        "payload"
+      ],
+      "rows": [
+        {
+          "ano": 2026,
+          "payload": {
+            "provas": [
+              {
+                "total": 14120,
+                "masculino": 10243,
+                "top50pct": 13439.535552407931,
+                "id_evento": 43066,
+                "top100": 9465.83,
+                "mediana": 15197,
+                "top10": 7939.8,
+                "uf": "RJ",
+                "top10pct": 11476.687677053824,
+                "sub4": 5344,
+                "sub3": 332,
+                "data": "2026-06-07",
+                "minimo": 7822.0,
+                "sub2h30": 24,
+                "media": 15483.711756373938,
+                "feminino": 3877,
+                "top5pct": 10829.584985835694,
+                "nome": "Maratona Internacional do Rio de Janeiro 2026",
+                "cidade": "Rio de Janeiro"
+              },
+              {
+                "total": 7445,
+                "masculino": 5318,
+                "top50pct": 12292.896320171903,
+                "id_evento": 34236,
+                "top100": 9222.18,
+                "mediana": 13983,
+                "top10": 8039.8,
+                "uf": "RS",
+                "top10pct": 10432.05234899329,
+                "sub4": 4407,
+                "sub3": 545,
+                "data": "2026-05-31",
+                "minimo": 7821.0,
+                "sub2h30": 25,
+                "media": 14181.275621222298,
+                "feminino": 2127,
+                "top5pct": 10001.72654155496,
+                "nome": "Maratona Internacional de Porto Alegre 2026",
+                "cidade": "Porto Alegre"
+              },
+              {
+                "total": 6642,
+                "masculino": 5284,
+                "top50pct": 13464.64167419452,
+                "id_evento": 33486,
+                "top100": 10022.21,
+                "mediana": 15279,
+                "top10": 8538.3,
+                "uf": "SP",
+                "top10pct": 11419.556390977445,
+                "sub4": 2426,
+                "sub3": 158,
+                "data": "2026-07-26",
+                "minimo": 8194.0,
+                "sub2h30": 12,
+                "media": 15521.011894007828,
+                "feminino": 1358,
+                "top5pct": 10768.732732732733,
+                "nome": "SP City Marathon 2026",
+                "cidade": "São Paulo"
+              },
+              {
+                "total": 5210,
+                "masculino": 3794,
+                "top50pct": 11935.350863723608,
+                "id_evento": 34235,
+                "top100": 9219.75,
+                "mediana": 13689.5,
+                "top10": 7853.6,
+                "uf": "RS",
+                "top10pct": 10213.905950095968,
+                "sub4": 3304,
+                "sub3": 550,
+                "data": "2026-07-12",
+                "minimo": 7732.0,
+                "sub2h30": 23,
+                "media": 13864.598080614203,
+                "feminino": 1416,
+                "top5pct": 9794.459770114943,
+                "nome": "New Balance 42k Porto Alegre",
+                "cidade": "Porto Alegre"
+              },
+              {
+                "total": 4266,
+                "masculino": 3552,
+                "top50pct": 13587.632911392406,
+                "id_evento": 29291,
+                "top100": 9981.2,
+                "mediana": 15543,
+                "top10": 8257.6,
+                "uf": "SP",
+                "top10pct": 11363.234192037471,
+                "sub4": 1401,
+                "sub3": 102,
+                "data": "2026-04-12",
+                "minimo": 7967.0,
+                "sub2h30": 16,
+                "media": 15838.892639474918,
+                "feminino": 714,
+                "top5pct": 10658.855140186915,
+                "nome": "Maratona Internacional de São Paulo 2026",
+                "cidade": "São Paulo"
+              },
+              {
+                "total": 3609,
+                "masculino": 2478,
+                "top50pct": 12952.759384487535,
+                "id_evento": 34529,
+                "top100": 9993.23775,
+                "mediana": 14591.149,
+                "top10": 8446.9601,
+                "uf": "SC",
+                "top10pct": 10999.67843767313,
+                "sub4": 1692,
+                "sub3": 127,
+                "data": "2026-08-30",
+                "minimo": 7774.469,
+                "sub2h30": 10,
+                "media": 14854.81651593239,
+                "feminino": 1131,
+                "top5pct": 10404.421613259668,
+                "nome": "Maratona Internacional de Floripa 2026",
+                "cidade": "Florianópolis"
+              },
+              {
+                "total": 2393,
+                "masculino": 1869,
+                "top50pct": 13351.020050125313,
+                "id_evento": 38863,
+                "top100": 10510.37,
+                "mediana": 15133,
+                "top10": 9182.8,
+                "uf": "MG",
+                "top10pct": 11251.216666666667,
+                "sub4": 891,
+                "sub3": 67,
+                "data": "2026-06-28",
+                "minimo": 8760.0,
+                "sub2h30": 3,
+                "media": 15136.518178019223,
+                "feminino": 524,
+                "top5pct": 10640.791666666668,
+                "nome": "1ª MARATONA E 17ª MEIA MARATONA INTERNACIONAL DE BELO HORIZONTE",
+                "cidade": "Belo Horizonte"
+              },
+              {
+                "total": 2245,
+                "masculino": 1681,
+                "top50pct": 13279.99020480855,
+                "id_evento": 37310,
+                "top100": 10725.04,
+                "mediana": 15032,
+                "top10": 9196.0,
+                "uf": "PR",
+                "top10pct": 11438.404444444444,
+                "sub4": 932,
+                "sub3": 44,
+                "data": "2026-04-28",
+                "minimo": 8370.0,
+                "sub2h30": 3,
+                "media": 15224.172828507795,
+                "feminino": 564,
+                "top5pct": 10829.858407079646,
+                "nome": "Maratona Internacional do Paraná 2026",
+                "cidade": "Guaratuba"
+              },
+              {
+                "total": 1922,
+                "masculino": 1604,
+                "top50pct": 13954.005202913631,
+                "id_evento": 34841,
+                "top100": 11177.45,
+                "mediana": 16147,
+                "top10": 9716.8,
+                "uf": "CE",
+                "top10pct": 11707.891191709845,
+                "sub4": 544,
+                "sub3": 27,
+                "data": "2026-04-12",
+                "minimo": 8557.0,
+                "sub2h30": 1,
+                "media": 16224.359521331946,
+                "feminino": 318,
+                "top5pct": 11155.865979381442,
+                "nome": "MARATONA INTERNACIONAL DE FORTALEZA 2026",
+                "cidade": "Fortaleza"
+              },
+              {
+                "total": 1909,
+                "masculino": 1487,
+                "top50pct": 13184.506806282723,
+                "id_evento": 39421,
+                "top100": 10784.32,
+                "mediana": 14820,
+                "top10": 9443.2,
+                "uf": "AL",
+                "top10pct": 11292.471204188481,
+                "sub4": 823,
+                "sub3": 43,
+                "data": "2026-08-02",
+                "minimo": 9004.0,
+                "sub2h30": 0,
+                "media": 15141.063383970664,
+                "feminino": 422,
+                "top5pct": 10755.385416666668,
+                "nome": "MARATONA INTERNACIONAL DE MACEIÓ 2026",
+                "cidade": "Maceió"
+              },
+              {
+                "total": 1888,
+                "masculino": 1448,
+                "top50pct": 13488.353813559323,
+                "id_evento": 35868,
+                "top100": 10992.27,
+                "mediana": 15302.5,
+                "top10": 9481.1,
+                "uf": "MG",
+                "top10pct": 11537.460317460316,
+                "sub4": 673,
+                "sub3": 32,
+                "data": "2026-05-17",
+                "minimo": 8835.0,
+                "sub2h30": 1,
+                "media": 15560.492055084746,
+                "feminino": 440,
+                "top5pct": 10948.526315789473,
+                "nome": "MARATONA OFICIAL DE BELO HORIZONTE 2026",
+                "cidade": "Belo Horizonte"
+              },
+              {
+                "total": 1326,
+                "masculino": 1043,
+                "top50pct": 12934.03016591252,
+                "id_evento": 33490,
+                "top100": 10521.64,
+                "mediana": 14851,
+                "top10": 9145.9,
+                "uf": "SP",
+                "top10pct": 10768.609022556391,
+                "sub4": 577,
+                "sub3": 54,
+                "data": "2026-06-21",
+                "minimo": 8337.0,
+                "sub2h30": 2,
+                "media": 15065.158371040725,
+                "feminino": 283,
+                "top5pct": 10190.507462686566,
+                "nome": "2ª Maratona de Praia Grande",
+                "cidade": "Praia Grande"
+              },
+              {
+                "total": 1108,
+                "masculino": 925,
+                "top50pct": 13368.240072202167,
+                "id_evento": 36245,
+                "top100": 11033.9,
+                "mediana": 15156.5,
+                "top10": 9160.8,
+                "uf": "BA",
+                "top10pct": 11153.792792792792,
+                "sub4": 414,
+                "sub3": 31,
+                "data": "2026-09-27",
+                "minimo": 8461.0,
+                "sub2h30": 5,
+                "media": 15454.643501805054,
+                "feminino": 183,
+                "top5pct": 10496.19642857143,
+                "nome": "Maratona de Salvador 2026",
+                "cidade": "Salvador"
+              },
+              {
+                "total": 857,
+                "masculino": 623,
+                "top50pct": 13250.736596736597,
+                "id_evento": 37815,
+                "top100": 11468.55,
+                "mediana": 15014,
+                "top10": 10105.8,
+                "uf": "SC",
+                "top10pct": 11325.53488372093,
+                "sub4": 353,
+                "sub3": 23,
+                "data": "2026-06-07",
+                "minimo": 9403.0,
+                "sub2h30": 0,
+                "media": 15245.007001166861,
+                "feminino": 234,
+                "top5pct": 10783.627906976744,
+                "nome": "Meia e Maratona Cidade de Florianópolis - 2026",
+                "cidade": "Florianópolis"
+              },
+              {
+                "total": 764,
+                "masculino": 533,
+                "top50pct": 13935.384816753927,
+                "id_evento": 43078,
+                "top100": 11900.84,
+                "mediana": 15822.5,
+                "top10": 9571.3,
+                "uf": "RJ",
+                "top10pct": 11557.506493506495,
+                "sub4": 206,
+                "sub3": 19,
+                "data": "2026-09-27",
+                "minimo": 9154.0,
+                "sub2h30": 0,
+                "media": 15877.277486910994,
+                "feminino": 231,
+                "top5pct": 10703.538461538463,
+                "nome": "MARATONA DE NITERÓI 2026",
+                "cidade": "Niterói"
+              },
+              {
+                "total": 574,
+                "masculino": 476,
+                "top50pct": 14616.598114982578,
+                "id_evento": 40448,
+                "top100": 12661.858,
+                "mediana": 16989.445,
+                "top10": 9747.7556,
+                "uf": "AM",
+                "top10pct": 11871.927413793102,
+                "sub4": 116,
+                "sub3": 12,
+                "data": "2026-04-05",
+                "minimo": 8924.646,
+                "sub2h30": 1,
+                "media": 17002.245973867597,
+                "feminino": 98,
+                "top5pct": 10941.818827586207,
+                "nome": "Maratona de Manaus Moto Honda",
+                "cidade": "Manaus"
+              },
+              {
+                "total": 559,
+                "masculino": 559,
+                "top50pct": 13424.889285714286,
+                "id_evento": 34840,
+                "top100": 12020.65,
+                "mediana": 15075,
+                "top10": 9460.9,
+                "uf": "PB",
+                "top10pct": 11354.839285714286,
+                "sub4": 215,
+                "sub3": 16,
+                "data": "2026-04-19",
+                "minimo": 8854.0,
+                "sub2h30": 2,
+                "media": 15420.565295169947,
+                "feminino": 0,
+                "top5pct": 10596.0,
+                "nome": "Maratona De João Pessoa 2026",
+                "cidade": "João Pessoa"
+              },
+              {
+                "total": 501,
+                "masculino": 426,
+                "top50pct": 13261.900398406375,
+                "id_evento": 36973,
+                "top100": 11998.58,
+                "mediana": 15033,
+                "top10": 10075.5,
+                "uf": "SP",
+                "top10pct": 11272.549019607843,
+                "sub4": 203,
+                "sub3": 13,
+                "data": "2026-09-20",
+                "minimo": 9233.0,
+                "sub2h30": 0,
+                "media": 15223.684630738522,
+                "feminino": 75,
+                "top5pct": 10661.807692307691,
+                "nome": "2ª MARATONA DE SÃO JOSÉ",
+                "cidade": "São José dos Campos"
+              },
+              {
+                "total": 418,
+                "masculino": 326,
+                "top50pct": 13160.277511961722,
+                "id_evento": 39393,
+                "top100": 12083.42,
+                "mediana": 14924,
+                "top10": 10077.7,
+                "uf": "MS",
+                "top10pct": 11153.095238095239,
+                "sub4": 177,
+                "sub3": 12,
+                "data": "2026-07-05",
+                "minimo": 8958.0,
+                "sub2h30": 1,
+                "media": 15206.73923444976,
+                "feminino": 92,
+                "top5pct": 10599.333333333332,
+                "nome": "Maratona de Campo Grande 2026",
+                "cidade": "Campo Grande"
+              },
+              {
+                "total": 404,
+                "masculino": 293,
+                "top50pct": 12141.168316831683,
+                "id_evento": 36249,
+                "top100": 11061.38,
+                "mediana": 13985,
+                "top10": 9174.3,
+                "uf": "PR",
+                "top10pct": 10141.926829268292,
+                "sub4": 235,
+                "sub3": 36,
+                "data": "2026-07-25",
+                "minimo": 8668.0,
+                "sub2h30": 2,
+                "media": 14119.74504950495,
+                "feminino": 111,
+                "top5pct": 9616.380952380952,
+                "nome": "MARATONA DO LITORAL",
+                "cidade": "Matinhos"
+              },
+              {
+                "total": 404,
+                "masculino": 338,
+                "top50pct": 13004.222772277228,
+                "id_evento": 36250,
+                "top100": 11980.66,
+                "mediana": 14776,
+                "top10": 9842.3,
+                "uf": "PR",
+                "top10pct": 11033.463414634147,
+                "sub4": 174,
+                "sub3": 18,
+                "data": "2026-07-05",
+                "minimo": 8863.0,
+                "sub2h30": 1,
+                "media": 14994.009900990099,
+                "feminino": 66,
+                "top5pct": 10320.666666666666,
+                "nome": "MARATONA DE LONDRINA 2026",
+                "cidade": "Londrina"
+              },
+              {
+                "total": 370,
+                "masculino": 303,
+                "top50pct": 13415.286486486486,
+                "id_evento": 37874,
+                "top100": 12485.3,
+                "mediana": 15275.5,
+                "top10": 10604.1,
+                "uf": "GO",
+                "top10pct": 11537.945945945947,
+                "sub4": 138,
+                "sub3": 6,
+                "data": "2026-05-24",
+                "minimo": 9926.0,
+                "sub2h30": 0,
+                "media": 15385.213513513514,
+                "feminino": 67,
+                "top5pct": 11041.315789473683,
+                "nome": "3ª MARATONA INTERNACIONAL DE GOIÂNIA",
+                "cidade": "Goiânia"
+              },
+              {
+                "total": 342,
+                "masculino": 266,
+                "top50pct": 13900.011695906433,
+                "id_evento": 31176,
+                "top100": 13057.96,
+                "mediana": 15838,
+                "top10": 10694.5,
+                "uf": "PE",
+                "top10pct": 11816.314285714287,
+                "sub4": 100,
+                "sub3": 5,
+                "data": "2026-05-31",
+                "minimo": 9312.0,
+                "sub2h30": 0,
+                "media": 15874.520467836257,
+                "feminino": 76,
+                "top5pct": 11196.0,
+                "nome": "MARATONA INTERNACIONAL DE OLINDA  2026",
+                "cidade": "Olinda"
+              },
+              {
+                "total": 289,
+                "masculino": 245,
+                "top50pct": 13158.64896551724,
+                "id_evento": 39461,
+                "top100": 12501.834,
+                "mediana": 15121.2,
+                "top10": 9670.05,
+                "uf": "DF",
+                "top10pct": 10728.437931034483,
+                "sub4": 110,
+                "sub3": 15,
+                "data": "2026-04-21",
+                "minimo": 8702.9,
+                "sub2h30": 1,
+                "media": 15318.541522491349,
+                "feminino": 44,
+                "top5pct": 9988.373333333333,
+                "nome": "MARATONA BRASÍLIA 2026",
+                "cidade": "Brasília"
+              },
+              {
+                "total": 214,
+                "masculino": 177,
+                "top50pct": 12142.785046728972,
+                "id_evento": 37868,
+                "top100": 12033.86,
+                "mediana": 13735.5,
+                "top10": 9847.3,
+                "uf": "SC",
+                "top10pct": 10402.863636363636,
+                "sub4": 141,
+                "sub3": 15,
+                "data": "2026-07-05",
+                "minimo": 8950.0,
+                "sub2h30": 1,
+                "media": 13945.359813084113,
+                "feminino": 37,
+                "top5pct": 9905.181818181818,
+                "nome": "28ª MARATONA INTERNACIONAL DE BLUMENAU  - 2026",
+                "cidade": "Blumenau"
+              },
+              {
+                "total": 195,
+                "masculino": 172,
+                "top50pct": 12742.30612244898,
+                "id_evento": 38234,
+                "top100": 12775.89,
+                "mediana": 14339,
+                "top10": 10305.6,
+                "uf": "SP",
+                "top10pct": 10953.3,
+                "sub4": 99,
+                "sub3": 8,
+                "data": "2026-05-03",
+                "minimo": 8886.0,
+                "sub2h30": 1,
+                "media": 14944.692307692309,
+                "feminino": 23,
+                "top5pct": 10305.6,
+                "nome": "MARATONA INTERNACIONAL DE CAMPINAS",
+                "cidade": "Campinas"
+              },
+              {
+                "total": 190,
+                "masculino": 152,
+                "top50pct": 14272.063157894738,
+                "id_evento": 37322,
+                "top100": 14380.11,
+                "mediana": 16272.5,
+                "top10": 11142.1,
+                "uf": "PE",
+                "top10pct": 12004.421052631578,
+                "sub4": 48,
+                "sub3": 3,
+                "data": "2026-03-29",
+                "minimo": 9634.0,
+                "sub2h30": 0,
+                "media": 16385.084210526315,
+                "feminino": 38,
+                "top5pct": 11142.1,
+                "nome": "MARATONA INTERNACIONAL DO FREVO 2026",
+                "cidade": "Recife"
+              },
+              {
+                "total": 189,
+                "masculino": 151,
+                "top50pct": 13387.684210526317,
+                "id_evento": 40597,
+                "top100": 13528.2,
+                "mediana": 16052,
+                "top10": 10645.0,
+                "uf": "SP",
+                "top10pct": 11253.684210526317,
+                "sub4": 81,
+                "sub3": 4,
+                "data": "2026-04-12",
+                "minimo": 9147.0,
+                "sub2h30": 0,
+                "media": 17551.195767195768,
+                "feminino": 38,
+                "top5pct": 10645.0,
+                "nome": "SEGURALTA MARATHON",
+                "cidade": "São José do Rio Pardo"
+              },
+              {
+                "total": 167,
+                "masculino": 122,
+                "top50pct": 12929.880952380952,
+                "id_evento": 31179,
+                "top100": 13290.23,
+                "mediana": 14910,
+                "top10": 10551.9,
+                "uf": "PR",
+                "top10pct": 11012.117647058823,
+                "sub4": 73,
+                "sub3": 5,
+                "data": "2026-05-24",
+                "minimo": 8973.0,
+                "sub2h30": 1,
+                "media": 15134.604790419162,
+                "feminino": 45,
+                "top5pct": 10471.111111111111,
+                "nome": "MARATONA INTERNACIONAL DE PG",
+                "cidade": "Ponta Grossa"
+              },
+              {
+                "total": 147,
+                "masculino": 125,
+                "top50pct": 13596.96891891892,
+                "id_evento": 34131,
+                "top100": 14169.633,
+                "mediana": 15003.1,
+                "top10": 11262.9,
+                "uf": "BA",
+                "top10pct": 11675.466666666667,
+                "sub4": 55,
+                "sub3": 4,
+                "data": "2026-05-24",
+                "minimo": 10165.9,
+                "sub2h30": 0,
+                "media": 15346.133333333333,
+                "feminino": 22,
+                "top5pct": 11003.05,
+                "nome": "Maratona Farol A Farol - 2026",
+                "cidade": "Salvador"
+              },
+              {
+                "total": 135,
+                "masculino": 121,
+                "top50pct": 13731.588235294117,
+                "id_evento": 36246,
+                "top100": 14573.12,
+                "mediana": 15133,
+                "top10": 11933.3,
+                "uf": "GO",
+                "top10pct": 12105.5,
+                "sub4": 48,
+                "sub3": 0,
+                "data": "2026-08-30",
+                "minimo": 10939.0,
+                "sub2h30": 0,
+                "media": 15799.666666666668,
+                "feminino": 14,
+                "top5pct": 11778.857142857143,
+                "nome": "13° Maratona EM MOVIMENTO EM GOIANIA",
+                "cidade": "Goiânia"
+              },
+              {
+                "total": 116,
+                "masculino": 83,
+                "top50pct": 14037.972068965517,
+                "id_evento": 33713,
+                "top100": 15680.17305,
+                "mediana": 16393.749499999998,
+                "top10": 11698.2917,
+                "uf": "AP",
+                "top10pct": 11850.265166666666,
+                "sub4": 33,
+                "sub3": 1,
+                "data": "2026-03-15",
+                "minimo": 10588.146,
+                "sub2h30": 0,
+                "media": 16505.933827586206,
+                "feminino": 33,
+                "top5pct": 11414.701166666666,
+                "nome": "I Maratona de Macapá",
+                "cidade": "Macapá"
+              },
+              {
+                "total": 101,
+                "masculino": 80,
+                "top50pct": 12901.235294117647,
+                "id_evento": 43073,
+                "top100": 14983.71,
+                "mediana": 14747,
+                "top10": 10571.7,
+                "uf": "RS",
+                "top10pct": 10687.454545454546,
+                "sub4": 48,
+                "sub3": 7,
+                "data": "2026-03-15",
+                "minimo": 9379.0,
+                "sub2h30": 0,
+                "media": 15049.059405940594,
+                "feminino": 21,
+                "top5pct": 10012.0,
+                "nome": "2ª Maratona de Torres",
+                "cidade": "Torres"
+              },
+              {
+                "total": 96,
+                "masculino": 71,
+                "top50pct": 12086.010145833334,
+                "id_evento": 37307,
+                "top100": 13875.533708333332,
+                "mediana": 13482.092499999999,
+                "top10": 10396.0866,
+                "uf": "SC",
+                "top10pct": 10396.0866,
+                "sub4": 58,
+                "sub3": 7,
+                "data": "2026-05-24",
+                "minimo": 8869.445,
+                "sub2h30": 1,
+                "media": 13875.533708333332,
+                "feminino": 25,
+                "top5pct": 9865.0088,
+                "nome": "MARATONA DE TUBARÃO 2026",
+                "cidade": "Tubarão"
+              },
+              {
+                "total": 95,
+                "masculino": 79,
+                "top50pct": 12114.083333333332,
+                "id_evento": 37006,
+                "top100": 13673.242105263158,
+                "mediana": 13825,
+                "top10": 9978.6,
+                "uf": "SC",
+                "top10pct": 9978.6,
+                "sub4": 59,
+                "sub3": 10,
+                "data": "2026-09-27",
+                "minimo": 9357.0,
+                "sub2h30": 0,
+                "media": 13673.242105263158,
+                "feminino": 16,
+                "top5pct": 9686.0,
+                "nome": "Maratona de Criciúma 2026",
+                "cidade": "Criciúma"
+              },
+              {
+                "total": 90,
+                "masculino": 80,
+                "top50pct": 12277.733333333334,
+                "id_evento": 43077,
+                "top100": 13808.516666666666,
+                "mediana": 13916.6,
+                "top10": 10587.45,
+                "uf": "BA",
+                "top10pct": 10504.566666666668,
+                "sub4": 57,
+                "sub3": 5,
+                "data": "2026-05-17",
+                "minimo": 9392.6,
+                "sub2h30": 0,
+                "media": 13808.516666666666,
+                "feminino": 10,
+                "top5pct": 10047.1,
+                "nome": "2ª Maratona de Feira de Santana",
+                "cidade": "Feira de Santana"
+              },
+              {
+                "total": 60,
+                "masculino": 30,
+                "top50pct": 13305.975966666667,
+                "id_evento": 33976,
+                "top100": 15140.73045,
+                "mediana": 14414.4955,
+                "top10": 12444.1973,
+                "uf": "RO",
+                "top10pct": 12233.997,
+                "sub4": 29,
+                "sub3": 0,
+                "data": "2026-07-19",
+                "minimo": 11711.0,
+                "sub2h30": 0,
+                "media": 15140.73045,
+                "feminino": 30,
+                "top5pct": 11921.660666666667,
+                "nome": "9ª Jipa City Marathon",
+                "cidade": "Ji-Paraná"
+              },
+              {
+                "total": 57,
+                "masculino": 45,
+                "top50pct": 13229.130586206897,
+                "id_evento": 36665,
+                "top100": 15084.395175438596,
+                "mediana": 14933.243,
+                "top10": 11616.4017,
+                "uf": "MS",
+                "top10pct": 11047.024833333333,
+                "sub4": 23,
+                "sub3": 2,
+                "data": "2026-09-06",
+                "minimo": 10157.45,
+                "sub2h30": 0,
+                "media": 15084.395175438596,
+                "feminino": 12,
+                "top5pct": 10625.592333333334,
+                "nome": "MARATONA DE BONITO",
+                "cidade": "Bonito"
+              },
+              {
+                "total": 52,
+                "masculino": 40,
+                "top50pct": 12903.884615384615,
+                "id_evento": 43074,
+                "top100": 14147.403846153846,
+                "mediana": 14235,
+                "top10": 11844.9,
+                "uf": "RS",
+                "top10pct": 11501.666666666666,
+                "sub4": 29,
+                "sub3": 0,
+                "data": "2026-08-02",
+                "minimo": 10805.0,
+                "sub2h30": 0,
+                "media": 14147.403846153846,
+                "feminino": 12,
+                "top5pct": 11207.333333333334,
+                "nome": "2ª Maratona de Capão da Canoa",
+                "cidade": "Capão da Canoa"
+              }
+            ],
+            "tempos": [
+              {
+                "total": 7,
+                "id_evento": 29291,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 16,
+                "id_evento": 29291,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 78,
+                "id_evento": 29291,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 162,
+                "id_evento": 29291,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 210,
+                "id_evento": 29291,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 199,
+                "id_evento": 29291,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 42,
+                "id_evento": 29291,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 16,
+                "id_evento": 29291,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 79,
+                "id_evento": 29291,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 369,
+                "id_evento": 29291,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 836,
+                "id_evento": 29291,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 887,
+                "id_evento": 29291,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 709,
+                "id_evento": 29291,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 562,
+                "id_evento": 29291,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 94,
+                "id_evento": 29291,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 5,
+                "id_evento": 31176,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 9,
+                "id_evento": 31176,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 23,
+                "id_evento": 31176,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 17,
+                "id_evento": 31176,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 22,
+                "id_evento": 31176,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 5,
+                "id_evento": 31176,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 19,
+                "id_evento": 31176,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 62,
+                "id_evento": 31176,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 69,
+                "id_evento": 31176,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 57,
+                "id_evento": 31176,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 54,
+                "id_evento": 31176,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 5,
+                "id_evento": 31179,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 10,
+                "id_evento": 31179,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 31179,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 11,
+                "id_evento": 31179,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 12,
+                "id_evento": 31179,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 31179,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 4,
+                "id_evento": 31179,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 21,
+                "id_evento": 31179,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 32,
+                "id_evento": 31179,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 30,
+                "id_evento": 31179,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 20,
+                "id_evento": 31179,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 14,
+                "id_evento": 31179,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 5,
+                "id_evento": 33486,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 32,
+                "id_evento": 33486,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 209,
+                "id_evento": 33486,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 398,
+                "id_evento": 33486,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 350,
+                "id_evento": 33486,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 326,
+                "id_evento": 33486,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 38,
+                "id_evento": 33486,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 12,
+                "id_evento": 33486,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 141,
+                "id_evento": 33486,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 565,
+                "id_evento": 33486,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 1462,
+                "id_evento": 33486,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 1390,
+                "id_evento": 33486,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 925,
+                "id_evento": 33486,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 726,
+                "id_evento": 33486,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 63,
+                "id_evento": 33486,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 1,
+                "id_evento": 33490,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 15,
+                "id_evento": 33490,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 46,
+                "id_evento": 33490,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 84,
+                "id_evento": 33490,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 77,
+                "id_evento": 33490,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 55,
+                "id_evento": 33490,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 5,
+                "id_evento": 33490,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 2,
+                "id_evento": 33490,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 51,
+                "id_evento": 33490,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 167,
+                "id_evento": 33490,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 295,
+                "id_evento": 33490,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 259,
+                "id_evento": 33490,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 130,
+                "id_evento": 33490,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 130,
+                "id_evento": 33490,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 9,
+                "id_evento": 33490,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 2,
+                "id_evento": 33713,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 33713,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 33713,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 8,
+                "id_evento": 33713,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 8,
+                "id_evento": 33713,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 33713,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 33713,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 8,
+                "id_evento": 33713,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 18,
+                "id_evento": 33713,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 14,
+                "id_evento": 33713,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 20,
+                "id_evento": 33713,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 19,
+                "id_evento": 33713,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 3,
+                "id_evento": 33713,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 8,
+                "id_evento": 33976,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 33976,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 33976,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 11,
+                "id_evento": 33976,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 5,
+                "id_evento": 33976,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 16,
+                "id_evento": 33976,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 9,
+                "id_evento": 33976,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 5,
+                "id_evento": 34131,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 34131,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 6,
+                "id_evento": 34131,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 34131,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 34131,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 9,
+                "id_evento": 34131,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 37,
+                "id_evento": 34131,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 31,
+                "id_evento": 34131,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 28,
+                "id_evento": 34131,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 16,
+                "id_evento": 34131,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 14,
+                "id_evento": 34235,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 137,
+                "id_evento": 34235,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 452,
+                "id_evento": 34235,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 438,
+                "id_evento": 34235,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 233,
+                "id_evento": 34235,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 133,
+                "id_evento": 34235,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 9,
+                "id_evento": 34235,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 23,
+                "id_evento": 34235,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 513,
+                "id_evento": 34235,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 1051,
+                "id_evento": 34235,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 1114,
+                "id_evento": 34235,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 609,
+                "id_evento": 34235,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 314,
+                "id_evento": 34235,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 161,
+                "id_evento": 34235,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 9,
+                "id_evento": 34235,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 19,
+                "id_evento": 34236,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 190,
+                "id_evento": 34236,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 660,
+                "id_evento": 34236,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 617,
+                "id_evento": 34236,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 383,
+                "id_evento": 34236,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 237,
+                "id_evento": 34236,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 21,
+                "id_evento": 34236,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 25,
+                "id_evento": 34236,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 501,
+                "id_evento": 34236,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 1290,
+                "id_evento": 34236,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 1722,
+                "id_evento": 34236,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 1024,
+                "id_evento": 34236,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 491,
+                "id_evento": 34236,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 237,
+                "id_evento": 34236,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 28,
+                "id_evento": 34236,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 4,
+                "id_evento": 34529,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 37,
+                "id_evento": 34529,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 287,
+                "id_evento": 34529,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 362,
+                "id_evento": 34529,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 265,
+                "id_evento": 34529,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 173,
+                "id_evento": 34529,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 3,
+                "id_evento": 34529,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 10,
+                "id_evento": 34529,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 113,
+                "id_evento": 34529,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 469,
+                "id_evento": 34529,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 772,
+                "id_evento": 34529,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 568,
+                "id_evento": 34529,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 343,
+                "id_evento": 34529,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 199,
+                "id_evento": 34529,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 4,
+                "id_evento": 34529,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 2,
+                "id_evento": 34840,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 14,
+                "id_evento": 34840,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 46,
+                "id_evento": 34840,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 153,
+                "id_evento": 34840,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 136,
+                "id_evento": 34840,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 116,
+                "id_evento": 34840,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 92,
+                "id_evento": 34840,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 1,
+                "id_evento": 34841,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 11,
+                "id_evento": 34841,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 37,
+                "id_evento": 34841,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 59,
+                "id_evento": 34841,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 82,
+                "id_evento": 34841,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 111,
+                "id_evento": 34841,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 17,
+                "id_evento": 34841,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 34841,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 25,
+                "id_evento": 34841,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 163,
+                "id_evento": 34841,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 306,
+                "id_evento": 34841,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 372,
+                "id_evento": 34841,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 358,
+                "id_evento": 34841,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 337,
+                "id_evento": 34841,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 42,
+                "id_evento": 34841,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 4,
+                "id_evento": 35868,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 12,
+                "id_evento": 35868,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 56,
+                "id_evento": 35868,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 137,
+                "id_evento": 35868,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 106,
+                "id_evento": 35868,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 113,
+                "id_evento": 35868,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 12,
+                "id_evento": 35868,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 35868,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 27,
+                "id_evento": 35868,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 182,
+                "id_evento": 35868,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 391,
+                "id_evento": 35868,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 371,
+                "id_evento": 35868,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 253,
+                "id_evento": 35868,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 212,
+                "id_evento": 35868,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 11,
+                "id_evento": 35868,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 1,
+                "id_evento": 36245,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 10,
+                "id_evento": 36245,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 30,
+                "id_evento": 36245,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 47,
+                "id_evento": 36245,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 37,
+                "id_evento": 36245,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 57,
+                "id_evento": 36245,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 36245,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 5,
+                "id_evento": 36245,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 25,
+                "id_evento": 36245,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 99,
+                "id_evento": 36245,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 244,
+                "id_evento": 36245,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 246,
+                "id_evento": 36245,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 158,
+                "id_evento": 36245,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 146,
+                "id_evento": 36245,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 2,
+                "id_evento": 36245,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 1,
+                "id_evento": 36246,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 3,
+                "id_evento": 36246,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 3,
+                "id_evento": 36246,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 36246,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 13,
+                "id_evento": 36246,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 34,
+                "id_evento": 36246,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 28,
+                "id_evento": 36246,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 25,
+                "id_evento": 36246,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 19,
+                "id_evento": 36246,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 2,
+                "id_evento": 36246,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 2,
+                "id_evento": 36249,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 11,
+                "id_evento": 36249,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 34,
+                "id_evento": 36249,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 33,
+                "id_evento": 36249,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 16,
+                "id_evento": 36249,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 15,
+                "id_evento": 36249,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 2,
+                "id_evento": 36249,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 32,
+                "id_evento": 36249,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 70,
+                "id_evento": 36249,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 84,
+                "id_evento": 36249,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 58,
+                "id_evento": 36249,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 30,
+                "id_evento": 36249,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 17,
+                "id_evento": 36249,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 1,
+                "id_evento": 36250,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 36250,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 13,
+                "id_evento": 36250,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 16,
+                "id_evento": 36250,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 21,
+                "id_evento": 36250,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 11,
+                "id_evento": 36250,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 36250,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 16,
+                "id_evento": 36250,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 49,
+                "id_evento": 36250,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 90,
+                "id_evento": 36250,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 93,
+                "id_evento": 36250,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 54,
+                "id_evento": 36250,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 35,
+                "id_evento": 36250,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 2,
+                "id_evento": 36665,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 6,
+                "id_evento": 36665,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 36665,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 2,
+                "id_evento": 36665,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 6,
+                "id_evento": 36665,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 13,
+                "id_evento": 36665,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 13,
+                "id_evento": 36665,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 4,
+                "id_evento": 36665,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 5,
+                "id_evento": 36665,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 2,
+                "id_evento": 36665,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 3,
+                "id_evento": 36973,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 21,
+                "id_evento": 36973,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 21,
+                "id_evento": 36973,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 16,
+                "id_evento": 36973,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 14,
+                "id_evento": 36973,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 13,
+                "id_evento": 36973,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 49,
+                "id_evento": 36973,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 117,
+                "id_evento": 36973,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 100,
+                "id_evento": 36973,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 94,
+                "id_evento": 36973,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 53,
+                "id_evento": 36973,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 3,
+                "id_evento": 37006,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 5,
+                "id_evento": 37006,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 37006,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 37006,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 10,
+                "id_evento": 37006,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 16,
+                "id_evento": 37006,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 25,
+                "id_evento": 37006,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 22,
+                "id_evento": 37006,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 3,
+                "id_evento": 37006,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 3,
+                "id_evento": 37006,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 3,
+                "id_evento": 37307,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 37307,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 12,
+                "id_evento": 37307,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 5,
+                "id_evento": 37307,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 37307,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 37307,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 6,
+                "id_evento": 37307,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 18,
+                "id_evento": 37307,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 26,
+                "id_evento": 37307,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 11,
+                "id_evento": 37307,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 8,
+                "id_evento": 37307,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 1,
+                "id_evento": 37307,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 5,
+                "id_evento": 37310,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 15,
+                "id_evento": 37310,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 124,
+                "id_evento": 37310,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 150,
+                "id_evento": 37310,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 149,
+                "id_evento": 37310,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 114,
+                "id_evento": 37310,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 37310,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 3,
+                "id_evento": 37310,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 36,
+                "id_evento": 37310,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 232,
+                "id_evento": 37310,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 517,
+                "id_evento": 37310,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 449,
+                "id_evento": 37310,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 267,
+                "id_evento": 37310,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 169,
+                "id_evento": 37310,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 8,
+                "id_evento": 37310,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 5,
+                "id_evento": 37322,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 37322,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 11,
+                "id_evento": 37322,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 15,
+                "id_evento": 37322,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 3,
+                "id_evento": 37322,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 8,
+                "id_evento": 37322,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 32,
+                "id_evento": 37322,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 37,
+                "id_evento": 37322,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 34,
+                "id_evento": 37322,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 38,
+                "id_evento": 37322,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 15,
+                "id_evento": 37815,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 49,
+                "id_evento": 37815,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 57,
+                "id_evento": 37815,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 65,
+                "id_evento": 37815,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 48,
+                "id_evento": 37815,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 23,
+                "id_evento": 37815,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 88,
+                "id_evento": 37815,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 178,
+                "id_evento": 37815,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 145,
+                "id_evento": 37815,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 110,
+                "id_evento": 37815,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 79,
+                "id_evento": 37815,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 8,
+                "id_evento": 37868,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 14,
+                "id_evento": 37868,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 8,
+                "id_evento": 37868,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 6,
+                "id_evento": 37868,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 37868,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 37868,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 14,
+                "id_evento": 37868,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 41,
+                "id_evento": 37868,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 63,
+                "id_evento": 37868,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 29,
+                "id_evento": 37868,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 22,
+                "id_evento": 37868,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 6,
+                "id_evento": 37868,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 1,
+                "id_evento": 37868,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 1,
+                "id_evento": 37874,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 10,
+                "id_evento": 37874,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 22,
+                "id_evento": 37874,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 20,
+                "id_evento": 37874,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 13,
+                "id_evento": 37874,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 37874,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 6,
+                "id_evento": 37874,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 44,
+                "id_evento": 37874,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 77,
+                "id_evento": 37874,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 81,
+                "id_evento": 37874,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 57,
+                "id_evento": 37874,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 38,
+                "id_evento": 37874,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 1,
+                "id_evento": 38234,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 6,
+                "id_evento": 38234,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 38234,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 6,
+                "id_evento": 38234,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 3,
+                "id_evento": 38234,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 38234,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 7,
+                "id_evento": 38234,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 25,
+                "id_evento": 38234,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 59,
+                "id_evento": 38234,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 27,
+                "id_evento": 38234,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 29,
+                "id_evento": 38234,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 22,
+                "id_evento": 38234,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 2,
+                "id_evento": 38234,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 3,
+                "id_evento": 38863,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 11,
+                "id_evento": 38863,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 77,
+                "id_evento": 38863,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 173,
+                "id_evento": 38863,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 166,
+                "id_evento": 38863,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 94,
+                "id_evento": 38863,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 3,
+                "id_evento": 38863,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 61,
+                "id_evento": 38863,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 241,
+                "id_evento": 38863,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 495,
+                "id_evento": 38863,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 523,
+                "id_evento": 38863,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 389,
+                "id_evento": 38863,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 157,
+                "id_evento": 38863,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 6,
+                "id_evento": 39393,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 19,
+                "id_evento": 39393,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 22,
+                "id_evento": 39393,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 23,
+                "id_evento": 39393,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 22,
+                "id_evento": 39393,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 39393,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 11,
+                "id_evento": 39393,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 43,
+                "id_evento": 39393,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 97,
+                "id_evento": 39393,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 83,
+                "id_evento": 39393,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 51,
+                "id_evento": 39393,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 36,
+                "id_evento": 39393,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 4,
+                "id_evento": 39393,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 24,
+                "id_evento": 39421,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 92,
+                "id_evento": 39421,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 127,
+                "id_evento": 39421,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 94,
+                "id_evento": 39421,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 83,
+                "id_evento": 39421,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 2,
+                "id_evento": 39421,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 43,
+                "id_evento": 39421,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 220,
+                "id_evento": 39421,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 444,
+                "id_evento": 39421,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 370,
+                "id_evento": 39421,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 235,
+                "id_evento": 39421,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 169,
+                "id_evento": 39421,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 6,
+                "id_evento": 39421,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 5,
+                "id_evento": 39461,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 11,
+                "id_evento": 39461,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 39461,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 11,
+                "id_evento": 39461,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 9,
+                "id_evento": 39461,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 39461,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 39461,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 14,
+                "id_evento": 39461,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 23,
+                "id_evento": 39461,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 56,
+                "id_evento": 39461,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 69,
+                "id_evento": 39461,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 47,
+                "id_evento": 39461,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 35,
+                "id_evento": 39461,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 4,
+                "id_evento": 40448,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 40448,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 16,
+                "id_evento": 40448,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 22,
+                "id_evento": 40448,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 43,
+                "id_evento": 40448,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 9,
+                "id_evento": 40448,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 40448,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 11,
+                "id_evento": 40448,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 21,
+                "id_evento": 40448,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 75,
+                "id_evento": 40448,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 96,
+                "id_evento": 40448,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 105,
+                "id_evento": 40448,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 144,
+                "id_evento": 40448,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 23,
+                "id_evento": 40448,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 3,
+                "id_evento": 40597,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 40597,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 1,
+                "id_evento": 40597,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 10,
+                "id_evento": 40597,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 14,
+                "id_evento": 40597,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 6,
+                "id_evento": 40597,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 40597,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 19,
+                "id_evento": 40597,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 51,
+                "id_evento": 40597,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 16,
+                "id_evento": 40597,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 35,
+                "id_evento": 40597,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 22,
+                "id_evento": 40597,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 4,
+                "id_evento": 40597,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 8,
+                "id_evento": 43066,
+                "faixa": "01 · <2h30",
+                "sexo": "F"
+              },
+              {
+                "total": 8,
+                "id_evento": 43066,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "F"
+              },
+              {
+                "total": 134,
+                "id_evento": 43066,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 764,
+                "id_evento": 43066,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 1126,
+                "id_evento": 43066,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 917,
+                "id_evento": 43066,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 852,
+                "id_evento": 43066,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 68,
+                "id_evento": 43066,
+                "faixa": "08 · 6h+",
+                "sexo": "F"
+              },
+              {
+                "total": 16,
+                "id_evento": 43066,
+                "faixa": "01 · <2h30",
+                "sexo": "M"
+              },
+              {
+                "total": 300,
+                "id_evento": 43066,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 1191,
+                "id_evento": 43066,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 2923,
+                "id_evento": 43066,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 2540,
+                "id_evento": 43066,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 1783,
+                "id_evento": 43066,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 1390,
+                "id_evento": 43066,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 100,
+                "id_evento": 43066,
+                "faixa": "08 · 6h+",
+                "sexo": "M"
+              },
+              {
+                "total": 1,
+                "id_evento": 43073,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 43073,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 4,
+                "id_evento": 43073,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 43073,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 5,
+                "id_evento": 43073,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 7,
+                "id_evento": 43073,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 9,
+                "id_evento": 43073,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 27,
+                "id_evento": 43073,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 18,
+                "id_evento": 43073,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 11,
+                "id_evento": 43073,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 8,
+                "id_evento": 43073,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 1,
+                "id_evento": 43074,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 6,
+                "id_evento": 43074,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 3,
+                "id_evento": 43074,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 2,
+                "id_evento": 43074,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 10,
+                "id_evento": 43074,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 12,
+                "id_evento": 43074,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 13,
+                "id_evento": 43074,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 5,
+                "id_evento": 43074,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 2,
+                "id_evento": 43077,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 3,
+                "id_evento": 43077,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 5,
+                "id_evento": 43077,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 5,
+                "id_evento": 43077,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 18,
+                "id_evento": 43077,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 29,
+                "id_evento": 43077,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 18,
+                "id_evento": 43077,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 8,
+                "id_evento": 43077,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 2,
+                "id_evento": 43077,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              },
+              {
+                "total": 9,
+                "id_evento": 43078,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "F"
+              },
+              {
+                "total": 25,
+                "id_evento": 43078,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "F"
+              },
+              {
+                "total": 68,
+                "id_evento": 43078,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "F"
+              },
+              {
+                "total": 72,
+                "id_evento": 43078,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "F"
+              },
+              {
+                "total": 57,
+                "id_evento": 43078,
+                "faixa": "07 · 5h–6h",
+                "sexo": "F"
+              },
+              {
+                "total": 19,
+                "id_evento": 43078,
+                "faixa": "02 · 2h30–3h",
+                "sexo": "M"
+              },
+              {
+                "total": 36,
+                "id_evento": 43078,
+                "faixa": "03 · 3h–3h30",
+                "sexo": "M"
+              },
+              {
+                "total": 117,
+                "id_evento": 43078,
+                "faixa": "04 · 3h30–4h",
+                "sexo": "M"
+              },
+              {
+                "total": 144,
+                "id_evento": 43078,
+                "faixa": "05 · 4h–4h30",
+                "sexo": "M"
+              },
+              {
+                "total": 123,
+                "id_evento": 43078,
+                "faixa": "06 · 4h30–5h",
+                "sexo": "M"
+              },
+              {
+                "total": 94,
+                "id_evento": 43078,
+                "faixa": "07 · 5h–6h",
+                "sexo": "M"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

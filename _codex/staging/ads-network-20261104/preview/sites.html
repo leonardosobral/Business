@@ -1,0 +1,28 @@
+<!doctype html><html lang="pt-br"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/mdb.min.css"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/style.css"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/cores_admin.css"><link rel="stylesheet" href="https://business.roadrunners.run/assets/css/business-ui.css"><body data-mdb-theme="dark" class="bg-dark-subtle"><main style="max-width:1250px;margin:20px auto;padding:16px">
+<link rel="stylesheet" href="https://business.roadrunners.run/assets/css/portal-banner-dashboard.css?v=rr-neutral-20261026"/>
+<section class="banner-dashboard">
+
+<header class="banner-header"><div><div class="banner-eyebrow">Administração · rede de publicidade</div><h1 class="h3">Sites e spots</h1><p>Cadastre onde os banners podem aparecer e copie o código de instalação.</p></div><a href="/portal/banners/" class="btn btn-outline-info">Voltar aos banners</a></header>
+<nav class="nav nav-tabs mb-4" aria-label="Cadastro da rede"><a class="nav-link active" href="?tab=sites" aria-current="page">Sites</a><a class="nav-link" href="?tab=spots">Spots</a><a class="nav-link" href="?tab=install">Código de instalação</a></nav>
+
+<section class="banner-panel"><h2 class="h5">Cadastrar site</h2>
+<form method="post" action="?tab=sites" class="row g-3">
+<input type="hidden" name="csrf" value="synthetic-preview"/><input type="hidden" name="action" value="site"/>
+<input type="hidden" name="id" value=""/><input type="hidden" name="version" value="0"/>
+<div class="col-md-6"><label for="inv-name">Nome</label><input id="inv-name" name="name" class="form-control" required minlength="2" maxlength="120" value=""/></div>
+<div class="col-md-6"><label for="inv-key">Identificador para instalação</label><input id="inv-key" name="key" class="form-control" required pattern="[a-z][a-z0-9-]{1,49}" maxlength="50" value=""/><small>Ex.: meu-site. Depois de criado, permanece igual.</small></div>
+
+<div class="col-12"><label for="inv-origins">Domínios autorizados — um por linha</label><textarea id="inv-origins" name="origins" class="form-control" rows="3" required placeholder="https://meusite.com.br"></textarea><small>Use HTTPS, sem barra final. Se usar www, cadastre também https://www.meusite.com.br.</small></div>
+
+<div class="col-md-6"><label for="inv-status">Status</label><select id="inv-status" name="status" class="form-select"><option value="ACTIVE" selected>Ativo</option><option value="INACTIVE">Inativo</option></select><small>Inativar interrompe novas entregas neste site.</small></div>
+<div class="col-12 d-flex gap-2"><button type="submit" class="btn btn-info">Salvar site</button><a class="btn btn-outline-light" href="?tab=sites">Novo cadastro</a></div>
+</form></section>
+<section class="banner-panel"><h2 class="h5">Sites cadastrados</h2>
+<div class="table-responsive"><table class="table"><thead><tr><th>Nome</th><th>Domínios</th><th>Status</th><th>Ações</th></tr></thead><tbody>
+<tr><td><strong>Site de demonstra&ccedil;&atilde;o</strong><small class="d-block">site-demo</small></td><td>https&#x3a;&#x2f;&#x2f;example.test</td><td>Ativo</td><td><a class="btn btn-sm btn-outline-info" href="?tab=sites&amp;edit=00000000-0000-4000-8000-000000000001">Editar</a></td></tr>
+</tbody></table></div></section>
+</section>
+<script>
+document.querySelectorAll('[data-copy-code]').forEach(button=>button.addEventListener('click',async()=>{const field=document.getElementById(button.dataset.copyCode);const status=button.parentElement.querySelector('[data-copy-status]');try{await navigator.clipboard.writeText(field.value);status.textContent='Código copiado.';}catch(_){field.focus();field.select();status.textContent='Código selecionado. Use Ctrl+C ou ⌘C.';}}));
+</script>
+</main></body></html>

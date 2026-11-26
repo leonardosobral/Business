@@ -1,0 +1,931 @@
+{
+  "guilherme": [
+    {
+      "revision": 0,
+      "id_pagina": 28882,
+      "category": "nao_informado",
+      "tag": "gneto25",
+      "nome": "GUILHERME NETO",
+      "permanent": 1
+    }
+  ],
+  "permissions": [
+    {
+      "table_owner": "runner_dba",
+      "can_alter": 1,
+      "current_user": "runner_dba",
+      "current_database": "runnerhub"
+    }
+  ],
+  "writer": [
+    {
+      "definition": "CREATE OR REPLACE FUNCTION rr_verified.classify_permanent_badge(p_profile_id integer, p_category text, p_reason text, p_actor_id integer, p_expected_revision bigint)\n RETURNS bigint\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog', 'rr_verified', 'public'\nAS $function$\nDECLARE current_revision bigint; new_revision bigint;\nBEGIN\n    IF NOT EXISTS (SELECT 1 FROM public.tb_usuarios WHERE id=p_actor_id AND is_admin IS TRUE) THEN\n        RAISE EXCEPTION 'Somente administradores podem classificar selos.' USING ERRCODE='42501';\n    END IF;\n    IF p_category IS NULL OR p_category NOT IN ('influencer','imprensa','parceiro','equipe','cortesia','outro','nao_informado')\n       OR p_reason IS NULL OR length(btrim(p_reason)) NOT BETWEEN 5 AND 2000\n       OR p_expected_revision IS NULL OR p_expected_revision < 0 THEN\n        RAISE EXCEPTION 'Categoria, motivo ou versão inválidos.' USING ERRCODE='22023';\n    END IF;\n    PERFORM pg_advisory_xact_lock(72623,p_profile_id);\n    IF NOT EXISTS (SELECT 1 FROM rr_verified.profile_status(p_profile_id) WHERE permanent) THEN\n        RAISE EXCEPTION 'A classificação manual exige uma concessão permanente existente.' USING ERRCODE='22023';\n    END IF;\n    SELECT coalesce(max(revision),0) INTO current_revision\n        FROM rr_verified.admin_classifications WHERE profile_id=p_profile_id;\n    IF current_revision <> p_expected_revision THEN\n        RAISE EXCEPTION 'Classificação alterada em outra sessão. Reabra o perfil antes de salvar.' USING ERRCODE='40001';\n    END IF;\n    INSERT INTO rr_verified.admin_classifications(profile_id,category,reason,actor_id)\n        VALUES(p_profile_id,p_category,btrim(p_reason),p_actor_id) RETURNING revision INTO new_revision;\n    RETURN new_revision;\nEND;\n$function$\n"
+    }
+  ],
+  "constraints": [
+    {
+      "definition": "CHECK ((category = ANY (ARRAY['influencer'::text, 'imprensa'::text, 'parceiro'::text, 'equipe'::text, 'cortesia'::text, 'outro'::text, 'nao_informado'::text])))",
+      "conname": "admin_classifications_category_check"
+    },
+    {
+      "definition": "CHECK (((length(btrim(reason)) >= 5) AND (length(btrim(reason)) <= 2000)))",
+      "conname": "admin_classifications_reason_check"
+    }
+  ],
+  "columns": [
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "uuid",
+      "column_name": "id"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "character varying",
+      "column_name": "source"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "character varying",
+      "column_name": "account_scope"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "character varying",
+      "column_name": "order_key"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "integer",
+      "column_name": "user_id"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "character varying",
+      "column_name": "match_basis"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "character",
+      "column_name": "currency"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "bigint",
+      "column_name": "current_version"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "character varying",
+      "column_name": "status"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "bigint",
+      "column_name": "net_amount_minor"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "timestamp with time zone",
+      "column_name": "created_at"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "timestamp with time zone",
+      "column_name": "updated_at"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "text",
+      "column_name": "product_code"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "timestamp with time zone",
+      "column_name": "paid_at"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "timestamp with time zone",
+      "column_name": "provider_updated_at"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "timestamp with time zone",
+      "column_name": "last_checked_at"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "text",
+      "column_name": "classification"
+    },
+    {
+      "table_name": "conversion_order_state",
+      "table_schema": "crm_interno",
+      "data_type": "text",
+      "column_name": "coverage_kind"
+    },
+    {
+      "table_name": "pagarme_order_audit",
+      "table_schema": "crm_interno",
+      "data_type": "character varying",
+      "column_name": "provider_order_id"
+    },
+    {
+      "table_name": "pagarme_order_audit",
+      "table_schema": "crm_interno",
+      "data_type": "text",
+      "column_name": "coverage_kind"
+    },
+    {
+      "table_name": "pagarme_order_audit",
+      "table_schema": "crm_interno",
+      "data_type": "text",
+      "column_name": "classification"
+    },
+    {
+      "table_name": "pagarme_order_audit",
+      "table_schema": "crm_interno",
+      "data_type": "text",
+      "column_name": "product_code"
+    },
+    {
+      "table_name": "pagarme_order_audit",
+      "table_schema": "crm_interno",
+      "data_type": "character varying",
+      "column_name": "reason_code"
+    },
+    {
+      "table_name": "pagarme_order_audit",
+      "table_schema": "crm_interno",
+      "data_type": "timestamp with time zone",
+      "column_name": "last_attempt_at"
+    },
+    {
+      "table_name": "pagarme_order_audit",
+      "table_schema": "crm_interno",
+      "data_type": "timestamp with time zone",
+      "column_name": "last_verified_at"
+    },
+    {
+      "table_name": "pagarme_order_audit",
+      "table_schema": "crm_interno",
+      "data_type": "timestamp with time zone",
+      "column_name": "provider_updated_at"
+    },
+    {
+      "table_name": "pagarme_order_audit",
+      "table_schema": "crm_interno",
+      "data_type": "character varying",
+      "column_name": "charge_id"
+    },
+    {
+      "table_name": "challenge_progress",
+      "table_schema": "gorunners",
+      "data_type": "integer",
+      "column_name": "id"
+    },
+    {
+      "table_name": "challenge_progress",
+      "table_schema": "gorunners",
+      "data_type": "integer",
+      "column_name": "challenge_id"
+    },
+    {
+      "table_name": "challenge_progress",
+      "table_schema": "gorunners",
+      "data_type": "uuid",
+      "column_name": "user_id"
+    },
+    {
+      "table_name": "challenge_progress",
+      "table_schema": "gorunners",
+      "data_type": "integer",
+      "column_name": "current"
+    },
+    {
+      "table_name": "challenge_progress",
+      "table_schema": "gorunners",
+      "data_type": "timestamp with time zone",
+      "column_name": "completed_at"
+    },
+    {
+      "table_name": "challenge_progress",
+      "table_schema": "gorunners",
+      "data_type": "timestamp with time zone",
+      "column_name": "updated_at"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "integer",
+      "column_name": "id"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "text",
+      "column_name": "title"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "text",
+      "column_name": "description"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "text",
+      "column_name": "type"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "integer",
+      "column_name": "target"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "text",
+      "column_name": "period"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "timestamp with time zone",
+      "column_name": "starts_at"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "timestamp with time zone",
+      "column_name": "ends_at"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "timestamp with time zone",
+      "column_name": "created_at"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "text",
+      "column_name": "badge_icon"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "text",
+      "column_name": "badge_color"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "text",
+      "column_name": "badge_tier"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "jsonb",
+      "column_name": "title_i18n"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "jsonb",
+      "column_name": "description_i18n"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "character varying",
+      "column_name": "plaque_title"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "jsonb",
+      "column_name": "plaque_title_i18n"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "text",
+      "column_name": "brand_logo_url"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "bytea",
+      "column_name": "brand_logo_data"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "character varying",
+      "column_name": "brand_logo_mime"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "ARRAY",
+      "column_name": "target_hex_ids"
+    },
+    {
+      "table_name": "challenges",
+      "table_schema": "gorunners",
+      "data_type": "boolean",
+      "column_name": "published"
+    },
+    {
+      "table_name": "desafio_cna",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_usuario"
+    },
+    {
+      "table_name": "desafio_cna",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "num_pedido"
+    },
+    {
+      "table_name": "desafio_cna",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "status"
+    },
+    {
+      "table_name": "desafio_cna",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "produto"
+    },
+    {
+      "table_name": "desafio_cna",
+      "table_schema": "public",
+      "data_type": "timestamp without time zone",
+      "column_name": "data_inscricao"
+    },
+    {
+      "table_name": "desafio_cna",
+      "table_schema": "public",
+      "data_type": "boolean",
+      "column_name": "doador"
+    },
+    {
+      "table_name": "desafio_cna",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "obs_pedido"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "num_inscricao"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "nome"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "date",
+      "column_name": "data_nascimento"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "email"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "documento"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "genero"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "telefone"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "celular"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "endereco"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "numero"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "complemento"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "bairro"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "cidade"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "uf"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "cep"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "pais"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "num_pedido"
+    },
+    {
+      "table_name": "desafio_leads",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_usuario"
+    },
+    {
+      "table_name": "desafios",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_usuario"
+    },
+    {
+      "table_name": "desafios",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "num_pedido"
+    },
+    {
+      "table_name": "desafios",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "status"
+    },
+    {
+      "table_name": "desafios",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "produto"
+    },
+    {
+      "table_name": "desafios",
+      "table_schema": "public",
+      "data_type": "timestamp without time zone",
+      "column_name": "data_inscricao"
+    },
+    {
+      "table_name": "desafios",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "obs_pedido"
+    },
+    {
+      "table_name": "desafios",
+      "table_schema": "public",
+      "data_type": "jsonb",
+      "column_name": "body"
+    },
+    {
+      "table_name": "desafios",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "desafio"
+    },
+    {
+      "table_name": "desafios",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "status_final"
+    },
+    {
+      "table_name": "desafios",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "dias_corridos"
+    },
+    {
+      "table_name": "desafios",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "maior_sequencia_dias"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_desafio"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "titulo"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "tag"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "text",
+      "column_name": "descricao"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "date",
+      "column_name": "data_inicio"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_tema"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "ordem"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "date",
+      "column_name": "data_fim"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "slogan"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "imagem"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "hotsite"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "regras_strava"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "timeframe"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "sponsors"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "loja"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "boolean",
+      "column_name": "ativo"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "regulamento"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "suporte"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "boolean",
+      "column_name": "destaque"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "badge"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "boolean",
+      "column_name": "flg_pago"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "boolean",
+      "column_name": "flg_strava"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "boolean",
+      "column_name": "flg_cupom"
+    },
+    {
+      "table_name": "desafios_eventos",
+      "table_schema": "public",
+      "data_type": "jsonb",
+      "column_name": "config_painel"
+    },
+    {
+      "table_name": "desafios_obs",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_desafio_obs"
+    },
+    {
+      "table_name": "desafios_obs",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_usuario"
+    },
+    {
+      "table_name": "desafios_obs",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "produto"
+    },
+    {
+      "table_name": "desafios_obs",
+      "table_schema": "public",
+      "data_type": "text",
+      "column_name": "obs"
+    },
+    {
+      "table_name": "desafios_obs",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_atendente"
+    },
+    {
+      "table_name": "desafios_obs",
+      "table_schema": "public",
+      "data_type": "timestamp without time zone",
+      "column_name": "data_obs"
+    },
+    {
+      "table_name": "desafios_produtos",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_produto"
+    },
+    {
+      "table_name": "desafios_produtos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "desafio"
+    },
+    {
+      "table_name": "desafios_produtos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "codigo_produto"
+    },
+    {
+      "table_name": "desafios_produtos",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "nome_produto"
+    },
+    {
+      "table_name": "desafios_produtos",
+      "table_schema": "public",
+      "data_type": "numeric",
+      "column_name": "valor_produto"
+    },
+    {
+      "table_name": "tb_agregadores",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_agregador"
+    },
+    {
+      "table_name": "tb_agregadores",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "agregador_nome"
+    },
+    {
+      "table_name": "tb_agregadores",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "agregador_tag"
+    },
+    {
+      "table_name": "tb_agregadores",
+      "table_schema": "public",
+      "data_type": "text",
+      "column_name": "agregador_descricao"
+    },
+    {
+      "table_name": "tb_agregadores",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_agregador_pai"
+    },
+    {
+      "table_name": "tb_agregadores",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_tema"
+    },
+    {
+      "table_name": "tb_agregadores",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "agregador_tipo"
+    },
+    {
+      "table_name": "tb_agregadores",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "ordem"
+    },
+    {
+      "table_name": "tb_agregadores",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_agrega_evento_legado"
+    },
+    {
+      "table_name": "tb_desafios_rr",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_agregador"
+    },
+    {
+      "table_name": "tb_desafios_rr",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_usuario"
+    },
+    {
+      "table_name": "tb_desafios_rr",
+      "table_schema": "public",
+      "data_type": "timestamp without time zone",
+      "column_name": "data_inscricao"
+    },
+    {
+      "table_name": "tb_desafios_rr_provas",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_agregador"
+    },
+    {
+      "table_name": "tb_desafios_rr_provas",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_usuario"
+    },
+    {
+      "table_name": "tb_desafios_rr_provas",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_evento"
+    },
+    {
+      "table_name": "tb_desafios_rr_provas",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "num_pedido"
+    },
+    {
+      "table_name": "tb_desafios_rr_provas",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "status"
+    },
+    {
+      "table_name": "tb_desafios_rr_provas",
+      "table_schema": "public",
+      "data_type": "timestamp without time zone",
+      "column_name": "data_inscricao"
+    },
+    {
+      "table_name": "tb_desafios_rr_provas",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "num_peito"
+    },
+    {
+      "table_name": "tb_desafios_rr_provas",
+      "table_schema": "public",
+      "data_type": "character varying",
+      "column_name": "obs_pedido"
+    },
+    {
+      "table_name": "vw_desafio_365_final",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_usuario"
+    },
+    {
+      "table_name": "vw_desafio_365_final",
+      "table_schema": "public",
+      "data_type": "bigint",
+      "column_name": "dias_corridos"
+    },
+    {
+      "table_name": "vw_desafio_366_final",
+      "table_schema": "public",
+      "data_type": "integer",
+      "column_name": "id_usuario"
+    },
+    {
+      "table_name": "vw_desafio_366_final",
+      "table_schema": "public",
+      "data_type": "bigint",
+      "column_name": "dias_corridos"
+    }
+  ]
+}

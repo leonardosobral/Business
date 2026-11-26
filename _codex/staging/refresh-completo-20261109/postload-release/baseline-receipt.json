@@ -1,0 +1,14 @@
+{
+  "business": {
+    "estudos/includes/StudyAccess.cfc": "9e4456eb30b7070dda3841418a658cb71be81a9a80c608175bd3fca680afb761",
+    "estudos/leitor/parcial.js": "aa0d9ae6c645f7abe2cb349f5456116fe5a87bd4bb2bc63f67b2695042d6a9c8",
+    "estudos/leitor/index.cfm": "550a1303877451d89fcea974ccd3d03563a3fe126147d3967e29db576a8c3f66",
+    "estudo/anual/index.cfm": "5f03f0ec69666280e02cc661c62ecf99cb1e91442643bfb0eb6ae617cd14adb8"
+  },
+  "portal": {
+    "brasilquecorreprovas/imprensa/principal/index.cfm": "ffa273e57c3b4557d535ae26d66f3fd2cf682ec319bdcb71f95782a21380cdf0",
+    "brasilquecorreprovas/imprensa/principal/dados.cfm": "5d8a0886a08bf03db78e35801589a8f880ff0cccd2a0cac0f5ae4d4b29c805d7",
+    "brasilquecorreprovas/imprensa/principal/parcial-2026.js": "304c3a51f056b26b85e0c3d4fa386e239856b541323f6e31125b56318fc66a32",
+    "brasilquecorreprovas/imprensa/principal/estudo-2026.css": "cb989651b463ac15c50cd9c56afd1c7ae01e102ea96bd1f016113f0baee707ad"
+  }
+}

@@ -1,0 +1,492 @@
+{
+  "annual_read_grants": 0,
+  "gap": 0,
+  "vouchers": [
+    {
+      "status": "READY",
+      "id": 67,
+      "identity_hash": "32e4842f4dca2520a613ee28e8d3f38c"
+    },
+    {
+      "status": "READY",
+      "id": 68,
+      "identity_hash": "1e1195b499cb28244dacb1e8c4848de4"
+    },
+    {
+      "status": "READY",
+      "id": 69,
+      "identity_hash": "27f54f7f1ab68ee150fc135fd26472e9"
+    },
+    {
+      "status": "READY",
+      "id": 70,
+      "identity_hash": "d13a775149465e9d2d0104a7f915f591"
+    },
+    {
+      "status": "READY",
+      "id": 71,
+      "identity_hash": "0a55b9679ce4c6e56c7ebcc0c3baa777"
+    },
+    {
+      "status": "READY",
+      "id": 72,
+      "identity_hash": "10ca469611d84f43fe90a374c6cc67f4"
+    },
+    {
+      "status": "READY",
+      "id": 73,
+      "identity_hash": "bd448321ee59aa164a58d4bb984bc2b3"
+    },
+    {
+      "status": "READY",
+      "id": 74,
+      "identity_hash": "7a13338a8a3aabbcbd8ee3cf52c6214a"
+    },
+    {
+      "status": "READY",
+      "id": 75,
+      "identity_hash": "5ca1283b251c5dd51a64e9dc3223483c"
+    },
+    {
+      "status": "READY",
+      "id": 76,
+      "identity_hash": "77fa01772ac893779648c0bd0792d8b6"
+    },
+    {
+      "status": "READY",
+      "id": 77,
+      "identity_hash": "3b62b7f945384ccd8a2af6775c9b6b57"
+    },
+    {
+      "status": "READY",
+      "id": 78,
+      "identity_hash": "a50d3eac3771f87ca41acdf684d0c569"
+    },
+    {
+      "status": "READY",
+      "id": 79,
+      "identity_hash": "b555b52b2843ff9320969797029fa469"
+    },
+    {
+      "status": "READY",
+      "id": 80,
+      "identity_hash": "e0c380fc2e3f943cecd7184a9760465d"
+    },
+    {
+      "status": "READY",
+      "id": 81,
+      "identity_hash": "8999e906ce6b6d15d7beb05d50b58b20"
+    },
+    {
+      "status": "READY",
+      "id": 82,
+      "identity_hash": "f137c995f54f3c97d25a5238393dc0ae"
+    },
+    {
+      "status": "READY",
+      "id": 83,
+      "identity_hash": "16cd49e8149f1a1f9fc49bc12e5a1fc2"
+    },
+    {
+      "status": "READY",
+      "id": 84,
+      "identity_hash": "8fa9d057100ac06f249ff5a87ebbcab9"
+    },
+    {
+      "status": "READY",
+      "id": 85,
+      "identity_hash": "3267b22092381a1aafb6235b8d0ac53e"
+    },
+    {
+      "status": "READY",
+      "id": 86,
+      "identity_hash": "3af315b2f8e2f6759a4681da28bb7c69"
+    },
+    {
+      "status": "READY",
+      "id": 87,
+      "identity_hash": "4c1054be3c5493be55383577b6c7ad4a"
+    },
+    {
+      "status": "READY",
+      "id": 88,
+      "identity_hash": "4921f1a258143036bdce53bd6dc24e59"
+    },
+    {
+      "status": "READY",
+      "id": 89,
+      "identity_hash": "1a7c5b6d44c2ca7ba626420f9c9bc0cf"
+    },
+    {
+      "status": "READY",
+      "id": 90,
+      "identity_hash": "475d175318aed97f827728fe4452436a"
+    },
+    {
+      "status": "READY",
+      "id": 91,
+      "identity_hash": "2d7aaab55a68e8e3813a3bee674cabfd"
+    },
+    {
+      "status": "READY",
+      "id": 92,
+      "identity_hash": "6737cc647db45be44a8ffc8a0887b71b"
+    },
+    {
+      "status": "READY",
+      "id": 93,
+      "identity_hash": "6df40db2123025dfd99872663b94e512"
+    },
+    {
+      "status": "READY",
+      "id": 94,
+      "identity_hash": "f3d577210391787493d16d4df4a4a9a4"
+    },
+    {
+      "status": "READY",
+      "id": 95,
+      "identity_hash": "2f549a811751bc8a31bc9a5024408af2"
+    },
+    {
+      "status": "READY",
+      "id": 96,
+      "identity_hash": "484d959ddb6def4b1456fc8fcadfcbdc"
+    },
+    {
+      "status": "READY",
+      "id": 97,
+      "identity_hash": "d0242d5effc595aa02aa1904ec3f5a9b"
+    },
+    {
+      "status": "READY",
+      "id": 98,
+      "identity_hash": "69657a0f49c0ddf776f0db833fa5e1a3"
+    },
+    {
+      "status": "READY",
+      "id": 99,
+      "identity_hash": "81d480949aab0ee238a8eb965751388f"
+    },
+    {
+      "status": "READY",
+      "id": 100,
+      "identity_hash": "c7c4b5eb285fd0d2df45d48988f034b2"
+    },
+    {
+      "status": "READY",
+      "id": 101,
+      "identity_hash": "c70d209ecb733817d13d7ddfcb63ce22"
+    },
+    {
+      "status": "READY",
+      "id": 102,
+      "identity_hash": "ca57c0120065637681f01a5d9d757109"
+    },
+    {
+      "status": "READY",
+      "id": 103,
+      "identity_hash": "e9e91d86fec4936e9fd24116ea021496"
+    },
+    {
+      "status": "READY",
+      "id": 104,
+      "identity_hash": "f007529d346a23fcb878f2d9f00688dd"
+    },
+    {
+      "status": "READY",
+      "id": 105,
+      "identity_hash": "54a67f592a376a3a18708a604d4b0d83"
+    },
+    {
+      "status": "READY",
+      "id": 106,
+      "identity_hash": "e75fdd6ccebea031a0f7af4ca040a4df"
+    },
+    {
+      "status": "READY",
+      "id": 115,
+      "identity_hash": "c3236a96517495dcd9a130817a3e744b"
+    },
+    {
+      "status": "READY",
+      "id": 116,
+      "identity_hash": "dd1c9ec262d3fffd5394246d75489e68"
+    },
+    {
+      "status": "READY",
+      "id": 117,
+      "identity_hash": "6db020731ae73930ac15f39132e3b33d"
+    },
+    {
+      "status": "READY",
+      "id": 118,
+      "identity_hash": "7f5e49acd1a5d0dd026b6bbabba37fa7"
+    },
+    {
+      "status": "READY",
+      "id": 119,
+      "identity_hash": "ea87d2624ccfb0fb3e208b49af348044"
+    },
+    {
+      "status": "READY",
+      "id": 120,
+      "identity_hash": "e5f6a4931d0fd9cee43adc0e699e8811"
+    },
+    {
+      "status": "READY",
+      "id": 121,
+      "identity_hash": "ef95d2f143874f7e879508e873671c08"
+    },
+    {
+      "status": "READY",
+      "id": 122,
+      "identity_hash": "2f624a39d38d0168d6e287e35f483c95"
+    },
+    {
+      "status": "READY",
+      "id": 123,
+      "identity_hash": "0ed84f817e3781982af993a6988c8259"
+    },
+    {
+      "status": "READY",
+      "id": 124,
+      "identity_hash": "6fa82ae0742ce2fb33d9341762aefb1b"
+    },
+    {
+      "status": "READY",
+      "id": 125,
+      "identity_hash": "5e0689a385e9bbab089c648df4378b94"
+    },
+    {
+      "status": "READY",
+      "id": 126,
+      "identity_hash": "ff4d552aface7ddd1db79cf0898ff1d4"
+    },
+    {
+      "status": "READY",
+      "id": 127,
+      "identity_hash": "1f6faafb0344f7b09fba73e44ba0e39d"
+    },
+    {
+      "status": "READY",
+      "id": 128,
+      "identity_hash": "d6219cab8bc1121f67e30a2593681534"
+    },
+    {
+      "status": "READY",
+      "id": 129,
+      "identity_hash": "3c7867c6e465361a91ebe9da9e92a5fc"
+    },
+    {
+      "status": "READY",
+      "id": 130,
+      "identity_hash": "906878b7294b082b2d2cd0c8aa69963c"
+    },
+    {
+      "status": "READY",
+      "id": 131,
+      "identity_hash": "cc85ce1bc430d84305dba38c73e791c4"
+    },
+    {
+      "status": "READY",
+      "id": 132,
+      "identity_hash": "68b49d3aeede85eb9ec295290b663fc7"
+    },
+    {
+      "status": "READY",
+      "id": 133,
+      "identity_hash": "b609408338c54bf4c8eaa1c3521c12cf"
+    },
+    {
+      "status": "READY",
+      "id": 134,
+      "identity_hash": "be78476987421f4eb610766577e44f6f"
+    },
+    {
+      "status": "READY",
+      "id": 135,
+      "identity_hash": "dc86cd2800ec10180c9da932324343e2"
+    },
+    {
+      "status": "READY",
+      "id": 136,
+      "identity_hash": "95ec789d763d82c4f0b7cdc8635ebf26"
+    },
+    {
+      "status": "READY",
+      "id": 137,
+      "identity_hash": "862b37e1c751b7d4064603c1f8c826be"
+    },
+    {
+      "status": "READY",
+      "id": 138,
+      "identity_hash": "f5e0ffac9dfb7ac1ab9f54e97f9f2462"
+    },
+    {
+      "status": "READY",
+      "id": 139,
+      "identity_hash": "6eaaa9fea7b4d6463d032fb521896d4f"
+    },
+    {
+      "status": "READY",
+      "id": 140,
+      "identity_hash": "b9a2bfdba86ebe85c65a92ee10420a9a"
+    },
+    {
+      "status": "READY",
+      "id": 141,
+      "identity_hash": "d9a4bd3838977cd1fd1266bc88a271f1"
+    },
+    {
+      "status": "READY",
+      "id": 142,
+      "identity_hash": "fb466edae2c082c8d8690165ade35315"
+    },
+    {
+      "status": "READY",
+      "id": 143,
+      "identity_hash": "284897608136fabb9c674912d3daffa5"
+    },
+    {
+      "status": "READY",
+      "id": 144,
+      "identity_hash": "f1affd7b32dfc61f4f54fbf2d815feab"
+    },
+    {
+      "status": "READY",
+      "id": 145,
+      "identity_hash": "94b83bc0685b9648d81f1763196a9809"
+    },
+    {
+      "status": "READY",
+      "id": 146,
+      "identity_hash": "e5cb8cd756b13c4206ca05defacd5279"
+    },
+    {
+      "status": "READY",
+      "id": 147,
+      "identity_hash": "6d0914052a10c5d2b86ea3ec27202d45"
+    },
+    {
+      "status": "READY",
+      "id": 148,
+      "identity_hash": "55e8fd12a50cdd4a15ec8469ca06ffe0"
+    },
+    {
+      "status": "READY",
+      "id": 149,
+      "identity_hash": "f26ec3cc3e6c5c72d1125e83b3c2abd6"
+    },
+    {
+      "status": "READY",
+      "id": 150,
+      "identity_hash": "c14948172ec736a8b2afbcc19847012b"
+    },
+    {
+      "status": "READY",
+      "id": 151,
+      "identity_hash": "a064702efccce4a078b25c080de076c6"
+    },
+    {
+      "status": "READY",
+      "id": 152,
+      "identity_hash": "8254339d8de56da2c063b0e9aa98958c"
+    },
+    {
+      "status": "READY",
+      "id": 153,
+      "identity_hash": "23563c3c5dc5cdba1bedc64c8c2cf29d"
+    },
+    {
+      "status": "READY",
+      "id": 154,
+      "identity_hash": "de9f8fa5738105000ff5bec8078df702"
+    },
+    {
+      "status": "READY",
+      "id": 155,
+      "identity_hash": "726a8a13899aa9643ce1db772e80899b"
+    },
+    {
+      "status": "READY",
+      "id": 156,
+      "identity_hash": "2704f9ec3a13b937953ead4dac3284a1"
+    },
+    {
+      "status": "READY",
+      "id": 157,
+      "identity_hash": "626dc33c18d226d2f7db7910d1173f3f"
+    },
+    {
+      "status": "READY",
+      "id": 158,
+      "identity_hash": "7b05c08f138de23850bb3b9827deaf65"
+    },
+    {
+      "status": "READY",
+      "id": 159,
+      "identity_hash": "87fe6e6bf5800abf8dbe6e506aea405f"
+    },
+    {
+      "status": "READY",
+      "id": 160,
+      "identity_hash": "04f05871ad6d5737b0783ef81c4f30f9"
+    },
+    {
+      "status": "READY",
+      "id": 161,
+      "identity_hash": "6dcd11689257fe2be73afa3387f6efcf"
+    },
+    {
+      "status": "READY",
+      "id": 162,
+      "identity_hash": "5c2c9b8d55ced098475e81468403d683"
+    },
+    {
+      "status": "READY",
+      "id": 171,
+      "identity_hash": "a9184e44bb74d5b3a18b0246dfd2866d"
+    },
+    {
+      "status": "READY",
+      "id": 172,
+      "identity_hash": "eabf4cfb06f80bc096b46be8b5037e8b"
+    },
+    {
+      "status": "READY",
+      "id": 173,
+      "identity_hash": "1479e3618b272e2393e91be13903536d"
+    },
+    {
+      "status": "READY",
+      "id": 174,
+      "identity_hash": "7be15da1cbc1232bfe1b3f28607f10db"
+    },
+    {
+      "status": "READY",
+      "id": 175,
+      "identity_hash": "01908692ad54d5d0cd8fc78b3bce42e2"
+    },
+    {
+      "status": "READY",
+      "id": 176,
+      "identity_hash": "8b0c3390aff31c8b23e19ac6a6f856a1"
+    },
+    {
+      "status": "READY",
+      "id": 177,
+      "identity_hash": "15c8de84432786cce95db6050f04cc57"
+    }
+  ],
+  "campaign_audits": 1,
+  "grants": [],
+  "campaign": {
+    "status": "ACTIVE",
+    "annual_code": "anual-2026",
+    "annual_year": 2026,
+    "percent": 50,
+    "version": 2,
+    "id": 27,
+    "annual_type": "ANUAL"
+  }
+}

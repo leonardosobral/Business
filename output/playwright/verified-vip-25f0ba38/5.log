@@ -1,0 +1,189 @@
+### Page
+- Page URL: http://127.0.0.1:63880/detail.html
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- region [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - paragraph [ref=e5]: PORTAL · ROAD RUNNERS
+      - heading "Selos verificados" [level=1] [ref=e6]
+      - paragraph [ref=e7]: Veja por que cada pessoa tem o selo, até quando ele vale e o histórico de cada origem.
+    - generic [ref=e8]: Classificar um motivo não altera o selo
+  - generic "Resumo geral dos selos" [ref=e9]:
+    - link [ref=e10] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&PAGINA=1
+      - text: Selos ativos
+      - strong [ref=e11]: "418"
+    - link [ref=e12] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&FILTER%5FORIGIN=manual&PAGINA=1
+      - text: Sem vencimento
+      - strong [ref=e13]: "128"
+    - generic [ref=e14]:
+      - text: Ativos com prazo
+      - strong [ref=e15]: "290"
+    - link [ref=e16] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=1
+      - text: Motivo a classificar
+      - strong [ref=e17]: "61"
+  - navigation "Situação do selo" [ref=e18]:
+    - link "Ativos" [ref=e19] [cursor=pointer]:
+      - /url: /portal/verificados/?USER%5FBUSCA=53854&FILTER%5FSTATUS=active&FILTER%5FLOGIC=any&PAGINA=1
+    - link "A classificar" [ref=e20] [cursor=pointer]:
+      - /url: /portal/verificados/?USER%5FBUSCA=53854&FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Conferir VIP" [ref=e21] [cursor=pointer]:
+      - /url: /portal/verificados/?USER%5FBUSCA=53854&FILTER%5FSTATUS=reconcile&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Inativos" [ref=e22] [cursor=pointer]:
+      - /url: /portal/verificados/?USER%5FBUSCA=53854&FILTER%5FSTATUS=inactive&FILTER%5FLOGIC=any&PAGINA=1
+    - link "Todos / histórico" [ref=e23] [cursor=pointer]:
+      - /url: /portal/verificados/?USER%5FBUSCA=53854&FILTER%5FSTATUS=all&FILTER%5FLOGIC=any&PAGINA=1
+  - generic [ref=e24]:
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]: Buscar pessoa
+        - textbox "Buscar pessoa" [ref=e28]:
+          - /placeholder: Nome, e-mail, perfil ou ID
+          - text: "53854"
+      - generic [ref=e29]:
+        - generic [ref=e30]: Origem ou motivo
+        - combobox "Origem ou motivo" [ref=e31]:
+          - option "Todas as origens" [selected]
+          - option "Concessão permanente"
+          - option "Todo Santo Dia · VIP ativo"
+          - option "Todo Santo Dia · VIP/upgrade confirmado no cadastro"
+          - option "Todo Santo Dia · Upgrade VIP ativo"
+          - option "Compra anual ativa"
+          - option "Com estorno no histórico"
+          - option "Atleta de elite"
+          - option "Influencer / criador"
+          - option "Imprensa"
+          - option "Parceiro"
+          - option "Equipe"
+          - option "Cortesia"
+          - option "Outro motivo"
+          - option "Motivo não informado"
+      - button "Filtrar" [ref=e32] [cursor=pointer]
+      - link "Limpar" [ref=e33] [cursor=pointer]:
+        - /url: /portal/verificados/
+    - group [ref=e34]:
+      - generic "Filtros de cadastro" [ref=e35] [cursor=pointer]
+      - option "Todos" [selected]
+      - option "catarinensecorridaderua · catarinensecorridaderua"
+      - option "catarinensetrailrun · catarinensetrailrun"
+      - option "circuitobrasilgigante · circuitobrasilgigante"
+      - option "desafio365 · inscricao365"
+      - option "desafio365 · inscricao365vip"
+      - option "desafio365 · inscricao365Vip"
+      - option "desafio366 · inscricao366"
+      - option "desafio366 · inscricaotodosantodia"
+      - option "desafiofoco · foco"
+      - option "desafiosupra · /desafiosupra/inscricao/"
+      - option "foco · foco"
+      - option "todosantodia · desafiofoco"
+      - option "todosantodia · inscricao366"
+      - option "todosantodia · todosantodia"
+      - option "todosantodia · todosantodiaupg"
+      - option "todosantodia · todosantodiaupgrade"
+      - option "todosantodia · todosantodiavip"
+      - option "todosantodia · todosantodiavip1"
+      - option "· /connect/inscricao/"
+      - option "· /empresa/cadastro/"
+      - option "· /ts/inscricao/"
+      - option "Qualquer regra" [selected]
+      - option "Todas as regras"
+  - article [ref=e36]:
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - paragraph [ref=e39]: ORIGENS DO SELO · PERFIL 53854
+        - heading "ANGELICA SANDES" [level=2] [ref=e40]
+        - paragraph [ref=e41]:
+          - generic [ref=e42]: Sem vencimento
+          - link "Abrir perfil ↗" [ref=e43] [cursor=pointer]:
+            - /url: https://roadrunners.run/atleta/angelica%2Dsandes/
+      - link "Fechar detalhes" [ref=e44] [cursor=pointer]:
+        - /url: /portal/verificados/?USER%5FBUSCA=53854&FILTER%5FSTATUS=all&FILTER%5FLOGIC=any&PAGINA=1
+    - generic [ref=e46]:
+      - heading "Concessão permanente" [level=3] [ref=e47]
+      - paragraph [ref=e48]:
+        - generic [ref=e49]: Origem ativa
+      - paragraph [ref=e50]: Vínculo Todo Santo Dia identificado no cadastro.
+      - paragraph [ref=e51]: A concessão permanente está preservada. Os registros VIP e a conciliação aparecem abaixo.
+    - region "Vínculos confirmados no cadastro" [ref=e52]:
+      - heading "Vínculos Todo Santo Dia" [level=3] [ref=e53]
+      - generic [ref=e55]:
+        - heading "Todo Santo Dia · VIP" [level=3] [ref=e56]
+        - paragraph [ref=e57]:
+          - generic [ref=e58]: Confirmado no cadastro
+        - paragraph [ref=e59]: Cadastro em 16/04/2026 11:10. Esta data não é a data do pagamento.
+        - paragraph [ref=e60]: "Conferir pagamento e validade: este vínculo ainda não foi conciliado com o histórico do selo."
+    - group [ref=e61]:
+      - generic "Classificar a concessão permanente" [ref=e62] [cursor=pointer]
+      - option "Motivo não informado" [selected]
+      - option "Atleta de elite"
+      - option "Influencer / criador"
+      - option "Imprensa"
+      - option "Parceiro"
+      - option "Equipe"
+      - option "Cortesia"
+      - option "Outro motivo"
+  - paragraph [ref=e63]:
+    - link "Classificar os 61 motivos pendentes →" [ref=e64] [cursor=pointer]:
+      - /url: /portal/verificados/?FILTER%5FSTATUS=unclassified&FILTER%5FLOGIC=any&PAGINA=1
+  - generic [ref=e65]:
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - heading "Classificação rápida" [level=2] [ref=e68]
+        - paragraph [ref=e69]: Marque as pessoas com o mesmo motivo e salve de uma vez. Apenas os perfis marcados nesta página serão classificados.
+      - status [ref=e70]: 0 selecionados
+    - group [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - generic [ref=e74]: Motivo em comum
+          - combobox "Motivo em comum" [ref=e75]:
+            - option "Escolha o motivo" [selected]
+            - option "Atleta de elite"
+            - option "Influencer / criador"
+            - option "Imprensa"
+            - option "Parceiro"
+            - option "Equipe"
+            - option "Cortesia"
+            - option "Outro motivo"
+        - generic [ref=e76]:
+          - generic [ref=e77]: Vínculo ou observação (opcional)
+          - textbox "Vínculo ou observação (opcional)" [ref=e78]
+        - button "Salvar selecionados" [disabled]
+  - generic [ref=e79]:
+    - heading "1 perfil encontrado" [level=2] [ref=e80]
+    - generic [ref=e81]: Uma pessoa pode ter mais de uma origem ativa.
+  - table [ref=e83]:
+    - rowgroup [ref=e93]:
+      - row [ref=e94]:
+        - cell "ANGELICA SANDES angel.sandes@gmail.com Perfil 53854 · Usuário 107531" [ref=e96]:
+          - link "ANGELICA SANDES" [ref=e97] [cursor=pointer]:
+            - /url: /portal/verificados/?USER%5FBUSCA=53854&FILTER%5FSTATUS=all&FILTER%5FLOGIC=any&PAGE%5FID=53854&PAGINA=1#detalhes
+          - generic [ref=e98]: angel.sandes@gmail.com
+          - text: Perfil 53854 · Usuário 107531
+        - cell "Concessão permanente Todo Santo Dia · VIP Confirmado no cadastro Conferir pagamento e validade" [ref=e99]:
+          - generic [ref=e100]:
+            - generic [ref=e101]: Concessão permanente
+            - generic [ref=e102]: Todo Santo Dia · VIP
+            - generic [ref=e103]: Confirmado no cadastro
+            - generic [ref=e104]: Conferir pagamento e validade
+        - cell [ref=e105]:
+          - strong [ref=e106]: Sem vencimento
+        - cell [ref=e107]:
+          - link "Ver origens de ANGELICA SANDES" [ref=e108] [cursor=pointer]:
+            - /url: /portal/verificados/?USER%5FBUSCA=53854&FILTER%5FSTATUS=all&FILTER%5FLOGIC=any&PAGE%5FID=53854&PAGINA=1#detalhes
+            - text: Ver origens
+  - navigation "Páginas da lista" [ref=e109]:
+    - generic [ref=e110]: Página 1 de 1
+  - paragraph [ref=e111]: VIP/upgrade confirmado no cadastro identifica o vínculo e sai da fila de motivos desconhecidos. Pagamento e validade dependem da conciliação financeira. Estornos ficam no histórico. Datas de pagamento no horário de Brasília.
+```
+
+
+╔════════════════════════════════════════════════════════════════════╗
+║ Update available for @playwright/cli: 0.1.18 → 0.1.25              ║
+║ Run `npm install -g @playwright/cli@latest` (global) or            ║
+║ `npm install --save-dev @playwright/cli@latest` (local) to update. ║
+╚════════════════════════════════════════════════════════════════════╝
+

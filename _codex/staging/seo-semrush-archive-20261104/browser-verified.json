@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-04T16:45:33.620869+00:00",
+  "authenticatedProduction": true,
+  "desktop": {
+    "cards": true,
+    "sortAscendingFirst": 0,
+    "sortDescendingFirst": 10005,
+    "keywordRows": 1376,
+    "uniqueKeywords": 1117
+  },
+  "mobile": {
+    "device": "iPhone 16",
+    "width": 393,
+    "height": 852,
+    "cardsAndKeywordTableInspected": true
+  },
+  "taskChromeWindowClosed": true,
+  "otherChromeWindowsPreserved": 2,
+  "taskFinderWindowClosed": true,
+  "temporaryFilesMatchPermanent": 67,
+  "temporaryFilesRemoved": true,
+  "localArchive": "/Users/Shared/RunnerHubReports/seo/semrush/20261104-final-20000"
+}

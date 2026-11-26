@@ -1,0 +1,7 @@
+{
+  "product": true,
+  "historical": true,
+  "destination": true,
+  "annual_draft": true,
+  "public_view": true
+}

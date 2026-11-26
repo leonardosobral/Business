@@ -1,0 +1,163 @@
+{
+  "run": {
+    "started_at": "2026-11-09 15:45:21.115072-03",
+    "duration_ms": 1128,
+    "error_message": "",
+    "cell_version": 1,
+    "cell_id": "363",
+    "sql_sha256": "007818e585d44969053452eded5d1ac2809e7572a5835cfd8b317dcdd83ca151",
+    "truncated": 0,
+    "row_count": 1,
+    "sql_text": "-- Mapeamento real por ID: categorias mutuamente exclusivas, incluindo resumos zerados.\n-- Mesma população ativa BR/UF do Stats; 2025 completo e corte web 2026 em30/09.\n-- Qualquer resultado bruto demonstra coleta, não completude/conclusão elegível.\n-- Links: ambos os campos, após trim. Observações livres não demonstram mapeamento.\nWITH calendario AS MATERIALIZED(\n SELECT e.id_evento,extract(year FROM e.data_final)::integer AS ano,\n coalesce(nullif(btrim(e.url_resultado),''),nullif(btrim(e.url_wiclax),'')) IS NOT NULL AS link,\n lower(btrim(coalesce(e.obs_resultado,''))) IN('sem resultado','kids','treino','cancelado','adiado','repetido','adiado/cancelado') AS conhecida,\n coalesce(e.obs_resultado,'') AS observacao\n FROM public.tb_evento_corridas e\n WHERE e.ativo IS TRUE AND e.pais='BR' AND e.data_final>=DATE '2025-01-01' AND e.data_final<DATE '2026-10-01'\n AND EXISTS(SELECT 1 FROM public.tb_uf uf WHERE uf.uf=e.estado)\n), classes AS(\n SELECT c.*,CASE WHEN EXISTS(SELECT 1 FROM public.tb_resultados r WHERE r.id_evento=c.id_evento) THEN 'Com resultado coletado'\n WHEN c.link THEN 'Sem coleta, com link'\n WHEN c.conhecida THEN 'Sem coleta/link, situação conhecida'\n ELSE 'Sem resultado, link ou situação conhecida' END AS categoria\n FROM calendario c\n), contagens AS(\n SELECT ano,categoria,count(*)::bigint AS n FROM classes GROUP BY ano,categoria\n), totais AS(SELECT ano,count(*)::bigint AS base,count(*)FILTER(WHERE categoria<>'Sem resultado, link ou situação conhecida')::bigint AS mapeados FROM classes GROUP BY ano),\n categorias AS(SELECT column1 AS categoria FROM(VALUES('Com resultado coletado'),('Sem coleta, com link'),('Sem coleta/link, situação conhecida'),('Sem resultado, link ou situação conhecida'))t),\n linhas AS(\n SELECT t.ano,k.categoria,coalesce(c.n,0) AS contagem,t.base AS denominador,(coalesce(c.n,0)*100.0/t.base)::text AS valor\n FROM totais t CROSS JOIN categorias k LEFT JOIN contagens c ON c.ano=t.ano AND c.categoria=k.categoria\n UNION ALL SELECT ano,'Provas mapeadas',mapeados,base,(mapeados*100.0/base)::text FROM totais\n), pendencias AS(SELECT ano,observacao,count(*)::bigint AS provas FROM classes WHERE categoria='Sem resultado, link ou situação conhecida' GROUP BY ano,observacao)\nSELECT jsonb_build_object('coletado_em',current_timestamp,'corte_2026','2026-09-30','regra','Cada ID uma vez. Resultado bruto; url_resultado/url_wiclax com trim; situação conhecida normalizada: Sem Resultado, Kids, Treino, Cancelado, Adiado, Repetido, Adiado/Cancelado. Não encontrado e códigos não interpretados continuam pendentes.',\n'linhas',(SELECT jsonb_agg(to_jsonb(l) ORDER BY ano,categoria) FROM linhas l),\n'pendencias',(SELECT jsonb_agg(to_jsonb(p) ORDER BY ano,provas DESC,observacao) FROM pendencias p)) AS payload;",
+    "status": "ok",
+    "note": "Renovação completa solicitada em 09/11/2026. Mesmos critérios e corte da revisão vigente; pacote candidato, ainda não publicado. A data de coleta não amplia a janela de eventos.",
+    "finished_at": "2026-11-09 15:45:22.246113-03",
+    "frozen_at": "2026-11-09 15:45:22.249098-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 363",
+    "id": "268",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T15:45:21.115072-03:00",
+    "cell_id": 363,
+    "cell_version": 1,
+    "id": 268,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "payload"
+      ],
+      "rows": [
+        {
+          "payload": {
+            "regra": "Cada ID uma vez. Resultado bruto; url_resultado/url_wiclax com trim; situação conhecida normalizada: Sem Resultado, Kids, Treino, Cancelado, Adiado, Repetido, Adiado/Cancelado. Não encontrado e códigos não interpretados continuam pendentes.",
+            "linhas": [
+              {
+                "ano": 2025,
+                "contagem": 5125,
+                "denominador": 9432,
+                "valor": "54.3363019508057676",
+                "categoria": "Com resultado coletado"
+              },
+              {
+                "ano": 2025,
+                "contagem": 7514,
+                "denominador": 9432,
+                "valor": "79.6649703138252757",
+                "categoria": "Provas mapeadas"
+              },
+              {
+                "ano": 2025,
+                "contagem": 2060,
+                "denominador": 9432,
+                "valor": "21.8405428329092451",
+                "categoria": "Sem coleta, com link"
+              },
+              {
+                "ano": 2025,
+                "contagem": 329,
+                "denominador": 9432,
+                "valor": "3.4881255301102629",
+                "categoria": "Sem coleta/link, situação conhecida"
+              },
+              {
+                "ano": 2025,
+                "contagem": 1918,
+                "denominador": 9432,
+                "valor": "20.3350296861747243",
+                "categoria": "Sem resultado, link ou situação conhecida"
+              },
+              {
+                "ano": 2026,
+                "contagem": 4964,
+                "denominador": 8135,
+                "valor": "61.0202827289489859",
+                "categoria": "Com resultado coletado"
+              },
+              {
+                "ano": 2026,
+                "contagem": 6593,
+                "denominador": 8135,
+                "valor": "81.0448678549477566",
+                "categoria": "Provas mapeadas"
+              },
+              {
+                "ano": 2026,
+                "contagem": 1350,
+                "denominador": 8135,
+                "valor": "16.5949600491702520",
+                "categoria": "Sem coleta, com link"
+              },
+              {
+                "ano": 2026,
+                "contagem": 279,
+                "denominador": 8135,
+                "valor": "3.4296250768285187",
+                "categoria": "Sem coleta/link, situação conhecida"
+              },
+              {
+                "ano": 2026,
+                "contagem": 1542,
+                "denominador": 8135,
+                "valor": "18.9551321450522434",
+                "categoria": "Sem resultado, link ou situação conhecida"
+              }
+            ],
+            "corte_2026": "2026-09-30",
+            "coletado_em": "2026-11-09T15:45:21.117747-03:00",
+            "pendencias": [
+              {
+                "ano": 2025,
+                "provas": 1534,
+                "observacao": "Não encontrado"
+              },
+              {
+                "ano": 2025,
+                "provas": 175,
+                "observacao": "Modalidade"
+              },
+              {
+                "ano": 2025,
+                "provas": 159,
+                "observacao": ""
+              },
+              {
+                "ano": 2025,
+                "provas": 43,
+                "observacao": "TF"
+              },
+              {
+                "ano": 2025,
+                "provas": 6,
+                "observacao": "PNC"
+              },
+              {
+                "ano": 2025,
+                "provas": 1,
+                "observacao": "Formato"
+              },
+              {
+                "ano": 2026,
+                "provas": 1275,
+                "observacao": "Não encontrado"
+              },
+              {
+                "ano": 2026,
+                "provas": 142,
+                "observacao": "Modalidade"
+              },
+              {
+                "ano": 2026,
+                "provas": 125,
+                "observacao": "TF"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

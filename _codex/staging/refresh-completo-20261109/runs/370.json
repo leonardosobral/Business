@@ -1,0 +1,154 @@
+{
+  "run": {
+    "started_at": "2026-11-09 15:47:25.284159-03",
+    "duration_ms": 4577,
+    "error_message": "",
+    "cell_version": 1,
+    "cell_id": "370",
+    "sql_sha256": "12686921b1f7b01ea2edf674e0cd8f161e41279896780fcd5420564303d7562f",
+    "truncated": 0,
+    "row_count": 23,
+    "sql_text": "-- Partitionnement mensuel, mêmes filtres que la source280. Pas de filtre delete implicite.\n WITH b AS MATERIALIZED(SELECT type,strava_raw->>'aspect_type' AS aspect FROM public.tb_strava_activities WHERE activity_date>=DATE '2026-03-01' AND activity_date<DATE '2026-04-01')\n SELECT type,count(*) AS total,count(*) FILTER(WHERE aspect='delete') AS com_indicacion_delete FROM b GROUP BY type",
+    "status": "ok",
+    "note": "Renovação completa solicitada em 09/11/2026. Mesmos critérios e corte da revisão vigente; pacote candidato, ainda não publicado. A data de coleta não amplia a janela de eventos.",
+    "finished_at": "2026-11-09 15:47:29.865412-03",
+    "frozen_at": "2026-11-09 15:47:29.874024-03",
+    "title": "Atualização Jan–Set — 09/11/2026 — célula 370",
+    "id": "279",
+    "frozen": 1,
+    "executed_by": "139",
+    "frozen_by": "139"
+  },
+  "data": {
+    "status": "ok",
+    "started_at": "2026-11-09T15:47:25.284159-03:00",
+    "cell_id": 370,
+    "cell_version": 1,
+    "id": 279,
+    "frozen": true,
+    "result": {
+      "columns": [
+        "type",
+        "total",
+        "com_indicacion_delete"
+      ],
+      "rows": [
+        {
+          "total": 84,
+          "com_indicacion_delete": 3,
+          "type": "Elliptical"
+        },
+        {
+          "total": 2,
+          "com_indicacion_delete": 0,
+          "type": "Velomobile"
+        },
+        {
+          "total": 81,
+          "com_indicacion_delete": 0,
+          "type": "VirtualRun"
+        },
+        {
+          "total": 1521,
+          "com_indicacion_delete": 95,
+          "type": "Workout"
+        },
+        {
+          "total": 6,
+          "com_indicacion_delete": 0,
+          "type": "InlineSkate"
+        },
+        {
+          "total": 3,
+          "com_indicacion_delete": 0,
+          "type": "Canoeing"
+        },
+        {
+          "total": 48,
+          "com_indicacion_delete": 1,
+          "type": "VirtualRide"
+        },
+        {
+          "total": 22,
+          "com_indicacion_delete": 0,
+          "type": "Hike"
+        },
+        {
+          "total": 21163,
+          "com_indicacion_delete": 426,
+          "type": "Run"
+        },
+        {
+          "total": 2,
+          "com_indicacion_delete": 1,
+          "type": "Sail"
+        },
+        {
+          "total": 1,
+          "com_indicacion_delete": 0,
+          "type": "Skateboard"
+        },
+        {
+          "total": 50,
+          "com_indicacion_delete": 1,
+          "type": "StairStepper"
+        },
+        {
+          "total": 2030,
+          "com_indicacion_delete": 75,
+          "type": "Walk"
+        },
+        {
+          "total": 10,
+          "com_indicacion_delete": 0,
+          "type": "RockClimbing"
+        },
+        {
+          "total": 21,
+          "com_indicacion_delete": 3,
+          "type": "EBikeRide"
+        },
+        {
+          "total": 3110,
+          "com_indicacion_delete": 51,
+          "type": "WeightTraining"
+        },
+        {
+          "total": 2,
+          "com_indicacion_delete": 0,
+          "type": "Wheelchair"
+        },
+        {
+          "total": 40,
+          "com_indicacion_delete": 0,
+          "type": "Rowing"
+        },
+        {
+          "total": 1367,
+          "com_indicacion_delete": 34,
+          "type": "Ride"
+        },
+        {
+          "total": 14,
+          "com_indicacion_delete": 1,
+          "type": "Soccer"
+        },
+        {
+          "total": 50,
+          "com_indicacion_delete": 0,
+          "type": "Crossfit"
+        },
+        {
+          "total": 108,
+          "com_indicacion_delete": 4,
+          "type": "Yoga"
+        },
+        {
+          "total": 437,
+          "com_indicacion_delete": 11,
+          "type": "Swim"
+        }
+      ]
+    }
+  }
+}

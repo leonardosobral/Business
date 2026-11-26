@@ -1,0 +1,34 @@
+{
+  "ids": {
+    "publication_id": 42,
+    "publication_run": 351,
+    "public_run": 352,
+    "public_revision": 7,
+    "paired_run": 329,
+    "paired_revision": 3,
+    "annual_run": 353,
+    "annual_revision": 3
+  },
+  "approved_pairs": [
+    {
+      "publication_id": 41,
+      "public_run": 239,
+      "revision": 5
+    },
+    {
+      "publication_id": 42,
+      "public_run": 352,
+      "revision": 7
+    }
+  ],
+  "baseline_capture": "2026-11-09T21:18:59.589618+00:00",
+  "compatible_manifest": "compatible/manifest.json",
+  "final_manifest": "final-only/manifest.json",
+  "database_review_artifact": "final-only/database-cutover-DBA.sql",
+  "teams_hold": {
+    "compatible": true,
+    "final_only": true
+  },
+  "runtime_publication": false,
+  "database_execution": false
+}

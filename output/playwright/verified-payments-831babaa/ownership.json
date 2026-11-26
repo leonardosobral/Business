@@ -1,0 +1,10 @@
+{
+  "session": "verified-payments-831babaa",
+  "started_at": 1795549909.618583,
+  "output": "/Users/Shared/Projects/RunnerHub/Business/output/playwright/verified-payments-831babaa",
+  "daemon_pid": 45365,
+  "mobile_dimensions": "### Result\n\"{\\\"width\\\":390,\\\"scroll\\\":390}\"\n### Ran Playwright code\n```js\nawait page.evaluate('() => (JSON.stringify({width:innerWidth,scroll:document.documentElement.scrollWidth}))');\n```\n",
+  "detail_dimensions": "### Result\n\"{\\\"width\\\":390,\\\"scroll\\\":390}\"\n### Ran Playwright code\n```js\nawait page.evaluate('() => (JSON.stringify({width:innerWidth,scroll:document.documentElement.scrollWidth}))');\n```\n",
+  "closed": true,
+  "daemon_after_close": ""
+}

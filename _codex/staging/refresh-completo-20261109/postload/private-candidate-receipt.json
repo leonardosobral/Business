@@ -1,0 +1,37 @@
+{
+  "candidate_id": "42",
+  "active_state": {
+    "destinations": [
+      {
+        "ano": 2025,
+        "publicacao_id": 37,
+        "cell_id": 249,
+        "versao": 19
+      },
+      {
+        "ano": 2026,
+        "publicacao_id": 41,
+        "cell_id": 251,
+        "versao": 22
+      }
+    ],
+    "products": [
+      {
+        "status": "ACTIVE",
+        "publication": 41,
+        "id": 1
+      },
+      {
+        "status": "DRAFT",
+        "publication": null,
+        "id": 2
+      }
+    ],
+    "public_view": " SELECT ((r.result -> 'rows'::text) -> 0) -> 'payload'::text AS payload\n   FROM estudo.notebook_runs r\n     JOIN estudo.produtos p ON p.codigo = 'previa-2026-q3'::text AND p.status = 'ACTIVE'::text AND p.publicacao_id = 41\n  WHERE r.id = 239 AND r.cell_id = 420 AND r.frozen AND r.status = 'ok'::text AND NOT r.truncated AND r.row_count = 1;"
+  },
+  "published": false,
+  "payload_sha256": "a04b8ac9649bb5a230c0c3e36b07fcd5be75add96a474d0aa842632f19d45a85",
+  "active_references": 0,
+  "destinations_products_view_unchanged": true,
+  "run_id": 351
+}

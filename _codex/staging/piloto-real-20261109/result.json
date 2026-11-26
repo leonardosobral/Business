@@ -1,0 +1,14 @@
+{
+  "single_non_admin_account": "PASS",
+  "read_pages": 37,
+  "rendered_charts": 46,
+  "voucher_id": 200,
+  "grant_id": 36,
+  "annual_benefit_id": 27,
+  "benefit_percent": 50,
+  "idempotent": true,
+  "csv_rows": 706,
+  "csv_columns": 12,
+  "download_confirmation": "User confirmed",
+  "full_5_to_10_reader_pilot_complete": false
+}

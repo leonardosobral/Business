@@ -1,0 +1,60 @@
+{
+  "method": "HEAD, redirects disabled, no credentials",
+  "links": [
+    {
+      "url": "https://business.roadrunners.run/estudo/",
+      "status": 302,
+      "location": "/"
+    },
+    {
+      "url": "https://business.roadrunners.run/estudos/",
+      "status": 403,
+      "location": null
+    },
+    {
+      "url": "https://business.roadrunners.run/estudos/#gestao",
+      "status": 403,
+      "location": null
+    },
+    {
+      "url": "https://business.roadrunners.run/estudos/lancamento/",
+      "status": 403,
+      "location": null
+    },
+    {
+      "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=conselho-v1",
+      "status": 403,
+      "location": null
+    },
+    {
+      "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=conselho-v2",
+      "status": 403,
+      "location": null
+    },
+    {
+      "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=estrategia-inicial",
+      "status": 403,
+      "location": null
+    },
+    {
+      "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=execucao-v5",
+      "status": 403,
+      "location": null
+    },
+    {
+      "url": "https://business.roadrunners.run/estudos/lancamento/arquivo.cfm?doc=execucao-v6",
+      "status": 403,
+      "location": null
+    },
+    {
+      "url": "https://roadrunners.run/brasilquecorreprovas/2026/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "url": "https://roadrunners.run/brasilquecorreprovas/2026/kit/",
+      "status": 200,
+      "location": null
+    }
+  ]
+}

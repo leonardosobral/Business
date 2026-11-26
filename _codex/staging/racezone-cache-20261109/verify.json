@@ -1,0 +1,111 @@
+{
+  "counts": [
+    {
+      "SUMMARY_COUNT": 4,
+      "SUMMARY_2025_COUNT": 12,
+      "FINAL_COUNT": 1944,
+      "TEMP_COUNT": 1944
+    }
+  ],
+  "processing_errors": [
+    {
+      "TOTAL": 1,
+      "ERRO_EXECUCAO": 0
+    }
+  ],
+  "active": [],
+  "processing": [
+    {
+      "ERRO_EXECUCAO": 0,
+      "DATA_PROCESSAMENTO_FINAL": "November, 09 2026 11:18:12",
+      "CHAVE_PROCESSAMENTO": {
+        "LeastSignificantBits": -7653551425555849501,
+        "MostSignificantBits": 2179727950081924251
+      },
+      "ID_EVENTO": 36657,
+      "DATA_PROCESSAMENTO_INICIAL": "November, 09 2026 11:18:12",
+      "COD_EVENTO": "36657"
+    }
+  ],
+  "final": [
+    {
+      "TOTAL": 137,
+      "CATEGORY_RANKED": 115,
+      "FINISHERS": 120,
+      "MODALIDADE": "10KM GERAL",
+      "SEX_RANKED": 120,
+      "SEXO": "F"
+    },
+    {
+      "TOTAL": 367,
+      "CATEGORY_RANKED": 245,
+      "FINISHERS": 253,
+      "MODALIDADE": "10KM GERAL",
+      "SEX_RANKED": 253,
+      "SEXO": "M"
+    },
+    {
+      "TOTAL": 3,
+      "CATEGORY_RANKED": 0,
+      "FINISHERS": 2,
+      "MODALIDADE": "10KM PCD",
+      "SEX_RANKED": 2,
+      "SEXO": "F"
+    },
+    {
+      "TOTAL": 23,
+      "CATEGORY_RANKED": 0,
+      "FINISHERS": 2,
+      "MODALIDADE": "10KM PCD",
+      "SEX_RANKED": 2,
+      "SEXO": "M"
+    },
+    {
+      "TOTAL": 878,
+      "CATEGORY_RANKED": 0,
+      "FINISHERS": 778,
+      "MODALIDADE": "5KM GERAL",
+      "SEX_RANKED": 778,
+      "SEXO": "F"
+    },
+    {
+      "TOTAL": 514,
+      "CATEGORY_RANKED": 0,
+      "FINISHERS": 438,
+      "MODALIDADE": "5KM GERAL",
+      "SEX_RANKED": 438,
+      "SEXO": "M"
+    },
+    {
+      "TOTAL": 12,
+      "CATEGORY_RANKED": 0,
+      "FINISHERS": 11,
+      "MODALIDADE": "5KM PCD",
+      "SEX_RANKED": 11,
+      "SEXO": "F"
+    },
+    {
+      "TOTAL": 10,
+      "CATEGORY_RANKED": 0,
+      "FINISHERS": 8,
+      "MODALIDADE": "5KM PCD",
+      "SEX_RANKED": 8,
+      "SEXO": "M"
+    }
+  ],
+  "event": [
+    {
+      "NOME_EVENTO": "FEIRA NIGHT RUN AN\u00c1LISE 2026",
+      "TAG": "2026-feira-night-run-analise-2026",
+      "URL_WICLAX": "https://resultados.racetag.com.br/mycrono/data/BC13UF/event.json",
+      "ID_EVENTO": 36657
+    }
+  ],
+  "source_content_preserved": true,
+  "rebuilt_class": {
+    "bytes": 5073,
+    "valid_header": true
+  },
+  "temporary_probe_directories": [],
+  "backup": "/var/backups/runnerhub-racezone-cache-20261109-5f8132d5bd"
+}

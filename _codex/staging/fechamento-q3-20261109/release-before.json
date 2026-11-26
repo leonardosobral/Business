@@ -1,0 +1,19 @@
+{
+  "business": {
+    "estudos/leitor/estudo.css": "98d40d39e18e24b690ad61fff7b53f966c64ac885623ee8b998885e0f8eab705",
+    "estudos/leitor/parcial.js": "01af7cb837958d1a04d8a146e87a2bed78b34be9ff60bbbd28d2f33578a78764",
+    "estudos/leitor/index.cfm": "cc513f18a7d106f31bd2c352276860e1295870f3c333c4f1290bf1ead65a4240",
+    "estudos/includes/StudyAccess.cfc": "17cd897a9bc6c8fa2ef6b0afdbd145cc34de405ce386d59c5976acd8b43847c9",
+    "estudos/lancamento/arquivo.cfm": "7ed902b9bb3a360f4b149aa6a1a94a11cafe49600535fa95c3379068062f7f9c",
+    "estudos/lancamento/index.cfm": "b337842d7134fc06fa3d3fe1a9418a7eb899798070ad1abb1426bb21868f867d",
+    "estudos/lancamento/arquivos/brasil-que-corre-provas-guia-rapido-q3.pdf": "e26b1dda261cbfb428d35131180d9861dc55ac4a2c49d61f33dba0431127dccb",
+    "estudos/lancamento/arquivos/brasil-que-corre-provas-lancamento-q3-execucao-v6.pdf": null
+  },
+  "portal": {
+    "brasilquecorreprovas/2026/pagina.html": "a70d6a97256db964a715c2282e68cc0b3d322d61fd24b9660d75ed8b4ef599b1",
+    "brasilquecorreprovas/imprensa/principal/dados.cfm": "23572aace2f300c605cbf099f1b4288a10ff0c7a605a0e3746773baebee3be40",
+    "brasilquecorreprovas/imprensa/principal/estudo-2026.css": "c1b4876756d385f166726dee556d61eb7a261421dea846546ae7713d4de28ba3",
+    "brasilquecorreprovas/imprensa/principal/parcial-2026.js": "7ed23771cb397c895c9c2fad84e1ae1e62e4c803f5b6f014b7b4b92d6f01b766",
+    "brasilquecorreprovas/imprensa/principal/index.cfm": "9f7d492a070823a986e9f7cd614c38685f508b90ea94c743b1a4b0a389f4f0e7"
+  }
+}

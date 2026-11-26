@@ -1,0 +1,37 @@
+{
+  "coorte_pareada": {
+    "concluintes_2025": 1185401,
+    "variacao_pct": "2.132189866551487640047545100",
+    "concluintes_2026": 1210676,
+    "iguais": 1,
+    "cresceram": 323,
+    "delta": 25275,
+    "cobertura_2026_pct": 26.888721970833362,
+    "cobertura_2025_pct": 33.5238882247654,
+    "cairam": 284,
+    "pares": 608,
+    "participacao_no_aumento_pct": 2.6149626559536827
+  },
+  "totais": {
+    "2026": 4502542,
+    "2025": 3535989
+  },
+  "periodo": "Jan–Set de2025 e2026",
+  "coletado_em": "2026-10-06T23:12:57.351957-03:00",
+  "fontes": [
+    {
+      "revisao": 1,
+      "celula": "383",
+      "execucao": "229",
+      "coletado_em": "2026-10-06 23:12:57.349943-03"
+    },
+    {
+      "revisao": 3,
+      "celula": "384",
+      "execucao": "226",
+      "coletado_em": "2026-10-06 23:12:09.810389-03"
+    }
+  ],
+  "versao": 1,
+  "metodologia": "Calendário anual, unicidade por ano/cidade/UF/tipo; vínculo não circuito prioritário; depois nome normalizado, até90dias sazonais, ordinais consecutivos. Contagens de01/01 a30/09. 2026: BI conservada em estudo;2025: base operacional. Crescimento observado mistura captura, composição e evolução real; não identifica causa."
+}

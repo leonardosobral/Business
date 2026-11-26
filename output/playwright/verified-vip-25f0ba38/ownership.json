@@ -1,0 +1,23 @@
+[
+  {
+    "file": "/Users/leonardosobral/Library/Caches/ms-playwright/daemon/dd6a4cb594722e3c/verified-vip-25f0ba38.session",
+    "config": {
+      "name": "verified-vip-25f0ba38",
+      "version": "1.63.0-alpha-2026-08-05",
+      "timestamp": 1795543233956,
+      "socketPath": "/var/folders/ct/41b1hy657kq5s56h529h2y3m0000gn/T/pw-6924c269/cli/dd6a4cb594722-4faf6--vip-25f0ba38.sock",
+      "cli": {},
+      "browser": {
+        "browserName": "chromium",
+        "launchOptions": {
+          "headless": true,
+          "channel": "chrome",
+          "chromiumSandbox": true,
+          "args": [
+            "--disable-blink-features=AutomationControlled"
+          ]
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "business": {
+    "estudos/leitor/index.cfm": {
+      "production_sha256": "cc513f18a7d106f31bd2c352276860e1295870f3c333c4f1290bf1ead65a4240",
+      "local_sha256": "cc513f18a7d106f31bd2c352276860e1295870f3c333c4f1290bf1ead65a4240",
+      "matches": true
+    }
+  },
+  "portal": {
+    "brasilquecorreprovas/imprensa/principal/index.cfm": {
+      "production_sha256": "9f7d492a070823a986e9f7cd614c38685f508b90ea94c743b1a4b0a389f4f0e7",
+      "local_sha256": "9f7d492a070823a986e9f7cd614c38685f508b90ea94c743b1a4b0a389f4f0e7",
+      "matches": true
+    },
+    "brasilquecorreprovas/imprensa/principal/dados.cfm": {
+      "production_sha256": "23572aace2f300c605cbf099f1b4288a10ff0c7a605a0e3746773baebee3be40",
+      "local_sha256": "23572aace2f300c605cbf099f1b4288a10ff0c7a605a0e3746773baebee3be40",
+      "matches": true
+    },
+    "brasilquecorreprovas/imprensa/principal/parcial-2026.js": {
+      "production_sha256": "7ed23771cb397c895c9c2fad84e1ae1e62e4c803f5b6f014b7b4b92d6f01b766",
+      "local_sha256": "7ed23771cb397c895c9c2fad84e1ae1e62e4c803f5b6f014b7b4b92d6f01b766",
+      "matches": true
+    },
+    "brasilquecorreprovas/imprensa/principal/estudo-2026.css": {
+      "production_sha256": "c1b4876756d385f166726dee556d61eb7a261421dea846546ae7713d4de28ba3",
+      "local_sha256": "c1b4876756d385f166726dee556d61eb7a261421dea846546ae7713d4de28ba3",
+      "matches": true
+    }
+  }
+}

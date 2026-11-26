@@ -1,0 +1,137 @@
+{
+  "truncated": false,
+  "status": "ok",
+  "started_at": "2026-10-05T14:57:56.058391-03:00",
+  "cell_id": 355,
+  "cell_version": 1,
+  "id": 165,
+  "frozen": true,
+  "result": {
+    "columns": [
+      "payload"
+    ],
+    "rows": [
+      {
+        "payload": {
+          "cobertura": [
+            {
+              "com_view": 5120,
+              "coleta_pct": 54.72222222222222,
+              "ano": 2025,
+              "conclusao_desconhecida": 0,
+              "resultados_view": 5279073,
+              "view_pct": 54.7008547008547,
+              "resultados_brutos": 5599058,
+              "concluintes": 5279065,
+              "cadastradas": 9360,
+              "fim_exclusivo": "2026-01-01",
+              "escopo": "2025 · ano completo",
+              "universo": "Rua/trail",
+              "coletadas": 5122,
+              "conclusao_falsa": 8,
+              "inicio": "2025-01-01",
+              "com_concluintes": 5120,
+              "inativas": 4
+            },
+            {
+              "com_view": 5121,
+              "coleta_pct": 54.269067796610166,
+              "ano": 2025,
+              "conclusao_desconhecida": 0,
+              "resultados_view": 5279220,
+              "view_pct": 54.2478813559322,
+              "resultados_brutos": 5599240,
+              "concluintes": 5279212,
+              "cadastradas": 9440,
+              "fim_exclusivo": "2026-01-01",
+              "escopo": "2025 · ano completo",
+              "universo": "Todas as modalidades",
+              "coletadas": 5123,
+              "conclusao_falsa": 8,
+              "inicio": "2025-01-01",
+              "com_concluintes": 5121,
+              "inativas": 10
+            },
+            {
+              "com_view": 3229,
+              "coleta_pct": 55.278015397775874,
+              "ano": 2025,
+              "conclusao_desconhecida": 0,
+              "resultados_view": 3535990,
+              "view_pct": 55.24379811804962,
+              "resultados_brutos": 3728400,
+              "concluintes": 3535989,
+              "cadastradas": 5845,
+              "fim_exclusivo": "2025-10-01",
+              "escopo": "2025 · até 30/09",
+              "universo": "Rua/trail",
+              "coletadas": 3231,
+              "conclusao_falsa": 1,
+              "inicio": "2025-01-01",
+              "com_concluintes": 3229,
+              "inativas": 3
+            },
+            {
+              "com_view": 3229,
+              "coleta_pct": 54.80916030534351,
+              "ano": 2025,
+              "conclusao_desconhecida": 0,
+              "resultados_view": 3535990,
+              "view_pct": 54.77523324851569,
+              "resultados_brutos": 3728400,
+              "concluintes": 3535989,
+              "cadastradas": 5895,
+              "fim_exclusivo": "2025-10-01",
+              "escopo": "2025 · até 30/09",
+              "universo": "Todas as modalidades",
+              "coletadas": 3231,
+              "conclusao_falsa": 1,
+              "inicio": "2025-01-01",
+              "com_concluintes": 3229,
+              "inativas": 8
+            },
+            {
+              "com_view": 4788,
+              "coleta_pct": 61.100496752006116,
+              "ano": 2026,
+              "conclusao_desconhecida": 0,
+              "resultados_view": 4501106,
+              "view_pct": 60.98586167367214,
+              "resultados_brutos": 4780488,
+              "concluintes": 4500869,
+              "cadastradas": 7851,
+              "fim_exclusivo": "2026-10-01",
+              "escopo": "2026 · até 30/09",
+              "universo": "Rua/trail",
+              "coletadas": 4797,
+              "conclusao_falsa": 237,
+              "inicio": "2026-01-01",
+              "com_concluintes": 4788,
+              "inativas": 9
+            },
+            {
+              "com_view": 4788,
+              "coleta_pct": 60.79847908745247,
+              "ano": 2026,
+              "conclusao_desconhecida": 0,
+              "resultados_view": 4501106,
+              "view_pct": 60.68441064638783,
+              "resultados_brutos": 4780488,
+              "concluintes": 4500869,
+              "cadastradas": 7890,
+              "fim_exclusivo": "2026-10-01",
+              "escopo": "2026 · até 30/09",
+              "universo": "Todas as modalidades",
+              "coletadas": 4797,
+              "conclusao_falsa": 237,
+              "inicio": "2026-01-01",
+              "com_concluintes": 4788,
+              "inativas": 16
+            }
+          ],
+          "coletado_em": "2026-10-05T14:57:56.060308-03:00"
+        }
+      }
+    ]
+  }
+}
