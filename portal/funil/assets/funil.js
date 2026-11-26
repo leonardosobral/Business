@@ -7,6 +7,7 @@
   const number = new Intl.NumberFormat('pt-BR');
   const count = value => Number.isFinite(value) && value >= 0 ? number.format(value) : '—';
   const truth = value => value === true || value === 1 || value === 'true' || value === 'YES';
+  const campaignChannel = value => ({instagram:'Instagram',banner:'Banner',notificacao:'Notificação',outros:'Outros'})[value] || 'Não identificada';
   const lowerKeys = value => Array.isArray(value) ? value.map(lowerKeys) : value && typeof value === 'object'
     ? Object.fromEntries(Object.entries(value).map(([key, item]) => [key.toLowerCase(), lowerKeys(item)])) : value;
   const element = (tag, text, className) => {
@@ -46,6 +47,7 @@
     const previous = select.value;
     const options = audience === 'organizers' ? [['base', 'Todas as contas'], ['paid', 'Clientes históricos']]
       : product === 'desafio' ? [['base', 'Todos os cadastrados'], ['related', 'Com vínculo'], ['unpaid', 'Com vínculo, sem compra identificada'], ['paid', 'Clientes históricos'], ['unproven', 'Compradores sem vigência comprovada'], ['active', 'Vigentes na data final'], ['monthly', 'Vigentes no mês da data final'], ['status_c', 'Todo Santo Dia com status C hoje'], ['expired', 'Última vigência identificada encerrada']]
+      : product === 'selo' ? [['base', 'Todos os cadastrados'], ['related', 'Com pedido não reembolsado'], ['unpaid', 'Com pedido, sem compra confirmada'], ['paid', 'Compras diretas históricas'], ['unproven', 'Compradores sem vigência comprovada'], ['active', 'Vigentes na data final'], ['monthly', 'Vigentes no mês da data final'], ['expired', 'Última vigência identificada encerrada']]
       : [['base', 'Todos os cadastrados'], ['related', 'Com vínculo'], ['paid', 'Clientes históricos'], ['active', 'Vigentes na data final']];
     select.replaceChildren(...options.map(([value, label]) => { const option = element('option', label); option.value = value; return option; }));
     select.value = options.some(([value]) => value === previous) ? previous : 'base';
@@ -122,7 +124,7 @@
     const month = generalMonth.value;
     const status = $('#funnel-general-message');
     generalController?.abort();
-    ['total', 'new', 'linked', 'term', 'challenge', 'go', 'owners', 'accounts', 'live', 'ads'].forEach(key => { $(`#general-${key}`).textContent = '—'; });
+    ['total', 'new', 'linked', 'term', 'challenge', 'selo', 'challenge-selo', 'go', 'owners', 'accounts', 'live', 'ads'].forEach(key => { $(`#general-${key}`).textContent = '—'; });
     $('#general-live-note').textContent = 'Contas com evento associado no leaderboard.';
     if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(month) || month < generalMonth.min || month > generalMonth.max) {
       generalController = undefined;
@@ -146,17 +148,19 @@
       const data = lowerKeys(await response.json());
       if (!response.ok) throw new Error(data.error || 'Não foi possível consultar os dados.');
       if (requestController !== generalController) return;
-      const fields = ['total', 'new_users', 'paid_people', 'challenge_paid', 'challenge_month', 'go_people', 'org_people', 'org_accounts', 'ads_accounts', 'live_accounts', 'unassigned_events'];
+      const fields = ['total', 'new_users', 'paid_people', 'challenge_paid', 'challenge_month', 'selo_paid', 'selo_month', 'monthly_paid', 'challenge_selo', 'go_people', 'org_people', 'org_accounts', 'ads_accounts', 'live_accounts', 'unassigned_events'];
       if (data.month !== month || !validDay(data.through) || !data.through.startsWith(month) || data.through > today || !data.coverage || fields.some(key => data[key] == null || !Number.isInteger(Number(data[key])) || Number(data[key]) < 0) || Number(data.total) < Number(data.new_users) || Number(data.total) < Number(data.paid_people) || Number(data.challenge_paid) < Number(data.challenge_month)) throw new Error('A consulta não retornou o formato esperado. Verifique se todos os arquivos da atualização foram publicados.');
       const through = data.through.split('-').reverse().join('/');
       $('#general-total').textContent = count(Number(data.total));
       $('#general-new').textContent = count(Number(data.new_users));
       const coverage = data.coverage;
-      const challenge = truth(coverage.challenge_payments), terms = truth(coverage.terms), go = truth(coverage.gorunners), owners = truth(coverage.owners), ads = truth(coverage.ads), live = truth(coverage.transmission);
+      const challenge = truth(coverage.challenge_payments), terms = truth(coverage.terms), selo = truth(coverage.selo), seloTerms = truth(coverage.selo_terms), challengeSelo = truth(coverage.challenge_selo), go = truth(coverage.gorunners), owners = truth(coverage.owners), ads = truth(coverage.ads), live = truth(coverage.transmission);
       const show = (id, available, value) => { $(`#general-${id}`).textContent = available ? count(Number(value)) : '—'; };
-      show('linked', challenge || (owners && (ads || live)), data.paid_people);
-      show('term', terms, data.challenge_month);
+      show('linked', challenge || selo || (owners && (ads || live)), data.paid_people);
+      show('term', terms || seloTerms, data.monthly_paid);
       show('challenge', challenge, data.challenge_paid);
+      show('selo', selo, data.selo_paid);
+      show('challenge-selo', challengeSelo, data.challenge_selo);
       show('go', go, data.go_people);
       show('owners', owners && (ads || live), data.org_people);
       show('accounts', ads || live, data.org_accounts);
@@ -165,7 +169,7 @@
       if (live) $('#general-live-note').textContent = `Contas com evento associado no leaderboard. Eventos sem atribuição de conta: ${count(Number(data.unassigned_events))}.`;
       $('#general-total-note').textContent = `Cadastros existentes até ${through}.`;
       $('#general-new-note').textContent = `Cadastros de ${month.slice(5)}/${month.slice(0, 4)} até ${through}.`;
-      const unavailable = [['Todo Santo Dia', challenge], ['vigência do Desafio', terms], ['Go Runners', go], ['donos de contas', owners], ['Patrocinado', ads], ['Transmissão', live]].filter(([, available]) => !available).map(([label]) => label);
+      const unavailable = [['Todo Santo Dia', challenge], ['vigência do Desafio', terms], ['compras do Selo', selo], ['vigência do Selo', seloTerms], ['Selo pelo Desafio', challengeSelo], ['Go Runners', go], ['donos de contas', owners], ['Patrocinado', ads], ['Transmissão', live]].filter(([, available]) => !available).map(([label]) => label);
       status.textContent = `Dados até ${through} · Consulta: ${data.generated_at}. Cobertura parcial; vigência não mede uso.${unavailable.length ? ` Fontes indisponíveis: ${unavailable.join(', ')}.` : ''}`;
     } catch (error) {
       if (error.name !== 'AbortError' && requestController === generalController) { status.dataset.error = 'true'; status.textContent = error.message || 'Falha ao consultar os cadastros.'; }
@@ -174,7 +178,8 @@
     }
   }
   function clearResults() {
-    ['#funnel-shape', '#funnel-groups', '#funnel-people', '#funnel-transmissions', '#funnel-retention', '#funnel-coverage'].forEach(selector => $(selector).replaceChildren());
+    ['#funnel-shape', '#funnel-groups', '#funnel-people', '#funnel-transmissions', '#funnel-retention', '#funnel-coverage', '#funnel-attribution-rows'].forEach(selector => $(selector).replaceChildren());
+    $('#funnel-attribution-panel').hidden = true;
     $('#funnel-page-label').textContent = '';
     $('#funnel-prev').disabled = true;
     $('#funnel-next').disabled = true;
@@ -237,7 +242,7 @@
       group.append(element('small', percentage === null ? '—' : `${percentage.toLocaleString('pt-BR', {maximumFractionDigits: 1})}% ${denominatorLabel}`, 'funnel-group-note'));
       host.append(group);
     });
-    if (!organizers && data.filters.produto === 'desafio') {
+    if (!organizers && ['desafio', 'selo'].includes(data.filters.produto)) {
       const metric = element('div', undefined, 'funnel-event-metric');
       const heading = element('div', undefined, 'funnel-group');
       const month = data.filters.ate.slice(0, 7).split('-').reverse().join('/');
@@ -297,12 +302,21 @@
         return;
       }
       const payment = !truth(data.coverage.payments_mapped) ? 'Não mapeado' : truth(person.paid) ? 'Compra registrada' : 'Sem compra identificada';
-      const recurrence = !truth(data.coverage.payments_mapped) ? 'Não mapeada' : truth(person.term_active) ? 'Vigência comprovada' : truth(person.paid) ? 'Vigência encerrada ou não comprovada' : '—';
+      const recurrence = !truth(data.coverage.payments_mapped) || (data.filters.produto === 'selo' && !truth(data.coverage.terms_mapped)) ? 'Não mapeada' : truth(person.term_active) ? 'Vigência comprovada' : truth(person.paid) ? (data.filters.produto === 'selo' ? 'Fora da vigência ou não comprovada' : 'Vigência encerrada ou não comprovada') : '—';
       const origin = !truth(data.coverage.signup_mapped) || person.origin === 'unknown' ? 'Sem histórico' : person.origin === 'last_recorded_click_7d' ? `Campanha ${person.campaign_id} · clique em até 7 dias` : 'Sem clique registrado';
       const paymentCell = element('td', payment);
-      if (truth(person.paid) && person.payment_sources) paymentCell.append(element('span', person.payment_sources === 'crm' ? 'CRM / auditoria' : person.payment_sources === 'legacy' ? 'Transação do fluxo antigo' : 'Fontes financeiras confirmadas', 'funnel-person-id'));
+      if (truth(person.paid) && person.payment_sources) paymentCell.append(element('span', person.payment_sources === 'crm' ? 'CRM / auditoria' : person.payment_sources === 'legacy' ? 'Transação do fluxo antigo' : person.payment_sources === 'selo' ? 'Pedido direto do Selo' : 'Fontes financeiras confirmadas', 'funnel-person-id'));
       if (truth(data.coverage.status_c_mapped) && truth(person.status_c)) paymentCell.append(element('span', 'Inscrição status C hoje · compra e acesso', 'funnel-person-id'));
-      row.append(identity, element('td', !truth(data.coverage.related_mapped) ? 'Não mapeado' : truth(person.related) ? (data.filters.produto === 'gorunners' ? 'Conta Go Runners vinculada' : 'Todo Santo Dia') : 'Sem vínculo conhecido'), paymentCell, element('td', person.term_start && person.term_end ? `${person.term_start} → ${person.term_end}` : '—'), element('td', recurrence), element('td', origin));
+      const sourceCell = element('td');
+      if (data.filters.produto === 'selo') {
+        if (!truth(person.paid)) sourceCell.textContent = '—';
+        else if (!truth(data.coverage.attribution_mapped)) sourceCell.textContent = 'Rastreamento indisponível';
+        else {
+          sourceCell.append(element('span', campaignChannel(person.campaign_channel)));
+          if (person.campaign_channel) sourceCell.append(element('span', person.campaign_name ? `Campanha: ${person.campaign_name}` : 'Campanha não identificada', 'funnel-person-id'));
+        }
+      } else sourceCell.textContent = origin;
+      row.append(identity, element('td', !truth(data.coverage.related_mapped) ? 'Não mapeado' : truth(person.related) ? (data.filters.produto === 'gorunners' ? 'Conta Go Runners vinculada' : data.filters.produto === 'selo' ? 'Pedido direto do Selo' : 'Todo Santo Dia') : 'Sem vínculo conhecido'), paymentCell, element('td', person.term_start && person.term_end ? `${person.term_start} → ${person.term_end}` : '—'), element('td', recurrence), sourceCell);
       host.append(row);
     });
     if (!data.people.length) {
@@ -337,7 +351,10 @@
   function renderRetention(data) {
     const host = $('#funnel-retention');
     host.replaceChildren();
-    const cards = data.filters.publico === 'organizers' || data.filters.produto !== 'desafio' ? [] : [
+    const cards = data.filters.publico !== 'organizers' && data.filters.produto === 'selo' ? [
+      ['monthly_active', 'Vigentes no mês da data final', 'Concessão paga e não reembolsada em algum momento do mês, até a data final.'],
+      ['term_active', 'Vigência comprovada na data final', 'Concessão da compra direta vigente ao final da data selecionada.']
+    ] : data.filters.publico === 'organizers' || data.filters.produto !== 'desafio' ? [] : [
       ['monthly_active', 'Vigentes no mês da data final', 'Vigência comprovada em algum momento do mês, até a data final selecionada.'],
       ['term_active', 'Vigência comprovada na data final', 'Compra anual do Todo Santo Dia com data que permite comprovar 12 meses de vigência.'],
       ['continuous', 'Vigentes durante todo o período', 'Vigências anuais confirmadas cobrem o intervalo completo, sem lacunas.'],
@@ -349,6 +366,23 @@
       card.append(element('h2', title), element('strong', count(Number(data.metrics[key]))), element('p', note, 'funnel-muted small mb-0'));
       host.append(card);
     });
+    const attributionPanel = $('#funnel-attribution-panel');
+    const attributionRows = $('#funnel-attribution-rows');
+    attributionPanel.hidden = data.filters.publico === 'organizers' || data.filters.produto !== 'selo';
+    attributionRows.replaceChildren();
+    if (!attributionPanel.hidden) {
+      const available = truth(data.coverage.attribution_mapped);
+      $('#funnel-attribution-note').textContent = available
+        ? 'Pedidos pagos sem reembolso até a data final, conforme a etapa, busca e coorte selecionadas. Pessoas podem aparecer em mais de uma campanha; os números não comprovam causalidade.'
+        : 'Rastreamento indisponível: a estrutura de origem ainda não foi instalada.';
+      const groups = Array.isArray(data.attribution) ? data.attribution : [];
+      groups.forEach(group => {
+        const row = element('tr');
+        row.append(element('td', campaignChannel(group.channel)), element('td', group.campaign || 'Não identificada'), element('td', count(Number(group.orders))), element('td', count(Number(group.users))));
+        attributionRows.append(row);
+      });
+      if (!groups.length) { const row = element('tr'); const cell = element('td', available ? 'Nenhuma compra paga nesta seleção.' : 'Origem não disponível.', 'funnel-muted py-3'); cell.colSpan = 4; row.append(cell); attributionRows.append(row); }
+    }
     const coverage = $('#funnel-coverage');
     coverage.className = 'funnel-coverage funnel-muted';
     coverage.replaceChildren();
@@ -393,12 +427,13 @@
       renderRetention(data);
       const organizer = filters.publico === 'organizers';
       const audience = organizer ? 'Contas com dono ativo, sem funcionários' : 'Usuários cadastrados';
-      $('#funnel-reading-help').textContent = organizer ? (filters.produto === 'transmissao' ? 'Um evento no leaderboard indica fechamento pela regra comercial informada. A conta é identificada por vínculo único ou atribuição comercial informada pela equipe; o dono é identificado pelo vínculo atual.' : filters.produto === 'patrocinio' ? 'No Patrocinado, o pagamento precisa estar confirmado e associado ao lançamento de crédito. Uma conta sem compra identificada ainda pode ter histórico fora desta fonte.' : 'A fonte deste produto ainda não foi reconciliada para identificar contratações.') : filters.produto === 'gorunners' ? 'Cadastro vinculado pelo ID RunnerHub registrado no Go Runners. Cadastro não comprova assinatura; contas sem vínculo de ID não entram na contagem.' : filters.produto === 'desafio' ? 'Cadastro sem vínculo conhecido significa que as fontes consultadas não encontraram relação com o produto. Vigência comprovada exige pagamento anual identificável com data; status C informa compra e acesso atuais, mas não comprova a data.' : 'A fonte deste produto ainda não foi reconciliada para identificar compras ou vigências.';
+      $('#funnel-reading-help').textContent = organizer ? (filters.produto === 'transmissao' ? 'Um evento no leaderboard indica fechamento pela regra comercial informada. A conta é identificada por vínculo único ou atribuição comercial informada pela equipe; o dono é identificado pelo vínculo atual.' : filters.produto === 'patrocinio' ? 'No Patrocinado, o pagamento precisa estar confirmado e associado ao lançamento de crédito. Uma conta sem compra identificada ainda pode ter histórico fora desta fonte.' : 'A fonte deste produto ainda não foi reconciliada para identificar contratações.') : filters.produto === 'selo' ? 'Somente pedidos de compra direta atualmente pagos e não reembolsados. A vigência usa a concessão vinculada ao mesmo pedido e perfil; benefícios do Desafio e selos legados ficam separados.' : filters.produto === 'gorunners' ? 'Cadastro vinculado pelo ID RunnerHub registrado no Go Runners. Cadastro não comprova assinatura; contas sem vínculo de ID não entram na contagem.' : filters.produto === 'desafio' ? 'Cadastro sem vínculo conhecido significa que as fontes consultadas não encontraram relação com o produto. Vigência comprovada exige pagamento anual identificável com data; status C informa compra e acesso atuais, mas não comprova a data.' : 'A fonte deste produto ainda não foi reconciliada para identificar compras ou vigências.';
       const headers = root.querySelectorAll('#funnel-people-table th');
       (organizer ? (filters.produto === 'transmissao' ? ['Conta', 'Donos atuais', 'Contratação acumulada', 'Transmissões no período', 'Referência', 'Fonte'] : ['Conta', 'Donos atuais', 'Contratação', 'Vigência até', 'Situação', 'Fonte']) : ['Pessoa', 'Vínculo', 'Pagamento', 'Vigência desde o pagamento', 'Situação', 'Origem do vínculo']).forEach((label, index) => { headers[index].textContent = label; });
+      if (!organizer && filters.produto === 'selo') { headers[3].textContent = 'Vigência da concessão'; headers[5].textContent = 'Canal e campanha da última compra'; }
       $('#funnel-base-label').textContent = audience;
       $('#funnel-context').textContent = `${audience} · ${filters.leitura === 'cohort' ? 'Cadastros entre' : 'Base acumulada até'} ${filters.leitura === 'cohort' ? filters.de.split('-').reverse().join('/') + ' e ' : ''}${filters.ate.split('-').reverse().join('/')} · ${organizer ? 'Fontes e limitações em Retenção e origem.' : 'Compras até a data final; vigência comprovada à parte.'}`;
-      message(`${truth(data.coverage.payments_mapped) ? (organizer ? (filters.produto === 'transmissao' ? 'Fechamento identificado pela configuração do leaderboard e conta vinculada.' : 'Pagamento identificado pelo crédito de Patrocinado.') : 'Compra identificada por status C atual ou pagamento confirmado. Cobertura histórica parcial.') : 'Contratações deste público/produto ainda não estão mapeadas.'} Consulta: ${data.generated_at}. Veja as regras em Retenção e origem.`);
+      message(`${truth(data.coverage.payments_mapped) ? (organizer ? (filters.produto === 'transmissao' ? 'Fechamento identificado pela configuração do leaderboard e conta vinculada.' : 'Pagamento identificado pelo crédito de Patrocinado.') : filters.produto === 'selo' ? 'Compra direta do Selo com estado atual pago; reembolsos excluídos.' : 'Compra identificada por status C atual ou pagamento confirmado. Cobertura histórica parcial.') : 'Contratações deste público/produto ainda não estão mapeadas.'} Consulta: ${data.generated_at}. Veja as regras em Retenção e origem.`);
     } catch (error) {
       if (error.name !== 'AbortError' && requestController === controller) { clearResults(); message(error.message || 'Falha ao consultar o funil.', true); }
     } finally {

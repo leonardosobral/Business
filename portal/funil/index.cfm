@@ -14,6 +14,6 @@
         <cfinclude template="home.cfm"/>
     </div></main>
     <cfinclude template="../../includes/estrutura/footer.cfm"/>
-    <script src="/portal/funil/assets/funil.js?v=20261125-clientes" defer></script>
+    <script src="/portal/funil/assets/funil.js?v=20261126-origem" defer></script>
 </body>
 </html>

@@ -10,6 +10,8 @@
         <cfinclude template="includes/geral_backend.cfm"/>
     <cfelseif structKeyExists(URL,"publico") AND isSimpleValue(URL.publico) AND URL.publico EQ "organizers">
         <cfinclude template="includes/organizer_backend.cfm"/>
+    <cfelseif structKeyExists(URL,"produto") AND isSimpleValue(URL.produto) AND URL.produto EQ "selo">
+        <cfinclude template="includes/selo_backend.cfm"/>
     <cfelse>
         <cfinclude template="includes/report_backend.cfm"/>
     </cfif>
