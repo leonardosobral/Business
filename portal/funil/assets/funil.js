@@ -7,7 +7,9 @@
   const number = new Intl.NumberFormat('pt-BR');
   const count = value => Number.isFinite(value) && value >= 0 ? number.format(value) : '—';
   const truth = value => value === true || value === 1 || value === 'true' || value === 'YES';
-  const campaignChannel = value => ({instagram:'Instagram',banner:'Banner',notificacao:'Notificação',outros:'Outros'})[value] || 'Não identificada';
+  const channelLabels = new Map(Object.entries({instagram:'Instagram',banner:'Banner',notificacao:'Notificação',outros:'Outros',direct:'Direto',referral:'Referência externa',unknown:'Sem origem registrada'}));
+  const campaignChannel = value => channelLabels.get(value) || value || 'Sem origem registrada';
+  const offerEntries = new Map(Object.entries({home:'Home',search_ai:'Busca com IA',results:'Meus resultados',profile:'Perfil do atleta',perfilrun:'Perfil.run público',perfilrun_editor:'Editor do Perfil.run',settings:'Configurações',menu:'Menu',creator:'Página de criadores',login:'Login',other_internal:'Outra página interna',external:'Site externo'}));
   const lowerKeys = value => Array.isArray(value) ? value.map(lowerKeys) : value && typeof value === 'object'
     ? Object.fromEntries(Object.entries(value).map(([key, item]) => [key.toLowerCase(), lowerKeys(item)])) : value;
   const element = (tag, text, className) => {
@@ -178,6 +180,7 @@
     }
   }
   function clearResults() {
+    $('#verified-offer-funnel').hidden = true;
     ['#funnel-shape', '#funnel-groups', '#funnel-people', '#funnel-transmissions', '#funnel-retention', '#funnel-coverage', '#funnel-attribution-rows'].forEach(selector => $(selector).replaceChildren());
     $('#funnel-attribution-panel').hidden = true;
     $('#funnel-page-label').textContent = '';
@@ -185,6 +188,46 @@
     $('#funnel-next').disabled = true;
     report = null;
   }
+  function renderOfferConversion(data) {
+    const panel = $('#verified-offer-funnel');
+    panel.hidden = data.filters.produto !== 'selo' || data.filters.publico !== 'athletes';
+    if (panel.hidden) return;
+    const offer = data.offer_conversion;
+    const ready = offer && truth(offer.available) && offer.totals && Array.isArray(offer.channels);
+    $('#verified-offer-data').hidden = !ready;
+    $('#verified-offer-status').textContent = ready
+      ? 'De ' + data.filters.de.split('-').reverse().join('/') + ' a ' + data.filters.ate.split('-').reverse().join('/') + ' · compras diretas e renovações.'
+      : 'Não foi possível consultar as visitas, cliques e pagamentos desta oferta.';
+    if (!ready) return;
+    const t = offer.totals;
+    const trafficAvailable = truth(t.traffic_available);
+    $('#verified-offer-status').textContent += trafficAvailable ? ' Visitas e cliques desde ' + t.traffic_from + ' neste recorte.' : ' Este período não tem cobertura de visitas e cliques.';
+    ['visitors','clickers','buyers'].forEach(key => { $('#verified-offer-' + key).textContent = key === 'buyers' || trafficAvailable ? count(Number(t[key])) : '—'; });
+    $('#verified-offer-orders').textContent = 'compradores distintos · ' + count(Number(t.orders)) + ' pedidos pagos';
+    const rate = new Intl.NumberFormat('pt-BR',{style:'percent',maximumFractionDigits:1});
+    const renderRow = (name, item) => {
+      const row = element('tr');
+      const label = element('th', name); label.scope = 'row'; row.append(label);
+      for (const key of ['visits','clicks','paid_sessions']) row.append(element('td',trafficAvailable ? count(Number(item[key])) : '—'));
+      row.append(element('td',Number(item.visits) > 0 ? rate.format(Number(item.paid_sessions) / Number(item.visits)) : '—'), element('td',count(Number(item.orders))));
+      return row;
+    };
+    const body = $('#verified-offer-channels');
+    const byEntry = $('#verified-offer-dimension').value === 'entry';
+    const groups = offer.channels.filter(group => group.dimension === (byEntry ? 'entry' : 'channel'));
+    $('#verified-offer-column').textContent = byEntry ? 'Entrada da oferta' : 'Canal de aquisição';
+    body.replaceChildren(...groups.map(group => renderRow(byEntry ? offerEntries.get(group.channel) || 'Sem identificação' : campaignChannel(group.channel), group)));
+    if (!groups.length) {
+      const row = element('tr'); const cell = element('td',trafficAvailable ? 'Nenhuma visita ou venda registrada no período.' : 'Nenhuma venda registrada no período.','funnel-muted');
+      cell.colSpan = 6; row.append(cell); body.append(row);
+    }
+    $('#verified-offer-total').replaceChildren(renderRow('Total',t));
+    const unmatched = Number(t.outside_journey);
+    $('#verified-offer-unmatched').textContent = unmatched === 0 ? '' : (unmatched === 1
+      ? 'Um pedido pago entra no total de vendas e fica fora da taxa porque não tem visita e clique vinculados no período.'
+      : count(unmatched) + ' pedidos pagos entram no total de vendas e ficam fora da taxa porque não têm visita e clique vinculados no período.');
+  }
+  $('#verified-offer-dimension').addEventListener('change', () => { if (report) renderOfferConversion(report); });
   function renderShape(data) {
     const host = $('#funnel-shape');
     host.replaceChildren();
@@ -420,6 +463,7 @@
       if (requestController !== controller) return;
       if (!data.metrics || !Array.isArray(data.people) || !data.coverage || !Array.isArray(data.coverage.notes)) throw new Error('A consulta não retornou o formato esperado.');
       report = data;
+      renderOfferConversion(data);
       renderShape(data);
       renderGroups(data);
       renderPeople(data);

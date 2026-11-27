@@ -46,6 +46,29 @@
             <div class="business-panel p-4 mt-3"><h2>Como ler esta visão</h2><p class="funnel-muted small mb-0">Clientes históricos e vigentes no mês são perspectivas diferentes e não devem ser somados: uma pessoa pode estar nos dois indicadores. Cada ID RunnerHub é contado uma vez em cada indicador, mesmo em vários produtos; IDs diferentes da mesma pessoa não são conciliados automaticamente. O histórico inclui compras do Todo Santo Dia e do Selo e donos atuais de contas clientes de Transmissão ou Patrocinado. A compra reembolsada do Selo é excluída, mesmo ao consultar datas anteriores. Benefícios do Desafio e concessões legadas não são vendas diretas do Selo. A contagem mensal ainda não cobre vigência de organizadores ou produtos não mapeados. Cadastros Go Runners não entram como pagantes. Contas sem dono identificado aparecem no total de contas, não no de pessoas. As fontes são parciais, não incluem produtos ainda não mapeados nem o Desafio 365 e não recuperam cadastros excluídos ou antigos donos. Status C sem data só contribui na referência de hoje. O leaderboard indica fechamento, sem comprovar data de pagamento ou vigência. Vigência não comprova uso da plataforma.</p></div>
         </section>
         <section id="panel-journey" role="tabpanel" aria-labelledby="tab-journey" class="funnel-panel">
+            <section class="business-panel p-4 mb-3" id="verified-offer-funnel" aria-labelledby="verified-offer-title" hidden>
+                <h2 id="verified-offer-title">Conversão da oferta Atleta Verificado</h2>
+                <p id="verified-offer-status" class="funnel-muted small" role="status"></p>
+                <div id="verified-offer-data" hidden>
+                    <div class="row row-cols-1 row-cols-sm-3 g-3 mb-3">
+                        <div class="col"><span>Entraram na oferta</span><strong id="verified-offer-visitors" class="d-block fs-3"></strong><small class="funnel-muted">navegadores distintos</small></div>
+                        <div class="col"><span>Clicaram em comprar</span><strong id="verified-offer-clickers" class="d-block fs-3"></strong><small class="funnel-muted">navegadores distintos</small></div>
+                        <div class="col"><span>Pagaram</span><strong id="verified-offer-buyers" class="d-block fs-3"></strong><small id="verified-offer-orders" class="funnel-muted"></small></div>
+                    </div>
+                    <div class="mb-2 d-flex flex-wrap align-items-center gap-2"><label for="verified-offer-dimension" class="small">Comparar por</label><select id="verified-offer-dimension" class="form-select form-select-sm w-auto"><option value="channel">Canal de aquisição</option><option value="entry">Entrada da oferta</option></select></div>
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-1"><caption class="visually-hidden">Conversão em ordem de pedidos pagos</caption>
+                            <thead><tr><th scope="col" id="verified-offer-column">Canal de aquisição</th><th scope="col">Sessões na oferta</th><th scope="col">Com clique</th><th scope="col">Com pagamento</th><th scope="col">Conversão</th><th scope="col">Pedidos pagos</th></tr></thead>
+                            <tbody id="verified-offer-channels"></tbody><tfoot id="verified-offer-total"></tfoot>
+                        </table>
+                    </div>
+                    <p id="verified-offer-unmatched" class="funnel-muted small mt-2"></p>
+                    <details class="small"><summary>Como a conversão é calculada</summary>
+                        <p class="mt-2">Conversão é a parcela das sessões que abriram a oferta, clicaram para comprar ou renovar e tiveram pelo menos um pedido pago vinculado àquela sessão. As três etapas precisam ocorrer entre as datas selecionadas. Cada sessão conta na primeira entrada usada para abrir a oferta no período. Uma pessoa pode usar mais de um navegador ou fazer mais de um pedido.</p>
+                        <p class="mb-0">Os pedidos abrangem compras diretas e renovações confirmadas no período. Estornos, benefícios do desafio e sessões reconhecidas como internas ficam fora da contagem. O canal vem da origem da sessão ou do domínio de referência. A coleta de audiência começou em 26/11/2026, respeita a preferência de privacidade e mantém até 90 dias de visitas. As vendas preservam a origem registrada no pedido. Os filtros de cadastro, etapa e pessoa se aplicam aos demais quadros.</p>
+                    </details>
+                </div>
+            </section>
             <div class="funnel-layout">
                 <div class="business-panel funnel-visual-panel">
                     <div class="funnel-panel-heading"><h2>Jornada de conversão</h2><span id="funnel-base-label" class="funnel-muted small">Pessoas únicas</span></div>

@@ -3,7 +3,7 @@
 <cfset verifiedSelectionCategories=verifiedService.selectionCategories()/>
 <cfoutput>
 <link rel="stylesheet" href="/assets/css/business-ui.css"/>
-<link rel="stylesheet" href="/portal/verificados/verified.css?v=20261124-payments"/>
+<link rel="stylesheet" href="/portal/verificados/verified.css?v=20261126-vendas"/>
 <script src="/portal/verificados/verified.js?v=20261124" defer></script>
 <section class="business-page verified-page" aria-labelledby="verified-title">
     <header class="verified-heading">
@@ -13,6 +13,18 @@
     <cfif len(verifiedError)><div class="alert alert-danger" role="alert">#encodeForHTML(verifiedError)#</div></cfif>
     <cfif verifiedQuickCount GT 0 AND NOT len(verifiedError)><div class="alert alert-success" role="status">#verifiedQuickCount# <cfif verifiedQuickCount EQ 1>pessoa classificada<cfelse>pessoas classificadas</cfif>. Quem já tem motivo registrado saiu da fila “A classificar”.</div></cfif>
     <cfif verifiedSaved><div class="alert alert-success" role="status">Motivo registrado. A validade e os benefícios do selo foram preservados.</div></cfif>
+    <section class="business-panel verified-sales-summary" aria-labelledby="direct-sales-title">
+        <div>
+            <h2 id="direct-sales-title">Atleta Verificado · vendas diretas</h2>
+            <p>Compras e renovações do produto avulso. VIP do Todo Santo Dia e pedidos estornados ficam fora destes totais.</p>
+        </div>
+        <dl class="verified-sales-totals">
+            <div><dt>Vendas pagas</dt><dd>#verifiedData.totals.direct_sales#</dd></div>
+            <div><dt>Compradores</dt><dd>#verifiedData.totals.direct_buyers#</dd></div>
+            <div><dt>Valor das vendas</dt><dd>R$ #lsNumberFormat(verifiedData.totals.direct_amount_cents / 100, ',0.00', 'pt_BR')#</dd></div>
+        </dl>
+        <a class="btn btn-warning btn-sm" href="/portal/verificados/?filter_origin=direct_buyer&amp;filter_status=all##lista-motivos">Ver pagantes</a>
+    </section>
     <div class="business-kpi-grid verified-kpis" aria-label="Resumo geral dos selos">
         <a class="business-kpi" href="#encodeForHTMLAttribute(verifiedUrl({filter_evidence='',filter_status='active',filter_origin='',pagina=1,user_busca=''}))#"><small>Selos ativos</small><strong>#verifiedData.totals.active#</strong></a>
         <a class="business-kpi" href="#encodeForHTMLAttribute(verifiedUrl({filter_evidence='',filter_status='active',filter_origin='manual',pagina=1,user_busca=''}))#"><small>Sem vencimento</small><strong>#verifiedData.totals.permanent#</strong></a>
@@ -45,7 +57,7 @@
         <div class="verified-filter-main">
             <div><label for="verified-search">Buscar pessoa</label><input class="form-control" id="verified-search" name="user_busca" value="#encodeForHTMLAttribute(verifiedFilters.search)#" placeholder="Nome, e-mail, perfil ou ID" maxlength="120"/></div>
             <div><label for="verified-origin">Origem ou motivo</label><select id="verified-origin" class="form-select" name="filter_origin"><option value="">Todas as origens</option>
-                <cfloop array="#[['manual','Concessão permanente'],['vip','Todo Santo Dia · VIP ativo'],['registered_vip','Todo Santo Dia · VIP/upgrade confirmado no cadastro'],['upgrade','Todo Santo Dia · Upgrade VIP ativo'],['annual','Compra anual ativa'],['refunded','Com estorno no histórico'],['elite','Atleta de elite'],['influencer','Influencer / criador'],['imprensa','Imprensa'],['parceiro','Parceiro'],['equipe','Equipe'],['cortesia','Cortesia'],['outro','Outro motivo'],['nao_informado','Motivo não informado']]#" index="optionItem"><option value="#optionItem[1]#" <cfif verifiedFilters.origin EQ optionItem[1]>selected</cfif>>#optionItem[2]#</option></cfloop>
+                <cfloop array="#[['direct_buyer','Atleta Verificado · compra direta paga'],['manual','Concessão permanente'],['vip','Todo Santo Dia · VIP ativo'],['registered_vip','Todo Santo Dia · VIP/upgrade confirmado no cadastro'],['upgrade','Todo Santo Dia · Upgrade VIP ativo'],['annual','Atleta Verificado · vigência anual ativa'],['refunded','Com estorno no histórico'],['elite','Atleta de elite'],['influencer','Influencer / criador'],['imprensa','Imprensa'],['parceiro','Parceiro'],['equipe','Equipe'],['cortesia','Cortesia'],['outro','Outro motivo'],['nao_informado','Motivo não informado']]#" index="optionItem"><option value="#optionItem[1]#" <cfif verifiedFilters.origin EQ optionItem[1]>selected</cfif>>#optionItem[2]#</option></cfloop>
             </select></div>
             <button class="btn btn-warning" type="submit">Filtrar</button><a class="btn btn-outline-secondary" href="/portal/verificados/">Limpar</a>
         </div>
@@ -68,9 +80,10 @@
             <div class="verified-source-grid">
                 <cfloop array="#verifiedDetail.sources#" index="sourceItem">
                     <section class="verified-source"><h3>#encodeForHTML(verifiedOrigins[sourceItem.kind])#</h3>
-                        <p><span class="verified-pill <cfif NOT sourceItem.active>is-muted</cfif>"><cfif sourceItem.active>Origem ativa<cfelseif sourceItem.source_state EQ 'paid'>Fora do período de validade<cfelse>#encodeForHTML(verifiedStates[sourceItem.source_state] ?: sourceItem.source_state)#</cfif></span></p>
+                        <cfif sourceItem.kind EQ 'annual' AND sourceItem.direct_sale><p class="verified-direct-order">Venda direta confirmada</p></cfif>
+                        <p><span class="verified-pill <cfif NOT sourceItem.active>is-muted</cfif>"><cfif sourceItem.active>Origem ativa<cfelseif sourceItem.scheduled>Vigência futura<cfelseif sourceItem.source_state EQ 'paid'>Fora do período de validade<cfelse>#encodeForHTML(verifiedStates[sourceItem.source_state] ?: sourceItem.source_state)#</cfif></span></p>
                         <cfif sourceItem.kind EQ 'manual'><cfif verifiedDetail.current.category EQ 'nao_informado' AND arrayLen(verifiedDetail.registrations)><p>Vínculo Todo Santo Dia identificado no cadastro.</p><p class="text-muted">A concessão permanente está preservada. Os registros VIP e a conciliação aparecem abaixo.</p><cfelse><p>#encodeForHTML(verifiedCategories[verifiedDetail.current.category])#</p><p class="text-muted">#encodeForHTML(len(verifiedDetail.current.reason) ? verifiedDetail.current.reason : 'A concessão existe, mas o motivo não foi registrado no histórico disponível.')#</p></cfif>
-                        <cfelse><dl><dt>Pagamento</dt><dd>#encodeForHTML(len(sourceItem.paid_at) ? sourceItem.paid_at : 'Ainda não confirmado')#</dd><dt>Valor</dt><dd>R$ #replace(numberFormat(sourceItem.amount_cents/100,'0.00'),'.',',')#</dd><dt>Validade concedida</dt><dd>#encodeForHTML(len(sourceItem.ends_at) ? sourceItem.ends_at : 'Ainda não concedida')#</dd><dt>Pedido</dt><dd class="verified-order">#encodeForHTML(len(sourceItem.order_id) ? sourceItem.order_id : 'Ainda não criado')#</dd></dl><cfif sourceItem.source_state EQ 'refunded'><p class="text-muted small">Este pagamento foi estornado e não mantém o selo ativo.</p></cfif></cfif>
+                        <cfelse><dl><cfif sourceItem.kind EQ 'annual' AND len(sourceItem.buyer_name)><dt>Comprador</dt><dd>#encodeForHTML(sourceItem.buyer_name)#</dd></cfif><dt>Pagamento</dt><dd>#encodeForHTML(len(sourceItem.paid_at) ? sourceItem.paid_at : 'Ainda não confirmado')#</dd><dt>Valor</dt><dd>R$ #replace(numberFormat(sourceItem.amount_cents/100,'0.00'),'.',',')#</dd><cfif sourceItem.kind EQ 'annual' AND len(sourceItem.starts_at)><dt>Início da vigência</dt><dd>#encodeForHTML(sourceItem.starts_at)#</dd></cfif><dt>Válido até</dt><dd>#encodeForHTML(len(sourceItem.ends_at) ? sourceItem.ends_at : 'Ainda não concedida')#</dd><dt>Pedido</dt><dd class="verified-order">#encodeForHTML(len(sourceItem.order_id) ? sourceItem.order_id : 'Ainda não criado')#</dd></dl><cfif sourceItem.source_state EQ 'refunded'><p class="text-muted small">Este pagamento foi estornado e não mantém o selo ativo.</p></cfif></cfif>
                     </section>
                 </cfloop>
                 <cfif NOT arrayLen(verifiedDetail.sources)><p class="text-muted">Não há concessão ou compra de selo registrada para este perfil.</p></cfif>
@@ -117,7 +130,7 @@
             </fieldset>
         </form>
     </cfif>
-    <div class="verified-list-heading" id="lista-motivos"><h2>#verifiedData.total# <cfif verifiedData.total EQ 1>perfil encontrado<cfelse>perfis encontrados</cfif></h2><span class="text-muted small">Uma pessoa pode ter mais de uma origem ativa.</span></div>
+    <div class="verified-list-heading" id="lista-motivos"><h2><cfif verifiedFilters.origin EQ 'direct_buyer'>Pagantes do Atleta Verificado · </cfif>#verifiedData.total# <cfif verifiedData.total EQ 1>perfil encontrado<cfelse>perfis encontrados</cfif></h2><span class="text-muted small">Uma pessoa pode ter mais de uma origem ativa.</span></div>
     <div class="business-panel verified-table-wrap"><table class="table verified-table"><thead><tr><th class="verified-select-cell"><input type="checkbox" id="verified-select-all" aria-label="Selecionar todos os pendentes desta página" <cfif NOT verifiedData.ready>disabled</cfif>/></th><th>Pessoa</th><th>Origem e motivo do selo</th><th>Situação e validade</th><th><span class="visually-hidden">Detalhes</span></th></tr></thead><tbody>
         <cfloop array="#verifiedData.rows#" index="profileItem"><tr id="perfil-#profileItem.profile_id#">
             <td class="verified-select-cell"><cfif profileItem.needs_classification><label><input type="checkbox" form="verified-bulk-form" name="selection" value="#profileItem.profile_id#:#profileItem.revision#" class="verified-row-select" aria-label="Selecionar #encodeForHTMLAttribute(profileItem.name)#" <cfif NOT verifiedData.ready>disabled</cfif>/><span class="verified-mobile-label">Selecionar para classificar</span></label></cfif></td>
@@ -127,7 +140,17 @@
                 <cfif len(rowContext.profile.bio)><p class="verified-bio-preview">#encodeForHTML(left(rowContext.profile.bio,150))#<cfif len(rowContext.profile.bio) GT 150>…</cfif><small class="verified-email text-muted">Bio informada pelo atleta</small></p></cfif>
                 <cfif len(rowContext.profile.instagram)><small class="verified-email">Instagram público: #encodeForHTML(rowContext.profile.instagram)#</small></cfif>
             </td>
-            <td><div class="verified-origin-list"><cfif profileItem.permanent><cfif profileItem.category NEQ 'nao_informado' OR profileItem.needs_classification><span class="verified-pill <cfif profileItem.needs_classification>is-attention</cfif>">#encodeForHTML(verifiedCategories[profileItem.category])#</span></cfif><small class="text-muted">Concessão permanente</small><cfif len(profileItem.reason)><p class="verified-reason">#encodeForHTML(profileItem.reason)#</p></cfif></cfif><cfif profileItem.registered_vip AND NOT profileItem.vip><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small></cfif><cfif profileItem.registered_upgrade AND NOT profileItem.upgrade><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span><small class="text-muted">Confirmado no cadastro</small></cfif><cfif profileItem.vip_review><small class="verified-pending">#encodeForHTML(verifiedReviewReasons[profileItem.vip_review_reason] ?: 'Divergência financeira a revisar')#</small><cfelseif profileItem.registration_review><small class="verified-pending">Conferir pagamento e validade</small></cfif><cfif profileItem.registration_alert><small class="verified-pending">Cadastro com anotação de cancelamento/estorno</small></cfif><cfif profileItem.vip><span class="verified-pill">Todo Santo Dia · VIP</span></cfif><cfif profileItem.upgrade><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span></cfif><cfif profileItem.annual><span class="verified-pill">Compra anual do selo</span></cfif><cfif NOT profileItem.active><span class="text-muted">Sem origem ativa</span></cfif></div><cfif profileItem.has_refund><small class="text-muted">Possui estorno no histórico</small></cfif>
+            <td><div class="verified-origin-list">
+                <cfif profileItem.direct_sales GT 0>
+                    <div class="verified-direct-purchase">
+                        <strong>Atleta Verificado · compra direta</strong>
+                        <span>#profileItem.direct_sales# <cfif profileItem.direct_sales EQ 1>pedido pago<cfelse>pedidos pagos</cfif></span>
+                        <span><cfif profileItem.direct_sales EQ 1>Pagamento<cfelse>Último pagamento</cfif> em #encodeForHTML(profileItem.direct_last_paid_at)# · R$ #lsNumberFormat(profileItem.direct_last_amount_cents / 100, ',0.00', 'pt_BR')#</span>
+                        <cfif len(profileItem.direct_last_buyer) AND compareNoCase(profileItem.direct_last_buyer,profileItem.name) NEQ 0><span>Comprador<cfif profileItem.direct_sales GT 1> do último pedido</cfif>: #encodeForHTML(profileItem.direct_last_buyer)#</span></cfif>
+                        <cfif len(profileItem.direct_valid_until)><span>Vigência <cfif profileItem.direct_sales GT 1>do último pedido<cfelse>da compra</cfif> <cfif len(profileItem.direct_starts_at)>de #encodeForHTML(profileItem.direct_starts_at)# </cfif>até #encodeForHTML(profileItem.direct_valid_until)#</span></cfif>
+                    </div>
+                </cfif>
+                <cfif profileItem.permanent><cfif profileItem.category NEQ 'nao_informado' OR profileItem.needs_classification><span class="verified-pill <cfif profileItem.needs_classification>is-attention</cfif>">#encodeForHTML(verifiedCategories[profileItem.category])#</span></cfif><small class="text-muted">Concessão permanente</small><cfif len(profileItem.reason)><p class="verified-reason">#encodeForHTML(profileItem.reason)#</p></cfif></cfif><cfif profileItem.registered_vip AND NOT profileItem.vip><span class="verified-pill">Todo Santo Dia · VIP</span><small class="text-muted">Confirmado no cadastro</small></cfif><cfif profileItem.registered_upgrade AND NOT profileItem.upgrade><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span><small class="text-muted">Confirmado no cadastro</small></cfif><cfif profileItem.vip_review><small class="verified-pending">#encodeForHTML(verifiedReviewReasons[profileItem.vip_review_reason] ?: 'Divergência financeira a revisar')#</small><cfelseif profileItem.registration_review><small class="verified-pending">Conferir pagamento e validade</small></cfif><cfif profileItem.registration_alert><small class="verified-pending">Cadastro com anotação de cancelamento/estorno</small></cfif><cfif profileItem.vip><span class="verified-pill">Todo Santo Dia · VIP</span></cfif><cfif profileItem.upgrade><span class="verified-pill">Todo Santo Dia · Upgrade VIP</span></cfif><cfif profileItem.annual AND profileItem.direct_sales EQ 0><span class="verified-pill">Vigência de pedido anual</span></cfif><cfif NOT profileItem.active><span class="text-muted">Sem origem ativa</span></cfif></div><cfif profileItem.has_refund><small class="text-muted">Possui estorno no histórico</small></cfif>
                 <div class="verified-context-tags">
                     <cfloop list="historic_vip,basic,vip_unconfirmed,none" index="evidenceKey"><cfif profileItem['evidence_' & evidenceKey]><span>#encodeForHTML(verifiedEvidence[evidenceKey])#</span></cfif></cfloop>
                 </div>

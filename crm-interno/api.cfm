@@ -9,6 +9,8 @@ try{
  if(!structKeyExists(SESSION,'crmInternalCsrf')||!structKeyExists(FORM,'csrf')||compare(FORM.csrf,SESSION.crmInternalCsrf)!=0)throw(type='CRM.Client',message='forbidden');
  if(!structKeyExists(FORM,'payload')||len(FORM.payload)>262144||!isJSON(FORM.payload))throw(type='CRM.Client',message='invalid_payload');
  payload=deserializeJSON(FORM.payload);if(!isStruct(payload)||!structKeyExists(payload,'action')||!structKeyExists(payload,'input')||!isStruct(payload.input))throw(type='CRM.Client',message='invalid_payload');
+ // Offer changes are handled by the campaign panel with its own confirmation and provider checks.
+ if(left(payload.action,6)=='brevo.')throw(type='CRM.Client',message='forbidden');
  result=new services.CrmClient().init(APPLICATION.notificationDispatch).request(payload.action,payload.input,val(qPerfil.id));
  if(!result.success)status=422;
 }catch(any e){known=listFind('method_not_allowed,forbidden,invalid_payload',e.message);result={success=false,error=known?e.message:'service_unavailable'};status=e.message=='forbidden'?403:e.message=='method_not_allowed'?405:known?422:503;}

@@ -40,9 +40,20 @@ A frequência inclui todos os inscritos, com um registro por atleta e por dia.
 A retenção agrupa quem treinou na semana da inscrição e verifica o retorno
 na semana seguinte. As semanas incompletas ficam em andamento.
 
-A aba **Pontos** lê a fila `tb_strava_foco_points`. Exibe os últimos 30 dias
-por data da confirmação, a confirmação mais recente, a fila e as revisões,
-incluindo HTTP 408. As janelas diárias seguem o horário de Brasília.
+A aba **Pontos** lê a fila `tb_strava_foco_points`. Exibe as confirmações dos
+últimos 30 dias, a confirmação mais recente e as pendências por motivo.
+Os filtros separam fila, HTTP 408 em revisão, outras revisões, HTTP 404
+rejeitado, outras rejeições e dias elegíveis sem envio. Cada linha abre o
+histórico do atleta, com data da atividade, número de tentativas, horário e
+retorno da última tentativa e horário da confirmação. Os horários seguem
+Brasília.
+
+O recorte **Sem envio registrado** procura atividades processadas e elegíveis
+nos últimos 30 dias. Para esse recorte, `config_painel.envio_pontos_desde`
+registra o início efetivo do envio em ISO 8601 UTC, de acordo com
+`startEpoch` da integração Strava/Foco de produção. A apuração de dias sem
+envio depende desse campo. As informações do histórico vêm do último estado
+persistido por atleta e por dia.
 
 Uma configuração vazia carrega os widgets anteriores. Os circuitos com painéis
 próprios mantêm seus painéis. Os dias de atividade medem participação. O

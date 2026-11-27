@@ -8,11 +8,12 @@
 <cfscript>
 verifiedService=new services.VerifiedAdmin();
 verifiedCategories=verifiedService.categories();
-verifiedOrigins={manual="Concessão permanente",vip="Todo Santo Dia · VIP",upgrade="Todo Santo Dia · Upgrade VIP",annual="Compra anual do selo",refunded="Com estorno no histórico",registered_vip="Todo Santo Dia · VIP/upgrade confirmado no cadastro"};
+verifiedOrigins={direct_buyer="Pagantes do Atleta Verificado",manual="Concessão permanente",vip="Todo Santo Dia · VIP",upgrade="Todo Santo Dia · Upgrade VIP",annual="Atleta Verificado · pedido avulso",refunded="Com estorno no histórico",registered_vip="Todo Santo Dia · VIP/upgrade confirmado no cadastro"};
 verifiedStates={active="Ativo",paid="Pagamento confirmado",refunded="Estornado",pending="Aguardando pagamento",creating="Checkout em criação",failed="Pagamento falhou",expired="Expirado",review="Em conferência"};
 verifiedReviewReasons={failed_only="Somente tentativas VIP recusadas",basic_only="Pagamento confirmado somente da Básica",refunded_only="Pedido estornado; upgrade no cadastro requer revisão",no_order_found="Nenhum pedido Todo Santo Dia localizado pelos vínculos consultados"};
 verifiedEvidence={vip_unconfirmed="TSD VIP/upgrade sem confirmação",historic_vip="VIP antigo · Desafio 365",basic="TSD Básica confirmada",none="Sem cadastro de desafio",bio="Com bio no perfil",social="Com Instagram público"};
 verifiedFilters={evidence=lcase(trim(URL.filter_evidence ?: "")),status=lcase(trim(URL.filter_status ?: "active")),origin=lcase(trim(URL.filter_origin ?: "")),search=left(trim(URL.user_busca ?: ""),120),page=max(1,int(val(URL.pagina ?: 1))),logic=lcase(trim(URL.filter_logic ?: "any")),desafio=trim(URL.filter_desafio ?: ""),produto=trim(URL.filter_produto ?: ""),admin=(URL.filter_admin ?: "") == "true",dev=(URL.filter_dev ?: "") == "true",partner=(URL.filter_partner ?: "") == "true"};
+if(verifiedFilters.origin=="direct_buyer" AND !len(trim(URL.filter_status ?: "")))verifiedFilters.status="all";
 if(!listFind("active,inactive,all,unclassified,reconcile,divergent",verifiedFilters.status))verifiedFilters.status="active";
 if(len(verifiedFilters.origin) AND !structKeyExists(verifiedOrigins,verifiedFilters.origin) AND !structKeyExists(verifiedCategories,verifiedFilters.origin))verifiedFilters.origin="";
 if(len(verifiedFilters.evidence) AND !structKeyExists(verifiedEvidence,verifiedFilters.evidence))verifiedFilters.evidence="";

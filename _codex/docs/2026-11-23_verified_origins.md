@@ -10,6 +10,12 @@ Publicado em `/portal/verificados/` no Business. Escopo: consulta de direitos ef
 - Permanentes: marcação manual ou legado que não foi reclassificado como Todo Santo Dia.
 - Influencer, imprensa, parceiro, equipe, cortesia e outro: anotações administrativas expressas, nunca inferidas do perfil ou das permissões da conta.
 
+### Compras diretas do Atleta Verificado
+
+No painel, **Ver pagantes** abre a lista de perfis com compra ou renovação avulsa, em ordem do último pagamento. O filtro inclui tanto uma renovação comprada antes do fim do VIP quanto um período pago já encerrado. O detalhe do perfil mostra o comprador, a data do pagamento e o período adquirido para cada pedido.
+
+O resumo conta pedidos pagos do produto `rr_selo_verificado_anual`, contas compradoras distintas e a soma dos valores dos pedidos. Um segundo pedido pago pela mesma conta soma uma venda. Estornos e pedidos identificados como internos ou de DEV ficam fora dos totais, conforme a regra do funil. Os pagamentos do desafio têm sua própria origem. A situação atual do selo continua vindo de `rr_verified.profile_status`.
+
 Na publicação: 418 ativos, sendo 128 permanentes e 290 com prazo. Há 244 perfis com VIP ativo e 48 com upgrade ativo, com sobreposição. O selo de Leonardo continua retirado conforme solicitação anterior. Os 419 registros originais de DEV não foram alterados; o legado operacional possui 418 após aquela retirada.
 
 ## Classificação manual pendente de migração

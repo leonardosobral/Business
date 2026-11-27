@@ -25,21 +25,39 @@ component output=false {
 
     private string function sourceSql() {
         // Product ownership remains with Road Runners. Status comes from profile_status.
-        return "WITH sources AS (
+        // Use the same public-sale rule as the offer funnel, including the attribution captured at checkout.
+        return "WITH direct_orders AS (
+            SELECT o.id,o.profile_id,o.user_id,o.provider_order_id,o.amount_cents,o.paid_at,
+                   g.starts_at,g.ends_at,g.revoked_at,
+                   coalesce(nullif(trim(b.name),''),'Conta ' || o.user_id::text) AS buyer_name,
+                   CASE WHEN refund.order_id IS NOT NULL OR g.revoked_at IS NOT NULL THEN 'refunded' ELSE o.state END AS source_state,
+                   o.state='paid' AND o.paid_at IS NOT NULL AND o.paid_at<=now() AND refund.order_id IS NULL
+                       AND NOT coalesce(snapshot.internal,false) AS direct_sale
+            FROM rr_verified.orders o
+            LEFT JOIN public.tb_usuarios b ON b.id=o.user_id
+            LEFT JOIN rr_verified.grants g ON g.order_id=o.id AND g.origin='paid'
+            LEFT JOIN LATERAL (SELECT e.order_id FROM rr_verified.payment_events e
+                WHERE e.order_id=o.id AND e.event_type='refunded' LIMIT 1) refund ON true
+            LEFT JOIN LATERAL (
+                SELECT coalesce(e.details->>'is_internal','false')='true' OR e.details->>'environment'<>'prod' AS internal
+                FROM rr_verified.payment_events e WHERE e.order_id=o.id AND e.event_type='offer_attribution_v1'
+                ORDER BY e.created_at DESC,e.id DESC LIMIT 1) snapshot ON true
+            WHERE o.product_code='rr_selo_verificado_anual'
+        ), sources AS (
             SELECT pg.id_pagina AS profile_id,'manual'::text AS kind,'active'::text AS source_state,
                    ''::text AS order_id,NULL::integer AS amount_cents,
                    (SELECT min(g.starts_at) FROM rr_verified.grants g WHERE g.profile_id=pg.id_pagina AND g.origin='legacy') AS starts_at,
-                   NULL::timestamptz AS ends_at
+                   NULL::timestamptz AS ends_at,NULL::timestamptz AS paid_at,''::text AS buyer_name,false AS direct_sale
               FROM public.tb_paginas pg WHERE pg.verificado IS TRUE OR EXISTS (
                 SELECT 1 FROM rr_verified.grants g WHERE g.profile_id=pg.id_pagina AND g.origin='legacy'
                 AND NOT EXISTS (SELECT 1 FROM rr_verified.legacy_reclassifications r WHERE r.profile_id=g.profile_id))
             UNION ALL
             SELECT c.profile_id,CASE WHEN c.product_code='todosantodiaupg' THEN 'upgrade' ELSE 'vip' END,
-                   c.state,c.provider_order_id,c.amount_cents,c.paid_at,c.ends_at FROM rr_verified.challenge_orders c
+                   c.state,c.provider_order_id,c.amount_cents,c.paid_at,c.ends_at,c.paid_at,''::text,false
+              FROM rr_verified.challenge_orders c
             UNION ALL
-            SELECT o.profile_id,'annual',CASE WHEN g.revoked_at IS NOT NULL THEN 'refunded' ELSE o.state END,
-                   coalesce(o.provider_order_id,''),o.amount_cents,coalesce(g.starts_at,o.paid_at),g.ends_at
-              FROM rr_verified.orders o LEFT JOIN rr_verified.grants g ON g.order_id=o.id AND g.origin='paid'
+            SELECT d.profile_id,'annual',d.source_state,coalesce(d.provider_order_id,''),d.amount_cents,
+                   d.starts_at,d.ends_at,d.paid_at,d.buyer_name,d.direct_sale FROM direct_orders d
         ), candidates AS (SELECT DISTINCT profile_id FROM sources),
         confirmed_registrations AS (
             SELECT DISTINCT pu.id_pagina AS profile_id,d.produto AS product_code,d.data_inscricao AS registered_at,
@@ -71,17 +89,27 @@ component output=false {
         var ready=classificationReady();
         var params={};
         var where=" WHERE 1=1 ";
-        var status=arguments.filters.status ?: "active";
         var origin=arguments.filters.origin ?: "";
+        var status=arguments.filters.status ?: (origin=="direct_buyer" ? "all" : "active");
         var evidence=lcase(trim(arguments.filters.evidence ?: ""));
         var search=left(trim(arguments.filters.search ?: ""),120);
         var page=max(1,int(val(arguments.filters.page ?: 1)));
         var classification=ready ? "LEFT JOIN LATERAL (SELECT category,reason,revision FROM rr_verified.admin_classifications WHERE profile_id=pg.id_pagina ORDER BY revision DESC LIMIT 1) cl ON true" : "LEFT JOIN LATERAL (SELECT 'nao_informado'::text AS category,''::text AS reason,0::bigint AS revision) cl ON true";
-        var base=sourceSql() & ", profile_data AS MATERIALIZED (
+        var base=sourceSql() & ", latest_purchase AS (
+            SELECT DISTINCT ON (profile_id) profile_id,paid_at,amount_cents,buyer_name,starts_at,
+                   count(*) OVER (PARTITION BY profile_id) AS sales,
+                   CASE WHEN revoked_at IS NULL THEN ends_at END AS valid_until
+            FROM direct_orders WHERE direct_sale ORDER BY profile_id,paid_at DESC,id DESC
+        ), profile_data AS MATERIALIZED (
             SELECT pg.id_pagina AS profile_id,coalesce(nullif(pg.nome,''),u.name,'Perfil sem nome') AS name,
                    coalesce(pg.tag,'') AS tag,coalesce(u.email,'') AS email,coalesce(u.id,0) AS user_id,
                    coalesce(u.is_admin,false) AS is_admin,coalesce(u.is_dev,false) AS is_dev,coalesce(u.is_partner,false) AS is_partner,
                    st.active,st.permanent,st.status,
+                   coalesce(lp.sales,0) AS direct_sales,lp.paid_at AS direct_order_sort,
+                   coalesce(to_char(lp.paid_at AT TIME ZONE 'America/Sao_Paulo','DD/MM/YYYY HH24:MI'),'') AS direct_last_paid_at,
+                   coalesce(lp.amount_cents,0) AS direct_last_amount_cents,coalesce(lp.buyer_name,'') AS direct_last_buyer,
+                   coalesce(to_char(lp.starts_at AT TIME ZONE 'America/Sao_Paulo','DD/MM/YYYY'),'') AS direct_starts_at,
+                   coalesce(to_char((lp.valid_until-interval '1 second') AT TIME ZONE 'America/Sao_Paulo','DD/MM/YYYY'),'') AS direct_valid_until,
                    coalesce(cf.vip_unconfirmed,false) AS evidence_vip_unconfirmed,
                    coalesce(cf.historic_vip,false) OR coalesce(lf.historic_vip,false) AS evidence_historic_vip,
                    coalesce(cf.basic_confirmed,false) AS evidence_basic,
@@ -108,6 +136,7 @@ component output=false {
               LEFT JOIN vip_reviews vr ON vr.entity_id=pg.id_pagina::text
               LEFT JOIN challenge_facts cf ON cf.profile_id=pg.id_pagina
               LEFT JOIN legacy_facts lf ON lf.profile_id=pg.id_pagina
+              LEFT JOIN latest_purchase lp ON lp.profile_id=pg.id_pagina
               " & classification & "), profiles AS MATERIALIZED (
                 SELECT *,permanent AND category='nao_informado' AND NOT
                     (registered_vip OR registered_upgrade OR vip OR upgrade OR annual) AS needs_classification,
@@ -122,6 +151,7 @@ component output=false {
         if(listFind("vip_unconfirmed,historic_vip,basic,none,bio,social",evidence))where&=" AND evidence_" & evidence & " ";
         if(len(origin)) {
             if(listFind("vip,upgrade,annual",origin))where&=" AND " & origin & " ";
+            else if(origin=="direct_buyer")where&=" AND direct_sales>0 ";
             else if(origin=="manual")where&=" AND permanent ";
             else if(origin=="refunded")where&=" AND has_refund ";
             else if(origin=="registered_vip")where&=" AND (registered_vip OR registered_upgrade) ";
@@ -129,7 +159,9 @@ component output=false {
             else if(structKeyExists(categories(),origin)) {where&=" AND permanent AND category=:category ";params.category={value=origin,cfsqltype="cf_sql_varchar"};}
         }
         if(len(search)) {
-            where&=" AND (unaccent(name) ILIKE unaccent(:search) ESCAPE '!' OR unaccent(email) ILIKE unaccent(:search) ESCAPE '!' OR tag ILIKE :search ESCAPE '!' OR profile_id::text=:exact OR user_id::text=:exact) ";
+            where&=" AND (unaccent(name) ILIKE unaccent(:search) ESCAPE '!' OR unaccent(email) ILIKE unaccent(:search) ESCAPE '!' OR tag ILIKE :search ESCAPE '!' OR profile_id::text=:exact OR user_id::text=:exact";
+            if(origin=="direct_buyer")where&=" OR EXISTS (SELECT 1 FROM direct_orders d WHERE d.profile_id=profiles.profile_id AND d.direct_sale AND (unaccent(d.buyer_name) ILIKE unaccent(:search) ESCAPE '!' OR d.user_id::text=:exact))";
+            where&=") ";
             params.search={value="%" & replace(replace(replace(search,"!","!!","all"),"%","!%","all"),"_","!_","all") & "%",cfsqltype="cf_sql_varchar"};
             params.exact={value=search,cfsqltype="cf_sql_varchar"};
         }
@@ -145,8 +177,12 @@ component output=false {
         }
         if(arrayLen(rules))where&=" AND (" & arrayToList(rules,(arguments.filters.logic ?: "any")=="all" ? " AND " : " OR ") & ")";
         params.page={value=page,cfsqltype="cf_sql_integer"};
+        var orderBy=(origin=="direct_buyer" ? "direct_order_sort DESC NULLS LAST," : "") & "upper(name),profile_id";
         var result=queryExecute(base & ", filtered AS MATERIALIZED (SELECT * FROM profiles" & where & "),
             summary AS (SELECT count(*) FILTER(WHERE active) AS active,count(*) FILTER(WHERE permanent) AS permanent,
+                (SELECT count(DISTINCT user_id) FROM direct_orders WHERE direct_sale) AS direct_buyers,
+                (SELECT count(*) FROM direct_orders WHERE direct_sale) AS direct_sales,
+                (SELECT coalesce(sum(amount_cents),0) FROM direct_orders WHERE direct_sale) AS direct_amount_cents,
                 count(*) FILTER(WHERE active AND NOT permanent) AS annual,
                 count(*) FILTER(WHERE needs_classification) AS unclassified,
                 count(*) FILTER(WHERE reconciliation_pending) AS reconcile,
@@ -161,7 +197,7 @@ component output=false {
             counts AS (SELECT count(*) AS total,greatest(1,ceil(count(*)/40.0))::integer AS pages FROM filtered),
             paging AS (SELECT total,pages,least(:page,pages) AS page FROM counts)
             SELECT (SELECT row_to_json(summary)::text FROM summary) AS totals_json,paging.total,paging.pages,paging.page,
-                coalesce((SELECT json_agg(r)::text FROM (SELECT * FROM filtered ORDER BY upper(name),profile_id
+                coalesce((SELECT json_agg(r)::text FROM (SELECT * FROM filtered ORDER BY " & orderBy & "
                     LIMIT 40 OFFSET (SELECT (page-1)*40 FROM paging)) r),'[]') AS rows_json
             FROM paging",params,{datasource=variables.ds});
         var output={rows=deserializeJSON(result.rows_json),totals=deserializeJSON(result.totals_json),total=result.total,
@@ -178,11 +214,13 @@ component output=false {
             FROM public.tb_paginas pg CROSS JOIN LATERAL rr_verified.profile_status(pg.id_pagina) s WHERE pg.id_pagina=:id",p,{datasource=variables.ds,returntype="array"});
         if(!arrayLen(profile))return {};
         var result={profile=profile[1],history=[],current={revision=0,category="nao_informado",reason=""}};
-        result.sources=queryExecute(sourceSql() & "SELECT kind,source_state,order_id,coalesce(amount_cents,0) AS amount_cents,
-            coalesce(to_char(starts_at AT TIME ZONE 'America/Sao_Paulo','DD/MM/YYYY HH24:MI'),'') AS paid_at,
+        result.sources=queryExecute(sourceSql() & "SELECT kind,source_state,order_id,coalesce(amount_cents,0) AS amount_cents,buyer_name,direct_sale,
+            coalesce(to_char(paid_at AT TIME ZONE 'America/Sao_Paulo','DD/MM/YYYY HH24:MI'),'') AS paid_at,
+            coalesce(to_char(starts_at AT TIME ZONE 'America/Sao_Paulo','DD/MM/YYYY HH24:MI'),'') AS starts_at,
             coalesce(to_char((ends_at-interval '1 second') AT TIME ZONE 'America/Sao_Paulo','DD/MM/YYYY'),'') AS ends_at,
-            (kind='manual' OR (source_state='paid' AND starts_at<=now() AND ends_at>now())) AS active
-            FROM sources WHERE profile_id=:id ORDER BY starts_at DESC NULLS LAST,kind,order_id",p,{datasource=variables.ds,returntype="array"});
+            coalesce(source_state='paid' AND starts_at>now(),false) AS scheduled,
+            coalesce(kind='manual' OR (source_state='paid' AND starts_at<=now() AND ends_at>now()),false) AS active
+            FROM sources WHERE profile_id=:id ORDER BY coalesce(sources.paid_at,sources.starts_at) DESC NULLS LAST,kind,order_id",p,{datasource=variables.ds,returntype="array"});
         // Registration identifies the relationship, not payment date or entitlement duration.
         result.registrations=queryExecute(sourceSql() & "SELECT product_code,
             coalesce(to_char(registered_at,'DD/MM/YYYY HH24:MI'),'') AS registered_at,order_ref,cancellation_note,

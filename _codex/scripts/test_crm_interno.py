@@ -32,6 +32,10 @@ for relative in ['_codex/tests/crm-interno/fixtures.sql',
                  '_codex/sql/migrations/2026-09-25_crm_challenge_signup.sql',
                  '_codex/sql/migrations/2026-09-25_crm_tsd_program.sql',
                  '_codex/sql/migrations/2026-09-25_crm_tsd_program.sql',
+                 '_codex/tests/crm-interno/verified-badge-offer-fixtures.sql',
+                 '_codex/sql/migrations/2026-11-26_crm_email_permissions.sql',
+                 '_codex/sql/migrations/2026-11-26_crm_email_permissions.sql',
+                 '_codex/tests/crm-interno/verified-badge-offer.sql',
                  '_codex/tests/crm-interno/schema.sql']:
     run(psql + ['-f', str(rr / relative)], stdout=subprocess.DEVNULL)
 program_sql = rr / '_codex/sql/migrations/2026-09-25_crm_tsd_program.sql'

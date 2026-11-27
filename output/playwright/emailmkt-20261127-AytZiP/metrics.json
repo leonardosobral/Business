@@ -1,0 +1,104 @@
+[
+  {
+    "name": "email",
+    "label": "mobile",
+    "width": 360,
+    "documentWidth": 360,
+    "title": "Um ano de Atleta Verificado por R$ 9,90",
+    "tables": [],
+    "links": [
+      {
+        "label": "Ver a oferta do selo",
+        "href": "https://roadrunners.run/verificado/?utm_source=mailchimp&utm_medium=email&utm_campaign=selo-atleta-20261127"
+      },
+      {
+        "label": "Cancelar inscrição nestes e-mails",
+        "href": "https://qa.invalid/cancelar"
+      }
+    ]
+  },
+  {
+    "name": "email",
+    "label": "desktop",
+    "width": 1280,
+    "documentWidth": 1280,
+    "title": "Um ano de Atleta Verificado por R$ 9,90",
+    "tables": [],
+    "links": [
+      {
+        "label": "Ver a oferta do selo",
+        "href": "https://roadrunners.run/verificado/?utm_source=mailchimp&utm_medium=email&utm_campaign=selo-atleta-20261127"
+      },
+      {
+        "label": "Cancelar inscrição nestes e-mails",
+        "href": "https://qa.invalid/cancelar"
+      }
+    ]
+  },
+  {
+    "name": "panel",
+    "label": "mobile",
+    "width": 360,
+    "documentWidth": 360,
+    "title": "E-mail marketing",
+    "tables": [
+      {
+        "width": 428.9375,
+        "parentWidth": 296,
+        "overflow": "auto"
+      },
+      {
+        "width": 690.984375,
+        "parentWidth": 296,
+        "overflow": "auto"
+      }
+    ],
+    "links": [
+      {
+        "label": "PÚBLICOS E CAMPANHAS",
+        "href": "/crm-interno/"
+      },
+      {
+        "label": "FUNIL DE VENDAS",
+        "href": "/portal/funil/"
+      },
+      {
+        "label": "Baixar e-mail para Mailchimp Marketing",
+        "href": "/emailmkt/?modelo=selo-2026-11-27"
+      }
+    ]
+  },
+  {
+    "name": "panel",
+    "label": "desktop",
+    "width": 1280,
+    "documentWidth": 1280,
+    "title": "E-mail marketing",
+    "tables": [
+      {
+        "width": 968,
+        "parentWidth": 968,
+        "overflow": "auto"
+      },
+      {
+        "width": 968,
+        "parentWidth": 968,
+        "overflow": "auto"
+      }
+    ],
+    "links": [
+      {
+        "label": "PÚBLICOS E CAMPANHAS",
+        "href": "/crm-interno/"
+      },
+      {
+        "label": "FUNIL DE VENDAS",
+        "href": "/portal/funil/"
+      },
+      {
+        "label": "Baixar e-mail para Mailchimp Marketing",
+        "href": "/emailmkt/?modelo=selo-2026-11-27"
+      }
+    ]
+  }
+]

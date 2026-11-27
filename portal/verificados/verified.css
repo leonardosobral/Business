@@ -23,3 +23,27 @@
 
 .verified-payment-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.verified-payment-value{white-space:nowrap;color:var(--business-accent)}.verified-payment-facts{display:grid;grid-template-columns:1fr 1.5fr;gap:5px 12px;margin:12px 0}.verified-payment-facts dt{font-weight:400;color:var(--business-muted)}.verified-payment-facts dd{margin:0}.verified-scan{padding:12px;background:var(--business-ui-surface-strong);border:1px solid var(--business-ui-border);border-radius:8px;margin-bottom:12px}.verified-scan p{margin:5px 0}.verified-payment-preview{font-size:.75rem;color:var(--business-muted);margin:8px 0}.verified-payment-preview strong{color:var(--business-accent)}.verified-payment-record{padding:14px 0}
 @media(max-width:767px){.verified-payment-heading{flex-direction:column;gap:5px}}
+
+.verified-sales-summary {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    margin: 22px 0;
+    padding: 20px;
+    border-inline-start: 3px solid var(--business-accent);
+}
+.verified-sales-summary > div { flex: 1 1 240px; }
+.verified-sales-summary h2 { margin: 0 0 6px; font-size: 1.15rem; }
+.verified-sales-summary p { margin: 0; color: var(--business-muted); font-size: .85rem; }
+.verified-sales-summary .btn-warning { color: #171717; background-color: var(--business-accent); }
+.verified-sales-totals { display: flex; flex-wrap: wrap; gap: 12px 20px; margin: 0; }
+.verified-sales-totals dt { color: var(--business-muted); font-size: .8rem; font-weight: 500; }
+.verified-sales-totals dd { margin: 3px 0 0; font-size: 1.35rem; font-weight: 700; white-space: nowrap; }
+.verified-direct-purchase { display: grid; gap: 3px; padding-inline-start: 10px; border-inline-start: 2px solid var(--business-accent); overflow-wrap: anywhere; }
+.verified-direct-purchase span { font-size: .8rem; color: var(--business-muted); }
+.verified-direct-purchase strong, .verified-direct-order { color: var(--business-accent); font-weight: 650; }
+@media (max-width: 767px) {
+    .verified-sales-summary { padding: 16px; }
+    .verified-sales-totals { flex: 1 1 100%; }
+}

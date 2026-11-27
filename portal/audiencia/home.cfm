@@ -152,6 +152,7 @@
         <cfif VARIABLES.audienceFamily EQ "verified">
         <section class="audience-panel" aria-labelledby="verified-entries-title">
             <h2 class="h5" id="verified-entries-title">Por onde os atletas chegaram à oferta?</h2>
+            <cfif VARIABLES.audienceEnvironment EQ "prod"><p><cfoutput><a href="/portal/funil/?publico=athletes&amp;produto=selo&amp;de=#dateTimeFormat(dateAdd('d',1-VARIABLES.audienceDays,now()),'yyyy-mm-dd','America/Sao_Paulo')#&amp;ate=#dateTimeFormat(now(),'yyyy-mm-dd','America/Sao_Paulo')###journey">Ver visitas, cliques e vendas por canal no funil</a></cfoutput></p></cfif>
             <p class="audience-meta">Cada abertura de /verificado/ conta uma vez. Um navegador pode voltar por outra entrada. Aberturas sem referência registrada ficam em “Sem identificação”. A tabela abaixo deste quadro mostra o canal pelo qual a sessão começou. A aba <a href="#audience-campaigns">Campanha</a> detalha os links marcados com UTM.</p>
             <cfif structKeyExists(VARIABLES.audienceQueries,"verifiedEntries")>
                 <cfset audEntries = VARIABLES.audienceQueries.verifiedEntries/>
