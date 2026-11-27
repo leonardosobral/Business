@@ -1,7 +1,7 @@
 component output=false {
     variables.webhookUrl = "https://business.roadrunners.run/api/brevo-marketing-events.cfm";
     variables.events = ["delivered","opened","click","softBounce","hardBounce","spam","unsubscribed"];
-    variables.subject = "Black Friday Road Runners: 1 ano de Atleta Verificado por R$ 9,90";
+    variables.subject = "Um ano de Atleta Verificado por R$ 9,90";
 
     public any function init(struct config, any transport) {
         var names = {"apiKey"="RR_BREVO_API_KEY","senderId"="RR_BREVO_SENDER_ID","folderId"="RR_BREVO_FOLDER_ID","webhookToken"="RR_BREVO_WEBHOOK_TOKEN"};

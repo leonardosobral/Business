@@ -32,7 +32,7 @@ blocked="optout@example.org";
 outside="outside@example.org";
 listPath="/contacts/lists/7/contacts";
 fixture={members={},folder=5,segments=[],sender=3,draftStatus="draft",hook={},failStatus=0,failPath="",badId=false,
-    omitProcess=false,omitBlacklist=false,subject="Black Friday Road Runners: 1 ano de Atleta Verificado por R$ 9,90"};
+    omitProcess=false,omitBlacklist=false,subject="Um ano de Atleta Verificado por R$ 9,90"};
 fixture.members[address]=member(address);
 fixture.members[blocked]=member(blocked,true);
 fixture.members[outside]=member(outside);
@@ -128,6 +128,7 @@ check(arrayLen(result.eligible)==2 && arrayLen(result.suppressed)==4,"remote and
 check(calls("POST",listPath & "/add")==1 && calls("POST",listPath & "/remove")==1 && structCount(fixture.members)==2,"bulk writes only");
 check(service.createDraft(batchName,7)==9,"draft");
 payload=request.brevoCalls[arrayLen(request.brevoCalls)].body;
+check(compare(payload.subject,fixture.subject)==0,"exact commercial draft subject");
 check(!structKeyExists(payload,"scheduledAt") && !structKeyExists(payload,"templateId") && payload.sender.id==3 && payload.recipients.listIds[1]==7
     && find("{{ unsubscribe }}",payload.htmlContent) && find("utm_source=brevo",payload.htmlContent) && !find("mailchimp",payload.htmlContent),"native marketing format");
 check(find("Um ano inteiro.",payload.htmlContent) && find("Pelo preço",payload.htmlContent) && find("R$&nbsp;99,90",payload.htmlContent)
@@ -141,6 +142,9 @@ check(!reFindNoCase("<(iframe|form|button|script)[ >]",payload.htmlContent) && f
 check(!structKeyExists(payload,"tag") && find("utm_campaign=selo-atleta-20261127",payload.htmlContent),"campaign attribution without optional Brevo tags");
 check(payload.utmSource=="brevo" && payload.utmMedium=="email" && payload.utmCampaign=="seloatleta20261127","provider tracking identifies the commercial offer");
 check(service.campaign(9).statistics.uniqueClicks==3,"aggregate");
+fixture.subject="Black Friday Road Runners: 1 ano de Atleta Verificado por R$ 9,90";
+rejects(function(){service.verifyDraftAudience(9,batchName,7,result.eligible);},"brevo_draft_changed");
+fixture.subject=payload.subject;
 fixture.segments=[27];
 rejects(function(){service.sendNow(9,batchName,7,result.eligible);},"brevo_draft_changed");
 fixture.segments=[];
